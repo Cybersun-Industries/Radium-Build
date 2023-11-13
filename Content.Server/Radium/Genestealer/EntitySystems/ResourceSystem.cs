@@ -1,12 +1,10 @@
-﻿using Content.Server.Radium.Components;
-using Content.Server.Revenant.Components;
-using Content.Shared.Examine;
+﻿using Content.Server.Radium.Genestealer.Components;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Robust.Shared.Random;
 
-namespace Content.Server.Radium;
+namespace Content.Server.Radium.Genestealer.EntitySystems;
 
 public sealed class ResourceSystem: EntitySystem
 {

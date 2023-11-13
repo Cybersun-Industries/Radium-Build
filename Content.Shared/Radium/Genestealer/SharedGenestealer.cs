@@ -28,7 +28,7 @@ public sealed class HarvestDoAfterCancelled : EntityEventArgs
 {
 }
 
-public sealed partial class GenestealerAbsorbDnaActionEvent : EntityTargetAction
+public sealed partial class GenestealerAbsorbDnaActionEvent : EntityTargetActionEvent
 {
 }
 

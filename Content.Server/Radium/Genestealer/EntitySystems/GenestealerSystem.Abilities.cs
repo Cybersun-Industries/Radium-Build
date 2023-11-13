@@ -1,15 +1,9 @@
-﻿using Content.Server.Construction.Completions;
-using Content.Server.Ghost;
-using Content.Server.Light.Components;
-using Content.Server.Radium.Components;
-using Content.Server.Revenant.Components;
+﻿using Content.Server.Radium.Genestealer.Components;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Damage;
-using Content.Shared.Damage.Prototypes;
 using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
-using Content.Shared.Interaction;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
@@ -24,7 +18,6 @@ namespace Content.Server.Radium.Genestealer.EntitySystems;
 public sealed partial class GenestealerSystem
 {
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly GhostSystem _ghost = default!;
     [Dependency] private readonly DamageableSystem _heal = default!;
 
     private void InitializeAbilities()
@@ -45,12 +38,12 @@ public sealed partial class GenestealerSystem
         }
     }
 
-    private void OnInteract(EntityUid uid, GenestealerComponent component, InteractNoHandEvent args)
+    private void OnInteract(EntityUid uid, GenestealerComponent component, GenestealerAbsorbDnaActionEvent args)
     {
-        if (args.Target == args.User || args.Target == null)
+        if (args.Target == args.Performer)
             return;
 
-        var target = args.Target.Value;
+        var target = args.Target;
 
         if (!HasComp<MobStateComponent>(target) || !HasComp<HumanoidAppearanceComponent>(target) ||
             HasComp<GenestealerComponent>(target))
@@ -132,7 +125,8 @@ public sealed partial class GenestealerSystem
 
         if (_mobState.IsAlive(args.Args.Target.Value) || _mobState.IsCritical(args.Args.Target.Value))
         {
-            _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("genestealer-max-resource-increased"), uid, uid);
+            _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("genestealer-max-resource-increased"), uid,
+                uid);
             component.ResourceRegenCap += component.MaxEssenceUpgradeAmount;
         }
 
@@ -155,6 +149,7 @@ public sealed partial class GenestealerSystem
         {
             return;
         }
+
         if (state.CurrentState == MobState.Dead && component.IsInStasis)
         {
             _heal.SetAllDamage(uid, damageComponent, 0.1);
@@ -177,7 +172,5 @@ public sealed partial class GenestealerSystem
             return;
 
         args.Handled = true;
-
-        
     }
 }
