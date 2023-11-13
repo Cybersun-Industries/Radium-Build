@@ -1,0 +1,42 @@
+- type: entity
+  id: ActionGenestealerShop
+  name: Shop
+  description: Opens the ability shop.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: Interface/Actions/shop.png
+    event: !type:GenestealerShopActionEvent
+- type: entity
+  id: ActionGenestealerStasis
+  name: Stasis
+  description: Costs 15 Essence.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: Interface/Actions/defile.png
+    event: !type:GenestealerStasisActionEvent
+    useDelay: 120
+    checkCanInteract: false
+
+- type: entity
+  id: ActionGenestealerTransform
+  name: Transform
+  description: Costs 5 Essence.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: Interface/Actions/overloadlight.png
+    event: !type:GenestealerTransformActionEvent
+    useDelay: 30
+    
+- type: entity
+  id: ActionGenestealerSpeedUp
+  name: Transform
+  description: Costs 15 Essence.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: Interface/Actions/overloadlight.png
+    event: !type:GenestealerSpeedUpActionEvent
+    useDelay: 30
