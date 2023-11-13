@@ -15,7 +15,7 @@
   noSpawn: true
   components:
   - type: InstantAction
-    icon: Radium/Interface/Actions/stasis.png
+    icon: Radium/Interface/Actions/fake_death.png
     event: !type:GenestealerStasisActionEvent
     useDelay: 120
     checkCanInteract: false
@@ -38,8 +38,8 @@
   noSpawn: true
   components:
   - type: EntityTargetAction
-    icon: Radium/Interface/Actions/absorbDNA.png
-    event: !type:GenestealerAbsorbDNAActionEvent
+    icon: Radium/Interface/Actions/absorb_dna.png
+    event: !type:GenestealerAbsorbDnaActionEvent
     useDelay: 0
     whitelist:
       components:
@@ -52,6 +52,6 @@
   noSpawn: true
   components:
   - type: InstantAction
-    icon: Radium/Interface/Actions/speedUp.png
+    icon: Radium/Interface/Actions/adrenaline.png
     event: !type:GenestealerSpeedUpActionEvent
     useDelay: 30
