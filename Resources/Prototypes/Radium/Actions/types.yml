@@ -7,6 +7,7 @@
   - type: InstantAction
     icon: Interface/Actions/shop.png
     event: !type:GenestealerShopActionEvent
+
 - type: entity
   id: ActionGenestealerStasis
   name: Stasis
@@ -14,7 +15,7 @@
   noSpawn: true
   components:
   - type: InstantAction
-    icon: Interface/Actions/defile.png
+    icon: Radium/Interface/Actions/stasis.png
     event: !type:GenestealerStasisActionEvent
     useDelay: 120
     checkCanInteract: false
@@ -26,10 +27,24 @@
   noSpawn: true
   components:
   - type: InstantAction
-    icon: Interface/Actions/overloadlight.png
+    icon: Radium/Interface/Actions/transform.png
     event: !type:GenestealerTransformActionEvent
     useDelay: 30
-    
+
+- type: entity
+  id: GenestealerAbsorbDNA
+  name: Absorb DNA
+  description: You can absorb DNA of any humanoid creature to gain evolution points and transform your appearance.
+  noSpawn: true
+  components:
+  - type: EntityTargetAction
+    icon: Radium/Interface/Actions/absorbDNA.png
+    event: !type:GenestealerAbsorbDNAActionEvent
+    useDelay: 0
+    whitelist:
+      components:
+      - MobState
+
 - type: entity
   id: ActionGenestealerSpeedUp
   name: Transform
@@ -37,6 +52,6 @@
   noSpawn: true
   components:
   - type: InstantAction
-    icon: Interface/Actions/overloadlight.png
+    icon: Radium/Interface/Actions/speedUp.png
     event: !type:GenestealerSpeedUpActionEvent
     useDelay: 30
