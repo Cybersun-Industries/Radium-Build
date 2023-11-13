@@ -1,4 +1,4 @@
-﻿namespace Content.Server.Radium.Components;
+﻿namespace Content.Server.Radium.Genestealer.Components;
 
 [RegisterComponent]
 public sealed partial class ResourceComponent : Component
