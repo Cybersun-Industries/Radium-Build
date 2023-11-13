@@ -29,7 +29,7 @@ public sealed partial class GenestealerSystem
 
     private void InitializeAbilities()
     {
-        SubscribeLocalEvent<GenestealerComponent, InteractNoHandEvent>(OnInteract);
+        SubscribeLocalEvent<GenestealerComponent, GenestealerAbsorbDnaActionEvent>(OnInteract);
         SubscribeLocalEvent<GenestealerComponent, HarvestEvent>(OnHarvest);
 
         SubscribeLocalEvent<GenestealerComponent, GenestealerStasisActionEvent>(OnStasisAction);
@@ -49,13 +49,8 @@ public sealed partial class GenestealerSystem
     {
         if (args.Target == args.User || args.Target == null)
             return;
-        var target = args.Target.Value;
 
-        if (HasComp<PoweredLightComponent>(target))
-        {
-            args.Handled = _ghost.DoGhostBooEvent(target);
-            return;
-        }
+        var target = args.Target.Value;
 
         if (!HasComp<MobStateComponent>(target) || !HasComp<HumanoidAppearanceComponent>(target) ||
             HasComp<GenestealerComponent>(target))
@@ -77,7 +72,7 @@ public sealed partial class GenestealerSystem
     {
         if (resource.Harvested)
         {
-            _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("revenant-soul-harvested"), target, uid,
+            _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("genestealer-dna-harvested"), target, uid,
                 PopupType.SmallCaution);
             return;
         }
@@ -85,7 +80,7 @@ public sealed partial class GenestealerSystem
         if (TryComp<MobStateComponent>(target, out var mobstate) && mobstate.CurrentState == MobState.Alive &&
             !HasComp<SleepingComponent>(target) && !HasComp<StunnedComponent>(target))
         {
-            _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("revenant-soul-too-powerful"), target, uid);
+            _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("genestealer-cant-harvest-now"), target, uid);
             return;
         }
 
@@ -102,9 +97,9 @@ public sealed partial class GenestealerSystem
         if (!_doAfter.TryStartDoAfter(doAfter))
             return;
 
-        _appearance.SetData(uid, RevenantVisuals.Harvesting, true);
+        _appearance.SetData(uid, GenestealerVisuals.Harvesting, true);
 
-        _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("revenant-soul-begin-harvest", ("target", target)),
+        _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("genestealer-begin-harvest", ("target", target)),
             target, PopupType.Large);
 
         TryUseAbility(uid, genestealer, 0, genestealer.HarvestDebuffs);
@@ -114,7 +109,7 @@ public sealed partial class GenestealerSystem
     {
         if (args.Cancelled)
         {
-            _appearance.SetData(uid, RevenantVisuals.Harvesting, false);
+            _appearance.SetData(uid, GenestealerVisuals.Harvesting, false);
             return;
         }
 
@@ -125,7 +120,7 @@ public sealed partial class GenestealerSystem
 
         EnsureComp<ResourceComponent>(args.Args.Target.Value, out var resource);
         _popup.PopupEntity(
-            Robust.Shared.Localization.Loc.GetString("revenant-soul-finish-harvest", ("target", args.Args.Target)),
+            Robust.Shared.Localization.Loc.GetString("genestealer-finish-harvest", ("target", args.Args.Target)),
             args.Args.Target.Value, PopupType.LargeCaution);
 
         resource.Harvested = true;
@@ -137,7 +132,7 @@ public sealed partial class GenestealerSystem
 
         if (_mobState.IsAlive(args.Args.Target.Value) || _mobState.IsCritical(args.Args.Target.Value))
         {
-            _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("revenant-max-essence-increased"), uid, uid);
+            _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("genestealer-max-resource-increased"), uid, uid);
             component.ResourceRegenCap += component.MaxEssenceUpgradeAmount;
         }
 
