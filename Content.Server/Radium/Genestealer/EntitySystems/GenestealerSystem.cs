@@ -12,7 +12,6 @@ using Content.Server.Ghost.Roles.Events;
 using Content.Server.Humanoid;
 using Content.Server.Mind;
 using Content.Server.Preferences.Managers;
-using Content.Server.Radium.Components;
 using Content.Server.Roles;
 using Content.Server.Shuttles.Components;
 using Content.Server.Spawners.Components;
@@ -24,28 +23,23 @@ using Content.Shared.Alert;
 using Content.Shared.CCVar;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.DoAfter;
-using Content.Shared.Eye;
 using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
-using Content.Shared.Maps;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.NukeOps;
-using Content.Shared.Physics;
 using Content.Shared.Players;
 using Content.Shared.Popups;
 using Content.Shared.Preferences;
 using Content.Shared.Radium.Genestealer;
 using Content.Shared.Radium.Genestealer.Components;
-using Content.Shared.Revenant.Components;
 using Content.Shared.Roles;
 using Content.Shared.Roles.Jobs;
 using Content.Shared.StatusEffect;
 using Content.Shared.Store;
 using Content.Shared.Stunnable;
 using Content.Shared.Tag;
-using Linguini.Syntax.Ast;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
@@ -64,7 +58,11 @@ public sealed partial class GenestealerSystem : EntitySystem
     private const string GenestealerShopId = "ActionGenestealerShop";
 
     [ValidatePrototypeId<EntityPrototype>]
+    private const string AbsorbDNA = "GenestealerAbsorbDNA";
+
+    [ValidatePrototypeId<EntityPrototype>]
     private const string StoreBoundUserInterfaceId = "StoreBoundUserInterface";
+
     private const string StasisId = "ActionGenestealerStasis";
     private const string TransformId = "ActionGenestealerTransform";
 
@@ -74,13 +72,10 @@ public sealed partial class GenestealerSystem : EntitySystem
     [Dependency] private readonly ActionsSystem _action = default!;
     [Dependency] private readonly AlertsSystem _alerts = default!;
     [Dependency] private readonly MobStateSystem _mobState = default!;
-    [Dependency] private readonly PhysicsSystem _physics = default!;
     [Dependency] private readonly SharedDoAfterSystem _doAfter = default!;
-    [Dependency] private readonly StatusEffectsSystem _statusEffects = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly SharedStunSystem _stun = default!;
     [Dependency] private readonly StoreSystem _store = default!;
-    [Dependency] private readonly VisibilitySystem _visibility = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly IServerPreferencesManager _prefs = default!;
     [Dependency] private readonly HumanoidAppearanceSystem _humanoid = default!;
@@ -287,10 +282,11 @@ public sealed partial class GenestealerSystem : EntitySystem
         store.Categories.Add(GenestealerCategories);
         store.CurrencyWhitelist.Add(GenestealerCurrency);
         _store.TryAddCurrency(new Dictionary<string, FixedPoint2>
-            { {stealer.StolenResourceCurrencyPrototype, stealer.Resource} }, stealerUid, store);
+            { { stealer.StolenResourceCurrencyPrototype, stealer.Resource } }, stealerUid, store);
         _prototype.TryIndex<ListingPrototype>("GenestealerSpeedUp", out var listing);
         //store.Listings.Add(listing!);
 
+        _action.AddAction(stealerUid, AbsorbDNA);
         _action.AddAction(stealerUid, GenestealerShopId);
         _action.AddAction(stealerUid, StasisId);
         _action.AddAction(stealerUid, TransformId);
