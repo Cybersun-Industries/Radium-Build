@@ -1,0 +1,12 @@
+- type: listing
+  id: GenestealerSpeedUp
+  name: Напряжённые мышцы
+  description: Генокрад сокращает накопление молочной кислоты в мышцах ног, позволяя ему двигаться с чрезвычайно высокой скоростью. 
+  productAction: ActionGenestealerSpeedUp
+  cost:
+    StolenResource: 10
+  categories:
+  - GenestealerAbilities
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1

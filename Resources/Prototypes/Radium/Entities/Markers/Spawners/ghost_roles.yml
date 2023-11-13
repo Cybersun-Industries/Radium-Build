@@ -1,0 +1,18 @@
+- type: entity
+  id: SpawnPointGenestealer
+  name: ghost role spawn point
+  suffix: genestealer
+  parent: MarkerBase
+  components:
+  - type: GhostRole
+    name: Генокрад (Антагонист)
+    description: Вы генокрад. Ваша задача собрать как можно больше очков эволюции.
+    rules: Вы генокра. Ваша задача собрать как можно больше очков эволюции путём копирования ДНК человека. Вам разрешены убийства, но только в крайних случаях. Оглушайте цель и получайте ресурсы, при этом цель выживет.
+  - type: GhostRoleMobSpawner
+    prototype: MobGenestealer
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+      - state: green
+      - sprite: Mobs/Animals/regalrat.rsi
+        state: icon

@@ -1,0 +1,10 @@
+- type: entity
+  id: GenestealerSpawn
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    weight: 10
+    earliestStart: 15
+    minimumPlayers: 5
+  - type: GenestealerRule

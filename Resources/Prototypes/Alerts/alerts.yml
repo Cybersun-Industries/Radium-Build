@@ -5,6 +5,8 @@
   id: BaseAlertOrder
   order:
     - category: Health
+    - category: Resource
+    - alertType: Resource
     - category: Stamina
     - alertType: SuitPower
     - category: Internals
