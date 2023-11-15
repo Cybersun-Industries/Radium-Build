@@ -1,5 +1,7 @@
-﻿using Content.Server.Radium.Genestealer.Components;
+﻿using Content.Server.Cuffs;
+using Content.Server.Radium.Genestealer.Components;
 using Content.Shared.Bed.Sleep;
+using Content.Shared.Cuffs.Components;
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
@@ -19,10 +21,11 @@ public sealed partial class GenestealerSystem
 {
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly DamageableSystem _heal = default!;
+    [Dependency] private readonly CuffableSystem _cuffable = default!;
 
     private void InitializeAbilities()
     {
-        SubscribeLocalEvent<GenestealerComponent, GenestealerAbsorbDnaActionEvent>(OnInteract);
+        SubscribeLocalEvent<GenestealerComponent, GenestealerAbsorbDnaActionEvent>(OnAbsorbDNAActions);
         SubscribeLocalEvent<GenestealerComponent, HarvestEvent>(OnHarvest);
 
         SubscribeLocalEvent<GenestealerComponent, GenestealerStasisActionEvent>(OnStasisAction);
@@ -38,7 +41,7 @@ public sealed partial class GenestealerSystem
         }
     }
 
-    private void OnInteract(EntityUid uid, GenestealerComponent component, GenestealerAbsorbDnaActionEvent args)
+    private void OnAbsorbDNAActions(EntityUid uid, GenestealerComponent component, GenestealerAbsorbDnaActionEvent args)
     {
         if (args.Target == args.Performer)
             return;
@@ -70,10 +73,14 @@ public sealed partial class GenestealerSystem
             return;
         }
 
-        if (TryComp<MobStateComponent>(target, out var mobstate) && mobstate.CurrentState == MobState.Alive &&
-            !HasComp<SleepingComponent>(target) && !HasComp<StunnedComponent>(target))
+        if (!TryComp<CuffableComponent>(target, out var cuffableComponent))
         {
-            _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("genestealer-cant-harvest-now"), target, uid);
+            return;
+        }
+        if (TryComp<MobStateComponent>(target, out var mobstate) && mobstate.CurrentState == MobState.Alive &&
+            !HasComp<SleepingComponent>(target) && !HasComp<StunnedComponent>(target) && cuffableComponent.CanStillInteract)
+        {
+            _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("genestealer-too-powerful"), target, uid);
             return;
         }
 
