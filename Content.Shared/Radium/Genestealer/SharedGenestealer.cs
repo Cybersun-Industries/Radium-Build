@@ -14,6 +14,7 @@ public sealed partial class HarvestEvent : SimpleDoAfterEvent
 {
 }
 
+
 public sealed class HarvestDoAfterComplete : EntityEventArgs
 {
     public readonly EntityUid Target;
