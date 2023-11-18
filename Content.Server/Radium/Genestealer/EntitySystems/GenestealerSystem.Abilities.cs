@@ -68,10 +68,6 @@ public sealed partial class GenestealerSystem
         args.Handled = true;
         BeginHarvestDoAfter(uid, target, component,
             !TryComp<ResourceComponent>(target, out var resource) ? EnsureComp<ResourceComponent>(target) : resource);
-        _stun.TryStun(target, TimeSpan.FromSeconds(25), true);
-        _stun.TryKnockdown(target, TimeSpan.FromSeconds(25), true);
-        _statusEffectsSystem.TryAddStatusEffect(args.Target, TemporaryBlindnessSystem.BlindingStatusEffect,
-            TimeSpan.FromSeconds(40), false, TemporaryBlindnessSystem.BlindingStatusEffect);
     }
 
     private void BeginHarvestDoAfter(EntityUid uid, EntityUid target, GenestealerComponent genestealer,
@@ -93,6 +89,11 @@ public sealed partial class GenestealerSystem
             _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("genestealer-too-powerful"), target, uid);
             return;
         }
+
+        _stun.TryStun(target, TimeSpan.FromSeconds(25), true);
+        _stun.TryKnockdown(target, TimeSpan.FromSeconds(25), true);
+        _statusEffectsSystem.TryAddStatusEffect(target, TemporaryBlindnessSystem.BlindingStatusEffect,
+            TimeSpan.FromSeconds(40), false, TemporaryBlindnessSystem.BlindingStatusEffect);
 
         var doAfter = new DoAfterArgs(EntityManager, uid, genestealer.HarvestDebuffs.X,
             new HarvestEvent(), uid,
@@ -230,17 +231,16 @@ public sealed partial class GenestealerSystem
             return;
         }
 
-        Timer.Delay(3);
-
-        _flash.Flash(target:uid, flashDuration:24, user:null, used:null, slowTo: 100000F, displayPopup:false);
-        _humanoidSystem.LoadProfile(uid, component.Preferences);
-        _metaSystem.SetEntityName(args.Performer, component.Metadata!.EntityName);
         var ev = new AfterFlashedEvent(uid, uid, null);
         RaiseLocalEvent(uid, ref ev);
-        if (_prototype.TryIndex<SpeciesPrototype>(component.Preferences.Species, out var species))
+        if (TryComp<HumanoidAppearanceComponent>(uid, out var humanoid))
         {
-            _humanoidSystem.SetSpecies(uid, species.Prototype);
+            humanoid.Species = component.Preferences.Species;
+            Dirty(uid, humanoid);
         }
+        _metaSystem.SetEntityName(args.Performer, component.Metadata!.EntityName);
+        _flash.Flash(target:uid, flashDuration:24, user:uid, used:null, slowTo: 100000F, displayPopup:false);
+        _humanoidSystem.LoadProfile(uid, component.Preferences);
 
         EnsureComp<DetailExaminableComponent>(uid).Content = component.Detail;
 
