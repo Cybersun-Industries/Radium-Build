@@ -1,7 +1,9 @@
 using System.Numerics;
 using Content.Shared.FixedPoint;
+using Content.Shared.Preferences;
 using Content.Shared.Store;
 using Robust.Shared.GameStates;
+using Robust.Shared.Network;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Shared.Radium.Genestealer.Components;
@@ -50,7 +52,7 @@ public sealed partial class GenestealerComponent : Component
     /// the second corresponds to the amount of time the entity is made solid.
     /// </summary>
     [DataField("harvestDebuffs")]
-    public Vector2 HarvestDebuffs = new(5, 0);
+    public Vector2 HarvestDebuffs = new(15, 0);
 
     /// <summary>
     /// The amount that is given to the genestealer each time it's max essence is upgraded.
@@ -102,6 +104,19 @@ public sealed partial class GenestealerComponent : Component
     public string StunnedState = "stunned";
     [DataField("harvestingState")]
     public string HarvestingState = "harvesting";
+    #endregion
+
+    #region TransformPool
+
+    [DataField] public EntityUid? TransformPool;
+
+    [DataField] public HumanoidCharacterProfile Preferences;
+
+    [DataField] public MetaDataComponent? Metadata;
+
+    [DataField] public NetUserId? Session;
+
+    [DataField] public string Detail;
     #endregion
 
     [DataField] public EntityUid? Action;

@@ -34,22 +34,11 @@ public sealed class ResourceSystem: EntitySystem
         if (!TryComp<MobStateComponent>(uid, out var mob))
             return;
 
-        switch (mob.CurrentState)
+        component.ResourceAmount = mob.CurrentState switch
         {
-            case MobState.Alive:
-                if (TryComp<MindContainerComponent>(uid, out var mind) && mind.Mind != null)
-                    component.ResourceAmount = _random.NextFloat(50f, 60f);
-                else
-                    component.ResourceAmount = _random.NextFloat(35f, 45f);
-                break;
-            case MobState.Critical:
-                component.ResourceAmount = _random.NextFloat(30f, 40f);
-                break;
-            case MobState.Dead:
-                component.ResourceAmount = _random.NextFloat(20f, 30f);
-                break;
-            case MobState.Invalid:
-                break;
-        }
+            MobState.Alive => _random.NextFloat(15f, 20f),
+            MobState.Critical => _random.NextFloat(10f, 15f),
+            _ => component.ResourceAmount
+        };
     }
 }
