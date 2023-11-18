@@ -1,18 +1,30 @@
 ﻿using Content.Server.Cuffs;
+using Content.Server.DetailExaminable;
+using Content.Server.Flash;
 using Content.Server.Radium.Genestealer.Components;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Cuffs.Components;
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
+using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
+using Content.Shared.Humanoid.Prototypes;
+using Content.Shared.Mind;
+using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
+using Content.Shared.Preferences;
 using Content.Shared.Radium.Genestealer;
 using Content.Shared.Radium.Genestealer.Components;
 using Content.Shared.Revenant;
+using Content.Shared.StatusEffect;
 using Content.Shared.Stunnable;
+using Robust.Server.Player;
+using Robust.Shared.Network;
+using Robust.Shared.Player;
+using Robust.Shared.Timing;
 using HarvestEvent = Content.Shared.Radium.Genestealer.HarvestEvent;
 
 namespace Content.Server.Radium.Genestealer.EntitySystems;
@@ -21,7 +33,8 @@ public sealed partial class GenestealerSystem
 {
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly DamageableSystem _heal = default!;
-    [Dependency] private readonly CuffableSystem _cuffable = default!;
+    [Dependency] private readonly FlashSystem _flash = default!;
+    [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
 
     private void InitializeAbilities()
     {
@@ -53,14 +66,12 @@ public sealed partial class GenestealerSystem
             return;
 
         args.Handled = true;
-        if (!TryComp<ResourceComponent>(target, out var resource))
-        {
-            BeginHarvestDoAfter(uid, target, component, EnsureComp<ResourceComponent>(target));
-        }
-        else
-        {
-            BeginHarvestDoAfter(uid, target, component, resource);
-        }
+        BeginHarvestDoAfter(uid, target, component,
+            !TryComp<ResourceComponent>(target, out var resource) ? EnsureComp<ResourceComponent>(target) : resource);
+        _stun.TryStun(target, TimeSpan.FromSeconds(25), true);
+        _stun.TryKnockdown(target, TimeSpan.FromSeconds(25), true);
+        _statusEffectsSystem.TryAddStatusEffect(args.Target, TemporaryBlindnessSystem.BlindingStatusEffect,
+            TimeSpan.FromSeconds(40), false, TemporaryBlindnessSystem.BlindingStatusEffect);
     }
 
     private void BeginHarvestDoAfter(EntityUid uid, EntityUid target, GenestealerComponent genestealer,
@@ -77,8 +88,7 @@ public sealed partial class GenestealerSystem
         {
             return;
         }
-        if (TryComp<MobStateComponent>(target, out var mobstate) && mobstate.CurrentState == MobState.Alive &&
-            !HasComp<SleepingComponent>(target) && !HasComp<StunnedComponent>(target) && cuffableComponent.CanStillInteract)
+        if (cuffableComponent.CanStillInteract)
         {
             _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("genestealer-too-powerful"), target, uid);
             return;
@@ -100,7 +110,7 @@ public sealed partial class GenestealerSystem
         _appearance.SetData(uid, GenestealerVisuals.Harvesting, true);
 
         _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("genestealer-begin-harvest", ("target", target)),
-            target, PopupType.Large);
+            target, PopupType.LargeCaution);
 
         TryUseAbility(uid, genestealer, 0, genestealer.HarvestDebuffs);
     }
@@ -119,9 +129,6 @@ public sealed partial class GenestealerSystem
         _appearance.SetData(uid, RevenantVisuals.Harvesting, false);
 
         EnsureComp<ResourceComponent>(args.Args.Target.Value, out var resource);
-        _popup.PopupEntity(
-            Robust.Shared.Localization.Loc.GetString("genestealer-finish-harvest", ("target", args.Args.Target)),
-            args.Args.Target.Value, PopupType.LargeCaution);
 
         resource.Harvested = true;
         ChangeEssenceAmount(uid, resource.ResourceAmount, component);
@@ -135,6 +142,33 @@ public sealed partial class GenestealerSystem
             _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("genestealer-max-resource-increased"), uid,
                 uid);
             component.ResourceRegenCap += component.MaxEssenceUpgradeAmount;
+        }
+
+        if (TryComp<MindContainerComponent>(args.Args.Target.Value, out var mindContainer))
+        {
+            if (_mindSystem.TryGetSession(mindContainer.Mind, out var session))
+            {
+                component.Metadata = MetaData(args.Args.Target.Value);
+                component.Session = session.UserId;
+                component.Preferences =
+                    (HumanoidCharacterProfile) _prefs.GetPreferences(component.Session!.Value).SelectedCharacter;
+                if (TryComp<DetailExaminableComponent>(args.Args.Target.Value, out var detail))
+                {
+                    component.Detail = detail.Content;
+                }
+            }
+            else
+            {
+                _popup.PopupEntity(
+                    Robust.Shared.Localization.Loc.GetString("genestealer-no-session", ("target", args.Args.User)),
+                    args.Args.User, PopupType.LargeCaution);
+            }
+        }
+        else
+        {
+            _popup.PopupEntity(
+                Robust.Shared.Localization.Loc.GetString("no-mind-container", ("target", args.Args.User)),
+                args.Args.User, PopupType.LargeCaution);
         }
 
         args.Handled = true;
@@ -173,10 +207,42 @@ public sealed partial class GenestealerSystem
     private void OnTransformAction(EntityUid uid, GenestealerComponent component, GenestealerTransformActionEvent args)
     {
         if (args.Handled)
+        {
+            _popup.PopupEntity(
+                Robust.Shared.Localization.Loc.GetString("genestealer-handled", ("target", uid)),
+                args.Performer, PopupType.LargeCaution);
             return;
+        }
 
         if (!TryUseAbility(uid, component, component.TransformCost, component.TransformDebuffs))
+        {
+            _popup.PopupEntity(
+                Robust.Shared.Localization.Loc.GetString("genestealer-abiltiy-failed", ("target", uid)),
+                args.Performer, PopupType.LargeCaution);
             return;
+        }
+
+        if (component.Session == null)
+        {
+            _popup.PopupEntity(
+                Robust.Shared.Localization.Loc.GetString("genestealer-no-session", ("target", uid)),
+                args.Performer, PopupType.LargeCaution);
+            return;
+        }
+
+        Timer.Delay(3);
+
+        _flash.Flash(target:uid, flashDuration:24, user:null, used:null, slowTo: 100000F, displayPopup:false);
+        _humanoidSystem.LoadProfile(uid, component.Preferences);
+        _metaSystem.SetEntityName(args.Performer, component.Metadata!.EntityName);
+        var ev = new AfterFlashedEvent(uid, uid, null);
+        RaiseLocalEvent(uid, ref ev);
+        if (_prototype.TryIndex<SpeciesPrototype>(component.Preferences.Species, out var species))
+        {
+            _humanoidSystem.SetSpecies(uid, species.Prototype);
+        }
+
+        EnsureComp<DetailExaminableComponent>(uid).Content = component.Detail;
 
         args.Handled = true;
     }
