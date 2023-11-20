@@ -1,6 +1,8 @@
-﻿using Content.Server.Cuffs;
+﻿using Content.Server.Construction.Completions;
+using Content.Server.Cuffs;
 using Content.Server.DetailExaminable;
 using Content.Server.Flash;
+using Content.Server.Flash.Components;
 using Content.Server.Radium.Genestealer.Components;
 using Content.Shared.Bed.Sleep;
 using Content.Shared.Cuffs.Components;
@@ -90,10 +92,9 @@ public sealed partial class GenestealerSystem
             return;
         }
 
+        _flash.Flash(target:target, flashDuration:20000f, user:uid, used:null, slowTo: 1000F, displayPopup:false, melee: true);
         _stun.TryStun(target, TimeSpan.FromSeconds(25), true);
         _stun.TryKnockdown(target, TimeSpan.FromSeconds(25), true);
-        _statusEffectsSystem.TryAddStatusEffect(target, TemporaryBlindnessSystem.BlindingStatusEffect,
-            TimeSpan.FromSeconds(40), false, TemporaryBlindnessSystem.BlindingStatusEffect);
 
         var doAfter = new DoAfterArgs(EntityManager, uid, genestealer.HarvestDebuffs.X,
             new HarvestEvent(), uid,
@@ -238,8 +239,9 @@ public sealed partial class GenestealerSystem
             humanoid.Species = component.Preferences.Species;
             Dirty(uid, humanoid);
         }
+        
         _metaSystem.SetEntityName(args.Performer, component.Metadata!.EntityName);
-        _flash.Flash(target:uid, flashDuration:24, user:uid, used:null, slowTo: 100000F, displayPopup:false);
+        _flash.Flash(target:uid, flashDuration:12000f, user:args.Performer, used:null, slowTo: 1000F, displayPopup:false);
         _humanoidSystem.LoadProfile(uid, component.Preferences);
 
         EnsureComp<DetailExaminableComponent>(uid).Content = component.Detail;

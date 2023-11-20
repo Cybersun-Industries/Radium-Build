@@ -3,11 +3,6 @@ using Content.Shared.Radium.Genestealer.Components;
 
 namespace Content.Shared.Radium.Genestealer.EntitySystems;
 
-/// <summary>
-/// Makes the revenant solid when the component is applied.
-/// Additionally applies a few visual effects.
-/// Used for status effect.
-/// </summary>
 public abstract class SharedGenstealerStateSystem : EntitySystem
 {
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
