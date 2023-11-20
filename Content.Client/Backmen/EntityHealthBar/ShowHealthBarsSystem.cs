@@ -1,8 +1,8 @@
 using Content.Shared.Backmen.EntityHealthBar;
 using Content.Shared.GameTicking;
-using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
 using Robust.Client.Player;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 
 namespace Content.Client.Backmen.EntityHealthBar;
@@ -20,11 +20,16 @@ public sealed class ShowHealthBarsSystem : EntitySystem
 
         SubscribeLocalEvent<ShowHealthBarsComponent, ComponentInit>(OnInit);
         SubscribeLocalEvent<ShowHealthBarsComponent, ComponentRemove>(OnRemove);
-        SubscribeLocalEvent<ShowHealthBarsComponent, LocalPlayerAttachedEvent>(OnPlayerAttached);
-        SubscribeLocalEvent<ShowHealthBarsComponent, LocalPlayerDetachedEvent>(OnPlayerDetached);
+        SubscribeLocalEvent<ShowHealthBarsComponent, AfterAutoHandleStateEvent>(OnUpdate);
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);
 
         _overlay = new(EntityManager, _protoMan);
+    }
+
+    private void OnUpdate(Entity<ShowHealthBarsComponent> ent, ref AfterAutoHandleStateEvent args)
+    {
+        _overlay.DamageContainers.Clear();
+        _overlay.DamageContainers.AddRange(ent.Comp.DamageContainers);
     }
 
     private void OnInit(EntityUid uid, ShowHealthBarsComponent component, ComponentInit args)

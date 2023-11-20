@@ -57,14 +57,13 @@ public sealed class MindSwapPowerSystem : EntitySystem
 
     private void OnInit(EntityUid uid, MindSwapPowerComponent component, ComponentInit args)
     {
-
         _actions.AddAction(uid, ref component.MindSwapPowerAction, ActionMindSwap);
 
-#if !DEBUG
+    #if !DEBUG
          if (_actions.TryGetActionData(component.MindSwapPowerAction, out var action) && action?.UseDelay != null)
             _actions.SetCooldown(component.MindSwapPowerAction, _gameTiming.CurTime,
                 _gameTiming.CurTime + (TimeSpan)  action?.UseDelay!);
-#endif
+    #endif
         if (TryComp<PsionicComponent>(uid, out var psionic) && psionic.PsionicAbility == null)
             psionic.PsionicAbility = component.MindSwapPowerAction;
 

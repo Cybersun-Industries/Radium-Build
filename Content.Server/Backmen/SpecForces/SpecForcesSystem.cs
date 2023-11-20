@@ -178,18 +178,25 @@ public sealed class SpecForcesSystem : EntitySystem
 
         if (spawns.Count == 0)
         {
-            spawns.Add(EntityManager.GetComponent<TransformComponent>(shuttle).Coordinates);
+            spawns.Add(Transform(shuttle).Coordinates);
         }
 
         // TODO: Cvar
         var countExtra = _playerManager.PlayerCount switch
         {
-            >= 40 => 4,
-            >= 30 => 3,
-            >= 20 => 2,
-            >= 10 => 1,
-            _ => 0
+            >= 60 => 7,
+            >= 50 => 6,
+            >= 40 => 5,
+            >= 30 => 4,
+            >= 20 => 3,
+            >= 10 => 2,
+            _ => 1
         };
+
+        if (_random.Prob(0.3f))
+        {
+            SpawnEntity(SFOfficer, _random.Pick(spawns));
+        }
 
         switch (ev)
         {
@@ -220,7 +227,8 @@ public sealed class SpecForcesSystem : EntitySystem
 
                 break;
             case SpecForcesType.RXBZZ:
-                SpawnEntity(countExtra == 0 ? Rxbzz : RxbzzLeader, _random.Pick(spawns));
+                SpawnEntity(RxbzzLeader, _random.Pick(spawns));
+                SpawnEntity(RxbzzFlamer, _random.Pick(spawns));
                 while (countExtra > 0)
                 {
                     if (countExtra-- > 0)
@@ -290,7 +298,7 @@ public sealed class SpecForcesSystem : EntitySystem
                     _chatSystem.DispatchStationAnnouncement(station,
                         Loc.GetString("spec-forces-system-ertcall-annonce"),
                         Loc.GetString("spec-forces-system-ertcall-title"),
-                        true, _ertAnnounce
+                        false, _ertAnnounce
                     );
                 }
 
@@ -332,6 +340,7 @@ public sealed class SpecForcesSystem : EntitySystem
     }
 
     [ValidatePrototypeId<EntityPrototype>] private const string SpawnMarker = "MarkerSpecforce";
+    [ValidatePrototypeId<EntityPrototype>] private const string SFOfficer = "SpawnMobHumanSFOfficer";
 
     private const string EtrShuttlePath = "Maps/Shuttles/dart.yml";
     [ValidatePrototypeId<EntityPrototype>] private const string ErtLeader = "SpawnMobHumanERTLeaderEVAV2_1";
@@ -341,8 +350,9 @@ public sealed class SpecForcesSystem : EntitySystem
     [ValidatePrototypeId<EntityPrototype>] private const string ErtMedical = "SpawnMobHumanERTMedicalEVAV2_1";
 
     private const string RxbzzShuttlePath = "Maps/Backmen/Grids/NT-CC-SRV-013.yml";
-    [ValidatePrototypeId<EntityPrototype>] private const string RxbzzLeader = "SpawnMobHumanSFOfficer";
+    [ValidatePrototypeId<EntityPrototype>] private const string RxbzzLeader = "MobHumanRXBZZLeader";
     [ValidatePrototypeId<EntityPrototype>] private const string Rxbzz = "SpawnMobHumanRXBZZ";
+    [ValidatePrototypeId<EntityPrototype>] private const string RxbzzFlamer = "MobHumanRXBZZFlamer";
 
     private const string SpestnazShuttlePath = "Maps/Backmen/Grids/Invincible.yml";
     [ValidatePrototypeId<EntityPrototype>] private const string SpestnazOfficer = "SpawnMobHumanSpecialReAgentCOM";
@@ -359,12 +369,7 @@ public sealed class SpecForcesSystem : EntitySystem
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly ChatSystem _chatSystem = default!;
     [Dependency] private readonly StationSystem _stationSystem = default!;
-    [Dependency] private readonly IConfigurationManager _cfg = default!;
-    [Dependency] private readonly PlayTimeTrackingManager _tracking = default!;
     [Dependency] private readonly IPrototypeManager _prototypes = default!;
-    [Dependency] private readonly IChatManager _chatManager = default!;
     [Dependency] private readonly ISerializationManager _serialization = default!;
-    [Dependency] private readonly IAdminManager _adminManager = default!;
     [Dependency] private readonly ActionsSystem _actions = default!;
-    [Dependency] private readonly WhitelistSystem _whitelistSystem = default!;
 }
