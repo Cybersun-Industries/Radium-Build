@@ -9,7 +9,7 @@
   - type: Sprite
     overrideContainerOcclusion: true # Ghosts always show up regardless of where they're contained.
     drawdepth: Ghosts
-    sprite: Mobs/Ghosts/ghost_human.rsi
+    sprite: Radium/Mobs/Ghosts/ghost_human.rsi #Radium
     color: "#fff8"
     layers:
     - state: animated
