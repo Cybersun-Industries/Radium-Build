@@ -6,8 +6,10 @@ using Robust.Client.Console;
 using Robust.Client.State;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
+using Robust.Shared.Audio;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
+using Robust.Shared.Player;
 
 namespace Content.Client.Info;
 
@@ -25,6 +27,7 @@ public sealed class RulesManager : SharedRulesManager
 
     private RulesPopup? _activePopup;
 
+    public IPlayingAudioStream? Stream;
     public void Initialize()
     {
         _netManager.RegisterNetMessage<ShouldShowRulesPopupMessage>(OnShouldShowRules);
@@ -70,6 +73,17 @@ public sealed class RulesManager : SharedRulesManager
         {
             Timer = time
         };
+
+        try
+        {
+            var audio = _sysMan.GetEntitySystem<SharedAudioSystem>();
+            const string file = "/Audio/Radium/rules.ogg";
+            Stream = audio.PlayGlobal(file, Filter.Local(), false);
+        }
+        catch (Exception e)
+        {
+            Logger.GetSawmill("Rules").Error(e.Message);
+        }
 
         _activePopup.OnQuitPressed += OnQuitPressed;
         _activePopup.OnAcceptPressed += OnAcceptPressed;
