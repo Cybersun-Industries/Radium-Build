@@ -26,6 +26,7 @@ using Content.Shared.Players;
 using Content.Shared.Radio;
 using Robust.Server.Player;
 using Robust.Shared.Audio;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.Console;
 using Robust.Shared.Network;
@@ -332,12 +333,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         _chatManager.ChatMessageToAll(ChatChannel.Radio, message, wrappedMessage, default, false, true, colorOverride);
         if (playSound)
         {
-            if (sender == Loc.GetString("admin-announce-announcer-default"))
-                announcementSound = new SoundPathSpecifier(CentComAnnouncementSound); // Corvax-Announcements: Support custom alert sound from admin panel
-            announcementSound ??= new SoundPathSpecifier(DefaultAnnouncementSound);
-            var announcementFilename = announcementSound.GetSound();
-            var announcementEv = new AnnouncementSpokeEvent(Filter.Broadcast(), announcementFilename, announcementSound.Params, message);
-            RaiseLocalEvent(announcementEv);
+            _audio.PlayGlobal(announcementSound?.GetSound() ?? DefaultAnnouncementSound, Filter.Broadcast(), true, AudioParams.Default.WithVolume(-2f));
         }
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Global station announcement from {sender}: {message}");
     }
@@ -375,9 +371,7 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         if (announcementSound != null || playDefaultSound) // Corvax-TTS
         {
-            announcementSound ??= new SoundPathSpecifier(DefaultAnnouncementSound);
-            var announcementEv = new AnnouncementSpokeEvent(filter, announcementSound.GetSound(), announcementSound.Params, message);
-            RaiseLocalEvent(announcementEv);
+            _audio.PlayGlobal(announcementSound?.GetSound() ?? DefaultAnnouncementSound, filter, true, AudioParams.Default.WithVolume(-2f));
         }
 
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Station Announcement on {station} from {sender}: {message}");
