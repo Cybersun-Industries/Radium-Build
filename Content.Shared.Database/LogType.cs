@@ -89,7 +89,9 @@ public enum LogType
     ItemConfigure = 84,
     DeviceLinking = 85,
     Tile = 86,
-    //backmen
-    Transactions = 120,
-    Psionics = 121
+
+    /// <summary>
+    /// A client has sent too many chat messages recently and is temporarily blocked from sending more.
+    /// </summary>
+    ChatRateLimited = 87,
 }
