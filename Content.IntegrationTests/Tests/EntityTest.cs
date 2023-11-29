@@ -314,7 +314,7 @@ namespace Content.IntegrationTests.Tests
                 "DebugExceptionExposeData",
                 "DebugExceptionInitialize",
                 "DebugExceptionStartup",
-                "GridFillComponent",
+                "GridFill",
                 "Map", // We aren't testing a map entity in this test
                 "MapGrid",
                 "Broadphase",
