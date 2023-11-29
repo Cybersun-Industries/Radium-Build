@@ -117,7 +117,6 @@ public sealed partial class GenestealerSystem : EntitySystem
         {
             return;
         }
-
         _roles.MindAddRole(mindId,
             new EvilTwinRoleComponent
                 { PrototypeId = EvilTwinRole });

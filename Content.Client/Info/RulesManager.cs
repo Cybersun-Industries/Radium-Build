@@ -98,6 +98,7 @@ public sealed class RulesManager : SharedRulesManager
 
     private void OnAcceptPressed()
     {
+        Stream?.Stop();
         _netManager.ClientSendMessage(new RulesAcceptedMessage());
 
         _activePopup?.Orphan();
