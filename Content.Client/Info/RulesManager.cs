@@ -2,11 +2,14 @@ using Content.Client.Lobby;
 using Content.Client.Gameplay;
 using Content.Shared.CCVar;
 using Content.Shared.Info;
+using Robust.Client.Audio;
 using Robust.Client.Console;
 using Robust.Client.State;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Shared.Audio;
+using Robust.Shared.Audio.Components;
+using Robust.Shared.Audio.Systems;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
@@ -27,7 +30,9 @@ public sealed class RulesManager : SharedRulesManager
 
     private RulesPopup? _activePopup;
 
-    public IPlayingAudioStream? Stream;
+    public SharedAudioSystem? Audio;
+    private (EntityUid Entity, AudioComponent Component)? Music_comp;
+
     public void Initialize()
     {
         _netManager.RegisterNetMessage<ShouldShowRulesPopupMessage>(OnShouldShowRules);
@@ -76,9 +81,9 @@ public sealed class RulesManager : SharedRulesManager
 
         try
         {
-            var audio = _sysMan.GetEntitySystem<SharedAudioSystem>();
+            Audio = _sysMan.GetEntitySystem<SharedAudioSystem>();
             const string file = "/Audio/Radium/rules.ogg";
-            Stream = audio.PlayGlobal(file, Filter.Local(), false);
+            Music_comp = Audio.PlayGlobal(file, Filter.Local(), false);
         }
         catch (Exception e)
         {
@@ -98,7 +103,7 @@ public sealed class RulesManager : SharedRulesManager
 
     private void OnAcceptPressed()
     {
-        Stream?.Stop();
+        Audio?.Stop(Music_comp?.Entity);
         _netManager.ClientSendMessage(new RulesAcceptedMessage());
 
         _activePopup?.Orphan();
