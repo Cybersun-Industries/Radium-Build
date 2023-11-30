@@ -2,7 +2,7 @@
 
 on:
   push:
-    branches: [ master, staging, trying ]
+    branches: [ Raven, staging, trying ]
     paths:
       - '**.cs'
       - '**.csproj'
@@ -16,7 +16,7 @@ on:
   merge_group:
   pull_request:
     types: [ opened, reopened, synchronize, ready_for_review ]
-    branches: [ master ]
+    branches: [ Raven ]
     paths:
       - '**.cs'
       - '**.csproj'
@@ -33,7 +33,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Master
+      - name: Checkout Raven
         uses: actions/checkout@v3.6.0
 
       - name: Setup Submodule
