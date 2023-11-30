@@ -1,0 +1,9 @@
+- type: entity
+  id: CrateMaterialInk
+  name: Чернила
+  parent: CrateGenericSteel
+  components:
+  - type: StorageFill
+    contents:
+      - id: SheetInk
+        amount: 3
