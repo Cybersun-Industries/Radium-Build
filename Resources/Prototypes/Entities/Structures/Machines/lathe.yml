@@ -383,7 +383,8 @@
       - SodaDispenserMachineCircuitboard
       - TelecomServerCircuitboard
       - MassMediaCircuitboard
-      - ShipyardCircuitboard # backmen
+      - ShipyardCircuitboard #backmen
+      - PaperPrinterCircuitboard #Radium
   - type: MaterialStorage
     whitelist:
       tags:
