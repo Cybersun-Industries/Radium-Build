@@ -60,9 +60,6 @@ public sealed partial class GenestealerSystem : EntitySystem
     [ValidatePrototypeId<EntityPrototype>]
     private const string AbsorbDNA = "GenestealerAbsorbDNA";
 
-    [ValidatePrototypeId<EntityPrototype>]
-    private const string StoreBoundUserInterfaceId = "StoreBoundUserInterface";
-
     private const string StasisId = "ActionGenestealerStasis";
     private const string TransformId = "ActionGenestealerTransform";
 
