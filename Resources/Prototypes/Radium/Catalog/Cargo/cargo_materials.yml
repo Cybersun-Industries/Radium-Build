@@ -4,7 +4,7 @@
     sprite: Radium/Objects/Materials/Sheets/other.rsi
     state: ink_3
   product: CrateMaterialInk
-  cost: 750
+  cost: 1000
   category: Materials
   group: market
 
