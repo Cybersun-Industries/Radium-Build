@@ -1,0 +1,10 @@
+- type: cargoProduct
+  id: MaterialInk
+  icon:
+    sprite: Radium/Objects/Materials/Sheets/other.rsi
+    state: ink_3
+  product: CrateMaterialInk
+  cost: 1000
+  category: Materials
+  group: market
+
