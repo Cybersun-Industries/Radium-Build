@@ -713,6 +713,7 @@
 #      - BluespaceBeaker1
       - SyringeBluespace
       - Jug
+      - SyringeCryostasis
       - BluespacePillCanister # Backmen
   - type: Machine
     board: MedicalTechFabCircuitboard

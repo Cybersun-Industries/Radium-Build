@@ -335,7 +335,12 @@ public sealed partial class ChatSystem : SharedChatSystem
         _chatManager.ChatMessageToAll(ChatChannel.Radio, message, wrappedMessage, default, false, true, colorOverride);
         if (playSound)
         {
-            _audio.PlayGlobal(announcementSound?.GetSound() ?? DefaultAnnouncementSound, Filter.Broadcast(), true, AudioParams.Default.WithVolume(-2f));
+            if (sender == Loc.GetString("admin-announce-announcer-default"))
+                announcementSound = new SoundPathSpecifier(CentComAnnouncementSound); // Corvax-Announcements: Support custom alert sound from admin panel
+            announcementSound ??= new SoundPathSpecifier(DefaultAnnouncementSound);
+            var announcementFilename = announcementSound.GetSound();
+            var announcementEv = new AnnouncementSpokeEvent(Filter.Broadcast(), announcementFilename, AudioParams.Default.WithVolume(-2f), message);
+            RaiseLocalEvent(announcementEv);
         }
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Global station announcement from {sender}: {message}");
     }
@@ -373,7 +378,9 @@ public sealed partial class ChatSystem : SharedChatSystem
 
         if (announcementSound != null || playDefaultSound) // Corvax-TTS
         {
-            _audio.PlayGlobal(announcementSound?.GetSound() ?? DefaultAnnouncementSound, filter, true, AudioParams.Default.WithVolume(-2f));
+            announcementSound ??= new SoundPathSpecifier(DefaultAnnouncementSound);
+            var announcementEv = new AnnouncementSpokeEvent(filter, announcementSound.GetSound(), AudioParams.Default.WithVolume(-2f), message);
+            RaiseLocalEvent(announcementEv);
         }
 
         _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Station Announcement on {station} from {sender}: {message}");

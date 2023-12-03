@@ -47,6 +47,8 @@ namespace Content.Server.Chat.Managers
         [Dependency] private readonly IGameTiming _gameTiming = default!;
         [Dependency] private readonly IPlayerManager _playerManager = default!;
 
+        private IServerSponsorsManager? _sponsorsManager; // Corvax-Sponsors
+
         /// <summary>
         /// The maximum length a player-sent message can be sent
         /// </summary>

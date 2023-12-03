@@ -24,11 +24,16 @@ namespace Content.Server.GameTicking
         ///     For access to CVars in status responses.
         /// </summary>
         [Dependency] private readonly IConfigurationManager _cfg = default!;
+
+        // Corvax-Queue-Start
+        [Dependency] private readonly IServerJoinQueueManager _joinQueueManager = default!;
+        // Corvax-Queue-End
+
         /// <summary>
         ///     For access to the round ID in status responses.
         /// </summary>
         [Dependency] private readonly SharedGameTicker _gameTicker = default!;
-        
+
         private void InitializeStatusShell()
         {
             IoCManager.Resolve<IStatusHost>().OnStatusRequest += GetStatusResponse;
