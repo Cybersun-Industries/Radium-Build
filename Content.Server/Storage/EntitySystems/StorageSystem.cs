@@ -1,4 +1,5 @@
 using Content.Server.Administration.Managers;
+using Content.Shared.ActionBlocker;
 using Content.Shared.Administration;
 using Content.Shared.Explosion;
 using Content.Shared.Ghost;
@@ -23,6 +24,7 @@ namespace Content.Server.Storage.EntitySystems;
 
 public sealed partial class StorageSystem : SharedStorageSystem
 {
+    [Dependency] private readonly ActionBlockerSystem _actionBlocker = default!;
     [Dependency] private readonly IAdminManager _admin = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly InventorySystem _inventory = default!;
@@ -198,7 +200,7 @@ public sealed partial class StorageSystem : SharedStorageSystem
         if (!_inventory.TryGetSlotEntity(playerEnt, slot, out var storageEnt))
             return;
 
-        if (!ActionBlocker.CanInteract(playerEnt, storageEnt))
+        if (!_actionBlocker.CanInteract(playerEnt, storageEnt))
             return;
 
         OpenStorageUI(storageEnt.Value, playerEnt);
