@@ -820,11 +820,6 @@
   description: flavor-complex-chaos
 
 - type: flavor
-  id: themartinez
-  flavorType: Complex
-  description: flavor-complex-themartinez
-
-- type: flavor
   id: white-gilgamesh
   flavorType: Complex
   description: flavor-complex-white-gilgamesh
@@ -853,7 +848,7 @@
   id: spaceshroomcooked
   flavorType: Complex
   description: flavor-complex-spaceshroom-cooked
-  
+
 - type: flavor
   id: lostfriendship
   flavorType: Complex
