@@ -200,7 +200,6 @@ flavor-complex-atomic-cola = like hoarding bottle caps
 flavor-complex-cuba-libre = like spiked cola
 flavor-complex-gin-tonic = like spiked lemon-lime soda
 flavor-complex-screwdriver = like spiked orange juice
-flavor-complex-themartinez = like violets and lemon vodka
 flavor-complex-cogchamp = like brass
 flavor-complex-white-gilgamesh = like lightly carbonated cream
 flavor-complex-antifreeze = warm
