@@ -206,7 +206,6 @@ flavor-complex-cuba-libre = как крепкая кола
 flavor-complex-gin-tonic = как крепкая газировка с лимоном и лаймом
 flavor-complex-screwdriver = как крепкий апельсиновый сок
 flavor-complex-cogchamp = как латунь
-flavor-complex-themartinez = как фиалки и лимонная водка
 
 ### This is exactly what pilk tastes like. I'm not even joking. I might've been a little drunk though
 
