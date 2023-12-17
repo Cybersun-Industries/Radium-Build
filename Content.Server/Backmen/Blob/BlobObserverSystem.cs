@@ -25,7 +25,6 @@ using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
 using Robust.Shared.Audio;
-using Robust.Shared.CPUJob.JobQueues.Queues;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Player;
@@ -60,8 +59,6 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
     [Dependency] private readonly ISharedPlayerManager _actorSystem = default!;
     [Dependency] private readonly ViewSubscriberSystem _viewSubscriberSystem = default!;
 
-    private const double MoverJobTime = 0.005;
-    private readonly JobQueue _moveJobQueue = new(MoverJobTime);
 
     [Dependency] private ILogManager _logMan = default!;
     private ISawmill _logger = default!;
@@ -303,22 +300,47 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
 
         observerComponent.IsProcessingMoveEvent = true;
 
-        var job = new BlobObserverMover(EntityManager, _blocker, _transform,this, MoverJobTime)
+        if (observerComponent.Core == null)
         {
-            Observer = (uid,observerComponent),
-            NewPosition = args.NewPosition
-        };
+            observerComponent.IsProcessingMoveEvent = false;
+            return;
+        }
 
-        _moveJobQueue.EnqueueJob(job);
+        if (Deleted(observerComponent.Core.Value) ||
+            !TryComp<TransformComponent>(observerComponent.Core.Value, out var xform))
+        {
+            return;
+        }
+
+        var corePos = xform.Coordinates;
+
+        var (nearestEntityUid, nearestDistance) = CalculateNearestBlobTileDistance(args.NewPosition);
+
+        if (nearestEntityUid == null)
+            return;
+
+        if (nearestDistance > 5f)
+        {
+            _transform.SetCoordinates(uid, corePos);
+
+            observerComponent.IsProcessingMoveEvent = false;
+            return;
+        }
+
+        if (nearestDistance > 3f)
+        {
+            observerComponent.CanMove = true;
+            _blocker.UpdateCanMove(uid);
+            var direction = (Transform(nearestEntityUid.Value).Coordinates.Position - args.NewPosition.Position);
+            var newPosition = args.NewPosition.Offset(direction * 0.1f);
+
+            _transform.SetCoordinates(uid, newPosition);
+        }
+
+        observerComponent.IsProcessingMoveEvent = false;
     }
 
-    public override void Update(float frameTime)
-    {
-        base.Update(frameTime);
-        _moveJobQueue.Process();
-    }
-
-    public (EntityUid? nearestEntityUid, float nearestDistance) CalculateNearestBlobTileDistance(EntityCoordinates position)
+    private (EntityUid? nearestEntityUid, float nearestDistance) CalculateNearestBlobTileDistance(EntityCoordinates position)
     {
         var nearestDistance = float.MaxValue;
         EntityUid? nearestEntityUid = null;
