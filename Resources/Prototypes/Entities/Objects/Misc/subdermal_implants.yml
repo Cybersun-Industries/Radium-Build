@@ -118,9 +118,8 @@
         components:
         - Hands # no use giving a mouse a storage implant, but a monkey is another story...
     - type: Storage
-      grid: # backmen storage implant rebalance
-      - 0,0,2,3
-      maxItemSize: Normal
+      maxSlots: 4
+      maxItemSize: Small
     - type: ContainerContainer
       containers:
         storagebase: !type:Container
@@ -274,8 +273,6 @@
   - type: TriggerImplantAction
   - type: GibOnTrigger
     deleteItems: true
-  - type: SpawnOnTrigger
-    proto: Acidifier
   - type: Tag
     tags:
     - SubdermalImplant

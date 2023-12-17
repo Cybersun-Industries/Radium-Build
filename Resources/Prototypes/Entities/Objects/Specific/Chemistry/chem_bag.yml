@@ -16,8 +16,7 @@
     size: Ginormous
   - type: Storage
     maxItemSize: Normal # allow up to 5 large beakers / 10 beakers / 10 pill canisters
-    grid:
-    - 0,0,4,3
+    maxTotalWeight: 20
     quickInsert: true
     areaInsert: true
     whitelist:

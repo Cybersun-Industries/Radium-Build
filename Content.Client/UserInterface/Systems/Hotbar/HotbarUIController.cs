@@ -4,8 +4,6 @@ using Content.Client.UserInterface.Systems.Hands.Controls;
 using Content.Client.UserInterface.Systems.Hotbar.Widgets;
 using Content.Client.UserInterface.Systems.Inventory;
 using Content.Client.UserInterface.Systems.Inventory.Controls;
-using Content.Client.UserInterface.Systems.Storage;
-using Content.Client.UserInterface.Systems.Storage.Controls;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controllers;
 
@@ -15,7 +13,6 @@ public sealed class HotbarUIController : UIController
 {
     private InventoryUIController? _inventory;
     private HandsUIController? _hands;
-    private StorageUIController? _storage;
 
     public override void Initialize()
     {
@@ -30,14 +27,12 @@ public sealed class HotbarUIController : UIController
         ReloadHotbar();
     }
 
-    public void Setup(HandsContainer handsContainer, ItemSlotButtonContainer inventoryBar, ItemStatusPanel handStatus, StorageContainer storageContainer)
+    public void Setup(HandsContainer handsContainer, ItemSlotButtonContainer inventoryBar, ItemStatusPanel handStatus)
     {
         _inventory = UIManager.GetUIController<InventoryUIController>();
         _hands = UIManager.GetUIController<HandsUIController>();
-        _storage = UIManager.GetUIController<StorageUIController>();
         _hands.RegisterHandContainer(handsContainer);
         _inventory.RegisterInventoryBarContainer(inventoryBar);
-        _storage.RegisterStorageContainer(storageContainer);
     }
 
     public void ReloadHotbar()

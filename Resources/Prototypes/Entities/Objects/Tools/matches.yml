@@ -4,8 +4,8 @@
   abstract: true
   components:
   - type: Storage
-    grid:
-    - 0,0,6,1
+    maxSlots: 7
+    maxTotalWeight: 14
   - type: Item
     size: Small
 
@@ -83,12 +83,12 @@
     heldPrefix: matchbox
     size: Small
   - type: Storage
-    grid:
-    - 0,0,2,1
+    maxSlots: 5
+    maxTotalWeight: 5
   - type: StorageFill
     contents:
       - id: Matchstick
-        amount: 6
+        amount: 5
   - type: ItemCounter
     count:
       tags: [Matchstick]

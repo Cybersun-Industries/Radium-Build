@@ -38,8 +38,7 @@
       - !type:DoActsBehavior
         acts: ["Destruction"]
   - type: Storage
-    grid:
-    - 0,0,4,3
+    maxSlots: 10
     maxItemSize: Small
     whitelist:
       tags:

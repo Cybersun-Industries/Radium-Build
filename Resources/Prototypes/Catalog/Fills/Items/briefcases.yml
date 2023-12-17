@@ -17,10 +17,12 @@
   components:
   - type: Item
     size: Ginormous
+  - type: Storage
+    maxItemSize: Huge
   - type: StorageFill
     contents:
-      - id: WeaponRifleSR127
-      - id: MagazineAntiMaterielRifleSR
+      - id: WeaponSniperHristov
+      - id: MagazineBoxAntiMateriel
       - id: ClothingNeckTieRed
       - id: ClothingHandsGlovesLatex
       - id: ClothingUniformJumpsuitLawyerBlack

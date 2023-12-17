@@ -128,8 +128,7 @@
     slots:
     - belt
   - type: Storage
-    grid:
-    - 0,0,7,4
+    maxSlots: 40
     maxItemSize: Small
     quickInsert: true
     areaInsert: true
