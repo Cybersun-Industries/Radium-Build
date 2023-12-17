@@ -1,0 +1,53 @@
+- type: ttsVoice
+  id: Oleg
+  name: tts-voice-name-oleg
+  sex: Male
+  speaker: oleg
+
+- type: ttsVoice
+  id: Arisha
+  name: tts-voice-name-arisha
+  sex: Female
+  speaker: arisha
+
+- type: ttsVoice
+  id: Alice
+  name: tts-voice-name-alice
+  sex: Female
+  speaker: alice
+
+- type: ttsVoice
+  id: Asha
+  name: tts-voice-name-asha
+  sex: Female
+  speaker: asha
+
+- type: ttsVoice
+  id: Aya
+  name: tts-voice-name-aya
+  sex: Female
+  speaker: aya
+
+- type: ttsVoice
+  id: Masha
+  name: tts-voice-name-masha
+  sex: Female
+  speaker: masha
+
+- type: ttsVoice
+  id: Oleg
+  name: tts-voice-name-oleg
+  sex: Male
+  speaker: oleg
+
+- type: ttsVoice
+  id: Sofa
+  name: tts-voice-name-sofa
+  sex: Female
+  speaker: sofa
+
+- type: ttsVoice
+  id: Zina
+  name: tts-voice-name-zina
+  sex: Female
+  speaker: zina
