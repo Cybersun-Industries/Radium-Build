@@ -35,10 +35,10 @@
   speaker: masha
 
 - type: ttsVoice
-  id: Oleg
-  name: tts-voice-name-oleg
+  id: Gennadiy
+  name: tts-voice-name-gennadiy
   sex: Male
-  speaker: oleg
+  speaker: gennadiy
 
 - type: ttsVoice
   id: Sofa
