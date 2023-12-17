@@ -372,8 +372,7 @@
   components:
     - type: Storage
       maxItemSize: Normal
-      grid:
-      - 0,0,3,3
+      maxTotalWeight: 16
     - type: StorageFill
       contents:
         - id: SheetSteel
@@ -707,9 +706,6 @@
     sprite: Markers/jobs.rsi
     state: ertengineer
   - type: GhostTakeoverAvailable
-  - type: AutoImplant
-    implants:
-    - MindShieldImplant
   - type: Speech
     speechSounds: Metrocop
     soundCooldownTime: 0.1
@@ -756,9 +752,6 @@
     sprite: Markers/jobs.rsi
     state: ertsecurity
   - type: GhostTakeoverAvailable
-  - type: AutoImplant
-    implants:
-    - MindShieldImplant
   - type: Speech
     speechSounds: Metrocop
     soundCooldownTime: 0.1
@@ -802,9 +795,6 @@
     sprite: Markers/jobs.rsi
     state: ertmedical
   - type: GhostTakeoverAvailable
-  - type: AutoImplant
-    implants:
-    - MindShieldImplant
   - type: Speech
     speechSounds: Metrocop
     soundCooldownTime: 0.1
@@ -851,9 +841,6 @@
     sprite: Markers/jobs.rsi
     state: ertjanitor
   - type: GhostTakeoverAvailable
-  - type: AutoImplant
-    implants:
-    - MindShieldImplant
   - type: Speech
     speechSounds: Metrocop
     soundCooldownTime: 0.1
@@ -1163,12 +1150,13 @@
         - id: BattleMedipen
         - id: BattleMedipen
         - id: WeaponDisabler
-        - id: WeaponPistolG23
+        - id: WeaponPistolACP14
         - id: MagazinePistol
-          amount: 2
-        - id: WeaponPulseRifleAP12
-        - id: MagazinePulseRifle
-          amount: 5
+        - id: MagazinePistol
+        - id: WeaponRifleG36
+        - id: MagazineRifle
+        - id: MagazineRifle
+        - id: MagazineRifle
         - id: BoxHandcuff
 
 
@@ -1197,30 +1185,33 @@
   components:
     - type: Storage
       maxItemSize: Huge
-      grid:
-      - 0,0,16,6
+      maxTotalWeight: 100
     - type: StorageFill
       contents:
+        - id: BoxFlare
+        - id: BoxFlare
         - id: BattleMedipen
-          amount: 3
+        - id: BattleMedipen
         - id: trayScanner
-        - id: WeaponPulseShotgunHellHammer
-        - id: MagazinePulseShotgun
-          amount: 4
-        - id: WeaponPistolVP78
-        - id: MagazinePistolHighCapacity
+        - id: WeaponPistolACP14
+        - id: MagazinePistol
+        - id: MagazinePistol
+        - id: WeaponShotgun39
+        - id: BoxLethalshot
           amount: 4
         - id: C4
-          amount: 5
+        - id: C4
+        - id: C4
+        - id: C4
         - id: RCD
         - id: RCDAmmo
-          amount: 4
+        - id: RCDAmmo
         - id: SheetSteel
-          amount: 4
+          amount: 2
         - id: SheetPlasteel
-          amount: 4
+          amount: 2
         - id: SheetRPGlass
-          amount: 4
+          amount: 2
 
 
 # Security
@@ -1253,12 +1244,13 @@
         - id: BattleMedipen
         - id: BattleMedipen
         - id: WeaponDisabler
-        - id: WeaponPistolG23
+        - id: WeaponPistolACP14
         - id: MagazinePistol
-          amount: 2
-        - id: WeaponPulseRifleAP12
-        - id: MagazinePulseRifle
-          amount: 5
+        - id: MagazinePistol
+        - id: WeaponRifleG36
+        - id: MagazineRifle
+        - id: MagazineRifle
+        - id: MagazineRifle
         - id: BoxHandcuff
 
 
@@ -1292,12 +1284,13 @@
         - id: BoxFlare
         - id: BattleMedipen
         - id: BattleMedipen
-        - id: WeaponPistolG23
+        - id: WeaponPistolACP14
         - id: MagazinePistol
-          amount: 2
-        - id: WeaponPulseSMGTritonM3
-        - id: MagazinePulseSubMachinePistol
-          amount: 4
+        - id: MagazinePistol
+        - id: WeaponRifleG36
+        - id: MagazineRifle
+        - id: MagazineRifle
+        - id: MagazineRifle
         - id: MedkitFilled
         - id: SyringeInaprovaline
           amount: 2
@@ -1335,7 +1328,7 @@
       contents:
         - id: BattleMedipen
         - id: BattleMedipen
-        - id: WeaponPistolG23
+        - id: WeaponPistolACP14
         - id: MagazinePistol
         - id: MagazinePistol
         - id: MagazinePistol
@@ -1366,9 +1359,6 @@
     sound:
       collection: SoldierDeath
   - type: GhostTakeoverAvailable
-  - type: AutoImplant
-    implants:
-    - MindShieldImplant
   - type: GhostRole
     allowMovement: true
     allowSpeech: true
@@ -1407,9 +1397,6 @@
     sprite: Markers/jobs.rsi
     state: ertengineereva
   - type: GhostTakeoverAvailable
-  - type: AutoImplant
-    implants:
-    - MindShieldImplant
   - type: Speech
     speechSounds: Metrocop
     soundCooldownTime: 0.1
@@ -1456,9 +1443,6 @@
     sprite: Markers/jobs.rsi
     state: ertsecurityeva
   - type: GhostTakeoverAvailable
-  - type: AutoImplant
-    implants:
-    - MindShieldImplant
   - type: Speech
     speechSounds: Metrocop
     soundCooldownTime: 0.1
@@ -1502,9 +1486,6 @@
     sprite: Markers/jobs.rsi
     state: ertmedicaleva
   - type: GhostTakeoverAvailable
-  - type: AutoImplant
-    implants:
-    - MindShieldImplant
   - type: Speech
     speechSounds: Metrocop
     soundCooldownTime: 0.1
@@ -1551,9 +1532,6 @@
     sprite: Markers/jobs.rsi
     state: ertjanitoreva
   - type: GhostTakeoverAvailable
-  - type: AutoImplant
-    implants:
-    - MindShieldImplant
   - type: Speech
     speechSounds: Metrocop
     soundCooldownTime: 0.1
@@ -1739,21 +1717,20 @@
   parent: ClothingDeathSquadronBackpack
   id: ClothingBackpackSpecialForce
   components:
-    - type: Storage
-      grid:
-      - 0,0,9,5 # TODO: Change this
-      maxItemSize: Huge
     - type: StorageFill
       contents:
+        - id: BoxFlare
         - id: PinpointerNuclear
         - id: WeaponPulseRifle
         - id: SpeedLoaderMagnum
           amount: 2
         - id: PaperManualCodes
         - id: C4
-          amount: 4
+          amount: 8
         - id: SpetsnazMedipen
-          amount: 2
+          amount: 4
+        - id: Multitool
+        - id: RemoteSignaller
         - id: WeaponRifleLecterPan
         - id: MagazineRiflePan
           amount: 4
@@ -1894,10 +1871,6 @@
     sprite: Markers/jobs.rsi
     state: ai
   - type: GhostTakeoverAvailable
-  - type: AutoImplant
-    implants:
-    - MindShieldImplant
-    - FreedomImplant
   - type: GhostRole
     allowMovement: true
     allowSpeech: true
@@ -1936,10 +1909,6 @@
     sprite: Markers/jobs.rsi
     state: ai
   - type: GhostTakeoverAvailable
-  - type: AutoImplant
-    implants:
-    - MindShieldImplant
-    - FreedomImplant
   - type: GhostRole
     allowMovement: true
     allowSpeech: true
@@ -2186,7 +2155,7 @@
   id: RXBZZFlamer
   equipment:
     jumpsuit: ClothingUniformJumpsuitColorBlack
-    back: FirethrowerGun
+    back: PowerpackFlame
     shoes: ClothingShoesBootsNedoSpetsnaz
     mask: ClothingMaskGasExplorer
     eyes: ClothingEyesGlassesSecurity
@@ -2198,6 +2167,8 @@
     ears: ClothingHeadsetCentComCCMTFSR6
     belt: ClothingBeltMilitaryWebbingFlamer
     pocket1: WeaponLaserGun
+  inhand:
+    - WeaponflamethrowerSG
 
 - type: startingGear
   id: RXBZZLeader
@@ -2224,14 +2195,15 @@
   components:
     - type: Storage
       maxItemSize: Huge
-      grid:
-      - 0,0,6,5
+      maxTotalWeight: 60
     - type: StorageFill
       contents:
+        - id: BoxFlare
+        - id: BoxFlare
         - id: MedkitAdvancedRXBZZ
         - id: WeaponDisabler
-        - id: WeaponPulseRifleXMLG
-        - id: MagazinePulseRifle
+        - id: WeaponRifleG36
+        - id: MagazineRifle
           amount: 4
         - id: WeaponShotgun39
 
@@ -2243,8 +2215,7 @@
     - type: Item
       size: Normal
     - type: Storage
-      grid:
-      - 0,0,3,4
+      maxSlots: 16
     - type: StorageFill
       contents:
         - id: HandheldHealthAnalyzer
@@ -2259,12 +2230,7 @@
   id: ClothingBeltBandolierRXBZZ
   components:
     - type: Storage
-      grid:
-      - 0,0,5,4
-    - type: UserInterface
-      interfaces:
-      - key: enum.StorageUiKey.Key
-        type: StorageBoundUserInterface
+      maxSlots: 30
     - type: StorageFill
       contents:
         - id: ShellShotgunIncendiary
@@ -2291,8 +2257,6 @@
       contents:
         - id: MedkitAdvancedRXBZZ
         - id: WeaponDisabler
-        - id: FuelTankFirethrower
-          amount: 5
 
 - type: entity
   name:  РХБЗЗ Реагент
@@ -2301,9 +2265,6 @@
   id: MobHumanRXBZZ
   components:
   - type: GhostTakeoverAvailable
-  - type: AutoImplant
-    implants:
-    - MindShieldImplant
   - type: GhostRole
     allowMovement: true
     allowSpeech: true
@@ -2345,9 +2306,6 @@
   id: MobHumanRXBZZFlamer
   components:
   - type: GhostTakeoverAvailable
-  - type: AutoImplant
-    implants:
-    - MindShieldImplant
   - type: GhostRole
     allowMovement: true
     allowSpeech: true
@@ -2389,9 +2347,6 @@
   id: MobHumanRXBZZLeader
   components:
   - type: GhostTakeoverAvailable
-  - type: AutoImplant
-    implants:
-    - MindShieldImplant
   - type: GhostRole
     allowMovement: true
     allowSpeech: true

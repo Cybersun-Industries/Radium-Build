@@ -10,8 +10,7 @@
   - type: Clothing
     sprite: Backmen/Clothing/Belt/orden_sheath.rsi
   - type: Storage
-    grid:
-    - 0,0,4,3
+    maxTotalWeight: 15
     whitelist:
       tags:
         - SwordSquadRO
@@ -34,23 +33,15 @@
   - type: Clothing
     sprite: Backmen/Clothing/Belt/demoman.rsi
   - type: Storage
-    grid:
-    - 0,0,11,1
+    maxSlots: 10
     whitelist:
       tags:
         - CableCoil
-        - GlassBeaker
-        - ProximitySensor
       components:
         - ExplodeOnTrigger
-        - ChemicalPayload
-        - FlashOnTrigger
-        - ClusterGrenade
-        - EmpOnTrigger
         - Explosive
         - PayloadCase
         - Signaller
-        - PayloadTrigger
   - type: ItemMapper
     mapLayers:
      modular_grenade:

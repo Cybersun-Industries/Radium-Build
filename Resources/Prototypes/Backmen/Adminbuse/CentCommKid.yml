@@ -1281,8 +1281,7 @@
     size: Large
   - type: Storage
     maxItemSize: Small
-    grid:
-    - 0,0,3,2
+    maxTotalWeight: 10
 
 - type: entity
   parent: BaseStorageItem
@@ -1301,8 +1300,7 @@
     size: Large
   - type: Storage
     maxItemSize: Small
-    grid:
-    - 0,0,3,2
+    maxTotalWeight: 10
     whitelist:
       tags:
         - MagazineRifle
@@ -1326,8 +1324,7 @@
     size: Large
   - type: Storage
     maxItemSize: Small
-    grid:
-    - 0,0,3,2
+    maxTotalWeight: 10
     whitelist:
       tags:
         - Wrench
@@ -1363,8 +1360,7 @@
     size: Large
   - type: Storage
     maxItemSize: Small
-    grid:
-    - 0,0,3,2
+    maxTotalWeight: 10
     whitelist:
       components:
         - Gun
@@ -1386,8 +1382,7 @@
     size: Large
   - type: Storage
     maxItemSize: Small
-    grid:
-    - 0,0,4,3
+    maxTotalWeight: 20
     whitelist:
       tags:
         - ShellShotgun
@@ -1403,9 +1398,8 @@
   - type: Clothing
     sprite: Backmen/Clothing/Belt/Gear/ammobelt.rsi
   - type: Storage
+    maxSlots: 6
     maxItemSize: Small
-    grid:
-    - 0,0,3,2
     whitelist:
       tags:
         - MagazineRifle
@@ -1423,8 +1417,7 @@
   - type: Clothing
     sprite: Backmen/Clothing/Belt/Gear/generalbelt.rsi
   - type: Storage
-    grid:
-    - 0,0,3,3
+    maxTotalWeight: 16
     maxItemSize: Normal
 
 - type: entity
@@ -1438,9 +1431,8 @@
   - type: Clothing
     sprite: Backmen/Clothing/Belt/Gear/medicalbelt.rsi
   - type: Storage
+    maxSlots: 12
     maxItemSize: Small
-    grid:
-    - 0,0,3,4
     whitelist:
       tags:
         - Wrench
@@ -1470,8 +1462,7 @@
   - type: Clothing
     sprite: Backmen/Clothing/Belt/Gear/pistolbelt.rsi
   - type: Storage
-    grid:
-    - 0,0,5,1
+    maxSlots: 5
     maxItemSize: Normal
     whitelist:
       components:
@@ -1492,8 +1483,7 @@
   - type: Clothing
     sprite: Backmen/Clothing/Belt/Gear/shotgunbelt.rsi
   - type: Storage
-    grid:
-    - 0,0,5,4
+    maxSlots: 80
     maxItemSize: Small
     whitelist:
       tags:

@@ -5,8 +5,7 @@
   description: A backpack of the death squad, taken as a trophy and remade to fit their needs by the order!
   components:
   - type: Storage
-    grid:
-    - 0,0,7,4
+    maxTotalWeight: 86
   - type: Sprite
     sprite: Backmen/Clothing/Back/Backpacks/orden_backpacks.rsi
 
