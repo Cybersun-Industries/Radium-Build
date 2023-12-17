@@ -1,6 +1,8 @@
 ﻿- type: currency
   id: StolenResource
   displayName: store-StolenResource-display-spacecash
-  canWithdraw: false
+  cash:
+    1: StolenResource
+  canWithdraw: true
   currencySymbol: store-currency-StolenResource-currency-symbol
 
