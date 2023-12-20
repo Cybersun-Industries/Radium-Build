@@ -97,7 +97,6 @@
   components:
   - type: Item
     size: Small
-    storedRotation: 90
   - type: Sprite
     sprite: Objects/Weapons/Guns/Snipers/flintlock.rsi
   - type: Clothing

@@ -88,8 +88,6 @@
   - type: Clothing
     sprite: Clothing/Belt/ce.rsi
   - type: Storage
-    grid:
-    - 0,0,9,1
     # TODO: Fill this out more.
     whitelist:
       tags:
@@ -484,8 +482,6 @@
     size: Ginormous
   - type: Storage
     maxItemSize: Huge
-    grid:
-    - 0,0,3,3
     whitelist:
       components:
         - Gun

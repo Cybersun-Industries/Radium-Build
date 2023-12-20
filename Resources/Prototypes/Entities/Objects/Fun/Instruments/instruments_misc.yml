@@ -39,7 +39,6 @@
     program: 123
   - type: Item
     size: Small
-    storedRotation: 90
 
 - type: entity
   parent: BaseHandheldInstrument

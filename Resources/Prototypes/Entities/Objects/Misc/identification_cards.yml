@@ -14,7 +14,6 @@
   - type: Item
     size: Small
     heldPrefix: default
-    storedRotation: -90
   - type: Access
   - type: IdCard
   - type: StationRecordKeyStorage

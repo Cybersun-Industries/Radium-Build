@@ -5,8 +5,6 @@
   id: Urn
   components:
   - type: Storage
-    grid:
-      - 0,0,0,1
   - type: UserInterface
     interfaces:
     - key: enum.StorageUiKey.Key

@@ -37,7 +37,6 @@
           cutters: Rainbow
   - type: Item
     sprite: Objects/Tools/wirecutters.rsi
-    storedRotation: -90
   - type: LatticeCutting
   - type: PhysicalComposition
     materialComposition:
@@ -65,7 +64,6 @@
       - state: screwdriver-screwybits
   - type: Item
     sprite: Objects/Tools/screwdriver.rsi
-    storedRotation: -90
   - type: ItemCooldown
   - type: MeleeWeapon
     wideAnimationRotation: -90
@@ -107,9 +105,6 @@
     state: icon
   - type: Item
     sprite: Objects/Tools/wrench.rsi
-    storedSprite:
-      sprite: Objects/Tools/wrench.rsi
-      state: storage
   - type: ItemCooldown
   - type: MeleeWeapon
     wideAnimationRotation: 135
@@ -146,9 +141,6 @@
   - type: Item
     sprite: Objects/Tools/crowbar.rsi
     size: Small
-    storedSprite:
-      sprite: Objects/Tools/crowbar.rsi
-      state: storage
   - type: ItemCooldown
   - type: MeleeWeapon
     wideAnimationRotation: -135
@@ -181,9 +173,6 @@
     state: red-icon
   - type: Item
     heldPrefix: red
-    storedSprite:
-      sprite: Objects/Tools/crowbar.rsi
-      state: red-storage
 
 - type: entity
   name: multitool

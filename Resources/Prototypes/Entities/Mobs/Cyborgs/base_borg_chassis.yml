@@ -200,8 +200,8 @@
     tags:
     - ShoesRequiredStepTriggerImmune
     - DoorBumpOpener
-  - type: TTS
-    voice: Borgs
+ # - type: TTS
+ #   voice: Borgs
   - type: Emoting
   - type: GuideHelp
     guides:

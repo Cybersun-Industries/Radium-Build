@@ -127,8 +127,8 @@
       - Binary
       - Common
       - Engineering
-  - type: TTS
-    voice: TrainingRobot
+ # - type: TTS
+ #   voice: TrainingRobot
   - type: ZombieImmune
   - type: Repairable
     fuelcost: 15

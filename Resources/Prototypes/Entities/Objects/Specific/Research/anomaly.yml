@@ -20,7 +20,6 @@
     guides:
     - ScannersAndVessels
   - type: Item
-    storedRotation: -90
 
 - type: entity
   id: AnomalyLocatorUnpowered

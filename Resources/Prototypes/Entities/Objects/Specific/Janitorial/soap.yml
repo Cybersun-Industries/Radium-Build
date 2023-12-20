@@ -20,7 +20,6 @@
   - type: Appearance
   - type: Item
     sprite: Objects/Specific/Janitorial/soap.rsi
-    storedRotation: -90
   - type: Slippery
     paralyzeTime: 2
     launchForwardsMultiplier: 1.5

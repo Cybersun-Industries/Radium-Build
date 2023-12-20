@@ -88,18 +88,3 @@
         proper: true
     - type: StandingState
     - type: NoNormalInteraction
-
-- type: entity
-  id: MobHologramHuman
-  parent: BaseMobHologram
-  suffix: Human
-  save: false
-  components:
-    - type: MindContainer
-    - type: Input
-      context: "human"
-    - type: InputMover
-    - type: MobMover
-    - type: Actions
-    - type: Eye
-    - type: Examiner
