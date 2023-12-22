@@ -17,13 +17,6 @@
       Ink: 100
   - type: Stack
     stackType: Ink
-  - type: Appearance
-    visuals:
-    - type: StackVisualizer
-      stackLayers:
-      - ink
-      - ink_2
-      - ink_3
 
 - type: entity
   parent: SheetInk

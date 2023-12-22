@@ -861,7 +861,7 @@
         Blunt: 0.7
         Slash: 0.7
         Piercing: 0.6
-        Heat: 0.1
+        Heat: 0
         Cold: 0.1
         Shock: 0.1
         Radiation: 0.1
