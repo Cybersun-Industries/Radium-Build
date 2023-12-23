@@ -1,0 +1,117 @@
+- type: polymorph
+  id: VoxMorph
+  entity: MobVox
+  forced: true
+  transferName: true
+  revertOnCrit: false
+  revertOnDeath: false
+  inventory: Transfer
+  
+- type: polymorph
+  id: SlimePersonMorph
+  entity: MobSlimePerson
+  forced: true
+  transferName: true
+  revertOnCrit: false
+  revertOnDeath: false
+  inventory: Transfer
+
+- type: polymorph
+  id: SkeletonMorph
+  entity: MobSkeletonPerson
+  forced: true
+  transferName: true
+  revertOnCrit: false
+  revertOnDeath: false
+  inventory: Transfer
+
+- type: polymorph
+  id: ReptilianMorph
+  entity: MobReptilian
+  forced: true
+  transferName: true
+  revertOnCrit: false
+  revertOnDeath: false
+  inventory: Transfer
+
+- type: polymorph
+  id: MothMorph
+  entity: MobMoth
+  forced: true
+  transferName: true
+  revertOnCrit: false
+  revertOnDeath: false
+  inventory: Transfer
+
+- type: polymorph
+  id: HumanMorph
+  entity: MobHuman
+  forced: true
+  transferName: true
+  revertOnCrit: false
+  revertOnDeath: false
+  inventory: Transfer
+
+- type: polymorph
+  id: DwarfMorph
+  entity: MobDwarf
+  forced: true
+  transferName: true
+  revertOnCrit: false
+  revertOnDeath: false
+  inventory: Transfer
+  
+- type: polymorph
+  id: DionaMorph
+  entity: MobDiona
+  forced: true
+  transferName: true
+  revertOnCrit: false
+  revertOnDeath: false
+  inventory: Transfer
+
+- type: polymorph
+  id: ArachnidMorph
+  entity: MobArachnid
+  forced: true
+  transferName: true
+  revertOnCrit: false
+  revertOnDeath: false
+  inventory: Transfer
+
+- type: polymorph
+  id: ArachneClassicMorph
+  entity: MobArachneClassic
+  forced: true
+  transferName: true
+  revertOnCrit: false
+  revertOnDeath: false
+  inventory: Transfer
+  
+- type: polymorph
+  id: OniMorph
+  entity: MobOni
+  forced: true
+  transferName: true
+  revertOnCrit: false
+  revertOnDeath: false
+  inventory: Transfer
+
+- type: polymorph
+  id: HumanoidFoxesMorph
+  entity: MobHumanoidFox
+  forced: true
+  transferName: true
+  revertOnCrit: false
+  revertOnDeath: false
+  inventory: Transfer
+
+- type: polymorph
+  id: FelinidMorph
+  entity: MobFelinid
+  forced: true
+  transferName: true
+  revertOnCrit: false
+  revertOnDeath: false
+  inventory: Transfer
+

@@ -1,18 +1,15 @@
-﻿using Content.Server.Construction.Completions;
-using Content.Server.Cuffs;
-using Content.Server.DetailExaminable;
-using Content.Server.Flash;
-using Content.Server.Flash.Components;
+﻿using Content.Server.Flash;
+using Content.Server.Objectives;
+using Content.Server.Polymorph.Systems;
 using Content.Server.Radium.Genestealer.Components;
-using Content.Shared.Bed.Sleep;
+using Content.Shared.Actions;
 using Content.Shared.Cuffs.Components;
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
-using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
-using Content.Shared.Humanoid.Prototypes;
-using Content.Shared.Mind;
+using Content.Shared.Humanoid.Markings;
+using Content.Shared.Inventory;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
@@ -22,21 +19,22 @@ using Content.Shared.Radium.Genestealer;
 using Content.Shared.Radium.Genestealer.Components;
 using Content.Shared.Revenant;
 using Content.Shared.StatusEffect;
-using Content.Shared.Stunnable;
-using Robust.Server.Player;
-using Robust.Shared.Network;
-using Robust.Shared.Player;
-using Robust.Shared.Timing;
+using Robust.Shared.GameObjects.Components.Localization;
 using HarvestEvent = Content.Shared.Radium.Genestealer.HarvestEvent;
 
 namespace Content.Server.Radium.Genestealer.EntitySystems;
 
 public sealed partial class GenestealerSystem
 {
+    public const string Goggles = "eyes";
+
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly DamageableSystem _heal = default!;
     [Dependency] private readonly FlashSystem _flash = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
+    [Dependency] private readonly PolymorphSystem _polymorphSystem = default!;
+    [Dependency] private readonly InventorySystem _inventorySystem = default!;
+    [Dependency] private readonly ObjectivesSystem _objectivesSystem = default!;
 
     private void InitializeAbilities()
     {
@@ -86,13 +84,18 @@ public sealed partial class GenestealerSystem
         {
             return;
         }
+
         if (cuffableComponent.CanStillInteract)
         {
             _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("genestealer-too-powerful"), target, uid);
             return;
         }
 
-        _flash.Flash(target:target, flashDuration:20000f, user:uid, used:null, slowTo: 1000F, displayPopup:false, melee: true);
+        _inventorySystem.TryUnequip(target, Goggles, true, true);
+        _inventorySystem.TryUnequip(uid, Goggles, true, true);
+        _flash.Flash(target: uid, flashDuration: 1000f, user: uid, used: null, slowTo: 1000F, displayPopup: false);
+        _flash.Flash(target: target, flashDuration: 12000f, user: target, used: null, slowTo: 1000F,
+            displayPopup: false);
         _stun.TryStun(target, TimeSpan.FromSeconds(25), true);
         _stun.TryKnockdown(target, TimeSpan.FromSeconds(25), true);
 
@@ -152,12 +155,21 @@ public sealed partial class GenestealerSystem
             {
                 component.Metadata = MetaData(args.Args.Target.Value);
                 component.Session = session.UserId;
+                if (TryComp<HumanoidAppearanceComponent>(args.Args.Target.Value, out var humanoidAppearance))
+                {
+                    component.SourceHumanoid = humanoidAppearance;
+                }
+
                 component.Preferences =
                     (HumanoidCharacterProfile) _prefs.GetPreferences(component.Session!.Value).SelectedCharacter;
+                TryComp<ActionsComponent>(args.Args.Target.Value, out var actions);
+                component.Actions = actions;
+                /*
                 if (TryComp<DetailExaminableComponent>(args.Args.Target.Value, out var detail))
                 {
                     component.Detail = detail.Content;
                 }
+                */
             }
             else
             {
@@ -173,6 +185,8 @@ public sealed partial class GenestealerSystem
                 args.Args.User, PopupType.LargeCaution);
         }
 
+        if (_mindSystem.TryGetObjectiveComp<GenesConditionComponent>(uid, out var obj))
+            obj.GenesExtracted++;
         args.Handled = true;
     }
 
@@ -234,17 +248,71 @@ public sealed partial class GenestealerSystem
 
         var ev = new AfterFlashedEvent(uid, uid, null);
         RaiseLocalEvent(uid, ref ev);
+        /*
         if (TryComp<HumanoidAppearanceComponent>(uid, out var humanoid))
         {
             humanoid.Species = component.Preferences.Species;
             Dirty(uid, humanoid);
         }
-        
-        _metaSystem.SetEntityName(args.Performer, component.Metadata!.EntityName);
-        _flash.Flash(target:uid, flashDuration:12000f, user:args.Performer, used:null, slowTo: 1000F, displayPopup:false);
-        _humanoidSystem.LoadProfile(uid, component.Preferences);
 
-        EnsureComp<DetailExaminableComponent>(uid).Content = component.Detail;
+
+        else
+        {
+            _popup.PopupEntity(
+                Robust.Shared.Localization.Loc.GetString("genestealer-transform-failed", ("target", uid)),
+                args.Performer, PopupType.LargeCaution);
+        }
+        */
+        if (!TryComp<HumanoidAppearanceComponent>(uid, out var targetHumanoid))
+        {
+            return;
+        }
+
+        if (component.SourceHumanoid == null)
+            return;
+
+        /*
+        var polyString = component.SourceHumanoid.Species + "Morph";
+
+        if (_prototype.TryIndex<PolymorphPrototype>(polyString, out var prototype))
+        {
+            var tempUid = _polymorphSystem.PolymorphEntity(args.Performer, polyString);
+            if (tempUid.HasValue)
+            {
+                uid = tempUid.Value;
+            }
+        }
+        */
+
+        _metaSystem.SetEntityName(uid, component.Metadata!.EntityName);
+        targetHumanoid.Species = component.SourceHumanoid.Species;
+        targetHumanoid.SkinColor = component.SourceHumanoid.SkinColor;
+        targetHumanoid.EyeColor = component.SourceHumanoid.EyeColor;
+        targetHumanoid.Age = component.SourceHumanoid.Age;
+        _humanoidSystem.SetSex(uid, component.SourceHumanoid.Sex, false, targetHumanoid);
+        targetHumanoid.CustomBaseLayers =
+        new Dictionary<HumanoidVisualLayers, CustomBaseLayerInfo>(component.SourceHumanoid.CustomBaseLayers);
+        targetHumanoid.MarkingSet = new MarkingSet(component.SourceHumanoid.MarkingSet);
+        _humanoidSystem.SetTTSVoice(uid, component.SourceHumanoid.Voice, targetHumanoid); // Corvax-TTS
+        targetHumanoid.SpeakerColor = component.SourceHumanoid.SpeakerColor; // Corvax-SpeakerColor
+
+        targetHumanoid.Gender = component.SourceHumanoid.Gender;
+
+        if (TryComp<GrammarComponent>(uid, out var grammar))
+        {
+            grammar.Gender = component.SourceHumanoid.Gender;
+        }
+
+        _humanoidSystem.LoadProfile(uid, component.Preferences!);
+
+        Dirty(uid, targetHumanoid);
+
+        _inventorySystem.TryUnequip(uid, Goggles, true, true);
+
+        _flash.Flash(target: uid, flashDuration: 12000f, user: args.Performer, used: null, slowTo: 0.8F,
+            displayPopup: false);
+
+        //EnsureComp<DetailExaminableComponent>(uid).Content = component.Detail;
 
         args.Handled = true;
     }
