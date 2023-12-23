@@ -300,6 +300,9 @@
   id: CigPack
 
 - type: Tag
+  id: Cleaver
+
+- type: Tag
   id: ClothMade
 
 - type: Tag
@@ -439,6 +442,9 @@
 
 - type: Tag
   id: EmitterBolt
+
+- type: Tag
+  id: Enzyme
 
 - type: Tag
   id: ExplosivePassable
@@ -648,6 +654,9 @@
   id: KeyedInstrument
 
 - type: Tag
+  id: KitchenKnife
+
+- type: Tag
   id: Knife
 
 - type: Tag
@@ -786,6 +795,9 @@
   id: Ore
 
 - type: Tag
+  id: Packet
+
+- type: Tag
   id: Payload # for grenade/bomb crafting
 
 - type: Tag
@@ -793,6 +805,9 @@
 
 - type: Tag
   id: Pancake
+
+- type: Tag
+  id: PepperShaker
 
 - type: Tag
   id: PercussionInstrument
@@ -913,6 +928,12 @@
   id: RollingPaper
 
 - type: Tag
+  id: RollingPin
+
+- type: Tag
+  id: SaltShaker
+
+- type: Tag
   id: SalvageExperiment
 
 - type: Tag
@@ -944,6 +965,9 @@
 
 - type: Tag
   id: SkeletonMotorcycleKeys
+
+- type: Tag
+  id: Skewer
 
 - type: Tag
   id: SmallAIChip
