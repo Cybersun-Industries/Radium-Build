@@ -1,36 +1,42 @@
 ﻿- type: entity
   abstract: true
   parent: BaseObjective
-  id: BaseEvilTwinObjective1
+  id: BaseGenestealerObjective
   components:
     - type: Objective
-      issuer: Злой Близнец
+      issuer: Генокрад
       difficulty: 1
     - type: RoleRequirement
       roles:
         components:
-          - EvilTwinRole
-
+          - GenestealerRole
 - type: entity
   noSpawn: true
-  parent: [BaseEvilTwinObjective, BaseKillObjective]
-  id: KillObjectiveEvilTwin1
-  name: Убить оригинал и заменить!
-  description: Вы долджны скрытно заменить оригинал, и избавится от трупа так чтобы не было подозрений на вас!
+  parent:
+    - BaseGenestealerObjective
+  id: GenesObjectiveGenestealer
+  name: Собрать достаточно генов.
+  description: objective-condition-genes-description
   components:
     - type: Objective
       unique: true
       difficulty: 1
-    - type: TargetObjective
-      title: objective-condition-kill-person-title
-    - type: PickEvilTwinPerson
-
+      icon:
+        sprite: Structures/Specific/carp_rift.rsi
+        state: icon_blue
+    - type: NumberObjective
+      min: 3
+      max: 6
+      title: objective-condition-genes-title
+      description: objective-condition-genes-description
+    - type: GenesCondition
 - type: entity
   noSpawn: true
-  parent: [BaseEvilTwinObjective, BaseLivingObjective]
-  id: EscapeShuttleObjectiveEvilTwin1
+  parent:
+    - BaseGenestealerObjective
+    - BaseLivingObjective
+  id: EscapeShuttleObjectiveGenestealer
   name: Выживите до конца смены и улетите в Центком живым и свободным.
-  description: Вы можете не убивать свой оригинал если не было возможности!
   components:
     - type: Objective
       difficulty: 1.3

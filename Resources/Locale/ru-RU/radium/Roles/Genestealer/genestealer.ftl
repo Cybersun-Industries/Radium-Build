@@ -9,3 +9,4 @@ genestealer-finish-harvest = { CAPITALIZE($target) } падает на земл�
 genestealer-user-interface-title = Магазин способностей
 genestealer-user-interface-resource-amount = [color=plum]{ $amount }[/color] украденных ресурсов
 genestealer-user-interface-cost = { $price } ресурсов
+objective-condition-genes-description = Используйте своё жало, чтобы извелечь гены нескольких человек.

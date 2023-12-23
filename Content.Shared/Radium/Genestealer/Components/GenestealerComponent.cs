@@ -1,5 +1,8 @@
 using System.Numerics;
+using Content.Shared.Actions;
 using Content.Shared.FixedPoint;
+using Content.Shared.Humanoid;
+using Content.Shared.Mind;
 using Content.Shared.Preferences;
 using Content.Shared.Store;
 using Robust.Shared.GameStates;
@@ -110,16 +113,20 @@ public sealed partial class GenestealerComponent : Component
 
     [DataField] public EntityUid? TransformPool;
 
-    [DataField] public HumanoidCharacterProfile Preferences;
+    [DataField] public HumanoidCharacterProfile? Preferences;
+
+    [DataField] public HumanoidAppearanceComponent? SourceHumanoid;
 
     [DataField] public MetaDataComponent? Metadata;
 
     [DataField] public NetUserId? Session;
 
-    [DataField] public string Detail;
+    [DataField] public ActionsComponent? Actions;
     #endregion
 
     [DataField] public EntityUid? Action;
 
     [DataField] public bool IsInStasis;
+
+    [DataField] public MindComponent? Mind;
 }

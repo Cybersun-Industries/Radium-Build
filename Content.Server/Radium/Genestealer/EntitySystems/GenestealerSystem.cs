@@ -89,11 +89,11 @@ public sealed partial class GenestealerSystem : EntitySystem
     [ValidatePrototypeId<EntityPrototype>]
     private const string SpawnPointPrototype = "SpawnPointGenestealer";
 
-    [ValidatePrototypeId<AntagPrototype>] private const string EvilTwinRole = "Genestealer";
+    [ValidatePrototypeId<AntagPrototype>] private const string GenestealerRole = "Genestealer";
 
-    [ValidatePrototypeId<EntityPrototype>] private const string KillObjective = "KillObjectiveEvilTwin1";
+    [ValidatePrototypeId<EntityPrototype>] private const string GenesObjective = "GenesObjectiveGenestealer";
 
-    [ValidatePrototypeId<EntityPrototype>] private const string EscapeObjective = "EscapeShuttleObjectiveEvilTwin1";
+    [ValidatePrototypeId<EntityPrototype>] private const string EscapeObjective = "EscapeShuttleObjectiveGenestealer";
 
     public override void Initialize()
     {
@@ -118,12 +118,12 @@ public sealed partial class GenestealerSystem : EntitySystem
             return;
         }
         _roles.MindAddRole(mindId,
-            new EvilTwinRoleComponent
-                { PrototypeId = EvilTwinRole });
+            new GenestealerRoleComponent
+                { PrototypeId = GenestealerRole });
 
-        _mindSystem.TryAddObjective(mindId, mind, KillObjective);
+        _mindSystem.TryAddObjective(mindId, mind, GenesObjective);
         _mindSystem.TryAddObjective(mindId, mind, EscapeObjective);
-
+        component.Mind = mind;
         mind.PreventGhosting = true;
 
         RemComp<PacifiedComponent>(uid);
