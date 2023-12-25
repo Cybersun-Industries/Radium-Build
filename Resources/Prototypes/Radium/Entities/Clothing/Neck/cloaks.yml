@@ -1,0 +1,8 @@
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckCloakChristmas
+  name: Рождественский плащ
+  description: Этот плащ несёт рождественское настроение!
+  components:
+  - type: Sprite
+    sprite: Radium/Clothing/Neck/Cloaks/ChristmasRaincoat.rsi
