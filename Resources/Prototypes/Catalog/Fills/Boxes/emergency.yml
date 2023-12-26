@@ -94,8 +94,6 @@
     heldPrefix: hug
   - type: Storage
     maxItemSize: Small
-    grid:
-      - 0,0,2,3
   - type: StorageFill
     contents:
       - id: ClothingMaskBreath

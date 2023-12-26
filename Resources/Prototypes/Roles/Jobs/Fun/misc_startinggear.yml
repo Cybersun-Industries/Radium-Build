@@ -352,7 +352,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitGladiator
     back: SpearBone
-    head: ClothingHeadHatGladiato
+    head: ClothingHeadHatGladiator
     neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMASr
     shoes: ClothingShoesCult
 

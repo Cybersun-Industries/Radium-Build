@@ -9,7 +9,7 @@
   - type: Item
     size: Large
   - type: Storage
-    maxItemSize: Small
+    maxItemSize: Normal
 
 - type: entity
   name: mousetrap box
