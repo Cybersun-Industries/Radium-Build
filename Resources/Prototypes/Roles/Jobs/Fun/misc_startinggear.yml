@@ -97,7 +97,7 @@
     neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     shoes: ClothingShoesBootsCombatFilled
     pocket1: BaseUplinkRadio40TC
-    id: AgentIDCard
+    id: SyndiPDA
   innerClothingSkirt: ClothingUniformJumpsuitOperative
   satchel: ClothingBackpackDuffelSyndicateOperative
   duffelbag: ClothingBackpackDuffelSyndicateOperative
@@ -115,7 +115,7 @@
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitSyndie
     shoes: ClothingShoesBootsCombatFilled
-    id: NukieAgentIDCard
+    id: SyndiPDA
     pocket1: DoubleEmergencyOxygenTankFilled
     pocket2: BaseUplinkRadio40TC
     belt: ClothingBeltMilitaryWebbing

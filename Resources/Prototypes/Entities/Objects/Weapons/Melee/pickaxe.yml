@@ -22,10 +22,11 @@
       groups:
         Brute: 10
       types:
-        Structural: 10
+        Structural: 25
   - type: Item
     size: Normal
     sprite: Objects/Weapons/Melee/pickaxe.rsi
+    storedRotation: -45
   - type: UseDelay
     delay: 1
 
@@ -48,4 +49,4 @@
       groups:
         Brute: 10
       types:
-        Structural: 10
+        Structural: 20

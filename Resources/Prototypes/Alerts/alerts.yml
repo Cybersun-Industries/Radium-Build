@@ -8,6 +8,7 @@
     - category: Resource
     - alertType: Resource
     - category: Stamina
+    - category: ShadowkinPower
     - alertType: SuitPower
     - category: Internals
     - alertType: Fire
