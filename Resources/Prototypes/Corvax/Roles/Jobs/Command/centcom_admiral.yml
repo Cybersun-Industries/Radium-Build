@@ -9,7 +9,7 @@
     eyes: ClothingEyesGlassesSunglasses
     gloves: ClothingHandsGlovesCentcomNaval
     outerClothing: ClothingOuterArmorCentcomCarapace
-    neck: ClothingNeckCloakCentcomAdmiral
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     id: CCAdmiralPDA
     ears: ClothingHeadsetCentCom
     pocket1: RubberStampCentcom

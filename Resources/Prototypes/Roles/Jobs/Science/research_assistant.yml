@@ -28,6 +28,7 @@
     jumpsuit: ClothingUniformJumpsuitColorWhite
     back: ClothingBackpackScienceFilled
     shoes: ClothingShoesColorWhite
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     id: ResearchAssistantPDA
     ears: ClothingHeadsetScience
   innerClothingSkirt: ClothingUniformJumpskirtColorWhite

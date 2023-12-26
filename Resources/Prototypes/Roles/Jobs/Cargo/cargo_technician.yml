@@ -25,6 +25,7 @@
     jumpsuit: ClothingUniformJumpsuitCargo
     back: ClothingBackpackCargoFilled
     shoes: ClothingShoesColorBlack
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     id: CargoPDA
     ears: ClothingHeadsetCargo
     pocket1: AppraisalTool

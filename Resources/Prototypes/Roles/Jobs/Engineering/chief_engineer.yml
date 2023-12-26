@@ -53,6 +53,7 @@
     jumpsuit: ClothingUniformJumpsuitChiefEngineer
     back: ClothingBackpackChiefEngineerFilled
     shoes: ClothingShoesColorBrown
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     id: CEPDA
     eyes: ClothingEyesGlassesMeson
     ears: ClothingHeadsetCE

@@ -29,6 +29,7 @@
     back: ClothingBackpackAtmosphericsFilled
     shoes: ClothingShoesColorWhite
     eyes: ClothingEyesGlassesMeson
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     id: AtmosPDA
     belt: ClothingBeltUtilityEngineering
     ears: ClothingHeadsetEngineering

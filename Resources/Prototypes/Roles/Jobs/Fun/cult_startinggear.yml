@@ -5,7 +5,7 @@
     jumpsuit: ClothingUniformJumpsuitColorBlack
     back: ClothingBackpackFilled
     head: ClothingHeadHelmetCult
-    neck: BedsheetCult
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     outerClothing: ClothingOuterArmorCult
     shoes: ClothingShoesCult
     id: PassengerPDA
@@ -19,7 +19,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitColorBlack
     back: ClothingBackpackFilled
-    head: ClothingHeadHatHoodCulthood
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     outerClothing: ClothingOuterRobesCult
     shoes: ClothingShoesColorRed
     id: PassengerPDA

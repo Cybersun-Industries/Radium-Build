@@ -28,6 +28,7 @@
     back: ClothingBackpackChemistryFilled
     shoes: ClothingShoesColorWhite
     outerClothing: ClothingOuterCoatLabChem
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     id: ChemistryPDA
     ears: ClothingHeadsetMedical
     belt: ChemBag

@@ -74,6 +74,7 @@
     back: ClothingBackpackHOPFilled
     shoes: ClothingShoesColorBrown
     head: ClothingHeadHatHopcap
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     id: HoPPDA
     gloves: ClothingHandsGlovesHop
     ears: ClothingHeadsetAltCommand

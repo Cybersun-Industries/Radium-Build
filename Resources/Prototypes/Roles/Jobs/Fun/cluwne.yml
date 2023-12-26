@@ -5,6 +5,7 @@
     back: ClothingBackpackCluwne
     shoes: ClothingShoesCluwne
     mask: ClothingMaskCluwne
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     id: CluwnePDA
     gloves: ClothingHandsGlovesCluwne
     pocket1: CluwneHorn
