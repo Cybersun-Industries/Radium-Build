@@ -26,7 +26,6 @@
   - type: Item
     size: Normal
     sprite: Objects/Weapons/Melee/pickaxe.rsi
-    storedRotation: -45
   - type: UseDelay
     delay: 1
 
