@@ -20,6 +20,7 @@
     shoes: ClothingShoesBootsCombatFilled
     head: ClothingHeadHelmetERTLeader
     eyes: ClothingEyesGlassesSecurity
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorBasicSlim
     id: ERTLeaderPDA
@@ -35,6 +36,7 @@
     back: ClothingBackpackERTLeaderFilled
     shoes: ClothingShoesBootsMagAdv
     mask: ClothingMaskGasERT
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitERTLeader
@@ -57,6 +59,7 @@
     outerClothing: ClothingOuterHardsuitERTLeader
     suitstorage: WeaponRifleLecter
     id: ERTLeaderPDA
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSecurityFilled
     pocket1: MagazineRifle
@@ -86,6 +89,7 @@
     shoes: ClothingShoesBootsWork
     head: ClothingHeadHelmetERTEngineer
     eyes: ClothingEyesGlassesMeson
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorBasicSlim
     id: ERTEngineerPDA
@@ -102,6 +106,7 @@
     shoes: ClothingShoesBootsMagAdv
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlassesMeson
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitERTEngineer
     suitstorage: AirTankFilled
@@ -133,6 +138,7 @@
     shoes: ClothingShoesBootsCombatFilled
     head: ClothingHeadHelmetERTSecurity
     eyes: ClothingEyesGlassesSecurity
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterArmorBasicSlim
     id: ERTSecurityPDA
@@ -153,6 +159,7 @@
     outerClothing: ClothingOuterHardsuitERTSecurity
     suitstorage: AirTankFilled
     id: ERTSecurityPDA
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     ears: ClothingHeadsetAltCentCom
     belt: ClothingBeltSecurityFilled
     pocket1: WeaponPistolG22
@@ -167,6 +174,7 @@
     mask: ClothingMaskGasERT
     eyes: ClothingEyesGlassesSecurity
     gloves: ClothingHandsGlovesCombat
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     outerClothing: ClothingOuterHardsuitERTSecurity
     suitstorage: WeaponRifleLecter
     id: ERTSecurityPDA
@@ -197,6 +205,7 @@
     jumpsuit: ClothingUniformJumpsuitERTMedic
     back: ClothingBackpackERTMedicalFilled
     shoes: ClothingShoesBootsCombatFilled
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     head: ClothingHeadHelmetERTMedic
     eyes: ClothingEyesHudMedical
     gloves: ClothingHandsGlovesNitrile
@@ -215,6 +224,7 @@
     shoes: ClothingShoesBootsMag
     mask: ClothingMaskGasERT
     eyes: ClothingEyesHudMedical
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     gloves: ClothingHandsGlovesNitrile
     outerClothing: ClothingOuterHardsuitERTMedical
     suitstorage: AirTankFilled
@@ -246,6 +256,7 @@
     shoes: ClothingShoesGaloshes
     head: ClothingHeadHelmetERTJanitor
     gloves: ClothingHandsGlovesColorPurple
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     outerClothing: ClothingOuterArmorBasicSlim
     id: ERTJanitorPDA
     ears: ClothingHeadsetAltCentCom
@@ -259,6 +270,7 @@
     back: ClothingBackpackERTJanitorFilled
     shoes: ClothingShoesBootsMag
     mask: ClothingMaskGasERT
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     gloves: ClothingHandsGlovesColorPurple
     outerClothing: ClothingOuterHardsuitERTJanitor
     suitstorage: AirTankFilled

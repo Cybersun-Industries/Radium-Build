@@ -7,6 +7,7 @@
     jumpsuit: ClothingUniformJumpsuitColorBlack
     back: ClothingBackpackFilled
     head: ClothingHeadBandSkull
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     eyes: ClothingEyesGlassesSunglasses
     outerClothing: ClothingOuterCoatGentle
     gloves: ClothingHandsGlovesFingerless
@@ -29,6 +30,7 @@
     mask: ClothingMaskNinja
     head: ClothingHeadHelmetSpaceNinja
     eyes: ClothingEyesVisorNinja
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     gloves: ClothingHandsGlovesSpaceNinja
     outerClothing: ClothingOuterSuitSpaceNinja
     shoes: ClothingShoesSpaceNinja
@@ -49,6 +51,7 @@
     back: ClothingBackpackDeathSquadFilled
     mask: ClothingMaskGasDeathSquad
     eyes: ClothingEyesHudSecurity
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     ears: ClothingHeadsetAltCentCom
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitDeathsquad
@@ -65,6 +68,7 @@
   id: SyndicateOperativeGearMonkey
   equipment:
     head: ClothingHeadHatOutlawHat
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     jumpsuit: ClothingUniformJumpsuitOperative
     mask: CigaretteSyndicate
   innerClothingSkirt: ClothingUniformJumpsuitOperative
@@ -76,6 +80,7 @@
     jumpsuit: ClothingUniformJumpsuitOperative
     back: ClothingBackpackDuffelSyndicateOperative
     shoes: ClothingShoesBootsCombatFilled
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     gloves: ClothingHandsGlovesColorBlack
   innerClothingSkirt: ClothingUniformJumpsuitOperative
   satchel: ClothingBackpackDuffelSyndicateOperative
@@ -89,6 +94,7 @@
     back: ClothingBackpackDuffelSyndicateOperative
     ears: ClothingHeadsetAltSyndicate
     gloves: ClothingHandsGlovesCombat
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     shoes: ClothingShoesBootsCombatFilled
     pocket1: BaseUplinkRadio40TC
     id: AgentIDCard
@@ -104,6 +110,7 @@
     back: ClothingBackpackDuffelSyndicateOperative
     mask: ClothingMaskGasSyndicate
     eyes: ClothingEyesHudSyndicate
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     ears: ClothingHeadsetAltSyndicate
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitSyndie
@@ -123,6 +130,7 @@
     jumpsuit: ClothingUniformJumpsuitOperative
     back: ClothingBackpackDuffelSyndicateOperative
     mask: ClothingMaskGasSyndicate
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     eyes: ClothingEyesHudSyndicate
     ears: ClothingHeadsetAltSyndicate
     gloves: ClothingHandsGlovesCombat
@@ -150,6 +158,7 @@
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitSyndieMedic
     shoes: ClothingShoesBootsMagSyndie
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     id: SyndiAgentPDA
     pocket1: DoubleEmergencyOxygenTankFilled
     pocket2: BaseUplinkRadio40TC
@@ -167,6 +176,7 @@
     mask: ClothingMaskGas
     outerClothing: ClothingOuterArmorBasicSlim
     ears: ClothingHeadsetAltSyndicate
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     gloves: ClothingHandsGlovesCombat
     back: ClothingBackpackFilled
     shoes: ClothingShoesBootsCombat
@@ -185,6 +195,7 @@
     outerClothing: ClothingOuterArmorBasicSlim
     ears: ClothingHeadsetAltSyndicate
     gloves: ClothingHandsGlovesCombat
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     back: ClothingBackpackFilled
     shoes: ClothingShoesBootsCombat
     pocket1: CombatKnife
@@ -202,6 +213,7 @@
     mask: ClothingMaskGas
     outerClothing: ClothingOuterArmorBasicSlim
     ears: ClothingHeadsetAltSyndicate
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     gloves: ClothingHandsGlovesCombat
     back: ClothingBackpackFilled
     shoes: ClothingShoesBootsCombatFilled
@@ -222,6 +234,7 @@
     outerClothing: ClothingOuterArmorBasicSlim
     ears: ClothingHeadsetAltSyndicate
     gloves: ClothingHandsGlovesCombat
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     back: ClothingBackpackFilled
     shoes: ClothingShoesBootsCombat
     pocket1: WeaponPistolViper
@@ -239,6 +252,7 @@
     shoes: ClothingShoesBootsCombatFilled
     eyes: ClothingEyesGlassesSecurity
     head: ClothingHeadHelmetSwat
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     mask: ClothingMaskGasSwat
     outerClothing: ClothingOuterArmorBasicSlim
     ears: ClothingHeadsetSecurity
@@ -257,6 +271,7 @@
     eyes: ClothingEyesGlassesSecurity
     ears: ClothingHeadsetAltCentCom
     gloves: ClothingHandsGlovesCombat
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     outerClothing: ClothingOuterHardsuitCBURN
     shoes: ClothingShoesBootsCombatFilled
     id: CBURNPDA
@@ -297,6 +312,7 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitColorWhite
     shoes: ClothingShoesBootsJack
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     ears: ClothingHeadsetGrey
     gloves: ClothingHandsGlovesFingerless
   innerClothingSkirt: ClothingUniformJumpskirtColorWhite
@@ -314,6 +330,7 @@
     shoes: ClothingShoesColorRed
     gloves: ClothingHandsGlovesNitrile
     eyes: ClothingEyesHudMedical
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     head: ClothingHeadHatBeretBrigmedic
     id: BrigmedicPDA
     ears: ClothingHeadsetBrigmedic
@@ -335,7 +352,8 @@
   equipment:
     jumpsuit: ClothingUniformJumpsuitGladiator
     back: SpearBone
-    head: ClothingHeadHatGladiator
+    head: ClothingHeadHatGladiato
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMASr
     shoes: ClothingShoesCult
 
 #Ash Walker
@@ -345,6 +363,7 @@
     jumpsuit: ClothingUniformJumpsuitGladiator
     outerClothing: ClothingOuterArmorBone
     back: SpearBone
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     head: ClothingHeadHelmetBone
     shoes: ClothingShoesCult
 
@@ -354,4 +373,5 @@
   equipment:
     shoes: ClothingShoesClownBanana
     jumpsuit: ClothingUniformJumpsuitClownBanana
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     mask: ClothingMaskClownBanana

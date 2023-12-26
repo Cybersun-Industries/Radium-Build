@@ -28,6 +28,7 @@
     shoes: ClothingShoesColorWhite
     outerClothing: ClothingOuterCoatRnd
     id: SciencePDA
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     ears: ClothingHeadsetScience
   innerClothingSkirt: ClothingUniformJumpskirtScientist
   satchel: ClothingBackpackSatchelScienceFilled

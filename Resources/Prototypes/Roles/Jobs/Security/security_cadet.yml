@@ -36,6 +36,7 @@
     shoes: ClothingShoesBootsJackSec # Corvax-Resprite-MRP
     outerClothing: ClothingOuterArmorBasic
     id: SecurityCadetPDA
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     ears: ClothingHeadsetSecurity
     pocket1: WeaponPistolG22
   innerClothingSkirt: ClothingUniformJumpskirtSecGrey # Corvax-Resprite

@@ -39,7 +39,7 @@
     id: IAAPDA
     eyes: ClothingEyesGlassesSunglasses
     ears: ClothingHeadsetIAA
-    neck: ClothingNeckLawyerbadge
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
   inhand:
     - BriefcaseIAAFilled
   innerClothingSkirt: ClothingUniformJumpskirtLawyerBlack

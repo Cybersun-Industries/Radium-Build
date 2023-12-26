@@ -20,6 +20,7 @@
     back: ClothingBackpackFilled
     shoes: ClothingShoesColorBlack
     id: PassengerPDA
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     ears: ClothingHeadsetGrey
   innerClothingSkirt: ClothingUniformJumpskirtColorGrey
   satchel: ClothingBackpackSatchelFilled

@@ -30,6 +30,7 @@
     jumpsuit: ClothingUniformJumpsuitChef
     head: ClothingHeadHatChef
     back: ClothingBackpackFilled
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     mask: ClothingMaskItalianMoustache
     shoes: ClothingShoesColorBlack
     id: ChefPDA

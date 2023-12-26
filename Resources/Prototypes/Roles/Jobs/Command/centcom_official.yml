@@ -20,6 +20,7 @@
     eyes: ClothingEyesGlassesSunglasses
     gloves: ClothingHandsGlovesColorBlack
     outerClothing: ClothingOuterArmorBasic
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     id: CentcomPDA
     ears: ClothingHeadsetAltCentCom
     pocket1: BoxFolderBlack

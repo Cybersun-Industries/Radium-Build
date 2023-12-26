@@ -55,6 +55,7 @@
     eyes: ClothingEyesGlassesSunglasses
     head: ClothingHeadHatBeretHoS
     id: HoSPDA
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     gloves: ClothingHandsGlovesCombat
     ears: ClothingHeadsetAltSecurity
     belt: ClothingBeltSecurityFilled

@@ -50,6 +50,7 @@
     id: QuartermasterPDA
     ears: ClothingHeadsetQM
     belt: BoxFolderClipboard
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     pocket1: AppraisalTool
   innerClothingSkirt: ClothingUniformJumpskirtQM
   satchel: ClothingBackpackSatchelQuartermasterFilled

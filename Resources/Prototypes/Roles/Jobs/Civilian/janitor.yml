@@ -29,6 +29,7 @@
     shoes: ClothingShoesGaloshes
     head: ClothingHeadHatPurplesoft
     id: JanitorPDA
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     gloves: ClothingHandsGlovesJanitor
     ears: ClothingHeadsetService
     belt: ClothingBeltJanitorFilled
@@ -44,6 +45,7 @@
     id: JanitorPDA
     gloves: ClothingHandsGlovesJanitor
     head: ClothingHeadHatCatEars
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     ears: ClothingHeadsetService
     belt: ClothingBeltJanitorFilled
   innerClothingSkirt: ClothingUniformJumpskirtJanimaid

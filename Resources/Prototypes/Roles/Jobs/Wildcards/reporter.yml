@@ -23,6 +23,7 @@
     back: ClothingBackpackFilled
     shoes: ClothingShoesColorWhite
     id: ReporterPDA
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     ears: ClothingHeadsetService
   innerClothingSkirt: ClothingUniformJumpsuitJournalist
   satchel: ClothingBackpackSatchelFilled

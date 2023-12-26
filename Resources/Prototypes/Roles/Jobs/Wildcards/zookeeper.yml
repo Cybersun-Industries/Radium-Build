@@ -23,6 +23,7 @@
     back: ClothingBackpackFilled
     head: ClothingHeadSafari
     shoes: ClothingShoesColorWhite
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     id: ZookeeperPDA
     ears: ClothingHeadsetService
   innerClothingSkirt: ClothingUniformJumpsuitSafari

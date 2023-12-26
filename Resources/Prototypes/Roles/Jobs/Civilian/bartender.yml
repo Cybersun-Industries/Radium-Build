@@ -32,6 +32,7 @@
     outerClothing: ClothingOuterVest
     back: ClothingBackpackFilled
     shoes: ClothingShoesColorBlack
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     id: BartenderPDA
     ears: ClothingHeadsetService
   innerClothingSkirt: ClothingUniformJumpskirtBartender

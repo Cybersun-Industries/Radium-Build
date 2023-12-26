@@ -25,6 +25,7 @@
     back: ClothingBackpackPsychologistFilled # Corvax-Stamp
     shoes: ClothingShoesLeather
     id: PsychologistPDA
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     ears: ClothingHeadsetMedical
   innerClothingSkirt: ClothingUniformJumpskirtPsychologist # Corvax-Resprite
   satchel: ClothingBackpackSatchelPsychologistFilled # Corvax-Stamp

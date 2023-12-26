@@ -20,6 +20,7 @@
     jumpsuit: UniformShortsRed
     back: ClothingBackpackFilled
     id: BoxerPDA
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     ears: ClothingHeadsetService
     gloves: ClothingHandsGlovesBoxingRed
     shoes: ClothingShoesColorRed

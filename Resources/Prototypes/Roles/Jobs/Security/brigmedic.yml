@@ -42,6 +42,7 @@
     shoes: ClothingShoesBootsJackSec # Corvax-Resprite
     gloves: ClothingHandsGlovesNitrile
     eyes: ClothingEyesHudMedSec
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     head: ClothingHeadHatBeretSecurityMedic # Corvax-Resprite
     outerClothing: ClothingOuterVestArmorMedSec # Corvax-Resprite
     id: BrigmedicPDA

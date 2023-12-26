@@ -51,6 +51,7 @@
     back: ClothingBackpackCaptainFilled
     shoes: ClothingShoesBootsLaceup
     head: ClothingHeadHatCaptain
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     eyes: ClothingEyesGlassesSunglasses
     gloves: ClothingHandsGlovesCaptain
     outerClothing: ClothingOuterArmorCaptainCarapace

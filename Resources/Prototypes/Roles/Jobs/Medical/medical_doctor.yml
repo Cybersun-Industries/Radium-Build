@@ -30,6 +30,7 @@
     shoes: ClothingShoesColorWhite
     outerClothing: ClothingOuterCoatLab
     id: MedicalPDA
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     ears: ClothingHeadsetMedical
     belt: ClothingBeltMedicalFilled
   innerClothingSkirt: ClothingUniformJumpskirtMedicalDoctor

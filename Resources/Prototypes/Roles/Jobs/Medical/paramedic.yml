@@ -31,6 +31,7 @@
     back: ClothingBackpackParamedicFilled
     shoes: ClothingShoesColorBlue
     id: ParamedicPDA
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     ears: ClothingHeadsetMedical
     belt: ClothingBeltParamedicFilled
   innerClothingSkirt: ClothingUniformJumpskirtParamedic

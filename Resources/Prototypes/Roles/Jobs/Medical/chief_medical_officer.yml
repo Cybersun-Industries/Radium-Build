@@ -55,6 +55,7 @@
     shoes: ClothingShoesColorBrown
     outerClothing: ClothingOuterCoatLabCmo
     id: CMOPDA
+    neck: ClothingNeckCloakChristmas #RADIUM_CHRISTMAS
     ears: ClothingHeadsetCMO
     belt: ClothingBeltMedicalFilled
   innerClothingSkirt: ClothingUniformJumpskirtCMO
