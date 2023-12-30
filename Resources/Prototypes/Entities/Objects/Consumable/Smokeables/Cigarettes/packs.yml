@@ -43,7 +43,7 @@
       Steel: 50
   - type: SpaceGarbage
   - type: Storage
-    maxSlots: 5
+    maxSlots: 10
   - type: Item
     size: Small
   - type: StorageFill
