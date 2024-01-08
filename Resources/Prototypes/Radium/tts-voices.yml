@@ -51,7 +51,7 @@
   name: tts-voice-name-zina
   sex: Female
   speaker: zina
-  
+
 - type: ttsVoice
   id: Zahar
   name: tts-voice-name-zahar
