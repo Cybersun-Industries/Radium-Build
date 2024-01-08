@@ -237,6 +237,10 @@
   id: BaseMobSpeciesOrganic
   abstract: true
   components:
+  - type: UserInterface
+    interfaces:
+    - key: enum.StoreUiKey.Key
+      type: StoreBoundUserInterface
   - type: Flashable
   - type: Barotrauma
     damage:
