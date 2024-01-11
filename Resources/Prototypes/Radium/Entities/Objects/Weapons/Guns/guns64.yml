@@ -4,6 +4,8 @@
   id: WeaponSniperPtrdm
   description: Переносная противотанковая винтовка. Стреляет аналоговыми бронебойными снарядами калибра 14,5 мм. Использует противотанковые боеприпасы
   components:
+  - type: Wieldable
+  - type: GunRequiresWield
   - type: Sprite
     sprite: Radium/Objects/Weapons/Gunsx64/Snipers/ptrdm/big.rsi
   - type: Clothing
