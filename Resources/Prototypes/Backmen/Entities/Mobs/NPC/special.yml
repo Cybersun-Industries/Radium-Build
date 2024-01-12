@@ -31,8 +31,8 @@
     - type: ShipwreckedNPCHecate
     - type: NPCConversation
       tree: ShipwreckedPsychopompHecate
-    - type: TTS
-      voice: Npc1
+    #- type: TTS
+      #voice: Npc1
       # aliases:
       #   - hekate
       #   - katey
