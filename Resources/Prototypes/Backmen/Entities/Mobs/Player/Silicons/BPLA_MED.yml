@@ -174,8 +174,7 @@
           On: { state: drone }
   - type: ReplacementAccent
     accent: silicon
-  - type: TTS
-    voice: TrainingRobot
+ ##   voice: TrainingRobot
   - type: ZombieImmune
   - type: Repairable
     fuelcost: 15

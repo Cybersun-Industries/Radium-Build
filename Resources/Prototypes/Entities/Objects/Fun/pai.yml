@@ -52,8 +52,7 @@
   - type: Actions
   - type: TypingIndicator
     proto: robot
-  - type: TTS # Corvax-TTS
-    voice: TrainingRobot
+ #   voice: TrainingRobot
   - type: Speech
     speechVerb: Robotic
     speechSounds: Pai

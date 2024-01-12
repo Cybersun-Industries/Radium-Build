@@ -20,8 +20,8 @@
     - type: WarpPoint
       location: Катя
       follow: true
-    - type: TTS
-      voice: Npc1
+  #  - type: TTS
+  #    voice: Npc1
 
 - type: entity
   id: MobQuestHecateShipwrecked

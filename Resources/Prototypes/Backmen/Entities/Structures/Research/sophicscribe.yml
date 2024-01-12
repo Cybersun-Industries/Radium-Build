@@ -41,8 +41,7 @@
   - type: GuideHelp
     guides:
     - Psionics
-  - type: TTS
-    voice: Npc1
+ ##   voice: Npc1
   - type: Tag
     tags: []
 

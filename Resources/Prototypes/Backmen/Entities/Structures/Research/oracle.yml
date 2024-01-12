@@ -40,7 +40,6 @@
       proper: true
   - type: Prayable
   - type: SpriteFade
-  - type: TTS
-    voice: Npc1
+ ##   voice: Npc1
   - type: Tag
     tags: []

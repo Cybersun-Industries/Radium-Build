@@ -18,8 +18,7 @@
   - type: Muted
   - type: TypingIndicator
     proto: robot
-  - type: TTS # Corvax-TTS
-    voice: Npc2
+ ##   voice: Npc2
   - type: Actions
   - type: MobState
     allowedStates:
@@ -42,5 +41,4 @@
     sprite: Objects/Fun/mrdips.rsi
     layers:
     - state: icon
-  - type: TTS # Corvax-TTS
-    voice: Npc1
+#   voice: Npc1

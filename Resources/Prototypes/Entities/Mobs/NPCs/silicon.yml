@@ -126,8 +126,7 @@
     autoRot: true
   - type: TypingIndicator
     proto: robot
-  - type: TTS # Corvax-TTS = Robold
-    voice: Npc3
+ ##  voice: Npc3
 
 - type: entity
   parent: MobSiliconBaseVehicle
@@ -149,8 +148,7 @@
   - type: Construction
     graph: TaxiBot
     node: bot
-  - type: TTS # Corvax-TTS
-    voice: Npc3
+ ##  voice: Npc3
 
 - type: entity
   parent: MobSiliconBaseVehicle
@@ -184,8 +182,7 @@
     containers:
       storagebase: !type:Container
         ents: []
-  - type: TTS # Corvax-TTS
-    voice: Npc3
+ ##  voice: Npc3
 
 - type: entity
   parent: MobSiliconBase
@@ -358,12 +355,12 @@
     interactSuccessSound:
       path: /Audio/Ambience/Objects/periodic_beep.ogg
   - type: ShowHealthBars
-    damageContainers: 
+    damageContainers:
     - Biological
   - type: ShowHealthIcons
-    damageContainers: 
+    damageContainers:
     - Biological
-  
+
 - type: entity
   parent: MobSiliconBase
   id: MobMimeBot

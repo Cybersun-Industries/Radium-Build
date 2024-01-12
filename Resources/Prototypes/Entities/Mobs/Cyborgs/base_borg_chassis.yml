@@ -202,8 +202,7 @@
     - DoorBumpOpener
     - CanPilot
   - type: Emoting
-  - type: TTS
-    voice: Borgs
+##    voice: Borgs
   - type: GuideHelp
     guides:
       - Cyborgs
