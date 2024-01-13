@@ -110,8 +110,8 @@ public sealed class CCVars
     /// <summary>
     /// Shipwrecked
     /// </summary>
-    public static readonly CVarDef<int> ShipwreckedMaxPlayers =
-        CVarDef.Create("shipwrecked.max_players", 15);
+    ///public static readonly CVarDef<int> ShipwreckedMaxPlayers =
+    ///    CVarDef.Create("shipwrecked.max_players", 15);
 
     /// <summary>
     /// Damage
