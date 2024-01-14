@@ -165,8 +165,8 @@
           On: { state: drone }
   - type: ReplacementAccent
     accent: silicon
-  - type: TTS
-    voice: Npc3
+#  - type: TTS
+#    voice: Npc3
   - type: Repairable
     fuelcost: 15
     doAfterDelay: 8

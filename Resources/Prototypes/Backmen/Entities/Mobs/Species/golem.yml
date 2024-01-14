@@ -253,8 +253,8 @@
   - type: GuideHelp
     guides:
     - AltarsGolemancy
-  - type: TTS
-    voice: Oleg
+ # - type: TTS
+ #   voice: Oleg
 
 - type: entity
   parent: MobGolemBase

@@ -218,8 +218,8 @@
     - Science
   - type: AccessReader
     access: [["Medical"], ["Command"], ["Research"]]
-  - type: TTS
-    voice: Borgs
+#  - type: TTS
+#    voice: Borgs
   - type: Inventory
     templateId: borgDutch
 
