@@ -48,12 +48,13 @@ public sealed class DiscordAuthManager : Content.Corvax.Interfaces.Server.IServe
     private async void OnAuthCheck(MsgDiscordAuthCheck message)
     {
         var isVerified = await IsVerified(message.MsgChannel.UserId);
-        if (isVerified)
-        {
-            var session = _playerMgr.GetSessionById(message.MsgChannel.UserId);
 
-            PlayerVerified?.Invoke(this, session);
-        }
+        if (!isVerified)
+            return;
+
+        var session = _playerMgr.GetSessionById(message.MsgChannel.UserId);
+
+        PlayerVerified?.Invoke(this, session);
     }
 
     private async void OnPlayerStatusChanged(object? sender, SessionStatusEventArgs e)
@@ -67,19 +68,19 @@ public sealed class DiscordAuthManager : Content.Corvax.Interfaces.Server.IServe
             return;
         }
 
-        if (e.NewStatus == SessionStatus.Connected)
-        {
-            var isVerified = await IsVerified(e.Session.UserId);
-            if (isVerified)
-            {
-                PlayerVerified?.Invoke(this, e.Session);
-                return;
-            }
+        if (e.NewStatus != SessionStatus.Connected)
+            return;
 
-            var authUrl = await GenerateAuthLink(e.Session.UserId);
-            var msg = new MsgDiscordAuthRequired() { AuthUrl = authUrl.Url, QrCode = authUrl.Qrcode };
-            e.Session.Channel.SendMessage(msg);
+        var isVerified = await IsVerified(e.Session.UserId);
+        if (isVerified)
+        {
+            PlayerVerified?.Invoke(this, e.Session);
+            return;
         }
+
+        var authUrl = await GenerateAuthLink(e.Session.UserId);
+        var msg = new MsgDiscordAuthRequired { AuthUrl = authUrl.Url };
+        e.Session.Channel.SendMessage(msg);
     }
 
     public async Task<DiscordGenerateLinkResponse> GenerateAuthLink(NetUserId userId, CancellationToken cancel = default)

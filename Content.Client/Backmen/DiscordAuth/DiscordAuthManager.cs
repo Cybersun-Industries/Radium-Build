@@ -17,7 +17,7 @@ public sealed class DiscordAuthManager : Content.Corvax.Interfaces.Client.IClien
     [Dependency] private readonly IStateManager _stateManager = default!;
 
     public string AuthUrl { get; private set; } = string.Empty;
-    public Texture? Qrcode { get; private set; }
+    public Texture? Qrcode { get; }
 
     public void Initialize()
     {
@@ -27,16 +27,10 @@ public sealed class DiscordAuthManager : Content.Corvax.Interfaces.Client.IClien
 
     private void OnDiscordAuthRequired(MsgDiscordAuthRequired message)
     {
-        if (_stateManager.CurrentState is not DiscordAuthState)
-        {
-            AuthUrl = message.AuthUrl;
-            if (message.QrCode.Length > 0)
-            {
-                using var ms = new MemoryStream(message.QrCode);
-                Qrcode = Texture.LoadFromPNGStream(ms);
-            }
+        if (_stateManager.CurrentState is DiscordAuthState)
+            return;
 
-            _stateManager.RequestStateChange<DiscordAuthState>();
-        }
+        AuthUrl = message.AuthUrl;
+        _stateManager.RequestStateChange<DiscordAuthState>();
     }
 }

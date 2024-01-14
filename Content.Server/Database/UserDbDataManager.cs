@@ -40,7 +40,7 @@ public sealed class UserDbDataManager
     {
         _users.Remove(session.UserId, out var data);
         if (data == null)
-            throw new InvalidOperationException("Did not have cached data in ClientDisconnect!");
+            return;
 
         data.Cancel.Cancel();
         data.Cancel.Dispose();

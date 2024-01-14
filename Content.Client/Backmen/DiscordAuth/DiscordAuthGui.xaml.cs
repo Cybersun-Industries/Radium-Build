@@ -26,11 +26,7 @@ public sealed partial class DiscordAuthGui : Control
         };
 
         UrlEdit.TextRope = new Rope.Leaf(_discordAuthManager.AuthUrl);
-        if (_discordAuthManager.Qrcode != null)
-        {
-            QrCode.Texture = _discordAuthManager.Qrcode;
-        }
-        
+
         OpenUrlButton.OnPressed += (_) =>
         {
             if (_discordAuthManager.AuthUrl != string.Empty)
