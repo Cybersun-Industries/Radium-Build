@@ -23,8 +23,7 @@
           False: {state: empty_icon}
   - type: Storage
     maxItemSize: Small
-    grid:
-    - 0,0,3,2
+    maxTotalWeight: 10
     whitelist:
       components:
         - Pill

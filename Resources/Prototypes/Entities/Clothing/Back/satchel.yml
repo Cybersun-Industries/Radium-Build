@@ -176,5 +176,4 @@
     size: Ginormous
   - type: Storage
     maxItemSize: Huge
-    grid:
-    - 0,0,19,9
+    maxTotalWeight: 200 #5 duffels worth of gear

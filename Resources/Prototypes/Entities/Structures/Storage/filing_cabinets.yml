@@ -6,8 +6,7 @@
   description: A cabinet for all your filing needs.
   components:
   - type: Storage
-    grid:
-    - 0,0,9,3
+    maxSlots: 12
     maxItemSize: Normal
     whitelist:
       tags:
@@ -94,8 +93,7 @@
   description: A small drawer for all your filing needs, Now with wheels!
   components:
   - type: Storage
-    grid:
-    - 0,0,7,2
+    maxSlots: 8
     maxItemSize: Normal
     whitelist:
       tags:

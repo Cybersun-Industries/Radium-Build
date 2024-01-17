@@ -53,6 +53,7 @@
     qualities:
     - Rolling
     speed: 0.25 # its small so takes longer to roll the entire dough flat
+  - type: ItemCooldown
   - type: SpaceGarbage
   - type: TrashOnSolutionEmpty
     solution: drink
@@ -274,7 +275,7 @@
 - type: entity
   parent: DrinkCanBaseFull
   id: DrinkFourteenLokoCan
-  name: Fourteen Loko can
+  name: fourteen loko can
   description: The MBO has advised crew members that consumption of Fourteen Loko may result in seizures, blindness, drunkeness, or even death. Please Drink Responsibly.
   components:
   - type: SolutionContainerManager
@@ -292,7 +293,7 @@
 - type: entity
   parent: DrinkCanBaseFull
   id: DrinkChangelingStingCan
-  name: changeling sting can
+  name: Changeling sting can
   description: You take a tiny sip and feel a burning sensation...
   components:
   - type: SolutionContainerManager
@@ -402,8 +403,7 @@
   - type: Item
     size: Normal
   - type: Storage
-    grid:
-    - 0,0,2,3
+    maxSlots: 6
     whitelist:
       tags:
         - Cola

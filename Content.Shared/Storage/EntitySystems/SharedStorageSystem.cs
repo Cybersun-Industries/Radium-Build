@@ -1,10 +1,10 @@
-using System.Collections.Frozen;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Shared.ActionBlocker;
+using Content.Shared.CombatMode;
 using Content.Shared.Containers.ItemSlots;
 using Content.Shared.Destructible;
 using Content.Shared.DoAfter;
+using Content.Shared.FixedPoint;
 using Content.Shared.Hands.Components;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Implants.Components;
@@ -17,34 +17,33 @@ using Content.Shared.Stacks;
 using Content.Shared.Storage.Components;
 using Content.Shared.Timing;
 using Content.Shared.Verbs;
+using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
-using Robust.Shared.GameStates;
 using Robust.Shared.Map;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
-using Robust.Shared.Serialization;
 
 namespace Content.Shared.Storage.EntitySystems;
 
 public abstract class SharedStorageSystem : EntitySystem
 {
-    [Dependency] private   readonly IPrototypeManager _prototype = default!;
+    [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] protected readonly IRobustRandom Random = default!;
-    [Dependency] protected readonly ActionBlockerSystem ActionBlocker = default!;
-    [Dependency] private   readonly EntityLookupSystem _entityLookupSystem = default!;
-    [Dependency] private   readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] protected readonly SharedAudioSystem Audio = default!;
     [Dependency] private   readonly SharedContainerSystem _containerSystem = default!;
     [Dependency] private   readonly SharedDoAfterSystem _doAfterSystem = default!;
+    [Dependency] private   readonly EntityLookupSystem _entityLookupSystem = default!;
     [Dependency] protected readonly SharedEntityStorageSystem EntityStorage = default!;
     [Dependency] private   readonly SharedInteractionSystem _interactionSystem = default!;
-    [Dependency] protected readonly SharedItemSystem ItemSystem = default!;
+    [Dependency] private readonly SharedItemSystem _item = default!;
     [Dependency] private   readonly SharedPopupSystem _popupSystem = default!;
     [Dependency] private   readonly SharedHandsSystem _sharedHandsSystem = default!;
+    [Dependency] private   readonly ActionBlockerSystem _actionBlockerSystem = default!;
+    [Dependency] private   readonly SharedAppearanceSystem _appearance = default!;
+    [Dependency] protected readonly SharedAudioSystem Audio = default!;
+    [Dependency] private   readonly SharedCombatModeSystem _combatMode = default!;
+    [Dependency] protected   readonly SharedTransformSystem _transform = default!;
     [Dependency] private   readonly SharedStackSystem _stack = default!;
-    [Dependency] protected readonly SharedTransformSystem TransformSystem = default!;
-    [Dependency] private   readonly SharedUserInterfaceSystem _ui = default!;
     [Dependency] protected readonly UseDelaySystem UseDelay = default!;
 
     private EntityQuery<ItemComponent> _itemQuery;
@@ -54,13 +53,6 @@ public abstract class SharedStorageSystem : EntitySystem
     [ValidatePrototypeId<ItemSizePrototype>]
     public const string DefaultStorageMaxItemSize = "Normal";
 
-    private ItemSizePrototype _defaultStorageMaxItemSize = default!;
-
-    public bool CheckingCanInsert;
-
-    private readonly List<ItemSizePrototype> _sortedSizes = new();
-    private FrozenDictionary<string, ItemSizePrototype> _nextSmallest = FrozenDictionary<string, ItemSizePrototype>.Empty;
-
     /// <inheritdoc />
     public override void Initialize()
     {
@@ -69,10 +61,7 @@ public abstract class SharedStorageSystem : EntitySystem
         _itemQuery = GetEntityQuery<ItemComponent>();
         _stackQuery = GetEntityQuery<StackComponent>();
         _xformQuery = GetEntityQuery<TransformComponent>();
-        _prototype.PrototypesReloaded += OnPrototypesReloaded;
 
-        SubscribeLocalEvent<StorageComponent, ComponentGetState>(OnStorageGetState);
-        SubscribeLocalEvent<StorageComponent, ComponentHandleState>(OnStorageHandleState);
         SubscribeLocalEvent<StorageComponent, ComponentInit>(OnComponentInit, before: new[] { typeof(SharedContainerSystem) });
         SubscribeLocalEvent<StorageComponent, GetVerbsEvent<UtilityVerb>>(AddTransferVerbs);
         SubscribeLocalEvent<StorageComponent, InteractUsingEvent>(OnInteractUsing, after: new[] { typeof(ItemSlotsSystem) });
@@ -80,89 +69,17 @@ public abstract class SharedStorageSystem : EntitySystem
         SubscribeLocalEvent<StorageComponent, OpenStorageImplantEvent>(OnImplantActivate);
         SubscribeLocalEvent<StorageComponent, AfterInteractEvent>(AfterInteract);
         SubscribeLocalEvent<StorageComponent, DestructionEventArgs>(OnDestroy);
+        SubscribeLocalEvent<StorageComponent, StorageComponent.StorageInsertItemMessage>(OnInsertItemMessage);
         SubscribeLocalEvent<StorageComponent, BoundUIOpenedEvent>(OnBoundUIOpen);
         SubscribeLocalEvent<MetaDataComponent, StackCountChangedEvent>(OnStackCountChanged);
 
-        SubscribeLocalEvent<StorageComponent, EntInsertedIntoContainerMessage>(OnEntInserted);
-        SubscribeLocalEvent<StorageComponent, EntRemovedFromContainerMessage>(OnEntRemoved);
+        SubscribeLocalEvent<StorageComponent, EntInsertedIntoContainerMessage>(OnContainerModified);
+        SubscribeLocalEvent<StorageComponent, EntRemovedFromContainerMessage>(OnContainerModified);
         SubscribeLocalEvent<StorageComponent, ContainerIsInsertingAttemptEvent>(OnInsertAttempt);
 
         SubscribeLocalEvent<StorageComponent, AreaPickupDoAfterEvent>(OnDoAfter);
 
-        SubscribeAllEvent<StorageInteractWithItemEvent>(OnInteractWithItem);
-        SubscribeAllEvent<StorageSetItemLocationEvent>(OnSetItemLocation);
-        SubscribeAllEvent<StorageInsertItemIntoLocationEvent>(OnInsertItemIntoLocation);
-        SubscribeAllEvent<StorageRemoveItemEvent>(OnRemoveItem);
-        UpdatePrototypeCache();
-    }
-
-    private void OnStorageGetState(EntityUid uid, StorageComponent component, ref ComponentGetState args)
-    {
-        var storedItems = new Dictionary<NetEntity, ItemStorageLocation>();
-
-        foreach (var (ent, location) in component.StoredItems)
-        {
-            storedItems[GetNetEntity(ent)] = location;
-        }
-
-        args.State = new StorageComponentState()
-        {
-            Grid = new List<Box2i>(component.Grid),
-            IsUiOpen = component.IsUiOpen,
-            MaxItemSize = component.MaxItemSize,
-            StoredItems = storedItems
-        };
-    }
-
-    private void OnStorageHandleState(EntityUid uid, StorageComponent component, ref ComponentHandleState args)
-    {
-        if (args.Current is not StorageComponentState state)
-            return;
-
-        component.Grid.Clear();
-        component.Grid.AddRange(state.Grid);
-        component.IsUiOpen = state.IsUiOpen;
-        component.MaxItemSize = state.MaxItemSize;
-
-        component.StoredItems.Clear();
-
-        foreach (var (nent, location) in state.StoredItems)
-        {
-            var ent = EnsureEntity<StorageComponent>(nent, uid);
-            component.StoredItems[ent] = location;
-        }
-    }
-
-    public override void Shutdown()
-    {
-        _prototype.PrototypesReloaded -= OnPrototypesReloaded;
-    }
-
-    private void OnPrototypesReloaded(PrototypesReloadedEventArgs args)
-    {
-        if (args.ByType.ContainsKey(typeof(ItemSizePrototype))
-            || (args.Removed?.ContainsKey(typeof(ItemSizePrototype)) ?? false))
-        {
-            UpdatePrototypeCache();
-        }
-    }
-
-    private void UpdatePrototypeCache()
-    {
-        _defaultStorageMaxItemSize = _prototype.Index<ItemSizePrototype>(DefaultStorageMaxItemSize);
-        _sortedSizes.Clear();
-        _sortedSizes.AddRange(_prototype.EnumeratePrototypes<ItemSizePrototype>());
-        _sortedSizes.Sort();
-
-        var nextSmallest = new KeyValuePair<string, ItemSizePrototype>[_sortedSizes.Count];
-        for (var i = 0; i < _sortedSizes.Count; i++)
-        {
-            var k = _sortedSizes[i].ID;
-            var v = _sortedSizes[Math.Max(i - 1, 0)];
-            nextSmallest[i] = new(k, v);
-        }
-
-        _nextSmallest = nextSmallest.ToFrozenDictionary();
+        SubscribeLocalEvent<StorageComponent, StorageInteractWithItemEvent>(OnInteractWithItem);
     }
 
     private void OnComponentInit(EntityUid uid, StorageComponent storageComp, ComponentInit args)
@@ -215,7 +132,7 @@ public abstract class SharedStorageSystem : EntitySystem
         PlayerInsertHeldEntity(uid, args.User, storageComp);
         // Always handle it, even if insertion fails.
         // We don't want to trigger any AfterInteract logic here.
-        // Example issue would be placing wires if item doesn't fit in backpack.
+        // Example bug: placing wires if item doesn't fit in backpack.
         args.Handled = true;
     }
 
@@ -224,11 +141,10 @@ public abstract class SharedStorageSystem : EntitySystem
     /// </summary>
     private void OnActivate(EntityUid uid, StorageComponent storageComp, ActivateInWorldEvent args)
     {
-        if (args.Handled || TryComp<LockComponent>(uid, out var lockComponent) && lockComponent.Locked)
+        if (args.Handled || _combatMode.IsInCombatMode(args.User) || TryComp(uid, out LockComponent? lockComponent) && lockComponent.Locked)
             return;
 
         OpenStorageUI(uid, args.User, storageComp);
-        args.Handled = true;
     }
 
     /// <summary>
@@ -236,11 +152,11 @@ public abstract class SharedStorageSystem : EntitySystem
     /// </summary>
     private void OnImplantActivate(EntityUid uid, StorageComponent storageComp, OpenStorageImplantEvent args)
     {
-        if (args.Handled)
+        // TODO: Make this an action or something.
+        if (args.Handled || !_xformQuery.TryGetComponent(uid, out var xform))
             return;
 
-        OpenStorageUI(uid, args.Performer, storageComp);
-        args.Handled = true;
+        OpenStorageUI(uid, xform.ParentUid, storageComp);
     }
 
     /// <summary>
@@ -308,8 +224,8 @@ public abstract class SharedStorageSystem : EntitySystem
 
                 var position = EntityCoordinates.FromMap(
                     parent.IsValid() ? parent : uid,
-                    TransformSystem.GetMapCoordinates(transformEnt),
-                    TransformSystem
+                    transformEnt.MapPosition,
+                    _transform
                 );
 
                 args.Handled = true;
@@ -354,8 +270,8 @@ public abstract class SharedStorageSystem : EntitySystem
 
             var position = EntityCoordinates.FromMap(
                 xform.ParentUid.IsValid() ? xform.ParentUid : uid,
-                new MapCoordinates(TransformSystem.GetWorldPosition(targetXform), targetXform.MapID),
-                TransformSystem
+                new MapCoordinates(_transform.GetWorldPosition(targetXform), targetXform.MapID),
+                _transform
             );
 
             var angle = targetXform.LocalRotation;
@@ -368,7 +284,7 @@ public abstract class SharedStorageSystem : EntitySystem
             }
         }
 
-        // If we picked up at least one thing, play a sound and do a cool animation!
+        // If we picked up atleast one thing, play a sound and do a cool animation!
         if (successfullyInserted.Count > 0)
         {
             Audio.PlayPvs(component.StorageInsertSound, uid);
@@ -384,7 +300,7 @@ public abstract class SharedStorageSystem : EntitySystem
 
     private void OnDestroy(EntityUid uid, StorageComponent storageComp, DestructionEventArgs args)
     {
-        var coordinates = TransformSystem.GetMoverCoordinates(uid);
+        var coordinates = _transform.GetMoverCoordinates(uid);
 
         // Being destroyed so need to recalculate.
         _containerSystem.EmptyContainer(storageComp.Container, destination: coordinates);
@@ -395,28 +311,20 @@ public abstract class SharedStorageSystem : EntitySystem
     ///     item in the user's hand if it is currently empty, or interact with the item using the user's currently
     ///     held item.
     /// </summary>
-    private void OnInteractWithItem(StorageInteractWithItemEvent msg, EntitySessionEventArgs args)
+    private void OnInteractWithItem(EntityUid uid, StorageComponent storageComp, StorageInteractWithItemEvent args)
     {
-        if (args.SenderSession.AttachedEntity is not { } player)
+        if (args.Session.AttachedEntity is not { } player)
             return;
 
-        var uid = GetEntity(msg.StorageUid);
-        var entity = GetEntity(msg.InteractedItemUid);
-
-        if (!TryComp<StorageComponent>(uid, out var storageComp))
-            return;
-
-        if (!_ui.TryGetUi(uid, StorageComponent.StorageUiKey.Key, out var bui) ||
-            !bui.SubscribedSessions.Contains(args.SenderSession))
-            return;
+        var entity = GetEntity(args.InteractedItemUID);
 
         if (!Exists(entity))
         {
-            Log.Error($"Player {args.SenderSession} interacted with non-existent item {msg.InteractedItemUid} stored in {ToPrettyString(uid)}");
+            Log.Error($"Player {args.Session} interacted with non-existent item {args.InteractedItemUID} stored in {ToPrettyString(uid)}");
             return;
         }
 
-        if (!ActionBlocker.CanInteract(player, entity) || !storageComp.Container.Contains(entity))
+        if (!_actionBlockerSystem.CanInteract(player, entity) || !storageComp.Container.Contains(entity))
             return;
 
         // Does the player have hands?
@@ -438,86 +346,12 @@ public abstract class SharedStorageSystem : EntitySystem
         _interactionSystem.InteractUsing(player, hands.ActiveHandEntity.Value, entity, Transform(entity).Coordinates, checkCanInteract: false);
     }
 
-    private void OnSetItemLocation(StorageSetItemLocationEvent msg, EntitySessionEventArgs args)
+    private void OnInsertItemMessage(EntityUid uid, StorageComponent storageComp, StorageComponent.StorageInsertItemMessage args)
     {
-        if (args.SenderSession.AttachedEntity is not { } player)
+        if (args.Session.AttachedEntity == null)
             return;
 
-        var storageEnt = GetEntity(msg.StorageEnt);
-        var itemEnt = GetEntity(msg.ItemEnt);
-
-        if (!TryComp<StorageComponent>(storageEnt, out var storageComp))
-            return;
-
-        if (!_ui.TryGetUi(storageEnt, StorageComponent.StorageUiKey.Key, out var bui) ||
-            !bui.SubscribedSessions.Contains(args.SenderSession))
-            return;
-
-        if (!Exists(itemEnt))
-        {
-            Log.Error($"Player {args.SenderSession} set location of non-existent item {msg.ItemEnt} stored in {ToPrettyString(storageEnt)}");
-            return;
-        }
-
-        if (!ActionBlocker.CanInteract(player, itemEnt))
-            return;
-
-        TrySetItemStorageLocation((itemEnt, null), (storageEnt, storageComp), msg.Location);
-    }
-
-    private void OnRemoveItem(StorageRemoveItemEvent msg, EntitySessionEventArgs args)
-    {
-        if (args.SenderSession.AttachedEntity is not { } player)
-            return;
-
-        var storageEnt = GetEntity(msg.StorageEnt);
-        var itemEnt = GetEntity(msg.ItemEnt);
-
-        if (!TryComp<StorageComponent>(storageEnt, out var storageComp))
-            return;
-
-        if (!_ui.TryGetUi(storageEnt, StorageComponent.StorageUiKey.Key, out var bui) ||
-            !bui.SubscribedSessions.Contains(args.SenderSession))
-            return;
-
-        if (!Exists(itemEnt))
-        {
-            Log.Error($"Player {args.SenderSession} set location of non-existent item {msg.ItemEnt} stored in {ToPrettyString(storageEnt)}");
-            return;
-        }
-
-        if (!ActionBlocker.CanInteract(player, itemEnt))
-            return;
-
-        TransformSystem.DropNextTo(itemEnt, player);
-        Audio.PlayPredicted(storageComp.StorageRemoveSound, storageEnt, player);
-    }
-
-    private void OnInsertItemIntoLocation(StorageInsertItemIntoLocationEvent msg, EntitySessionEventArgs args)
-    {
-        if (args.SenderSession.AttachedEntity is not { } player)
-            return;
-
-        var storageEnt = GetEntity(msg.StorageEnt);
-        var itemEnt = GetEntity(msg.ItemEnt);
-
-        if (!TryComp<StorageComponent>(storageEnt, out var storageComp))
-            return;
-
-        if (!_ui.TryGetUi(storageEnt, StorageComponent.StorageUiKey.Key, out var bui) ||
-            !bui.SubscribedSessions.Contains(args.SenderSession))
-            return;
-
-        if (!Exists(itemEnt))
-        {
-            Log.Error($"Player {args.SenderSession} set location of non-existent item {msg.ItemEnt} stored in {ToPrettyString(storageEnt)}");
-            return;
-        }
-
-        if (!ActionBlocker.CanInteract(player, itemEnt) || !_sharedHandsSystem.IsHolding(player, itemEnt, out _))
-            return;
-
-        InsertAt((storageEnt, storageComp), (itemEnt, null), msg.Location, out _, player, stackAutomatically: false);
+        PlayerInsertHeldEntity(uid, args.Session.AttachedEntity.Value, storageComp);
     }
 
     private void OnBoundUIOpen(EntityUid uid, StorageComponent storageComp, BoundUIOpenedEvent args)
@@ -529,54 +363,22 @@ public abstract class SharedStorageSystem : EntitySystem
         }
     }
 
-    private void OnEntInserted(Entity<StorageComponent> entity, ref EntInsertedIntoContainerMessage args)
+    private void OnContainerModified(EntityUid uid, StorageComponent component, ContainerModifiedMessage args)
     {
         // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
-        if (entity.Comp.Container == null)
+        if (component.Container == null)
             return;
 
         if (args.Container.ID != StorageComponent.ContainerId)
             return;
 
-        if (!entity.Comp.StoredItems.ContainsKey(args.Entity))
-        {
-            if (!TryGetAvailableGridSpace((entity.Owner, entity.Comp), (args.Entity, null), out var location))
-            {
-                _containerSystem.Remove(args.Entity, args.Container, force: true);
-                return;
-            }
-
-            entity.Comp.StoredItems[args.Entity] = location.Value;
-            Dirty(entity, entity.Comp);
-        }
-
-        UpdateAppearance((entity, entity.Comp, null));
-        UpdateUI((entity, entity.Comp));
-    }
-
-    private void OnEntRemoved(Entity<StorageComponent> entity, ref EntRemovedFromContainerMessage args)
-    {
-        // ReSharper disable once ConditionIsAlwaysTrueOrFalseAccordingToNullableAPIContract
-        if (entity.Comp.Container == null)
-            return;
-
-        if (args.Container.ID != StorageComponent.ContainerId)
-            return;
-
-        entity.Comp.StoredItems.Remove(args.Entity);
-        Dirty(entity, entity.Comp);
-
-        UpdateAppearance((entity, entity.Comp, null));
-        UpdateUI((entity, entity.Comp));
+        UpdateAppearance((uid, component, null));
+        UpdateUI((uid, component));
     }
 
     private void OnInsertAttempt(EntityUid uid, StorageComponent component, ContainerIsInsertingAttemptEvent args)
     {
         if (args.Cancelled || args.Container.ID != StorageComponent.ContainerId)
-            return;
-
-        // don't run cyclical CanInsert() loops
-        if (CheckingCanInsert)
             return;
 
         if (!CanInsert(uid, args.EntityUid, out _, component, ignoreStacks: true))
@@ -594,8 +396,18 @@ public abstract class SharedStorageSystem : EntitySystem
         if (storage.Container == null)
             return; // component hasn't yet been initialized.
 
-        var capacity = storage.Grid.GetArea();
-        var used = GetCumulativeItemAreas((uid, storage));
+        int capacity;
+        int used;
+        if (storage.MaxSlots == null)
+        {
+            used = GetCumulativeItemSizes(uid, storage);
+            capacity = storage.MaxTotalWeight;
+        }
+        else
+        {
+            capacity = storage.MaxSlots.Value;
+            used = storage.Container.ContainedEntities.Count;
+        }
 
         _appearance.SetData(uid, StorageVisuals.StorageUsed, used, appearance);
         _appearance.SetData(uid, StorageVisuals.Capacity, capacity, appearance);
@@ -638,17 +450,8 @@ public abstract class SharedStorageSystem : EntitySystem
     /// <param name="reason">If returning false, the reason displayed to the player</param>
     /// <param name="storageComp"></param>
     /// <param name="item"></param>
-    /// <param name="ignoreStacks"></param>
-    /// <param name="ignoreLocation"></param>
     /// <returns>true if it can be inserted, false otherwise</returns>
-    public bool CanInsert(
-        EntityUid uid,
-        EntityUid insertEnt,
-        out string? reason,
-        StorageComponent? storageComp = null,
-        ItemComponent? item = null,
-        bool ignoreStacks = false,
-        bool ignoreLocation = false)
+    public bool CanInsert(EntityUid uid, EntityUid insertEnt, out string? reason, StorageComponent? storageComp = null, ItemComponent? item = null, bool ignoreStacks = false)
     {
         if (!Resolve(uid, ref storageComp) || !Resolve(insertEnt, ref item, false))
         {
@@ -682,80 +485,36 @@ public abstract class SharedStorageSystem : EntitySystem
             return true;
         }
 
-        var maxSize = GetMaxItemSize((uid, storageComp));
-        if (ItemSystem.GetSizePrototype(item.Size) > maxSize)
+        var maxSize = _item.GetSizePrototype(GetMaxItemSize((uid, storageComp)));
+        if (_item.GetSizePrototype(item.Size) > maxSize)
         {
             reason = "comp-storage-too-big";
             return false;
         }
 
         if (TryComp<StorageComponent>(insertEnt, out var insertStorage)
-            && GetMaxItemSize((insertEnt, insertStorage)) >= maxSize)
+            && _item.GetSizePrototype(GetMaxItemSize((insertEnt, insertStorage))) >= maxSize)
         {
             reason = "comp-storage-too-big";
             return false;
         }
 
-        if (!ignoreLocation && !storageComp.StoredItems.ContainsKey(insertEnt))
+        if (storageComp.MaxSlots != null)
         {
-            if (!TryGetAvailableGridSpace((uid, storageComp), (insertEnt, item), out _))
+            if (storageComp.Container.ContainedEntities.Count >= storageComp.MaxSlots)
             {
                 reason = "comp-storage-insufficient-capacity";
                 return false;
             }
         }
-
-        CheckingCanInsert = true;
-        if (!_containerSystem.CanInsert(insertEnt, storageComp.Container))
+        else if (_item.GetItemSizeWeight(item.Size) + GetCumulativeItemSizes(uid, storageComp) > storageComp.MaxTotalWeight)
         {
-            CheckingCanInsert = false;
-            reason = null;
+            reason = "comp-storage-insufficient-capacity";
             return false;
         }
-        CheckingCanInsert = false;
 
         reason = null;
         return true;
-    }
-
-    /// <summary>
-    ///     Inserts into the storage container at a given location
-    /// </summary>
-    /// <returns>true if the entity was inserted, false otherwise. This will also return true if a stack was partially
-    /// inserted.</returns>
-    public bool InsertAt(
-        Entity<StorageComponent?> uid,
-        Entity<ItemComponent?> insertEnt,
-        ItemStorageLocation location,
-        out EntityUid? stackedEntity,
-        EntityUid? user = null,
-        bool playSound = true,
-        bool stackAutomatically = true)
-    {
-        stackedEntity = null;
-        if (!Resolve(uid, ref uid.Comp))
-            return false;
-
-        if (!ItemFitsInGridLocation(insertEnt, uid, location))
-            return false;
-
-        uid.Comp.StoredItems[insertEnt] = location;
-        Dirty(uid, uid.Comp);
-
-        if (Insert(uid,
-                insertEnt,
-                out stackedEntity,
-                out _,
-                user: user,
-                storageComp: uid.Comp,
-                playSound: playSound,
-                stackAutomatically: stackAutomatically))
-        {
-            return true;
-        }
-
-        uid.Comp.StoredItems.Remove(insertEnt);
-        return false;
     }
 
     /// <summary>
@@ -769,10 +528,9 @@ public abstract class SharedStorageSystem : EntitySystem
         out EntityUid? stackedEntity,
         EntityUid? user = null,
         StorageComponent? storageComp = null,
-        bool playSound = true,
-        bool stackAutomatically = true)
+        bool playSound = true)
     {
-        return Insert(uid, insertEnt, out stackedEntity, out _, user: user, storageComp: storageComp, playSound: playSound, stackAutomatically: stackAutomatically);
+        return Insert(uid, insertEnt, out stackedEntity, out _, user: user, storageComp: storageComp, playSound: playSound);
     }
 
     /// <summary>
@@ -787,8 +545,7 @@ public abstract class SharedStorageSystem : EntitySystem
         out string? reason,
         EntityUid? user = null,
         StorageComponent? storageComp = null,
-        bool playSound = true,
-        bool stackAutomatically = true)
+        bool playSound = true)
     {
         stackedEntity = null;
         reason = null;
@@ -805,7 +562,7 @@ public abstract class SharedStorageSystem : EntitySystem
          * For now we just treat items as always being the same size regardless of stack count.
          */
 
-        if (!stackAutomatically || !_stackQuery.TryGetComponent(insertEnt, out var insertStack))
+        if (!_stackQuery.TryGetComponent(insertEnt, out var insertStack))
         {
             if (!_containerSystem.Insert(insertEnt, storageComp.Container))
                 return false;
@@ -868,7 +625,7 @@ public abstract class SharedStorageSystem : EntitySystem
 
         if (!_sharedHandsSystem.CanDrop(player, toInsert.Value, hands))
         {
-            _popupSystem.PopupClient(Loc.GetString("comp-storage-cant-drop", ("entity", toInsert.Value)), uid, player);
+            _popupSystem.PopupClient(Loc.GetString("comp-storage-cant-drop"), uid, player);
             return false;
         }
 
@@ -897,167 +654,6 @@ public abstract class SharedStorageSystem : EntitySystem
     }
 
     /// <summary>
-    /// Attempts to set the location of an item already inside of a storage container.
-    /// </summary>
-    public bool TrySetItemStorageLocation(Entity<ItemComponent?> itemEnt, Entity<StorageComponent?> storageEnt, ItemStorageLocation location)
-    {
-        if (!Resolve(itemEnt, ref itemEnt.Comp) || !Resolve(storageEnt, ref storageEnt.Comp))
-            return false;
-
-        if (!storageEnt.Comp.Container.ContainedEntities.Contains(itemEnt))
-            return false;
-
-        if (!ItemFitsInGridLocation(itemEnt, storageEnt, location.Position, location.Rotation))
-            return false;
-
-        storageEnt.Comp.StoredItems[itemEnt] = location;
-        Dirty(storageEnt, storageEnt.Comp);
-        return true;
-    }
-
-    /// <summary>
-    /// Tries to find the first available spot on a storage grid.
-    /// starts at the top-left and goes right and down.
-    /// </summary>
-    public bool TryGetAvailableGridSpace(
-        Entity<StorageComponent?> storageEnt,
-        Entity<ItemComponent?> itemEnt,
-        [NotNullWhen(true)] out ItemStorageLocation? storageLocation)
-    {
-        storageLocation = null;
-
-        if (!Resolve(storageEnt, ref storageEnt.Comp) || !Resolve(itemEnt, ref itemEnt.Comp))
-            return false;
-
-        var storageBounding = storageEnt.Comp.Grid.GetBoundingBox();
-
-        Angle startAngle;
-        if (storageEnt.Comp.DefaultStorageOrientation == null)
-        {
-            startAngle = Angle.FromDegrees(-itemEnt.Comp.StoredRotation);
-        }
-        else
-        {
-            if (storageBounding.Width < storageBounding.Height)
-            {
-                startAngle = storageEnt.Comp.DefaultStorageOrientation == StorageDefaultOrientation.Horizontal
-                    ? Angle.Zero
-                    : Angle.FromDegrees(90);
-            }
-            else
-            {
-                startAngle = storageEnt.Comp.DefaultStorageOrientation == StorageDefaultOrientation.Vertical
-                    ? Angle.Zero
-                    : Angle.FromDegrees(90);
-            }
-        }
-
-        for (var y = storageBounding.Bottom; y <= storageBounding.Top; y++)
-        {
-            for (var x = storageBounding.Left; x <= storageBounding.Right; x++)
-            {
-                for (var angle = startAngle; angle <= Angle.FromDegrees(360 - startAngle); angle += Math.PI / 2f)
-                {
-                    var location = new ItemStorageLocation(angle, (x, y));
-                    if (ItemFitsInGridLocation(itemEnt, storageEnt, location))
-                    {
-                        storageLocation = location;
-                        return true;
-                    }
-                }
-            }
-        }
-
-        return false;
-    }
-
-    /// <summary>
-    /// Checks if an item fits into a specific spot on a storage grid.
-    /// </summary>
-    public bool ItemFitsInGridLocation(
-        Entity<ItemComponent?> itemEnt,
-        Entity<StorageComponent?> storageEnt,
-        ItemStorageLocation location)
-    {
-        return ItemFitsInGridLocation(itemEnt, storageEnt, location.Position, location.Rotation);
-    }
-
-    /// <summary>
-    /// Checks if an item fits into a specific spot on a storage grid.
-    /// </summary>
-    public bool ItemFitsInGridLocation(
-        Entity<ItemComponent?> itemEnt,
-        Entity<StorageComponent?> storageEnt,
-        Vector2i position,
-        Angle rotation)
-    {
-        if (!Resolve(itemEnt, ref itemEnt.Comp) || !Resolve(storageEnt, ref storageEnt.Comp))
-            return false;
-
-        var gridBounds = storageEnt.Comp.Grid.GetBoundingBox();
-        if (!gridBounds.Contains(position))
-            return false;
-
-        var itemShape = ItemSystem.GetAdjustedItemShape(itemEnt, rotation, position);
-
-        foreach (var box in itemShape)
-        {
-            for (var offsetY = box.Bottom; offsetY <= box.Top; offsetY++)
-            {
-                for (var offsetX = box.Left; offsetX <= box.Right; offsetX++)
-                {
-                    var pos = (offsetX, offsetY);
-
-                    if (!IsGridSpaceEmpty(itemEnt, storageEnt, pos))
-                        return false;
-                }
-            }
-        }
-
-        return true;
-    }
-
-    /// <summary>
-    /// Checks if a space on a grid is valid and not occupied by any other pieces.
-    /// </summary>
-    public bool IsGridSpaceEmpty(Entity<ItemComponent?> itemEnt, Entity<StorageComponent?> storageEnt, Vector2i location)
-    {
-        if (!Resolve(storageEnt, ref storageEnt.Comp))
-            return false;
-
-        var validGrid = false;
-        foreach (var grid in storageEnt.Comp.Grid)
-        {
-            if (grid.Contains(location))
-            {
-                validGrid = true;
-                break;
-            }
-        }
-
-        if (!validGrid)
-            return false;
-
-        foreach (var (ent, storedItem) in storageEnt.Comp.StoredItems)
-        {
-            if (ent == itemEnt.Owner)
-                continue;
-
-            if (!_itemQuery.TryGetComponent(ent, out var itemComp))
-                continue;
-
-            var adjustedShape = ItemSystem.GetAdjustedItemShape((ent, itemComp), storedItem);
-            foreach (var box in adjustedShape)
-            {
-                if (box.Contains(location))
-                    return false;
-            }
-        }
-
-        return true;
-    }
-
-    /// <summary>
     /// Returns true if there is enough space to theoretically fit another item.
     /// </summary>
     public bool HasSpace(Entity<StorageComponent?> uid)
@@ -1065,7 +661,13 @@ public abstract class SharedStorageSystem : EntitySystem
         if (!Resolve(uid, ref uid.Comp))
             return false;
 
-        return GetCumulativeItemAreas(uid) < uid.Comp.Grid.GetArea() || HasSpaceInStacks(uid);
+        //todo maybe this shouldn't be authoritative over weight? idk.
+        if (uid.Comp.MaxSlots != null)
+        {
+            return uid.Comp.Container.ContainedEntities.Count < uid.Comp.MaxSlots || HasSpaceInStacks(uid);
+        }
+
+        return GetCumulativeItemSizes(uid, uid.Comp) < uid.Comp.MaxTotalWeight || HasSpaceInStacks(uid);
     }
 
     private bool HasSpaceInStacks(Entity<StorageComponent?> uid, string? stackType = null)
@@ -1093,37 +695,41 @@ public abstract class SharedStorageSystem : EntitySystem
     /// <summary>
     /// Returns the sum of all the ItemSizes of the items inside of a storage.
     /// </summary>
-    public int GetCumulativeItemAreas(Entity<StorageComponent?> entity)
+    public int GetCumulativeItemSizes(EntityUid uid, StorageComponent? component = null)
     {
-        if (!Resolve(entity, ref entity.Comp))
+        if (!Resolve(uid, ref component))
             return 0;
 
         var sum = 0;
-        foreach (var item in entity.Comp.Container.ContainedEntities)
+        foreach (var item in component.Container.ContainedEntities)
         {
             if (!_itemQuery.TryGetComponent(item, out var itemComp))
                 continue;
-            sum += ItemSystem.GetItemShape((item, itemComp)).GetArea();
+            sum += _item.GetItemSizeWeight(itemComp.Size);
         }
 
         return sum;
     }
 
-    public ItemSizePrototype GetMaxItemSize(Entity<StorageComponent?> uid)
+    public ProtoId<ItemSizePrototype> GetMaxItemSize(Entity<StorageComponent?> uid)
     {
         if (!Resolve(uid, ref uid.Comp))
-            return _defaultStorageMaxItemSize;
+            return DefaultStorageMaxItemSize;
 
         // If we specify a max item size, use that
         if (uid.Comp.MaxItemSize != null)
-            return _prototype.Index(uid.Comp.MaxItemSize.Value);
+            return uid.Comp.MaxItemSize.Value;
 
         if (!_itemQuery.TryGetComponent(uid, out var item))
-            return _defaultStorageMaxItemSize;
+            return DefaultStorageMaxItemSize;
+        var size = _item.GetSizePrototype(item.Size);
 
         // if there is no max item size specified, the value used
-        // is one below the item size of the storage entity.
-        return _nextSmallest[item.Size];
+        // is one below the item size of the storage entity, clamped at ItemSize.Tiny
+        var sizes = _prototype.EnumeratePrototypes<ItemSizePrototype>().ToList();
+        sizes.Sort();
+        var currentSizeIndex = sizes.IndexOf(size);
+        return sizes[Math.Max(currentSizeIndex - 1, 0)].ID;
     }
 
     private void OnStackCountChanged(EntityUid uid, MetaDataComponent component, StackCountChangedEvent args)
@@ -1136,21 +742,20 @@ public abstract class SharedStorageSystem : EntitySystem
         }
     }
 
+    public FixedPoint2 GetStorageFillPercentage(Entity<StorageComponent?> uid)
+    {
+        if (!Resolve(uid, ref uid.Comp))
+            return 0;
+
+        var slotPercent = FixedPoint2.New(uid.Comp.Container.ContainedEntities.Count) / uid.Comp.MaxSlots ?? FixedPoint2.Zero;
+        var weightPercent = FixedPoint2.New(GetCumulativeItemSizes(uid)) / uid.Comp.MaxTotalWeight;
+
+        return FixedPoint2.Max(slotPercent, weightPercent);
+    }
+
     /// <summary>
     /// Plays a clientside pickup animation for the specified uid.
     /// </summary>
     public abstract void PlayPickupAnimation(EntityUid uid, EntityCoordinates initialCoordinates,
         EntityCoordinates finalCoordinates, Angle initialRotation, EntityUid? user = null);
-
-    [Serializable, NetSerializable]
-    protected sealed class StorageComponentState : ComponentState
-    {
-        public bool IsUiOpen;
-
-        public Dictionary<NetEntity, ItemStorageLocation> StoredItems = new();
-
-        public List<Box2i> Grid = new();
-
-        public ProtoId<ItemSizePrototype>? MaxItemSize;
-    }
 }

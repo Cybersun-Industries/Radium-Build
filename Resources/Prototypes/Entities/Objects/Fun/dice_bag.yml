@@ -19,8 +19,7 @@
   - type: Item
     size: Small
   - type: Storage
-    grid:
-    - 0,0,3,1
+    maxTotalWeight: 8
     whitelist:
       tags:
       - Dice
@@ -34,5 +33,4 @@
     sprite: Objects/Fun/dice.rsi
     state: magicdicebag
   - type: Storage
-    grid:
-    - 0,0,4,3
+    maxTotalWeight: 20

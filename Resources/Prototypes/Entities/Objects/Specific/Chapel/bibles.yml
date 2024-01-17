@@ -37,8 +37,7 @@
     slots:
     - Belt
   - type: Storage
-    grid:
-    - 0,0,0,1
+    maxSlots: 1
   - type: UserInterface
     interfaces:
     - key: enum.StorageUiKey.Key
