@@ -10,8 +10,7 @@
   - type: Clothing
     sprite: Backmen/Clothing/Belt/rapier.rsi
   - type: Storage
-    grid:
-    - 0,0,2,2
+    maxSlots: 1
     whitelist:
       tags:
         - Rapier
@@ -35,8 +34,7 @@
     - type: Clothing
       sprite: Backmen/Clothing/Belt/rapier.rsi
     - type: Storage
-      grid:
-      - 0,0,2,2
+      maxSlots: 1
       whitelist:
         tags:
           - Rapier

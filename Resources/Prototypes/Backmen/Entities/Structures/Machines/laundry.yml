@@ -71,8 +71,7 @@
     - type: Climbable
       delay: 1.6
     - type: Storage
-      grid:
-      -  0,0,7,3
+      maxTotalWeight: 240
       storageOpenSound:
         path: /Audio/Nyanotrasen/Machines/washer_open.ogg
       storageCloseSound:
