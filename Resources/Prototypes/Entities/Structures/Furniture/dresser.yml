@@ -25,8 +25,8 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: Storage
-    maxSlots: 6
-    maxItemSize: Normal
+    maxSlots: 12
+    maxItemSize: Large
   - type: ContainerContainer
     containers:
       storagebase: !type:Container

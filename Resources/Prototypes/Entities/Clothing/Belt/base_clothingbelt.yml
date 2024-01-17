@@ -22,8 +22,8 @@
   id: ClothingBeltStorageBase
   components:
   - type: Storage
-    maxSlots: 7
-    maxItemSize: Normal
+    maxSlots: 12
+    maxItemSize: Large
   - type: Item
     size: Ginormous
   - type: ContainerContainer
