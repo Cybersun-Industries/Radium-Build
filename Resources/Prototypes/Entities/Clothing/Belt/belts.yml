@@ -408,6 +408,7 @@
   - type: Clothing
     sprite: Clothing/Belt/sheath.rsi
   - type: Storage
+    capacity: 14
     whitelist:
       tags:
         - CaptainSabre
@@ -432,7 +433,7 @@
   - type: Clothing
     sprite: Clothing/Belt/bandolier.rsi
   - type: Item
-    size: Huge
+    maxItemSize: Normal
   - type: BallisticAmmoProvider
     whitelist:
       tags:
