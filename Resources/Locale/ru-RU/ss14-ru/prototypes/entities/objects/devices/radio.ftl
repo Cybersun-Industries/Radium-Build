@@ -1,2 +1,2 @@
-ent-HandheldRadio = портативная рация
+ent-RadioHandheld = портативная рация
     .desc = Удобная портативная рация.

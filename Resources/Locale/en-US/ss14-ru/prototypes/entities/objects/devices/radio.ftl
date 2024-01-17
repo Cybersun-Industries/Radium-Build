@@ -1,2 +1,2 @@
-ent-HandheldRadio = handheld radio
+ent-RadioHandheld = handheld radio
     .desc = A handy handheld radio.
