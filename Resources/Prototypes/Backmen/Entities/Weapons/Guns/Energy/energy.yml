@@ -17,7 +17,7 @@
   - type: Gun
     projectileSpeed: 75
   - type: Item
-    size: SmallNormal
+    size: Small
   - type: ProjectileBatteryAmmoProvider
     proto: X01Attack
     fireCost: 100

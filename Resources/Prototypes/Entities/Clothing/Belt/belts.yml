@@ -30,6 +30,7 @@
         - Multitool
         - AppraisalTool
         - JawsOfLife
+        - GPS
       components:
         - SprayPainter
         - NetworkConfigurator
@@ -88,6 +89,8 @@
   - type: Clothing
     sprite: Clothing/Belt/ce.rsi
   - type: Storage
+    grid:
+    - 0,0,9,1
     # TODO: Fill this out more.
     whitelist:
       tags:
@@ -217,6 +220,9 @@
         - TrashBag
         - WetFloorSign
         - HolosignProjector
+        - Plunger
+        - LightReplacer
+        - JanicartKeys
       components:
         - LightReplacer
   - type: ItemMapper
@@ -373,6 +379,7 @@
         - Radio
         - Sidearm
         - MagazinePistol
+        - MagazineMagnum
       components:
         - Stunbaton
         - FlashOnTrigger
@@ -407,11 +414,17 @@
     state: sheath
   - type: Clothing
     sprite: Clothing/Belt/sheath.rsi
-  - type: Storage
-    capacity: 14
-    whitelist:
-      tags:
-        - CaptainSabre
+  - type: Item
+    size: Ginormous
+  - type: ItemSlots
+    slots:
+      item:
+        name: Sabre
+        insertVerbText: sheath-insert-verb
+        ejectVerbText: sheath-eject-verb
+        whitelist:
+          tags:
+          - CaptainSabre
   - type: ItemMapper
     mapLayers:
       sheath-sabre:
@@ -433,7 +446,7 @@
   - type: Clothing
     sprite: Clothing/Belt/bandolier.rsi
   - type: Item
-    maxItemSize: Normal
+    size: Huge
   - type: BallisticAmmoProvider
     whitelist:
       tags:
@@ -466,7 +479,8 @@
   - type: Clothing
     sprite: Clothing/Belt/holster.rsi
   - type: Storage
-    maxSlots: 3
+    grid:
+    - 0,0,3,1
 
 - type: entity
   parent: ClothingBeltStorageBase
@@ -481,6 +495,9 @@
   - type: Item
     size: Ginormous
   - type: Storage
+    maxItemSize: Huge
+    grid:
+    - 0,0,3,3
     whitelist:
       components:
         - Gun
@@ -545,6 +562,8 @@
     sprite: Clothing/Belt/militarywebbingmed.rsi
   - type: Item
     size: Huge
+  - type: ExplosionResistance
+    damageCoefficient: 0.1
 
 - type: entity
   parent: ClothingBeltBase
@@ -573,7 +592,8 @@
   - type: Clothing
     sprite: Clothing/Belt/wand.rsi
   - type: Storage
-    maxSlots: 8
+    grid:
+    - 0,0,15,1
     whitelist:
       tags:
       - WizardWand
