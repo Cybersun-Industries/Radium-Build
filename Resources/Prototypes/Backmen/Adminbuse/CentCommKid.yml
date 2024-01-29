@@ -452,7 +452,7 @@
 
 - type: entity
   name: тактический нож
-  parent: BaseItem
+  parent: CombatKnife
   id: CombatKnifeSpetsnaz
   description: Нож для оперативников специальных операций, острый!
   components:
@@ -479,12 +479,7 @@
         Slash: 20
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
-  - type: Tool
-    qualities:
-      - Prying
-    useSound:
-      path: /Audio/Items/crowbar.ogg
-  - type: TilePrying
+  - type: Prying
 
 - type: entity
   parent: ClothingHandsBase
@@ -774,6 +769,13 @@
   - Оперативник
 
 - type: dataset
+  id: NamesOFCs
+  values:
+  - Полковник
+  - Подполковник
+  - Майор
+
+- type: dataset
   id: NamesSGTs
   values:
   - Старший Лейтенант
@@ -859,6 +861,7 @@
     groups:
     - AllAccess
     - MTFLeader
+    - CentCom
 
 - type: statusIcon
   parent: JobIcon
@@ -887,6 +890,7 @@
     groups:
     - AllAccess
     - MTFLeader
+    - CentCom
 
 - type: entity
   parent: ClothingOuterHardsuitERTEngineer
@@ -910,6 +914,44 @@
         Stun: 0.2
   - type: ExplosionResistance
     damageCoefficient: 0.8
+
+- type: entity
+  parent: ClothingOuterHardsuitSyndieCommander
+  id: ClothingOuterHardsuitERTOperativeAlpha1
+  name: ERT leader's hardsuit
+  description: A protective hardsuit worn by the leader of an emergency response team.
+  components:
+  - type: Sprite
+    sprite: Backmen/Clothing/OuterClothing/Hardsuits/ERTSuits/ertSpecialOperative.rsi
+  - type: Clothing
+    sprite: Backmen/Clothing/OuterClothing/Hardsuits/ERTSuits/ertSpecialOperative.rsi
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHelmetHardsuitERTOperativeAlpha1
+  - type: ExplosionResistance
+    damageCoefficient: 0.3
+
+- type: entity
+  parent: ClothingHeadHardsuitBase
+  id: ClothingHeadHelmetHardsuitERTOperativeAlpha1
+  name: ERT hardsuit helmet
+  description: A special hardsuit helmet worn by members of an emergency response team.
+  components:
+  - type: BreathMask
+  - type: Sprite
+    sprite: Backmen/Clothing/Head/Hardsuits/ERThelmets/ertSpecialOperative.rsi
+  - type: Clothing
+    sprite: Backmen/Clothing/Head/Hardsuits/ERThelmets/ertSpecialOperative.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.08
+    lowPressureMultiplier: 1000
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.9
+        Slash: 0.9
+        Piercing: 0.9
+        Heat: 0.9
+  - type: PNV
 
 #------------------------------------------------------
 
@@ -1086,6 +1128,7 @@
     groups:
     - AllAccess
     - MTFLeader
+    - CentCom
 
 - type: statusIcon
   parent: JobIcon
@@ -1123,6 +1166,10 @@
     groups:
     - AllAccess
     - MTFLeader
+    tags:
+    - CCCargo
+    - CCSecurity
+    - CentralCommand
 
 - type: entity
   parent: CentcomIDCardDeathsquad
@@ -1143,6 +1190,10 @@
     groups:
     - AllAccess
     - MTFSrg
+    tags:
+    - CCCargo
+    - CCSecurity
+    - CentralCommand
 
 - type: entity
   parent: CentcomIDCard
@@ -1162,6 +1213,10 @@
     groups:
     - AllAccess
     - MTFPvtSecurity
+    tags:
+    - CCCargo
+    - CCSecurity
+    - CentralCommand
 
 - type: statusIcon
   parent: JobIcon
@@ -1186,6 +1241,10 @@
     groups:
     - AllAccess
     - MTFCplMedic
+    tags:
+    - CCCargo
+    - CCSecurity
+    - CentralCommand
 
 - type: statusIcon
   parent: JobIcon
@@ -1210,6 +1269,10 @@
     groups:
     - AllAccess
     - MTFCplEngineer
+    tags:
+    - CCCargo
+    - CCSecurity
+    - CentralCommand
 
 - type: statusIcon
   parent: JobIcon
@@ -1234,6 +1297,10 @@
     groups:
     - AllAccess
     - MTFPvtJunitor
+    tags:
+    - CCCargo
+    - CCSecurity
+    - CentralCommand
 
 - type: statusIcon
   parent: JobIcon
@@ -1262,6 +1329,10 @@
     groups:
     - AllAccess
     - MTFLeader
+    tags:
+    - CCCargo
+    - CCSecurity
+    - CentralCommand
 
 - type: entity
   parent: BaseStorageItem
