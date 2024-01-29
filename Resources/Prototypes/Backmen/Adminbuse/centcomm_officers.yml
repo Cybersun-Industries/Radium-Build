@@ -40,6 +40,7 @@
     - type: RandomHumanoidAppearance
     - type: SpecForce
       actionBssActionName: ActionCentcomFtlAction
+    - type: InitialInfectedExempt
 #-----------------------------------------
 
 - type: entity
@@ -72,6 +73,7 @@
     - type: RandomHumanoidAppearance
     - type: SpecForce
       actionBssActionName: ActionCentcomFtlAction
+    - type: InitialInfectedExempt
 
 #-----------------------------------------
 
@@ -140,3 +142,4 @@
     - type: RandomHumanoidAppearance
     - type: SpecForce
       actionBssActionName: ActionCentcomFtlAction
+    - type: InitialInfectedExempt
