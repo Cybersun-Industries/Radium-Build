@@ -2,11 +2,11 @@
 
 Space Station 14 это ремейк SS13, который работает на собственном движке [Robust Toolbox](https://github.com/space-wizards/RobustToolbox), написанном на C#.
 
-Это репозиторий для сервер backmen, форк от русскоязычного сервера по Space Station 14 (corvax).
+Это репозиторий сервера Radium, форк сервера Space Station 14.
 
 ## Ссылки
 
-[Наш Discord](https://backmen.ru/discord) | [Наша Вики](https://wiki.backmen.ru) | [Steam](https://store.steampowered.com/app/1255460/Space_Station_14/) | [Клиент без Steam](https://spacestation14.io/about/nightlies/) | [Основной репозиторий](https://github.com/space-wizards/space-station-14) | [Репозиторий corvax](https://github.com/space-syndicate/space-station-14)
+[Наш Discord](https://discord.gg/H6bjbKPXfM) | [Вики](https://wiki.backmen.ru) | [Steam](https://store.steampowered.com/app/1255460/Space_Station_14/) | [Клиент без Steam](https://spacestation14.io/about/nightlies/) | [Основной репозиторий](https://github.com/space-wizards/space-station-14) | [Репозиторий corvax](https://github.com/space-syndicate/space-station-14)
 
 ## Документация
 
@@ -22,7 +22,7 @@ Space Station 14 это ремейк SS13, который работает на 
 
 ## Лицензия
 
-Весь код репозитория лицензирован под [MIT](https://github.com/Rxup/space-station-14/blob/master/LICENSE.TXT).
+Весь код репозитория лицензирован под [MIT](https://github.com/Cybersun-Industries/ServerBuild/blob/master/LICENSE.TXT).
 
 Большинство ассетов лицензированы под [CC-BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/), если не указано иное. Ассеты имеют свою лицензию и авторские права в файле метаданных. [Пример](https://github.com/space-syndicate/space-station-14/blob/master/Resources/Textures/Objects/Tools/crowbar.rsi/meta.json).
 
