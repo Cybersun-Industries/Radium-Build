@@ -5,7 +5,7 @@
   playTimeTracker: JobMime
   requirements:
   - !type:DepartmentTimeRequirement
-    department: Service
+    department: Civilian
       time: 120 # Radium
   startingGear: MimeGear
   icon: "JobIconMime"
