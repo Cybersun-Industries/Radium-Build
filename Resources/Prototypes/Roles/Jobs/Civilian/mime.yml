@@ -6,7 +6,7 @@
   requirements:
   - !type:DepartmentTimeRequirement
     department: Civilian
-      time: 120 # Radium
+    time: 7200 #2 hrs #Radium
   startingGear: MimeGear
   icon: "JobIconMime"
   supervisors: job-supervisors-hop
