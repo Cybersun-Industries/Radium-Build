@@ -14,3 +14,6 @@ reagent-name-ammonia = аммиак
 reagent-desc-ammonia = Эффективное удобрение, дающее растениям питательные вещества.
 reagent-name-diethylamine = диэтиламин
 reagent-desc-diethylamine = Очень мощное удобрение, насыщает растения питательными веществами, уничтожает вредителей, а иногда даже ускоряет рост.
+reagent-name-saltpetre = селитра
+reagent-desc-saltpetre = Ингредиент для Черного пороха. Так же поднимает потенцию у растений.
+

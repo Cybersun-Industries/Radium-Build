@@ -86,3 +86,17 @@ reagent-name-necrosol = некрозол
 reagent-desc-necrosol = Некротическое вещество, которое, похоже, способно излечивать обмороженные трупы. В небольших дозах он способен лечить и оживлять растения.
 reagent-name-aloxadone = алоксадон
 reagent-desc-aloxadone = Криогенное химическое вещество. Используется для лечения тяжёлых ожогов третьей степени путём регенерации обожжённых тканей. Работает независимо от того, жив пациент или мертв.
+reagent-name-rezadone = резадон
+reagent-desc-rezadone = Один из немногих способов исцелить генетический урон и чуть опьянеть.
+reagent-name-silversulfadiazine = cульфадиазин серебра
+reagent-desc-silversulfadiazine = Просто чуть вылить на ожог.
+reagent-name-stypticpowder = кровоостанавливающая пудра
+reagent-desc-stypticpowder = Просто чуть вылить на ранку.
+reagent-name-synthflesh = cинтплоть
+reagent-desc-synthflesh = Просто чуть вылить на ранку или ожог.
+reagent-name-spaceacillin = спейсацилин
+reagent-desc-spaceacillin = Тета-лактамный антибиотик. Распространенное и очень полезное лекарство, эффективное против многих болезней, которые, вероятно, встречаются в космосе.
+
+
+
+
