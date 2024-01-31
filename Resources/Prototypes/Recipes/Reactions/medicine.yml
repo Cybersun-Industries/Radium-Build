@@ -641,3 +641,18 @@
       amount: 1
   products:
     Synthflesh: 3
+
+- type: reaction
+  id: Perfluorodecalin
+  minTemp: 374
+  reactants:
+    Hydrogen:
+      amount: 1
+    Fluorine:
+      amount: 1
+    Oil:
+      amount: 1
+    DexalinPlus:
+      amount: 1
+  products:
+    Perfluorodecalin: 4
