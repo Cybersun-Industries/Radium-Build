@@ -96,6 +96,9 @@ reagent-name-synthflesh = cинтплоть
 reagent-desc-synthflesh = Просто чуть вылить на ранку или ожог.
 reagent-name-spaceacillin = спейсацилин
 reagent-desc-spaceacillin = Тета-лактамный антибиотик. Распространенное и очень полезное лекарство, эффективное против многих болезней, которые, вероятно, встречаются в космосе.
+reagent-name-perfluorodecalin = перфтордекалин
+reagent-desc-perfluorodecalin = Лучше чем дексалин плюс, верно?
+
 
 
 
