@@ -72,7 +72,7 @@
           - /Maps/Ruins/whiteship_bluespacejumper.yml
 #radium-start
           - /Maps/Radium/Ruins/ultra-storage.yml
-          -/Maps/Radium/Ruins/MSS.yml
+          - /Maps/Radium/Ruins/MSS.yml
 #radium-end
 
 - type: entity
