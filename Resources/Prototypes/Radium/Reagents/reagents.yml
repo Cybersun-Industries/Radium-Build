@@ -12,11 +12,11 @@
       - !type:HealthChange
         damage:
           groups:
-            Toxin: -500
-            Brute: -500
-            Burn: -500
-            Airloss: -500
-            Genetic: -500
+            Toxin: -10
+            Brute: -10
+            Burn: -10
+            Airloss: -10
+            Genetic: -10
       - !type:SatiateHunger
         factor: 10
       - !type:Jitter
