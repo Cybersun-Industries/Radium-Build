@@ -1163,12 +1163,6 @@ entities:
       rot: 1.5707963267948966 rad
       pos: 0.5,-9.5
       parent: 1
-  - uid: 808
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 1.5,-8.5
-      parent: 1
   - uid: 809
     components:
     - type: Transform
@@ -4066,10 +4060,10 @@ entities:
       parent: 1
 - proto: LightBulbBroken
   entities:
-  - uid: 174
+  - uid: 159
     components:
     - type: Transform
-      parent: 159
+      parent: 148
     - type: Physics
       canCollide: False
   - uid: 511
@@ -4078,10 +4072,10 @@ entities:
       parent: 510
     - type: Physics
       canCollide: False
-  - uid: 514
+  - uid: 513
     components:
     - type: Transform
-      parent: 513
+      parent: 512
     - type: Physics
       canCollide: False
   - uid: 516
@@ -4096,28 +4090,10 @@ entities:
       parent: 517
     - type: Physics
       canCollide: False
-  - uid: 521
+  - uid: 522
     components:
     - type: Transform
-      parent: 520
-    - type: Physics
-      canCollide: False
-  - uid: 523
-    components:
-    - type: Transform
-      parent: 522
-    - type: Physics
-      canCollide: False
-  - uid: 525
-    components:
-    - type: Transform
-      parent: 524
-    - type: Physics
-      canCollide: False
-  - uid: 527
-    components:
-    - type: Transform
-      parent: 526
+      parent: 521
     - type: Physics
       canCollide: False
   - uid: 530
@@ -4126,16 +4102,28 @@ entities:
       parent: 529
     - type: Physics
       canCollide: False
-  - uid: 534
+  - uid: 533
     components:
     - type: Transform
-      parent: 533
+      parent: 532
     - type: Physics
       canCollide: False
-  - uid: 536
+  - uid: 656
     components:
     - type: Transform
-      parent: 535
+      parent: 654
+    - type: Physics
+      canCollide: False
+  - uid: 680
+    components:
+    - type: Transform
+      parent: 658
+    - type: Physics
+      canCollide: False
+  - uid: 687
+    components:
+    - type: Transform
+      parent: 683
     - type: Physics
       canCollide: False
 - proto: LockerMedicine
@@ -4318,42 +4306,82 @@ entities:
       parent: 1
 - proto: PoweredSmallLight
   entities:
-  - uid: 148
+  - uid: 174
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -0.5,-0.5
+      parent: 1
+  - uid: 175
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
-      pos: -2.5,-0.5
+      pos: 1.5,-18.5
       parent: 1
-  - uid: 159
+  - uid: 514
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 1.5,-12.5
+      parent: 1
+  - uid: 525
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 1.5,6.5
+      parent: 1
+  - uid: 526
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: 3.5,-0.5
+      parent: 1
+  - uid: 527
+    components:
+    - type: Transform
+      rot: -1.5707963267948966 rad
+      pos: 1.5,-9.5
+      parent: 1
+  - uid: 528
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -0.5,-5.5
+      parent: 1
+  - uid: 531
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -0.5,9.5
+      parent: 1
+  - uid: 534
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: -2.5,1.5
       parent: 1
-    - type: PointLight
-      enabled: False
+- proto: PoweredSmallLightEmpty
+  entities:
+  - uid: 148
+    components:
+    - type: Transform
+      rot: 1.5707963267948966 rad
+      pos: -0.5,-9.5
+      parent: 1
     - type: ContainerContainer
       containers:
         light_bulb: !type:ContainerSlot
           showEnts: False
           occludes: True
-          ent: 174
+          ent: 159
     - type: ApcPowerReceiver
       powerLoad: 0
-  - uid: 175
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 3.5,1.5
-      parent: 1
   - uid: 510
     components:
     - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -0.5,-18.5
+      rot: -1.5707963267948966 rad
+      pos: -2.5,-0.5
       parent: 1
-    - type: PointLight
-      enabled: False
     - type: ContainerContainer
       containers:
         light_bulb: !type:ContainerSlot
@@ -4366,32 +4394,22 @@ entities:
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
-      pos: 1.5,-18.5
+      pos: 1.5,9.5
       parent: 1
-  - uid: 513
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -0.5,-8.5
-      parent: 1
-    - type: PointLight
-      enabled: False
     - type: ContainerContainer
       containers:
         light_bulb: !type:ContainerSlot
           showEnts: False
           occludes: True
-          ent: 514
+          ent: 513
     - type: ApcPowerReceiver
       powerLoad: 0
   - uid: 515
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 1.5,-8.5
+      rot: 1.5707963267948966 rad
+      pos: 3.5,1.5
       parent: 1
-    - type: PointLight
-      enabled: False
     - type: ContainerContainer
       containers:
         light_bulb: !type:ContainerSlot
@@ -4403,11 +4421,9 @@ entities:
   - uid: 517
     components:
     - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 1.5,-12.5
+      rot: 1.5707963267948966 rad
+      pos: -0.5,6.5
       parent: 1
-    - type: PointLight
-      enabled: False
     - type: ContainerContainer
       containers:
         light_bulb: !type:ContainerSlot
@@ -4416,90 +4432,26 @@ entities:
           ent: 518
     - type: ApcPowerReceiver
       powerLoad: 0
-  - uid: 519
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -0.5,-12.5
-      parent: 1
-  - uid: 520
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -0.5,-5.5
-      parent: 1
-    - type: PointLight
-      enabled: False
-    - type: ContainerContainer
-      containers:
-        light_bulb: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: 521
-    - type: ApcPowerReceiver
-      powerLoad: 0
-  - uid: 522
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -0.5,-0.5
-      parent: 1
-    - type: PointLight
-      enabled: False
-    - type: ContainerContainer
-      containers:
-        light_bulb: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: 523
-    - type: ApcPowerReceiver
-      powerLoad: 0
-  - uid: 524
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: -0.5,9.5
-      parent: 1
-    - type: PointLight
-      enabled: False
-    - type: ContainerContainer
-      containers:
-        light_bulb: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: 525
-    - type: ApcPowerReceiver
-      powerLoad: 0
-  - uid: 526
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 1.5,9.5
-      parent: 1
-    - type: PointLight
-      enabled: False
-    - type: ContainerContainer
-      containers:
-        light_bulb: !type:ContainerSlot
-          showEnts: False
-          occludes: True
-          ent: 527
-    - type: ApcPowerReceiver
-      powerLoad: 0
-  - uid: 528
+  - uid: 521
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 1.5,13.5
       parent: 1
+    - type: ContainerContainer
+      containers:
+        light_bulb: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: 522
+    - type: ApcPowerReceiver
+      powerLoad: 0
   - uid: 529
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: -0.5,13.5
       parent: 1
-    - type: PointLight
-      enabled: False
     - type: ContainerContainer
       containers:
         light_bulb: !type:ContainerSlot
@@ -4508,56 +4460,62 @@ entities:
           ent: 530
     - type: ApcPowerReceiver
       powerLoad: 0
-  - uid: 531
+  - uid: 532
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 1.5,-0.5
       parent: 1
-  - uid: 532
+    - type: ContainerContainer
+      containers:
+        light_bulb: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: 533
+    - type: ApcPowerReceiver
+      powerLoad: 0
+  - uid: 654
     components:
     - type: Transform
       rot: -1.5707963267948966 rad
       pos: 1.5,-5.5
       parent: 1
-  - uid: 533
-    components:
-    - type: Transform
-      rot: -1.5707963267948966 rad
-      pos: 1.5,6.5
-      parent: 1
-    - type: PointLight
-      enabled: False
     - type: ContainerContainer
       containers:
         light_bulb: !type:ContainerSlot
           showEnts: False
           occludes: True
-          ent: 534
+          ent: 656
     - type: ApcPowerReceiver
       powerLoad: 0
-  - uid: 535
+  - uid: 658
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
-      pos: -0.5,6.5
+      pos: -0.5,-18.5
       parent: 1
-    - type: PointLight
-      enabled: False
     - type: ContainerContainer
       containers:
         light_bulb: !type:ContainerSlot
           showEnts: False
           occludes: True
-          ent: 536
+          ent: 680
     - type: ApcPowerReceiver
       powerLoad: 0
-  - uid: 624
+  - uid: 683
     components:
     - type: Transform
       rot: 1.5707963267948966 rad
-      pos: 3.5,-0.5
+      pos: -0.5,-12.5
       parent: 1
+    - type: ContainerContainer
+      containers:
+        light_bulb: !type:ContainerSlot
+          showEnts: False
+          occludes: True
+          ent: 687
+    - type: ApcPowerReceiver
+      powerLoad: 0
 - proto: RandomEngineerCorpseSpawner
   entities:
   - uid: 652
@@ -5507,6 +5465,64 @@ entities:
     - type: Transform
       pos: -14.5,0.5
       parent: 1
+- proto: SpaceTickSpawner
+  entities:
+  - uid: 520
+    components:
+    - type: Transform
+      pos: 0.5,-0.5
+      parent: 1
+  - uid: 523
+    components:
+    - type: Transform
+      pos: 0.5,-16.5
+      parent: 1
+  - uid: 524
+    components:
+    - type: Transform
+      pos: 1.5,12.5
+      parent: 1
+- proto: SpawnMobCarp
+  entities:
+  - uid: 536
+    components:
+    - type: Transform
+      pos: 1.5,0.5
+      parent: 1
+  - uid: 624
+    components:
+    - type: Transform
+      pos: 0.5,7.5
+      parent: 1
+  - uid: 706
+    components:
+    - type: Transform
+      pos: 0.5,11.5
+      parent: 1
+- proto: SpawnMobShark
+  entities:
+  - uid: 519
+    components:
+    - type: Transform
+      pos: 0.5,-11.5
+      parent: 1
+- proto: SpawnMobSpaceSpider
+  entities:
+  - uid: 535
+    components:
+    - type: Transform
+      pos: 1.5,-17.5
+      parent: 1
+  - uid: 681
+    components:
+    - type: Transform
+      pos: 0.5,-17.5
+      parent: 1
+  - uid: 682
+    components:
+    - type: Transform
+      pos: 0.5,-3.5
+      parent: 1
 - proto: StimkitFilled
   entities:
   - uid: 647
@@ -6033,54 +6049,5 @@ entities:
     - type: Transform
       rot: 1.5707963267948966 rad
       pos: 0.57879543,-19.21979
-      parent: 1
-- proto: XenoAITimedSpawner
-  entities:
-  - uid: 654
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 0.5,6.5
-      parent: 1
-  - uid: 656
-    components:
-    - type: Transform
-      pos: 0.5,-11.5
-      parent: 1
-  - uid: 658
-    components:
-    - type: Transform
-      pos: 0.5,-16.5
-      parent: 1
-  - uid: 680
-    components:
-    - type: Transform
-      pos: 1.5,-6.5
-      parent: 1
-  - uid: 681
-    components:
-    - type: Transform
-      pos: 0.5,0.5
-      parent: 1
-  - uid: 682
-    components:
-    - type: Transform
-      pos: 1.5,10.5
-      parent: 1
-  - uid: 683
-    components:
-    - type: Transform
-      pos: -0.5,13.5
-      parent: 1
-  - uid: 687
-    components:
-    - type: Transform
-      pos: 1.5,-1.5
-      parent: 1
-  - uid: 706
-    components:
-    - type: Transform
-      rot: 1.5707963267948966 rad
-      pos: 1.5,-17.5
       parent: 1
 ...
