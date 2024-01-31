@@ -380,3 +380,26 @@
             Poison: 1
       - !type:ChemVomit
         probability: 0.05
+
+- type: reagent
+  id: Perfluorodecalin
+  name: reagent-name-perfluorodecalin
+  group: Medicine
+  desc: reagent-desc-perfluorodecalin
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: medicine
+  color: "#b7a6cf"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:HealthChange
+        damage:
+          groups:
+            Airloss: -12.5
+      - !type:HealthChange
+        conditions:
+          - !type:ReagentThreshold
+            min: 10
+        damage:
+          types:
+           Asphyxiation: 8     
