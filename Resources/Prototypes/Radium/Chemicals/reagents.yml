@@ -729,7 +729,7 @@
   name: reagent-name-lye
   group: Toxin
   desc: reagent-desc-lye
-  physicalDesc: reagent-physical-desc-smelling
+  physicalDesc: reagent-physical-desc-strong-smelling
   flavor: bitter
   color: "#deeccd"
   metabolisms:
@@ -824,7 +824,7 @@
   name: reagent-name-strangereagent
   group: Special
   desc: reagent-desc-strangereagent
-  physicalDesc: reagent-physical-strong-smelling
+  physicalDesc: reagent-physical-desc-strong-smelling
   flavor: terrible
   color: "#92da6d"
   metabolisms:
