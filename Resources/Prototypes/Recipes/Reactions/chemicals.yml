@@ -726,4 +726,20 @@
     UnstableMutagen:
       amount: 1
   products:
-    StrangeReagent: 3    
+    StrangeReagent: 3
+
+- type: reaction
+  id: Lopatium
+  minTemp: 400
+  impact: Low
+  quantized: true
+  reactants:
+    Aluminium:
+      amount: 25
+    Silver:
+      amount: 5
+    StrangeReagent:
+      amount: 10
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: Shovel
