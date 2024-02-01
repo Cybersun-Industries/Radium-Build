@@ -402,4 +402,527 @@
             min: 10
         damage:
           types:
-           Asphyxiation: 8     
+           Asphyxiation: 8
+
+- type: reagent
+  id: Aranesp
+  name: reagent-name-aranesp
+  group: Narcotic
+  desc: reagent-desc-aranesp
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: bitter
+  color: "#6aa68e"
+  metabolisms:
+    Narcotic:
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Poison: 1
+      - !type:HealthChange
+        conditions:
+          - !type:ReagentThreshold
+            min: 25
+        damage:
+          types:
+           Bloodloss: -7
+      - !type:GenericStatusEffect
+        key: StaminaModifier
+        component: StaminaModifier
+        time: 9
+        type: Add
+      - !type:GenericStatusEffect
+        key: Stun
+        time: 9
+        type: Add
+
+- type: reagent
+  id: CapsaicinOil
+  name: reagent-name-capsaicinoil
+  group: Special
+  desc: reagent-desc-capsaicinoil
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: bitter
+  color: "#a12d28"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Heat: 1
+      - !type:AdjustTemperature
+        conditions:
+        - !type:Temperature
+          max: 330.1
+        amount: 10000
+      - !type:AdjustReagent
+        reagent: ColdFrostOil
+        amount: -5
+
+- type: reagent
+  id: Chiyurizine
+  name: reagent-name-chiyurizine
+  group: Special
+  desc: reagent-desc-chiyurizine
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: bitter
+  color: "#56ec71"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:HealthChange
+        damage:
+          groups:
+            Toxin: -5
+            Brute: -5
+            Burn: -5
+            Airloss: -5
+            Genetic: -5
+      - !type:Jitter
+      - !type:GenericStatusEffect
+        key: Stun
+        time: 3
+        type: Remove
+      - !type:GenericStatusEffect
+        key: StaminaModifier
+        component: StaminaModifier
+        time: 3
+        type: Add
+      - !type:GenericStatusEffect
+        key: KnockedDown
+        time: 3
+        type: Remove
+      - !type:GenericStatusEffect
+        key: Drunk
+        time: 6.0
+        type: Remove
+      - !type:ChemHealEyeDamage
+      - !type:ResetNarcolepsy
+
+- type: reagent
+  id: CocaExtract
+  name: reagent-name-cocaextract
+  group: Toxin
+  desc: reagent-desc-cocaextract
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: acid
+  color: "#d5e3e5"
+  metabolisms:
+    Poison:
+      effects:
+      - !type:HealthChange
+        damage:
+          groups:
+            Toxin: 2
+      - !type:ChemVomit
+        probability: 0.05
+      - !type:Emote
+        emote: Scream
+        probability: 0.1
+
+- type: reagent
+  id: Earthsblood
+  name: reagent-name-earthsblood
+  group: Special
+  desc: reagent-desc-earthsblood
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: bitter
+  color: "#e0ae2c"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:HealthChange
+        damage:
+          groups:
+            Toxin: -1.5
+            Brute: -1.5
+            Burn: -1.5
+            Airloss: -7.5
+            Genetic: 0.3
+      - !type:HealthChange
+        conditions:
+          - !type:ReagentThreshold
+            min: 15
+        damage:
+          groups:
+           Toxin: 2.5
+      - !type:Jitter
+      - !type:GenericStatusEffect
+        key: Stun
+        time: 3
+        type: Remove
+      - !type:GenericStatusEffect
+        key: StaminaModifier
+        component: StaminaModifier
+        time: 3
+        type: Add
+      - !type:GenericStatusEffect
+        key: SeeingRainbows
+        component: SeeingRainbows
+        type: Add
+        time: 5
+        refresh: false
+
+- type: reagent
+  id: EntropicPolypnium
+  name: reagent-name-entropicpolypnium
+  group: Toxin
+  desc: reagent-desc-entropicpolypnium
+  flavor: acid
+  color: "#292353"
+  physicalDesc: reagent-physical-desc-nondescript
+  metabolisms:
+    Poison:
+      effects:
+      - !type:MovespeedModifier
+        walkSpeedModifier: 0.00
+        sprintSpeedModifier: 0.00
+      - !type:HealthChange
+        damage:
+          groups:
+            Toxin: 1.5
+            Genetic: 1
+            Airloss: 1
+      - !type:GenericStatusEffect
+        key: TemporaryBlindness
+        component: TemporaryBlindness
+        conditions:
+      - !type:PopupMessage
+        conditions:
+        type: Local
+        visualType: Large
+        messages: [ "alerts-paralize-desc" ]
+        probability: 0.1
+
+- type: reagent
+  id: Ether
+  name: reagent-name-ether
+  group: Toxin
+  desc: reagent-desc-ether
+  flavor: acid
+  color: "#92d1d1"
+  physicalDesc: reagent-physical-desc-nondescript
+  metabolisms:
+    Poison:
+      effects:
+      - !type:MovespeedModifier
+        walkSpeedModifier: 0.85
+        sprintSpeedModifier: 0.85
+      - !type:GenericStatusEffect
+        conditions:
+        - !type:ReagentThreshold
+          reagent: Ether
+          min: 15
+        key: ForcedSleep
+        component: ForcedSleeping
+        refresh: false
+        type: Add
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentThreshold
+          reagent: Ether
+          min: 30
+        damage:
+          types:
+            Poison: 2
+
+- type: reagent
+  id: ColdFrostOil
+  name: reagent-name-coldfrostoil
+  group: Special
+  desc: reagent-desc-coldfrostoil
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: cold
+  color: SkyBlue
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Cold: 1
+      - !type:AdjustTemperature
+        conditions:
+        - !type:Temperature
+          min: 300.1
+        amount: -10000
+  reactiveEffects:
+    Acidic:
+      methods: [ Touch ]
+      effects:
+      - !type:HealthChange
+        scaleByQuantity: true
+        ignoreResistances: false
+        damage:
+          types:
+            Cold: 1
+      - !type:AdjustReagent
+        reagent: CapsaicinOil
+        amount: -5
+
+- type: reagent
+  id: Haloperidol
+  name: reagent-name-haloperidol
+  group: Medicine
+  desc: reagent-desc-haloperidol
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: medicine
+  color: "#ded0ee"
+  metabolisms:
+    Poison:
+      effects:
+      - !type:GenericStatusEffect
+        conditions:
+        - !type:ReagentThreshold
+          reagent: Haloperidol
+          min: 15
+        key: ForcedSleep
+        component: ForcedSleeping
+        refresh: false
+        type: Add
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentThreshold
+          reagent: Haloperidol
+          min: 15
+        damage:
+          groups:
+            Genetic: 1
+        probability: 0.33   
+      - !type:AdjustReagent
+        reagent: Desoxyephedrine
+        amount: -5.0
+      - !type:AdjustReagent
+        reagent: SpaceDrugs
+        amount: -5.0
+      - !type:AdjustReagent
+        reagent: Stimulants
+        amount: -5.0
+      - !type:AdjustReagent
+        reagent: Ephedrine
+        amount: -5.0
+      - !type:AdjustReagent
+        reagent: Epinephrine
+        amount: -5.0
+      - !type:AdjustReagent
+        reagent: THC
+        amount: -5.0
+      - !type:GenericStatusEffect
+        key: Jitter
+        time: 5
+        type: Remove
+      - !type:GenericStatusEffect
+        key: SeeingRainbows
+        component: SeeingRainbows
+        type: Remove
+        time: 5
+        refresh: false
+
+- type: reagent
+  id: Insulin
+  name: reagent-name-insulin
+  group: Medicine
+  desc: reagent-desc-insulin
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: salty
+  color: "#b2a4d2"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:AdjustReagent
+        reagent: Sugar
+        amount: -5.0
+
+- type: reagent
+  id: LavalandExtract
+  name: reagent-name-lavalandextract
+  group: Medicine
+  desc: reagent-desc-lavalandextract
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: medicine
+  color: "#b2a4d2"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:HealthChange
+        damage:
+          groups:
+            Burn: -2.5
+            Brute: -2.5
+      - !type:HealthChange
+        conditions:
+          - !type:ReagentThreshold
+            min: 15
+        damage:
+          groups:
+           Brute: 1.5
+           Burn: 1.5
+           Toxin: 1.5   
+      - !type:Jitter
+        conditions:
+        - !type:ReagentThreshold
+          min: 15
+
+- type: reagent
+  id: Lipolicide
+  name: reagent-name-lipolicide
+  group: Toxin
+  desc: reagent-desc-lipolicide
+  physicalDesc: reagent-physical-desc-syrupy
+  flavor: bitter
+  color: "#bed1c7"
+  metabolisms:
+    Poison:
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Poison: 1
+      - !type:SatiateHunger
+        factor: -1
+
+- type: reagent
+  id: Lye
+  name: reagent-name-lye
+  group: Toxin
+  desc: reagent-desc-lye
+  physicalDesc: reagent-physical-desc-smelling
+  flavor: bitter
+  color: "#deeccd"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Poison: 1
+
+- type: reagent
+  id: Menthol
+  name: reagent-name-menthol
+  group: Medicine
+  desc: reagent-desc-menthol
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: minty
+  color: "#d2e7c4"
+  metabolisms:
+    Medicine:
+      effects:`
+      - !type:HealthChange
+        damage:
+          groups:
+            Burn: -1
+      - !type:AdjustTemperature
+        conditions:
+        - !type:Temperature
+          min: 290.1
+        amount: -10000
+      - !type:PopupMessage
+        conditions:
+        type: Local
+        visualType: Medium
+        messages: [ "alerts-methol-cold-desc" ]
+        probability: 0.2
+
+- type: reagent
+  id: PenteticAcid
+  name: reagent-name-penteticacid
+  group: Medicine
+  desc: reagent-desc-penteticacid
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: medicine
+  color: "#b7a6cf"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Poison: -2
+            Radiation: -7
+      - !type:HealthChange
+        conditions:
+          - !type:ReagentThreshold
+            min: 25
+        damage:
+          types:
+           Heat: 0.5
+           Poison: 0.5      
+      - !type:Jitter
+        conditions:
+        - !type:ReagentThreshold
+          min: 25
+
+- type: reagent
+  id: PotassiumIodide
+  name: reagent-name-potassiumiodide
+  group: Medicine
+  desc: reagent-desc-potassiumiodide
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: medicine
+  color: "#a2d0ba"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Radiation: -2
+      - !type:HealthChange
+        conditions:
+          - !type:ReagentThreshold
+            min: 25
+        damage:
+          groups:
+           Toxin: -4
+
+- type: reagent
+  id: StrangeReagent
+  name: reagent-name-strangereagent
+  group: Special
+  desc: reagent-desc-strangereagent
+  physicalDesc: reagent-physical-strong-smelling
+  flavor: terrible
+  color: "#92da6d"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:Jitter
+      - !type:HealthChange
+        damage:
+          groups:
+            Toxin: 7
+            Brute: 7
+            Burn: 7
+      - !type:HealthChange
+        conditions:
+          - !type:ReagentThreshold
+            min: 25
+        damage:
+          groups:
+           Genetic: 50
+
+- type: reagent
+  id: Tirizene
+  name: reagent-name-tirizene
+  group: Toxin
+  desc: reagent-desc-tirizene
+  physicalDesc: reagent-physical-desc-syrupy
+  flavor: bitter
+  color: "#6a4042"
+  metabolisms:
+    Narcotic:
+      effects:
+      - !type:MovespeedModifier
+        walkSpeedModifier: 0.75
+        sprintSpeedModifier: 0.75
+      - !type:GenericStatusEffect
+        key: StaminaModifier
+        component: StaminaModifier
+        time: 1.5
+        type: Remove
+      - !type:GenericStatusEffect
+        key: Stun
+        time: 1.5
+        type: Add           
