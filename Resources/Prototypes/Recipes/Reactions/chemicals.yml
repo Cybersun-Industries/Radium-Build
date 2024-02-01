@@ -625,3 +625,105 @@
       amount: 3
   products:
     Saltpetre: 5
+
+- type: reaction
+  id: Aranesp
+  reactants:
+    Epinephrine:
+      amount: 1
+    TableSalt:
+      amount: 1
+    Insulin:
+      amount: 1
+  products:
+    Aranesp: 3
+
+- type: reaction
+  id: Ether
+  reactants:
+    SulfuricAcid:
+      amount: 1
+    Ethanol:
+      amount: 1
+    Oxygen:
+      amount: 1
+  products:
+    Ether: 3
+
+- type: reaction
+  id: Haloperidol
+  reactants:
+    PotassiumIodide:
+      amount: 1
+    Aluminum:
+      amount: 1
+    Chlorine:
+      amount: 1
+    Fluorine:
+      amount: 1
+    Oil:
+      amount: 1
+  products:
+    Haloperidol: 5
+
+- type: reaction
+  id: Lipolicide
+  reactants:
+    Mercury:
+      amount: 1
+    Diethylamine:
+      amount: 1
+    Ephedrine:
+      amount: 1
+  products:
+    Lipolicide: 3
+
+- type: reaction
+  id: Lye
+  reactants:
+    Sodium:
+      amount: 1
+    Hydrogen:
+      amount: 1
+    Oxygen:
+      amount: 1
+  products:
+    Lye: 3
+
+- type: reaction
+  id: PenteticAcid
+  reactants:
+    WeldingFuel:
+      amount: 1
+    Chlorine:
+      amount: 1
+    Ammonia:
+      amount: 1
+    Sodium:
+      amount: 1
+    Cyanide:
+      amount: 1
+  products:
+    PenteticAcid: 5
+
+- type: reaction
+  id: PotassiumIodide
+  reactants:
+    Potassium:
+      amount: 1
+    Iodine:
+      amount: 1
+  products:
+    PotassiumIodide: 2
+
+- type: reaction
+  id: StrangeReagent
+  reactants:
+    Omnizine:
+      amount: 1
+    Holywater:
+      amount: 1
+    UnstableMutagen:
+      amount: 1
+  products:
+    StrangeReagent: 3    
