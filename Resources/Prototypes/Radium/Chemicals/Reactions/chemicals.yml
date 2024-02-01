@@ -203,16 +203,6 @@
     PenteticAcid: 5
 
 - type: reaction
-  id: PotassiumIodide
-  reactants:
-    Potassium:
-      amount: 1
-    Iodine:
-      amount: 1
-  products:
-    PotassiumIodide: 2
-
-- type: reaction
   id: StrangeReagent
   reactants:
     Omnizine:
