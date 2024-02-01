@@ -74,3 +74,5 @@ alerts-revenant-corporeal-name = Материальность
 alerts-revenant-corporeal-desc = Вы физически воплотились. Окружающие могут видеть и наносить вам вред.
 alerts-heart-stopped-name = Сердце
 alerts-heart-stopped-desc = Вы чувствуете что ваше сердце начинает замедляться
+alerts-paralize-name = Парализован
+alerts-paralize-desc = Вас парализовало
