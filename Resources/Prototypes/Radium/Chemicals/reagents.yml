@@ -435,31 +435,7 @@
         key: Stun
         time: 9
         type: Add
-
-- type: reagent
-  id: CapsaicinOil
-  name: reagent-name-capsaicinoil
-  group: Special
-  desc: reagent-desc-capsaicinoil
-  physicalDesc: reagent-physical-desc-strong-smelling
-  flavor: bitter
-  color: "#a12d28"
-  metabolisms:
-    Medicine:
-      effects:
-      - !type:HealthChange
-        damage:
-          types:
-            Heat: 1
-      - !type:AdjustTemperature
-        conditions:
-        - !type:Temperature
-          max: 330.1
-        amount: 10000
-      - !type:AdjustReagent
-        reagent: ColdFrostOil
-        amount: -5
-
+        
 - type: reagent
   id: Chiyurizine
   name: reagent-name-chiyurizine
@@ -925,4 +901,28 @@
       - !type:GenericStatusEffect
         key: Stun
         time: 1.5
-        type: Add           
+        type: Add
+
+- type: reagent
+  id: CapsaicinOil
+  name: reagent-name-capsaicinoil
+  group: Special
+  desc: reagent-desc-capsaicinoil
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: bitter
+  color: "#a12d28"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Heat: 1
+      - !type:AdjustTemperature
+        conditions:
+        - !type:Temperature
+          max: 330.1
+        amount: 10000
+      - !type:AdjustReagent
+        reagent: ColdFrostOil
+        amount: -5        
