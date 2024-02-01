@@ -870,7 +870,7 @@
         type: Add
 
 - type: reagent
-  id: Capsaicinoil
+  id: HotCapsaicinOil
   name: reagent-name-capsaicinoil
   group: Special
   desc: reagent-desc-capsaicinoil
@@ -924,5 +924,5 @@
           types:
             Cold: 1
       - !type:AdjustReagent
-        reagent: Capsaicinoil
+        reagent: HotCapsaicinOil
         amount: -5        
