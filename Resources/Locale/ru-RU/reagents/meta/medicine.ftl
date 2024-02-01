@@ -98,6 +98,22 @@ reagent-name-spaceacillin = спейсацилин
 reagent-desc-spaceacillin = Тета-лактамный антибиотик. Распространенное и очень полезное лекарство, эффективное против многих болезней, которые, вероятно, встречаются в космосе.
 reagent-name-perfluorodecalin = перфтордекалин
 reagent-desc-perfluorodecalin = Лучше чем дексалин плюс, верно?
+reagent-name-haloperidol = галоперидол
+reagent-desc-haloperidol = Быстро снимает наркотическое состояние, галлюцинации и нервную тряску.
+reagent-name-insulin = инсулин
+reagent-desc-insulin = Удаляет 5 сахара из организма в цикл.
+reagent-name-lavalandextract = эсктрат лаваленда
+reagent-desc-lavalandextract = Экстракт, который можно найти только в глубинах неизведанных земель. 
+reagent-name-menthol = ментол
+reagent-desc-menthol = Содержится в ментоловых сигаретах.
+reagent-name-penteticacid = дтпа
+reagent-desc-penteticacid = Она же — Диэтилентриаминпентаацетат.
+reagent-name-potassiumiodide = йодид калия
+reagent-desc-potassiumiodide = Выводит радионуклиды при низком радиационном облучении.
+
+
+
+
 
 
 
