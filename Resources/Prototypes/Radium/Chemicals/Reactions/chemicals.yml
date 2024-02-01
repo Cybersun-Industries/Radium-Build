@@ -187,22 +187,6 @@
     Lye: 3
 
 - type: reaction
-  id: PenteticAcid
-  reactants:
-    WeldingFuel:
-      amount: 1
-    Chlorine:
-      amount: 1
-    Ammonia:
-      amount: 1
-    Sodium:
-      amount: 1
-    Cyanide:
-      amount: 1
-  products:
-    PenteticAcid: 5
-
-- type: reaction
   id: StrangeReagent
   reactants:
     Omnizine:
