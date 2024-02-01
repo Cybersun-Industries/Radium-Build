@@ -870,7 +870,7 @@
         type: Add
 
 - type: reagent
-  id: CapsaicinOil
+  id: Capsaicinoil
   name: reagent-name-capsaicinoil
   group: Special
   desc: reagent-desc-capsaicinoil
@@ -891,4 +891,38 @@
         amount: 10000
       - !type:AdjustReagent
         reagent: ColdFrostOil
+        amount: -5
+
+- type: reagent
+  id: ColdFrostOil
+  name: reagent-name-coldfrostoil
+  group: Special
+  desc: reagent-desc-coldfrostoil
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: cold
+  color: SkyBlue
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:HealthChange
+        damage:
+          types:
+            Cold: 1
+      - !type:AdjustTemperature
+        conditions:
+        - !type:Temperature
+          min: 300.1
+        amount: -10000
+  reactiveEffects:
+    Acidic:
+      methods: [ Touch ]
+      effects:
+      - !type:HealthChange
+        scaleByQuantity: true
+        ignoreResistances: false
+        damage:
+          types:
+            Cold: 1
+      - !type:AdjustReagent
+        reagent: Capsaicinoil
         amount: -5        
