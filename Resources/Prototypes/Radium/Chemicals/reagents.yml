@@ -808,7 +808,7 @@
   color: "#d2e7c4"
   metabolisms:
     Medicine:
-      effects:`
+      effects:
       - !type:HealthChange
         damage:
           groups:
