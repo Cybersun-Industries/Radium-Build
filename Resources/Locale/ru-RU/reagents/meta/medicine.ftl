@@ -110,12 +110,3 @@ reagent-name-penteticacid = дтпа
 reagent-desc-penteticacid = Она же — Диэтилентриаминпентаацетат.
 reagent-name-potassiumiodide = йодид калия
 reagent-desc-potassiumiodide = Выводит радионуклиды при низком радиационном облучении.
-
-
-
-
-
-
-
-
-
