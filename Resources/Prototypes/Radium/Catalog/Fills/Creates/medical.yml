@@ -1,0 +1,10 @@
+- type: entity
+  id: CrateMedicalSyringeInsulin
+  parent: CrateMedical
+  name: медицинский ящик со шприцами с инсулином
+  description: Ящик со шприцами с инсулином.
+  components:
+  - type: StorageFill
+    contents:
+      - id: SyringeInsulin
+        amount: 3
