@@ -33,6 +33,12 @@
         key: KnockedDown
         time: 100
         type: Remove
+      - !type:GenericStatusEffect
+        key: Drunk
+        time: 100
+        type: Remove
+      - !type:ChemHealEyeDamage
+      - !type:ResetNarcolepsy
 
 - type: reagent
   id: Atrazine
