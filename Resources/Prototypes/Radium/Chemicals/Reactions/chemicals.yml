@@ -52,6 +52,8 @@
       amount: 5
     Blood:
       amount: 10
+    StrangeReagent:
+      amount: 10
   effects:
     - !type:CreateEntityReactionEffect
       entity: MobCorgi
