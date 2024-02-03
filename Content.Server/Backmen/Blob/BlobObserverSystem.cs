@@ -58,6 +58,7 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
     [Dependency] private readonly IChatManager _chatManager = default!;
     [Dependency] private readonly ISharedPlayerManager _actorSystem = default!;
     [Dependency] private readonly ViewSubscriberSystem _viewSubscriberSystem = default!;
+    [Dependency] private readonly MapSystem _mapSystem = default!;
 
 
     [Dependency] private ILogManager _logMan = default!;
@@ -382,21 +383,20 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
 
         var gridUid = args.Target.GetGridUid(EntityManager);
 
-        if (!_map.TryGetGrid(gridUid, out var grid))
+        if (!TryComp<MapGridComponent>(gridUid, out var grid))
         {
             return;
         }
-
-        var centerTile = grid.GetLocalTilesIntersecting(
+        var centerTile = _mapSystem.GetLocalTilesIntersecting(gridUid.Value, grid,
             new Box2(args.Target.Position, args.Target.Position)).ToArray();
 
         EntityUid? blobTile = null;
 
         foreach (var tileref in centerTile)
         {
-            foreach (var ent in grid.GetAnchoredEntities(tileref.GridIndices))
+            foreach (var ent in _mapSystem.GetAnchoredEntities(gridUid.Value, grid,tileref.GridIndices))
             {
-                if (!TryComp<BlobTileComponent>(ent, out var blobTileComponent))
+                if (!HasComp<BlobTileComponent>(ent))
                     continue;
                 blobTile = ent;
                 break;
@@ -435,19 +435,19 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
 
         var gridUid = args.Target.GetGridUid(EntityManager);
 
-        if (!_map.TryGetGrid(gridUid, out var grid))
+        if (!TryComp<MapGridComponent>(gridUid, out var grid))
         {
             return;
         }
 
-        var centerTile = grid.GetLocalTilesIntersecting(
+        var centerTile = _mapSystem.GetLocalTilesIntersecting(gridUid.Value, grid,
             new Box2(args.Target.Position, args.Target.Position)).ToArray();
 
         EntityUid? blobTile = null;
 
         foreach (var tileRef in centerTile)
         {
-            foreach (var ent in grid.GetAnchoredEntities(tileRef.GridIndices))
+            foreach (var ent in _mapSystem.GetAnchoredEntities(gridUid.Value, grid, tileRef.GridIndices))
             {
                 if (!TryComp<BlobTileComponent>(ent, out var blobTileComponent))
                     continue;
@@ -456,7 +456,7 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
             }
         }
 
-        if (blobTile == null || !TryComp<BlobNodeComponent>(blobTile, out var blobNodeComponent))
+        if (blobTile == null || !HasComp<BlobNodeComponent>(blobTile))
         {
             _popup.PopupEntity(Loc.GetString("blob-target-node-blob-invalid"), args.Performer, args.Performer, PopupType.Large);
             args.Handled = true;
@@ -521,19 +521,19 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
 
         var gridUid = args.Target.GetGridUid(EntityManager);
 
-        if (!_map.TryGetGrid(gridUid, out var grid))
+        if (!TryComp<MapGridComponent>(gridUid, out var grid))
         {
             return;
         }
 
-        var centerTile = grid.GetLocalTilesIntersecting(
+        var centerTile = _mapSystem.GetLocalTilesIntersecting(gridUid.Value, grid,
             new Box2(args.Target.Position, args.Target.Position)).ToArray();
 
         EntityUid? blobTile = null;
 
         foreach (var tileRef in centerTile)
         {
-            foreach (var ent in grid.GetAnchoredEntities(tileRef.GridIndices))
+            foreach (var ent in _mapSystem.GetAnchoredEntities(gridUid.Value, grid, tileRef.GridIndices))
             {
                 if (!HasComp<BlobFactoryComponent>(ent))
                     continue;
@@ -585,12 +585,12 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
 
         var gridUid = args.Target.GetGridUid(EntityManager);
 
-        if (!_map.TryGetGrid(gridUid, out var grid))
+        if (!TryComp<MapGridComponent>(gridUid, out var grid))
         {
             return;
         }
 
-        var centerTile = grid.GetLocalTilesIntersecting(
+        var centerTile = _mapSystem.GetLocalTilesIntersecting(gridUid.Value, grid,
             new Box2(args.Target.Position, args.Target.Position)).ToArray();
 
         var blobTileType = BlobTileType.None;
@@ -598,7 +598,7 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
 
         foreach (var tileRef in centerTile)
         {
-            foreach (var ent in grid.GetAnchoredEntities(tileRef.GridIndices))
+            foreach (var ent in _mapSystem.GetAnchoredEntities(gridUid.Value, grid, tileRef.GridIndices))
             {
                 if (!TryComp<BlobTileComponent>(ent, out var blobTileComponent))
                     continue;
@@ -621,12 +621,12 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
 
         var radius = blobCoreComponent.NodeRadiusLimit;
 
-        var innerTiles = grid.GetLocalTilesIntersecting(
+        var innerTiles = _mapSystem.GetLocalTilesIntersecting(gridUid.Value, grid,
             new Box2(localPos + new Vector2(-radius, -radius), localPos + new Vector2(radius, radius)), false).ToArray();
 
         foreach (var tileRef in innerTiles)
         {
-            foreach (var ent in grid.GetAnchoredEntities(tileRef.GridIndices))
+            foreach (var ent in _mapSystem.GetAnchoredEntities(gridUid.Value, grid, tileRef.GridIndices))
             {
                 if (!HasComp<BlobNodeComponent>(ent))
                     continue;
@@ -657,12 +657,12 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
 
         var gridUid = args.Target.GetGridUid(EntityManager);
 
-        if (!_map.TryGetGrid(gridUid, out var grid))
+        if (!TryComp<MapGridComponent>(gridUid, out var grid))
         {
             return;
         }
 
-        var centerTile = grid.GetLocalTilesIntersecting(
+        var centerTile = _mapSystem.GetLocalTilesIntersecting(gridUid.Value, grid,
             new Box2(args.Target.Position, args.Target.Position)).ToArray();
 
         var blobTileType = BlobTileType.None;
@@ -670,7 +670,7 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
 
         foreach (var tileref in centerTile)
         {
-            foreach (var ent in grid.GetAnchoredEntities(tileref.GridIndices))
+            foreach (var ent in _mapSystem.GetAnchoredEntities(gridUid.Value, grid, tileref.GridIndices))
             {
                 if (!TryComp<BlobTileComponent>(ent, out var blobTileComponent))
                     continue;
@@ -693,12 +693,12 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
 
         var radius = blobCoreComponent.ResourceRadiusLimit;
 
-        var innerTiles = grid.GetLocalTilesIntersecting(
+        var innerTiles = _mapSystem.GetLocalTilesIntersecting(gridUid.Value, grid,
             new Box2(localPos + new Vector2(-radius, -radius), localPos + new Vector2(radius, radius)), false).ToArray();
 
         foreach (var tileRef in innerTiles)
         {
-            foreach (var ent in grid.GetAnchoredEntities(tileRef.GridIndices))
+            foreach (var ent in _mapSystem.GetAnchoredEntities(gridUid.Value, grid, tileRef.GridIndices))
             {
                 if (!HasComp<BlobResourceComponent>(ent) || HasComp<BlobCoreComponent>(ent))
                     continue;
@@ -740,16 +740,16 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
         if (!location.IsValid(EntityManager))
             return;
 
-        var gridId = location.GetGridUid(EntityManager);
-        if (!HasComp<MapGridComponent>(gridId))
+        var gridUid = location.GetGridUid(EntityManager);
+        if (!HasComp<MapGridComponent>(gridUid))
         {
             location = location.AlignWithClosestGridTile();
-            gridId = location.GetGridUid(EntityManager);
-            if (!HasComp<MapGridComponent>(gridId))
+            gridUid = location.GetGridUid(EntityManager);
+            if (!HasComp<MapGridComponent>(gridUid))
                 return;
         }
 
-        if (!_map.TryGetGrid(gridId, out var grid))
+        if (!TryComp<MapGridComponent>(gridUid, out var grid))
         {
             return;
         }
@@ -762,7 +762,7 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
 
             // Check if the target is adjacent to a tile with BlobCellComponent horizontally or vertically
             var xform = Transform(target);
-            var mobTile = grid.GetTileRef(xform.Coordinates);
+            var mobTile = _mapSystem.GetTileRef(gridUid.Value, grid,xform.Coordinates);
 
             var mobAdjacentTiles = new[]
             {
@@ -771,7 +771,7 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
                 mobTile.GridIndices.Offset(Direction.North),
                 mobTile.GridIndices.Offset(Direction.South)
             };
-            if (mobAdjacentTiles.Any(indices => grid.GetAnchoredEntities(indices).Any(ent => HasComp<BlobTileComponent>(ent))))
+            if (mobAdjacentTiles.Any(indices => _mapSystem.GetAnchoredEntities(gridUid.Value, grid,indices).Any(HasComp<BlobTileComponent>)))
             {
                 if (HasComp<DestructibleComponent>(target) && !HasComp<ItemComponent>(target)&& !HasComp<SubFloorHideComponent>(target))
                 {
@@ -788,25 +788,29 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
                         }
                         _damageableSystem.TryChangeDamage(target, blobCoreComponent.ChemDamageDict[blobCoreComponent.CurrentChem]);
 
-                        if (blobCoreComponent.CurrentChem == BlobChemType.ExplosiveLattice)
+                        switch (blobCoreComponent.CurrentChem)
                         {
-                            _explosionSystem.QueueExplosion(target, blobCoreComponent.BlobExplosive, 4, 1, 6, maxTileBreak: 0);
-                        }
-
-                        if (blobCoreComponent.CurrentChem == BlobChemType.ElectromagneticWeb)
-                        {
-                            if (_random.Prob(0.2f))
-                                _empSystem.EmpPulse(xform.MapPosition, 3f, 50f, 3f);
-                        }
-
-                        if (blobCoreComponent.CurrentChem == BlobChemType.BlazingOil)
-                        {
-                            if (TryComp<FlammableComponent>(target, out var flammable))
+                            case BlobChemType.ExplosiveLattice:
+                                _explosionSystem.QueueExplosion(target, blobCoreComponent.BlobExplosive, 4, 1, 6, maxTileBreak: 0);
+                                break;
+                            case BlobChemType.ElectromagneticWeb:
                             {
-                                flammable.FireStacks += 2;
-                                _flammable.Ignite(target, uid, flammable);
+                                if (_random.Prob(0.2f))
+                                    _empSystem.EmpPulse(_transform.GetMapCoordinates(xform), 3f, 50f, 3f);
+                                break;
+                            }
+                            case BlobChemType.BlazingOil:
+                            {
+                                if (TryComp<FlammableComponent>(target, out var flammable))
+                                {
+                                    flammable.FireStacks += 2;
+                                    _flammable.Ignite(target, uid, flammable);
+                                }
+
+                                break;
                             }
                         }
+
                         blobCoreComponent.NextAction =
                             _gameTiming.CurTime + TimeSpan.FromSeconds(blobCoreComponent.AttackRate);
                         _audioSystem.PlayPvs(blobCoreComponent.AttackSound, uid, AudioParams.Default);
@@ -816,7 +820,7 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
             }
         }
 
-        var centerTile = grid.GetLocalTilesIntersecting(
+        var centerTile = _mapSystem.GetLocalTilesIntersecting(gridUid.Value, grid,
             new Box2(location.Position, location.Position), false).ToArray();
 
         var targetTileEmplty = false;
@@ -827,20 +831,22 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
                 targetTileEmplty = true;
             }
 
-            foreach (var ent in grid.GetAnchoredEntities(tileRef.GridIndices))
+            if (_mapSystem.GetAnchoredEntities(gridUid.Value, grid, tileRef.GridIndices).Any(HasComp<BlobTileComponent>))
             {
-                if (HasComp<BlobTileComponent>(ent))
-                    return;
+                return;
             }
 
-            foreach (var entityUid in _lookup.GetEntitiesIntersecting(tileRef.GridIndices.ToEntityCoordinates(gridId.Value, _map).ToMap(EntityManager)))
+            foreach (var entityUid in _lookup.GetEntitiesIntersecting(
+                         _transform.ToMapCoordinates(_mapSystem.ToCoordinates(gridUid.Value, tileRef.GridIndices, grid))
+                         )
+                     )
             {
                 if (HasComp<MobStateComponent>(entityUid) && !HasComp<BlobMobComponent>(entityUid))
                     return;
             }
         }
 
-        var targetTile = grid.GetTileRef(location);
+        var targetTile = _mapSystem.GetTileRef(gridUid.Value, grid, location);
 
         var adjacentTiles = new[]
         {
@@ -851,7 +857,7 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
         };
 
         if (!adjacentTiles.Any(indices =>
-                grid.GetAnchoredEntities(indices).Any(ent => HasComp<BlobTileComponent>(ent))))
+                _mapSystem.GetAnchoredEntities(gridUid.Value, grid, indices).Any(HasComp<BlobTileComponent>)))
             return;
         var cost = blobCoreComponent.NormalBlobCost;
         if (targetTileEmplty)
@@ -866,7 +872,7 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
         {
             var plating = _tileDefinitionManager["Plating"];
             var platingTile = new Tile(plating.TileId);
-            grid.SetTile(location, platingTile);
+            _mapSystem.SetTile(gridUid.Value, grid, location, platingTile);
         }
 
         _blobCoreSystem.TransformBlobTile(null,
@@ -883,12 +889,12 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
 
         var gridUid = args.Target.GetGridUid(EntityManager);
 
-        if (!_map.TryGetGrid(gridUid, out var grid))
+        if (!TryComp<MapGridComponent>(gridUid, out var grid))
         {
             return;
         }
 
-        var centerTile = grid.GetLocalTilesIntersecting(
+        var centerTile = _mapSystem.GetLocalTilesIntersecting(gridUid.Value, grid,
             new Box2(args.Target.Position, args.Target.Position)).ToArray();
 
         var blobTileType = BlobTileType.None;
@@ -896,7 +902,7 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
 
         foreach (var tileRef in centerTile)
         {
-            foreach (var ent in grid.GetAnchoredEntities(tileRef.GridIndices))
+            foreach (var ent in _mapSystem.GetAnchoredEntities(gridUid.Value, grid, tileRef.GridIndices))
             {
                 if (!TryComp<BlobTileComponent>(ent, out var blobTileComponent))
                     continue;
@@ -919,12 +925,12 @@ public sealed class BlobObserverSystem : SharedBlobObserverSystem
 
         var radius = blobCoreComponent.FactoryRadiusLimit;
 
-        var innerTiles = grid.GetLocalTilesIntersecting(
+        var innerTiles = _mapSystem.GetLocalTilesIntersecting(gridUid.Value, grid,
             new Box2(localPos + new Vector2(-radius, -radius), localPos + new Vector2(radius, radius)), false).ToArray();
 
         foreach (var tileRef in innerTiles)
         {
-            foreach (var ent in grid.GetAnchoredEntities(tileRef.GridIndices))
+            foreach (var ent in _mapSystem.GetAnchoredEntities(gridUid.Value, grid, tileRef.GridIndices))
             {
                 if (!HasComp<BlobFactoryComponent>(ent))
                     continue;
