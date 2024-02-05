@@ -1214,7 +1214,7 @@
           amount: 3
         - id: trayScanner
         - id: WeaponShotgunAA12
-        - id: MagazineShotgunMagnum12
+        - id:  MagazineShotgunMagnum12
           amount: 4
         - id: WeaponPistolVP78
         - id: MagazinePistolHighCapacity
@@ -2193,7 +2193,7 @@
     neck: CombatKnifeSpetsnaz
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitCBURN
-    suitstorage: YellowOxygenTankFilled
+    suitstorage: OxygenTankFilled
     id: IdCardRXBZZ
     ears: ClothingHeadsetCentComCCMTFSR6
     belt: ClothingBeltBandolierRXBZZ
@@ -2210,7 +2210,7 @@
     neck: CombatKnifeSpetsnaz
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitCBURN
-    suitstorage: YellowOxygenTankFilled
+    suitstorage: OxygenTankFilled
     id: IdCardRXBZZ
     ears: ClothingHeadsetCentComCCMTFSR6
     belt: ClothingBeltMilitaryWebbingFlamer
@@ -2227,7 +2227,7 @@
     neck: CombatKnifeSpetsnaz
     gloves: ClothingHandsGlovesCombat
     outerClothing: ClothingOuterHardsuitCBURNLeader
-    suitstorage: YellowOxygenTankFilled
+    suitstorage: OxygenTankFilled
     id: IdCardRXBZZLeader
     head: ClothingHeadHatERTLeaderBeret
     ears: ClothingHeadsetCentComCCMTFSR6
