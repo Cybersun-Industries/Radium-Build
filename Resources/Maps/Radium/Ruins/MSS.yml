@@ -452,27 +452,22 @@ entities:
       parent: 1
     - type: AtmosDevice
       joinedGrid: 1
-- proto: AirlockExternalGlass
+- proto: AirlockExternalLocked
   entities:
-  - uid: 3
-    components:
-    - type: Transform
-      pos: 0.5,-2.5
-      parent: 1
   - uid: 4
     components:
     - type: Transform
-      pos: 0.5,-4.5
+      pos: 0.5,5.5
       parent: 1
   - uid: 64
     components:
     - type: Transform
-      pos: 0.5,-13.5
+      pos: 0.5,-15.5
       parent: 1
   - uid: 110
     components:
     - type: Transform
-      pos: 0.5,-15.5
+      pos: 0.5,-13.5
       parent: 1
   - uid: 130
     components:
@@ -482,21 +477,26 @@ entities:
   - uid: 203
     components:
     - type: Transform
-      pos: 0.5,5.5
+      pos: -1.5,0.5
       parent: 1
   - uid: 205
     components:
     - type: Transform
-      pos: -1.5,0.5
+      pos: 0.5,-4.5
       parent: 1
   - uid: 206
+    components:
+    - type: Transform
+      pos: 0.5,-2.5
+      parent: 1
+  - uid: 207
     components:
     - type: Transform
       pos: 2.5,0.5
       parent: 1
 - proto: AirlockGlassShuttleEasyPryLocked
   entities:
-  - uid: 207
+  - uid: 3
     components:
     - type: Transform
       rot: 3.141592653589793 rad
@@ -3066,6 +3066,26 @@ entities:
     components:
     - type: Transform
       pos: -6.5,-7.5
+      parent: 1
+  - uid: 808
+    components:
+    - type: Transform
+      pos: 1.5,-16.5
+      parent: 1
+  - uid: 927
+    components:
+    - type: Transform
+      pos: 2.5,-16.5
+      parent: 1
+  - uid: 928
+    components:
+    - type: Transform
+      pos: 2.5,-17.5
+      parent: 1
+  - uid: 929
+    components:
+    - type: Transform
+      pos: 2.5,-18.5
       parent: 1
 - proto: CableHVStack
   entities:
