@@ -414,6 +414,9 @@
     sprite: Clothing/Belt/sheath.rsi
   - type: Item
     size: Ginormous
+  - type: Storage
+    maxTotalWeight: 4
+    maxItemSize: Normal
   - type: ItemSlots
     slots:
       item:
