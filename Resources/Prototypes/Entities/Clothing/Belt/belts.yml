@@ -402,7 +402,7 @@
   - type: Appearance
 
 - type: entity
-  parent: [ClothingBeltBase, ClothingSlotBase]
+  parent: [ClothingBeltBase, ClothingBeltStorageBase]
   id: ClothingBeltSheath
   name: sabre sheath
   description: An ornate sheath designed to hold an officer's blade.
@@ -414,9 +414,6 @@
     sprite: Clothing/Belt/sheath.rsi
   - type: Item
     size: Ginormous
-  - type: Storage
-    maxTotalWeight: 4
-    maxItemSize: Normal
   - type: ItemSlots
     slots:
       item:
