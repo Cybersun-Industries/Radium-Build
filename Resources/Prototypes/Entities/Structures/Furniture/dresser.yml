@@ -25,8 +25,7 @@
       - !type:DoActsBehavior
         acts: [ "Destruction" ]
   - type: Storage
-    grid:
-    - 9,9,9,9
+    maxTotalWeight: 30
     maxItemSize: Large
   - type: ContainerContainer
     containers:
