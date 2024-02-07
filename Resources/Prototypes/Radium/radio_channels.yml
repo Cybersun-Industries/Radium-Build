@@ -1,6 +1,6 @@
 - type: radioChannel
   id: USSP
-  name: СССП
+  name: chat-radio-ussp
   keycode: 'я'
   frequency: 1984
   color: "#B22222"

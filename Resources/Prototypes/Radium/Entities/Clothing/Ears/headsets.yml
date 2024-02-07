@@ -1,8 +1,8 @@
 - type: entity
   parent: ClothingHeadset
   id: ClothingHeadsetUSSP
-  name: Гарнитура СССП
-  description: Гарнитура используемая военными СССП
+  name: USSP headset
+  description: Headset used by USSP solders
   components:
   - type: ContainerFill
     containers:
