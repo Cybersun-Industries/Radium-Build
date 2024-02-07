@@ -2260,9 +2260,7 @@
     - type: Item
       size: Normal
     - type: Storage
-      grid:
-      - 0,0,3,4
-      maxItemSize: Large
+      maxTotalWeight: 18
     - type: StorageFill
       contents:
         - id: HandheldHealthAnalyzer
