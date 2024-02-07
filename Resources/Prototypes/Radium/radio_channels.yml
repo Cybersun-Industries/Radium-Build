@@ -1,0 +1,7 @@
+- type: radioChannel
+  id: USSP
+  name: СССП
+  keycode: 'я'
+  frequency: 1984
+  color: "#B22222"
+  longRange: true
