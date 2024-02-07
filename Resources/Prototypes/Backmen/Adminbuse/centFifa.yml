@@ -2240,7 +2240,6 @@
   id: ClothingBackpackDuffelRXBZZ
   components:
     - type: Storage
-      maxItemSize: Huge
       grid:
       - 0,0,6,5
       maxItemSize: Large
