@@ -402,7 +402,7 @@
   - type: Appearance
 
 - type: entity
-  parent: [ClothingBeltBase, ClothingBeltStorageBase]
+  parent: [ClothingBeltBase, ClothingSlotBase]
   id: ClothingBeltSheath
   name: sabre sheath
   description: An ornate sheath designed to hold an officer's blade.
