@@ -59,6 +59,7 @@
       drainBuffer:
         maxVol: 500
       toilet:
+        maxVol: 250
         reagents:
         - ReagentId: Water
           Quantity: 180
