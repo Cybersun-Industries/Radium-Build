@@ -2243,6 +2243,7 @@
       maxItemSize: Huge
       grid:
       - 0,0,6,5
+      maxItemSize: Large
     - type: StorageFill
       contents:
         - id: MedkitAdvancedRXBZZ
@@ -2262,6 +2263,7 @@
     - type: Storage
       grid:
       - 0,0,3,4
+      maxItemSize: Large
     - type: StorageFill
       contents:
         - id: HandheldHealthAnalyzer
@@ -2278,6 +2280,7 @@
     - type: Storage
       grid:
       - 0,0,5,4
+      maxItemSize: Large
     - type: UserInterface
       interfaces:
       - key: enum.StorageUiKey.Key
