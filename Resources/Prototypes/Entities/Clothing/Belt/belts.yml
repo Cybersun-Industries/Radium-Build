@@ -449,7 +449,6 @@
     whitelist:
       tags:
         - ShellShotgun
-        - ShellShotgunIncendiary
     capacity: 30
 
 - type: entity

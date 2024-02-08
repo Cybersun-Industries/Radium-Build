@@ -1350,7 +1350,7 @@
   - type: Item
     size: Large
   - type: Storage
-    maxItemSize: Noemal
+    maxItemSize: Normal
     maxTotalWeight: 24
 
 - type: entity
