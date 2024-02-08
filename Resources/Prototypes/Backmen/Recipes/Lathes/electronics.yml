@@ -24,10 +24,3 @@
     Glass: 900
     Gold: 100
     
-- type: latheRecipe
-  id: ClothingBeltDemoman
-  result: ClothingBeltDemoman
-  completetime: 4
-  materials:
-    Steel: 200
-    Cloth: 100
