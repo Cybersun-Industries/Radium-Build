@@ -2303,8 +2303,9 @@
   id: ClothingBeltMilitaryWebbingFlamer
   components:
     - type: Storage
-      maxItemSize: Normal
-      maxTotalWeight: 48
+      maxItemSize: Huge
+      grid:
+        - 0,0,5,2
     - type: StorageFill
       contents:
         - id: MedkitAdvancedRXBZZ
