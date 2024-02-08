@@ -492,7 +492,7 @@
     tags:
       - PillCanister
   - type: Storage
-    maxTotalWeight: 10
+    maxSlots: 10
     quickInsert: true
     areaInsert: true
     areaInsertRadius: 1
