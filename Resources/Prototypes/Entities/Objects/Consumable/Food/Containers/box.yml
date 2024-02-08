@@ -297,7 +297,7 @@
     maxSlots: 6
   - type: Item
     sprite: Objects/Consumable/Food/Baked/nuggets.rsi
-    size: Small
+    size: Large
     heldPrefix: box
   - type: StorageFill
     contents:
