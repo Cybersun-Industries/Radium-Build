@@ -33,7 +33,8 @@
   - type: Clothing
     sprite: Backmen/Clothing/Belt/demoman.rsi
   - type: Storage
-    maxTotalWeight: 32
+    maxSlots: 24
+    maxItemSize: Normal
     whitelist:
       tags:
         - CableCoil
