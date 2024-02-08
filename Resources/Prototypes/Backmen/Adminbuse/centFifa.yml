@@ -371,9 +371,7 @@
   id: ClothingPounchMTFEngineerFilled
   components:
     - type: Storage
-      maxItemSize: Normal
-      grid:
-      - 0,0,3,3
+      maxItemSize: Large
     - type: StorageFill
       contents:
         - id: SheetSteel
@@ -2238,8 +2236,6 @@
   id: ClothingBackpackDuffelRXBZZ
   components:
     - type: Storage
-      grid:
-      - 0,0,6,5
       maxItemSize: Large
     - type: StorageFill
       contents:
@@ -2249,6 +2245,10 @@
         - id: MagazinePulseRifle
           amount: 4
         - id: WeaponShotgun39
+        - id: ShellShotgunIncendiary
+          amount: 10
+        - id: ShellShotgun
+          amount: 20
 
 - type: entity
   name: продвинутая аптечка стимуляторов
@@ -2272,20 +2272,10 @@
   parent: ClothingBeltBandolier
   id: ClothingBeltBandolierRXBZZ
   components:
-    - type: Storage
-      grid:
-      - 0,0,5,4
-      maxItemSize: Large
     - type: UserInterface
       interfaces:
       - key: enum.StorageUiKey.Key
         type: StorageBoundUserInterface
-    - type: StorageFill
-      contents:
-        - id: ShellShotgunIncendiary
-          amount: 10
-        - id: ShellShotgun
-          amount: 20
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container

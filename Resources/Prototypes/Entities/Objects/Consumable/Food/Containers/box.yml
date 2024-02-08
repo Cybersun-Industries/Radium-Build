@@ -38,10 +38,7 @@
       map: ["pink-box6"]
       visible: false
   - type: Storage
-    maxSlots: 6
-    whitelist:
-      tags:
-      - Donut
+    maxSlots: 12
   - type: Item
     sprite: Objects/Consumable/Food/Baked/donut.rsi
     size: Small

@@ -449,7 +449,8 @@
     whitelist:
       tags:
         - ShellShotgun
-    capacity: 14
+        - ShellShotgunIncendiary
+    capacity: 30
 
 - type: entity
   parent: ClothingBeltBase

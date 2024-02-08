@@ -1350,8 +1350,8 @@
   - type: Item
     size: Large
   - type: Storage
-    maxItemSize: Small
-    maxTotalWeight: 10
+    maxItemSize: Noemal
+    maxTotalWeight: 24
 
 - type: entity
   parent: BaseStorageItem

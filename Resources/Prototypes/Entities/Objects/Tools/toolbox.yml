@@ -64,8 +64,8 @@
   description: A toolbox typically stocked with electrical gear.
   components:
   - type: Storage
-    maxItemSize: Normal
-    maxTotalWeight: 24
+    maxItemSize: Large
+    maxTotalWeight: 32
   - type: Sprite
     sprite: Objects/Tools/Toolboxes/toolbox_yellow.rsi
     state: icon
