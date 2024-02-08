@@ -2304,8 +2304,7 @@
   components:
     - type: Storage
       maxItemSize: Normal
-      grid:
-        - 0,0,5,2
+      maxTotalWeight: 48
     - type: StorageFill
       contents:
         - id: MedkitAdvancedRXBZZ
