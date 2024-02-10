@@ -41,7 +41,7 @@
     maxSlots: 12
   - type: Item
     sprite: Objects/Consumable/Food/Baked/donut.rsi
-    size: Small
+    size: Large
     heldPrefix: box
   - type: StorageFill
     contents:
