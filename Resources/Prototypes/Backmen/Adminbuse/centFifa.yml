@@ -1204,7 +1204,7 @@
   components:
     - type: Storage
       maxItemSize: Huge
-      maxTotalWeight: 120
+      maxTotalWeight: 200
     - type: StorageFill
       contents:
         - id: BattleMedipen
