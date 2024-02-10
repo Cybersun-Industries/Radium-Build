@@ -7,7 +7,8 @@
   - type: Item
     size: Large
   - type: Storage
-    maxItemSize: Normal
+    maxItemSize: Large
+    maxTotalWeight: 24
   - type: Sprite
     state: box
 
@@ -254,8 +255,8 @@
       - id: TrashBag
         amount: 6
   - type: Storage
-    maxTotalWeight: 24
-    maxItemSize: Normal
+    maxTotalWeight: 48
+    maxItemSize: Huge
     whitelist:
       tags:
         - TrashBag
@@ -387,7 +388,7 @@
   description: Six deathrattle implants and handheld GPS devices for the whole squad.
   components:
   - type: Item
-    size: Normal
+    size: Large
   - type: StorageFill
     contents:
       - id: DeathRattleImplanter
@@ -468,7 +469,7 @@
   description: This box filled with colorful darts.
   components:
   - type: Item
-    size: Normal
+    size: Large
   - type: StorageFill
     contents:
       - id: Dart
