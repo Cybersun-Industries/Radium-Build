@@ -469,7 +469,7 @@
   description: This box filled with colorful darts.
   components:
   - type: Item
-    size: Normal
+    size: Large
   - type: StorageFill
     contents:
       - id: Dart
