@@ -199,7 +199,7 @@
   description: Contains 3 pairs of syndicate pyjamas and 3 plushies for the ultimate sleepover.
   components:
   - type: Storage
-    maxTotalWeight: 60
+    maxTotalWeight: 90
   - type: StorageFill
     contents:
       - id: ClothingUniformJumpsuitPyjamaSyndicateRed
