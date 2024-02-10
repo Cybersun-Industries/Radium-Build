@@ -2236,6 +2236,7 @@
   components:
     - type: Storage
       maxItemSize: Large
+      maxTotalWeight: 120
     - type: StorageFill
       contents:
         - id: MedkitAdvancedRXBZZ
