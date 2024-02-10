@@ -243,7 +243,7 @@
   components:
   - type: Storage
     maxItemSize: Huge
-    maxTotalWeight: 40
+    maxTotalWeight: 80
   - type: ClothingSpeedModifier
     walkModifier: 1
     sprintModifier: 1
