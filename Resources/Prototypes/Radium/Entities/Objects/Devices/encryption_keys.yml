@@ -1,0 +1,14 @@
+- type: entity
+  parent: EncryptionKey
+  id: EncryptionKeyUSSP
+  name: USSP encryption key
+  components:
+  - type: EncryptionKey
+    channels:
+    - USSP
+    defaultChannel: USSP
+  - type: Sprite
+    sprite: Radium/Objects/Devices/encryption_keysUSSP.rsi
+    layers:
+    - state: crypt_ussp
+    - state: ussp_label

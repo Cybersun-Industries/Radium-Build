@@ -13,13 +13,13 @@
 # Items that can fit inside of a standard bag.
 - type: itemSize
   id: Normal
-  weight: 4
+  weight: 8
   name: item-component-size-Normal
 
 # Items that are too large to fit inside of standard bags, but can worn in exterior slots or placed in custom containers.
 - type: itemSize
   id: Large
-  weight: 8
+  weight: 12
   name: item-component-size-Large
 
 # Items that are too large to place inside of any kind of container.
