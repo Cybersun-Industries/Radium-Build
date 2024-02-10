@@ -13,6 +13,7 @@ chat-radio-service = Сервис
 chat-radio-supply = Снабжение
 chat-radio-syndicate = Синдикат
 chat-radio-freelance = Фриланс
+chat-radio-ussp = СССП
 # not headset but whatever
 chat-radio-handheld = Портативный
 chat-radio-binary = Двоичный
