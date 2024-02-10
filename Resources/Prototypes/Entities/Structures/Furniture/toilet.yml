@@ -61,8 +61,5 @@
       toilet:
         maxVol: 250
         reagents:
-        - ReagentId: Water
-          Quantity: 180
-        - ReagentId: Toxin
-          Quantity: 20
-        
+        - ReagentId: ToiletWater
+          Quantity: 200
