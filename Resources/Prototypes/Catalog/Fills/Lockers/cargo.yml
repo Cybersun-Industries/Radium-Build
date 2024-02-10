@@ -14,6 +14,7 @@
       - id: SurvivalKnife
       - id: HandheldGPSBasic
       - id: RadioHandheld
+      - id: SurvivalMedipen
       - id: SeismicCharge
         amount: 2
       - id: OreBag
@@ -38,6 +39,7 @@
       - id: SurvivalKnife
       - id: HandheldGPSBasic
       - id: RadioHandheld
+      - id: SurvivalMedipen
       - id: SeismicCharge
         amount: 2
       - id: OreBag
@@ -48,3 +50,4 @@
         prob: 0.3
       - id: Flare
         prob: 0.3
+        
