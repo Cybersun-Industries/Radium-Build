@@ -11,8 +11,8 @@
     sound:
       path: /Audio/Items/toolbox_drop.ogg
   - type: Storage
-    maxItemSize: Normal
-    maxTotalWeight: 24
+    maxItemSize: Large
+    maxTotalWeight: 48
   - type: Item
     size: Ginormous
   - type: MeleeWeapon
@@ -65,7 +65,7 @@
   components:
   - type: Storage
     maxItemSize: Large
-    maxTotalWeight: 32
+    maxTotalWeight: 48
   - type: Sprite
     sprite: Objects/Tools/Toolboxes/toolbox_yellow.rsi
     state: icon
