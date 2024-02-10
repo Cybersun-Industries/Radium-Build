@@ -11,9 +11,8 @@
     sound:
       path: /Audio/Items/toolbox_drop.ogg
   - type: Storage
-    maxSlots: 7
-    maxItemSize: Normal
-    maxTotalWeight: 14
+    maxItemSize: Large
+    maxTotalWeight: 48
   - type: Item
     size: Ginormous
   - type: MeleeWeapon
@@ -64,6 +63,9 @@
   id: ToolboxElectrical
   description: A toolbox typically stocked with electrical gear.
   components:
+  - type: Storage
+    maxItemSize: Large
+    maxTotalWeight: 48
   - type: Sprite
     sprite: Objects/Tools/Toolboxes/toolbox_yellow.rsi
     state: icon

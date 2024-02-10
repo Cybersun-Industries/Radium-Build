@@ -12,7 +12,7 @@
         map: ["openLayer"]
   - type: Item
     sprite: Objects/Consumable/Smokeables/Cigarettes/Cartons/green.rsi
-    size: Normal
+    size: Large
   - type: Storage
     maxSlots: 6
   - type: StorageFill
