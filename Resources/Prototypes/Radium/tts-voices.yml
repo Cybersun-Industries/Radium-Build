@@ -3,7 +3,13 @@
   name: tts-voice-name-oleg
   sex: Male
   speaker: oleg
-
+  
+- type: ttsVoice
+  id: Aidar
+  name: tts-voice-name-oleg
+  sex: Male
+  speaker: oleg
+  
 - type: ttsVoice
   id: Arisha
   name: tts-voice-name-arisha
