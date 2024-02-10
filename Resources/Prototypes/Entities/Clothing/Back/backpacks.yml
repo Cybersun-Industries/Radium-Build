@@ -15,7 +15,7 @@
     - back
   - type: Storage
     maxItemSize: Huge
-    maxTotalWeight: 28
+    maxTotalWeight: 56
   - type: ContainerContainer
     containers:
       storagebase: !type:Container
@@ -197,7 +197,7 @@
   - type: Sprite
     sprite: Clothing/Back/Backpacks/ertleader.rsi
   - type: Storage
-    maxTotalWeight: 44
+    maxTotalWeight: 160
 
 - type: entity
   parent: ClothingBackpackERTLeader
