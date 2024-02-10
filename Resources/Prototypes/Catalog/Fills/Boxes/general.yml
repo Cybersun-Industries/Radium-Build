@@ -388,7 +388,7 @@
   description: Six deathrattle implants and handheld GPS devices for the whole squad.
   components:
   - type: Item
-    size: Normal
+    size: Large
   - type: StorageFill
     contents:
       - id: DeathRattleImplanter
