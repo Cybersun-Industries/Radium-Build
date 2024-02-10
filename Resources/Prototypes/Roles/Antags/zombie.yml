@@ -6,7 +6,7 @@
   objective: roles-antag-initial-infected-objective
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 108000 # 30h # Corvax-RoleTime
+    time: 28800 # 8h # Radium-RoleTime
 
 - type: antag
   id: Zombie
