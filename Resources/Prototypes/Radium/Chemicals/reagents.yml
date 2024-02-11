@@ -570,12 +570,15 @@
         key: TemporaryBlindness
         component: TemporaryBlindness
         conditions:
+      - !type:GenericStatusEffect
+        key: Muted
+        component: Muted
       - !type:PopupMessage
         conditions:
         type: Local
         visualType: Large
         messages: [ "alerts-paralize-desc" ]
-        probability: 0.1
+        probability: 0.3
 
 - type: reagent
   id: Ether
