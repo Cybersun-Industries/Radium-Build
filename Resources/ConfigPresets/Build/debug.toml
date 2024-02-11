@@ -4,3 +4,6 @@ enabled = false
 
 [shuttle]
 auto_call_time = 0
+
+[game]
+hostname = "☄️ [RU][LRP][TTS] Radium - Помощь Новичкам! ☄️ "

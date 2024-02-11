@@ -17,6 +17,29 @@
         <PanelContainer Name="LeftSide" StyleClasses="AngleRect" HorizontalAlignment="Left" VerticalExpand="True"
                         VerticalAlignment="Stretch" MinWidth="750">
             <BoxContainer Orientation="Vertical" HorizontalExpand="True">
+                <controls:HSpacer Spacing="10" />
+                <BoxContainer Orientation="Horizontal" MinSize="0 40"
+                              Name="HeaderContainer"
+                              Access="Public"
+                              SeparationOverride="4">
+                    <Label Margin="8 0 0 0" StyleClasses="LabelHeadingBigger"
+                           VAlign="Center"
+                           HorizontalExpand="True"
+                           HorizontalAlignment="Left"
+                           FontColorOverride="{x:Static style:StyleNano.NanoLightGold}"
+                           FontColorShadowOverride="{x:Static style:StyleNano.NanoBlack}"
+                           Text="{Loc 'ui-lobby-title'}" />
+                    <Label Name="ServerName" Access="Public"
+                           StyleClasses="LabelHeadingBigger"
+                           VAlign="Center"
+                           FontColorShadowOverride="{x:Static style:StyleNano.NanoBlack}"
+                           FontColorOverride="{x:Static style:StyleNano.NanoLightGold}"
+                           HorizontalExpand="True" HorizontalAlignment="Left" />
+                </BoxContainer>
+                <!-- Gold line -->
+                <controls:HLine Color="{x:Static style:StyleNano.NanoGold}" Thickness="2" />
+                <controls:HSpacer Spacing="10" />
+                <controls:VSpacer Spacing="10" MinHeight="10" />
                 <lobbyUi:LobbyCharacterPreviewPanel Name="CharacterPreview" Access="Public" />
                 <controls:HSpacer Spacing="5" />
                 <BoxContainer MinHeight="10" />
@@ -44,25 +67,6 @@
                                 <controls:VSpacer Spacing="10" />
                                 <controls:StripeBack>
                                     <BoxContainer Orientation="Vertical" HorizontalExpand="True">
-                                        <controls:HSpacer Spacing="10" />
-                                        <BoxContainer Orientation="Horizontal" MinSize="0 40"
-                                                      Name="HeaderContainer"
-                                                      Access="Public"
-                                                      SeparationOverride="4">
-                                            <Label Margin="8 0 0 0" StyleClasses="LabelHeadingBigger"
-                                                   VAlign="Center"
-                                                   HorizontalExpand="True"
-                                                   HorizontalAlignment="Left"
-                                                   Text="{Loc 'ui-lobby-title'}" />
-                                            <Label Name="ServerName" Access="Public"
-                                                   StyleClasses="LabelHeadingBigger"
-                                                   VAlign="Center"
-                                                   HorizontalExpand="True" HorizontalAlignment="Left" />
-                                        </BoxContainer>
-                                        <!-- Gold line -->
-                                        <controls:HLine Color="{x:Static style:StyleNano.NanoGold}" Thickness="2" />
-                                        <controls:HSpacer Spacing="10" />
-                                        <controls:VSpacer Spacing="10" MinHeight="10" />
                                         <!-- Voting & misc button bar -->
                                         <BoxContainer Orientation="Horizontal" MinSize="0 40"
                                                       HorizontalAlignment="Right">

@@ -86,6 +86,8 @@ namespace Content.Client.Stylesheets
         public static readonly Color PanelDark = Color.FromHex("#1E1E22");
 
         public static readonly Color NanoGold = Color.FromHex("#A88B5E");
+        public static readonly Color NanoLightGold = Color.FromHex("#ba9f82");
+        public static readonly Color NanoBlack = Color.FromHex("#FFFFFF");
         public static readonly Color GoodGreenFore = Color.FromHex("#31843E");
         public static readonly Color ConcerningOrangeFore = Color.FromHex("#A5762F");
         public static readonly Color DangerousRedFore = Color.FromHex("#BB3232");
