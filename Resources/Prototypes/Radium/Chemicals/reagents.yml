@@ -401,11 +401,11 @@
       - !type:HealthChange
         damage:
           groups:
-            Airloss: -12.5
+            Airloss: -15.5
       - !type:HealthChange
         conditions:
           - !type:ReagentThreshold
-            min: 10
+            min: 20
         damage:
           types:
            Asphyxiation: 8
