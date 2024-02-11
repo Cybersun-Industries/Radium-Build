@@ -27,12 +27,12 @@
                            HorizontalExpand="True"
                            HorizontalAlignment="Left"
                            FontColorOverride="{x:Static style:StyleNano.NanoLightGold}"
-                           FontColorShadowOverride="{x:Static style:StyleNano.NanoBlack}"
+                           FontColorShadowOverride="{x:Static style:StyleNano.NanoShade}"
                            Text="{Loc 'ui-lobby-title'}" />
                     <Label Name="ServerName" Access="Public"
                            StyleClasses="LabelHeadingBigger"
                            VAlign="Center"
-                           FontColorShadowOverride="{x:Static style:StyleNano.NanoBlack}"
+                           FontColorShadowOverride="{x:Static style:StyleNano.NanoShade}"
                            FontColorOverride="{x:Static style:StyleNano.NanoLightGold}"
                            HorizontalExpand="True" HorizontalAlignment="Left" />
                 </BoxContainer>
