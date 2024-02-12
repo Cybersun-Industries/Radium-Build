@@ -401,7 +401,7 @@
       - !type:HealthChange
         damage:
           groups:
-            Airloss: -15.5
+            Airloss: -18.5
       - !type:HealthChange
         conditions:
           - !type:ReagentThreshold
