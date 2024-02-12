@@ -1,8 +1,9 @@
 [game]
 # Straight in-game baby
-lobbyenabled = false
+lobbyenabled = true
 # Dev map for faster loading & convenience
 map = "Dev"
+hostname = "☄️ [RU][LRP][TTS] Radium - Помощь Новичкам! ☄️ "
 role_timers = false
 
 [gateway]
@@ -29,3 +30,4 @@ see_own_notes = true
 
 [net]
 tickrate = 20
+
