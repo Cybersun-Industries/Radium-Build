@@ -44,7 +44,7 @@
   - type: Sprite
     sprite: Radium/Objects/Specific/Hydroponics/poisonberries.rsi
   - type: Produce
-    seedId: PoisonBerries
+    seedId: poisonberries
   - type: Extractable
     juiceSolution:
       reagents:
