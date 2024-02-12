@@ -1289,6 +1289,8 @@
   packetPrototype: BerrySeeds
   productPrototypes:
     - FoodBerries
+  mutationPrototypes:
+    - poisonberries
   harvestRepeat: Repeat
   lifespan: 50
   maturation: 6
