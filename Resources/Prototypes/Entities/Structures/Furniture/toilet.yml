@@ -62,4 +62,4 @@
         maxVol: 250
         reagents:
         - ReagentId: ToiletWater
-          Quantity: 200
+          Quantity: 250
