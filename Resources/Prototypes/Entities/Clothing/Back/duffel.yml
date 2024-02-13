@@ -8,7 +8,7 @@
     sprite: Clothing/Back/Duffels/duffel.rsi
   - type: Storage
     maxItemSize: Huge
-    maxTotalWeight: 80
+    maxTotalWeight: 56
   - type: ClothingSpeedModifier
     walkModifier: 1
     sprintModifier: 0.9
