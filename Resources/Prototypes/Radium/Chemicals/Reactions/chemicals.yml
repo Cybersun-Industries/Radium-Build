@@ -143,7 +143,7 @@
       amount: 1
     Ethanol:
       amount: 1
-    Oxygen:
+    Silicon:
       amount: 1
   products:
     Ether: 3
