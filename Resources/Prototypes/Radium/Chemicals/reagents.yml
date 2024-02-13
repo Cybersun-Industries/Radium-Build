@@ -378,7 +378,7 @@
   color: "#7a8361"
   slippery: true
   metabolisms:
-    Medicine:
+    Drink:
       effects:
       - !type:HealthChange
         damage:
