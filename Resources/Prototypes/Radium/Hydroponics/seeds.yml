@@ -1,0 +1,132 @@
+- type: seed
+  id: coca
+  name: seeds-coca-name
+  noun: seeds-noun-seeds
+  displayName: seeds-coca-display-name
+  plantRsi: Radium/Objects/Specific/Hydroponics/coca.rsi
+  packetPrototype: CocaSeeds
+  productPrototypes:
+    - FoodCoca
+  harvestRepeat: Repeat
+  lifespan: 50
+  maturation: 7
+  production: 7
+  potency: 6
+  yield: 3
+  idealLight: 7
+  growthStages: 4
+  chemicals:
+    Nutriment:
+      Min: 1
+      Max: 7
+      PotencyDivisor: 30
+    CocaExtract:
+      Min: 1
+      Max: 4
+      PotencyDivisor: 20
+
+- type: seed
+  id: icesprout
+  name: seeds-icesprout-name
+  noun: seeds-noun-seeds
+  displayName: seeds-icesprout-display-name
+  plantRsi: Radium/Objects/Specific/Hydroponics/icesprout.rsi
+  packetPrototype: IcesproutSeeds
+  productPrototypes:
+    - FoodIcecrystal
+  lifespan: 50
+  maturation: 7
+  production: 8
+  potency: 8
+  yield: 3
+  idealLight: 8
+  idealHeat: 270
+  growthStages: 3
+
+- type: seed
+  id: lavasprout
+  name: seeds-lavasprout-name
+  noun: seeds-noun-seeds
+  displayName: seeds-lavasprout-display-name
+  plantRsi: Radium/Objects/Specific/Hydroponics/lavasprout.rsi
+  packetPrototype: LavasproutSeeds
+  productPrototypes:
+    - FoodLavacrystal
+  mutationPrototypes:
+    - icesprout
+  lifespan: 50
+  maturation: 7
+  production: 8
+  potency: 8
+  yield: 3
+  idealLight: 8
+  idealHeat: 330
+  growthStages: 3
+  chemicals:
+    Nutriment:
+      Min: 1
+      Max: 4
+      PotencyDivisor: 30
+    HotCapsaicinOil:
+      Min: 1
+      Max: 11
+      PotencyDivisor: 20
+
+- type: seed
+  id: poisonberries
+  name: seeds-poisonberries-name
+  noun: seeds-noun-seeds
+  displayName: seeds-poisonberries-display-name
+  plantRsi: Radium/Objects/Specific/Hydroponics/poisonberries.rsi
+  packetPrototype: PoisonBerrySeeds
+  productPrototypes:
+    - FoodPoisonBerries
+  harvestRepeat: Repeat
+  lifespan: 60
+  maturation: 6
+  production: 4
+  yield: 4
+  idealLight: 7
+  chemicals:
+    Vitamin:
+      Min: 1
+      Max: 4
+      PotencyDivisor: 40
+    Cyanide:
+      Min: 1
+      Max: 2
+      PotencyDivisor: 20
+    Tirizene:
+      Min: 1
+      Max: 3
+      PotencyDivisor: 20
+
+- type: seed
+  id: polypnium
+  name: seeds-polypnium-name
+  noun: seeds-noun-seeds
+  displayName: seeds-polypnium-display-name
+  plantRsi: Radium/Objects/Specific/Hydroponics/polypnium.rsi
+  packetPrototype: PolypniumSeeds
+  productPrototypes:
+    - FoodPolypnium
+  lifespan: 50
+  maturation: 5
+  production: 6
+  potency: 7
+  yield: 2
+  idealLight: 6
+  growthStages: 4
+  chemicals:
+    Nutriment:
+      Min: 1
+      Max: 4
+      PotencyDivisor: 30
+    Slime:
+      Min: 1
+      Max: 10
+      PotencyDivisor: 30
+    EntropicPolypnium:
+      Min: 1
+      Max: 3
+      PotencyDivisor: 20

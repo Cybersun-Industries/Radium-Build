@@ -1,0 +1,30 @@
+- type: entity
+  name: ent-SurvivalMedipen
+  parent: ChemicalMedipen
+  id: SurvivalMedipen
+  components:
+  - type: Sprite
+    sprite: Radium/Objects/Specific/Medical/survivalmedipen.rsi
+    layers:
+    - state: survivalpen
+      map: ["enum.SolutionContainerLayers.Fill"]
+  - type: SolutionContainerVisuals
+    maxFillLevels: 1
+    changeColor: false
+    emptySpriteName: survivalpen_empty
+  - type: Hypospray
+    solutionName: pen
+    transferAmount: 20
+  - type: SolutionContainerManager
+    solutions:
+      pen:
+        maxVol: 20
+        reagents:
+        - ReagentId: Epinephrine
+          Quantity: 10
+        - ReagentId: Omnizine
+          Quantity: 5
+        - ReagentId: LavalandExtract
+          Quantity: 5
+  - type: Tag
+    tags: []

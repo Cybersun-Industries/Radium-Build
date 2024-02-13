@@ -1,0 +1,129 @@
+- type: entity
+  name: кока
+  parent: FoodProduceBase
+  id: FoodCoca
+  description: Листья коки были составной частью в приготовлении колы до кофеина.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - leafy
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 11
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 7
+        - ReagentId: CocaExtract
+          Quantity: 4
+  - type: Sprite
+    sprite: Radium/Objects/Specific/Hydroponics/coca.rsi
+  - type: Produce
+    seedId: coca
+
+- type: entity
+  name: ядовитые ягоды
+  parent: FoodProduceBase
+  id: FoodPoisonBerries
+  description: Один из видов множеств ядовитых ягод.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - berry
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 9
+        reagents:
+        - ReagentId: Cyanide
+          Quantity: 2
+        - ReagentId: Tirizene
+          Quantity: 3
+        - ReagentId: Vitamin
+          Quantity: 4
+  - type: Sprite
+    sprite: Radium/Objects/Specific/Hydroponics/poisonberries.rsi
+  - type: Produce
+    seedId: poisonberries
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: JuiceBerry
+        Quantity: 8
+      - ReagentId: Cyanide
+        Quantity: 2
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: ледяной кристалл
+  parent: FoodProduceBase
+  id: FoodIcecrystal
+  description: Ледяной кристалл из холодных далёких земель.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - cold
+      - oily
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 15
+        reagents:
+        - ReagentId: ColdFrostOil
+          Quantity: 11
+        - ReagentId: Nutriment
+          Quantity: 4
+  - type: Sprite
+    sprite: Radium/Objects/Specific/Hydroponics/icesprout.rsi
+  - type: Produce
+    seedId: icesprout
+
+- type: entity
+  name: лавовый кристалл
+  parent: FoodProduceBase
+  id: FoodLavacrystal
+  description: Лавовый кристалл из горячих далёких земель.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - oily
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 15
+        reagents:
+        - ReagentId: HotCapsaicinOil
+          Quantity: 11
+        - ReagentId: Nutriment
+          Quantity: 4
+  - type: Sprite
+    sprite: Radium/Objects/Specific/Hydroponics/lavasprout.rsi
+  - type: Produce
+    seedId: lavasprout
+
+- type: entity
+  name: полипень
+  parent: FoodProduceBase
+  id: FoodPolypnium
+  description: Странный сгусток чёрной слизи прямиком из лавовых земель
+  components:
+  - type: FlavorProfile
+    flavors:
+      - slime
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 17
+        reagents:
+        - ReagentId: Slime
+          Quantity: 10
+        - ReagentId: Nutriment
+          Quantity: 4
+        - ReagentId: EntropicPolypnium
+          Quantity: 3
+  - type: Sprite
+    sprite: Radium/Objects/Specific/Hydroponics/polypnium.rsi
+  - type: Produce
+    seedId: polypnium
