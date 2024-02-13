@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/github-script@v6
       name: Approve LGTM Review
-      if: github.actor == 'freeze2222' &&  contains(github.event.comment.body, 'LGTM')
+      if: github.actor == 'freeze2222'
       with:
         script: |
           github.rest.pulls.createReview({
