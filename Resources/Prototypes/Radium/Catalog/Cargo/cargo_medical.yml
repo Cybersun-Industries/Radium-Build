@@ -1,0 +1,9 @@
+- type: cargoProduct
+  id: CrateMedicalSyringe
+  icon:
+    sprite: Objects/Specific/Chemistry/syringe.rsi
+    state: syringe_base0
+  product: CrateMedicalSyringeInsulin
+  cost: 600
+  category: Medical
+  group: market

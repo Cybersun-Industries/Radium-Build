@@ -1,0 +1,14 @@
+- type: entity
+  name: мензурка адномидразина
+  suffix: Адмемы
+  description: Заполненная мензурка с адномидразином.
+  parent: LargeBeaker
+  id: AdminordrazineLargeBeaker
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      beaker:
+        maxVol: 100
+        reagents:
+        - ReagentId: Adminordrazine
+          Quantity: 100

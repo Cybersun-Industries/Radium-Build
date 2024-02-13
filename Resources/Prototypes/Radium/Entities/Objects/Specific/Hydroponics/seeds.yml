@@ -1,0 +1,49 @@
+- type: entity
+  parent: SeedBase
+  name: пакет семян (кока)
+  id: CocaSeeds
+  components:
+    - type: Seed
+      seedId: coca
+    - type: Sprite
+      sprite: Radium/Objects/Specific/Hydroponics/coca.rsi
+
+- type: entity
+  parent: SeedBase
+  name: пакет семян (ледяные цветы)
+  id: IcesproutSeeds
+  components:
+    - type: Seed
+      seedId: icesprout
+    - type: Sprite
+      sprite: Radium/Objects/Specific/Hydroponics/icesprout.rsi
+
+- type: entity
+  parent: SeedBase
+  name: пакет семян (лавовые цветы)
+  id: LavasproutSeeds
+  components:
+    - type: Seed
+      seedId: lavasprout
+    - type: Sprite
+      sprite: Radium/Objects/Specific/Hydroponics/lavasprout.rsi
+
+- type: entity
+  parent: SeedBase
+  name: пакет семян (ядовитые ягоды)
+  id: PoisonBerrySeeds
+  components:
+    - type: Seed
+      seedId: poisonberries
+    - type: Sprite
+      sprite: Radium/Objects/Specific/Hydroponics/poisonberries.rsi
+
+- type: entity
+  parent: SeedBase
+  name: пакет семян (полипень)
+  id: PolypniumSeeds
+  components:
+    - type: Seed
+      seedId: polypnium
+    - type: Sprite
+      sprite: Radium/Objects/Specific/Hydroponics/polypnium.rsi

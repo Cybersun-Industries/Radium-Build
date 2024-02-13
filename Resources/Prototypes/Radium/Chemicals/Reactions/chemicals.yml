@@ -1,0 +1,201 @@
+- type: reaction
+  id: Atrazine
+  reactants:
+    Chlorine:
+      amount: 1
+    Oxygen:
+      amount: 1
+    Nitrogen:
+      amount: 1
+  products:
+    Atrazine: 3
+
+- type: reaction
+  id: BlackPowder
+  reactants:
+    Saltpetre:
+      amount: 1
+    Charcoal:
+      amount: 1
+    Sulfur:
+      amount: 1
+  products:
+    BlackPowder: 3
+
+- type: reaction
+  id: Candlefication
+  minTemp: 374
+  impact: Low
+  quantized: true
+  reactants:
+    Fat:
+      amount: 25
+    Nutriment:
+      amount: 5
+    Lye:
+      amount: 10
+    Oxygen:
+      amount: 10
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: Candle
+
+- type: reaction
+  id: Corgium
+  minTemp: 374
+  impact: Low
+  quantized: true
+  reactants:
+    Fat:
+      amount: 25
+    Nutriment:
+      amount: 5
+    Blood:
+      amount: 10
+    StrangeReagent:
+      amount: 10
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: MobCorgi
+
+- type: reaction
+  id: Cyanide
+  minTemp: 380
+  reactants:
+    Oil:
+      amount: 1
+    Ammonia:
+      amount: 1
+    Oxygen:
+      amount: 1
+  products:
+    Cyanide: 3
+
+- type: reaction
+  id: Jenkem
+  reactants:
+    ToiletWater:
+      amount: 1
+    Water:
+      amount: 1
+    Ammonia:
+      amount: 1
+  products:
+    Jenkem: 3
+
+- type: reaction
+  id: Teslium
+  minTemp: 400
+  reactants:
+    Plasma:
+      amount: 1
+    Iron:
+      amount: 1
+    BlackPowder:
+      amount: 1
+  products:
+    Teslium: 3
+
+- type: reaction
+  id: TesliumEmpExplosion
+  impact: High
+  priority: 20
+  reactants:
+    Teslium:
+      amount: 1
+    Uranium:
+      amount: 1
+  effects:
+    - !type:EmpReactionEffect
+      rangePerUnit: 0.3
+      maxRange: 7
+      energyConsumption: 12500
+      duration: 15
+
+- type: reaction
+  id: Saltpetre
+  reactants:
+    Potassium:
+      amount: 1
+    Nitrogen:
+      amount: 1
+    Oxygen:
+      amount: 3
+  products:
+    Saltpetre: 5
+
+- type: reaction
+  id: Aranesp
+  reactants:
+    Epinephrine:
+      amount: 1
+    TableSalt:
+      amount: 1
+    Insulin:
+      amount: 1
+  products:
+    Aranesp: 3
+
+- type: reaction
+  id: Ether
+  reactants:
+    SulfuricAcid:
+      amount: 1
+    Ethanol:
+      amount: 1
+    Silicon:
+      amount: 1
+  products:
+    Ether: 3
+
+- type: reaction
+  id: Lipolicide
+  reactants:
+    Mercury:
+      amount: 1
+    Diethylamine:
+      amount: 1
+    Ephedrine:
+      amount: 1
+  products:
+    Lipolicide: 3
+
+- type: reaction
+  id: Lye
+  reactants:
+    Sodium:
+      amount: 1
+    Hydrogen:
+      amount: 1
+    Oxygen:
+      amount: 1
+  products:
+    Lye: 3
+
+- type: reaction
+  id: StrangeReagent
+  reactants:
+    Omnizine:
+      amount: 1
+    Holywater:
+      amount: 1
+    UnstableMutagen:
+      amount: 1
+  products:
+    StrangeReagent: 3
+
+- type: reaction
+  id: Lopatium
+  minTemp: 400
+  impact: Low
+  quantized: true
+  reactants:
+    Aluminium:
+      amount: 25
+    Silver:
+      amount: 5
+    StrangeReagent:
+      amount: 10
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: Shovel
