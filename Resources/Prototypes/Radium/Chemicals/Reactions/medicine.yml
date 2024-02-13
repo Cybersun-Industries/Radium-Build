@@ -98,12 +98,10 @@
       amount: 1
     Chlorine:
       amount: 1
-    Fluorine:
-      amount: 1
     Oil:
       amount: 1
   products:
-    Haloperidol: 5
+    Haloperidol: 4
 
 - type: reaction
   id: PenteticAcid
