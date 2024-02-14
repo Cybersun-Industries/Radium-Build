@@ -1,10 +1,12 @@
 name: Auto approve
 
 on:
-  issue_comment:
+  pull_request:
     types:
-      - created
-
+      - opened
+      - edited
+      - review_requested
+      
 jobs:
   auto-approve:
     runs-on: ubuntu-latest
