@@ -239,6 +239,8 @@
       types:
         Piercing: 6
         Poison: 4
+#Radium-start
+#Radium-end
   - type: ReplacementAccent
     accent: xeno
   - type: InteractionPopup
