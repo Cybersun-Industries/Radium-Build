@@ -75,7 +75,7 @@
   - type: EmagSiliconLaw
     stunTime: 5
   - type: SiliconLawProvider
-    laws: Crewsimov
+    laws: NTDefault
   - type: IonStormTarget
   - type: Strippable
   - type: InventorySlots
@@ -206,8 +206,8 @@
     - DoorBumpOpener
     - CanPilot
   - type: Emoting
- # - type: TTS
- #   voice: Borgs
+#  - type: TTS
+#    voice: Borgs
   - type: GuideHelp
     guides:
       - Cyborgs

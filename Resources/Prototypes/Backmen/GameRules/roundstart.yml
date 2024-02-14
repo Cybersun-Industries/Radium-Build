@@ -5,3 +5,10 @@
   components:
     - type: FleshCultRule
       faction: Flesh
+
+- type: entity
+  id: VampiresGameRule
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: BloodsuckerRule
