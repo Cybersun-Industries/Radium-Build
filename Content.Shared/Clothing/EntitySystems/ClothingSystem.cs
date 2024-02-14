@@ -149,22 +149,6 @@ public abstract class ClothingSystem : EntitySystem
             _handsSystem.TryPickup(args.User, ent);
     }
 
-    private void OnEquipDoAfter(Entity<ClothingComponent> ent, ref ClothingEquipDoAfterEvent args)
-    {
-        if (args.Handled || args.Cancelled || args.Target is not { } target)
-            return;
-        args.Handled = _invSystem.TryEquip(args.User, target, ent, args.Slot, clothing: ent.Comp,  predicted: true, checkDoafter: false);
-    }
-
-    private void OnUnequipDoAfter(Entity<ClothingComponent> ent, ref ClothingUnequipDoAfterEvent args)
-    {
-        if (args.Handled || args.Cancelled || args.Target is not { } target)
-            return;
-        args.Handled = _invSystem.TryUnequip(args.User, target, args.Slot, clothing: ent.Comp, predicted: true, checkDoafter: false);
-        if (args.Handled)
-            _handsSystem.TryPickup(args.User, ent);
-    }
-
     #region Public API
 
     public void SetEquippedPrefix(EntityUid uid, string? prefix, ClothingComponent? clothing = null)
