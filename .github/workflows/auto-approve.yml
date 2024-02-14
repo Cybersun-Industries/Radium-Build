@@ -1,18 +1,19 @@
 name: Auto approve
 
 on:
-  issue_comment:
+  pull_request:
     types:
-      - created
-
+      - opened
+      - edited
+      - assigned
+      
 jobs:
   auto-approve:
     runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
+    permissions: write-all
     steps:
     - uses: actions/github-script@v6
-      name: Approve LGTM Review
+      name: Approve Review
       if: github.actor == 'freeze2222'
       with:
         script: |
