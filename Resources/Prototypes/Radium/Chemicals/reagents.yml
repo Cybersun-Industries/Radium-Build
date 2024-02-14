@@ -257,7 +257,7 @@
         ignoreResistances: false
         damage:
           groups:
-            Burn: -1
+            Burn: -2.5
 
 - type: reagent
   id: Spaceacillin
@@ -307,7 +307,7 @@
         ignoreResistances: false
         damage:
           types:
-            Blunt: -1
+            Blunt: -2.5
 
 - type: reagent
   id: Synthflesh
@@ -326,8 +326,8 @@
         ignoreResistances: false
         damage:
           types:
-            Blunt: -1
-            Burn: -1
+            Blunt: -2.25
+            Burn: -2.25
 
 - type: reagent
   id: Teslium
@@ -401,7 +401,7 @@
       - !type:HealthChange
         damage:
           groups:
-            Airloss: -18.5
+            Airloss: -22.5
       - !type:HealthChange
         conditions:
           - !type:ReagentThreshold
