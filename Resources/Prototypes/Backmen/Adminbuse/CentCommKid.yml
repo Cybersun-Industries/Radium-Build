@@ -1365,8 +1365,8 @@
   - type: Item
     size: Large
   - type: Storage
-    maxItemSize: Small
-    maxTotalWeight: 10
+    maxItemSize: Normal
+    maxTotalWeight: 24
     whitelist:
       tags:
         - MagazineRifle

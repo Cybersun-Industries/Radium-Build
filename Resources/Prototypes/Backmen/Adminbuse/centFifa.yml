@@ -383,9 +383,8 @@
   id: ClothingPounchMTFEngineerFilled
   components:
     - type: Storage
-      maxItemSize: Normal
-      grid:
-      - 0,0,3,3
+      maxItemSize: Large
+      maxTotalWeight: 50
     - type: StorageFill
       contents:
         - id: SheetSteel
@@ -1231,8 +1230,7 @@
   components:
     - type: Storage
       maxItemSize: Huge
-      grid:
-      - 0,0,16,6
+      maxTotalWeight: 200
     - type: StorageFill
       contents:
         - id: BattleMedipen
@@ -1252,8 +1250,6 @@
         - id: SheetSteel
           amount: 4
         - id: SheetPlasteel
-          amount: 4
-        - id: SheetRPGlass
           amount: 4
 
 
@@ -2265,9 +2261,8 @@
   id: ClothingBackpackDuffelRXBZZ
   components:
     - type: Storage
-      maxItemSize: Huge
-      grid:
-      - 0,0,6,5
+      maxItemSize: Large
+      maxTotalWeight: 120
     - type: StorageFill
       contents:
         - id: MedkitAdvancedRXBZZ
@@ -2276,6 +2271,10 @@
         - id: MagazinePulseRifle
           amount: 4
         - id: WeaponShotgun39
+        - id: ShellShotgunIncendiary
+          amount: 10
+        - id: ShellShotgun
+          amount: 20
 
 - type: entity
   name: продвинутая аптечка стимуляторов
@@ -2285,8 +2284,7 @@
     - type: Item
       size: Normal
     - type: Storage
-      grid:
-      - 0,0,3,4
+      maxTotalWeight: 18
     - type: StorageFill
       contents:
         - id: HandheldHealthAnalyzer
@@ -2300,19 +2298,10 @@
   parent: ClothingBeltBandolier
   id: ClothingBeltBandolierRXBZZ
   components:
-    - type: Storage
-      grid:
-      - 0,0,5,4
     - type: UserInterface
       interfaces:
       - key: enum.StorageUiKey.Key
         type: StorageBoundUserInterface
-    - type: StorageFill
-      contents:
-        - id: ShellShotgunIncendiary
-          amount: 10
-        - id: ShellShotgun
-          amount: 20
     - type: ContainerContainer
       containers:
         ballistic-ammo: !type:Container
@@ -2330,7 +2319,7 @@
   id: ClothingBeltMilitaryWebbingFlamer
   components:
     - type: Storage
-      maxItemSize: Normal
+      maxItemSize: Huge
       maxTotalWeight: 80
     - type: StorageFill
       contents:

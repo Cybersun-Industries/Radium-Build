@@ -479,7 +479,7 @@
   name: pill canister
   id: PillCanister
   parent: BaseStorageItem
-  description: Holds up to 10 pills.
+  description: Holds up to 18 pills.
   components:
   - type: Item
     size: Small
@@ -491,7 +491,7 @@
     tags:
       - PillCanister
   - type: Storage
-    maxSlots: 10
+    maxSlots: 18
     quickInsert: true
     areaInsert: true
     areaInsertRadius: 1
