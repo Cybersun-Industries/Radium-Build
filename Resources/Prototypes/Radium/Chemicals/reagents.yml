@@ -298,6 +298,9 @@
         damage:
           types:
             Poison: 1
+            Blunt: -1
+            Slash: -1
+            Piercing: -1
   reactiveEffects:
     Acidic:
       methods: [ Touch ]
@@ -306,8 +309,8 @@
         scaleByQuantity: true
         ignoreResistances: false
         damage:
-          types:
-            Blunt: -1.5
+          groups:
+            Brute: -1.5
 
 - type: reagent
   id: Synthflesh
@@ -325,8 +328,8 @@
         scaleByQuantity: true
         ignoreResistances: false
         damage:
-          types:
-            Blunt: -1.5
+          groups:
+            Brute: -1.5
             Burn: -1.5
 
 - type: reagent
