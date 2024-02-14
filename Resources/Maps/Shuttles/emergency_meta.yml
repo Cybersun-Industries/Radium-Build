@@ -4339,6 +4339,7 @@ entities:
           - 502
           - 501
           - 511
+          - 503
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
@@ -4356,6 +4357,7 @@ entities:
           - 516
           - 515
           - 525
+          - 517
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
@@ -4374,6 +4376,7 @@ entities:
           - 529
           - 528
           - 538
+          - 530
     - type: Physics
       canCollide: False
   - uid: 539
@@ -4391,6 +4394,7 @@ entities:
           - 542
           - 541
           - 551
+          - 543
     - type: Physics
       canCollide: False
 - proto: MedkitToxinFilled
@@ -5092,6 +5096,84 @@ entities:
           - 105
     - type: Physics
       canCollide: False
+- proto: PillCanisterDexalin
+  entities:
+  - uid: 503
+    components:
+    - type: Transform
+      parent: 499
+    - type: ContainerContainer
+      containers:
+        storagebase: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - 504
+          - 505
+          - 506
+          - 507
+          - 508
+          - 509
+          - 510
+    - type: Physics
+      canCollide: False
+  - uid: 517
+    components:
+    - type: Transform
+      parent: 513
+    - type: ContainerContainer
+      containers:
+        storagebase: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - 518
+          - 519
+          - 520
+          - 521
+          - 522
+          - 523
+          - 524
+    - type: Physics
+      canCollide: False
+  - uid: 530
+    components:
+    - type: Transform
+      parent: 526
+    - type: ContainerContainer
+      containers:
+        storagebase: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - 531
+          - 532
+          - 533
+          - 534
+          - 535
+          - 536
+          - 537
+    - type: Physics
+      canCollide: False
+  - uid: 543
+    components:
+    - type: Transform
+      parent: 539
+    - type: ContainerContainer
+      containers:
+        storagebase: !type:Container
+          showEnts: False
+          occludes: True
+          ents:
+          - 544
+          - 545
+          - 546
+          - 547
+          - 548
+          - 549
+          - 550
+    - type: Physics
+      canCollide: False
 - proto: PillCanisterDylovene
   entities:
   - uid: 92
@@ -5235,6 +5317,176 @@ entities:
     components:
     - type: Transform
       parent: 102
+    - type: Physics
+      canCollide: False
+- proto: PillDexalin
+  entities:
+  - uid: 504
+    components:
+    - type: Transform
+      parent: 503
+    - type: Physics
+      canCollide: False
+  - uid: 505
+    components:
+    - type: Transform
+      parent: 503
+    - type: Physics
+      canCollide: False
+  - uid: 506
+    components:
+    - type: Transform
+      parent: 503
+    - type: Physics
+      canCollide: False
+  - uid: 507
+    components:
+    - type: Transform
+      parent: 503
+    - type: Physics
+      canCollide: False
+  - uid: 508
+    components:
+    - type: Transform
+      parent: 503
+    - type: Physics
+      canCollide: False
+  - uid: 509
+    components:
+    - type: Transform
+      parent: 503
+    - type: Physics
+      canCollide: False
+  - uid: 510
+    components:
+    - type: Transform
+      parent: 503
+    - type: Physics
+      canCollide: False
+  - uid: 518
+    components:
+    - type: Transform
+      parent: 517
+    - type: Physics
+      canCollide: False
+  - uid: 519
+    components:
+    - type: Transform
+      parent: 517
+    - type: Physics
+      canCollide: False
+  - uid: 520
+    components:
+    - type: Transform
+      parent: 517
+    - type: Physics
+      canCollide: False
+  - uid: 521
+    components:
+    - type: Transform
+      parent: 517
+    - type: Physics
+      canCollide: False
+  - uid: 522
+    components:
+    - type: Transform
+      parent: 517
+    - type: Physics
+      canCollide: False
+  - uid: 523
+    components:
+    - type: Transform
+      parent: 517
+    - type: Physics
+      canCollide: False
+  - uid: 524
+    components:
+    - type: Transform
+      parent: 517
+    - type: Physics
+      canCollide: False
+  - uid: 531
+    components:
+    - type: Transform
+      parent: 530
+    - type: Physics
+      canCollide: False
+  - uid: 532
+    components:
+    - type: Transform
+      parent: 530
+    - type: Physics
+      canCollide: False
+  - uid: 533
+    components:
+    - type: Transform
+      parent: 530
+    - type: Physics
+      canCollide: False
+  - uid: 534
+    components:
+    - type: Transform
+      parent: 530
+    - type: Physics
+      canCollide: False
+  - uid: 535
+    components:
+    - type: Transform
+      parent: 530
+    - type: Physics
+      canCollide: False
+  - uid: 536
+    components:
+    - type: Transform
+      parent: 530
+    - type: Physics
+      canCollide: False
+  - uid: 537
+    components:
+    - type: Transform
+      parent: 530
+    - type: Physics
+      canCollide: False
+  - uid: 544
+    components:
+    - type: Transform
+      parent: 543
+    - type: Physics
+      canCollide: False
+  - uid: 545
+    components:
+    - type: Transform
+      parent: 543
+    - type: Physics
+      canCollide: False
+  - uid: 546
+    components:
+    - type: Transform
+      parent: 543
+    - type: Physics
+      canCollide: False
+  - uid: 547
+    components:
+    - type: Transform
+      parent: 543
+    - type: Physics
+      canCollide: False
+  - uid: 548
+    components:
+    - type: Transform
+      parent: 543
+    - type: Physics
+      canCollide: False
+  - uid: 549
+    components:
+    - type: Transform
+      parent: 543
+    - type: Physics
+      canCollide: False
+  - uid: 550
+    components:
+    - type: Transform
+      parent: 543
     - type: Physics
       canCollide: False
 - proto: PillDylovene
