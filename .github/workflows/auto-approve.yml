@@ -10,18 +10,8 @@ on:
 jobs:
   auto-approve:
     runs-on: ubuntu-latest
-    permissions: write-all
+    permissions:
+      pull-requests: write
+    if: github.actor == 'freeze2222'
     steps:
-    - uses: actions/github-script@v6
-      name: Approve Review
-      if: github.actor == 'freeze2222'
-      with:
-        script: |
-          github.rest.pulls.createReview({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            pull_number: context.issue.number,
-            review_id: 1,
-            event: 'APPROVE',
-            body: 'Let`s get this merged then.'
-          })
+      - uses: hmarr/auto-approve-action@v4
