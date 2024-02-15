@@ -240,6 +240,15 @@
         Piercing: 6
         Poison: 4
 #Radium-start
+#  - type: SolutionContainerManager
+#    solutions:
+#      melee:
+#        reagents:
+#        - ReagentId: ChloralHydrate
+#          Quantity: 80
+#  - type: MeleeChemicalInjector
+#    solution: melee
+#    transferAmount: 4
 #Radium-end
   - type: ReplacementAccent
     accent: xeno
