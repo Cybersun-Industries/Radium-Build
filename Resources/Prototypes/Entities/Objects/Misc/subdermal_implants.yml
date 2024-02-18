@@ -312,3 +312,16 @@
    - type: Tag
      tags:
        - MindShield
+
+- type: entity
+  parent: BaseSubdermalImplant
+  id: FakeMindShieldImplant
+  name: fake-mind-shield implant
+  description: This implant will ensure loyalty to Nanotrasen and prevent mind control devices.
+  noSpawn: true
+  components:
+   - type: SubdermalImplant
+     permanent: true
+   - type: Tag
+     tags:
+       - FakeMindShield

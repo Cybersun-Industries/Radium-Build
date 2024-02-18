@@ -818,6 +818,9 @@
   id: MindShield
 
 - type: Tag
+  id: FakeMindShield
+
+- type: Tag
   id: MindTransferTarget
 
 - type: Tag

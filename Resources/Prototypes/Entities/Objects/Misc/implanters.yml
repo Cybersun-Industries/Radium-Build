@@ -241,3 +241,11 @@
   components:
     - type: Implanter
       implant: MindShieldImplant
+
+- type: entity
+  id: FakeMindShieldImplanter
+  name: fake-mind-shield implanter
+  parent: BaseImplantOnlyImplanter
+  components:
+    - type: Implanter
+      implant: FakeMindShieldImplant

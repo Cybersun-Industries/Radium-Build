@@ -6,6 +6,7 @@ using Content.Shared.PDA;
 using Content.Shared.StatusIcon;
 using Content.Shared.StatusIcon.Components;
 using Robust.Shared.Prototypes;
+using Content.Shared.FakeMindshield.Components;
 
 namespace Content.Client.Overlays;
 
@@ -71,6 +72,12 @@ public sealed class ShowSecurityIconsSystem : EquipmentHudSystem<ShowSecurityIco
         if (TryComp<MindShieldComponent>(uid, out var comp))
         {
             if (_prototypeMan.TryIndex<StatusIconPrototype>(comp.MindShieldStatusIcon.Id, out var icon))
+                result.Add(icon);
+        }
+
+        if (TryComp<FakeMindShieldComponent>(uid, out var compp))
+        {
+            if (_prototypeMan.TryIndex<StatusIconPrototype>(compp.FakeMindShieldStatusIcon.Id, out var icon))
                 result.Add(icon);
         }
 
