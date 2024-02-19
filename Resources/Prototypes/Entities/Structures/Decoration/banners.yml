@@ -155,5 +155,5 @@
   components:
   - type: Sprite
     sprite: Structures/Decoration/banner.rsi
-    state: banner-green
+    state: poster228
 
