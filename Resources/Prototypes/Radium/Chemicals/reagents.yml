@@ -207,6 +207,9 @@
            Poison: 1
       - !type:SatiateHunger
         factor: -1
+      - !type:AdjustReagent
+        reagent: EntropicPolypnium
+        amount: -5.0
     Drink:
       effects:
         - !type:SatiateThirst
@@ -214,9 +217,6 @@
         - !type:AdjustReagent
           reagent: Ethanol
           amount: 0.3
-      - !type:AdjustReagent
-        reagent: EntropicPolypnium
-        amount: -5.0
 
 - type: reagent
   id: Saltpetre
