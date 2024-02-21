@@ -1,0 +1,52 @@
+- type: entity
+  save: false
+  name: Репликант
+  parent: BaseMobReplicant
+  id: MobReplicant
+  components:
+    - type: PotentialPsionic
+
+- type: entity
+  save: false
+  name: Репликант
+  parent: BaseMobReplicantGhostRole
+  id: MobReplicantGhostRole
+  components:
+    - type: PotentialPsionic
+
+- type: entity
+  parent: MobHuman
+  id: HumanReplicaClown
+  name: Клоун реплика
+  components:
+    - type: Icon
+      sprite: Markers/jobs.rsi
+      state: clown
+    - type: GhostRole
+      name: ghost-role-information-canned-clown-name
+      description: ghost-role-information-canned-clown-description
+      rules: Помогайте Хонк браткам во исполнении ВЕСЁЛЫХ планов!
+    - type: GhostTakeoverAvailable
+    - type: Loadout
+      prototypes: [CannedClownGear]
+    - type: RandomMetadata
+      nameSegments: [clown_basefun]
+    - type: Clumsy
+      clumsyDamage:
+        types:
+          Blunt: 5
+          Piercing: 4
+        groups:
+          Burn: 3
+    - type: TriggerOnMobstateChange
+      mobState:
+      - Dead
+    - type: EmitSoundOnTrigger
+      sound:
+        collection: SadTrombone
+        params:
+          variation: 0.125
+    - type: NpcFactionMember
+      factions:
+      - NanoTrasen
+      - Clown

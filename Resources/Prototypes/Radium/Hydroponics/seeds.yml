@@ -130,3 +130,226 @@
       Min: 1
       Max: 3
       PotencyDivisor: 20
+
+- type: seed
+  id: ambrosiaGaia
+  name: seeds-ambrosiagaia-name
+  noun: seeds-noun-seeds
+  displayName: seeds-ambrosiagaia-display-name
+  plantRsi: Radium/Objects/Specific/Hydroponics/ambrosia_gaia.rsi
+  packetPrototype: AmbrosiaGaiaSeeds
+  productPrototypes:
+    - FoodAmbrosiaGaia
+  lifespan: 25
+  maturation: 10
+  production: 3
+  potency: 10
+  yield: 3
+  waterConsumption: 0.60
+  chemicals:
+    Nutriment:
+      Min: 1
+      Max: 6
+      PotencyDivisor: 10
+    Vitamin:
+      Min: 1
+      Max: 5
+      PotencyDivisor: 35
+    Earthsblood:
+      Min: 1
+      Max: 5
+      PotencyDivisor: 20
+
+- type: seed
+  id: holymelon
+  name: seeds-holymelon-name
+  noun: seeds-noun-seeds
+  displayName: seeds-holymelon-display-name
+  plantRsi: Radium/Objects/Specific/Hydroponics/holymelon.rsi
+  packetPrototype: HolymelonSeeds
+  productPrototypes:
+    - FoodHolymelon
+  lifespan: 55
+  maturation: 12
+  production: 3
+  potency: 1
+  yield: 1
+  idealLight: 8
+  chemicals:
+    Nutriment:
+      Min: 1
+      Max: 10
+      PotencyDivisor: 35
+    Vitamin:
+      Min: 1
+      Max: 4
+      PotencyDivisor: 20
+    Holywater:
+      Min: 1
+      Max: 20
+      PotencyDivisor: 55
+
+- type: seed
+  id: replicapod
+  name: seeds-replicapod-name
+  noun: seeds-noun-seeds
+  displayName: seeds-replicapod-display-name
+  plantRsi: Radium/Objects/Specific/Hydroponics/replicapod.rsi
+  packetPrototype: ReplicapodSeeds
+  productPrototypes:
+    - MobReplicantGhostRole
+  mutationPrototypes:
+    - clownpod
+  lifespan: 50
+  maturation: 7
+  production: 4
+  potency: 5
+  yield: 1
+  idealLight: 8
+
+- type: seed
+  id: clownpod
+  name: seeds-clownpod-name
+  noun: seeds-noun-seeds
+  displayName: seeds-clownpod-display-name
+  plantRsi: Radium/Objects/Specific/Hydroponics/clownpod.rsi
+  packetPrototype: ClownpodSeeds
+  productPrototypes:
+    - HumanReplicaClown
+  lifespan: 50
+  maturation: 7
+  production: 4
+  potency: 5
+  yield: 1
+  idealLight: 8
+
+- type: seed
+  id: honkplant
+  name: seeds-honkplant-name
+  noun: seeds-noun-seeds
+  displayName: seeds-honkplant-display-name
+  plantRsi: Radium/Objects/Specific/Hydroponics/honkplant.rsi
+  packetPrototype: HonkplantSeeds
+  productPrototypes:
+    - BikeHorn
+  harvestRepeat: Repeat
+  lifespan: 50
+  maturation: 6
+  production: 6
+  yield: 2
+
+- type: seed
+  id: cucumber
+  name: огурец
+  noun: seeds-noun-seeds
+  displayName: семечко огурца
+  plantRsi: Radium/Objects/Specific/Hydroponics/cucumber.rsi
+  packetPrototype: CucumberSeeds
+  productPrototypes:
+    - FoodCucumber
+  harvestRepeat: Repeat
+  lifespan: 45
+  maturation: 8
+  production: 5
+  potency: 2
+  yield: 6
+  idealLight: 8
+  growthStages: 2
+  waterConsumption: 0.60
+  chemicals:
+    Nutriment:
+      Min: 1
+      Max: 6
+      PotencyDivisor: 35
+    Vitamin:
+      Min: 1
+      Max: 5
+      PotencyDivisor: 25
+    Water:
+      Min: 1
+      Max: 10
+      PotencyDivisor: 45
+
+- type: seed
+  id: bomblemon
+  name: seeds-bomblemon-name
+  noun: seeds-noun-seeds
+  displayName: seeds-bomblemon-display-name
+  plantRsi: Radium/Objects/Specific/Hydroponics/bomblemon.rsi
+  packetPrototype: BombLemonSeeds
+  productPrototypes:
+    - FoodBombLemon
+  harvestRepeat: Repeat
+  lifespan: 55
+  maturation: 6
+  production: 4
+  yield: 2
+  potency: 10
+  idealLight: 8
+  chemicals:
+    Nutriment:
+      Min: 1
+      Max: 5
+      PotencyDivisor: 20
+    BlackPowder:
+      Min: 1
+      Max: 4
+      PotencyDivisor: 35
+
+- type: seed
+  id: moonlin
+  name: seeds-moonlin-name
+  noun: seeds-noun-seeds
+  displayName: seeds-moonlin-display-name
+  plantRsi: Radium/Objects/Specific/Hydroponics/moonlin.rsi
+  packetPrototype: MoonlinSeeds
+  productPrototypes:
+    - FoodMoonlin
+  harvestRepeat: Repeat
+  lifespan: 50
+  maturation: 7
+  production: 4
+  yield: 3
+  potency: 6
+  idealLight: 8
+  chemicals:
+    Nutriment:
+      Min: 1
+      Max: 5
+      PotencyDivisor: 25
+    Vitamin:
+      Min: 1
+      Max: 3
+      PotencyDivisor: 35
+    Moonlin:
+      Min: 1
+      Max: 5
+      PotencyDivisor: 45
+
+- type: seed
+  id: 3Dorange
+  name: seeds-3Dorange-name
+  noun: seeds-noun-seeds
+  displayName: seeds-3Dorange-display-name
+  plantRsi: Radium/Objects/Specific/Hydroponics/3Dorange.rsi
+  packetPrototype: 3DOrangeSeeds
+  productPrototypes:
+    - Food3DOrange
+  harvestRepeat: Repeat
+  lifespan: 55
+  maturation: 7
+  production: 6
+  yield: 4
+  potency: 11
+  idealLight: 8
+  chemicals:
+    Nutriment:
+      Min: 1
+      Max: 5
+      PotencyDivisor: 20
+    Vitamin:
+      Min: 1
+      Max: 4
+      PotencyDivisor: 25
+
+

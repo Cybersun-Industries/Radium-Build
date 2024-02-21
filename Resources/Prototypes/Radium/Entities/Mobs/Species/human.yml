@@ -1,0 +1,38 @@
+- type: entity
+  parent: BaseMobSpeciesOrganic
+  id: BaseMobReplicant
+  noSpawn: true
+  name: Урист МакРепликант
+  components:
+  - type: Hunger
+  - type: Icon # It will not have an icon in the adminspawn menu without this. Body parts seem fine for whatever reason.
+    sprite: Mobs/Species/Human/parts.rsi
+    state: full
+  - type: Thirst
+  - type: Butcherable
+    butcheringType: Spike
+    spawned:
+    - id: FoodMeatHuman
+      amount: 5
+
+- type: entity
+  parent: BaseMobSpeciesOrganic
+  id: BaseMobReplicantGhostRole
+  noSpawn: true
+  name: Урист МакРепликант
+  suffix: GhostRole
+  components:
+  - type: Hunger
+  - type: Icon # It will not have an icon in the adminspawn menu without this. Body parts seem fine for whatever reason.
+    sprite: Mobs/Species/Human/parts.rsi
+    state: full
+  - type: Thirst
+  - type: Butcherable
+    butcheringType: Spike
+    spawned:
+    - id: FoodMeatHuman
+      amount: 5
+  - type: GhostRole
+    name: Урист МакРепликант
+    description: Репликант который родился в капусте.
+  - type: GhostTakeoverAvailable

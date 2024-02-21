@@ -4,6 +4,6 @@
     sprite: Radium/Objects/Specific/Hydroponics/coca.rsi
     state: seed
   product: CrateHydroponicsPlanetSeeds
-  cost: 1500
+  cost: 1000
   category: Hydroponics
   group: market
