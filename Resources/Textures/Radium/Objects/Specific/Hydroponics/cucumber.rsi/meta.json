@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "license": "CC-BY-NC-SA-3.0",
+  "license": "CC-BY-SA-3.0",
   "copyright": "lopata123 | ogr8314",
   "size": {
     "x": 32,
@@ -24,6 +24,18 @@
     },
     {
       "name": "stage-2"
+    },
+    {
+      "name": "stage-3"
+    },
+    {
+      "name": "stage-4"
+    },
+    {
+      "name": "stage-5"
+    },
+    {
+      "name": "stage-6"
     }
   ]
 }
