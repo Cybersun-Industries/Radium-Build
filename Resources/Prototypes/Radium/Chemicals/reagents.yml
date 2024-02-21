@@ -945,9 +945,9 @@
 
 - type: reagent
   id: CucumberJuice
-  name: огуречный сок
+  name: reagent-name-cucumberjuice
   group: Medicine
-  desc: Состоит из 98% воды.
+  desc: reagent-desc-cucumberjuice
   physicalDesc: reagent-physical-desc-aromatic
   flavor: cucumberjuice
   color: "#528415"
@@ -961,9 +961,9 @@
 
 - type: reagent
   id: Moonlin
-  name: мунлин
+  name: reagent-name-moonlin
   group: Narcotics
-  desc: Было добыто на луне.
+  desc: reagent-desc-moonlin
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: moonlin
   color: "#64d2cb"
