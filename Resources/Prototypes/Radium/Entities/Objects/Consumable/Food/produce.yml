@@ -382,6 +382,8 @@
   - type: FlavorProfile
     flavors:
       - orange
+  - type: Item
+    size: Tiny
   - type: Sprite
     sprite: Radium/Objects/Specific/Hydroponics/3Dorange_produce.rsi
   - type: Icon
