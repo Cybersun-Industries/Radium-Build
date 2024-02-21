@@ -247,14 +247,12 @@
   packetPrototype: CucumberSeeds
   productPrototypes:
     - FoodCucumber
-  harvestRepeat: Repeat
   lifespan: 45
   maturation: 8
   production: 5
   potency: 2
-  yield: 6
+  yield: 4
   idealLight: 8
-  growthStages: 2
   waterConsumption: 0.60
   chemicals:
     Nutriment:
