@@ -240,9 +240,9 @@
 
 - type: seed
   id: cucumber
-  name: огурец
+  name: seeds-cucumber-name
   noun: seeds-noun-seeds
-  displayName: семечко огурца
+  displayName: seeds-cucumber-display-name
   plantRsi: Radium/Objects/Specific/Hydroponics/cucumber.rsi
   packetPrototype: CucumberSeeds
   productPrototypes:
