@@ -849,7 +849,7 @@
             min: 25
         damage:
           groups:
-           Toxin: -4
+           Toxin: 4
 
 - type: reagent
   id: StrangeReagent
