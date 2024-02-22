@@ -1,6 +1,6 @@
 - type: entity
   id: CrateHydroponicsPlanetSeeds
-  parent: CrateHydroponics
+  parent: CrateHydroSecure
   name: ящик планетарных семян
   description: Содержит в себе 4 семян с далёких планет.
   components:
