@@ -230,6 +230,9 @@
           types:
            Heat: 2
            Poison: 1
+      - !type:AdjustReagent
+        reagent: EntropicPolypnium
+        amount: -5.0
 
 - type: reagent
   id: Saltpetre
