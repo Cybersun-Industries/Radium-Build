@@ -111,16 +111,40 @@
   metabolisms:
     Poison:
       effects:
+      - !type:Drunk
+        boozePower: 5
       - !type:HealthChange
         damage:
           types:
             Poison: 0.75
             Asphyxiation: 1
+      - !type:HealthChange
+        conditions:
+          - !type:ReagentThreshold
+            min: 30
+        damage:
+          groups:
+           Airloss: 4.5
+      - !type:Jitter
+        conditions:
+        - !type:ReagentThreshold
+          min: 30
       - !type:Emote
         emote: Cough
+        probability: 0.5
+        conditions:
+        - !type:ReagentThreshold
+          min: 30
+      - !type:PopupMessage
+        conditions:
+        - !type:ReagentThreshold
+          min: 30
+        type: Local
+        visualType: Large
+        messages: [ "alerts-eyedilated-desc" ]
         probability: 0.1
       - !type:ChemVomit
-        probability: 0.05
+        probability: 0.03
 
 - type: reagent
   id: GodBlood
@@ -180,7 +204,6 @@
 - type: reagent
   id: Rezadone
   name: reagent-name-rezadone
-  parent: BaseAlcohol
   group: Medicine
   desc: reagent-desc-rezadone
   physicalDesc: reagent-physical-desc-strong-smelling
@@ -189,10 +212,12 @@
   metabolisms:
     Medicine:
       effects:
+      - !type:Drunk
+        boozePower: 5      
       - !type:HealthChange
         damage:
           types:
-            Cellular: -5
+            Cellular: -2.5
             Blunt: -1
             Heat: -1
             Shock: -1
@@ -200,20 +225,11 @@
       - !type:HealthChange
         conditions:
           - !type:ReagentThreshold
-            min: 30
+            min: 15
         damage:
           types:
            Heat: 2
            Poison: 1
-      - !type:SatiateHunger
-        factor: -1
-    Drink:
-      effects:
-        - !type:SatiateThirst
-          factor: 3
-        - !type:AdjustReagent
-          reagent: Ethanol
-          amount: 0.3
 
 - type: reagent
   id: Saltpetre
@@ -368,7 +384,7 @@
       - !type:HealthChange
         damage:
           types:
-            Shock: 2
+            Shock: 7
       - !type:Jitter
     Poison:
       effects:
@@ -415,7 +431,7 @@
             min: 20
         damage:
           types:
-           Asphyxiation: 8
+           Asphyxiation: 6
 
 - type: reagent
   id: Aranesp
@@ -437,8 +453,8 @@
           - !type:ReagentThreshold
             min: 25
         damage:
-          types:
-           Bloodloss: -7
+          groups:
+           Airloss: 3
       - !type:GenericStatusEffect
         key: StaminaModifier
         component: StaminaModifier
@@ -503,7 +519,7 @@
       - !type:HealthChange
         damage:
           groups:
-            Toxin: 2
+            Toxin: 6
       - !type:ChemVomit
         probability: 0.05
       - !type:Emote
@@ -850,9 +866,9 @@
       - !type:HealthChange
         damage:
           groups:
-            Toxin: 7
-            Brute: 7
-            Burn: 7
+            Toxin: 3.5
+            Brute: 3.5
+            Burn: 3.5
       - !type:HealthChange
         conditions:
           - !type:ReagentThreshold
@@ -957,7 +973,7 @@
       - !type:HealthChange
         damage:
           groups:
-            Airloss: -3
+            Airloss: -4
 
 - type: reagent
   id: Moonlin
