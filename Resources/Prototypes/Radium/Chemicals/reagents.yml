@@ -204,6 +204,7 @@
 - type: reagent
   id: Rezadone
   name: reagent-name-rezadone
+  parent: BaseAlcohol
   group: Medicine
   desc: reagent-desc-rezadone
   physicalDesc: reagent-physical-desc-strong-smelling
@@ -211,9 +212,7 @@
   color: "#649a22"
   metabolisms:
     Medicine:
-      effects:
-      - !type:Drunk
-        boozePower: 5      
+      effects:   
       - !type:HealthChange
         damage:
           types:
@@ -233,7 +232,14 @@
       - !type:AdjustReagent
         reagent: EntropicPolypnium
         amount: -5.0
-
+    Drink:
+      effects:
+        - !type:SatiateThirst
+          factor: 3
+        - !type:AdjustReagent
+          reagent: Ethanol
+          amount: 0.3
+          
 - type: reagent
   id: Saltpetre
   name: reagent-name-saltpetre
