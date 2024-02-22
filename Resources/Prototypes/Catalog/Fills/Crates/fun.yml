@@ -304,6 +304,7 @@
       - id: BeachBall
       - id: RubberPig
       - id: ClothingShoesSkates
+      - id: HonkplantSeeds
 
 - type: entity
   id: CrateFunBikeHornImplants

@@ -107,7 +107,7 @@
   name: полипень
   parent: FoodProduceBase
   id: FoodPolypnium
-  description: Странный сгусток чёрной слизи прямиком из лавовых земель
+  description: Странный сгусток чёрной слизи прямиком из лавовых земель.
   components:
   - type: FlavorProfile
     flavors:
@@ -127,3 +127,275 @@
     sprite: Radium/Objects/Specific/Hydroponics/polypnium.rsi
   - type: Produce
     seedId: polypnium
+
+- type: entity
+  name: амброзия гайа
+  parent: FoodProduceBase
+  id: FoodAmbrosiaGaia
+  description: Лекарственное растение в котором течёт кровь богов.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - leafy
+      - medicine
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 16
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 6
+        - ReagentId: Vitamin
+          Quantity: 5
+        - ReagentId: Earthsblood
+          Quantity: 5
+  - type: Sprite
+    sprite: Radium/Objects/Specific/Hydroponics/ambrosia_gaia.rsi
+  - type: Produce
+    seedId: ambrosiaGaia
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Clothing
+    sprite: Radium/Objects/Specific/Hydroponics/ambrosia_gaia.rsi
+    slots:
+    - HEAD
+  - type: Tag
+    tags:
+    - Ambrosia
+
+- type: entity
+  name: святой арбуз
+  parent: [FoodProduceBase, ItemHeftyBase]
+  id: FoodHolymelon
+  description: Святой арбуз прямиком из ботаники или из церкви.
+  components:
+  - type: Item
+    size: Small
+  - type: FlavorProfile
+    flavors:
+      - watermelon
+      - holy
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 34
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Vitamin
+          Quantity: 4
+        - ReagentId: Holywater
+          Quantity: 20
+  - type: Sprite
+    sprite: Radium/Objects/Specific/Hydroponics/holymelon.rsi
+  - type: Produce
+    seedId: watermelon
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Holywater
+        Quantity: 20
+  - type: Damageable
+    damageContainer: Biological
+  - type: DamageOnHighSpeedImpact
+    minimumSpeed: 0.1
+    damage:
+      types:
+        Blunt: 1
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 1
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: desecration
+      - !type:SpillBehavior
+        solution: food
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: SliceableFood
+    count: 5
+    slice: FoodHolymelonSlice
+  - type: Butcherable
+    butcheringType: Knife
+    spawned:
+    - id: ClothingHeadHatHolymelon
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: ломтик святого арбуза
+  parent: ProduceSliceBase
+  id: FoodHolymelonSlice
+  description: Божественно.
+  components:
+  - type: Item
+    size: Tiny
+  - type: FlavorProfile
+    flavors:
+      - watermelon
+      - holy
+  - type: Sprite
+    sprite: Radium/Objects/Specific/Hydroponics/holymelon.rsi
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 5
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 2
+        - ReagentId: Vitamin
+          Quantity: 1
+        - ReagentId: Holywater
+          Quantity: 2
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: Holywater
+        Quantity: 4
+  - type: Tag
+    tags:
+    - Fruit
+
+- type: entity
+  name: огурец
+  parent: FoodProduceBase
+  id: FoodCucumber
+  description: Огурец даёт силы и воду.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - cucumber
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 21
+        reagents:
+        - ReagentId: Vitamin
+          Quantity: 5
+        - ReagentId: Nutriment
+          Quantity: 6
+        - ReagentId: Water
+          Quantity: 10
+  - type: Sprite
+    sprite: Radium/Objects/Specific/Hydroponics/cucumber.rsi
+  - type: Produce
+    seedId: cucumber
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: CucumberJuice
+        Quantity: 10
+
+- type: entity
+  name: взрывной лемон
+  parent: FoodProduceBase
+  id: FoodBombLemon
+  description: Взрывной лемон настолько прекрасен что аж имеет бомбезный вкус.
+  components:
+  - type: FlavorProfile
+    flavors:
+      - gunpowder
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 9
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 5
+        - ReagentId: BlackPowder
+          Quantity: 4
+  - type: Appearance
+  - type: GenericVisualizer
+    visuals:
+      enum.Trigger.TriggerVisuals.VisualState:
+        base:
+          Primed: { state: primed }
+          Unprimed: { state: complete }
+  - type: Sprite
+    sprite: Radium/Objects/Specific/Hydroponics/bomblemon.rsi
+    state: produce
+    layers:
+    - state: produce
+      map: ["base"]
+  - type: Explosive
+    explosionType: DemolitionCharge
+    totalIntensity: 15
+    intensitySlope: 2
+    maxIntensity: 25
+    canCreateVacuum: false
+  - type: ExplodeOnTrigger
+  - type: OnUseTimerTrigger
+    delay: 3
+    initialBeepDelay: 0
+    beepSound: /Audio/Machines/Nuke/general_beep.ogg
+  - type: Produce
+    seedId: bomblemon
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: JuiceLemon
+        Quantity: 6
+      - ReagentId: BlackPowder
+        Quantity: 4
+
+- type: entity
+  name: мунлин
+  parent: FoodProduceBase
+  id: FoodMoonlin
+  description: Лунный свет!
+  components:
+  - type: FlavorProfile
+    flavors:
+      - moonlin
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 13
+        reagents:
+        - ReagentId: Vitamin
+          Quantity: 3
+        - ReagentId: Nutriment
+          Quantity: 5
+        - ReagentId: Moonlin
+          Quantity: 5
+  - type: Sprite
+    sprite: Radium/Objects/Specific/Hydroponics/producemoonlin.rsi
+  - type: Produce
+    seedId: moonlin
+  - type: PointLight
+    color: "#64d2cb"
+    energy: 0.8
+    radius: 5
+    softness: 1
+    offset: "0, -0.5"
+
+- type: entity
+  name: 3D апельсин
+  parent: FoodLemon
+  id: Food3DOrange
+  description: Вкусный, а самое главное в 3D!
+  components:
+  - type: FlavorProfile
+    flavors:
+      - orange
+  - type: Item
+    size: Tiny
+  - type: Sprite
+    sprite: Radium/Objects/Specific/Hydroponics/3Dorange_produce.rsi
+  - type: Icon
+    sprite: Radium/Objects/Specific/Hydroponics/3Dorange_produce.rsi
+    state: icon
+  - type: Produce
+    seedId: 3Dorange
+  - type: Extractable
+    juiceSolution:
+      reagents:
+      - ReagentId: JuiceOrange
+        Quantity: 10
+  - type: Tag
+    tags:
+    - Fruit

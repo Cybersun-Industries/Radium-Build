@@ -24,6 +24,10 @@
         amount: 2
       - id: BungoSeeds
         amount: 2
+      - id: ReplicapodSeeds
+        amount: 2
+      - id: MoonlinSeeds
+        amount: 2
 
 - type: entity
   id: CrateHydroponicsSeedsMedicinal
@@ -42,6 +46,8 @@
       - id: LingzhiSeeds
         amount: 3
       - id: PoppySeeds
+        amount: 3
+      - id: AmbrosiaGaiaSeeds
         amount: 3
 
 - type: entity
@@ -91,3 +97,4 @@
       - id: GrapeSeeds
       - id: WatermelonSeeds
       - id: PeaSeeds
+      - id: CucumberSeeds
