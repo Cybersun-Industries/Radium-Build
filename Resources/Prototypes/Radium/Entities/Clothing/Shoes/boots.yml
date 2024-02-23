@@ -1,0 +1,13 @@
+- type: entity
+  id: ClothingShoesBootsExplosion
+  parent: ClothingShoesBase
+  name: взрывные ботинки
+  description: При наступлении на поверхность издаёт звук взрыва.
+  components:
+  - type: Sprite
+    sprite: Radium/Clothing/Shoes/Boots/explosionboots.rsi
+  - type: Clothing
+    sprite: Radium/Clothing/Shoes/Boots/explosionboots.rsi
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: Explosion
