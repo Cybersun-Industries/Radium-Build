@@ -243,7 +243,7 @@
 - type: reagent
   id: Saltpetre
   name: reagent-name-saltpetre
-  groups: Botanical
+  group: Botanical
   desc: reagent-desc-saltpetre
   physicalDesc: reagent-physical-desc-thick
   flavor: bitter
