@@ -13,6 +13,9 @@ on:
       - 'Resources/Prototypes/Reagents/**.yml'
       - 'Resources/Prototypes/Chemistry/**.yml'
       - 'Resources/Prototypes/Recipes/Reactions/**.yml'
+      - 'Resources/Prototypes/Radium/Recipes/Reactions/**.yml'
+      - 'Resources/Prototypes/Radium/Chemicals/**.yml'
+      - 'Resources/Prototypes/Radium/Chemicals/Reactions**.yml'
       - 'RobustToolbox/'
 
 jobs:
