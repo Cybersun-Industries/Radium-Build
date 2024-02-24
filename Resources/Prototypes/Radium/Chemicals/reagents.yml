@@ -1,7 +1,7 @@
 - type: reagent
   id: Adminordrazine
   name: reagent-name-adminordrazine
-  group: Medicine
+  group: Special
   desc: reagent-desc-adminordrazine
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: magical
@@ -43,7 +43,7 @@
 - type: reagent
   id: Atrazine
   name: reagent-name-atrazine
-  group: Poison
+  group: Toxins
   desc: reagent-desc-atrazine
   physicalDesc: reagent-desc-neurotoxin
   flavor: bitter
@@ -59,7 +59,7 @@
 - type: reagent
   id: BlackPowder
   name: reagent-name-blackpowder
-  group: Poison
+  group: Special
   desc: reagent-desc-blackpowder
   physicalDesc: reagent-physical-desc-powdery
   flavor: bitter
@@ -103,7 +103,7 @@
 - type: reagent
   id: Cyanide
   name: reagent-name-cyanide
-  group: Poison
+  group: Toxins
   desc: reagent-desc-cyanide
   physicalDesc: reagent-physical-desc-pungent
   flavor: bitter
@@ -212,7 +212,7 @@
   color: "#649a22"
   metabolisms:
     Medicine:
-      effects:   
+      effects:
       - !type:HealthChange
         damage:
           types:
@@ -239,10 +239,11 @@
         - !type:AdjustReagent
           reagent: Ethanol
           amount: 0.3
-          
+
 - type: reagent
   id: Saltpetre
   name: reagent-name-saltpetre
+  group: Botanical
   desc: reagent-desc-saltpetre
   physicalDesc: reagent-physical-desc-thick
   flavor: bitter
@@ -433,7 +434,7 @@
       - !type:HealthChange
         damage:
           groups:
-            Airloss: -22.5
+            Airloss: -10.5
       - !type:HealthChange
         conditions:
           - !type:ReagentThreshold
@@ -441,11 +442,12 @@
         damage:
           types:
            Asphyxiation: 6
+           Cold: 4
 
 - type: reagent
   id: Aranesp
   name: reagent-name-aranesp
-  group: Narcotic
+  group: Narcotics
   desc: reagent-desc-aranesp
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: bitter
@@ -517,7 +519,7 @@
 - type: reagent
   id: CocaExtract
   name: reagent-name-cocaextract
-  group: Toxin
+  group: Toxins
   desc: reagent-desc-cocaextract
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: acid
@@ -581,7 +583,7 @@
 - type: reagent
   id: EntropicPolypnium
   name: reagent-name-entropicpolypnium
-  group: Toxin
+  group: Toxins
   desc: reagent-desc-entropicpolypnium
   flavor: acid
   color: "#292353"
@@ -615,7 +617,7 @@
 - type: reagent
   id: Ether
   name: reagent-name-ether
-  group: Toxin
+  group: Toxins
   desc: reagent-desc-ether
   flavor: acid
   color: "#92d1d1"
@@ -750,7 +752,7 @@
 - type: reagent
   id: Lipolicide
   name: reagent-name-lipolicide
-  group: Toxin
+  group: Toxins
   desc: reagent-desc-lipolicide
   physicalDesc: reagent-physical-desc-syrupy
   flavor: bitter
@@ -768,7 +770,7 @@
 - type: reagent
   id: Lye
   name: reagent-name-lye
-  group: Toxin
+  group: Special
   desc: reagent-desc-lye
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: bitter
@@ -889,7 +891,7 @@
 - type: reagent
   id: Tirizene
   name: reagent-name-tirizene
-  group: Toxin
+  group: Toxins
   desc: reagent-desc-tirizene
   physicalDesc: reagent-physical-desc-syrupy
   flavor: bitter
