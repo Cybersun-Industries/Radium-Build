@@ -147,13 +147,3 @@
     sprite: Structures/Decoration/banner.rsi
     state: banner-green
 
-- type: entity
-  id: NucOp
-  parent: BannerBase
-  name: ЯОЙ
-  description: Омежка
-  components:
-  - type: Sprite
-    sprite: Structures/Decoration/banner.rsi
-    state: poster228
-
