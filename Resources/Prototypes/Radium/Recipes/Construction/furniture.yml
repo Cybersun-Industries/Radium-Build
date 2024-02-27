@@ -1,0 +1,14 @@
+- type: construction
+  name: poster
+  id: posterConst
+  graph: Poster
+  startNode: start
+  targetNode: posterConst
+  category: construction-category-furniture
+  description: Just random poster.
+  icon:
+    sprite: Structures/Wallmounts/posters.rsi
+    state: random_anything
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: true

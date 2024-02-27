@@ -1,0 +1,22 @@
+- type: constructionGraph
+  id: Poster
+  start: start
+  graph:
+    - node: start
+      actions:
+        - !type:DestroyEntity {}
+      edges:
+        - to: posterConst
+          steps:
+            - material: Cloth
+              amount: 4
+              doAfter: 1
+
+    - node: posterConst
+      entity: RandomPosterAny
+      edges:
+        - to: start
+          completed:
+            - !type:SpawnPrototype
+              prototype: MaterialCloth1
+              amount: 4

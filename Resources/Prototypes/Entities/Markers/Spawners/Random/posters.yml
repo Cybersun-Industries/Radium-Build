@@ -17,6 +17,11 @@
     rarePrototypes:
       - PosterBroken
     rareChance: 0.05
+#Radium-start
+  - type: Construction
+    graph: Poster
+    node: posterConst
+#Radium-end
 
 - type: entity
   parent: MarkerBase
