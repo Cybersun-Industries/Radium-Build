@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Content.Corvax.Interfaces.Server;
 using Content.Shared.Backmen.Sponsors;
 using Content.Shared.Backmen.CCVar;
+using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 using Robust.Shared.Utility;
@@ -16,6 +17,7 @@ public sealed class SponsorsManager : IServerSponsorsManager
 {
     [Dependency] private readonly IServerNetManager _netMgr = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
+    [Dependency] private readonly IPlayerManager _playerManager = default!;
 
     private readonly HttpClient _httpClient = new();
 
@@ -72,23 +74,22 @@ public sealed class SponsorsManager : IServerSponsorsManager
     {
         if (string.IsNullOrEmpty(_apiUrl))
             return null;
-
-        var url = $"{_apiUrl}/sponsors/{userId.ToString()}";
+        if (!_playerManager.TryGetPlayerData(userId, out var session))
+            return null;
+        var url = $"{_apiUrl}/sponsors/{session.UserName}";
         var response = await _httpClient.GetAsync(url);
         if (response.StatusCode == HttpStatusCode.NotFound)
             return null;
 
-        if (response.StatusCode != HttpStatusCode.OK)
-        {
-            var errorText = await response.Content.ReadAsStringAsync();
-            _sawmill.Error(
-                "Failed to get player sponsor OOC color from API: [{StatusCode}] {Response}",
-                response.StatusCode,
-                errorText);
-            return null;
-        }
+        if (response.StatusCode == HttpStatusCode.OK)
+            return await response.Content.ReadFromJsonAsync<SponsorInfo>();
+        var errorText = await response.Content.ReadAsStringAsync();
+        _sawmill.Error(
+            "Failed to get player sponsor OOC color from API: [{StatusCode}] {Response}",
+            response.StatusCode,
+            errorText);
+        return null;
 
-        return await response.Content.ReadFromJsonAsync<SponsorInfo>();
     }
 
     public bool TryGetGhostTheme(NetUserId userId, [NotNullWhen(true)] out string? ghostTheme)
