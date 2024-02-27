@@ -92,6 +92,15 @@
       - PosterContrabandEnlistGorlex
       - PosterContrabandInterdyne
       - PosterContrabandWaffleCorp
+      - PosterShuttleOps
+      - PosterClownRed
+      - PosterBoykiss
+      - PosterXeno
+      - PosterRice
+      - PosterBluWalt
+      - PosterNasledie
+      - PosterMages
+      - PosterClownRed
     chance: 1
 
 - type: entity
@@ -162,4 +171,10 @@
       - PosterLegitEarthGov10
       - PosterLegitEarthGov11
       - PosterLegitEarthGov12
+      - Postertoto
+      - Postersocks
+      - PosterMaid
+      - PosterLampCh
+      - PosterHL3
+      - PosterKosmolog
     chance: 1
