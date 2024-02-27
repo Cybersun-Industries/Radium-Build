@@ -3,6 +3,9 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading;
 using System.Threading.Tasks;
+using Content.Corvax.Interfaces.Server;
+using Content.Corvax.Interfaces.Shared;
+using Content.Server.Corvax;
 using Content.Shared.Backmen.CCVar;
 using Content.Shared.Backmen.DiscordAuth;
 using JetBrains.Annotations;
@@ -12,13 +15,15 @@ using Robust.Shared.Enums;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 
-namespace Content.Server.Backmen.DiscordAuth;
+namespace Content.Server.Radium.DiscordAuth;
 
-public sealed class DiscordAuthManager : Content.Corvax.Interfaces.Server.IServerDiscordAuthManager
+public sealed class DiscordAuthManager : IServerDiscordAuthManager
 {
     [Dependency] private readonly IServerNetManager _netMgr = default!;
     [Dependency] private readonly IPlayerManager _playerMgr = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
+    [Dependency] private readonly IServerDiscordAuthManager _discordAuthManager = default!;
+    [Dependency] private readonly ISharedDiscordAuthManager _discordSharedAuthManager = default!;
 
     private ISawmill _sawmill = default!;
     private readonly HttpClient _httpClient = new();
@@ -45,11 +50,13 @@ public sealed class DiscordAuthManager : Content.Corvax.Interfaces.Server.IServe
         _playerMgr.PlayerStatusChanged += OnPlayerStatusChanged;
     }
 
+    public bool IsSkipped { get; set; } = false;
+
     private async void OnAuthCheck(MsgDiscordAuthCheck message)
     {
         var isVerified = await IsVerified(message.MsgChannel.UserId);
 
-        if (!isVerified)
+        if (!isVerified && !_discordSharedAuthManager.IsSkipped)
             return;
 
         var session = _playerMgr.GetSessionById(message.MsgChannel.UserId);
@@ -101,6 +108,10 @@ public sealed class DiscordAuthManager : Content.Corvax.Interfaces.Server.IServe
 
     public async Task<bool> IsVerified(NetUserId userId, CancellationToken cancel = default)
     {
+        if (_discordAuthManager.IsSkipped)
+        {
+            return true;
+        }
         _sawmill.Debug($"Player {userId} check Discord verification");
 
         var requestUrl = $"{_apiUrl}/{WebUtility.UrlEncode(userId.ToString())}";

@@ -3,4 +3,6 @@
 public interface ISharedDiscordAuthManager
 {
     public void Initialize();
+
+    public bool IsSkipped { get; set; }
 }

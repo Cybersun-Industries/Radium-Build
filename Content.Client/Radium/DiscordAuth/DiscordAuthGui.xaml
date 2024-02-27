@@ -1,7 +1,7 @@
 ﻿<Control xmlns="https://spacestation14.io"
-          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-          xmlns:parallax="clr-namespace:Content.Client.Parallax"
-          xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls">
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         xmlns:parallax="clr-namespace:Content.Client.Parallax"
+         xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls">
     <parallax:ParallaxControl />
     <Control HorizontalAlignment="Center" VerticalAlignment="Center">
         <PanelContainer StyleClasses="AngleRect" />
@@ -20,9 +20,16 @@
             <BoxContainer Orientation="Horizontal" VerticalAlignment="Bottom" Margin="10 0 0 0">
                 <Label Text="{Loc 'discord-auth-link'}" Align="Center" />
                 <Label Text=" " />
-                <TextEdit Name="UrlEdit" HorizontalExpand="True" Editable="False" VerticalExpand="True" MinSize="220 100" Margin="10"></TextEdit>
+                <TextEdit Name="UrlEdit" HorizontalExpand="True" Editable="False" VerticalExpand="True"
+                          MinSize="220 100" Margin="10">
+                </TextEdit>
             </BoxContainer>
-            <Button Name="OpenUrlButton" Text="{Loc 'discord-auth-browser-btn'}" HorizontalExpand="True" StyleClasses="OpenRight" />
+            <Label Name="WaitLabel" />
+            <BoxContainer Orientation="Vertical" SeparationOverride="10">
+                <Button Name="OpenUrlButton" Text="{Loc 'discord-auth-browser-btn'}" HorizontalExpand="True"
+                        StyleClasses="OpenRight" />
+                <Button Name="SkipButton" Text="{Loc 'ui-rules-accept'}" Disabled="True" StyleClasses="OpenRight" />
+            </BoxContainer>
         </BoxContainer>
     </Control>
 </Control>
