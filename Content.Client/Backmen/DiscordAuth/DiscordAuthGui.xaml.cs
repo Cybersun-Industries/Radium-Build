@@ -16,19 +16,15 @@ public sealed partial class DiscordAuthGui : Control
     [Dependency] private readonly IClientDiscordAuthManager _discordAuthManager = default!;
     [Dependency] private readonly IClientConsoleHost _consoleHost = default!;
 
-    public static readonly SpriteSpecifier Sprite =
-        new SpriteSpecifier.Rsi(new ResPath("/Textures/Radium/Menu/maina.rsi"), "maina");
+    private float _timer;
+
     public event Action? OnSkipPressed;
     public DiscordAuthGui()
     {
+        _timer = 30;
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
         LayoutContainer.SetAnchorPreset(this, LayoutContainer.LayoutPreset.Wide);
-
-        Background.SetFromSpriteSpecifier(Sprite);
-        Background.HorizontalAlignment = HAlignment.Stretch;
-        Background.VerticalAlignment = VAlignment.Stretch;
-        Background.DisplayRect.Stretch = TextureRect.StretchMode.KeepAspectCentered;
 
         QuitButton.OnPressed += (_) =>
         {
@@ -49,5 +45,33 @@ public sealed partial class DiscordAuthGui : Control
         {
             OnSkipPressed?.Invoke();
         };
+    }
+    public float Timer
+    {
+        get => _timer;
+        set
+        {
+            WaitLabel.Text = Loc.GetString("ui-rules-wait", ("time", MathF.Floor(value)));
+            _timer = value;
+        }
+    }
+    protected override void FrameUpdate(FrameEventArgs args)
+    {
+        base.FrameUpdate(args);
+
+        if (!SkipButton.Disabled)
+            return;
+
+        if (Timer > 0.0)
+        {
+            if (Timer - args.DeltaSeconds < 0)
+                Timer = 0;
+            else
+                Timer -= args.DeltaSeconds;
+        }
+        else
+        {
+            SkipButton.Disabled = false;
+        }
     }
 }
