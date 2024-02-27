@@ -1,0 +1,23 @@
+{
+    "version": 1,
+    "size": {"x": 32, "y": 32
+    },
+    "states":[
+
+        {"name": "poster64_contraband"},
+        {"name": "poster65_contraband"},
+        {"name": "poster66_contraband"},
+        {"name": "poster51_contraband"},
+        {"name": "poster67_contraband"},
+        {"name": "poster68_contraband"},
+        {"name": "poster69_contraband"},
+        {"name": "poster70_contraband"},
+        {"name": "poster71_contraband"},
+        {"name": "poster64_legit"},
+        {"name": "poster65_legit"},
+        {"name": "poster66_legit"},
+        {"name": "poster67_legit"},
+        {"name": "poster68_legit"},
+        {"name": "poster69_legit"}
+    ]}
+
