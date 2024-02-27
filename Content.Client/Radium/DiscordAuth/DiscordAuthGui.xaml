@@ -28,7 +28,7 @@
             <BoxContainer Orientation="Vertical" SeparationOverride="10">
                 <Button Name="OpenUrlButton" Text="{Loc 'discord-auth-browser-btn'}" HorizontalExpand="True"
                         StyleClasses="OpenRight" />
-                <Button Name="SkipButton" Text="{Loc 'ui-rules-accept'}" Disabled="True" StyleClasses="OpenRight" />
+                <Button Name="SkipButton" Text="{Loc 'ui-auth-skip'}" Disabled="True" StyleClasses="OpenRight" />
             </BoxContainer>
         </BoxContainer>
     </Control>

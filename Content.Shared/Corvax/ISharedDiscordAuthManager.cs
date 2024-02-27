@@ -1,8 +1,6 @@
-﻿namespace Content.Corvax.Interfaces.Shared;
+﻿namespace Content.Shared.Corvax;
 
 public interface ISharedDiscordAuthManager
 {
     public void Initialize();
-
-    public bool IsSkipped { get; set; }
 }

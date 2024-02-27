@@ -1,5 +1,7 @@
 ﻿using Content.Client.Corvax;
+using Content.Corvax.Interfaces.Client;
 using Content.Shared.Backmen.DiscordAuth;
+using Content.Shared.Radium;
 using Robust.Client.Graphics;
 using Robust.Client.State;
 using Robust.Shared.Network;

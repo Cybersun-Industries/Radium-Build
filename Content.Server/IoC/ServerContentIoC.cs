@@ -5,6 +5,7 @@ using Content.Server.Administration.Notes;
 using Content.Server.Afk;
 using Content.Server.Chat.Managers;
 using Content.Server.Connection;
+using Content.Server.Corvax;
 using Content.Server.Corvax.TTS;
 using Content.Server.Database;
 using Content.Server.Discord;
@@ -62,7 +63,7 @@ namespace Content.Server.IoC
 
             // start-backmen: IoC
             IoCManager.Register<Content.Corvax.Interfaces.Server.IServerSponsorsManager, Backmen.Sponsors.SponsorsManager>();
-            IoCManager.Register<Content.Corvax.Interfaces.Server.IServerDiscordAuthManager, Radium.DiscordAuth.DiscordAuthManager>();
+            IoCManager.Register<IServerDiscordAuthManager, Radium.DiscordAuth.DiscordAuthManager>();
             IoCManager.Register<Content.Corvax.Interfaces.Server.IServerJoinQueueManager, Backmen.JoinQueue.JoinQueueManager>();
             // end-backmen: IoC
             IoCManager.Register<ServerDbEntryManager>();

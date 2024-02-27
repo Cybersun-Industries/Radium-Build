@@ -4,10 +4,10 @@ using System.Net.Http.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using Content.Corvax.Interfaces.Server;
-using Content.Corvax.Interfaces.Shared;
 using Content.Server.Corvax;
 using Content.Shared.Backmen.CCVar;
 using Content.Shared.Backmen.DiscordAuth;
+using Content.Shared.Radium;
 using JetBrains.Annotations;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
@@ -23,7 +23,6 @@ public sealed class DiscordAuthManager : IServerDiscordAuthManager
     [Dependency] private readonly IPlayerManager _playerMgr = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly IServerDiscordAuthManager _discordAuthManager = default!;
-    [Dependency] private readonly ISharedDiscordAuthManager _discordSharedAuthManager = default!;
 
     private ISawmill _sawmill = default!;
     private readonly HttpClient _httpClient = new();
@@ -45,6 +44,7 @@ public sealed class DiscordAuthManager : IServerDiscordAuthManager
         _cfg.OnValueChanged(CCVars.DiscordAuthApiKey, v => _apiKey = v, true);
 
         _netMgr.RegisterNetMessage<MsgDiscordAuthRequired>();
+        _netMgr.RegisterNetMessage<MsgDiscordAuthSkip>(OnAuthSkipped);
         _netMgr.RegisterNetMessage<MsgDiscordAuthCheck>(OnAuthCheck);
 
         _playerMgr.PlayerStatusChanged += OnPlayerStatusChanged;
@@ -56,7 +56,7 @@ public sealed class DiscordAuthManager : IServerDiscordAuthManager
     {
         var isVerified = await IsVerified(message.MsgChannel.UserId);
 
-        if (!isVerified && !_discordSharedAuthManager.IsSkipped)
+        if (!isVerified && !_discordAuthManager.IsSkipped)
             return;
 
         var session = _playerMgr.GetSessionById(message.MsgChannel.UserId);
@@ -124,6 +124,11 @@ public sealed class DiscordAuthManager : IServerDiscordAuthManager
 
         var data = await response.Content.ReadFromJsonAsync<DiscordAuthInfoResponse>(cancellationToken: cancel);
         return data!.IsLinked;
+    }
+
+    private async void OnAuthSkipped(NetMessage message)
+    {
+        _discordAuthManager.IsSkipped = true;
     }
 
     [UsedImplicitly]
