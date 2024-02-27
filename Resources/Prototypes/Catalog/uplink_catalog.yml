@@ -525,7 +525,7 @@
   description: uplink-binary-translator-key-desc
   icon: { sprite: /Textures/Objects/Devices/encryption_keys.rsi, state: rd_label }
   productEntity: EncryptionKeyBinary
-  cost: 
+  cost:
     Telecrystal: 1
 
   categories:
@@ -985,6 +985,20 @@
   productEntity: GatfruitSeeds
   cost:
     Telecrystal: 6
+  categories:
+  - UplinkJob
+  conditions:
+  - !type:BuyerJobCondition
+    whitelist:
+    - Botanist
+
+- type: listing
+  id: uplinkBombLemonSeeds
+  name: uplink-bomblemon-seeds-name
+  description: uplink-bomblemon-seeds-desc
+  productEntity: BombLemonSeeds
+  cost:
+    Telecrystal: 5
   categories:
   - UplinkJob
   conditions:

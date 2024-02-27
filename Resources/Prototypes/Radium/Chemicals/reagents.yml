@@ -1,7 +1,7 @@
 - type: reagent
   id: Adminordrazine
   name: reagent-name-adminordrazine
-  group: Medicine
+  group: Special
   desc: reagent-desc-adminordrazine
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: magical
@@ -43,7 +43,7 @@
 - type: reagent
   id: Atrazine
   name: reagent-name-atrazine
-  group: Poison
+  group: Toxins
   desc: reagent-desc-atrazine
   physicalDesc: reagent-desc-neurotoxin
   flavor: bitter
@@ -59,7 +59,7 @@
 - type: reagent
   id: BlackPowder
   name: reagent-name-blackpowder
-  group: Poison
+  group: Special
   desc: reagent-desc-blackpowder
   physicalDesc: reagent-physical-desc-powdery
   flavor: bitter
@@ -103,7 +103,7 @@
 - type: reagent
   id: Cyanide
   name: reagent-name-cyanide
-  group: Poison
+  group: Toxins
   desc: reagent-desc-cyanide
   physicalDesc: reagent-physical-desc-pungent
   flavor: bitter
@@ -111,16 +111,40 @@
   metabolisms:
     Poison:
       effects:
+      - !type:Drunk
+        boozePower: 5
       - !type:HealthChange
         damage:
           types:
             Poison: 0.75
             Asphyxiation: 1
+      - !type:HealthChange
+        conditions:
+          - !type:ReagentThreshold
+            min: 30
+        damage:
+          groups:
+           Airloss: 4.5
+      - !type:Jitter
+        conditions:
+        - !type:ReagentThreshold
+          min: 30
       - !type:Emote
         emote: Cough
+        probability: 0.5
+        conditions:
+        - !type:ReagentThreshold
+          min: 30
+      - !type:PopupMessage
+        conditions:
+        - !type:ReagentThreshold
+          min: 30
+        type: Local
+        visualType: Large
+        messages: [ "alerts-eyedilated-desc" ]
         probability: 0.1
       - !type:ChemVomit
-        probability: 0.05
+        probability: 0.03
 
 - type: reagent
   id: GodBlood
@@ -192,7 +216,7 @@
       - !type:HealthChange
         damage:
           types:
-            Cellular: -5
+            Cellular: -2.5
             Blunt: -1
             Heat: -1
             Shock: -1
@@ -200,13 +224,14 @@
       - !type:HealthChange
         conditions:
           - !type:ReagentThreshold
-            min: 30
+            min: 15
         damage:
           types:
            Heat: 2
            Poison: 1
-      - !type:SatiateHunger
-        factor: -1
+      - !type:AdjustReagent
+        reagent: EntropicPolypnium
+        amount: -5.0
     Drink:
       effects:
         - !type:SatiateThirst
@@ -218,6 +243,7 @@
 - type: reagent
   id: Saltpetre
   name: reagent-name-saltpetre
+  group: Botanical
   desc: reagent-desc-saltpetre
   physicalDesc: reagent-physical-desc-thick
   flavor: bitter
@@ -250,7 +276,7 @@
             Poison: 1
             Heat: -1
             Shock: -1
-            Cold: -1 
+            Cold: -1
             Caustic: -1
   reactiveEffects:
     Acidic:
@@ -368,7 +394,7 @@
       - !type:HealthChange
         damage:
           types:
-            Shock: 2
+            Shock: 7
       - !type:Jitter
     Poison:
       effects:
@@ -408,19 +434,20 @@
       - !type:HealthChange
         damage:
           groups:
-            Airloss: -22.5
+            Airloss: -10.5
       - !type:HealthChange
         conditions:
           - !type:ReagentThreshold
             min: 20
         damage:
           types:
-           Asphyxiation: 8
+           Asphyxiation: 6
+           Cold: 4
 
 - type: reagent
   id: Aranesp
   name: reagent-name-aranesp
-  group: Narcotic
+  group: Narcotics
   desc: reagent-desc-aranesp
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: bitter
@@ -437,8 +464,8 @@
           - !type:ReagentThreshold
             min: 25
         damage:
-          types:
-           Bloodloss: -7
+          groups:
+           Airloss: 3
       - !type:GenericStatusEffect
         key: StaminaModifier
         component: StaminaModifier
@@ -448,7 +475,7 @@
         key: Stun
         time: 9
         type: Add
-        
+
 - type: reagent
   id: Chiyurizine
   name: reagent-name-chiyurizine
@@ -492,7 +519,7 @@
 - type: reagent
   id: CocaExtract
   name: reagent-name-cocaextract
-  group: Toxin
+  group: Toxins
   desc: reagent-desc-cocaextract
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: acid
@@ -503,7 +530,7 @@
       - !type:HealthChange
         damage:
           groups:
-            Toxin: 2
+            Toxin: 6
       - !type:ChemVomit
         probability: 0.05
       - !type:Emote
@@ -556,7 +583,7 @@
 - type: reagent
   id: EntropicPolypnium
   name: reagent-name-entropicpolypnium
-  group: Toxin
+  group: Toxins
   desc: reagent-desc-entropicpolypnium
   flavor: acid
   color: "#292353"
@@ -590,7 +617,7 @@
 - type: reagent
   id: Ether
   name: reagent-name-ether
-  group: Toxin
+  group: Toxins
   desc: reagent-desc-ether
   flavor: acid
   color: "#92d1d1"
@@ -618,7 +645,7 @@
         damage:
           types:
             Poison: 2
-            
+
 - type: reagent
   id: Haloperidol
   name: reagent-name-haloperidol
@@ -647,7 +674,7 @@
         damage:
           groups:
             Genetic: 1
-        probability: 0.33   
+        probability: 0.33
       - !type:AdjustReagent
         reagent: Desoxyephedrine
         amount: -5.0
@@ -716,7 +743,7 @@
           groups:
            Brute: 1.5
            Burn: 1.5
-           Toxin: 1.5   
+           Toxin: 1.5
       - !type:Jitter
         conditions:
         - !type:ReagentThreshold
@@ -725,7 +752,7 @@
 - type: reagent
   id: Lipolicide
   name: reagent-name-lipolicide
-  group: Toxin
+  group: Toxins
   desc: reagent-desc-lipolicide
   physicalDesc: reagent-physical-desc-syrupy
   flavor: bitter
@@ -743,7 +770,7 @@
 - type: reagent
   id: Lye
   name: reagent-name-lye
-  group: Toxin
+  group: Special
   desc: reagent-desc-lye
   physicalDesc: reagent-physical-desc-strong-smelling
   flavor: bitter
@@ -806,7 +833,7 @@
         damage:
           types:
            Heat: 0.5
-           Poison: 0.5      
+           Poison: 0.5
       - !type:Jitter
         conditions:
         - !type:ReagentThreshold
@@ -833,7 +860,7 @@
             min: 25
         damage:
           groups:
-           Toxin: -4
+           Toxin: 4
 
 - type: reagent
   id: StrangeReagent
@@ -850,9 +877,9 @@
       - !type:HealthChange
         damage:
           groups:
-            Toxin: 7
-            Brute: 7
-            Burn: 7
+            Toxin: 3.5
+            Brute: 3.5
+            Burn: 3.5
       - !type:HealthChange
         conditions:
           - !type:ReagentThreshold
@@ -864,7 +891,7 @@
 - type: reagent
   id: Tirizene
   name: reagent-name-tirizene
-  group: Toxin
+  group: Toxins
   desc: reagent-desc-tirizene
   physicalDesc: reagent-physical-desc-syrupy
   flavor: bitter
@@ -941,4 +968,56 @@
             Cold: 1
       - !type:AdjustReagent
         reagent: HotCapsaicinOil
-        amount: -5        
+        amount: -5
+
+- type: reagent
+  id: CucumberJuice
+  name: reagent-name-cucumberjuice
+  group: Medicine
+  desc: reagent-desc-cucumberjuice
+  physicalDesc: reagent-physical-desc-aromatic
+  flavor: cucumberjuice
+  color: "#528415"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:HealthChange
+        damage:
+          groups:
+            Airloss: -4
+
+- type: reagent
+  id: Moonlin
+  name: reagent-name-moonlin
+  group: Narcotics
+  desc: reagent-desc-moonlin
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: moonlin
+  color: "#64d2cb"
+  metabolisms:
+    Narcotic:
+      effects:
+      - !type:GenericStatusEffect
+        conditions:
+        - !type:ReagentThreshold
+          reagent: Moonlin
+          min: 30
+        key: ForcedSleep
+        component: ForcedSleeping
+        refresh: false
+        type: Add
+      - !type:HealthChange
+        conditions:
+        - !type:ReagentThreshold
+          reagent: Moonlin
+          min: 30
+        damage:
+          groups:
+            Toxin: 1
+      - !type:GenericStatusEffect
+        key: SeeingRainbows
+        component: SeeingRainbows
+        type: Add
+        time: 5
+        refresh: false
+

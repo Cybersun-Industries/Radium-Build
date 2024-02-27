@@ -88,6 +88,8 @@
   packetPrototype: MimanaSeeds
   productPrototypes:
     - FoodMimana
+  mutationPrototypes:
+    - honkplant
   harvestRepeat: Repeat
   lifespan: 50
   maturation: 6
@@ -206,6 +208,8 @@
   packetPrototype: LemoonSeeds
   productPrototypes:
     - FoodLemoon
+  mutationPrototypes:
+    - bomblemon
   harvestRepeat: Repeat
   lifespan: 90
   maturation: 8
@@ -258,6 +262,8 @@
   packetPrototype: OrangeSeeds
   productPrototypes:
     - FoodOrange
+  mutationPrototypes:
+    - 3Dorange
   harvestRepeat: Repeat
   lifespan: 55
   maturation: 6
@@ -541,6 +547,8 @@
   packetPrototype: CabbageSeeds
   productPrototypes:
     - FoodCabbage
+  mutationPrototypes:
+    - replicapod
   lifespan: 50
   maturation: 7
   production: 5
@@ -1051,6 +1059,8 @@
   packetPrototype: AmbrosiaDeusSeeds
   productPrototypes:
     - FoodAmbrosiaDeus
+  mutationPrototypes:
+    - ambrosiaGaia
   lifespan: 25
   maturation: 10
   production: 3
@@ -1265,6 +1275,8 @@
   packetPrototype: WatermelonSeeds
   productPrototypes:
     - FoodWatermelon
+  mutationPrototypes:
+    - holymelon
   lifespan: 55
   maturation: 12
   production: 3
