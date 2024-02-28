@@ -984,7 +984,7 @@
       - !type:HealthChange
         damage:
           groups:
-            Airloss: -4
+            Airloss: -2
 
 - type: reagent
   id: Moonlin
