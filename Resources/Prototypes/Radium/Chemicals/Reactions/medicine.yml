@@ -86,8 +86,10 @@
       amount: 1
     Iodine:
       amount: 1
+    Hyronalin:
+      amount: 1
   products:
-    PotassiumIodide: 2
+    PotassiumIodide: 3
 
 - type: reaction
   id: Haloperidol
