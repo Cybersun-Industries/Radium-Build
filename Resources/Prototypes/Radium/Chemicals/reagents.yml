@@ -135,14 +135,14 @@
         conditions:
         - !type:ReagentThreshold
           min: 30
-      - !type:PopupMessage
+      - !type:Emote
         conditions:
         - !type:ReagentThreshold
           min: 30
-        type: Local
-        visualType: Large
-        messages: [ "alerts-eyedilated-desc" ]
-        probability: 0.1
+      - !type:Emote
+        emote: Drooling
+        showInChat: true
+        probability: 0.2
       - !type:ChemVomit
         probability: 0.03
 
