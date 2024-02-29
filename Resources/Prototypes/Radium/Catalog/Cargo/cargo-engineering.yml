@@ -4,7 +4,7 @@
   icon:
     sprite: Structures/Power/Generation/rtg.rsi
     state: rtg
-  product: EngineeringGeneratorRTG
+  product: GeneratorRTG
   cost: 10000
   category: Engineering
   group: market
