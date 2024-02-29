@@ -180,7 +180,6 @@ namespace Content.Client.Entry
             // start-backmen: ioc
             IoCManager.Resolve<Content.Corvax.Interfaces.Shared.ISharedSponsorsManager>().Initialize();
             IoCManager.Resolve<Content.Corvax.Interfaces.Client.IClientJoinQueueManager>().Initialize();
-            IoCManager.Resolve<IClientDiscordAuthManager>().Initialize();
             IoCManager.Resolve<Content.Corvax.Interfaces.Shared.ISharedLoadoutsManager>().Initialize();
             IoCManager.Resolve<IClientDiscordAuthManager>().Initialize();
             // end-backmen: ioc

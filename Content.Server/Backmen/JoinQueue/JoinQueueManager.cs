@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Content.Server.Connection;
+using Content.Server.Corvax;
 using Content.Server.GameTicking;
 using Content.Server.Corvax;
 using Content.Shared.Backmen.JoinQueue;
