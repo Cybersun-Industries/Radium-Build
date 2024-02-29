@@ -151,7 +151,7 @@ public sealed class DiscordAuthManager : IServerDiscordAuthManager
         _sawmill.Debug($"Player {channel.UserName} checking proxy");
 
         var address = channel.RemoteEndPoint.Address;
-        var requestUrl = $"{_proxyApiUrl}/?ip=31.134.130.211";
+        var requestUrl = $"{_proxyApiUrl}/?ip={address}";
         var response = await _httpClient.GetAsync(requestUrl, cancel);
         if (!response.IsSuccessStatusCode)
         {
