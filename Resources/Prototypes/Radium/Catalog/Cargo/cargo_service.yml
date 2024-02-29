@@ -1,0 +1,9 @@
+- type: cargoProduct
+  id: ServiceVendingMachineBooze
+  icon:
+    sprite: Structures/Machines/VendingMachines/boozeomat.rsi
+    state: off
+  product: VendingMachineBooze
+  cost: 10000
+  category: Service
+  group: market
