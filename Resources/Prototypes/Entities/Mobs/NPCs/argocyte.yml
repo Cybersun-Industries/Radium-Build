@@ -51,6 +51,23 @@
   - type: Flashable
   - type: NameIdentifier
     group: GenericNumber
+#Radium start
+  - type: PotentialPsionic
+    chance: -2
+  - type: Psionic
+    removable: false
+  - type: GhostRole
+    allowMovement: true
+    allowSpeech: true
+    makeSentient: true
+    name: Агроцит
+    description: Станьте частью этих милашек 
+    rules: Тащите маме еду!
+  - type: GhostTakeoverAvailable
+  - type: TypingIndicator
+    proto: alien
+#Radium end
+
 
 - type: entity
   parent: BaseMobArgocyte
@@ -58,6 +75,9 @@
   name: slurva
   description: A pathetic creature, incapable of doing much.
   components:
+#Radium start
+  - type: PsionicInvisibilityPower
+#Radium end
   - type: Sprite
     layers:
     - state: slurva
@@ -346,6 +366,17 @@
   id: MobArgocyteFounder
   name: founder
   components:
+  - type: Timer
+  - type: TimedSpawner
+    prototypes:
+#Radium start
+    - MobArgocyteSlurva
+    - MobArgocyteBarrier
+    - MobArgocyteSkitter
+    intervalSeconds: 90
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 2
+#Radium end
   - type: Sprite
     sprite: Mobs/Aliens/Argocyte/argocyte_large.rsi
     layers:
@@ -382,11 +413,24 @@
     baseSprintSpeed : 3
     baseWalkSpeed: 3
 
+
+
 - type: entity
   parent: BaseMobArgocyte
   id: MobArgocyteLeviathing
   name: leviathing
   components:
+  - type: Timer
+  - type: TimedSpawner
+    prototypes:
+#Radium start
+    - MobArgocyteCrawler
+    - MobArgocyteGlider
+    intervalSeconds: 90
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 3
+#Radium end
+
   - type: Sprite
     sprite: Mobs/Aliens/Argocyte/argocyte_large.rsi
     layers:
