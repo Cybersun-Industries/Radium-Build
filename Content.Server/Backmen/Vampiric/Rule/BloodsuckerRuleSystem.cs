@@ -22,7 +22,7 @@ using Robust.Shared.Timing;
 
 namespace Content.Server.Backmen.Vampiric;
 
-public sealed class BloodsuckerRuleSystem : GameRuleSystem<BloodsuckerRuleComponent>
+public sealed partial class BloodsuckerRuleSystem : GameRuleSystem<BloodsuckerRuleComponent>
 {
 
     private ISawmill _sawmill = default!;
