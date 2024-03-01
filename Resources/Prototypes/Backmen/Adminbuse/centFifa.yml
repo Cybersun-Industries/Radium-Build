@@ -692,6 +692,9 @@
   - type: Speech
     speechSounds: Metrocop
     soundCooldownTime: 0.1
+  - type: AutoImplant
+    implants:
+    - MindShieldImplant
   - type: TriggerOnMobstateChange
     mobState:
     - Critical
@@ -2047,6 +2050,7 @@
     sprite: Markers/jobs.rsi
     state: centcom
   - type: GhostRole
+    whitelistRequired: true
     allowMovement: true
     allowSpeech: true
     makeSentient: true

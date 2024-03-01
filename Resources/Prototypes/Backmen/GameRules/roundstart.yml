@@ -3,8 +3,15 @@
   parent: BaseGameRule
   noSpawn: true
   components:
-    - type: FleshCultRule
-      faction: Flesh
+  - type: FleshCultRule
+    faction: Flesh
+
+- type: entity
+  id: BlobGameMode
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: BlobGameRule
 
 - type: entity
   id: VampiresGameRule
@@ -12,3 +19,23 @@
   noSpawn: true
   components:
   - type: BloodsuckerRule
+
+- type: entity
+  id: VampireObjective
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: BloodsuckerObjective
+
+- type: entity
+  id: VampireOutbreak
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    earliestStart: 50
+    minimumPlayers: 15
+    weight: 5
+    duration: 1
+  - type: BloodsuckerRule
+

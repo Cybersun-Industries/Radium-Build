@@ -6,9 +6,12 @@
   components:
   - type: Item
     size: Large
+    shape:
+    - 0,0,2,2
   - type: Storage
-    maxItemSize: Large
-    maxTotalWeight: 24
+    maxItemSize: Small
+    grid:
+    - 0,0,2,2
   - type: Sprite
     state: box
 
@@ -42,13 +45,11 @@
       - state: box
       - state: light
   - type: Storage
-    maxTotalWeight: 24
+    grid:
+    - 0,0,5,3
     whitelist:
       components:
       - LightBulb
-  - type: Tag
-    tags:
-      - DroneUsable
 
 - type: entity
   name: lighttube box
@@ -65,13 +66,11 @@
       - state: box
       - state: lighttube
   - type: Storage
-    maxTotalWeight: 24
+    grid:
+    - 0,0,5,3
     whitelist:
       components:
       - LightBulb
-  - type: Tag
-    tags:
-      - DroneUsable
 
 - type: entity
   name: mixed lights box
@@ -90,13 +89,11 @@
       - state: box
       - state: lightmixed
   - type: Storage
-    maxTotalWeight: 24
+    grid:
+    - 0,0,5,3
     whitelist:
       components:
       - LightBulb
-  - type: Tag
-    tags:
-      - DroneUsable
 
 - type: entity
   name: PDA box
@@ -211,9 +208,6 @@
     layers:
       - state: box
       - state: inflatable
-  - type: Tag
-    tags:
-      - DroneUsable
 
 
 - type: entity
@@ -255,8 +249,9 @@
       - id: TrashBag
         amount: 6
   - type: Storage
-    maxTotalWeight: 48
-    maxItemSize: Huge
+    grid:
+    - 0,0,5,3
+    maxItemSize: Large
     whitelist:
       tags:
         - TrashBag
@@ -264,9 +259,6 @@
     layers:
       - state: box
       - state: trashbag
-  - type: Tag
-    tags:
-      - DroneUsable
 
 - type: entity
   name: passenger encryption key box
@@ -388,7 +380,7 @@
   description: Six deathrattle implants and handheld GPS devices for the whole squad.
   components:
   - type: Item
-    size: Large
+    size: Normal
   - type: StorageFill
     contents:
       - id: DeathRattleImplanter
@@ -396,7 +388,8 @@
       - id: HandheldGPSBasic
         amount: 6
   - type: Storage
-    maxTotalWeight: 24
+    grid:
+    - 0,0,5,3
   - type: Sprite
     layers:
       - state: box
@@ -424,7 +417,8 @@
       - state: box
       - state: candle
   - type: Storage
-    maxTotalWeight: 30
+    grid:
+    - 0,0,9,2
   - type: StorageFill
     contents:
       - id: Candle
@@ -448,7 +442,8 @@
       - state: box
       - state: candle
   - type: Storage
-    maxTotalWeight: 30
+    grid:
+    - 0,0,9,2
   - type: StorageFill
     contents:
       - id: CandleSmall
@@ -469,7 +464,7 @@
   description: This box filled with colorful darts.
   components:
   - type: Item
-    size: Large
+    size: Normal
   - type: StorageFill
     contents:
       - id: Dart
@@ -481,7 +476,8 @@
       - id: DartYellow
         amount: 3
   - type: Storage
-    maxTotalWeight: 24
+    grid:
+    - 0,0,5,3
   - type: Sprite
     layers:
       - state: box

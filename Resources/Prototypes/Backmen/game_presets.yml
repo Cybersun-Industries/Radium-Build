@@ -13,6 +13,19 @@
   - BasicRoundstartVariation
 
 - type: gamePreset
+  id: Blob
+  alias:
+  - blab
+  name: blob-title
+  description: blob-description
+  showInVote: false
+  rules:
+  - BlobGameMode
+  - BasicStationEventScheduler
+  - WageScheduler #backmen: currency
+  - BasicRoundstartVariation
+
+- type: gamePreset
   id: FleshCult
   alias:
   - fleshcult
@@ -44,113 +57,113 @@
 - type: gamePreset
   id: PiratesTraitor
   alias:
-    - pirates
-    - syndinukies
+  - pirates
+  - syndinukies
   name: pirates-traitor-title
   description: pirates-traitor-description
   showInVote: false
   rules:
-    - Pirates
-    - Traitor
-    - BasicStationEventScheduler
-    - WageScheduler #backmen: currency
-    - BasicRoundstartVariation
+  - Pirates
+  - Traitor
+  - BasicStationEventScheduler
+  - WageScheduler #backmen: currency
+  - BasicRoundstartVariation
 
 - type: gamePreset
   id: PiratesNukeops
   alias:
-    - nukeops
-    - pirates
+  - nukeops
+  - pirates
   name: nukeops-pirates-title
   description: nukeops-pirates-description
   showInVote: false
   rules:
-    - Pirates
-    - Nukeops
-    - BasicStationEventScheduler
-    - WageScheduler #backmen: currency
-    - BasicRoundstartVariation
+  - Pirates
+  - Nukeops
+  - BasicStationEventScheduler
+  - WageScheduler #backmen: currency
+  - BasicRoundstartVariation
 
 - type: gamePreset
   id: PiratesFleshCult
   alias:
-    - pirates
-    - fleshcult
+  - pirates
+  - fleshcult
   name: pirates-fleshcult-title
   description: pirates-fleshcult-description
   showInVote: false
   rules:
-    - Pirates
-    - FleshCult
-    - BasicStationEventScheduler
-    - WageScheduler #backmen: currency
-    - BasicRoundstartVariation
+  - Pirates
+  - FleshCult
+  - BasicStationEventScheduler
+  - WageScheduler #backmen: currency
+  - BasicRoundstartVariation
 
 - type: gamePreset
   id: NukeopsFleshCult
   alias:
-    - nukeops
-    - fleshcult
+  - nukeops
+  - fleshcult
   name: nukeops-fleshcult-title
   description: nukeops-fleshcult-description
   showInVote: false
   rules:
-    - Nukeops
-    - FleshCult
-    - BasicStationEventScheduler
-    - WageScheduler #backmen: currency
-    - BasicRoundstartVariation
+  - Nukeops
+  - FleshCult
+  - BasicStationEventScheduler
+  - WageScheduler #backmen: currency
+  - BasicRoundstartVariation
 
 - type: gamePreset
   id: RevolutionaryTraitor
   alias:
-    - rev
-    - revs
-    - revolutionaries
-    - syndinukies
+  - rev
+  - revs
+  - revolutionaries
+  - syndinukies
   name: rev-traitor-title
   description: rev-traitor-description
   showInVote: false
   rules:
-    - Revolutionary
-    - BasicStationEventScheduler
-    - Traitor
-    - WageScheduler #backmen: currency
-    - BasicRoundstartVariation
+  - Revolutionary
+  - BasicStationEventScheduler
+  - Traitor
+  - WageScheduler #backmen: currency
+  - BasicRoundstartVariation
 
 - type: gamePreset
   id: RevolutionaryPirates
   alias:
-    - pirates
-    - rev
-    - revs
-    - revolutionaries
+  - pirates
+  - rev
+  - revs
+  - revolutionaries
   name: rev-pirates-title
   description: rev-pirates-description
   showInVote: false
   rules:
-    - Revolutionary
-    - BasicStationEventScheduler
-    - Pirates
-    - WageScheduler #backmen: currency
-    - BasicRoundstartVariation
+  - Revolutionary
+  - BasicStationEventScheduler
+  - Pirates
+  - WageScheduler #backmen: currency
+  - BasicRoundstartVariation
 
 - type: gamePreset
   id: RevolutionaryNukeops
   alias:
-    - nukeops
-    - rev
-    - revs
-    - revolutionaries
+  - nukeops
+  - rev
+  - revs
+  - revolutionaries
   name: rev-nukeops-title
   description: rev-nukeops-description
   showInVote: false
   rules:
-    - Revolutionary
-    - BasicStationEventScheduler
-    - Nukeops
-    - WageScheduler #backmen: currency
-    - BasicRoundstartVariation
+  - Revolutionary
+  - BasicStationEventScheduler
+  - Nukeops
+  - WageScheduler #backmen: currency
+  - BasicRoundstartVariation
 
 - type: gamePreset
   id: ZombieTraitor
@@ -212,65 +225,65 @@
 - type: gamePreset
   id: PiratesTraitorNukeops
   alias:
-    - pirates
-    - syndinukies
-    - nukeops
+  - pirates
+  - syndinukies
+  - nukeops
   name: pirates-traitor-nukeops-title
   description: pirates-traitor-nukeops-description
   showInVote: false
   rules:
-    - Pirates
-    - Traitor
-    - BasicStationEventScheduler
-    - Nukeops
-    - WageScheduler #backmen: currency
-    - BasicRoundstartVariation
+  - Pirates
+  - Traitor
+  - BasicStationEventScheduler
+  - Nukeops
+  - WageScheduler #backmen: currency
+  - BasicRoundstartVariation
 
 - type: gamePreset
   id: PiratesTraitorFleshCult
   alias:
-    - pirates
-    - syndinukies
-    - fleshcult
+  - pirates
+  - syndinukies
+  - fleshcult
   name: pirates-traitor-fleshcult-title
   description: pirates-traitor-fleshcult-description
   showInVote: false
   rules:
-    - Pirates
-    - Traitor
-    - BasicStationEventScheduler
-    - FleshCult
-    - WageScheduler #backmen: currency
-    - BasicRoundstartVariation
+  - Pirates
+  - Traitor
+  - BasicStationEventScheduler
+  - FleshCult
+  - WageScheduler #backmen: currency
+  - BasicRoundstartVariation
 
 - type: gamePreset
   id: NukeopsFleshCultTraitor
   alias:
-    - nukeops
-    - fleshcult
-    - syndinukies
+  - nukeops
+  - fleshcult
+  - syndinukies
   name: nukeops-fleshcult-traitor-title
   description: nukeops-fleshcult-traitor-description
   showInVote: false
   rules:
-    - Nukeops
-    - FleshCult
-    - BasicStationEventScheduler
-    - WageScheduler #backmen: currency
-    - Traitor
-    - BasicRoundstartVariation
+  - Nukeops
+  - FleshCult
+  - BasicStationEventScheduler
+  - WageScheduler #backmen: currency
+  - Traitor
+  - BasicRoundstartVariation
 
 - type: gamePreset
   id: SurvivalNukeops
   alias:
-    - survival
-    - nukeops
+  - survival
+  - nukeops
   name: survival-nukeops-title
   showInVote: false
   minPlayers: 40
   description: survival-nukeops-description
   rules:
-    - RampingStationEventScheduler
-    - WageScheduler #backmen: currency
-    - Nukeops
-    - BasicRoundstartVariation
+  - RampingStationEventScheduler
+  - WageScheduler #backmen: currency
+  - Nukeops
+  - BasicRoundstartVariation

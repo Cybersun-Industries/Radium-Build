@@ -5,7 +5,9 @@
   name: Сумка БСС Дрона Медицинского Направления
   components:
   - type: Storage
-    maxTotalWeight: 1200
+    maxItemSize: Huge
+    grid:
+    - 0,0,19,9
   - type: Sprite
     sprite: Corvax/Sponsor/NEKISH/Clothing/Back/Satchels/hos.rsi
   - type: Tag
@@ -44,12 +46,7 @@
     - type: PowerCellDraw
       useRate: 0
 
-- type: nameIdentifierGroup
-  id: BSSDroneMED
-  prefix: МЕД
-  fullName: true
-  minValue: 10000
-  maxValue: 99999
+
 
 - type: entity
   name: Blue Space Drone MED
@@ -62,6 +59,7 @@
   - type: NameIdentifier
     group: BSSDroneMED
   - type: MetaData
+  - type: BorgAINT
   - type: IntrinsicRadioReceiver
   - type: IntrinsicRadioTransmitter
     channels:
@@ -88,7 +86,7 @@
     - key: enum.SiliconLawsUiKey.Key
       type: SiliconLawBoundUserInterface
   - type: GhostRole
-    whitelistRequired: true
+    #whitelistRequired: true
     makeSentient: true
     allowSpeech: true # backmen
     allowMovement: true # backmen
@@ -162,8 +160,8 @@
           On: { state: drone }
   - type: ReplacementAccent
     accent: silicon
- # - type: TTS
- #   voice: TrainingRobot
+  - type: TTS
+    voice: TrainingRobot
   - type: ZombieImmune
   - type: Repairable
     fuelcost: 15
