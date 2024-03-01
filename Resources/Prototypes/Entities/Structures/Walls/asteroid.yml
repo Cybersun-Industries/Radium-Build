@@ -190,15 +190,6 @@
         - map: [ "enum.EdgeLayer.West" ]
           state: rock_asteroid_west
         - state: rock_silver
-        
-- type: entity
-  id: AsteroidRockSilverCrab
-  parent: AsteroidRockSilver
-  suffix: Silver Crab
-  components:
-    - type: OreVein
-      oreChance: 1.0
-      currentOre: OreSilverCrab
 
 - type: entity
   id: AsteroidRockSilverCrab
@@ -231,15 +222,6 @@
         - map: [ "enum.EdgeLayer.West" ]
           state: rock_asteroid_west
         - state: rock_tin
-        
-- type: entity
-  id: AsteroidRockTinCrab
-  parent: AsteroidRockTin
-  suffix: Iron
-  components:
-    - type: OreVein
-      oreChance: 1.0
-      currentOre: OreIronCrab
 
 - type: entity
   id: AsteroidRockTinCrab

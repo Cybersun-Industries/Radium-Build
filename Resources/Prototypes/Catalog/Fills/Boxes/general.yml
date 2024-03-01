@@ -6,12 +6,9 @@
   components:
   - type: Item
     size: Large
-    shape:
-    - 0,0,2,2
   - type: Storage
     maxItemSize: Small
-    grid:
-    - 0,0,2,2
+    maxTotalWeight: 24
   - type: Sprite
     state: box
 
@@ -89,8 +86,8 @@
       - state: box
       - state: lightmixed
   - type: Storage
-    grid:
-    - 0,0,5,3
+    maxItemSize: Normal
+    maxTotalWeight: 24
     whitelist:
       components:
       - LightBulb
@@ -417,8 +414,8 @@
       - state: box
       - state: candle
   - type: Storage
-    grid:
-    - 0,0,9,2
+    maxItemSize: Normal
+    maxTotalWeight: 32
   - type: StorageFill
     contents:
       - id: Candle
@@ -442,8 +439,8 @@
       - state: box
       - state: candle
   - type: Storage
-    grid:
-    - 0,0,9,2
+    maxItemSize: Normal
+    maxTotalWeight: 24
   - type: StorageFill
     contents:
       - id: CandleSmall
