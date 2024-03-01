@@ -94,6 +94,18 @@ namespace Content.Shared.Storage
         [DataField("storageCloseSound")]
         public SoundSpecifier? StorageCloseSound;
 
+        /// <summary>
+        /// A dictionary storing each entity to its position within the storage grid.
+        /// </summary>
+        [DataField, ViewVariables(VVAccess.ReadWrite)]
+        public Dictionary<EntityUid, ItemStorageLocation> StoredItems = new();
+
+        /// <summary>
+        /// A list of boxes that comprise a combined grid that determines the location that items can be stored.
+        /// </summary>
+        [DataField, ViewVariables(VVAccess.ReadWrite)]
+        public List<Box2i> Grid = new();
+
         [Serializable, NetSerializable]
         public sealed class StorageInsertItemMessage : BoundUserInterfaceMessage
         {
