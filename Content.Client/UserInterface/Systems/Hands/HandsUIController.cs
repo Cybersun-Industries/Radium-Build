@@ -399,7 +399,7 @@ public sealed class HandsUIController : UIController, IOnStateEntered<GameplaySt
                     useDelay is not { DelayStartTime: var start, DelayEndTime: var end })
                 {
                     hand.CooldownDisplay.Visible = false;
-                    return;
+                    continue;
                 }
 
                 hand.CooldownDisplay.Visible = true;
