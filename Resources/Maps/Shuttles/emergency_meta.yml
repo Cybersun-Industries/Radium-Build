@@ -4339,7 +4339,6 @@ entities:
           - 502
           - 501
           - 511
-          - 503
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
