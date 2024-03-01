@@ -1,11 +1,12 @@
 ﻿using System.Threading;
 using Content.Shared.Backmen.DiscordAuth;
+using Content.Shared.Radium;
 using Robust.Client.State;
 using Robust.Client.UserInterface;
 using Robust.Shared.Network;
 using Timer = Robust.Shared.Timing.Timer;
 
-namespace Content.Client.Backmen.DiscordAuth;
+namespace Content.Client.Radium.DiscordAuth;
 
 public sealed class DiscordAuthState : State
 {
@@ -18,6 +19,7 @@ public sealed class DiscordAuthState : State
     protected override void Startup()
     {
         _gui = new DiscordAuthGui();
+        _gui.OnSkipPressed += OnSkipPressed;
         _userInterfaceManager.StateRoot.AddChild(_gui);
 
         Timer.SpawnRepeating(TimeSpan.FromSeconds(5), () =>
@@ -30,5 +32,10 @@ public sealed class DiscordAuthState : State
     {
         _checkTimerCancel.Cancel();
         _gui!.Dispose();
+    }
+
+    private void OnSkipPressed()
+    {
+        _netManager.ClientSendMessage(new MsgDiscordAuthSkip());
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace Content.Corvax.Interfaces.Shared;
+﻿namespace Content.Shared.Corvax;
 
 public interface ISharedDiscordAuthManager
 {
