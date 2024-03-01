@@ -10,8 +10,6 @@
         map: ["enum.StorageFillLayers.Fill"]
   - type: Storage
     maxItemSize: Normal
-    grid:
-    - 0,0,7,5
     quickInsert: true
     areaInsert: true
     storageOpenSound:

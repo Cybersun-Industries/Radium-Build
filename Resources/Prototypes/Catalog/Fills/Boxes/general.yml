@@ -246,7 +246,7 @@
       - id: TrashBag
         amount: 6
   - type: Storage
-    maxTotalWeight: 24
+    maxTotalWeight: 48
     maxItemSize: Large
     whitelist:
       tags:
