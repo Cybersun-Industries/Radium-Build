@@ -333,12 +333,6 @@ public sealed class ActionContainerSystem : EntitySystem
         if (TryComp<MindComponent>(uid, out var mindComp) && mindComp.OwnedEntity != null && HasComp<ActionsContainerComponent>(mindComp.OwnedEntity.Value))
             _actions.GrantContainedAction(mindComp.OwnedEntity.Value, uid, args.Action);
     }
-
-    private void OnActionAdded(EntityUid uid, ActionsContainerComponent component, ActionAddedEvent args)
-    {
-        if (TryComp<MindComponent>(uid, out var mindComp) && mindComp.OwnedEntity != null && HasComp<ActionsContainerComponent>(mindComp.OwnedEntity.Value))
-            _actions.GrantContainedAction(mindComp.OwnedEntity.Value, uid, args.Action);
-    }
 }
 
 /// <summary>
