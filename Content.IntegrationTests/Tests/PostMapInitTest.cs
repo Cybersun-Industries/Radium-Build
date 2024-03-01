@@ -75,9 +75,6 @@ namespace Content.IntegrationTests.Tests
             //start-backmen
             "CentCommv2",
             "CentCommv3",
-            "ShwrAdventurer",
-            "ShwrBig",
-            "shwrDust",
             "Tortuga",
             "TheHive",
             "Cogmap",

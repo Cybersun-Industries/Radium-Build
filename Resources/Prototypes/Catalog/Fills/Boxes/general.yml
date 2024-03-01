@@ -246,8 +246,7 @@
       - id: TrashBag
         amount: 6
   - type: Storage
-    grid:
-    - 0,0,5,3
+    maxTotalWeight: 24
     maxItemSize: Large
     whitelist:
       tags:
@@ -440,7 +439,7 @@
       - state: candle
   - type: Storage
     maxItemSize: Normal
-    maxTotalWeight: 24
+    maxTotalWeight: 43
   - type: StorageFill
     contents:
       - id: CandleSmall
