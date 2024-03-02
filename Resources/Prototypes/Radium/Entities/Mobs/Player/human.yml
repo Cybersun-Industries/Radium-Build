@@ -28,7 +28,7 @@
       rules: Помогайте Хонк браткам во исполнении ВЕСЁЛЫХ планов!
     - type: GhostTakeoverAvailable
     - type: Loadout
-      prototypes: [CannedClownGear]
+      prototypes: [PodClownGear]
     - type: RandomMetadata
       nameSegments: [clown_basefun]
     - type: Clumsy

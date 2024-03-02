@@ -1,0 +1,6 @@
+- type: startingGear
+  id: PodClownGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitClown
+    shoes: ClothingShoesClown
+    mask: ClothingMaskClown
