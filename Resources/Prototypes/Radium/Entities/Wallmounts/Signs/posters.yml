@@ -1,0 +1,125 @@
+- type: entity
+  parent: PosterBase
+  id: PosterShuttleOps
+  name: "Security shuttle"
+  description: "Is that SecDep?.."
+  components:
+  - type: Sprite
+    state: poster64_contraband
+
+- type: entity
+  parent: PosterBase
+  id: PosterBoykiss
+  name: "Cat?"
+  description: "Cute!"
+  components:
+  - type: Sprite
+    state: poster66_contraband
+
+- type: entity
+  parent: PosterBase
+  id: Postertoto
+  name: "Birds"
+  description: "Made in Cuna!"
+  components:
+  - type: Sprite
+    state: poster65_legit
+
+- type: entity
+  parent: PosterBase
+  id: Postersocks
+  name: "Socks Supremacy"
+  description: "White and pink? So beaty"
+  components:
+  - type: Sprite
+    state: poster66_legit
+
+- type: entity
+  parent: PosterBase
+  id: PosterMaid
+  name: "Maid time"
+  description: "White and pink? So beaty"
+  components:
+  - type: Sprite
+    state: poster67_legit
+
+- type: entity
+  parent: PosterBase
+  id: PosterLampCh
+  name: "Janitors Power"
+  description: "Power!!"
+  components:
+  - type: Sprite
+    state: poster68_legit
+
+- type: entity
+  parent: PosterBase
+  id: PosterXeno
+  name: "I WANT ARTIFACT"
+  description: "NOT YOU! AGAIN.."
+  components:
+  - type: Sprite
+    state: poster67_contraband
+
+- type: entity
+  parent: PosterBase
+  id: PosterRice
+  name: "Speech of Condor Sanniks"
+  description: "Very dirty"
+  components:
+  - type: Sprite
+    state: poster68_contraband
+
+- type: entity
+  parent: PosterBase
+  id: PosterBluWalt
+  name: "Walter.."
+  description: "Uberi svoy.."
+  components:
+  - type: Sprite
+    state: poster69_contraband
+
+- type: entity
+  parent: PosterBase
+  id: PosterHL3
+  name: "Three"
+  description: "Too hard to count"
+  components:
+  - type: Sprite
+    state: poster64_legit
+
+- type: entity
+  parent: PosterBase
+  id: PosterNasledie
+  name: "Nasledie"
+  description: "They are watchin"
+  components:
+  - type: Sprite
+    state: poster70_contraband
+
+- type: entity
+  parent: PosterBase
+  id: PosterMages
+  name: "Mages Confederation"
+  description: "Feels creepy"
+  components:
+  - type: Sprite
+    state: poster71_contraband
+
+- type: entity
+  parent: PosterBase
+  id: PosterKosmolog
+  name: "Kosmologistika"
+  description: "Space logistic"
+  components:
+  - type: Sprite
+    state: poster69_legit
+
+- type: entity
+  parent: PosterBase
+  id: PosterClownRed
+  name: "IT"
+  description: "So scary"
+  components:
+  - type: Sprite
+    state: poster65_contraband
