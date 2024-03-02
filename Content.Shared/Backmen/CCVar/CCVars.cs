@@ -57,12 +57,6 @@ public sealed class CCVars
     public static readonly CVarDef<string> DiscordAuthApiKey =
         CVarDef.Create("discord_auth.api_key", "", CVar.SERVERONLY | CVar.CONFIDENTIAL);
 
-    /// <summary>
-    ///     URL of the Proxy detection server API
-    /// </summary>
-    public static readonly CVarDef<string> DiscordProxyApiUrl =
-        CVarDef.Create("discord_auth.proxy_url", "", CVar.SERVERONLY);
-
     /**
      * Sponsors
      */

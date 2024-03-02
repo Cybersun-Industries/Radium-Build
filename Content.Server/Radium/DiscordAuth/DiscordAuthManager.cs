@@ -1,13 +1,9 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using System.Net;
+﻿using System.Net;
 using System.Net.Http;
 using System.Net.Http.Json;
-using System.Text.Json.Serialization;
 using System.Threading;
 using System.Threading.Tasks;
-using Content.Corvax.Interfaces.Server;
 using Content.Server.Corvax;
-using Content.Shared.Backmen.CCVar;
 using Content.Shared.Backmen.DiscordAuth;
 using Content.Shared.Radium;
 using JetBrains.Annotations;
@@ -16,7 +12,7 @@ using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
-using YamlDotNet.Serialization.NamingConventions;
+using CCVars = Content.Shared.Backmen.CCVar.CCVars;
 
 namespace Content.Server.Radium.DiscordAuth;
 
@@ -29,7 +25,8 @@ public sealed class DiscordAuthManager : IServerDiscordAuthManager
 
     private ISawmill _sawmill = default!;
     private readonly HttpClient _httpClient = new();
-    private bool _isEnabled = false;
+    private bool _isEnabled;
+    private bool _isProxyEnabled = false;
     private string _apiUrl = string.Empty;
     private string _apiKey = string.Empty;
     private string _proxyApiUrl = string.Empty;
@@ -46,7 +43,8 @@ public sealed class DiscordAuthManager : IServerDiscordAuthManager
         _cfg.OnValueChanged(CCVars.DiscordAuthEnabled, v => _isEnabled = v, true);
         _cfg.OnValueChanged(CCVars.DiscordAuthApiUrl, v => _apiUrl = v, true);
         _cfg.OnValueChanged(CCVars.DiscordAuthApiKey, v => _apiKey = v, true);
-        _cfg.OnValueChanged(CCVars.DiscordProxyApiUrl, v => _proxyApiUrl = v, true);
+        _cfg.OnValueChanged(Shared.Radium.CCVars.DiscordProxyApiUrl, v => _proxyApiUrl = v, true);
+        _cfg.OnValueChanged(Shared.Radium.CCVars.DiscordProxyEnabled, v => _isProxyEnabled = v, true);
 
         _netMgr.RegisterNetMessage<MsgDiscordAuthRequired>();
         _netMgr.RegisterNetMessage<MsgDiscordAuthSkip>(OnAuthSkipped);
@@ -59,20 +57,18 @@ public sealed class DiscordAuthManager : IServerDiscordAuthManager
 
     private async void OnAuthCheck(MsgDiscordAuthCheck message)
     {
-        var isProxy = await IsProxy(message.MsgChannel);
-        if (isProxy)
+        if (_isProxyEnabled)
         {
-            _netMgr.DisconnectChannel(message.MsgChannel, "Proxy detected. Interrupting connection.");
+            var isProxy = await IsProxy(message.MsgChannel);
+            if (isProxy)
+            {
+                _netMgr.DisconnectChannel(message.MsgChannel, "Proxy detected. Interrupting connection.");
+            }
         }
         var isVerified = await IsVerified(message.MsgChannel.UserId);
 
         if (!isVerified)
             return;
-
-        if (isProxy)
-        {
-            return;
-        }
 
         var session = _playerMgr.GetSessionById(message.MsgChannel.UserId);
 
