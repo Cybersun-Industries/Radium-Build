@@ -9,8 +9,8 @@
       - state: icon-0
         map: ["enum.StorageFillLayers.Fill"]
   - type: Storage
-    maxTotalWeight: 32
-    maxItemSize: Normal
+    maxTotalWeight: 48
+    maxItemSize: Small
     quickInsert: true
     areaInsert: true
     storageOpenSound:
