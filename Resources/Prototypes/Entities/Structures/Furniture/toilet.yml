@@ -26,10 +26,6 @@
         maxVol: 500
       toilet:
         maxVol: 250
-  - type: DrainableSolution
-    solution: toilet
-  - type: InjectableSolution
-    solution: toilet
   - type: Transform
     anchored: true
   - type: Physics
@@ -56,10 +52,9 @@
   components:
   - type: SolutionContainerManager
     solutions:
-      drainBuffer:
-        maxVol: 500
       toilet:
-        maxVol: 250
         reagents:
-        - ReagentId: ToiletWater
-          Quantity: 250
+        - ReagentId: Water
+          Quantity: 180
+        - ReagentId: GastroToxin
+          Quantity: 20

@@ -299,12 +299,12 @@
       - id: MrDips
         orGroup: Giftpool
       - id: RevolverCapGun
+      - id: BalloonNT
       - id: ClothingShoesClownLarge
       - id: ClothingHeadHatMagician
       - id: BeachBall
       - id: RubberPig
       - id: ClothingShoesSkates
-      - id: HonkplantSeeds
 
 - type: entity
   id: CrateFunBikeHornImplants

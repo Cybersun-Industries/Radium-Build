@@ -216,18 +216,19 @@
       - id: ClothingHeadsetAltMedical
       - id: ClothingCloakCmo
       - id: ClothingBackpackDuffelSurgeryFilled
-      - id: ClothingOuterCoatLabCmo
       - id: ClothingMaskSterile
       - id: ClothingHeadHatBeretCmo
       - id: ClothingOuterHardsuitMedical
       - id: Hypospray
+      - id: HandheldCrewMonitor
       - id: DoorRemoteMedical
       - id: RubberStampCMO
       - id: MedicalTechFabCircuitboard
       - id: BoxEncryptionKeyMedical
       - id: AntiPsychicKnife # backmen
       - id: ClothingHeadCage # backmen
-      - id: PresentMetempsychoticMachine # backmen
+      - id: MetempsychoticMachineCircuitboard # backmen
+      - id: MaterialBiomass # backmen
 
 - type: entity
   id: LockerChiefMedicalOfficerFilled
@@ -245,13 +246,15 @@
       - id: ClothingBackpackDuffelSurgeryFilled
       - id: ClothingMaskSterile
       - id: Hypospray
+      - id: HandheldCrewMonitor
       - id: DoorRemoteMedical
       - id: RubberStampCMO
       - id: MedicalTechFabCircuitboard
       - id: BoxEncryptionKeyMedical
       - id: AntiPsychicKnife # backmen
       - id: ClothingHeadCage # backmen
-      - id: PresentMetempsychoticMachine # backmen
+      - id: MetempsychoticMachineCircuitboard # backmen
+      - id: MaterialBiomass # backmen
 
 - type: entity
   id: LockerResearchDirectorFilledHardsuit
@@ -263,7 +266,6 @@
       - id: ResearchComputerCircuitboard
       - id: ProtolatheMachineCircuitboard
       - id: CircuitImprinterMachineCircuitboard
-      - id: ClothingHeadsetMedicalScience
       - id: ClothingOuterHardsuitRd
       - id: HandTeleporter
       - id: DoorRemoteResearch
@@ -275,6 +277,7 @@
       - id: PresentOracle # backmen
       - id: PresentSophie # backmen
       - id: PonderingOrbTelepathic # backmen
+      - id: ClothingHeadsetAltScience
       - id: EncryptionKeyBinary
 
 - type: entity
@@ -289,7 +292,6 @@
       - id: ResearchComputerCircuitboard
       - id: ProtolatheMachineCircuitboard
       - id: CircuitImprinterMachineCircuitboard
-      - id: ClothingHeadsetMedicalScience
       - id: HandTeleporter
       - id: DoorRemoteResearch
       - id: ClothingBeltUtilityFilled
@@ -300,6 +302,7 @@
       - id: PresentOracle # backmen
       - id: PresentSophie # backmen
       - id: PonderingOrbTelepathic # backmen
+      - id: ClothingHeadsetAltScience
       - id: EncryptionKeyBinary
 
 - type: entity
@@ -319,6 +322,8 @@
       - id: ClothingUniformJumpskirtHoSAlt
       - id: ClothingUniformJumpsuitHoSAlt
       - id: ClothingOuterCoatHoSTrench
+      - id: ClothingMaskNeckGaiter
+      - id: ClothingOuterCoatHoSGreatcoat # Corvax-Resprite
       - id: ClothingOuterHardsuitSecurityRed
       - id: ClothingMaskGasSwat
 #      - id: ClothingShoeSlippersDuck # Corvax-Resprite: Need more space for style
@@ -372,6 +377,9 @@
       - id: DrinkVacuumFlask
         prob: 0.8
       - id: ClothingOuterCoatHoSTrench
+      - id: ClothingMaskNeckGaiter
+      - id: ClothingMaskNeckGaiter
+      - id: ClothingOuterCoatHoSGreatcoat # Corvax-Resprite
       - id: ClothingBeltSecurityFilled
       - id: ClothingHeadsetAltSecurity
       - id: ClothingEyesGlassesSunglasses

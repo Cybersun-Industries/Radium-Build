@@ -24,7 +24,6 @@
   - type: Tag
     tags:
     - TrashBag
-    - DroneUsable
   - type: Appearance
   - type: StorageFillVisualizer
     maxFillLevels: 4
@@ -56,9 +55,9 @@
   parent: TrashBagBlue
   components:
   - type: Storage
-    maxSlots: 100
     maxItemSize: Huge
-    maxTotalWeight: 200
+    grid:
+    - 0,0,19,9
     quickInsert: true
     areaInsert: true
     areaInsertRadius: 5
