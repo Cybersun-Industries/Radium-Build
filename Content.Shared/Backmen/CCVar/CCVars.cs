@@ -57,12 +57,6 @@ public sealed class CCVars
     public static readonly CVarDef<string> DiscordAuthApiKey =
         CVarDef.Create("discord_auth.api_key", "", CVar.SERVERONLY | CVar.CONFIDENTIAL);
 
-    /// <summary>
-    ///     URL of the Proxy detection server API
-    /// </summary>
-    public static readonly CVarDef<string> DiscordProxyApiUrl =
-        CVarDef.Create("discord_auth.proxy_url", "", CVar.SERVERONLY);
-
     /**
      * Sponsors
      */
@@ -142,8 +136,18 @@ public sealed class CCVars
      */
 
     public static readonly CVarDef<int> BloodsuckerMaxPerBloodsucker =
-        CVarDef.Create("bloodsucker.max_bloodsuckers", 5, CVar.SERVERONLY);
+        CVarDef.Create("bloodsucker.max", 5, CVar.SERVERONLY);
 
     public static readonly CVarDef<int> BloodsuckerPlayersPerBloodsucker =
-        CVarDef.Create("bloodsucker.players_per_bloodsucker", 10, CVar.SERVERONLY);
+        CVarDef.Create("bloodsucker.players_per", 10, CVar.SERVERONLY);
+
+    /*
+     * Blob
+     */
+
+    public static readonly CVarDef<int> BlobMax =
+        CVarDef.Create("blob.max", 3, CVar.SERVERONLY);
+
+    public static readonly CVarDef<int> BlobPlayersPer =
+        CVarDef.Create("blob.players_per", 20, CVar.SERVERONLY);
 }

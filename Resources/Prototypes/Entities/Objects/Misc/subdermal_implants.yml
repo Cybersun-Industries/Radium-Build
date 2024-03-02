@@ -118,8 +118,8 @@
         components:
         - Hands # no use giving a mouse a storage implant, but a monkey is another story...
     - type: Storage
-      maxSlots: 4
-      maxItemSize: Small
+      grid:
+      - 0,0,2,2
     - type: ContainerContainer
       containers:
         storagebase: !type:Container
@@ -197,7 +197,7 @@
   parent: BaseSubdermalImplant
   id: MicroBombImplant
   name: micro-bomb implant
-  description: This implant detonates the user upon death.
+  description: This implant detonates the user upon activation or upon death.
   noSpawn: true
   components:
     - type: SubdermalImplant
@@ -274,6 +274,8 @@
   - type: TriggerImplantAction
   - type: GibOnTrigger
     deleteItems: true
+  - type: SpawnOnTrigger
+    proto: Acidifier
   - type: Tag
     tags:
     - SubdermalImplant

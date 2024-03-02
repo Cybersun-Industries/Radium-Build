@@ -34,8 +34,8 @@ public sealed class BackgroundAudioSystem : EntitySystem
     {
         base.Initialize();
 
-        _configManager.OnValueChanged(CCVars.LobbyMusicEnabled, LobbyMusicCVarChanged);
-        _configManager.OnValueChanged(CCVars.LobbyMusicVolume, LobbyMusicVolumeCVarChanged);
+        Subs.CVar(_configManager, CCVars.LobbyMusicEnabled, LobbyMusicCVarChanged);
+        Subs.CVar(_configManager, CCVars.LobbyMusicVolume, LobbyMusicVolumeCVarChanged);
 
         _stateManager.OnStateChanged += StateManagerOnStateChanged;
 
@@ -49,9 +49,6 @@ public sealed class BackgroundAudioSystem : EntitySystem
     public override void Shutdown()
     {
         base.Shutdown();
-
-        _configManager.UnsubValueChanged(CCVars.LobbyMusicEnabled, LobbyMusicCVarChanged);
-        _configManager.UnsubValueChanged(CCVars.LobbyMusicVolume, LobbyMusicVolumeCVarChanged);
 
         _stateManager.OnStateChanged -= StateManagerOnStateChanged;
 
@@ -140,7 +137,7 @@ public sealed class BackgroundAudioSystem : EntitySystem
 
     private void PlayRestartSound(RoundRestartCleanupEvent ev)
     {
-        if (!_configManager.GetCVar(CCVars.LobbyMusicEnabled))
+        if (!_configManager.GetCVar(CCVars.RestartSoundsEnabled))
             return;
 
         var file = _gameTicker.RestartSound;
@@ -149,10 +146,11 @@ public sealed class BackgroundAudioSystem : EntitySystem
             return;
         }
 
-        var volume = _lobbyParams.WithVolume(_lobbyParams.Volume +
-                                             SharedAudioSystem.GainToVolume(
-                                                 _configManager.GetCVar(CCVars.LobbyMusicVolume)));
-
-        _audio.PlayGlobal(file, Filter.Local(), false, volume);
+        LobbyRoundRestartAudioStream = _audio.PlayGlobal(
+            file,
+            Filter.Local(),
+            false,
+            _roundEndParams.WithVolume(_roundEndParams.Volume + SharedAudioSystem.GainToVolume(_configManager.GetCVar(CCVars.LobbyMusicVolume)))
+        )?.Entity;
     }
 }

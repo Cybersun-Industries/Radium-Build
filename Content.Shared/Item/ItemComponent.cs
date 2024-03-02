@@ -60,7 +60,6 @@ public sealed partial class ItemComponent : Component
     /// </summary>
     [DataField]
     public Vector2i? StoredOffset;
-
 }
 
 [Serializable, NetSerializable]

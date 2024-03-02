@@ -26,18 +26,6 @@ namespace Content.Shared.Storage
         public Container Container = default!;
 
         /// <summary>
-        /// A dictionary storing each entity to its position within the storage grid.
-        /// </summary>
-        [DataField, ViewVariables(VVAccess.ReadWrite)]
-        public Dictionary<EntityUid, ItemStorageLocation> StoredItems = new();
-
-        /// <summary>
-        /// A list of boxes that comprise a combined grid that determines the location that items can be stored.
-        /// </summary>
-        [DataField, ViewVariables(VVAccess.ReadWrite)]
-        public List<Box2i> Grid = new();
-
-        /// <summary>
         /// A limit for the cumulative ItemSize weights that can be inserted in this storage.
         /// If MaxSlots is not null, then this is ignored.
         /// </summary>
@@ -106,6 +94,18 @@ namespace Content.Shared.Storage
         [DataField("storageCloseSound")]
         public SoundSpecifier? StorageCloseSound;
 
+        /// <summary>
+        /// A dictionary storing each entity to its position within the storage grid.
+        /// </summary>
+        [DataField, ViewVariables(VVAccess.ReadWrite)]
+        public Dictionary<EntityUid, ItemStorageLocation> StoredItems = new();
+
+        /// <summary>
+        /// A list of boxes that comprise a combined grid that determines the location that items can be stored.
+        /// </summary>
+        [DataField, ViewVariables(VVAccess.ReadWrite)]
+        public List<Box2i> Grid = new();
+
         [Serializable, NetSerializable]
         public sealed class StorageInsertItemMessage : BoundUserInterfaceMessage
         {
@@ -146,15 +146,6 @@ namespace Content.Shared.Storage
             EntityPositions = entityPositions;
             EntityAngles = entityAngles;
         }
-    }
-
-    /// <summary>
-    /// An extra BUI message that either opens, closes, or focuses the storage window based on context.
-    /// </summary>
-    [Serializable, NetSerializable]
-    public sealed class StorageModifyWindowMessage : BoundUserInterfaceMessage
-    {
-
     }
 
     [NetSerializable]

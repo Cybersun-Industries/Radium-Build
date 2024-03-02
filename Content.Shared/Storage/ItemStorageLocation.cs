@@ -26,7 +26,7 @@ public partial record struct ItemStorageLocation
     [DataField]
     public Vector2i Position;
 
-    public ItemStorageLocation(Angle rotation, Vector2i position)
+    public ItemStorageLocation(Angle rotation, Vector2i position) : this()
     {
         Rotation = rotation;
         Position = position;
