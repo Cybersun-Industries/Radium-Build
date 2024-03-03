@@ -57,14 +57,6 @@ public sealed class DiscordAuthManager : IServerDiscordAuthManager
 
     private async void OnAuthCheck(MsgDiscordAuthCheck message)
     {
-        if (_isProxyEnabled)
-        {
-            var isProxy = await IsProxy(message.MsgChannel);
-            if (isProxy)
-            {
-                _netMgr.DisconnectChannel(message.MsgChannel, "Proxy detected. Interrupting connection.");
-            }
-        }
         var isVerified = await IsVerified(message.MsgChannel.UserId);
 
         if (!isVerified)
@@ -79,6 +71,15 @@ public sealed class DiscordAuthManager : IServerDiscordAuthManager
     {
         if (e.NewStatus != SessionStatus.Connected)
             return;
+
+        if (_isProxyEnabled)
+        {
+            var isProxy = await IsProxy(e.Session.Channel);
+            if (isProxy)
+            {
+                _netMgr.DisconnectChannel(e.Session.Channel, "Proxy detected. Interrupting connection.");
+            }
+        }
 
         if (!_isEnabled)
         {

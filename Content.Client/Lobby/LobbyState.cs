@@ -216,13 +216,9 @@ namespace Content.Client.Lobby
             {
                 var lobbyStream = lobbySongResource.AudioStream;
 
-                var title = string.IsNullOrEmpty(lobbyStream.Title) ?
-                    Loc.GetString("lobby-state-song-unknown-title") :
-                    lobbyStream.Title;
+                var title = string.IsNullOrEmpty(lobbyStream.Title) ? Loc.GetString("lobby-state-song-unknown-title") : lobbyStream.Title;
 
-                var artist = string.IsNullOrEmpty(lobbyStream.Artist) ?
-                    Loc.GetString("lobby-state-song-unknown-artist") :
-                    lobbyStream.Artist;
+                var artist = string.IsNullOrEmpty(lobbyStream.Artist) ? Loc.GetString("lobby-state-song-unknown-artist") : lobbyStream.Artist;
 
                 var markup = Loc.GetString("lobby-state-song-text",
                     ("songTitle", title),
