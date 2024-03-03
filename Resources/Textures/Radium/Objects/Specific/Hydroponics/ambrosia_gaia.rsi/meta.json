@@ -15,7 +15,15 @@
       "directions": 4
     },
     {
-      "name": "harvest"
+      "name": "harvest",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ]
+      ]
     },
     {
       "name": "produce"
