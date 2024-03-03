@@ -198,14 +198,14 @@
   packetPrototype: ReplicapodSeeds
   productPrototypes:
     - MobReplicantGhostRole
+  harvestRepeat: Repeat
   mutationPrototypes:
     - clownpod
   lifespan: 50
-  maturation: 7
+  maturation: 5
   production: 4
-  potency: 5
+  potency: 3
   yield: 1
-  idealLight: 8
 
 - type: seed
   id: clownpod
@@ -216,12 +216,12 @@
   packetPrototype: ClownpodSeeds
   productPrototypes:
     - HumanReplicaClown
-  lifespan: 50
-  maturation: 7
-  production: 4
-  potency: 5
+  harvestRepeat: Repeat
+  lifespan: 45
+  maturation: 4
+  production: 3
+  potency: 2
   yield: 1
-  idealLight: 8
 
 - type: seed
   id: honkplant
