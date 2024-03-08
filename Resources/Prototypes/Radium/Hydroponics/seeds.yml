@@ -303,7 +303,6 @@
   packetPrototype: MoonlinSeeds
   productPrototypes:
     - FoodMoonlin
-  harvestRepeat: Repeat
   lifespan: 50
   maturation: 7
   production: 4
