@@ -1001,20 +1001,6 @@
     - Botanist
 
 - type: listing
-  id: uplinkBombLemonSeeds
-  name: uplink-bomblemon-seeds-name
-  description: uplink-bomblemon-seeds-desc
-  productEntity: BombLemonSeeds
-  cost:
-    Telecrystal: 5
-  categories:
-  - UplinkJob
-  conditions:
-  - !type:BuyerJobCondition
-    whitelist:
-    - Botanist
-
-- type: listing
   id: uplinkRiggedBoxingGlovesPassenger
   name: uplink-rigged-boxing-gloves-name
   description: uplink-rigged-boxing-gloves-desc
