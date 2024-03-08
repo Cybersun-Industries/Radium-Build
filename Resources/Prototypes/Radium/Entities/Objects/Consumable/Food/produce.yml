@@ -368,8 +368,8 @@
     seedId: moonlin
   - type: PointLight
     color: "#64d2cb"
-    energy: 0.8
-    radius: 5
+    energy: 0.6
+    radius: 4
     softness: 1
     offset: "0, -0.5"
 

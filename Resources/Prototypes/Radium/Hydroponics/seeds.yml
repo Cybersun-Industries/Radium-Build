@@ -154,7 +154,7 @@
     Vitamin:
       Min: 1
       Max: 5
-      PotencyDivisor: 35
+      PotencyDivisor: 30
     Earthsblood:
       Min: 1
       Max: 5
@@ -179,7 +179,7 @@
     Nutriment:
       Min: 1
       Max: 10
-      PotencyDivisor: 35
+      PotencyDivisor: 30
     Vitamin:
       Min: 1
       Max: 4
@@ -187,7 +187,7 @@
     Holywater:
       Min: 1
       Max: 20
-      PotencyDivisor: 55
+      PotencyDivisor: 50
 
 - type: seed
   id: replicapod
@@ -258,15 +258,15 @@
     Nutriment:
       Min: 1
       Max: 6
-      PotencyDivisor: 35
+      PotencyDivisor: 30
     Vitamin:
       Min: 1
       Max: 5
-      PotencyDivisor: 25
+      PotencyDivisor: 20
     Water:
       Min: 1
       Max: 10
-      PotencyDivisor: 45
+      PotencyDivisor: 40
 
 - type: seed
   id: bomblemon
@@ -292,7 +292,7 @@
     BlackPowder:
       Min: 1
       Max: 4
-      PotencyDivisor: 35
+      PotencyDivisor: 30
 
 - type: seed
   id: moonlin
@@ -313,15 +313,15 @@
     Nutriment:
       Min: 1
       Max: 5
-      PotencyDivisor: 25
+      PotencyDivisor: 20
     Vitamin:
       Min: 1
       Max: 3
-      PotencyDivisor: 35
+      PotencyDivisor: 30
     Moonlin:
       Min: 1
       Max: 5
-      PotencyDivisor: 45
+      PotencyDivisor: 40
 
 - type: seed
   id: 3Dorange
@@ -347,6 +347,6 @@
     Vitamin:
       Min: 1
       Max: 4
-      PotencyDivisor: 25
+      PotencyDivisor: 35
 
 
