@@ -1,0 +1,13 @@
+- type: listing
+  id: uplinkBombLemonSeeds
+  name: uplink-bomblemon-seeds-name
+  description: uplink-bomblemon-seeds-desc
+  productEntity: BombLemonSeeds
+  cost:
+    Telecrystal: 4
+  categories:
+  - UplinkJob
+  conditions:
+  - !type:BuyerJobCondition
+    whitelist:
+    - Botanist
