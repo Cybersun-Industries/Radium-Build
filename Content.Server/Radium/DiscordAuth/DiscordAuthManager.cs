@@ -13,6 +13,7 @@ using Robust.Shared.Enums;
 using Robust.Shared.Network;
 using Robust.Shared.Player;
 using CCVars = Content.Shared.Backmen.CCVar.CCVars;
+// ReSharper disable InconsistentNaming
 
 namespace Content.Server.Radium.DiscordAuth;
 
@@ -26,7 +27,7 @@ public sealed class DiscordAuthManager : IServerDiscordAuthManager
     private ISawmill _sawmill = default!;
     private readonly HttpClient _httpClient = new();
     private bool _isEnabled;
-    private bool _isProxyEnabled = false;
+    private bool _isProxyEnabled;
     private string _apiUrl = string.Empty;
     private string _apiKey = string.Empty;
     private string _proxyApiUrl = string.Empty;
@@ -72,15 +73,6 @@ public sealed class DiscordAuthManager : IServerDiscordAuthManager
         if (e.NewStatus != SessionStatus.Connected)
             return;
 
-        if (_isProxyEnabled)
-        {
-            var isProxy = await IsProxy(e.Session.Channel);
-            if (isProxy)
-            {
-                _netMgr.DisconnectChannel(e.Session.Channel, "Proxy detected. Interrupting connection.");
-            }
-        }
-
         if (!_isEnabled)
         {
             PlayerVerified?.Invoke(this, e.Session);
@@ -124,6 +116,18 @@ public sealed class DiscordAuthManager : IServerDiscordAuthManager
     {
         if (_discordAuthManager.IsSkipped)
         {
+            if (_isProxyEnabled)
+            {
+                if (!_playerMgr.TryGetSessionById(userId, out var sessionData))
+                    return false;
+
+                var isProxy = await IsProxy(sessionData.Channel, cancel);
+                if (isProxy)
+                {
+                    _netMgr.DisconnectChannel(sessionData.Channel, "Proxy detected. Interrupting connection.");
+                }
+            }
+
             _discordAuthManager.IsSkipped = false;
             return true;
         }
