@@ -126,6 +126,6 @@ public abstract class SharedPseudoItemSystem : EntitySystem
             return false;
         }
 
-        return itemSizeInBackpack.Weight <= storageComponent.Grid.GetArea() - _storageSystem.GetCumulativeItemAreas((storage,storageComponent));
+        return itemSizeInBackpack.Weight <= storageComponent.MaxTotalWeight;
     }
 }
