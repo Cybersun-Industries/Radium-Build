@@ -8,7 +8,7 @@
       - CannotSuicide
     - type: ContentEye
     - type: TTS
-      voice: TrainingRobot
+#      voice: TrainingRobot
     - type: StationAI
       lawsId: LawsStationAIDefault
       defaultLayer: blue

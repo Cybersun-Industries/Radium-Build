@@ -79,7 +79,7 @@
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser.ogg
   - type: Item
-    size: SmallNormal
+    size: Normal
   - type: ProjectileBatteryAmmoProvider
     proto: X01Attack
     fireCost: 200

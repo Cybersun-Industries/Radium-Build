@@ -757,7 +757,7 @@
       proper: true
       gender: female
   - type: TTS # Corvax-TTS
-    voice: Npc3
+#    voice: Npc3
 
 - type: entity
   name: Pun Pun
