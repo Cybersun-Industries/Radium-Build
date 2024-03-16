@@ -291,10 +291,10 @@
         Quantity: 10
 
 - type: entity
-  name: взрывной лемон
+  name: взрывной лимон
   parent: FoodProduceBase
   id: FoodBombLemon
-  description: Взрывной лемон настолько прекрасен что аж имеет бомбезный вкус.
+  description: Взрывной лимон настолько прекрасен, что аж имеет бомбезный вкус.
   components:
   - type: FlavorProfile
     flavors:
@@ -368,8 +368,8 @@
     seedId: moonlin
   - type: PointLight
     color: "#64d2cb"
-    energy: 0.8
-    radius: 5
+    energy: 0.6
+    radius: 4
     softness: 1
     offset: "0, -0.5"
 
