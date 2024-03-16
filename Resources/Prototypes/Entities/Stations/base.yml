@@ -48,6 +48,7 @@
       groups:
         trade:
           addComponents:
+            - type: ArrivalsProtectGrid
             - type: ProtectedGrid
             - type: TradeStation
           paths:
@@ -68,12 +69,9 @@
           - /Maps/Ruins/djstation.yml
           - /Maps/Ruins/old_ai_sat.yml
           - /Maps/Ruins/relaystation.yml
+          - /Maps/Ruins/syndicate_dropship.yml
           - /Maps/Ruins/whiteship_ancient.yml
           - /Maps/Ruins/whiteship_bluespacejumper.yml
-#radium-start
-          - /Maps/Radium/Ruins/ultra-storage.yml
-          - /Maps/Radium/Ruins/MSS.yml
-#radium-end
 
 - type: entity
   id: BaseStationCentcomm

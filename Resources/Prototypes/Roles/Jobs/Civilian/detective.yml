@@ -32,9 +32,8 @@
     components:
       - type: PsionicBonusChance
         flatBonus: 0.5
-  # can be antag?
-  #- !type:AddImplantSpecial
-  #  implants: [ MindShieldImplant ]
+  - !type:AddImplantSpecial
+    implants: [ MindShieldImplant ]
 
 - type: startingGear
   id: DetectiveGear
@@ -42,7 +41,7 @@
     jumpsuit: ClothingUniformJumpsuitDetective
     back: ClothingBackpackFilledDetective
     shoes: ClothingShoesBootsCombatFilled
-    eyes: ClothingEyesGlassesSunglasses
+    eyes: ClothingEyesGlassesSecurity #backmen
     head: ClothingHeadHatFedoraBrown
     outerClothing: ClothingOuterVestDetective
     id: DetectivePDA

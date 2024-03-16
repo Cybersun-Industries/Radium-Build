@@ -163,6 +163,8 @@
       - AntiPsychicKnifeRecipe
       - Ring
       - SapphireRing
+      - HandheldStationMap
+      - ClothingHeadHatWelding
   - type: EmagLatheRecipes
     emagStaticRecipes:
        - CartridgePistol
@@ -181,6 +183,8 @@
       - CartridgePistolRubber
       - CartridgeMagnumRubber
       - ShellShotgunBeanbag
+      - GrenadeTearGas
+      - GrenadeNonletal
       - CartridgeRifleRubber
       - CartridgeLightRifleRubber
       - MagazineBoxPistolRubber
@@ -336,6 +340,7 @@
     emagDynamicRecipes:
       - ExplosivePayload
       - WeaponLaserCarbine
+      - WeaponLaserPistol
       - WeaponAdvancedLaser
       - WeaponLaserCannon
       - WeaponXrayCannon
@@ -399,6 +404,7 @@
     - ElectricGrillMachineCircuitboard
     - BoozeDispenserMachineCircuitboard
     - SodaDispenserMachineCircuitboard
+    - SpaceHeaterMachineCircuitBoard
     dynamicRecipes:
       - ThermomachineFreezerMachineCircuitBoard
       - HellfireFreezerMachineCircuitBoard
@@ -722,6 +728,8 @@
       - GrenadeEMP
       - GrenadeFlash
       - ShellShotgunBeanbag
+      - GrenadeTearGas
+      - GrenadeNonletal
       - ShellShotgunIncendiary
       - ShellShotgunUranium
       - Signaller
@@ -735,6 +743,7 @@
       - WeaponDisablerSMG
       - WeaponLaserCannon
       - WeaponLaserCarbine
+      - WeaponLaserPistol
       - WeaponLaserCarbinePractice
       - InsulativeHeadcage
       - ClothingHeadHelmetInsulated
@@ -922,6 +931,8 @@
       - ClothingUniformJumpskirtDetective
       - ClothingUniformJumpsuitEngineering
       - ClothingUniformJumpskirtEngineering
+      - ClothingUniformJumpsuitSeniorEngineer
+      - ClothingUniformJumpskirtSeniorEngineer
       - ClothingHeadHatHopcap
       - ClothingUniformJumpsuitHoP
       - ClothingUniformJumpskirtHoP
@@ -947,11 +958,15 @@
       - ClothingHeadHatBeretSeniorPhysician
       - ClothingUniformJumpsuitMedicalDoctor
       - ClothingUniformJumpskirtMedicalDoctor
+      - ClothingUniformJumpsuitSeniorPhysician
+      - ClothingUniformJumpskirtSeniorPhysician
       - ClothingUniformJumpsuitMime
       - ClothingUniformJumpskirtMime
       - ClothingUniformJumpsuitMusician
       - ClothingUniformJumpsuitParamedic
       - ClothingUniformJumpskirtParamedic
+      - ClothingUniformJumpsuitSeniorOfficer
+      - ClothingUniformJumpskirtSeniorOfficer
       - ClothingUniformJumpsuitPrisoner
       - ClothingUniformJumpskirtPrisoner
       - ClothingHeadHatQMsoft
@@ -966,6 +981,8 @@
       - ClothingUniformJumpskirtResearchDirector
       - ClothingUniformJumpsuitScientist
       - ClothingUniformJumpskirtScientist
+      - ClothingUniformJumpsuitSeniorResearcher
+      - ClothingUniformJumpskirtSeniorResearcher
       - ClothingHeadHatBeretSecurity
       - ClothingUniformJumpsuitSec
       - ClothingUniformJumpskirtSec
@@ -976,6 +993,7 @@
       - ClothingHeadHatWarden
       - ClothingUniformJumpsuitWarden
       - ClothingUniformJumpskirtWarden
+      - ClothingHeadHatParamedicsoft
       # Winter outfits
       - ClothingOuterWinterCap
       - ClothingOuterWinterCE
