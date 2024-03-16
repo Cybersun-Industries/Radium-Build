@@ -1,0 +1,6 @@
+- type: textureView
+  id: DebugView
+  layers:
+    - texture:
+        !type:ImageTextureViewSource
+        path: "/Textures/Radium/Menu/main.rsi"

@@ -25,12 +25,12 @@ public sealed class ParallaxControl : Control
 
         Offset = new Vector2(_random.Next(0, 1000), _random.Next(0, 1000));
         RectClipContent = true;
-        _parallaxManager.LoadParallaxByName("FastSpace");
+        _parallaxManager.LoadParallaxByName("ShipwreckedTurbulence1");
     }
 
     protected override void Draw(DrawingHandleScreen handle)
     {
-        foreach (var layer in _parallaxManager.GetParallaxLayers("FastSpace"))
+        foreach (var layer in _parallaxManager.GetParallaxLayers("ShipwreckedTurbulence1"))
         {
             var tex = layer.Texture;
             var texSize = (tex.Size.X * (int) Size.X, tex.Size.Y * (int) Size.X) * layer.Config.Scale.Floored() / 1920;

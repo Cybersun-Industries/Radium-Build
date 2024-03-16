@@ -21,6 +21,7 @@ using Content.Shared.Administration;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Module;
 using Content.Client.Guidebook;
+using Content.Client.Radium.MainMenu.Managers;
 using Content.Client.Replay;
 using Content.Shared.Administration.Managers;
 
@@ -35,6 +36,8 @@ namespace Content.Client.IoC
             IoCManager.Register<Content.Corvax.Interfaces.Client.ISponsorWindowCreator,Backmen.Sponsors.SponsorWindowCreator>(); // Corvax-Sponsors
             IoCManager.Register<Content.Corvax.Interfaces.Client.IClientJoinQueueManager,Backmen.JoinQueue.JoinQueueManager>(); // Corvax-Queue
             IoCManager.Register<IClientDiscordAuthManager,Radium.DiscordAuth.DiscordAuthManager>(); // Corvax-DiscordAuth
+
+            IoCManager.Register<ITexureViewManager, TextureViewManager>(); //Radium-Menu
 
             IoCManager.Register<IParallaxManager, ParallaxManager>();
             IoCManager.Register<IChatManager, ChatManager>();
