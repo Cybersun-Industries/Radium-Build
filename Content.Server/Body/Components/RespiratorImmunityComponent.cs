@@ -1,7 +1,6 @@
-namespace Content.Server.Backmen.Body.Components;
+namespace Content.Server.Body.Components;
 
 [RegisterComponent]
 public sealed partial class RespiratorImmunityComponent : Component
 {
-
 }

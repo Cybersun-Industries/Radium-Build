@@ -10,7 +10,6 @@ using Content.Server.Item;
 using Content.Server.Popups;
 using Content.Server.Resist;
 using Content.Shared.Backmen.Item;
-using Content.Shared.Backmen.Item.PseudoItem;
 using Content.Shared.Popups;
 using Content.Shared.Resist;
 using Content.Shared.Storage;
@@ -18,44 +17,79 @@ using Robust.Server.GameObjects;
 using Robust.Shared.Containers;
 using Robust.Shared.Prototypes;
 
-namespace Content.Server.Backmen.Item.PseudoItem;
-
-public sealed class PseudoItemSystem : SharedPseudoItemSystem
+namespace Content.Server.Backmen.Item.PseudoItem
 {
-    [Dependency] private readonly StorageSystem _storageSystem = default!;
-    [Dependency] private readonly ItemSystem _itemSystem = default!;
-    [Dependency] private readonly TransformSystem _transformSystem = default!;
-    [Dependency] private readonly PopupSystem _popup = default!;
-
-    [Dependency] private readonly EntityStorageSystem _entityStorage = default!;
-
-    public override void Initialize()
+    public sealed class PseudoItemSystem : EntitySystem
     {
-        base.Initialize();
+        [Dependency] private readonly StorageSystem _storageSystem = default!;
+        [Dependency] private readonly ItemSystem _itemSystem = default!;
+        [Dependency] private readonly DoAfterSystem _doAfter = default!;
+        [Dependency] private readonly TransformSystem _transformSystem = default!;
+        [Dependency] private readonly PopupSystem _popup = default!;
+        [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
+        [Dependency] private readonly EntityStorageSystem _entityStorage = default!;
 
-        SubscribeLocalEvent<PseudoItemComponent, EntGotRemovedFromContainerMessage>(OnEntRemoved);
-        SubscribeLocalEvent<PseudoItemComponent, GettingPickedUpAttemptEvent>(OnGettingPickedUpAttempt);
-        SubscribeLocalEvent<PseudoItemComponent, DropAttemptEvent>(OnDropAttempt);
-        SubscribeLocalEvent<PseudoItemComponent, PseudoItemInsertDoAfterEvent>(OnDoAfter);
+        public override void Initialize()
+        {
+            base.Initialize();
+            SubscribeLocalEvent<PseudoItemComponent, GetVerbsEvent<InnateVerb>>(AddInsertVerb);
+            SubscribeLocalEvent<PseudoItemComponent, GetVerbsEvent<AlternativeVerb>>(AddInsertAltVerb);
+            SubscribeLocalEvent<PseudoItemComponent, EntGotRemovedFromContainerMessage>(OnEntRemoved);
+            SubscribeLocalEvent<PseudoItemComponent, GettingPickedUpAttemptEvent>(OnGettingPickedUpAttempt);
+            SubscribeLocalEvent<PseudoItemComponent, DropAttemptEvent>(OnDropAttempt);
+            SubscribeLocalEvent<PseudoItemComponent, PseudoItemInsertDoAfterEvent>(OnDoAfter);
+            SubscribeLocalEvent<PseudoItemComponent, ContainerGettingRemovedAttemptEvent>(OnRemovedAttempt);
+            SubscribeLocalEvent<PseudoItemComponent, EscapeInventoryEvent>(OnEscape, before: new[]{ typeof(EscapeInventorySystem) });
+        }
 
-        SubscribeLocalEvent<PseudoItemComponent, EscapeInventoryEvent>(OnEscape, before: new[]{ typeof(EscapeInventorySystem) });
-    }
+        private void OnRemovedAttempt(EntityUid uid, PseudoItemComponent component, ContainerGettingRemovedAttemptEvent args)
+        {
+            if (
+                HasComp<StorageComponent>(args.Container.Owner) &&
+                !TerminatingOrDeleted(args.Container.Owner) &&
+                !EntityManager.IsQueuedForDeletion(args.Container.Owner)
+                )
+            {
+                args.Cancel();
+            }
+        }
 
-    private void ClearState(EntityUid uid, PseudoItemComponent? component = null)
-    {
-        if (!Resolve(uid, ref component))
-            return;
+        private void AddInsertVerb(EntityUid uid, PseudoItemComponent component, GetVerbsEvent<InnateVerb> args)
+        {
+            if (!args.CanInteract || !args.CanAccess)
+                return;
 
-        ClearState((uid,component));
-    }
+            if (component.Active)
+                return;
 
-    private void ClearState(Entity<PseudoItemComponent> uid)
-    {
-        uid.Comp.Active = false;
-        RemComp<ItemComponent>(uid);
-        RemComp<CanEscapeInventoryComponent>(uid);
-        _transformSystem.AttachToGridOrMap(uid);
-    }
+            if (!TryComp<StorageComponent>(args.Target, out var storage))
+                return;
+
+            if (Transform(args.Target).ParentUid == uid)
+                return;
+
+            InnateVerb verb = new()
+            {
+                Act = () =>
+                {
+                    TryInsert(args.Target, uid, uid, component, storage);
+                },
+                Text = Loc.GetString("action-name-insert-self"),
+                Priority = 2
+            };
+            args.Verbs.Add(verb);
+        }
+
+        private void ClearState(EntityUid uid, PseudoItemComponent? component = null)
+        {
+            if (!Resolve(uid, ref component))
+                return;
+
+            component.Active = false;
+            RemComp<ItemComponent>(uid);
+            RemComp<CanEscapeInventoryComponent>(uid);
+            _transformSystem.AttachToGridOrMap(uid);
+        }
 
         private void AddInsertAltVerb(EntityUid uid, PseudoItemComponent component, GetVerbsEvent<AlternativeVerb> args)
         {
@@ -90,17 +124,13 @@ public sealed class PseudoItemSystem : SharedPseudoItemSystem
                 return false;
             }
 
-            if (storageComponent.MaxSlots != null)
+            if (!_prototypeManager.TryIndex(pseudoItem.Comp.SizeInBackpack, out var itemSizeInBackpack))
             {
                 return false;
             }
 
-            if (!_prototypeManager.TryIndex(pseudoItem.Comp.SizeInBackpack, out var sizeInBackpack))
-            {
-                return false;
-            }
 
-            return sizeInBackpack.Weight >= storageComponent.MaxTotalWeight - _storageSystem.GetCumulativeItemSizes(storage, storageComponent);
+            return itemSizeInBackpack.Weight <= storageComponent.Grid.GetArea() - _storageSystem.GetCumulativeItemAreas((storage,storageComponent));
         }
 
         private void OnEscape(EntityUid uid, PseudoItemComponent pseudoItem, EscapeInventoryEvent args)
@@ -110,119 +140,134 @@ public sealed class PseudoItemSystem : SharedPseudoItemSystem
                 return;
             }
 
-        component.DoAfter = null;
+            component.DoAfter = null;
+            Dirty(uid, component);
 
-        if (args.Handled || args.Cancelled)
-            return;
+            if (args.Handled || args.Cancelled)
+                return;
 
-        if (!uid.Comp.Active)
-        {
-            return;
-        }
-
-        args.Handled = true;
-
-        if (args.Target.HasValue)
-        {
-            var parent = _transformSystem.GetParentUid(args.Target.Value);
-            if (!parent.IsValid())
+            if (!pseudoItem.Active)
             {
-                ClearState(uid);
                 return;
             }
 
+            args.Handled = true;
 
-
-            if (CanInsertInto(uid, parent))
+            if (args.Target.HasValue)
             {
-                if(!TryInsert(parent, uid, uid))
-                    return;
-            }
-
-
-            if (TryComp<EntityStorageComponent>(parent, out var entityStorageComponent))
-            {
-                ClearState(uid);
-                if (_entityStorage.CanInsert(uid, parent, entityStorageComponent))
+                var parent = _transformSystem.GetParentUid(args.Target.Value);
+                if (!parent.IsValid())
                 {
-                    _entityStorage.Insert(uid, parent, entityStorageComponent);
+                    ClearState(uid, pseudoItem);
                     return;
                 }
+
+
+
+                if (CanInsertInto((uid, pseudoItem), parent))
+                {
+                    if(!TryInsert(parent, uid, uid, pseudoItem))
+                        return;
+                }
+
+
+                if (TryComp<EntityStorageComponent>(parent, out var entityStorageComponent))
+                {
+                    ClearState(uid, pseudoItem);
+                    if (_entityStorage.CanInsert(uid, parent, entityStorageComponent))
+                    {
+                        _entityStorage.Insert(uid, parent, entityStorageComponent);
+                        return;
+                    }
+                }
             }
+
+
+            ClearState(uid, pseudoItem);
+            //_containerSystem.AttachParentToContainerOrGrid(Transform(uid));
         }
 
+        private void OnEntRemoved(EntityUid uid, PseudoItemComponent component, EntGotRemovedFromContainerMessage args)
+        {
+            if (!component.Active)
+                return;
 
-        ClearState(uid);
-        //_containerSystem.AttachParentToContainerOrGrid(Transform(uid));
-    }
+            ClearState(uid, component: component);
+        }
 
-    private void OnEntRemoved(EntityUid uid, PseudoItemComponent component, EntGotRemovedFromContainerMessage args)
-    {
-        if (!component.Active)
-            return;
+        private void OnGettingPickedUpAttempt(EntityUid uid, PseudoItemComponent component, GettingPickedUpAttemptEvent args)
+        {
+            if (args.User == args.Item)
+                return;
 
-        ClearState(uid, component: component);
-    }
-
-    private void OnGettingPickedUpAttempt(EntityUid uid, PseudoItemComponent component, GettingPickedUpAttemptEvent args)
-    {
-        if (args.User == args.Item)
-            return;
-
-        ClearState(uid, component);
-        args.Cancel();
-    }
-
-    private void OnDropAttempt(EntityUid uid, PseudoItemComponent component, DropAttemptEvent args)
-    {
-        if (component.Active)
+            ClearState(uid, component);
             args.Cancel();
-    }
-    private void OnDoAfter(EntityUid uid, PseudoItemComponent component, DoAfterEvent args)
-    {
-        if (args.Handled || args.Cancelled || args.Args.Used == null)
-            return;
+        }
 
-        args.Handled = TryInsert(args.Args.Used.Value, (uid, component), args.User);
-    }
+        private void OnDropAttempt(EntityUid uid, PseudoItemComponent component, DropAttemptEvent args)
+        {
+            if (component.Active)
+                args.Cancel();
+        }
+        private void OnDoAfter(EntityUid uid, PseudoItemComponent component, DoAfterEvent args)
+        {
+            if (args.Handled || args.Cancelled || args.Args.Used == null)
+                return;
 
-    // ReSharper disable once MemberCanBePrivate.Global
-    public override bool TryInsert(EntityUid storageUid, Entity<PseudoItemComponent> toInsert, EntityUid? user, StorageComponent? storage = null)
-    {
-        if (!Resolve(storageUid, ref storage))
-            return false;
+            args.Handled = TryInsert(args.Args.Used.Value, uid, args.User, component);
+        }
+
+        // ReSharper disable once MemberCanBePrivate.Global
+        public bool TryInsert(EntityUid storageUid, EntityUid toInsert, EntityUid? user, PseudoItemComponent component, StorageComponent? storage = null)
+        {
+            if (!Resolve(storageUid, ref storage))
+                return false;
 
             if (!CanInsertInto((toInsert, component), storageUid, storage))
             {
                 if (user.HasValue)
                 {
                     _popup.PopupEntity(
-                        storage.MaxSlots == null
-                            ? Loc.GetString("comp-storage-too-big")
-                            : Loc.GetString("comp-storage-invalid-container"), toInsert, user.Value,
+                        Loc.GetString("comp-storage-too-big"), toInsert, user.Value,
                         PopupType.LargeCaution);
                 }
                 return false;
             }
 
-        var item = EnsureComp<ItemComponent>(toInsert);
-        _itemSystem.SetSize(toInsert, toInsert.Comp.Size, item);
-        EnsureComp<CanEscapeInventoryComponent>(toInsert);
 
-        if (!_storageSystem.Insert(storageUid, toInsert, out _, out var reason, user, storage))
-        {
-            if (!string.IsNullOrEmpty(reason) && user != null)
+            var item = EnsureComp<ItemComponent>(toInsert);
+            _itemSystem.SetSize(toInsert, component.Size, item);
+            EnsureComp<CanEscapeInventoryComponent>(toInsert);
+
+            if (!_storageSystem.Insert(storageUid, toInsert, out _, out var reason, user, storage))
             {
-                _popup.PopupEntity(Loc.GetString(reason),toInsert, user.Value, PopupType.LargeCaution);
+                if (!string.IsNullOrEmpty(reason) && user != null)
+                {
+                    _popup.PopupEntity(Loc.GetString(reason),toInsert, user.Value, PopupType.LargeCaution);
+                }
+                ClearState(toInsert, component);
+                return false;
             }
-            ClearState(toInsert);
-            return false;
-        }
 
-        _itemSystem.SetSize(toInsert, toInsert.Comp.SizeInBackpack, item);
-        toInsert.Comp.Active = true;
-        Dirty(toInsert);
-        _transformSystem.AttachToGridOrMap(storageUid);
-        return true;
+            _itemSystem.SetSize(toInsert, component.SizeInBackpack, item);
+            component.Active = true;
+            _transformSystem.AttachToGridOrMap(storageUid);
+            return true;
+        }
+        private void StartInsertDoAfter(EntityUid inserter, EntityUid toInsert, EntityUid storageEntity, PseudoItemComponent? pseudoItem = null)
+        {
+            if (!Resolve(toInsert, ref pseudoItem))
+                return;
+
+            var ev = new PseudoItemInsertDoAfterEvent();
+            var args = new DoAfterArgs(EntityManager, inserter, 5f, ev, toInsert, target: toInsert, used: storageEntity)
+            {
+                BreakOnTargetMove = true,
+                BreakOnUserMove = true,
+                NeedHand = true
+            };
+
+            _doAfter.TryStartDoAfter(args);
+        }
     }
 }
