@@ -1,5 +1,4 @@
 ﻿<Control xmlns="https://spacestation14.io"
-         xmlns:txv="clr-namespace:Content.Client.Radium.MainMenu"
          xmlns:clog="clr-namespace:Content.Client.Changelog">
     <AnimatedTextureRect
         Name="Background"/>

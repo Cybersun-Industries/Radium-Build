@@ -1,12 +1,14 @@
 <Control xmlns="https://spacestation14.io"
          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
          xmlns:gfx="clr-namespace:Robust.Client.Graphics;assembly=Robust.Client"
-         xmlns:parallax="clr-namespace:Content.Client.Parallax"
-         xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls">
-    <parallax:ParallaxControl />
-    <Control HorizontalAlignment="Center" VerticalAlignment="Center">
-        <PanelContainer StyleClasses="AngleRect" />
-        <BoxContainer Orientation="Vertical" MinSize="300 200">
+         xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
+         xmlns:drawing="clr-namespace:System.Drawing;assembly=System.Drawing.Primitives"
+         xmlns:stylesheets="clr-namespace:Content.Client.Stylesheets">
+    <AnimatedTextureRect HorizontalAlignment="Center" VerticalAlignment="Center" Name="Background"
+                         HorizontalExpand="True" VerticalExpand="True" />
+    <PanelContainer StyleClasses="AngleRect" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalExpand="True"
+                    VerticalExpand="True" MinSize="600 200" ModulateSelfOverride="{x:Static stylesheets:StyleNano.NanoFullOpacity}">
+        <BoxContainer Orientation="Vertical">
             <BoxContainer Orientation="Horizontal">
                 <Label Margin="8 0 0 0" Text="{Loc 'connecting-title'}"
                        StyleClasses="LabelHeading" VAlign="Center" />
@@ -22,7 +24,7 @@
                         <Label Name="ConnectStatus" StyleClasses="LabelSubText" Align="Center" />
                     </BoxContainer>
                     <BoxContainer Orientation="Vertical" Name="ConnectFail" Visible="False">
-                        <RichTextLabel Name="ConnectFailReason" VerticalAlignment="Stretch"/>
+                        <RichTextLabel Name="ConnectFailReason" VerticalAlignment="Stretch" />
                         <Button Name="RetryButton" Text="{Loc 'connecting-retry'}"
                                 HorizontalAlignment="Center"
                                 VerticalExpand="True" VerticalAlignment="Bottom" />
@@ -53,18 +55,20 @@
                        HorizontalAlignment="Right" HorizontalExpand="True" />
             </BoxContainer>
         </BoxContainer>
-    </Control>
+    </PanelContainer>
     <!-- Bottom window for tips -->
-    <PanelContainer Name="LoginTips" StyleClasses="AngleRect" Margin="0 10" MaxWidth="600" VerticalExpand="True" VerticalAlignment="Bottom">
+    <PanelContainer Name="LoginTips" StyleClasses="AngleRect" Margin="0 10" MaxWidth="600" VerticalExpand="True"
+                    VerticalAlignment="Bottom">
         <BoxContainer Orientation="Vertical" VerticalExpand="True">
             <controls:StripeBack>
                 <BoxContainer Orientation="Horizontal" HorizontalAlignment="Center">
-                    <Label Name="LoginTipTitle" Text="Tip" StyleClasses="LabelHeading" Align="Center"/>
+                    <Label Name="LoginTipTitle" Text="Tip" StyleClasses="LabelHeading" Align="Center" />
                 </BoxContainer>
             </controls:StripeBack>
-            <BoxContainer Orientation="Vertical" Margin="5 5 5 5" >
+            <BoxContainer Orientation="Vertical" Margin="5 5 5 5">
                 <RichTextLabel Name="LoginTip" VerticalExpand="True" />
             </BoxContainer>
         </BoxContainer>
     </PanelContainer>
+
 </Control>

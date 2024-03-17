@@ -5,12 +5,16 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Localization;
 using Robust.Shared.Timing;
+using Robust.Shared.Utility;
 
 namespace Content.Client.Info;
 
 [GenerateTypedNameReferences]
 public sealed partial class RulesPopup : Control
 {
+    public static readonly SpriteSpecifier Sprite =
+        new SpriteSpecifier.Rsi(new ResPath("/Textures/Radium/Menu/maina.rsi"), "maina");
+
     private float _timer;
 
     public float Timer
@@ -29,6 +33,11 @@ public sealed partial class RulesPopup : Control
     public RulesPopup()
     {
         RobustXamlLoader.Load(this);
+
+        Background.SetFromSpriteSpecifier(Sprite);
+        Background.HorizontalAlignment = HAlignment.Stretch;
+        Background.VerticalAlignment = VAlignment.Stretch;
+        Background.DisplayRect.Stretch = TextureRect.StretchMode.KeepAspectCentered;
 
         AcceptButton.OnPressed += OnAcceptButtonPressed;
         QuitButton.OnPressed += OnQuitButtonPressed;

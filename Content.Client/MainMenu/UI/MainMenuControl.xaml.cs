@@ -12,7 +12,9 @@ namespace Content.Client.MainMenu.UI;
 [GenerateTypedNameReferences]
 public sealed partial class MainMenuControl : Control
 {
-    public static SpriteSpecifier Sprite = new SpriteSpecifier.Rsi(new ("/Textures/Radium/Menu/main.rsi"), "main");
+    public static readonly SpriteSpecifier Sprite =
+        new SpriteSpecifier.Rsi(new ResPath("/Textures/Radium/Menu/maina.rsi"), "maina");
+
     public MainMenuControl(IResourceCache resCache, IConfigurationManager configMan)
     {
         RobustXamlLoader.Load(this);

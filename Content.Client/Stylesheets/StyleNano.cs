@@ -90,6 +90,7 @@ namespace Content.Client.Stylesheets
         //Start-Radium
         public static readonly Color NanoLightGold = Color.FromHex("#dcd6f1");
         public static readonly Color NanoShade = Color.FromHex("#003d8e");
+        public static readonly Color NanoFullOpacity = Color.FromHex("#000000E6");
         //End-Radium
         public static readonly Color GoodGreenFore = Color.FromHex("#31843E");
         public static readonly Color ConcerningOrangeFore = Color.FromHex("#A5762F");
@@ -1553,7 +1554,7 @@ namespace Content.Client.Stylesheets
                     .Prop(ContainerButton.StylePropertyStyleBox, new StyleBoxFlat
                     {
                         BackgroundColor = FancyTreeSelectedRowColor,
-                    }),
+                    })
             }).ToList());
         }
     }
