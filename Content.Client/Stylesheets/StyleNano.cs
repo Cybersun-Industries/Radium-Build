@@ -45,7 +45,6 @@ namespace Content.Client.Stylesheets
         public const string StyleClassBorderedWindowPanel = "BorderedWindowPanel";
         public const string StyleClassInventorySlotBackground = "InventorySlotBackground";
         public const string StyleClassHandSlotHighlight = "HandSlotHighlight";
-        public const string StyleClassChatPanel = "ChatPanel";
         public const string StyleClassChatSubPanel = "ChatSubPanel";
         public const string StyleClassTransparentBorderedWindowPanel = "TransparentBorderedWindowPanel";
         public const string StyleClassHotbarPanel = "HotbarPanel";
@@ -78,8 +77,6 @@ namespace Content.Client.Stylesheets
         public const string StyleClassLabelSmall = "LabelSmall";
         public const string StyleClassButtonBig = "ButtonBig";
 
-        public const string StyleClassButtonHelp = "HelpButton";
-
         public const string StyleClassPopupMessageSmall = "PopupMessageSmall";
         public const string StyleClassPopupMessageSmallCaution = "PopupMessageSmallCaution";
         public const string StyleClassPopupMessageMedium = "PopupMessageMedium";
@@ -90,8 +87,11 @@ namespace Content.Client.Stylesheets
         public static readonly Color PanelDark = Color.FromHex("#1E1E22");
 
         public static readonly Color NanoGold = Color.FromHex("#A88B5E");
+        //Start-Radium
         public static readonly Color NanoLightGold = Color.FromHex("#dcd6f1");
         public static readonly Color NanoShade = Color.FromHex("#003d8e");
+        public static readonly Color NanoFullOpacity = Color.FromHex("#000000E6");
+        //End-Radium
         public static readonly Color GoodGreenFore = Color.FromHex("#31843E");
         public static readonly Color ConcerningOrangeFore = Color.FromHex("#A5762F");
         public static readonly Color DangerousRedFore = Color.FromHex("#BB3232");
@@ -140,8 +140,6 @@ namespace Content.Client.Stylesheets
         public const string StyleClassPowerStateGood = "PowerStateGood";
 
         public const string StyleClassItemStatus = "ItemStatus";
-        public const string StyleClassItemStatusNotHeld = "ItemStatusNotHeld";
-        public static readonly Color ItemStatusNotHeldColor = Color.Gray;
 
         //Background
         public const string StyleClassBackgroundBaseDark = "PanelBackgroundBaseDark";
@@ -150,8 +148,6 @@ namespace Content.Client.Stylesheets
         public const string StyleClassCrossButtonRed = "CrossButtonRed";
         public const string StyleClassButtonColorRed = "ButtonColorRed";
         public const string StyleClassButtonColorGreen = "ButtonColorGreen";
-
-        public static readonly Color ChatBackgroundColor = Color.FromHex("#25252ADD");
 
         public override Stylesheet Stylesheet { get; }
 
@@ -299,7 +295,7 @@ namespace Content.Client.Stylesheets
             var buttonTex = resCache.GetTexture("/Textures/Interface/Nano/button.svg.96dpi.png");
             var topButtonBase = new StyleBoxTexture
             {
-                Texture = buttonTex,
+             Texture = buttonTex,
             };
             topButtonBase.SetPatchMargin(StyleBox.Margin.All, 10);
             topButtonBase.SetPadding(StyleBox.Margin.All, 0);
@@ -307,19 +303,19 @@ namespace Content.Client.Stylesheets
 
             var topButtonOpenRight = new StyleBoxTexture(topButtonBase)
             {
-                Texture = new AtlasTexture(buttonTex, UIBox2.FromDimensions(new Vector2(0, 0), new Vector2(14, 24))),
+             Texture = new AtlasTexture(buttonTex, UIBox2.FromDimensions(new Vector2(0, 0), new Vector2(14, 24))),
             };
             topButtonOpenRight.SetPatchMargin(StyleBox.Margin.Right, 0);
 
             var topButtonOpenLeft = new StyleBoxTexture(topButtonBase)
             {
-                Texture = new AtlasTexture(buttonTex, UIBox2.FromDimensions(new Vector2(10, 0), new Vector2(14, 24))),
+             Texture = new AtlasTexture(buttonTex, UIBox2.FromDimensions(new Vector2(10, 0), new Vector2(14, 24))),
             };
             topButtonOpenLeft.SetPatchMargin(StyleBox.Margin.Left, 0);
 
             var topButtonSquare = new StyleBoxTexture(topButtonBase)
             {
-                Texture = new AtlasTexture(buttonTex, UIBox2.FromDimensions(new Vector2(10, 0), new Vector2(3, 24))),
+             Texture = new AtlasTexture(buttonTex, UIBox2.FromDimensions(new Vector2(10, 0), new Vector2(3, 24))),
             };
             topButtonSquare.SetPatchMargin(StyleBox.Margin.Horizontal, 0);
 
@@ -355,16 +351,12 @@ namespace Content.Client.Stylesheets
             lineEdit.SetPatchMargin(StyleBox.Margin.All, 3);
             lineEdit.SetContentMarginOverride(StyleBox.Margin.Horizontal, 5);
 
-            var chatBg = new StyleBoxFlat
+            var chatSubBGTex = resCache.GetTexture("/Textures/Interface/Nano/chat_sub_background.png");
+            var chatSubBG = new StyleBoxTexture
             {
-                BackgroundColor = ChatBackgroundColor
+                Texture = chatSubBGTex,
             };
-
-            var chatSubBg = new StyleBoxFlat
-            {
-                BackgroundColor = ChatBackgroundColor,
-            };
-            chatSubBg.SetContentMarginOverride(StyleBox.Margin.All, 2);
+            chatSubBG.SetPatchMargin(StyleBox.Margin.All, 2);
 
             var actionSearchBoxTex = resCache.GetTexture("/Textures/Interface/Nano/black_panel_dark_thin_border.png");
             var actionSearchBox = new StyleBoxTexture
@@ -381,9 +373,9 @@ namespace Content.Client.Stylesheets
             };
             tabContainerPanel.SetPatchMargin(StyleBox.Margin.All, 2);
 
-            var tabContainerBoxActive = new StyleBoxFlat { BackgroundColor = new Color(64, 64, 64) };
+            var tabContainerBoxActive = new StyleBoxFlat {BackgroundColor = new Color(64, 64, 64)};
             tabContainerBoxActive.SetContentMarginOverride(StyleBox.Margin.Horizontal, 5);
-            var tabContainerBoxInactive = new StyleBoxFlat { BackgroundColor = new Color(32, 32, 32) };
+            var tabContainerBoxInactive = new StyleBoxFlat {BackgroundColor = new Color(32, 32, 32)};
             tabContainerBoxInactive.SetContentMarginOverride(StyleBox.Margin.Horizontal, 5);
 
             var progressBarBackground = new StyleBoxFlat
@@ -422,21 +414,21 @@ namespace Content.Client.Stylesheets
 
             // Placeholder
             var placeholderTexture = resCache.GetTexture("/Textures/Interface/Nano/placeholder.png");
-            var placeholder = new StyleBoxTexture { Texture = placeholderTexture };
+            var placeholder = new StyleBoxTexture {Texture = placeholderTexture};
             placeholder.SetPatchMargin(StyleBox.Margin.All, 19);
             placeholder.SetExpandMargin(StyleBox.Margin.All, -5);
             placeholder.Mode = StyleBoxTexture.StretchMode.Tile;
 
-            var itemListBackgroundSelected = new StyleBoxFlat { BackgroundColor = new Color(75, 75, 86) };
+            var itemListBackgroundSelected = new StyleBoxFlat {BackgroundColor = new Color(75, 75, 86)};
             itemListBackgroundSelected.SetContentMarginOverride(StyleBox.Margin.Vertical, 2);
             itemListBackgroundSelected.SetContentMarginOverride(StyleBox.Margin.Horizontal, 4);
-            var itemListItemBackgroundDisabled = new StyleBoxFlat { BackgroundColor = new Color(10, 10, 12) };
+            var itemListItemBackgroundDisabled = new StyleBoxFlat {BackgroundColor = new Color(10, 10, 12)};
             itemListItemBackgroundDisabled.SetContentMarginOverride(StyleBox.Margin.Vertical, 2);
             itemListItemBackgroundDisabled.SetContentMarginOverride(StyleBox.Margin.Horizontal, 4);
-            var itemListItemBackground = new StyleBoxFlat { BackgroundColor = new Color(55, 55, 68) };
+            var itemListItemBackground = new StyleBoxFlat {BackgroundColor = new Color(55, 55, 68)};
             itemListItemBackground.SetContentMarginOverride(StyleBox.Margin.Vertical, 2);
             itemListItemBackground.SetContentMarginOverride(StyleBox.Margin.Horizontal, 4);
-            var itemListItemBackgroundTransparent = new StyleBoxFlat { BackgroundColor = Color.Transparent };
+            var itemListItemBackgroundTransparent = new StyleBoxFlat {BackgroundColor = Color.Transparent};
             itemListItemBackgroundTransparent.SetContentMarginOverride(StyleBox.Margin.Vertical, 2);
             itemListItemBackgroundTransparent.SetContentMarginOverride(StyleBox.Margin.Horizontal, 4);
 
@@ -502,9 +494,9 @@ namespace Content.Client.Stylesheets
             sliderForeBox.SetPatchMargin(StyleBox.Margin.All, 12);
             sliderGrabBox.SetPatchMargin(StyleBox.Margin.All, 12);
 
-            var sliderFillGreen = new StyleBoxTexture(sliderFillBox) { Modulate = Color.LimeGreen };
-            var sliderFillRed = new StyleBoxTexture(sliderFillBox) { Modulate = Color.Red };
-            var sliderFillBlue = new StyleBoxTexture(sliderFillBox) { Modulate = Color.Blue };
+            var sliderFillGreen = new StyleBoxTexture(sliderFillBox) {Modulate = Color.LimeGreen};
+            var sliderFillRed = new StyleBoxTexture(sliderFillBox) {Modulate = Color.Red};
+            var sliderFillBlue = new StyleBoxTexture(sliderFillBox) {Modulate = Color.Blue};
             var sliderFillWhite = new StyleBoxTexture(sliderFillBox) { Modulate = Color.White };
 
             var boxFont13 = resCache.GetFont("/Fonts/Boxfont-round/Boxfont Round.ttf", 13);
@@ -863,19 +855,19 @@ namespace Content.Client.Stylesheets
                 Element<TextEdit>().Pseudo(TextEdit.StylePseudoClassPlaceholder)
                     .Prop("font-color", Color.Gray),
 
-                // chat subpanels (chat lineedit backing, popup backings)
-                new StyleRule(new SelectorElement(typeof(PanelContainer), new[] {StyleClassChatPanel}, null, null),
-                    new[]
-                    {
-                        new StyleProperty(PanelContainer.StylePropertyPanel, chatBg),
-                    }),
-
                 // Chat lineedit - we don't actually draw a stylebox around the lineedit itself, we put it around the
                 // input + other buttons, so we must clear the default stylebox
                 new StyleRule(new SelectorElement(typeof(LineEdit), new[] {StyleClassChatLineEdit}, null, null),
                     new[]
                     {
                         new StyleProperty(LineEdit.StylePropertyStyleBox, new StyleBoxEmpty()),
+                    }),
+
+                // chat subpanels (chat lineedit backing, popup backings)
+                new StyleRule(new SelectorElement(typeof(PanelContainer), new[] {StyleClassChatSubPanel}, null, null),
+                    new[]
+                    {
+                        new StyleProperty(PanelContainer.StylePropertyPanel, chatSubBG),
                     }),
 
                 // Action searchbox lineedit
@@ -1240,16 +1232,6 @@ namespace Content.Client.Stylesheets
                     new StyleProperty("font", notoSans10),
                 }),
 
-                Element()
-                    .Class(StyleClassItemStatusNotHeld)
-                    .Prop("font", notoSansItalic10)
-                    .Prop("font-color", ItemStatusNotHeldColor),
-
-                Element<RichTextLabel>()
-                    .Class(StyleClassItemStatus)
-                    .Prop(nameof(RichTextLabel.LineHeightScale), 0.7f)
-                    .Prop(nameof(Control.Margin), new Thickness(0, 0, 0, -6)),
-
                 // Slider
                 new StyleRule(SelectorElement.Type(typeof(Slider)), new []
                 {
@@ -1350,10 +1332,6 @@ namespace Content.Client.Stylesheets
                     new StyleProperty(PanelContainer.StylePropertyPanel, new StyleBoxFlat { BackgroundColor = NanoGold, ContentMarginBottomOverride = 2, ContentMarginLeftOverride = 2}),
                 }),
 
-                Element<TextureButton>()
-                    .Class(StyleClassButtonHelp)
-                    .Prop(TextureButton.StylePropertyTexture, resCache.GetTexture("/Textures/Interface/VerbIcons/information.svg.192dpi.png")),
-
                 // Labels ---
                 Element<Label>().Class(StyleClassLabelBig)
                     .Prop(Label.StylePropertyFont, notoSans16),
@@ -1365,7 +1343,7 @@ namespace Content.Client.Stylesheets
                 // Different Background shapes ---
                 Element<PanelContainer>().Class(ClassAngleRect)
                     .Prop(PanelContainer.StylePropertyPanel, BaseAngleRect)
-                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#25252ACC")),
+                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#25252A")),
 
                 Element<PanelContainer>().Class("BackgroundOpenRight")
                     .Prop(PanelContainer.StylePropertyPanel, BaseButtonOpenRight)
@@ -1396,17 +1374,6 @@ namespace Content.Client.Stylesheets
 
                 Element<PanelContainer>().Class("WindowHeadingBackgroundLight")
                     .Prop("panel", new StyleBoxTexture(BaseButtonOpenLeft) { Padding = default }),
-
-                // Window Header Help Button
-                Element<TextureButton>().Class(FancyWindow.StyleClassWindowHelpButton)
-                    .Prop(TextureButton.StylePropertyTexture, resCache.GetTexture("/Textures/Interface/Nano/help.png"))
-                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#4B596A")),
-
-                Element<TextureButton>().Class(FancyWindow.StyleClassWindowHelpButton).Pseudo(ContainerButton.StylePseudoClassHover)
-                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#7F3636")),
-
-                Element<TextureButton>().Class(FancyWindow.StyleClassWindowHelpButton).Pseudo(ContainerButton.StylePseudoClassPressed)
-                    .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#753131")),
 
                 //The lengths you have to go through to change a background color smh
                 Element<PanelContainer>().Class("PanelBackgroundBaseDark")
@@ -1506,25 +1473,6 @@ namespace Content.Client.Stylesheets
                 Element<Label>().Class("Disabled")
                     .Prop("font-color", DisabledFore),
 
-                // Radial menu buttons
-                Element<TextureButton>().Class("RadialMenuButton")
-                    .Prop(TextureButton.StylePropertyTexture, resCache.GetTexture("/Textures/Interface/Radial/button_normal.png")),
-                Element<TextureButton>().Class("RadialMenuButton")
-                    .Pseudo(TextureButton.StylePseudoClassHover)
-                    .Prop(TextureButton.StylePropertyTexture, resCache.GetTexture("/Textures/Interface/Radial/button_hover.png")),
-
-                Element<TextureButton>().Class("RadialMenuCloseButton")
-                    .Prop(TextureButton.StylePropertyTexture, resCache.GetTexture("/Textures/Interface/Radial/close_normal.png")),
-                Element<TextureButton>().Class("RadialMenuCloseButton")
-                    .Pseudo(TextureButton.StylePseudoClassHover)
-                    .Prop(TextureButton.StylePropertyTexture, resCache.GetTexture("/Textures/Interface/Radial/close_hover.png")),
-
-                Element<TextureButton>().Class("RadialMenuBackButton")
-                    .Prop(TextureButton.StylePropertyTexture, resCache.GetTexture("/Textures/Interface/Radial/back_normal.png")),
-                Element<TextureButton>().Class("RadialMenuBackButton")
-                    .Pseudo(TextureButton.StylePseudoClassHover)
-                    .Prop(TextureButton.StylePropertyTexture, resCache.GetTexture("/Textures/Interface/Radial/back_hover.png")),
-
                 //PDA - Backgrounds
                 Element<PanelContainer>().Class("PdaContentBackground")
                     .Prop(PanelContainer.StylePropertyPanel, BaseButtonOpenBoth)
@@ -1606,7 +1554,7 @@ namespace Content.Client.Stylesheets
                     .Prop(ContainerButton.StylePropertyStyleBox, new StyleBoxFlat
                     {
                         BackgroundColor = FancyTreeSelectedRowColor,
-                    }),
+                    })
             }).ToList());
         }
     }
