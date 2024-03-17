@@ -1,9 +1,10 @@
 ﻿<Control xmlns="https://spacestation14.io"
-         xmlns:parallax="clr-namespace:Content.Client.Parallax"
          xmlns:info="clr-namespace:Content.Client.Info"
+         xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
          VerticalExpand="True" HorizontalExpand="True"
          MouseFilter="Stop">
-    <parallax:ParallaxControl />
+    <AnimatedTextureRect
+        Name="Background"/>
     <Control VerticalExpand="True"
              MaxWidth="650">
         <PanelContainer StyleClasses="windowPanel" />

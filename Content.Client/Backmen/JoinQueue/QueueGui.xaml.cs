@@ -4,6 +4,7 @@ using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared.Configuration;
+using Robust.Shared.Utility;
 
 namespace Content.Client.Backmen.JoinQueue;
 
@@ -12,6 +13,9 @@ public sealed partial class QueueGui : Control
 {
     [Dependency] private readonly IConfigurationManager _cfg = default!;
 
+    public static readonly SpriteSpecifier Sprite =
+        new SpriteSpecifier.Rsi(new ResPath("/Textures/Radium/Menu/maina.rsi"), "maina");
+
     public event Action? QuitPressed;
 
     public QueueGui()
@@ -19,6 +23,11 @@ public sealed partial class QueueGui : Control
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
         LayoutContainer.SetAnchorPreset(this, LayoutContainer.LayoutPreset.Wide);
+
+        Background.SetFromSpriteSpecifier(Sprite);
+        Background.HorizontalAlignment = HAlignment.Stretch;
+        Background.VerticalAlignment = VAlignment.Stretch;
+        Background.DisplayRect.Stretch = TextureRect.StretchMode.KeepAspectCentered;
 
         QuitButton.OnPressed += (_) => QuitPressed?.Invoke();
 

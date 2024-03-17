@@ -16,12 +16,19 @@ public sealed partial class DiscordAuthGui : Control
     [Dependency] private readonly IClientDiscordAuthManager _discordAuthManager = default!;
     [Dependency] private readonly IClientConsoleHost _consoleHost = default!;
 
+    public static readonly SpriteSpecifier Sprite =
+        new SpriteSpecifier.Rsi(new ResPath("/Textures/Radium/Menu/maina.rsi"), "maina");
     public event Action? OnSkipPressed;
     public DiscordAuthGui()
     {
         RobustXamlLoader.Load(this);
         IoCManager.InjectDependencies(this);
         LayoutContainer.SetAnchorPreset(this, LayoutContainer.LayoutPreset.Wide);
+
+        Background.SetFromSpriteSpecifier(Sprite);
+        Background.HorizontalAlignment = HAlignment.Stretch;
+        Background.VerticalAlignment = VAlignment.Stretch;
+        Background.DisplayRect.Stretch = TextureRect.StretchMode.KeepAspectCentered;
 
         QuitButton.OnPressed += (_) =>
         {

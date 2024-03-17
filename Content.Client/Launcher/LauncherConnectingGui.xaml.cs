@@ -13,12 +13,16 @@ using Robust.Shared.Localization;
 using Robust.Shared.Network;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
+using Robust.Shared.Utility;
 
 namespace Content.Client.Launcher
 {
     [GenerateTypedNameReferences]
     public sealed partial class LauncherConnectingGui : Control
     {
+        public static readonly SpriteSpecifier Sprite =
+            new SpriteSpecifier.Rsi(new ResPath("/Textures/Radium/Menu/maina.rsi"), "maina");
+
         private const float RedialWaitTimeSeconds = 15f;
         private readonly LauncherConnecting _state;
         private readonly IRobustRandom _random;
@@ -40,6 +44,11 @@ namespace Content.Client.Launcher
             LayoutContainer.SetAnchorPreset(this, LayoutContainer.LayoutPreset.Wide);
 
             Stylesheet = IoCManager.Resolve<IStylesheetManager>().SheetSpace;
+
+            Background.SetFromSpriteSpecifier(Sprite);
+            Background.HorizontalAlignment = HAlignment.Stretch;
+            Background.VerticalAlignment = VAlignment.Stretch;
+            Background.DisplayRect.Stretch = TextureRect.StretchMode.KeepAspectCentered;
 
             ChangeLoginTip();
             ReconnectButton.OnPressed += _ => _state.RetryConnect();
@@ -117,7 +126,8 @@ namespace Content.Client.Launcher
             else
             {
                 RedialButton.Disabled = true;
-                RedialButton.Text = Loc.GetString("connecting-redial-wait", ("time", _redialWaitTime.ToString("00.000")));
+                RedialButton.Text =
+                    Loc.GetString("connecting-redial-wait", ("time", _redialWaitTime.ToString("00.000")));
             }
         }
 
