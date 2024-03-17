@@ -9,4 +9,4 @@
       components:
         - type: StationNameSetup
           mapNameTemplate: "Nukie Outpost"
-        - BaseStationRecords
+        - type: BaseStationRecords
