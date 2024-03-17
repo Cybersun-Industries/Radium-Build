@@ -154,7 +154,8 @@
   - type: Item
     size: Small
   - type: Sprite
-  
+# Cannon Balls
+
 - type: entity
   id: CannonBall
   name: cannonball

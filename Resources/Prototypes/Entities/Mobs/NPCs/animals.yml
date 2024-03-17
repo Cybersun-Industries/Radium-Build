@@ -228,31 +228,6 @@
   - type: NpcFactionMember
     factions:
     - Passive
-        
-- type: entity
-  parent: MobChicken
-  id: MobChicken2
-  components:
-  - type: Sprite
-    layers:
-    - map: ["enum.DamageStateVisualLayers.Base", "movement"]
-      state: chicken-2
-      sprite: Mobs/Animals/chicken.rsi
-  - type: SpriteMovement
-    movementLayers:
-      movement:
-        state: chicken-moving-2
-    noMovementLayers:
-      movement:
-        state: chicken-2
-  - type: DamageStateVisuals
-    states:
-      Alive:
-        Base: chicken-2
-      Critical:
-        Base: dead-2
-      Dead:
-        Base: dead-2
 
 - type: entity
   parent: MobChicken
@@ -278,6 +253,31 @@
         Base: dead-1
       Dead:
         Base: dead-1
+
+- type: entity
+  parent: MobChicken
+  id: MobChicken2
+  components:
+  - type: Sprite
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base", "movement"]
+      state: chicken-2
+      sprite: Mobs/Animals/chicken.rsi
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: chicken-moving-2
+    noMovementLayers:
+      movement:
+        state: chicken-2
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: chicken-2
+      Critical:
+        Base: dead-2
+      Dead:
+        Base: dead-2
 
 - type: entity
   id: FoodEggChickenFertilized
@@ -1353,8 +1353,8 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      40: Critical
-      80: Dead
+      60: Critical
+      125: Dead
   - type: MovementSpeedModifier
     baseWalkSpeed: 3.5
     baseSprintSpeed: 5
@@ -2443,6 +2443,22 @@
       gender: epicene
   - type: Bloodstream
     bloodMaxVolume: 100
+  - type: MeleeWeapon
+    angle: 0
+    animation: WeaponArcBite
+    soundHit:
+      path: /Audio/Effects/bite.ogg
+    damage:
+      types:
+        Piercing: 8
+  - type: NpcFactionMember
+    factions:
+    - Passive
+  - type: NPCRetaliation
+    attackMemoryLength: 10
+  - type: HTN
+    rootTask:
+      task: RuminantHostileCompound
   - type: Tag
     tags:
     - VimPilot
@@ -3209,4 +3225,3 @@
   components:
   - type: ReplacementAccent
     accent: nymph
-    

@@ -49,6 +49,7 @@ flavor-base-holy = свято
 flavor-base-horrible = ужасно
 # lmao
 flavor-base-terrible = ужасающе
+flavor-base-mindful = mindful
 
 # Complex flavors. Put a flavor here when you want something that's more
 # specific.
@@ -256,4 +257,4 @@ flavor-complex-bee = беспчеловечно
 flavor-complex-sax = как джаз
 flavor-complex-bottledlightning = как молния в бутылке
 flavor-complex-punishment = как наказание
-flavor-weh = like weh
+flavor-weh = как вех

@@ -174,11 +174,14 @@ public abstract class SharedStorageSystem : EntitySystem
         if (storageComp.AreaInsert && (args.Target == null || !HasComp<ItemComponent>(args.Target.Value)))
         {
             var validStorables = new List<EntityUid>();
+            var delay = 0f;
 
             foreach (var entity in _entityLookupSystem.GetEntitiesInRange(args.ClickLocation, storageComp.AreaInsertRadius, LookupFlags.Dynamic | LookupFlags.Sundries))
             {
                 if (entity == args.User
-                    || !_itemQuery.HasComponent(entity)
+                    // || !_itemQuery.HasComponent(entity)
+                    || !TryComp<ItemComponent>(entity, out var itemComp) // Need comp to get item size to get weight
+                    || !_prototype.TryIndex(itemComp.Size, out var itemSize)
                     || !CanInsert(uid, entity, out _, storageComp)
                     || !_interactionSystem.InRangeUnobstructed(args.User, entity))
                 {
@@ -191,7 +194,7 @@ public abstract class SharedStorageSystem : EntitySystem
             //If there's only one then let's be generous
             if (validStorables.Count > 1)
             {
-                var doAfterArgs = new DoAfterArgs(EntityManager, args.User, 0.2f * validStorables.Count, new AreaPickupDoAfterEvent(GetNetEntityList(validStorables)), uid, target: uid)
+                var doAfterArgs = new DoAfterArgs(EntityManager, args.User, delay, new AreaPickupDoAfterEvent(GetNetEntityList(validStorables)), uid, target: uid)
                 {
                     BreakOnDamage = true,
                     BreakOnUserMove = true,

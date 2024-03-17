@@ -1,4 +1,6 @@
 ﻿using Content.Server.Atmos.Components;
+using Content.Server.Backmen.Blob.Components;
+using Content.Server.Backmen.Body.Components;
 using Content.Server.Body.Components;
 using Content.Server.Chat.Managers;
 using Content.Server.Mind;
@@ -8,6 +10,7 @@ using Content.Server.NPC.HTN;
 using Content.Server.NPC.Systems;
 using Content.Server.Speech.Components;
 using Content.Server.Temperature.Components;
+using Content.Shared.Backmen.Blob.Components;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Physics;
@@ -37,6 +40,40 @@ public sealed class ZombieBlobSystem : EntitySystem
         SubscribeLocalEvent<ZombieBlobComponent, MobStateChangedEvent>(OnMobStateChanged);
         SubscribeLocalEvent<ZombieBlobComponent, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<ZombieBlobComponent, ComponentShutdown>(OnShutdown);
+
+        SubscribeLocalEvent<RespiratorImmunityComponent, ComponentInit>(OnPressureImmuneInit);
+        SubscribeLocalEvent<RespiratorImmunityComponent, ComponentRemove>(OnPressureImmuneRemove);
+    }
+
+    private void OnPressureImmuneInit(EntityUid uid, RespiratorImmunityComponent pressureImmunity, ComponentInit args)
+    {
+        if (TryComp<RespiratorComponent>(uid, out var respirator))
+        {
+            respirator.HasImmunity = true;
+        }
+
+        if (TryComp<BarotraumaComponent>(uid, out var barotraumaComponent))
+        {
+            if (!barotraumaComponent.HasImmunity)
+            {
+                pressureImmunity.IsSetBarotrauma = true;
+                barotraumaComponent.HasImmunity = true;
+            }
+
+        }
+    }
+
+    private void OnPressureImmuneRemove(EntityUid uid, RespiratorImmunityComponent pressureImmunity, ComponentRemove args)
+    {
+        if (TryComp<RespiratorComponent>(uid, out var respirator))
+        {
+            respirator.HasImmunity = false;
+        }
+        if (TryComp<BarotraumaComponent>(uid, out var barotraumaComponent))
+        {
+            if(pressureImmunity.IsSetBarotrauma)
+                barotraumaComponent.HasImmunity = false;
+        }
     }
 
     /// <summary>

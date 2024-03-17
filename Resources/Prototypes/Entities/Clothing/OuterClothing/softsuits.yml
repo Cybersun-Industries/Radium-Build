@@ -12,6 +12,7 @@
   - type: Tag
     tags:
     - SuitEVA
+    - MonkeyWearable
     - WhitelistChameleon
 
 #Syndicate EVA
@@ -22,12 +23,13 @@
   description: "Has a tag on the back that reads: 'Totally not property of an enemy corporation, honest!'"
   components:
   - type: Sprite
-    sprite: Backmen/Clothing/OuterClothing/Suits/eva_syndicate.rsi # backmen resprite
+    sprite: Clothing/OuterClothing/Suits/eva_syndicate.rsi # backmen resprite
   - type: Clothing
-    sprite: Backmen/Clothing/OuterClothing/Suits/eva_syndicate.rsi # backmen resprite
+    sprite: Clothing/OuterClothing/Suits/eva_syndicate.rsi # backmen resprite
   - type: Tag
     tags:
     - SuitEVA
+    - MonkeyWearable
     - WhitelistChameleon
 
 #Emergency EVA
@@ -68,6 +70,7 @@
   - type: Tag
     tags:
     - SuitEVA
+    - MonkeyWearable
     - WhitelistChameleon
 
 #NTSRA Voidsuit / Ancient Voidsuit
