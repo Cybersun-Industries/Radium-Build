@@ -4356,7 +4356,6 @@ entities:
           - 516
           - 515
           - 525
-          - 517
     - type: Physics
       canCollide: False
     - type: InsideEntityStorage
@@ -4375,7 +4374,6 @@ entities:
           - 529
           - 528
           - 538
-          - 530
     - type: Physics
       canCollide: False
   - uid: 539
@@ -4393,7 +4391,6 @@ entities:
           - 542
           - 541
           - 551
-          - 543
     - type: Physics
       canCollide: False
 - proto: MedkitToxinFilled
