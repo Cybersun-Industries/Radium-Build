@@ -14,3 +14,4 @@
   noSpawn: true
   components:
     - type: Transform
+    - type: StationRecords

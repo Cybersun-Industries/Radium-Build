@@ -5112,7 +5112,6 @@ entities:
           showEnts: False
           occludes: True
           ents:
-          - 518
           - 519
           - 520
           - 521
