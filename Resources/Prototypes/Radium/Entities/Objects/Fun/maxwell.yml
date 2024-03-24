@@ -27,7 +27,7 @@
     size: Small
   - type: AmbientSound
     volume: 1
-    range: 3
+    range: 13
     sound:
       path: /Audio/Radium/Maxwell/maxwell.ogg # bruh, but working
   - type: EmitSoundOnCollide
