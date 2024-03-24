@@ -25,10 +25,11 @@
             max: 1
   - type: Item
     size: Small
-  - type: EmitSoundOnUse
-    sound: /Audio/Radium/Maxwell/maxwell.ogg
-  - type: EmitSoundOnTrigger
-    sound: /Audio/Radium/Maxwell/maxwell.ogg
+  - type: AmbientSound
+    volume: 1
+    range: 3
+    sound:
+      path: /Audio/Radium/Maxwell/maxwell.ogg # bruh, but working
   - type: EmitSoundOnCollide
     sound:
       collection: ToySqueak
