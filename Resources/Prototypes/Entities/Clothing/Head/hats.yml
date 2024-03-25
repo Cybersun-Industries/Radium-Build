@@ -811,8 +811,8 @@
     size: Small
     sprite: Clothing/Head/Hats/magician.rsi
   - type: Storage
-    grid:
-    - 0,0,0,0
+    maxItemSize: Tiny
+    maxSlots: 1
   - type: UserInterface
     interfaces:
       - key: enum.StorageUiKey.Key
