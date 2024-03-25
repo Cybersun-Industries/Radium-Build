@@ -38,6 +38,9 @@
       collection: ToySqueak
   - type: NoRotateOnMove
   - type: NoRotateOnInteract
+  - type: Speech
+    speechSounds: Cat
+    speechVerb: SmallMob
   - type: Tag # yeah you can put maxwell in a grenade
     tags:
       - Payload
