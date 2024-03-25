@@ -8,8 +8,8 @@
     sprite: Radium/Clothing/Head/Hats/tophat.rsi
     state: icon
   - type: Sprite
-    sprite: Radium/Clothing/Head/Hats/tophat.rsi
     state: icon
+    sprite: Radium/Clothing/Head/Hats/tophat.rsi
   - type: Clothing
     clothingVisuals:
       head:
@@ -34,6 +34,7 @@
   - type: ContainerContainer
     containers:
       storagebase: !type:Container
+  - type: Tag
 
 - type: entity
   parent: ClothingHeadBase
