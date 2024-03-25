@@ -1,0 +1,62 @@
+﻿- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatTop
+  name: цилиндр фокусника XL
+  description: Цилиндр фокусника XL
+  components:
+  - type: Icon
+    sprite: Radium/Clothing/Head/Hats/tophat.rsi
+    state: icon
+  - type: Sprite
+    state: icon
+    sprite: Radium/Clothing/Head/Hats/tophat.rsi
+  - type: Clothing
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        offset: "0, 0.5"
+    sprite: Radium/Clothing/Head/Hats/tophat.rsi
+  - type: Item
+    size: Huge
+    sprite: Radium/Clothing/Head/Hats/tophat.rsi
+  - type: Storage
+    maxItemSize: Small
+    maxSlots: 10
+  - type: MeleeWeapon
+    wideAnimationRotation: -135
+    damage:
+      types:
+        Blunt: 10
+  - type: UserInterface
+    interfaces:
+    - key: enum.StorageUiKey.Key
+      type: StorageBoundUserInterface
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+  - type: Tag
+
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatTopXXL
+  name: цилиндр фокусника XXL
+  description: Цилиндр фокусника XXL, оно настолько большое, что вам даже трудно это держать.
+  components:
+  - type: ClothingSpeedModifier
+    walkModifier: 0.9
+    sprintModifier: 0.9
+  - type: Icon
+    sprite: Radium/Clothing/Head/Hats/tophatxxl.rsi
+    state: icon
+  - type: Sprite
+    sprite: Radium/Clothing/Head/Hats/tophatxxl.rsi
+    state: icon
+  - type: Clothing
+    clothingVisuals:
+      head:
+      - state: equipped-HELMET
+        offset: "0.5, 1"
+    sprite: Radium/Clothing/Head/Hats/tophatxxl.rsi
+  - type: Item
+    size: Huge
+    sprite: Radium/Clothing/Head/Hats/tophatxxl.rsi

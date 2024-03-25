@@ -1,0 +1,12 @@
+- type: entity
+  id: CrateHydroponicsPlanetSeeds
+  parent: CrateHydroSecure
+  name: ящик планетарных семян
+  description: Содержит в себе 4 семян с далёких планет.
+  components:
+  - type: StorageFill
+    contents:
+      - id: CocaSeeds
+      - id: PolypniumSeeds
+      - id: IcesproutSeeds
+      - id: LavasproutSeeds

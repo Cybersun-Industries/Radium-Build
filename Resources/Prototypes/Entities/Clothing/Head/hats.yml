@@ -838,8 +838,8 @@
     sprite: Clothing/Head/Hats/magician.rsi
     storedRotation: 0
   - type: Storage
-    grid:
-    - 0,0,0,0
+    maxItemSize: Tiny
+    maxSlots: 1
   - type: UserInterface
     interfaces:
         enum.StorageUiKey.Key:
