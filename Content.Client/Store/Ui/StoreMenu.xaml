@@ -16,7 +16,7 @@
                     Name="RefreshButton"
                     MinWidth="64"
                     HorizontalAlignment="Right"
-                    Text="Refresh" />
+                    Text="{Loc 'store-ui-default-refresh-text'}" />
                 <Button
                     Name="WithdrawButton"
                     MinWidth="64"
@@ -26,7 +26,7 @@
                     Name="RefundButton"
                     MinWidth="64"
                     HorizontalAlignment="Right"
-                    Text="Refund" />
+                    Text="{Loc 'store-ui-default-refund-text'}" />
             </BoxContainer>
             <PanelContainer VerticalExpand="True">
                 <PanelContainer.PanelOverride>
