@@ -5,6 +5,7 @@
   description: Крутящийся кот максвелл.
   components:
   - type: Sprite
+    noRot: true # NO UPSIDE DOWN MAXWELL
     sprite: Radium/Objects/Fun/maxwell.rsi
     state: maxwell
     scale: 0.125, 0.125
@@ -33,8 +34,13 @@
   - type: EmitSoundOnCollide
     sound:
       collection: ToySqueak
-  - type: UseDelay
-    delay: 29.0
+  - type: ThrowingAngle
+    angle: 180
+  - type: NoRotateOnMove
+  - type: NoRotateOnInteract
+  - type: Speech
+    speechSounds: Cat
+    speechVerb: SmallMob
   - type: Tag # yeah you can put maxwell in a grenade
     tags:
       - Payload
