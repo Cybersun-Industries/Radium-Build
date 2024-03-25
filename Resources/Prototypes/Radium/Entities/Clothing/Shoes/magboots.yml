@@ -1,0 +1,48 @@
+- type: entity
+  parent: ClothingShoesBootsMag
+  id: ClothingShoesBootsMagDeathSquad
+  name: магнитные ботинки эскадрона смерти
+  description: Самые лучшие в своём роде из магнитных ботинок.
+  components:
+  - type: Sprite
+    sprite: Radium/Clothing/Shoes/Boots/magboots-deathsquad.rsi
+    state: icon
+  - type: Clothing
+    sprite: Radium/Clothing/Shoes/Boots/magboots-deathsquad.rsi
+  - type: Magboots
+    toggleAction: ActionToggleMagbootsDeathSquad
+  - type: ClothingSpeedModifier
+    walkModifier: 1.3
+    sprintModifier: 1.3
+    enabled: false
+  - type: NoSlip
+  - type: GasTank
+    outputPressure: 42.6
+    air:
+      volume: 0.80
+      temperature: 293.15
+      moles:
+        - 0.163853429
+        - 0.163853429
+  - type: ActivatableUI
+    key: enum.SharedGasTankUiKey.Key
+  - type: UserInterface
+    interfaces:
+      - key: enum.SharedGasTankUiKey.Key
+        type: GasTankBoundUserInterface
+  - type: Jetpack
+    moleUsage: 0.00065
+  - type: CanMoveInAir
+  - type: InputMover
+    toParent: true
+  - type: StaticPrice
+    price: 5000
+
+- type: entity
+  id: ActionToggleMagbootsDeathSquad
+  parent: ActionBaseToggleMagboots
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: { sprite: Radium/Clothing/Shoes/Boots/magboots-deathsquad.rsi, state: icon }
+    iconOn: Radium/Clothing/Shoes/Boots/magboots-deathsquad.rsi/icon-on.png

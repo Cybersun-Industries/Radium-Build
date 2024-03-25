@@ -26,8 +26,6 @@
             max: 1
   - type: Item
     size: Small
-  - type: ThrowingAngle
-    angle: 180
   - type: AmbientSound
     volume: 1
     range: 13
@@ -36,6 +34,8 @@
   - type: EmitSoundOnCollide
     sound:
       collection: ToySqueak
+  - type: ThrowingAngle
+    angle: 180
   - type: NoRotateOnMove
   - type: NoRotateOnInteract
   - type: Tag # yeah you can put maxwell in a grenade
