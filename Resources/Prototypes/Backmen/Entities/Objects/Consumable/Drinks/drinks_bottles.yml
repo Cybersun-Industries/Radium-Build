@@ -4,6 +4,8 @@
   name: tokkuri
   description: Floral and full of osake!
   components:
+  - type: Label
+    currentLabel: reagent-name-sake
   - type: SolutionContainerManager
     solutions:
       drink:
@@ -20,6 +22,8 @@
   name: soju bottle
   description: It's like sake but if you're trying to get FUCKED. UP.
   components:
+  - type: Label
+    currentLabel: reagent-name-soju
   - type: SolutionContainerManager
     solutions:
       drink:
@@ -38,6 +42,8 @@
     Chilled like ice cream alcohol
     Fill a cup, drink up!
   components:
+  - type: Label
+    currentLabel: reagent-name-sake
   - type: SolutionContainerManager
     solutions:
       drink:

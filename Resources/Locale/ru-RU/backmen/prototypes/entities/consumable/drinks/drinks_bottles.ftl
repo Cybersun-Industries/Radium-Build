@@ -1,11 +1,11 @@
-ent-DrinkTokkuri = токкури
+ent-DrinkTokkuri = токкури (токкури)
     .desc = Цветочный и полный осаке!
-ent-DrinkSojuBottleFull = бутылка соджу
+ent-DrinkSojuBottleFull = бутылка соджу (соджу)
     .desc = Это как сакэ, но если ты пытаешься ИДТИ К ЧЁРТУ !
-ent-DrinkSakeBottleFull = бутылка сакэ
+ent-DrinkSakeBottleFull = бутылка сакэ (сакэ)
     .desc = |
     Ясно, иногда туман
     Охлажденный, как алкогольное мороженое
     Наполни чашку, выпей!
-ent-DrinkSakeCup = Сакадзуки
+ent-DrinkSakeCup = Сакадзуки (сакадзуки)
     .desc = Церемониальная белая чаша для питья сакэ.
