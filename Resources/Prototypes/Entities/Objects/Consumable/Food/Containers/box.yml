@@ -38,7 +38,7 @@
       map: ["pink-box6"]
       visible: false
   - type: Storage
-    maxSlots: 6
+    maxSlots: 12
     whitelist:
       tags:
       - Donut
