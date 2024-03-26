@@ -42,8 +42,7 @@
       - state: box
       - state: light
   - type: Storage
-    grid:
-    - 0,0,5,3
+    maxSlots: 12
     whitelist:
       components:
       - LightBulb
@@ -63,8 +62,7 @@
       - state: box
       - state: lighttube
   - type: Storage
-    grid:
-    - 0,0,5,3
+    maxSlots: 12
     whitelist:
       components:
       - LightBulb
@@ -374,8 +372,7 @@
       - id: HandheldGPSBasic
         amount: 6
   - type: Storage
-    grid:
-    - 0,0,5,3
+    maxSlots: 12
   - type: Sprite
     layers:
       - state: box
@@ -404,7 +401,7 @@
       - state: candle
   - type: Storage
     maxItemSize: Normal
-    maxTotalWeight: 32
+    maxSlots: 15
   - type: StorageFill
     contents:
       - id: Candle
@@ -429,7 +426,7 @@
       - state: candle
   - type: Storage
     maxItemSize: Normal
-    maxTotalWeight: 43
+    maxSlots: 25
   - type: StorageFill
     contents:
       - id: CandleSmall
@@ -462,8 +459,7 @@
       - id: DartYellow
         amount: 3
   - type: Storage
-    grid:
-    - 0,0,5,3
+    maxSlots: 12
   - type: Sprite
     layers:
       - state: box

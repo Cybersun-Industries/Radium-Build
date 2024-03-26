@@ -89,8 +89,8 @@
   - type: Clothing
     sprite: Clothing/Belt/ce.rsi
   - type: Storage
-    grid:
-    - 0,0,9,1
+    maxSlots: 12
+    maxItemSize: Large
     # TODO: Fill this out more.
     whitelist:
       tags:
@@ -489,8 +489,8 @@
   - type: Clothing
     sprite: Clothing/Belt/holster.rsi
   - type: Storage
-    grid:
-    - 0,0,3,1
+    maxSlots: 8
+    maxItemSize: Large
 
 - type: entity
   parent: ClothingBeltStorageBase
@@ -506,8 +506,7 @@
     size: Ginormous
   - type: Storage
     maxItemSize: Huge
-    grid:
-    - 0,0,3,3
+    maxSlots: 16
     whitelist:
       components:
         - Gun
@@ -602,8 +601,7 @@
   - type: Clothing
     sprite: Clothing/Belt/wand.rsi
   - type: Storage
-    grid:
-    - 0,0,15,1
+    maxSlots: 16
     whitelist:
       tags:
       - WizardWand

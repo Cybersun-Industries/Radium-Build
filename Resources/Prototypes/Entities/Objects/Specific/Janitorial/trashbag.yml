@@ -56,8 +56,7 @@
   components:
   - type: Storage
     maxItemSize: Huge
-    grid:
-    - 0,0,19,9
+    maxTotalWeight: 72
     quickInsert: true
     areaInsert: true
     areaInsertRadius: 5
