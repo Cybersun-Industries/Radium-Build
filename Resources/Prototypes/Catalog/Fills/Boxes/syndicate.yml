@@ -17,6 +17,8 @@
   name: chemical synthesis kit
   description: A starter kit for the aspiring chemist, includes toxin and vestine for all your criminal needs!
   components:
+  - type: Storage
+    maxSlots: 12
   - type: StorageFill
     contents:
       - id: Beaker
