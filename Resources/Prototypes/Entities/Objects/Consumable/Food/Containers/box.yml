@@ -472,7 +472,7 @@
     heldPrefix: box
   - type: Storage
     maxItemSize: Normal
-    maxSlots: 6
+    maxSlots: 12
   - type: Tag
     tags:
     - Trash
@@ -601,7 +601,7 @@
   name: syndicate snack box
   components:
   - type: Storage
-    maxSlots: 6
+    maxSlots: 12
   - type: StorageFill
     contents:
     # toy
