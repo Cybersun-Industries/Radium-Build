@@ -1,0 +1,10 @@
+﻿- type: entity
+  name: волшебная палочка полиморфа таракамоли
+  parent: WeaponWandPolymorphBase
+  id: WeaponWandPolymorphMothroach
+  description: Чёрт, оно превращает всех в таракамолей!
+  components:
+  - type: BasicEntityAmmoProvider
+    proto: ProjectilePolyboltMothroach
+    capacity: 5
+    count: 5
