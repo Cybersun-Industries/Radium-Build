@@ -1,0 +1,11 @@
+﻿- type: polymorph
+  id: WizardForcedMothroach
+  configuration:
+    entity: MobMothroach
+    forced: true
+    inventory: Drop
+    transferName: true
+    transferDamage: true
+    revertOnCrit: true
+    revertOnDeath: true
+    duration: 5
