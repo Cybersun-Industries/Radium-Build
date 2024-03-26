@@ -1777,8 +1777,7 @@
   id: ClothingBackpackSpecialForce
   components:
     - type: Storage
-      grid:
-      - 0,0,9,5 # TODO: Change this
+      maxTotalWeight: 84
       maxItemSize: Huge
     - type: StorageFill
       contents:

@@ -38,8 +38,7 @@
       map: ["pink-box6"]
       visible: false
   - type: Storage
-    grid:
-    - 0,0,5,0
+    maxSlots: 6
     whitelist:
       tags:
       - Donut
@@ -119,8 +118,7 @@
       map: ["box12"]
       visible: false
   - type: Storage
-    grid:
-    - 0,0,5,1
+    maxSlots: 12
     whitelist:
       tags:
       - Egg
@@ -208,8 +206,7 @@
       map: ["enum.StorageVisualLayers.Door"]
   # TODO make these entitystorage again + placeablesurface after entity storage ECS gets merged.
   - type: Storage
-    grid:
-    - 0,0,1,1
+    maxSlots: 1
     maxItemSize: Normal
   - type: Item
     sprite: Objects/Consumable/Food/Baked/pizza.rsi
@@ -299,8 +296,7 @@
       map: ["box6"]
       visible: false
   - type: Storage
-    grid:
-    - 0,0,1,2
+    maxSlots: 6
   - type: Item
     sprite: Objects/Consumable/Food/Baked/nuggets.rsi
     size: Large
@@ -334,8 +330,7 @@
     sprite: Objects/Consumable/Food/Baked/donkpocket.rsi
     state: box
   - type: Storage
-    grid:
-    - 0,0,3,2
+    maxSlots: 6
     whitelist:
       tags:
       - DonkPocket
@@ -477,8 +472,7 @@
     heldPrefix: box
   - type: Storage
     maxItemSize: Normal
-    grid:
-    - 0,0,3,3
+    maxSlots: 6
   - type: Tag
     tags:
     - Trash
@@ -607,8 +601,7 @@
   name: syndicate snack box
   components:
   - type: Storage
-    grid:
-    - 0,0,5,2
+    maxSlots: 6
   - type: StorageFill
     contents:
     # toy

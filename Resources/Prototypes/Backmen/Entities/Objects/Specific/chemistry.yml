@@ -17,8 +17,7 @@
     whitelist:
       tags:
         - Pill
-    grid:
-    - 0,0,9,4
+    maxSlots: 100
     quickInsert: true
     areaInsert: true
     areaInsertRadius: 1
