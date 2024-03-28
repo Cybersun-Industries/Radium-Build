@@ -11,3 +11,17 @@
   - !type:BuyerJobCondition
     whitelist:
     - Botanist
+
+- type: listing
+  id: uplinkClusterSoap
+  name: uplink-clustersoap-seeds-name
+  description: uplink-clustersoap-seeds-desc
+  productEntity: ClusterSoap
+  cost:
+    Telecrystal: 3
+  categories:
+  - UplinkJob
+  conditions:
+  - !type:BuyerJobCondition
+    whitelist:
+    - Clown

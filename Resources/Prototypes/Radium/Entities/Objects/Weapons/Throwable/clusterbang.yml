@@ -1,0 +1,59 @@
+﻿- type: entity
+  parent: BaseItem
+  id: ClusterSoap
+  name: кластерное мыло
+  description: После приземления распадается на 6 брусков мыла, развлекайтесь!
+  components:
+  - type: Sprite
+    sprite: Objects/Specific/Janitorial/soap.rsi
+    state: soap-4
+  - type: Appearance
+  - type: ClusterGrenade
+    fillPrototype: Soap
+    maxGrenadesCount: 6
+  - type: DamageOnLand
+    damage:
+      types:
+        Blunt: 10
+  - type: Damageable
+    damageContainer: Inorganic
+  - type: Slippery
+    paralyzeTime: 2
+    launchForwardsMultiplier: 1.5
+  - type: StepTrigger
+    intersectRatio: 0.2
+  - type: CollisionWake
+    enabled: false
+  - type: Physics
+    bodyType: Dynamic
+  - type: Fixtures
+    fixtures:
+      slips:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.3,0.4,0.3"
+        layer:
+        - SlipLayer
+        hard: false
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.4,-0.3,0.4,0.3"
+        density: 10
+        mask:
+        - ItemMask
+  - type: EmitSoundOnTrigger
+    sound:
+      path: "/Audio/Items/bikehorn.ogg"
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 10
+      behaviors:
+      - !type:TriggerBehavior
+      - !type:DoActsBehavior
+        acts: ["Destruction"]
+  - type: ContainerContainer
+    containers:
+      cluster-payload: !type:Container
