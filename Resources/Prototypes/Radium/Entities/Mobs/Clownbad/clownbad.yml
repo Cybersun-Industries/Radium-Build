@@ -1,0 +1,93 @@
+﻿- type: entity
+  name: плохой клоун
+  id: MobClownBad
+  parent: [SimpleMobBase, MobCombat, MobBloodstream, MobRespirator, MobAtmosStandard, MobDamageable, MobFlammable]
+  description: Он настолько плох, что аж даже хорош!
+  components:
+  - type: GhostRole
+    makeSentient: true
+    name: ghost-role-information-bad-clown-name
+    description: ghost-role-information-bad-clown-description
+    rules: ghost-role-information-bad-clown-rules
+  - type: GhostTakeoverAvailable
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: Radium/Mobs/Clownbad/clownbad.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: clown-bad
+  - type: CombatMode
+  - type: Physics
+  - type: MobState
+  - type: Body
+    prototype: AnimalHemocyanin
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      150: Critical
+      250: Dead
+  - type: Stamina
+    critThreshold: 150
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: clown-bad
+      Dead:
+        Base: dead
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatClown
+      amount: 5
+    - id: BikeHorn
+      amount: 1
+    - id: ClothingShoesClown
+      amount: 1
+  - type: Bloodstream
+    bloodMaxVolume: 200
+    bloodReagent: Laughter
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 4
+  - type: MeleeWeapon
+    attackRate: 2
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcSmash
+    soundHit:
+      collection: BikeHorn
+      params:
+        variation: 0.125
+    damage:
+      types:
+        Blunt: 5
+  - type: NoSlip
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepClown
+  - type: InputMover
+  - type: MobMover
+  - type: TypingIndicator
+    proto: default
+  - type: Speech
+    speechVerb: Cluwne
+  - type: SpamEmitSound
+    sound:
+      collection: BikeHorn
+  - type: Tag
+    tags:
+    - FootstepSound
+
+- type: entity
+  parent: MobClownBad
+  id: MobClownBadAngry
+  suffix: Злой
+  components:
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+    blackboard:
+      NavSmash: !type:Bool
+        true
+  - type: NpcFactionMember
+    factions:
+    - SimpleHostile
