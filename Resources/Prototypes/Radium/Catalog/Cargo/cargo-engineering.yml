@@ -1,0 +1,10 @@
+- type: cargoProduct
+  name: РИТЭГ
+  id: EngineeringGeneratorRTG
+  icon:
+    sprite: Structures/Power/Generation/rtg.rsi
+    state: rtg
+  product: GeneratorRTG
+  cost: 10000
+  category: cargoproduct-category-name-engineering
+  group: market

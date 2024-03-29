@@ -5,5 +5,15 @@
     state: syringe_base0
   product: CrateMedicalSyringeInsulin
   cost: 600
-  category: Medical
+  category: cargoproduct-category-name-medical
+  group: market
+
+- type: cargoProduct
+  id: MedicalMedipenKit
+  icon:
+    sprite: Objects/Specific/Medical/medipen.rsi
+    state: medipen
+  product: MedkitMedipenFilled
+  cost: 1000
+  category: cargoproduct-category-name-medical
   group: market
