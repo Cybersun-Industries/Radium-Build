@@ -9,11 +9,19 @@
   group: market
 
 - type: cargoProduct
-  id: MedicalMedipenKit
+  id: CrateMedicalMedipenKit
   icon:
     sprite: Objects/Specific/Medical/medipen.rsi
     state: medipen
-  product: MedkitMedipenFilled
-  cost: 1000
+  product: CrateMedicalMedkitMedipenFilled
+  cost: 1500
   category: cargoproduct-category-name-medical
   group: market
+
+- type: cargoProduct
+  id: CrateMedicalSurvivalMedipenKit
+  icon:
+    sprite: Radium/Objects/Specific/Medical/survivalmedipen.rsi
+    state: survivalpen
+  product: CrateMedicalSurvivalMedipenFilled
+  cost: 2500
