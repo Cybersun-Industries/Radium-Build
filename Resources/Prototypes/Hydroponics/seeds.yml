@@ -209,7 +209,7 @@
   productPrototypes:
     - FoodLemoon
   mutationPrototypes:
-    - bomblemon
+    - bomblemon # Radium
   harvestRepeat: Repeat
   lifespan: 90
   maturation: 8
@@ -263,7 +263,7 @@
   productPrototypes:
     - FoodOrange
   mutationPrototypes:
-    - 3Dorange
+    - 3Dorange # Radium
   harvestRepeat: Repeat
   lifespan: 55
   maturation: 6
@@ -1167,7 +1167,7 @@
   productPrototypes:
     - FoodAmbrosiaDeus
   mutationPrototypes:
-    - ambrosiaGaia
+    - ambrosiaDeus # Radium
   lifespan: 25
   maturation: 10
   production: 3
@@ -1409,7 +1409,7 @@
   productPrototypes:
     - FoodWatermelon
   mutationPrototypes:
-    - holymelon
+    - holymelon # Radium
   lifespan: 55
   maturation: 12
   production: 3
@@ -1468,7 +1468,7 @@
   productPrototypes:
     - FoodBerries
   mutationPrototypes:
-    - poisonberries
+    - poisonberries # Radium
   harvestRepeat: Repeat
   lifespan: 50
   maturation: 6
