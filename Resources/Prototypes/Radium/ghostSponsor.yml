@@ -7,7 +7,7 @@
     drawdepth: Ghosts
     sprite: Radium/Mobs/Ghosts/ghost_maxwell.rsi
     scale: 0.125, 0.125
-    state: animated-maxwel
+    state: animated-maxwell
     color: "#fff8"
     layers:
     - state: animated-maxwell
@@ -25,3 +25,87 @@
     color: "#fff8"
     layers:
     - state: animated-linuxtux
+
+- type: ghostTheme
+  id: tier08
+  components:
+  - type: Sprite
+    overrideContainerOcclusion: true
+    noRot: true
+    drawdepth: Ghosts
+    sprite: Radium/Mobs/Ghosts/ghost_rotating.rsi
+    scale: 0.125, 0.125
+    state: animated-rotating
+    color: "#fff8"
+    layers:
+    - state: animated-rotating
+
+- type: ghostTheme
+  id: tier09
+  components:
+  - type: Sprite
+    overrideContainerOcclusion: true
+    noRot: true
+    drawdepth: Ghosts
+    sprite: Radium/Mobs/Ghosts/ghost_cockroach.rsi
+    scale: 0.125, 0.125
+    state: animated-cockroach
+    color: "#fff8"
+    layers:
+    - state: animated-cockroach
+
+- type: ghostTheme
+  id: tier10
+  components:
+  - type: Sprite
+    overrideContainerOcclusion: true
+    noRot: true
+    drawdepth: Ghosts
+    sprite: Radium/Mobs/Ghosts/ghost_clownpepe.rsi
+    scale: 0.175, 0.175
+    state: pepe-clown
+    color: "#fff8"
+    layers:
+    - state: pepe-clown
+
+- type: ghostTheme
+  id: tier11
+  components:
+  - type: Sprite
+    overrideContainerOcclusion: true
+    noRot: true
+    drawdepth: Ghosts
+    sprite: Radium/Mobs/Ghosts/ghost_pepe.rsi
+    scale: 0.175, 0.175
+    state: pepe
+    color: "#fff8"
+    layers:
+    - state: pepe
+
+- type: ghostTheme
+  id: tier12
+  components:
+  - type: Sprite
+    overrideContainerOcclusion: true
+    noRot: true
+    drawdepth: Ghosts
+    sprite: Radium/Mobs/Ghosts/ghost_ballcatrotating.rsi
+    scale: 0.100, 0.100
+    state: animated-ballcat
+    color: "#fff8"
+    layers:
+    - state: animated-ballcat
+
+- type: ghostTheme
+  id: tier13
+  components:
+  - type: Sprite
+    overrideContainerOcclusion: true
+    noRot: true
+    drawdepth: Ghosts
+    sprite: Radium/Mobs/Ghosts/ghost_smokepepe.rsi
+    scale: 0.100, 0.100
+    state: pepe-smoking
+    color: "#fff8"
+    layers:
+    - state: pepe-smoking
