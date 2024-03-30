@@ -6,4 +6,14 @@
   - type: StorageFill
     contents:
       - id: EmergencyMedipen
-        amount: 6
+        amount: 12
+
+- type: entity
+  id: MedkitSurvivalMedipenFilled
+  suffix: Заполненная
+  parent: Medkit
+  components:
+  - type: StorageFill
+    contents:
+    - id: SurvivalMedipen
+      amount: 12
