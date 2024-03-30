@@ -32,14 +32,24 @@ public sealed class SponsorsManager : IClientSponsorsManager
         Prototypes.Add("tier03");
         Prototypes.Add("tier04");
         Prototypes.Add("tier05");
-        Prototypes.Add("tier06");
-        Prototypes.Add("tier07");
-        Prototypes.Add("tier08");
-        Prototypes.Add("tier09");
+        Prototypes.Add("tier6");
+        Prototypes.Add("tier7");
+        Prototypes.Add("tier8");
+        Prototypes.Add("tier9");
         Prototypes.Add("tier10");
         Prototypes.Add("tier11");
         Prototypes.Add("tier12");
         Prototypes.Add("tier13");
+        Prototypes.Add("tier14");
+        Prototypes.Add("tier15");
+        Prototypes.Add("tier16");
+        Prototypes.Add("tier17");
+        Prototypes.Add("tier18");
+        Prototypes.Add("tier19");
+        Prototypes.Add("tier20");
+        Prototypes.Add("tier21");
+        Prototypes.Add("tier22");
+        Prototypes.Add("tier23");
 #endif
 
         if (message.Info == null)

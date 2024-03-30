@@ -1,5 +1,5 @@
 ﻿- type: ghostTheme
-  id: tier06
+  id: tier6
   components:
   - type: Sprite
     overrideContainerOcclusion: true
@@ -13,7 +13,7 @@
     - state: animated-maxwell
 
 - type: ghostTheme
-  id: tier07
+  id: tier7
   components:
   - type: Sprite
     overrideContainerOcclusion: true
@@ -27,7 +27,7 @@
     - state: animated-linuxtux
 
 - type: ghostTheme
-  id: tier08
+  id: tier8
   components:
   - type: Sprite
     overrideContainerOcclusion: true
@@ -41,7 +41,7 @@
     - state: animated-rotating
 
 - type: ghostTheme
-  id: tier09
+  id: tier9
   components:
   - type: Sprite
     overrideContainerOcclusion: true
@@ -109,3 +109,143 @@
     color: "#fff8"
     layers:
     - state: pepe-smoking
+
+- type: ghostTheme
+  id: tier14
+  components:
+  - type: Sprite
+    overrideContainerOcclusion: true
+    noRot: true
+    drawdepth: Ghosts
+    sprite: Radium/Mobs/Ghosts/ghost_ballbettercallsaul.rsi
+    scale: 0.100, 0.100
+    state: animated-ballbettercallsaul
+    color: "#fff8"
+    layers:
+    - state: animated-ballbettercallsaul
+
+- type: ghostTheme
+  id: tier15
+  components:
+  - type: Sprite
+    overrideContainerOcclusion: true
+    noRot: true
+    drawdepth: Ghosts
+    sprite: Radium/Mobs/Ghosts/ghost_skull.rsi
+    scale: 0.125, 0.125
+    state: animated-skull
+    color: "#fff8"
+    layers:
+    - state: animated-skull
+
+- type: ghostTheme
+  id: tier16
+  components:
+  - type: Sprite
+    overrideContainerOcclusion: true
+    noRot: true
+    drawdepth: Ghosts
+    sprite: Radium/Mobs/Ghosts/ghost_polishcow.rsi
+    scale: 0.175, 0.175
+    state: animated-polishcow
+    color: "#fff8"
+    layers:
+    - state: animated-polishcow
+
+- type: ghostTheme
+  id: tier17
+  components:
+  - type: Sprite
+    overrideContainerOcclusion: true
+    noRot: true
+    drawdepth: Ghosts
+    sprite: Radium/Mobs/Ghosts/ghost_happycat.rsi
+    scale: 0.125, 0.125
+    state: animated-happycat
+    color: "#fff8"
+    layers:
+    - state: animated-happycat
+
+- type: ghostTheme
+  id: tier18
+  components:
+  - type: Sprite
+    overrideContainerOcclusion: true
+    noRot: true
+    drawdepth: Ghosts
+    sprite: Radium/Mobs/Ghosts/ghost_vibecat.rsi
+    scale: 0.175, 0.175
+    state: animated-vibecat
+    color: "#fff8"
+    layers:
+    - state: animated-vibecat
+
+- type: ghostTheme
+  id: tier19
+  components:
+  - type: Sprite
+    overrideContainerOcclusion: true
+    noRot: true
+    drawdepth: Ghosts
+    sprite: Radium/Mobs/Ghosts/ghost_dancingdog.rsi
+    scale: 0.100, 0.100
+    state: animated-dancingdog
+    color: "#fff8"
+    layers:
+    - state: animated-dancingdog
+
+- type: ghostTheme
+  id: tier20
+  components:
+  - type: Sprite
+    overrideContainerOcclusion: true
+    noRot: true
+    drawdepth: Ghosts
+    sprite: Radium/Mobs/Ghosts/ghost_pepechristmas.rsi
+    scale: 0.175, 0.175
+    state: animated-pepe-christmas
+    color: "#fff8"
+    layers:
+    - state: animated-pepe-christmas
+
+- type: ghostTheme
+  id: tier21
+  components:
+  - type: Sprite
+    overrideContainerOcclusion: true
+    noRot: true
+    drawdepth: Ghosts
+    sprite: Radium/Mobs/Ghosts/ghost_pepega.rsi
+    scale: 0.125, 0.125
+    state: pepega
+    color: "#fff8"
+    layers:
+    - state: pepega
+
+- type: ghostTheme
+  id: tier22
+  components:
+  - type: Sprite
+    overrideContainerOcclusion: true
+    noRot: true
+    drawdepth: Ghosts
+    sprite: Radium/Mobs/Ghosts/ghost_nerd.rsi
+    scale: 0.125, 0.125
+    state: nerd
+    color: "#fff8"
+    layers:
+    - state: nerd
+
+- type: ghostTheme
+  id: tier23
+  components:
+  - type: Sprite
+    overrideContainerOcclusion: true
+    noRot: true
+    drawdepth: Ghosts
+    sprite: Radium/Mobs/Ghosts/ghost_hasher.rsi
+    scale: 0.125, 0.125
+    state: animated-hasher
+    color: "#fff8"
+    layers:
+    - state: animated-hasher

@@ -45,14 +45,24 @@ public sealed class GhostThemeSystem : EntitySystem
                 items.Add("tier03");
                 items.Add("tier04");
                 items.Add("tier05");
-                items.Add("tier06");
-                items.Add("tier07");
-                items.Add("tier08");
-                items.Add("tier09");
+                items.Add("tier6");
+                items.Add("tier7");
+                items.Add("tier8");
+                items.Add("tier9");
                 items.Add("tier10");
                 items.Add("tier11");
                 items.Add("tier12");
                 items.Add("tier13");
+                items.Add("tier14");
+                items.Add("tier15");
+                items.Add("tier16");
+                items.Add("tier17");
+                items.Add("tier18");
+                items.Add("tier19");
+                items.Add("tier20");
+                items.Add("tier21");
+                items.Add("tier22");
+                items.Add("tier23");
             }
             if (!items.Contains(prefGhost))
             {
