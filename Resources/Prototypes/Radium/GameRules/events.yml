@@ -69,15 +69,3 @@
     entries:
     - id: MobTysonReal
       prob: 0.04
-
-- type: entity
-  parent: BaseGameRule
-  id: MaxwellSpawn
-  noSpawn: true
-  components:
-  - type: StationEvent
-    duration: 1
-    earliestStart: 45
-    minimumPlayers: 10
-  - type: RandomSpawnRule
-  - id: maxwell
