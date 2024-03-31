@@ -94,7 +94,9 @@
       collection: BikeHorn
   - type: Tag
     tags:
+    - CannotSuicide
     - FootstepSound
+    - DoorBumpOpener
   - type: AutoImplant
     implants:
     - SadTromboneImplant
