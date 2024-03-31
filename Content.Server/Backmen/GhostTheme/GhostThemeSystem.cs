@@ -1,4 +1,4 @@
-﻿using System.Linq;
+using System.Linq;
 using Content.Corvax.Interfaces.Server;
 using Content.Server.Mind;
 using Content.Shared.Backmen.GhostTheme;
@@ -45,6 +45,24 @@ public sealed class GhostThemeSystem : EntitySystem
                 items.Add("tier03");
                 items.Add("tier04");
                 items.Add("tier05");
+                items.Add("tier6");
+                items.Add("tier7");
+                items.Add("tier8");
+                items.Add("tier9");
+                items.Add("tier10");
+                items.Add("tier11");
+                items.Add("tier12");
+                items.Add("tier13");
+                items.Add("tier14");
+                items.Add("tier15");
+                items.Add("tier16");
+                items.Add("tier17");
+                items.Add("tier18");
+                items.Add("tier19");
+                items.Add("tier20");
+                items.Add("tier21");
+                items.Add("tier22");
+                items.Add("tier23");
             }
             if (!items.Contains(prefGhost))
             {
