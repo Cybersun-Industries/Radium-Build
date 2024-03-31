@@ -129,8 +129,8 @@ namespace Content.Client.HealthAnalyzer.UI
             {
                 var step = msg.SurgeryData.Value;
 
-                SurgeryNameLabel.Text = "Текущая операция: " + step.OperationName;
-                SurgeryProcedureLabel.Text = "Указания к операции:";
+                SurgeryNameLabel.Text = Loc.GetString("health-analyzer-window-currentOperation") + step.OperationName;
+                SurgeryProcedureLabel.Text = Loc.GetString("health-analyzer-window-instructions");
                 SurgeryStep.Text = step.LocalizedName;
                 SurgeryStepDesc.Text = step.LocalizedDescription;
                 if (step.Icon != null)
@@ -138,7 +138,7 @@ namespace Content.Client.HealthAnalyzer.UI
             }
             else
             {
-                SurgeryNameLabel.Text = "Операция не проводится.";
+                SurgeryNameLabel.Text = Loc.GetString("health-analyzer-window-noOperation");
             }
 
             //SetHeight = AnalyzerHeight;

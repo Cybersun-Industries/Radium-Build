@@ -13,8 +13,8 @@
     price: 50
 
 - type: entity
-  name: drapes
-  description: Test.
+  name: Хирургическая простыня
+  description: Стерильная простыня, необходима для проведения операций.
   parent: BaseSurgeryItem
   id: Drapes
   components:

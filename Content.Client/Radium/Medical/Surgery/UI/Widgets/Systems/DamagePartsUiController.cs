@@ -17,6 +17,7 @@ public sealed class DamagePartsUiController : UIController, IOnStateEntered<Game
     [UISystemDependency] private readonly ClientDamagePartsSystem? _partsSystem = default;
     [UISystemDependency] private readonly GhostSystem? _ghost = default;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private readonly IEntityManager _entityManager = default!;
     private DamagePartsUi? UI => UIManager.GetActiveUIWidgetOrNull<DamagePartsUi>();
 
     public void ClearAllControls(object? sender, EventArgs eventArgs)
@@ -46,9 +47,8 @@ public sealed class DamagePartsUiController : UIController, IOnStateEntered<Game
         //if (widget != null)
         //    widget.AlertPressed += OnAlertPressed;
 
-        SyncParts(null);
+        SyncParts(_playerManager.LocalSession?.AttachedEntity);
     }
-
     private void SystemOnSyncParts(object? sender, IReadOnlyDictionary<(BodyPartType, BodyPartSymmetry), (int, bool)> e)
     {
         if (sender is not ClientDamagePartsSystem system)
@@ -62,8 +62,7 @@ public sealed class DamagePartsUiController : UIController, IOnStateEntered<Game
     public void OnStateEntered(GameplayState state)
     {
         // initially populate the frame if system is available
-
-        SyncParts(null);
+        SyncParts(_playerManager.LocalSession?.AttachedEntity);
     }
 
     public void SyncParts(EntityUid? entityUid)

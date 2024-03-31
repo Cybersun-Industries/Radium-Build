@@ -1,5 +1,7 @@
 ﻿using Content.Shared.Body.Components;
 using Content.Shared.Body.Part;
+using Content.Shared.Mind;
+using Content.Shared.Mind.Components;
 using Content.Shared.Radium.Medical.Surgery.Events;
 using Content.Shared.Radium.Medical.Surgery.Systems;
 using Robust.Client.Player;
@@ -23,6 +25,7 @@ public sealed class ClientDamagePartsSystem : DamagePartsSystem
         SubscribeLocalEvent<BodyComponent, LocalPlayerDetachedEvent>(OnPlayerDetached);
         SubscribeNetworkEvent<SyncPartsEvent>(OnPartsSync);
     }
+
 
     private void OnPartsSync(SyncPartsEvent ev)
     {

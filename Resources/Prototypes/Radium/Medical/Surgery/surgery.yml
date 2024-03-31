@@ -95,7 +95,7 @@
   key: AmputationSurgeryEvent
   unique: true
 - type: surgeryOperation
-  id: EyeOperation
+  id: EyeCureOperation
   name: surgery-eyeOperation-name
   desc: surgery-eyeOperation-desc
   bodyPart: Eyes
@@ -121,10 +121,11 @@
       desc: surgery-mendAction-desc
       action: enum.SurgeryTypeEnum.Burn
   key: EyeSurgeryEvent
+  hidden: true
 - type: surgeryOperation
   id: EyeBlindOperation
-  name: surgery-eyeBlind-name
-  desc: surgery-eyeBlind-desc
+  name: surgery-eyeBlindOperation-name
+  desc: surgery-eyeBlindOperation-desc
   bodyPart: Eyes
   steps:
     - type: SurgeryStep

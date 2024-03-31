@@ -8,9 +8,11 @@ using Content.Server.DoAfter;
 using Content.Server.Drunk;
 using Content.Server.Fluids.EntitySystems;
 using Content.Server.Forensics;
+using Content.Server.GameTicking;
 using Content.Server.Popups;
 using Content.Server.Radium.Medical.Surgery.Components;
 using Content.Server.Speech.EntitySystems;
+using Content.Server.Stack;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Part;
 using Content.Shared.Damage;
@@ -26,6 +28,7 @@ using Content.Shared.Radium.Medical.Surgery.Prototypes;
 using Content.Shared.Radium.Medical.Surgery.Systems;
 using Content.Shared.Weapons.Melee;
 using Robust.Server.Player;
+using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Reflection;
@@ -53,6 +56,7 @@ public sealed partial class SurgerySystem : EntitySystem
     [Dependency] private readonly IPlayerManager _player = default!;
     [Dependency] private readonly BuckleSystem _buckleSystem = default!;
     [Dependency] private readonly BloodstreamSystem _bloodstreamSystem = default!;
+    [Dependency] private readonly StackSystem _stackSystem = default!;
 
     public override void Initialize()
     {
@@ -61,8 +65,14 @@ public sealed partial class SurgerySystem : EntitySystem
         SubscribeLocalEvent<SurgeryInProgressComponent, InteractUsingEvent>(OnSurgeryInteract);
         SubscribeLocalEvent<SurgeryInProgressComponent, SurgeryDoAfterEvent>(OnSurgeryDoAfter);
         SubscribeLocalEvent<MeleeWeaponComponent, DamageChangedEvent>(OnMeleeEvent);
+        //SubscribeLocalEvent<PlayerAttachedEvent>(OnPlayerSpawnComplete);
         InitializePostActions();
     }
+
+    //private void OnPlayerSpawnComplete(PlayerAttachedEvent ev)
+    //{
+        //RaiseNetworkEvent(new SyncPartsEvent(GetNetEntity(ev.Entity)), ev.Entity);
+    //}
 
 
     public override void Update(float frameTime)
@@ -135,12 +145,12 @@ public sealed partial class SurgerySystem : EntitySystem
                             _player.TryGetSessionByEntity(uid, out var session);
                             if (session != null)
                             {
-                                _popupSystem.PopupEntity("Кровь сочится из вашей груди", uid, session,
+                                _popupSystem.PopupEntity(Loc.GetString("surgery-bleeding"), uid, session,
                                     PopupType.LargeCaution);
                             }
                             else
                             {
-                                _popupSystem.PopupEntity("Кровь сочится из вашей груди", uid,
+                                _popupSystem.PopupEntity(Loc.GetString("surgery-bleeding"), uid,
                                     PopupType.LargeCaution);
                             }
                         }
@@ -267,7 +277,7 @@ public sealed partial class SurgerySystem : EntitySystem
     private SurgeryPartEnum RandomizePart(EntityUid uid, WoundTypeEnum woundType)
     {
         var list = _bodySystem.GetBodyChildren(uid);
-        var chanceModifier = 2;
+        var chanceModifier = 3;
         if (woundType == WoundTypeEnum.Piercing)
         {
             chanceModifier += 4;
@@ -429,6 +439,8 @@ public sealed partial class SurgerySystem : EntitySystem
             if (ev != null)
                 RaiseLocalEvent(ev);
             RemComp<SurgeryInProgressComponent>(uid);
+            _bloodstreamSystem.TryModifyBleedAmount(args.Target.Value, -100);
+            _drunkSystem.TryRemoveDrunkenness(args.Target.Value);
             return;
         }
 
@@ -436,19 +448,25 @@ public sealed partial class SurgerySystem : EntitySystem
         {
             var action = Enum.Parse<SurgeryTypeEnum>(surgery.CurrentStep.Key.ToString());
             var index = surgery.CurrentStep.StepIndex + 1;
+            if (action == SurgeryTypeEnum.Repair)
+            {
+                if(!_stackSystem.Use(uid, 1))
+                    return;
+            }
             nextStep = surgeryOperationPrototype.Steps[index];
             nextStep.StepIndex = index - 1;
             nextStep.StepIndex++;
-            if (action is not SurgeryTypeEnum.Clamp)
+            if (action is not (SurgeryTypeEnum.Clamp or SurgeryTypeEnum.Burn))
             {
                 _bloodstreamSystem.TryModifyBleedAmount(args.Target.Value, 10f);
-                _statusEffectsSystem.TryAddStatusEffect(args.User, TemporaryBlindnessSystem.BlindingStatusEffect,
-                    new TimeSpan(0, 0, 0, 15), true, TemporaryBlindnessSystem.BlindingStatusEffect);
+                _drunkSystem.TryApplyDrunkenness(args.Target.Value, 60);
             }
             else
             {
                 _bloodstreamSystem.TryModifyBleedAmount(args.Target.Value, -100);
+                _drunkSystem.TryRemoveDrunkenness(args.Target.Value);
             }
+
             if (action is SurgeryTypeEnum.AddPart or SurgeryTypeEnum.AddAdditionalPart)
             {
                 if (args.Used != null)
@@ -479,17 +497,13 @@ public sealed partial class SurgerySystem : EntitySystem
             BodyPartType.Leg => BodyPartType.Foot,
             _ => BodyPartType.Other
         };
-        //if (component.CurrentStep != null && TryComp<BodyPartComponent>(args.Used, out var partUsed) &&
-        //    Enum.Parse<SurgeryTypeEnum>(component.CurrentStep.Key.ToString()) is SurgeryTypeEnum.AddPart
-        //        or SurgeryTypeEnum.AddAdditionalPart &&
-        //    (partUsed.PartType == origin || partUsed.PartType == additionalPart)) //TODO?
         if (component.CurrentStep == null)
             return;
 
         var key = Enum.Parse<SurgeryTypeEnum>(component.CurrentStep.Key.ToString());
         if (TryComp<BodyPartComponent>(args.Used, out var partUsed) &&
             (key == SurgeryTypeEnum.AddPart && partUsed.PartType == origin
-             || key == SurgeryTypeEnum.AddAdditionalPart && partUsed.PartType == additionalPart)) //TODO?
+             || key == SurgeryTypeEnum.AddAdditionalPart && partUsed.PartType == additionalPart))
         {
             time = 15f;
             goto G;
@@ -513,7 +527,7 @@ public sealed partial class SurgerySystem : EntitySystem
 
         if (!_buckleSystem.IsBuckled(uid))
         {
-            _popupSystem.PopupEntity("Цель должна быть пристёгнута.", uid, PopupType.Medium);
+            _popupSystem.PopupEntity(Loc.GetString("surgery-target-shouldBuckled"), uid, PopupType.Medium);
             return;
         }
         var doArgs =
@@ -551,7 +565,7 @@ public sealed partial class SurgerySystem : EntitySystem
         surgeryComponent.Symmetry = ev.Symmetry;
         UpdateStepIcon(ref surgeryComponent);
         surgeryComponent.SurgeryPrototypeId = ev.PrototypeId;
-        _popupSystem.PopupEntity("Начинаю операцию.", entity, PopupType.LargeCaution);
+        _popupSystem.PopupEntity(Loc.GetString("surgery-target-begin"), entity, PopupType.LargeCaution);
     }
 
     private static void UpdateStepIcon(ref SurgeryInProgressComponent component)
@@ -566,7 +580,6 @@ public sealed partial class SurgerySystem : EntitySystem
                 SurgeryTypeEnum.Clamp => "/Textures/Objects/Specific/Medical/Surgery/scissors.rsi/hemostat.png",
                 SurgeryTypeEnum.Cut => "/Textures/Objects/Specific/Medical/Surgery/saw.rsi/advanced.png",
                 SurgeryTypeEnum.Filter => "/Textures/Objects/Specific/Medical/medical.rsi/bloodpack.png",
-                SurgeryTypeEnum.AddPart => "/Textures/Clothing/Hands/Gloves/nitrile.rsi/icon.png",
                 SurgeryTypeEnum.Incise => "/Textures/Objects/Specific/Medical/Surgery/scalpel.rsi/advanced.png",
                 SurgeryTypeEnum.Repair => "/Textures/Objects/Specific/Medical/medical.rsi/regenerative-mesh.png",
                 SurgeryTypeEnum.Retract => "/Textures/Objects/Specific/Medical/Surgery/scissors.rsi/retractor.png",

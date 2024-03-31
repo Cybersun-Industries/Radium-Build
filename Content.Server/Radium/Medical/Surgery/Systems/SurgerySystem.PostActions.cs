@@ -115,6 +115,8 @@ public sealed partial class SurgerySystem
 
     private void OnPierceSurgeryPostAction(PierceSurgeryEvent ev)
     {
+        if (!TryComp<SurgeryInProgressComponent>(ev.Uid, out var surgeryInProgressComponent))
+            return;
         var operation = _prototypeManager.Index<SurgeryOperationPrototype>(ev.PrototypeId);
         var damagedParts = _bodySystem.GetBodyChildren(ev.Uid).Where(g =>
             g.Component.Wounds.Count is > 0 and < 7 &&
@@ -122,8 +124,7 @@ public sealed partial class SurgerySystem
             g.Component.Symmetry == ev.Symmetry).ToList();
         if (damagedParts.ToList().Count == 0)
         {
-            if (!TryComp<SurgeryInProgressComponent>(ev.Uid, out var surgeryInProgressComponent))
-                return;
+
             if (surgeryInProgressComponent.CurrentStep != null)
                 surgeryInProgressComponent.CurrentStep.Repeatable = false;
             return;
@@ -136,9 +137,14 @@ public sealed partial class SurgerySystem
             {
                 damagedPart.Component.Wounds.Remove(part.First());
             }
+            else
+            {
+                if (surgeryInProgressComponent.CurrentStep != null)
+                    surgeryInProgressComponent.CurrentStep.Repeatable = false;
+            }
 
             Dirty(damagedPart.Id, damagedPart.Component);
-            RaiseNetworkEvent(new SyncPartsEvent(GetNetEntity(ev.Uid)));
+            RaiseNetworkEvent(new SyncPartsEvent(GetNetEntity(ev.Uid)), ev.Uid);
         }
     }
 
@@ -176,7 +182,7 @@ public sealed partial class SurgerySystem
             }
 
             Dirty(damagedPart.Id, damagedPart.Component);
-            RaiseNetworkEvent(new SyncPartsEvent(GetNetEntity(ev.Uid)));
+            RaiseNetworkEvent(new SyncPartsEvent(GetNetEntity(ev.Uid)), ev.Uid);
         }
     }
 
@@ -210,7 +216,7 @@ public sealed partial class SurgerySystem
             }
 
             Dirty(damagedPart.Id, damagedPart.Component);
-            RaiseNetworkEvent(new SyncPartsEvent(GetNetEntity(ev.Uid)));
+            RaiseNetworkEvent(new SyncPartsEvent(GetNetEntity(ev.Uid)), ev.Uid);
         }
     }
 
@@ -233,7 +239,7 @@ public sealed partial class SurgerySystem
                 surgeryInProgressComponent.CurrentStep.Repeatable = false;
             _popupSystem.PopupEntity("Операция провалена!", ev.Uid, PopupType.LargeCaution);
             _damageableSystem.TryChangeDamage(ev.Uid,
-                new DamageSpecifier(_prototypeManager.Index<DamageTypePrototype>("blunt"), 20));
+                new DamageSpecifier(_prototypeManager.Index<DamageTypePrototype>("Blunt"), 20));
             RemComp<SurgeryInProgressComponent>(ev.Uid);
             return;
         }
@@ -248,7 +254,7 @@ public sealed partial class SurgerySystem
             }
 
             Dirty(damagedPart.Id, damagedPart.Component);
-            RaiseNetworkEvent(new SyncPartsEvent(GetNetEntity(ev.Uid)));
+            RaiseNetworkEvent(new SyncPartsEvent(GetNetEntity(ev.Uid)), ev.Uid);
         }
     }
 

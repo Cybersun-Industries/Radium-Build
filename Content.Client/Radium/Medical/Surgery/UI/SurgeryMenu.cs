@@ -5,6 +5,7 @@ using Content.Client.Guidebook.Richtext;
 using Content.Client.UserInterface.Controls;
 using Content.Shared.Body.Part;
 using Content.Shared.Radium.Medical.Surgery.Prototypes;
+using Content.Shared.Traits.Assorted;
 using Robust.Client.UserInterface;
 using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.CustomControls;
@@ -60,6 +61,7 @@ public sealed class SurgeryMenu : DefaultWindow
 
     public SurgeryMenu(SurgeryBoundUserInterface? bui, EntityUid entityUid)
     {
+        Title = Loc.GetString("surgery-window-title");
         IoCManager.InjectDependencies(this);
         Uid = _entityManager.GetNetEntity(entityUid);
         foreach (var surgeryOperationPrototype in _prototypeManager.EnumeratePrototypes<SurgeryOperationPrototype>())
@@ -343,17 +345,30 @@ public sealed class SurgeryMenu : DefaultWindow
 
                 break;
             case "Eyes":
-                index = 0;
-                foreach (var operation in EyesOperationsList.Where(operation => !operation.IsHidden))
+                if (_entityManager.HasComponent<PermanentBlindnessComponent>(_entityManager.GetEntity(Uid)))
                 {
+                    var operation = _prototypeManager.Index<SurgeryOperationPrototype>("EyeCureOperation");
                     SurgeryOptions.Add(new ItemList.Item(SurgeryOptions)
                     {
                         Text = operation.LocalizedName,
                         TooltipText = operation.LocalizedDescription,
                         TooltipEnabled = true,
                     });
-                    EyesEventIndexes.Add(index, operation.ID);
-                    index++;
+                }
+                else
+                {
+                    index = 0;
+                    foreach (var operation in EyesOperationsList.Where(operation => !operation.IsHidden))
+                    {
+                        SurgeryOptions.Add(new ItemList.Item(SurgeryOptions)
+                        {
+                            Text = operation.LocalizedName,
+                            TooltipText = operation.LocalizedDescription,
+                            TooltipEnabled = true,
+                        });
+                        EyesEventIndexes.Add(index, operation.ID);
+                        index++;
+                    }
                 }
 
                 break;

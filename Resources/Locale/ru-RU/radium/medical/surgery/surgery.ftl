@@ -28,8 +28,11 @@ surgery-implantRemovalOperation-desc = Эта хирургическая опе�
 surgery-brainOperation-name = Операция на головном мозге
 surgery-brainOperation-desc = Эта процедура излечивает все тяжелые и элементарные травмы и значительно уменьшает повреждение головного мозга. 
 
-surgery-eyeOperation-name = Операция на глазах
-surgery-eyeOperation-desc = Это устраняет все повреждения, нанесенные глазам и устраняет слепоту.
+surgery-eyeOperation-name = Коррекция зрения
+surgery-eyeOperation-desc = Эта процедура устраняет все повреждения, нанесенные глазам и устраняет слепоту.
+
+surgery-eyeBlindOperation-name = Ослепление
+surgery-eyeBlindOperation-desc = Эта процедура перманентно ослепляет пациента.
 
 surgery-revivalOperation-name = Продвиутая реанимация
 surgery-revivalOperation-desc = Реанимирует любой труп. Если труп слишком сильно повреждён то пациент умрёт сразу же.
@@ -52,6 +55,11 @@ surgery-burnOperation-desc = Эта операция удаляет ожоги.
 surgery-pierceOperation-name = Шунтирование прокола.
 surgery-pierceOperation-desc = Эта операция удаляет проколы.
 
+surgery-addOperationL-name = Пришить ногу
+surgery-addOperationL-desc = Эта операция позволяет вернуть утраченную конечность на место.
+
+surgery-addOperationA-name = Пришить руку
+surgery-addOperationA-desc = Эта операция позволяет вернуть утраченную конечность на место.
 
 surgery-scalpelAction-name = Скальпель
 surgery-incisionAction-desc = Сделайте надрез.
@@ -103,3 +111,26 @@ surgery-resetBoneAction-desc = Верните кость в исходное п�
 
 surgery-MgStAction-name = Медицинская марля/хирургическая лента
 surgery-bandageAction-desc = Перевяжите ожоги.
+
+surgery-addFirstPartL-name = Нога
+surgery-addFirstPartL-desc = Пришейте ногу.
+
+surgery-addSecondPartL-name = Ступня
+surgery-addSecondPartL-desc = Пришейте ступню.
+
+surgery-addFirstPartA-name = Рука
+surgery-addFirstPartA-desc = Пришейте руку.
+
+surgery-addSecondPartA-name = Кисть
+surgery-addSecondPartA-desc = Пришейте кисть.
+
+health-analyzer-window-currentOperation = Текущая операция: 
+health-analyzer-window-instructions = Указания к операции:
+health-analyzer-window-noOperation = Операция не проводится.
+
+surgery-window-title = Начать операцию
+
+surgery-target-shouldBuckled = Цель должна быть пристёгнута.
+surgery-target-begin = Начинаю операцию.
+
+surgery-bleeding = Кровь сочится из вашей груди
