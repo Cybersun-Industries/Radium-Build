@@ -51,7 +51,8 @@
     entries:
     - id: MobClownPepeBall
       prob: 0.03
-
+      
+- type: entity
   id: RealTysonMigration
   parent: BaseGameRule
   noSpawn: true
