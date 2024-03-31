@@ -9,6 +9,7 @@
     sprite: Structures/Power/Generation/Singularity/generator.rsi
     state: icon
   - type: SingularityGenerator
+    spawnId: MaxwellSingularity
   - type: InteractionOutline
   - type: Clickable
   - type: Physics
