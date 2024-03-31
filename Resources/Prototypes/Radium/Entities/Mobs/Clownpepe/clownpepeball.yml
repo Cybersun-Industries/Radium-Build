@@ -1,0 +1,102 @@
+﻿- type: entity
+  name: цирковой клоун пепе
+  id: MobClownPepeBall
+  parent: [SimpleMobBase, MobCombat, MobBloodstream, MobRespirator, MobAtmosStandard, MobDamageable, MobFlammable]
+  description: Он что-то большее чем обычный цирковой клоун!
+  components:
+  - type: GhostRole
+    makeSentient: true
+    name: ghost-role-information-pepe-clown-name
+    description: ghost-role-information-pepe-clown-description
+    rules: ghost-role-information-bad-clown-rules
+  - type: GhostTakeoverAvailable
+  - type: Sprite
+    drawdepth: Mobs
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base", "movement"]
+      state: clownpepe
+      sprite: Radium/Mobs/Clownpepe/clownpepeball.rsi
+      scale: 0.125, 0.125
+  - type: SpriteMovement
+    movementLayers:
+      movement:
+        state: clownpepe-moving
+    noMovementLayers:
+      movement:
+        state: clownpepe
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.50
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: CombatMode
+  - type: Physics
+  - type: MobState
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      125: Critical
+      150: Dead
+  - type: Stamina
+    critThreshold: 150
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: clownpepe
+      Critical:
+        Base: clownpepe-dead
+      Dead:
+        Base: clownpepe-dead
+  - type: Butcherable
+    spawned:
+    - id: FoodMeatClown
+      amount: 5
+    - id: BikeHorn
+      amount: 1
+    - id: ClothingShoesClown
+      amount: 1
+  - type: Bloodstream
+    bloodMaxVolume: 200
+    bloodReagent: Laughter
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 5
+    baseSprintSpeed: 5
+  - type: MeleeWeapon
+    attackRate: 1
+    altDisarm: false
+    angle: 0
+    animation: WeaponArcSmash
+    soundHit:
+      collection: BikeHorn
+      params:
+        variation: 0.125
+    damage:
+      types:
+        Blunt: 25
+        Structural: 20
+  - type: NoSlip
+  - type: FootstepModifier
+    footstepSoundCollection:
+      collection: FootstepClown
+  - type: InputMover
+  - type: MobMover
+  - type: TypingIndicator
+    proto: default
+  - type: Speech
+    speechVerb: Cluwne
+  - type: SpamEmitSound
+    sound:
+      collection: BikeHorn
+  - type: Tag
+    tags:
+    - CannotSuicide
+    - FootstepSound
+    - DoorBumpOpener
+  - type: AutoImplant
+    implants:
+    - SadTromboneImplant

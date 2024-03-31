@@ -23,3 +23,6 @@ ghost-role-information-bad-clown-rules =
     Вы можете [color=green]спокойно[/color] атаковать [color=white]всех[/color], вам не угодных или кто вам не понравился.
     Вы можете [color=red]подчинить[/color] станцию либо же [color=red]уничтожить[/color] её!
 
+ghost-role-information-pepe-clown-name = Пепе клоун
+ghost-role-information-pepe-clown-description = Honk. Co проводила жуткие эксперименты, чтобы создать гибрид клоуна и лягушки, но все эксперименты провались и Пепе Клоуны сбежали.
+
