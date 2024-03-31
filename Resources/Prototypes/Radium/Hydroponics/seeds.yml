@@ -201,10 +201,10 @@
   harvestRepeat: Repeat
   mutationPrototypes:
     - clownpod
-  lifespan: 50
-  maturation: 6
-  production: 4
-  potency: 3
+  lifespan: 40
+  maturation: 5
+  production: 3
+  potency: 2
   yield: 1
 
 - type: seed
@@ -217,7 +217,7 @@
   productPrototypes:
     - HumanReplicaClown
   harvestRepeat: Repeat
-  lifespan: 45
+  lifespan: 30
   maturation: 5
   production: 3
   potency: 2
