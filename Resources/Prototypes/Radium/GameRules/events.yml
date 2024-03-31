@@ -80,4 +80,4 @@
     earliestStart: 45
     minimumPlayers: 10
   - type: RandomSpawnRule
-    prototype: maxwell
+  - id: maxwell
