@@ -494,3 +494,9 @@ AirlockServiceCaptainLocked: AirlockCaptainLocked
 
 # fix ishimura test
 ClothingBackpackSatchelClownFilled: ClothingBackpackSatchelClown
+
+#2024-03-31 - Radium (April Fools)
+SpiderSpawn: ClownBadMigration
+SpiderClownSpawn: ClownPepeBallMigration
+VentCritters: ClownPepeMigration
+SlimesSpawn: RealTysonMigration
