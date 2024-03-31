@@ -102,14 +102,14 @@ surgery-reviveAction-desc = Реанимируйте пациента
 surgery-filterAction-name = Фильтр крови
 surgery-filterAction-desc = Профильтруйте кровь.
 
-surgery-BBgStAction-name = Костоправ/костный гель/хирургическая лента
-surgery-BgStAction-name = Костный гель/хирургическая лента
+surgery-BBgStAction-name = Корректирующая сеть
+surgery-BgStAction-name = Корректирующая сеть
 surgery-reapirAction-desc = Восстановите кость.
 
-surgery-bonesetterAction-name = Костоправ
+surgery-bonesetterAction-name = Корректирующая сеть
 surgery-resetBoneAction-desc = Верните кость в исходное положение.
 
-surgery-MgStAction-name = Медицинская марля/хирургическая лента
+surgery-MgStAction-name = Бинты
 surgery-bandageAction-desc = Перевяжите ожоги.
 
 surgery-addFirstPartL-name = Нога

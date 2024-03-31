@@ -71,7 +71,7 @@ public sealed partial class SurgerySystem : EntitySystem
 
     //private void OnPlayerSpawnComplete(PlayerAttachedEvent ev)
     //{
-        //RaiseNetworkEvent(new SyncPartsEvent(GetNetEntity(ev.Entity)), ev.Entity);
+    //RaiseNetworkEvent(new SyncPartsEvent(GetNetEntity(ev.Entity)), ev.Entity);
     //}
 
 
@@ -235,18 +235,23 @@ public sealed partial class SurgerySystem : EntitySystem
 
     private void OnMeleeEvent(EntityUid uid, MeleeWeaponComponent component, DamageChangedEvent args)
     {
-        if (args.Origin == null || args.DamageDelta == null)
+        if (args.Origin == null || args.DamageDelta == null || args.DamageDelta.GetTotal() < 5)
             return;
 
         foreach (var keyValuePair in args.DamageDelta.DamageDict)
         {
-            switch (Enum.Parse<WoundTypeEnum>(keyValuePair.Key))
+            if (keyValuePair.Key == "Slash")
+            {
+                TryApplySurgeryDamage(uid, WoundTypeEnum.Piercing);
+                continue;
+            }
+
+            if (!Enum.TryParse<WoundTypeEnum>(keyValuePair.Key, out var dmg))
+                continue;
+            switch (dmg)
             {
                 case WoundTypeEnum.Blunt:
                     TryApplySurgeryDamage(uid, WoundTypeEnum.Blunt);
-                    break;
-                case WoundTypeEnum.Slash:
-                    TryApplySurgeryDamage(uid, WoundTypeEnum.Slash);
                     break;
                 case WoundTypeEnum.Heat:
                     TryApplySurgeryDamage(uid, WoundTypeEnum.Heat);
@@ -350,9 +355,6 @@ public sealed partial class SurgerySystem : EntitySystem
             case WoundTypeEnum.Blunt:
                 partComponent.Wounds.Add(new PartWound(WoundTypeEnum.Blunt));
                 break;
-            case WoundTypeEnum.Slash:
-                partComponent.Wounds.Add(new PartWound(WoundTypeEnum.Slash));
-                break;
             case WoundTypeEnum.Piercing:
                 partComponent.Wounds.Add(new PartWound(WoundTypeEnum.Piercing));
                 break;
@@ -390,7 +392,7 @@ public sealed partial class SurgerySystem : EntitySystem
                 out var surgeryOperationPrototype) || surgeryOperationPrototype.Steps == null ||
             !TryComp<SurgeryInProgressComponent>(args.Target, out var surgery))
             return;
-        SurgeryStepComponent? nextStep = null;
+        var nextStep = surgery.CurrentStep;
         if (surgery.CurrentStep is { Repeatable: true })
         {
             if (!_prototypeManager.TryIndex<SurgeryOperationPrototype>(surgery.SurgeryPrototypeId ?? string.Empty,
@@ -423,6 +425,8 @@ public sealed partial class SurgerySystem : EntitySystem
         Check:
         if (surgery.CurrentStep != null && surgeryOperationPrototype.Steps.Count == surgery.CurrentStep.StepIndex + 1)
         {
+            if (args.Used != null)
+                _stackSystem.Use(args.Used.Value, 1);
             var type = _reflectionManager.LooseGetType(surgeryOperationPrototype.EventKey);
             object? ev = null;
             if (component.CurrentStep != null)
@@ -450,9 +454,10 @@ public sealed partial class SurgerySystem : EntitySystem
             var index = surgery.CurrentStep.StepIndex + 1;
             if (action == SurgeryTypeEnum.Repair)
             {
-                if(!_stackSystem.Use(uid, 1))
+                if (args.Used != null && !_stackSystem.Use(args.Used.Value, 1))
                     return;
             }
+
             nextStep = surgeryOperationPrototype.Steps[index];
             nextStep.StepIndex = index - 1;
             nextStep.StepIndex++;
@@ -530,6 +535,7 @@ public sealed partial class SurgerySystem : EntitySystem
             _popupSystem.PopupEntity(Loc.GetString("surgery-target-shouldBuckled"), uid, PopupType.Medium);
             return;
         }
+
         var doArgs =
             new DoAfterArgs(EntityManager, args.User, time, new SurgeryDoAfterEvent(chance), args.Target, args.Target,
                 args.Used)
@@ -581,9 +587,11 @@ public sealed partial class SurgerySystem : EntitySystem
                 SurgeryTypeEnum.Cut => "/Textures/Objects/Specific/Medical/Surgery/saw.rsi/advanced.png",
                 SurgeryTypeEnum.Filter => "/Textures/Objects/Specific/Medical/medical.rsi/bloodpack.png",
                 SurgeryTypeEnum.Incise => "/Textures/Objects/Specific/Medical/Surgery/scalpel.rsi/advanced.png",
-                SurgeryTypeEnum.Repair => "/Textures/Objects/Specific/Medical/medical.rsi/regenerative-mesh.png",
+                SurgeryTypeEnum.Repair => "/Textures/Radium/Objects/Specific/Medical/healing.rsi/bone_mesh.png",
                 SurgeryTypeEnum.Retract => "/Textures/Objects/Specific/Medical/Surgery/scissors.rsi/retractor.png",
                 SurgeryTypeEnum.Revive => "/Textures/Objects/Specific/Medical/defib.rsi/icon.png",
+                SurgeryTypeEnum.AddPart => "/Textures/Objects/Specific/Medical/handheldcrewmonitor.rsi",
+                SurgeryTypeEnum.AddAdditionalPart => "/Textures/Objects/Specific/Medical/handheldcrewmonitor.rsi",
                 _ => component.CurrentStep.Icon
             };
         }

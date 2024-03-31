@@ -39,7 +39,6 @@ public enum SurgeryPartEnum : byte
 public enum WoundTypeEnum : byte
 {
     Blunt,
-    Slash,
     Piercing,
     Heat
 }
