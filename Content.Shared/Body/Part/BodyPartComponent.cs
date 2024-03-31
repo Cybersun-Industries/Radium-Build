@@ -1,5 +1,6 @@
 ﻿using Content.Shared.Body.Components;
 using Content.Shared.Body.Systems;
+using Content.Shared.Radium.Medical.Surgery.Components;
 using Robust.Shared.Containers;
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
@@ -7,7 +8,6 @@ using Robust.Shared.Serialization;
 namespace Content.Shared.Body.Part;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-[Access(typeof(SharedBodySystem))]
 public sealed partial class BodyPartComponent : Component
 {
     // Need to set this on container changes as it may be several transform parents up the hierarchy.
@@ -63,6 +63,14 @@ public sealed partial class BodyPartComponent : Component
         }
     }
 
+    [DataField]
+    public int AccumulatedDamage = 0;
+
+    [DataField, AutoNetworkedField]
+    public List<PartWound> Wounds = new();
+
+    [DataField, AutoNetworkedField]
+    public float AccumulatedFrameTime;
     [ViewVariables]
     private List<ContainerSlot> OrganSlotsVV
     {
@@ -111,4 +119,5 @@ public partial struct OrganSlot
     {
         Id = id;
     }
-};
+}
+

@@ -96,7 +96,10 @@
     count: 10
   - type: StackPrice
     price: 20
-
+  - type: SurgeryTool
+    action: enum.SurgeryTypeEnum.Repair
+    modifier: 1.5
+    
 - type: entity
   id: OintmentAdvanced1
   parent: RegenerativeMesh
@@ -133,6 +136,9 @@
     count: 10
   - type: StackPrice
     price: 5
+  - type: SurgeryTool
+    action: enum.SurgeryTypeEnum.Bandage
+    modifier: 1.5
 
 - type: entity
   id: Brutepack1

@@ -15,6 +15,7 @@ using Content.Client.MainMenu;
 using Content.Client.Parallax.Managers;
 using Content.Client.Players.PlayTimeTracking;
 using Content.Client.Radiation.Overlays;
+using Content.Client.Radium.Medical.Surgery.UI;
 using Content.Client.Replay;
 using Content.Client.Screenshot;
 using Content.Client.Singularity;

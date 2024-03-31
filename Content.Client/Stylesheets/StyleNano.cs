@@ -20,7 +20,8 @@ namespace Content.Client.Stylesheets
 {
     public static class ResCacheExtension
     {
-        public static Font NotoStack(this IResourceCache resCache, string variation = "Regular", int size = 10, bool display = false)
+        public static Font NotoStack(this IResourceCache resCache, string variation = "Regular", int size = 10,
+            bool display = false)
         {
             var ds = display ? "Display" : "";
             var sv = variation.StartsWith("Bold", StringComparison.Ordinal) ? "Bold" : "Regular";
@@ -35,10 +36,9 @@ namespace Content.Client.Stylesheets
                 },
                 size
             );
-
         }
-
     }
+
     // STLYE SHEETS WERE A MISTAKE. KILL ALL OF THIS WITH FIRE
     public sealed class StyleNano : StyleBase
     {
@@ -87,10 +87,13 @@ namespace Content.Client.Stylesheets
         public static readonly Color PanelDark = Color.FromHex("#1E1E22");
 
         public static readonly Color NanoGold = Color.FromHex("#A88B5E");
+
         //Start-Radium
         public static readonly Color NanoLightGold = Color.FromHex("#dcd6f1");
         public static readonly Color NanoShade = Color.FromHex("#003d8e");
+
         public static readonly Color NanoFullOpacity = Color.FromHex("#000000E6");
+
         //End-Radium
         public static readonly Color GoodGreenFore = Color.FromHex("#31843E");
         public static readonly Color ConcerningOrangeFore = Color.FromHex("#A5762F");
@@ -194,7 +197,8 @@ namespace Content.Client.Stylesheets
             windowBackground.SetPatchMargin(StyleBox.Margin.Horizontal | StyleBox.Margin.Bottom, 2);
             windowBackground.SetExpandMargin(StyleBox.Margin.Horizontal | StyleBox.Margin.Bottom, 2);
 
-            var borderedWindowBackgroundTex = resCache.GetTexture("/Textures/Interface/Nano/window_background_bordered.png");
+            var borderedWindowBackgroundTex =
+                resCache.GetTexture("/Textures/Interface/Nano/window_background_bordered.png");
             var borderedWindowBackground = new StyleBoxTexture
             {
                 Texture = borderedWindowBackgroundTex,
@@ -222,7 +226,8 @@ namespace Content.Client.Stylesheets
             };
             handSlotHighlight.SetPatchMargin(StyleBox.Margin.All, 2);
 
-            var borderedTransparentWindowBackgroundTex = resCache.GetTexture("/Textures/Interface/Nano/transparent_window_background_bordered.png");
+            var borderedTransparentWindowBackgroundTex =
+                resCache.GetTexture("/Textures/Interface/Nano/transparent_window_background_bordered.png");
             var borderedTransparentWindowBackground = new StyleBoxTexture
             {
                 Texture = borderedTransparentWindowBackgroundTex,
@@ -269,8 +274,10 @@ namespace Content.Client.Stylesheets
                 Modulate = ButtonColorDisabled
             };
 
-            var buttonRectActionMenuItemTex = resCache.GetTexture("/Textures/Interface/Nano/black_panel_light_thin_border.png");
-            var buttonRectActionMenuRevokedItemTex = resCache.GetTexture("/Textures/Interface/Nano/black_panel_red_thin_border.png");
+            var buttonRectActionMenuItemTex =
+                resCache.GetTexture("/Textures/Interface/Nano/black_panel_light_thin_border.png");
+            var buttonRectActionMenuRevokedItemTex =
+                resCache.GetTexture("/Textures/Interface/Nano/black_panel_red_thin_border.png");
             var buttonRectActionMenuItem = new StyleBoxTexture(BaseButton)
             {
                 Texture = buttonRectActionMenuItemTex
@@ -295,7 +302,7 @@ namespace Content.Client.Stylesheets
             var buttonTex = resCache.GetTexture("/Textures/Interface/Nano/button.svg.96dpi.png");
             var topButtonBase = new StyleBoxTexture
             {
-             Texture = buttonTex,
+                Texture = buttonTex,
             };
             topButtonBase.SetPatchMargin(StyleBox.Margin.All, 10);
             topButtonBase.SetPadding(StyleBox.Margin.All, 0);
@@ -303,19 +310,19 @@ namespace Content.Client.Stylesheets
 
             var topButtonOpenRight = new StyleBoxTexture(topButtonBase)
             {
-             Texture = new AtlasTexture(buttonTex, UIBox2.FromDimensions(new Vector2(0, 0), new Vector2(14, 24))),
+                Texture = new AtlasTexture(buttonTex, UIBox2.FromDimensions(new Vector2(0, 0), new Vector2(14, 24))),
             };
             topButtonOpenRight.SetPatchMargin(StyleBox.Margin.Right, 0);
 
             var topButtonOpenLeft = new StyleBoxTexture(topButtonBase)
             {
-             Texture = new AtlasTexture(buttonTex, UIBox2.FromDimensions(new Vector2(10, 0), new Vector2(14, 24))),
+                Texture = new AtlasTexture(buttonTex, UIBox2.FromDimensions(new Vector2(10, 0), new Vector2(14, 24))),
             };
             topButtonOpenLeft.SetPatchMargin(StyleBox.Margin.Left, 0);
 
             var topButtonSquare = new StyleBoxTexture(topButtonBase)
             {
-             Texture = new AtlasTexture(buttonTex, UIBox2.FromDimensions(new Vector2(10, 0), new Vector2(3, 24))),
+                Texture = new AtlasTexture(buttonTex, UIBox2.FromDimensions(new Vector2(10, 0), new Vector2(3, 24))),
             };
             topButtonSquare.SetPatchMargin(StyleBox.Margin.Horizontal, 0);
 
@@ -327,7 +334,8 @@ namespace Content.Client.Stylesheets
             chatChannelButton.SetPatchMargin(StyleBox.Margin.All, 5);
             chatChannelButton.SetPadding(StyleBox.Margin.All, 2);
 
-            var chatFilterButtonTex = resCache.GetTexture("/Textures/Interface/Nano/rounded_button_bordered.svg.96dpi.png");
+            var chatFilterButtonTex =
+                resCache.GetTexture("/Textures/Interface/Nano/rounded_button_bordered.svg.96dpi.png");
             var chatFilterButton = new StyleBoxTexture
             {
                 Texture = chatFilterButtonTex,
@@ -373,9 +381,9 @@ namespace Content.Client.Stylesheets
             };
             tabContainerPanel.SetPatchMargin(StyleBox.Margin.All, 2);
 
-            var tabContainerBoxActive = new StyleBoxFlat {BackgroundColor = new Color(64, 64, 64)};
+            var tabContainerBoxActive = new StyleBoxFlat { BackgroundColor = new Color(64, 64, 64) };
             tabContainerBoxActive.SetContentMarginOverride(StyleBox.Margin.Horizontal, 5);
-            var tabContainerBoxInactive = new StyleBoxFlat {BackgroundColor = new Color(32, 32, 32)};
+            var tabContainerBoxInactive = new StyleBoxFlat { BackgroundColor = new Color(32, 32, 32) };
             tabContainerBoxInactive.SetContentMarginOverride(StyleBox.Margin.Horizontal, 5);
 
             var progressBarBackground = new StyleBoxFlat
@@ -392,7 +400,8 @@ namespace Content.Client.Stylesheets
 
             // CheckBox
             var checkBoxTextureChecked = resCache.GetTexture("/Textures/Interface/Nano/checkbox_checked.svg.96dpi.png");
-            var checkBoxTextureUnchecked = resCache.GetTexture("/Textures/Interface/Nano/checkbox_unchecked.svg.96dpi.png");
+            var checkBoxTextureUnchecked =
+                resCache.GetTexture("/Textures/Interface/Nano/checkbox_unchecked.svg.96dpi.png");
 
             // Tooltip box
             var tooltipTexture = resCache.GetTexture("/Textures/Interface/Nano/tooltip.png");
@@ -414,23 +423,28 @@ namespace Content.Client.Stylesheets
 
             // Placeholder
             var placeholderTexture = resCache.GetTexture("/Textures/Interface/Nano/placeholder.png");
-            var placeholder = new StyleBoxTexture {Texture = placeholderTexture};
+            var placeholder = new StyleBoxTexture { Texture = placeholderTexture };
             placeholder.SetPatchMargin(StyleBox.Margin.All, 19);
             placeholder.SetExpandMargin(StyleBox.Margin.All, -5);
             placeholder.Mode = StyleBoxTexture.StretchMode.Tile;
 
-            var itemListBackgroundSelected = new StyleBoxFlat {BackgroundColor = new Color(75, 75, 86)};
+            var itemListBackgroundSelected = new StyleBoxFlat { BackgroundColor = new Color(75, 75, 86) };
             itemListBackgroundSelected.SetContentMarginOverride(StyleBox.Margin.Vertical, 2);
             itemListBackgroundSelected.SetContentMarginOverride(StyleBox.Margin.Horizontal, 4);
-            var itemListItemBackgroundDisabled = new StyleBoxFlat {BackgroundColor = new Color(10, 10, 12)};
+            var itemListItemBackgroundDisabled = new StyleBoxFlat { BackgroundColor = new Color(10, 10, 12) };
             itemListItemBackgroundDisabled.SetContentMarginOverride(StyleBox.Margin.Vertical, 2);
             itemListItemBackgroundDisabled.SetContentMarginOverride(StyleBox.Margin.Horizontal, 4);
-            var itemListItemBackground = new StyleBoxFlat {BackgroundColor = new Color(55, 55, 68)};
+            var itemListItemBackground = new StyleBoxFlat { BackgroundColor = new Color(55, 55, 68) };
             itemListItemBackground.SetContentMarginOverride(StyleBox.Margin.Vertical, 2);
             itemListItemBackground.SetContentMarginOverride(StyleBox.Margin.Horizontal, 4);
-            var itemListItemBackgroundTransparent = new StyleBoxFlat {BackgroundColor = Color.Transparent};
+            var itemListItemBackgroundTransparent = new StyleBoxFlat { BackgroundColor = Color.Transparent };
             itemListItemBackgroundTransparent.SetContentMarginOverride(StyleBox.Margin.Vertical, 2);
             itemListItemBackgroundTransparent.SetContentMarginOverride(StyleBox.Margin.Horizontal, 4);
+            //Radium-start
+            var surgeryItemListItemBackground = new StyleBoxFlat { BackgroundColor = new Color(62, 96, 137) };
+            var surgeryItemListItemDisabledBackground = new StyleBoxFlat { BackgroundColor = new Color(86, 87, 88) };
+            var surgeryItemListItemSelectedBackground = new StyleBoxFlat { BackgroundColor = new Color(76, 180, 76) };
+            //Radium-end
 
             var squareTex = resCache.GetTexture("/Textures/Interface/Nano/square.png");
             var listContainerButton = new StyleBoxTexture
@@ -494,9 +508,9 @@ namespace Content.Client.Stylesheets
             sliderForeBox.SetPatchMargin(StyleBox.Margin.All, 12);
             sliderGrabBox.SetPatchMargin(StyleBox.Margin.All, 12);
 
-            var sliderFillGreen = new StyleBoxTexture(sliderFillBox) {Modulate = Color.LimeGreen};
-            var sliderFillRed = new StyleBoxTexture(sliderFillBox) {Modulate = Color.Red};
-            var sliderFillBlue = new StyleBoxTexture(sliderFillBox) {Modulate = Color.Blue};
+            var sliderFillGreen = new StyleBoxTexture(sliderFillBox) { Modulate = Color.LimeGreen };
+            var sliderFillRed = new StyleBoxTexture(sliderFillBox) { Modulate = Color.Red };
+            var sliderFillBlue = new StyleBoxTexture(sliderFillBox) { Modulate = Color.Blue };
             var sliderFillWhite = new StyleBoxTexture(sliderFillBox) { Modulate = Color.White };
 
             var boxFont13 = resCache.GetFont("/Fonts/Boxfont-round/Boxfont Round.ttf", 13);
@@ -521,7 +535,8 @@ namespace Content.Client.Stylesheets
 
             // south-facing arrow:
             var directionIconArrowTex = resCache.GetTexture("/Textures/Interface/VerbIcons/drop.svg.192dpi.png");
-            var directionIconQuestionTex = resCache.GetTexture("/Textures/Interface/VerbIcons/information.svg.192dpi.png");
+            var directionIconQuestionTex =
+                resCache.GetTexture("/Textures/Interface/VerbIcons/information.svg.192dpi.png");
             var directionIconHereTex = resCache.GetTexture("/Textures/Interface/VerbIcons/dot.svg.192dpi.png");
 
             Stylesheet = new Stylesheet(BaseRules.Concat(new[]
@@ -530,7 +545,7 @@ namespace Content.Client.Stylesheets
                     .Prop("font", notoSansMono),
                 // Window title.
                 new StyleRule(
-                    new SelectorElement(typeof(Label), new[] {DefaultWindow.StyleClassWindowTitle}, null, null),
+                    new SelectorElement(typeof(Label), new[] { DefaultWindow.StyleClassWindowTitle }, null, null),
                     new[]
                     {
                         new StyleProperty(Label.StylePropertyFontColor, NanoGold),
@@ -538,7 +553,7 @@ namespace Content.Client.Stylesheets
                     }),
                 // Alert (white) window title.
                 new StyleRule(
-                    new SelectorElement(typeof(Label), new[] {"windowTitleAlert"}, null, null),
+                    new SelectorElement(typeof(Label), new[] { "windowTitleAlert" }, null, null),
                     new[]
                     {
                         new StyleProperty(Label.StylePropertyFontColor, Color.White),
@@ -546,54 +561,55 @@ namespace Content.Client.Stylesheets
                     }),
                 // Window background.
                 new StyleRule(
-                    new SelectorElement(null, new[] {DefaultWindow.StyleClassWindowPanel}, null, null),
+                    new SelectorElement(null, new[] { DefaultWindow.StyleClassWindowPanel }, null, null),
                     new[]
                     {
                         new StyleProperty(PanelContainer.StylePropertyPanel, windowBackground),
                     }),
                 // bordered window background
                 new StyleRule(
-                    new SelectorElement(null, new[] {StyleClassBorderedWindowPanel}, null, null),
+                    new SelectorElement(null, new[] { StyleClassBorderedWindowPanel }, null, null),
                     new[]
                     {
                         new StyleProperty(PanelContainer.StylePropertyPanel, borderedWindowBackground),
                     }),
                 new StyleRule(
-                    new SelectorElement(null, new[] {StyleClassTransparentBorderedWindowPanel}, null, null),
+                    new SelectorElement(null, new[] { StyleClassTransparentBorderedWindowPanel }, null, null),
                     new[]
                     {
                         new StyleProperty(PanelContainer.StylePropertyPanel, borderedTransparentWindowBackground),
                     }),
                 // inventory slot background
                 new StyleRule(
-                    new SelectorElement(null, new[] {StyleClassInventorySlotBackground}, null, null),
+                    new SelectorElement(null, new[] { StyleClassInventorySlotBackground }, null, null),
                     new[]
                     {
                         new StyleProperty(PanelContainer.StylePropertyPanel, invSlotBg),
                     }),
                 // hand slot highlight
                 new StyleRule(
-                    new SelectorElement(null, new[] {StyleClassHandSlotHighlight}, null, null),
+                    new SelectorElement(null, new[] { StyleClassHandSlotHighlight }, null, null),
                     new[]
                     {
                         new StyleProperty(PanelContainer.StylePropertyPanel, handSlotHighlight),
                     }),
                 // Hotbar background
-                new StyleRule(new SelectorElement(typeof(PanelContainer), new[] {StyleClassHotbarPanel}, null, null),
+                new StyleRule(new SelectorElement(typeof(PanelContainer), new[] { StyleClassHotbarPanel }, null, null),
                     new[]
                     {
                         new StyleProperty(PanelContainer.StylePropertyPanel, hotbarBackground),
                     }),
                 // Window header.
                 new StyleRule(
-                    new SelectorElement(typeof(PanelContainer), new[] {DefaultWindow.StyleClassWindowHeader}, null, null),
+                    new SelectorElement(typeof(PanelContainer), new[] { DefaultWindow.StyleClassWindowHeader }, null,
+                        null),
                     new[]
                     {
                         new StyleProperty(PanelContainer.StylePropertyPanel, windowHeader),
                     }),
                 // Alert (red) window header.
                 new StyleRule(
-                    new SelectorElement(typeof(PanelContainer), new[] {"windowHeaderAlert"}, null, null),
+                    new SelectorElement(typeof(PanelContainer), new[] { "windowHeaderAlert" }, null, null),
                     new[]
                     {
                         new StyleProperty(PanelContainer.StylePropertyPanel, windowHeaderAlert),
@@ -676,8 +692,9 @@ namespace Content.Client.Stylesheets
                     .Prop(Control.StylePropertyModulateSelf, ButtonColorCautionDisabled),
 
                 new StyleRule(new SelectorChild(
-                    new SelectorElement(typeof(Button), null, null, new[] {ContainerButton.StylePseudoClassDisabled}),
-                    new SelectorElement(typeof(Label), null, null, null)),
+                        new SelectorElement(typeof(Button), null, null,
+                            new[] { ContainerButton.StylePseudoClassDisabled }),
+                        new SelectorElement(typeof(Label), null, null, null)),
                     new[]
                     {
                         new StyleProperty("font-color", Color.FromHex("#E5E5E581")),
@@ -817,8 +834,8 @@ namespace Content.Client.Stylesheets
 
                 // Main menu: Make those buttons bigger.
                 new StyleRule(new SelectorChild(
-                    new SelectorElement(typeof(Button), null, "mainMenu", null),
-                    new SelectorElement(typeof(Label), null, null, null)),
+                        new SelectorElement(typeof(Button), null, "mainMenu", null),
+                        new SelectorElement(typeof(Label), null, null, null)),
                     new[]
                     {
                         new StyleProperty("font", notoSansBold16),
@@ -839,14 +856,14 @@ namespace Content.Client.Stylesheets
                     }),
 
                 new StyleRule(
-                    new SelectorElement(typeof(LineEdit), new[] {LineEdit.StyleClassLineEditNotEditable}, null, null),
+                    new SelectorElement(typeof(LineEdit), new[] { LineEdit.StyleClassLineEditNotEditable }, null, null),
                     new[]
                     {
                         new StyleProperty("font-color", new Color(192, 192, 192)),
                     }),
 
                 new StyleRule(
-                    new SelectorElement(typeof(LineEdit), null, null, new[] {LineEdit.StylePseudoClassPlaceholder}),
+                    new SelectorElement(typeof(LineEdit), null, null, new[] { LineEdit.StylePseudoClassPlaceholder }),
                     new[]
                     {
                         new StyleProperty("font-color", Color.Gray),
@@ -857,21 +874,21 @@ namespace Content.Client.Stylesheets
 
                 // Chat lineedit - we don't actually draw a stylebox around the lineedit itself, we put it around the
                 // input + other buttons, so we must clear the default stylebox
-                new StyleRule(new SelectorElement(typeof(LineEdit), new[] {StyleClassChatLineEdit}, null, null),
+                new StyleRule(new SelectorElement(typeof(LineEdit), new[] { StyleClassChatLineEdit }, null, null),
                     new[]
                     {
                         new StyleProperty(LineEdit.StylePropertyStyleBox, new StyleBoxEmpty()),
                     }),
 
                 // chat subpanels (chat lineedit backing, popup backings)
-                new StyleRule(new SelectorElement(typeof(PanelContainer), new[] {StyleClassChatSubPanel}, null, null),
+                new StyleRule(new SelectorElement(typeof(PanelContainer), new[] { StyleClassChatSubPanel }, null, null),
                     new[]
                     {
                         new StyleProperty(PanelContainer.StylePropertyPanel, chatSubBG),
                     }),
 
                 // Action searchbox lineedit
-                new StyleRule(new SelectorElement(typeof(LineEdit), new[] {StyleClassActionSearchBox}, null, null),
+                new StyleRule(new SelectorElement(typeof(LineEdit), new[] { StyleClassActionSearchBox }, null, null),
                     new[]
                     {
                         new StyleProperty(LineEdit.StylePropertyStyleBox, actionSearchBox),
@@ -895,20 +912,24 @@ namespace Content.Client.Stylesheets
                     }),
 
                 // CheckBox
-                new StyleRule(new SelectorElement(typeof(TextureRect), new [] { CheckBox.StyleClassCheckBox }, null, null), new[]
-                {
-                    new StyleProperty(TextureRect.StylePropertyTexture, checkBoxTextureUnchecked),
-                }),
+                new StyleRule(
+                    new SelectorElement(typeof(TextureRect), new[] { CheckBox.StyleClassCheckBox }, null, null), new[]
+                    {
+                        new StyleProperty(TextureRect.StylePropertyTexture, checkBoxTextureUnchecked),
+                    }),
 
-                new StyleRule(new SelectorElement(typeof(TextureRect), new [] { CheckBox.StyleClassCheckBox, CheckBox.StyleClassCheckBoxChecked }, null, null), new[]
-                {
-                    new StyleProperty(TextureRect.StylePropertyTexture, checkBoxTextureChecked),
-                }),
+                new StyleRule(
+                    new SelectorElement(typeof(TextureRect),
+                        new[] { CheckBox.StyleClassCheckBox, CheckBox.StyleClassCheckBoxChecked }, null, null), new[]
+                    {
+                        new StyleProperty(TextureRect.StylePropertyTexture, checkBoxTextureChecked),
+                    }),
 
-                new StyleRule(new SelectorElement(typeof(BoxContainer), new [] { CheckBox.StyleClassCheckBox }, null, null), new[]
-                {
-                    new StyleProperty(BoxContainer.StylePropertySeparation, 10),
-                }),
+                new StyleRule(
+                    new SelectorElement(typeof(BoxContainer), new[] { CheckBox.StyleClassCheckBox }, null, null), new[]
+                    {
+                        new StyleProperty(BoxContainer.StylePropertySeparation, 10),
+                    }),
 
                 // Tooltip
                 new StyleRule(new SelectorElement(typeof(Tooltip), null, null, null), new[]
@@ -916,95 +937,117 @@ namespace Content.Client.Stylesheets
                     new StyleProperty(PanelContainer.StylePropertyPanel, tooltipBox)
                 }),
 
-                new StyleRule(new SelectorElement(typeof(PanelContainer), new [] { StyleClassTooltipPanel }, null, null), new[]
-                {
-                    new StyleProperty(PanelContainer.StylePropertyPanel, tooltipBox)
-                }),
+                new StyleRule(new SelectorElement(typeof(PanelContainer), new[] { StyleClassTooltipPanel }, null, null),
+                    new[]
+                    {
+                        new StyleProperty(PanelContainer.StylePropertyPanel, tooltipBox)
+                    }),
 
-                new StyleRule(new SelectorElement(typeof(PanelContainer), new[] {"speechBox", "sayBox"}, null, null), new[]
-                {
-                    new StyleProperty(PanelContainer.StylePropertyPanel, tooltipBox)
-                }),
+                new StyleRule(new SelectorElement(typeof(PanelContainer), new[] { "speechBox", "sayBox" }, null, null),
+                    new[]
+                    {
+                        new StyleProperty(PanelContainer.StylePropertyPanel, tooltipBox)
+                    }),
 
-                new StyleRule(new SelectorElement(typeof(PanelContainer), new[] {"speechBox", "whisperBox"}, null, null), new[]
-                {
-                    new StyleProperty(PanelContainer.StylePropertyPanel, whisperBox)
-                }),
+                new StyleRule(
+                    new SelectorElement(typeof(PanelContainer), new[] { "speechBox", "whisperBox" }, null, null), new[]
+                    {
+                        new StyleProperty(PanelContainer.StylePropertyPanel, whisperBox)
+                    }),
 
                 new StyleRule(new SelectorChild(
-                    new SelectorElement(typeof(PanelContainer), new[] {"speechBox", "whisperBox"}, null, null),
-                    new SelectorElement(typeof(RichTextLabel), new[] {"bubbleContent"}, null, null)),
+                        new SelectorElement(typeof(PanelContainer), new[] { "speechBox", "whisperBox" }, null, null),
+                        new SelectorElement(typeof(RichTextLabel), new[] { "bubbleContent" }, null, null)),
                     new[]
-                {
-                    new StyleProperty("font", notoSansItalic12),
-                }),
+                    {
+                        new StyleProperty("font", notoSansItalic12),
+                    }),
 
                 new StyleRule(new SelectorChild(
-                    new SelectorElement(typeof(PanelContainer), new[] {"speechBox", "emoteBox"}, null, null),
-                    new SelectorElement(typeof(RichTextLabel), null, null, null)),
+                        new SelectorElement(typeof(PanelContainer), new[] { "speechBox", "emoteBox" }, null, null),
+                        new SelectorElement(typeof(RichTextLabel), null, null, null)),
                     new[]
-                {
-                    new StyleProperty("font", notoSansItalic12),
-                }),
+                    {
+                        new StyleProperty("font", notoSansItalic12),
+                    }),
 
-                new StyleRule(new SelectorElement(typeof(RichTextLabel), new[] {StyleClassLabelKeyText}, null, null), new[]
-                {
-                    new StyleProperty(Label.StylePropertyFont, notoSansBold12),
-                    new StyleProperty( Control.StylePropertyModulateSelf, NanoGold)
-                }),
+                new StyleRule(new SelectorElement(typeof(RichTextLabel), new[] { StyleClassLabelKeyText }, null, null),
+                    new[]
+                    {
+                        new StyleProperty(Label.StylePropertyFont, notoSansBold12),
+                        new StyleProperty(Control.StylePropertyModulateSelf, NanoGold)
+                    }),
 
                 // alert tooltip
-                new StyleRule(new SelectorElement(typeof(RichTextLabel), new[] {StyleClassTooltipAlertTitle}, null, null), new[]
-                {
-                    new StyleProperty("font", notoSansBold18)
-                }),
-                new StyleRule(new SelectorElement(typeof(RichTextLabel), new[] {StyleClassTooltipAlertDescription}, null, null), new[]
-                {
-                    new StyleProperty("font", notoSans16)
-                }),
-                new StyleRule(new SelectorElement(typeof(RichTextLabel), new[] {StyleClassTooltipAlertCooldown}, null, null), new[]
-                {
-                    new StyleProperty("font", notoSans16)
-                }),
+                new StyleRule(
+                    new SelectorElement(typeof(RichTextLabel), new[] { StyleClassTooltipAlertTitle }, null, null), new[]
+                    {
+                        new StyleProperty("font", notoSansBold18)
+                    }),
+                new StyleRule(
+                    new SelectorElement(typeof(RichTextLabel), new[] { StyleClassTooltipAlertDescription }, null, null),
+                    new[]
+                    {
+                        new StyleProperty("font", notoSans16)
+                    }),
+                new StyleRule(
+                    new SelectorElement(typeof(RichTextLabel), new[] { StyleClassTooltipAlertCooldown }, null, null),
+                    new[]
+                    {
+                        new StyleProperty("font", notoSans16)
+                    }),
 
                 // action tooltip
-                new StyleRule(new SelectorElement(typeof(RichTextLabel), new[] {StyleClassTooltipActionTitle}, null, null), new[]
-                {
-                    new StyleProperty("font", notoSansBold16)
-                }),
-                new StyleRule(new SelectorElement(typeof(RichTextLabel), new[] {StyleClassTooltipActionDescription}, null, null), new[]
-                {
-                    new StyleProperty("font", notoSans15)
-                }),
-                new StyleRule(new SelectorElement(typeof(RichTextLabel), new[] {StyleClassTooltipActionCooldown}, null, null), new[]
-                {
-                    new StyleProperty("font", notoSans15)
-                }),
-                new StyleRule(new SelectorElement(typeof(RichTextLabel), new[] {StyleClassTooltipActionRequirements}, null, null), new[]
-                {
-                    new StyleProperty("font", notoSans15)
-                }),
-                new StyleRule(new SelectorElement(typeof(RichTextLabel), new[] {StyleClassTooltipActionCharges}, null, null), new[]
-                {
-                    new StyleProperty("font", notoSans15)
-                }),
+                new StyleRule(
+                    new SelectorElement(typeof(RichTextLabel), new[] { StyleClassTooltipActionTitle }, null, null),
+                    new[]
+                    {
+                        new StyleProperty("font", notoSansBold16)
+                    }),
+                new StyleRule(
+                    new SelectorElement(typeof(RichTextLabel), new[] { StyleClassTooltipActionDescription }, null,
+                        null), new[]
+                    {
+                        new StyleProperty("font", notoSans15)
+                    }),
+                new StyleRule(
+                    new SelectorElement(typeof(RichTextLabel), new[] { StyleClassTooltipActionCooldown }, null, null),
+                    new[]
+                    {
+                        new StyleProperty("font", notoSans15)
+                    }),
+                new StyleRule(
+                    new SelectorElement(typeof(RichTextLabel), new[] { StyleClassTooltipActionRequirements }, null,
+                        null), new[]
+                    {
+                        new StyleProperty("font", notoSans15)
+                    }),
+                new StyleRule(
+                    new SelectorElement(typeof(RichTextLabel), new[] { StyleClassTooltipActionCharges }, null, null),
+                    new[]
+                    {
+                        new StyleProperty("font", notoSans15)
+                    }),
 
                 // small number for the entity counter in the entity menu
-                new StyleRule(new SelectorElement(typeof(Label), new[] {ContextMenuElement.StyleClassEntityMenuIconLabel}, null, null), new[]
-                {
-                    new StyleProperty("font", notoSans10),
-                    new StyleProperty(Label.StylePropertyAlignMode, Label.AlignMode.Right),
-                }),
+                new StyleRule(
+                    new SelectorElement(typeof(Label), new[] { ContextMenuElement.StyleClassEntityMenuIconLabel }, null,
+                        null), new[]
+                    {
+                        new StyleProperty("font", notoSans10),
+                        new StyleProperty(Label.StylePropertyAlignMode, Label.AlignMode.Right),
+                    }),
 
                 // hotbar slot
-                new StyleRule(new SelectorElement(typeof(RichTextLabel), new[] {StyleClassHotbarSlotNumber}, null, null), new[]
-                {
-                    new StyleProperty("font", notoSansDisplayBold16)
-                }),
+                new StyleRule(
+                    new SelectorElement(typeof(RichTextLabel), new[] { StyleClassHotbarSlotNumber }, null, null), new[]
+                    {
+                        new StyleProperty("font", notoSansDisplayBold16)
+                    }),
 
                 // Entity tooltip
                 new StyleRule(
-                    new SelectorElement(typeof(PanelContainer), new[] {ExamineSystem.StyleClassEntityTooltip}, null,
+                    new SelectorElement(typeof(PanelContainer), new[] { ExamineSystem.StyleClassEntityTooltip }, null,
                         null), new[]
                     {
                         new StyleProperty(PanelContainer.StylePropertyPanel, tooltipBox)
@@ -1014,7 +1057,7 @@ namespace Content.Client.Stylesheets
                 new StyleRule(new SelectorElement(typeof(ItemList), null, null, null), new[]
                 {
                     new StyleProperty(ItemList.StylePropertyBackground,
-                        new StyleBoxFlat {BackgroundColor = new Color(32, 32, 40)}),
+                        new StyleBoxFlat { BackgroundColor = new Color(32, 32, 40) }),
                     new StyleProperty(ItemList.StylePropertyItemBackground,
                         itemListItemBackground),
                     new StyleProperty(ItemList.StylePropertyDisabledItemBackground,
@@ -1022,11 +1065,25 @@ namespace Content.Client.Stylesheets
                     new StyleProperty(ItemList.StylePropertySelectedItemBackground,
                         itemListBackgroundSelected)
                 }),
-
-                new StyleRule(new SelectorElement(typeof(ItemList), new[] {"transparentItemList"}, null, null), new[]
+                //Radium-start
+                new StyleRule(new SelectorElement(typeof(ItemList), new[] { "lumaclass" }, null, null), new[]
+                {
+                    new StyleProperty(ItemList.StylePropertyItemBackground,
+                        surgeryItemListItemBackground),
+                    new StyleProperty(ItemList.StylePropertyDisabledItemBackground,
+                        surgeryItemListItemDisabledBackground),
+                    new StyleProperty(ItemList.StylePropertySelectedItemBackground,
+                        surgeryItemListItemSelectedBackground),
+                    new StyleProperty(ItemList.StylePropertyBackground,
+                        new StyleBoxFlat { BackgroundColor = Color.Transparent }),
+                    new StyleProperty(Label.StylePropertyFont, notoSans8),
+                    new StyleProperty(Label.StylePropertyFontColor, new Color(255, 255, 255)),
+                }),
+                //Radium-end
+                new StyleRule(new SelectorElement(typeof(ItemList), new[] { "transparentItemList" }, null, null), new[]
                 {
                     new StyleProperty(ItemList.StylePropertyBackground,
-                        new StyleBoxFlat {BackgroundColor = Color.Transparent}),
+                        new StyleBoxFlat { BackgroundColor = Color.Transparent }),
                     new StyleProperty(ItemList.StylePropertyItemBackground,
                         itemListItemBackgroundTransparent),
                     new StyleProperty(ItemList.StylePropertyDisabledItemBackground,
@@ -1035,23 +1092,24 @@ namespace Content.Client.Stylesheets
                         itemListBackgroundSelected)
                 }),
 
-                 new StyleRule(new SelectorElement(typeof(ItemList), new[] {"transparentBackgroundItemList"}, null, null), new[]
-                {
-                    new StyleProperty(ItemList.StylePropertyBackground,
-                        new StyleBoxFlat {BackgroundColor = Color.Transparent}),
-                    new StyleProperty(ItemList.StylePropertyItemBackground,
-                        itemListItemBackground),
-                    new StyleProperty(ItemList.StylePropertyDisabledItemBackground,
-                        itemListItemBackgroundDisabled),
-                    new StyleProperty(ItemList.StylePropertySelectedItemBackground,
-                        itemListBackgroundSelected)
-                }),
+                new StyleRule(
+                    new SelectorElement(typeof(ItemList), new[] { "transparentBackgroundItemList" }, null, null), new[]
+                    {
+                        new StyleProperty(ItemList.StylePropertyBackground,
+                            new StyleBoxFlat { BackgroundColor = Color.Transparent }),
+                        new StyleProperty(ItemList.StylePropertyItemBackground,
+                            itemListItemBackground),
+                        new StyleProperty(ItemList.StylePropertyDisabledItemBackground,
+                            itemListItemBackgroundDisabled),
+                        new StyleProperty(ItemList.StylePropertySelectedItemBackground,
+                            itemListBackgroundSelected)
+                    }),
 
                 // Tree
                 new StyleRule(new SelectorElement(typeof(Tree), null, null, null), new[]
                 {
                     new StyleProperty(Tree.StylePropertyBackground,
-                        new StyleBoxFlat {BackgroundColor = new Color(32, 32, 40)}),
+                        new StyleBoxFlat { BackgroundColor = new Color(32, 32, 40) }),
                     new StyleProperty(Tree.StylePropertyItemBoxSelected, new StyleBoxFlat
                     {
                         BackgroundColor = new Color(55, 55, 68),
@@ -1066,21 +1124,22 @@ namespace Content.Client.Stylesheets
                 }),
 
                 new StyleRule(
-                    new SelectorElement(typeof(Label), new[] {Placeholder.StyleClassPlaceholderText}, null, null), new[]
+                    new SelectorElement(typeof(Label), new[] { Placeholder.StyleClassPlaceholderText }, null, null),
+                    new[]
                     {
                         new StyleProperty(Label.StylePropertyFont, notoSans16),
                         new StyleProperty(Label.StylePropertyFontColor, new Color(103, 103, 103, 128)),
                     }),
 
                 // Big Label
-                new StyleRule(new SelectorElement(typeof(Label), new[] {StyleClassLabelHeading}, null, null), new[]
+                new StyleRule(new SelectorElement(typeof(Label), new[] { StyleClassLabelHeading }, null, null), new[]
                 {
                     new StyleProperty(Label.StylePropertyFont, notoSansBold16),
                     new StyleProperty(Label.StylePropertyFontColor, NanoGold),
                 }),
 
                 // Bigger Label
-                new StyleRule(new SelectorElement(typeof(Label), new[] {StyleClassLabelHeadingBigger}, null, null),
+                new StyleRule(new SelectorElement(typeof(Label), new[] { StyleClassLabelHeadingBigger }, null, null),
                     new[]
                     {
                         new StyleProperty(Label.StylePropertyFont, notoSansBold20),
@@ -1088,20 +1147,20 @@ namespace Content.Client.Stylesheets
                     }),
 
                 // Small Label
-                new StyleRule(new SelectorElement(typeof(Label), new[] {StyleClassLabelSubText}, null, null), new[]
+                new StyleRule(new SelectorElement(typeof(Label), new[] { StyleClassLabelSubText }, null, null), new[]
                 {
                     new StyleProperty(Label.StylePropertyFont, notoSans10),
                     new StyleProperty(Label.StylePropertyFontColor, Color.DarkGray),
                 }),
 
                 // Label Key
-                new StyleRule(new SelectorElement(typeof(Label), new[] {StyleClassLabelKeyText}, null, null), new[]
+                new StyleRule(new SelectorElement(typeof(Label), new[] { StyleClassLabelKeyText }, null, null), new[]
                 {
                     new StyleProperty(Label.StylePropertyFont, notoSansBold12),
                     new StyleProperty(Label.StylePropertyFontColor, NanoGold)
                 }),
 
-                new StyleRule(new SelectorElement(typeof(Label), new[] {StyleClassLabelSecondaryColor}, null, null),
+                new StyleRule(new SelectorElement(typeof(Label), new[] { StyleClassLabelSecondaryColor }, null, null),
                     new[]
                     {
                         new StyleProperty(Label.StylePropertyFont, notoSans12),
@@ -1110,25 +1169,25 @@ namespace Content.Client.Stylesheets
 
                 // Big Button
                 new StyleRule(new SelectorChild(
-                    new SelectorElement(typeof(Button), new[] {StyleClassButtonBig}, null, null),
-                    new SelectorElement(typeof(Label), null, null, null)),
+                        new SelectorElement(typeof(Button), new[] { StyleClassButtonBig }, null, null),
+                        new SelectorElement(typeof(Label), null, null, null)),
                     new[]
                     {
                         new StyleProperty("font", notoSans16)
                     }),
 
                 //APC and SMES power state label colors
-                new StyleRule(new SelectorElement(typeof(Label), new[] {StyleClassPowerStateNone}, null, null), new[]
+                new StyleRule(new SelectorElement(typeof(Label), new[] { StyleClassPowerStateNone }, null, null), new[]
                 {
                     new StyleProperty(Label.StylePropertyFontColor, new Color(0.8f, 0.0f, 0.0f))
                 }),
 
-                new StyleRule(new SelectorElement(typeof(Label), new[] {StyleClassPowerStateLow}, null, null), new[]
+                new StyleRule(new SelectorElement(typeof(Label), new[] { StyleClassPowerStateLow }, null, null), new[]
                 {
                     new StyleProperty(Label.StylePropertyFontColor, new Color(0.9f, 0.36f, 0.0f))
                 }),
 
-                new StyleRule(new SelectorElement(typeof(Label), new[] {StyleClassPowerStateGood}, null, null), new[]
+                new StyleRule(new SelectorElement(typeof(Label), new[] { StyleClassPowerStateGood }, null, null), new[]
                 {
                     new StyleProperty(Label.StylePropertyFontColor, new Color(0.024f, 0.8f, 0.0f))
                 }),
@@ -1138,70 +1197,72 @@ namespace Content.Client.Stylesheets
                 // which is NOT the case for the default BaseButton styles (OpenLeft/OpenRight adds extra padding on one of the sides
                 // which makes the TopButton icons appear off-center, which we don't want).
                 new StyleRule(
-                    new SelectorElement(typeof(MenuButton), new[] {ButtonSquare}, null, null),
+                    new SelectorElement(typeof(MenuButton), new[] { ButtonSquare }, null, null),
                     new[]
                     {
                         new StyleProperty(Button.StylePropertyStyleBox, topButtonSquare),
                     }),
 
                 new StyleRule(
-                    new SelectorElement(typeof(MenuButton), new[] {ButtonOpenLeft}, null, null),
+                    new SelectorElement(typeof(MenuButton), new[] { ButtonOpenLeft }, null, null),
                     new[]
                     {
                         new StyleProperty(Button.StylePropertyStyleBox, topButtonOpenLeft),
                     }),
 
                 new StyleRule(
-                    new SelectorElement(typeof(MenuButton), new[] {ButtonOpenRight}, null, null),
+                    new SelectorElement(typeof(MenuButton), new[] { ButtonOpenRight }, null, null),
                     new[]
                     {
                         new StyleProperty(Button.StylePropertyStyleBox, topButtonOpenRight),
                     }),
 
                 new StyleRule(
-                    new SelectorElement(typeof(MenuButton), null, null, new[] {Button.StylePseudoClassNormal}),
+                    new SelectorElement(typeof(MenuButton), null, null, new[] { Button.StylePseudoClassNormal }),
                     new[]
                     {
                         new StyleProperty(Button.StylePropertyModulateSelf, ButtonColorDefault),
                     }),
 
                 new StyleRule(
-                    new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {Button.StylePseudoClassNormal}),
+                    new SelectorElement(typeof(MenuButton), new[] { MenuButton.StyleClassRedTopButton }, null,
+                        new[] { Button.StylePseudoClassNormal }),
                     new[]
                     {
                         new StyleProperty(Button.StylePropertyModulateSelf, ButtonColorDefaultRed),
                     }),
 
                 new StyleRule(
-                    new SelectorElement(typeof(MenuButton), null, null, new[] {Button.StylePseudoClassNormal}),
+                    new SelectorElement(typeof(MenuButton), null, null, new[] { Button.StylePseudoClassNormal }),
                     new[]
                     {
                         new StyleProperty(Button.StylePropertyModulateSelf, ButtonColorDefault),
                     }),
 
                 new StyleRule(
-                    new SelectorElement(typeof(MenuButton), null, null, new[] {Button.StylePseudoClassPressed}),
+                    new SelectorElement(typeof(MenuButton), null, null, new[] { Button.StylePseudoClassPressed }),
                     new[]
                     {
                         new StyleProperty(Button.StylePropertyModulateSelf, ButtonColorPressed),
                     }),
 
                 new StyleRule(
-                    new SelectorElement(typeof(MenuButton), null, null, new[] {Button.StylePseudoClassHover}),
+                    new SelectorElement(typeof(MenuButton), null, null, new[] { Button.StylePseudoClassHover }),
                     new[]
                     {
                         new StyleProperty(Button.StylePropertyModulateSelf, ButtonColorHovered),
                     }),
 
                 new StyleRule(
-                    new SelectorElement(typeof(MenuButton), new[] {MenuButton.StyleClassRedTopButton}, null, new[] {Button.StylePseudoClassHover}),
+                    new SelectorElement(typeof(MenuButton), new[] { MenuButton.StyleClassRedTopButton }, null,
+                        new[] { Button.StylePseudoClassHover }),
                     new[]
                     {
                         new StyleProperty(Button.StylePropertyModulateSelf, ButtonColorHoveredRed),
                     }),
 
                 new StyleRule(
-                    new SelectorElement(typeof(Label), new[] {MenuButton.StyleClassLabelTopButton}, null, null),
+                    new SelectorElement(typeof(Label), new[] { MenuButton.StyleClassLabelTopButton }, null, null),
                     new[]
                     {
                         new StyleProperty(Label.StylePropertyFont, notoSansDisplayBold14),
@@ -1233,7 +1294,7 @@ namespace Content.Client.Stylesheets
                 }),
 
                 // Slider
-                new StyleRule(SelectorElement.Type(typeof(Slider)), new []
+                new StyleRule(SelectorElement.Type(typeof(Slider)), new[]
                 {
                     new StyleProperty(Slider.StylePropertyBackground, sliderBackBox),
                     new StyleProperty(Slider.StylePropertyForeground, sliderForeBox),
@@ -1241,95 +1302,122 @@ namespace Content.Client.Stylesheets
                     new StyleProperty(Slider.StylePropertyFill, sliderFillBox),
                 }),
 
-                new StyleRule(SelectorElement.Type(typeof(ColorableSlider)), new []
+                new StyleRule(SelectorElement.Type(typeof(ColorableSlider)), new[]
                 {
                     new StyleProperty(ColorableSlider.StylePropertyFillWhite, sliderFillWhite),
                     new StyleProperty(ColorableSlider.StylePropertyBackgroundWhite, sliderFillWhite),
                 }),
 
-                new StyleRule(new SelectorElement(typeof(Slider), new []{StyleClassSliderRed}, null, null), new []
+                new StyleRule(new SelectorElement(typeof(Slider), new[] { StyleClassSliderRed }, null, null), new[]
                 {
                     new StyleProperty(Slider.StylePropertyFill, sliderFillRed),
                 }),
 
-                new StyleRule(new SelectorElement(typeof(Slider), new []{StyleClassSliderGreen}, null, null), new []
+                new StyleRule(new SelectorElement(typeof(Slider), new[] { StyleClassSliderGreen }, null, null), new[]
                 {
                     new StyleProperty(Slider.StylePropertyFill, sliderFillGreen),
                 }),
 
-                new StyleRule(new SelectorElement(typeof(Slider), new []{StyleClassSliderBlue}, null, null), new []
+                new StyleRule(new SelectorElement(typeof(Slider), new[] { StyleClassSliderBlue }, null, null), new[]
                 {
                     new StyleProperty(Slider.StylePropertyFill, sliderFillBlue),
                 }),
 
-                new StyleRule(new SelectorElement(typeof(Slider), new []{StyleClassSliderWhite}, null, null), new []
+                new StyleRule(new SelectorElement(typeof(Slider), new[] { StyleClassSliderWhite }, null, null), new[]
                 {
                     new StyleProperty(Slider.StylePropertyFill, sliderFillWhite),
                 }),
 
                 // chat channel option selector
-                new StyleRule(new SelectorElement(typeof(Button), new[] {StyleClassChatChannelSelectorButton}, null, null), new[]
-                {
-                    new StyleProperty(Button.StylePropertyStyleBox, chatChannelButton),
-                }),
+                new StyleRule(
+                    new SelectorElement(typeof(Button), new[] { StyleClassChatChannelSelectorButton }, null, null),
+                    new[]
+                    {
+                        new StyleProperty(Button.StylePropertyStyleBox, chatChannelButton),
+                    }),
                 // chat filter button
-                new StyleRule(new SelectorElement(typeof(ContainerButton), new[] {StyleClassChatFilterOptionButton}, null, null), new[]
-                {
-                    new StyleProperty(ContainerButton.StylePropertyStyleBox, chatFilterButton),
-                }),
-                new StyleRule(new SelectorElement(typeof(ContainerButton), new[] {StyleClassChatFilterOptionButton}, null, new[] {ContainerButton.StylePseudoClassNormal}), new[]
-                {
-                    new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorDefault),
-                }),
-                new StyleRule(new SelectorElement(typeof(ContainerButton), new[] {StyleClassChatFilterOptionButton}, null, new[] {ContainerButton.StylePseudoClassHover}), new[]
-                {
-                    new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorHovered),
-                }),
-                new StyleRule(new SelectorElement(typeof(ContainerButton), new[] {StyleClassChatFilterOptionButton}, null, new[] {ContainerButton.StylePseudoClassPressed}), new[]
-                {
-                    new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorPressed),
-                }),
-                new StyleRule(new SelectorElement(typeof(ContainerButton), new[] {StyleClassChatFilterOptionButton}, null, new[] {ContainerButton.StylePseudoClassDisabled}), new[]
-                {
-                    new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorDisabled),
-                }),
+                new StyleRule(
+                    new SelectorElement(typeof(ContainerButton), new[] { StyleClassChatFilterOptionButton }, null,
+                        null), new[]
+                    {
+                        new StyleProperty(ContainerButton.StylePropertyStyleBox, chatFilterButton),
+                    }),
+                new StyleRule(
+                    new SelectorElement(typeof(ContainerButton), new[] { StyleClassChatFilterOptionButton }, null,
+                        new[] { ContainerButton.StylePseudoClassNormal }), new[]
+                    {
+                        new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorDefault),
+                    }),
+                new StyleRule(
+                    new SelectorElement(typeof(ContainerButton), new[] { StyleClassChatFilterOptionButton }, null,
+                        new[] { ContainerButton.StylePseudoClassHover }), new[]
+                    {
+                        new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorHovered),
+                    }),
+                new StyleRule(
+                    new SelectorElement(typeof(ContainerButton), new[] { StyleClassChatFilterOptionButton }, null,
+                        new[] { ContainerButton.StylePseudoClassPressed }), new[]
+                    {
+                        new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorPressed),
+                    }),
+                new StyleRule(
+                    new SelectorElement(typeof(ContainerButton), new[] { StyleClassChatFilterOptionButton }, null,
+                        new[] { ContainerButton.StylePseudoClassDisabled }), new[]
+                    {
+                        new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorDisabled),
+                    }),
 
                 // OptionButton
                 new StyleRule(new SelectorElement(typeof(OptionButton), null, null, null), new[]
                 {
                     new StyleProperty(ContainerButton.StylePropertyStyleBox, BaseButton),
                 }),
-                new StyleRule(new SelectorElement(typeof(OptionButton), null, null, new[] {ContainerButton.StylePseudoClassNormal}), new[]
-                {
-                    new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorDefault),
-                }),
-                new StyleRule(new SelectorElement(typeof(OptionButton), null, null, new[] {ContainerButton.StylePseudoClassHover}), new[]
-                {
-                    new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorHovered),
-                }),
-                new StyleRule(new SelectorElement(typeof(OptionButton), null, null, new[] {ContainerButton.StylePseudoClassPressed}), new[]
-                {
-                    new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorPressed),
-                }),
-                new StyleRule(new SelectorElement(typeof(OptionButton), null, null, new[] {ContainerButton.StylePseudoClassDisabled}), new[]
-                {
-                    new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorDisabled),
-                }),
+                new StyleRule(
+                    new SelectorElement(typeof(OptionButton), null, null,
+                        new[] { ContainerButton.StylePseudoClassNormal }), new[]
+                    {
+                        new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorDefault),
+                    }),
+                new StyleRule(
+                    new SelectorElement(typeof(OptionButton), null, null,
+                        new[] { ContainerButton.StylePseudoClassHover }), new[]
+                    {
+                        new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorHovered),
+                    }),
+                new StyleRule(
+                    new SelectorElement(typeof(OptionButton), null, null,
+                        new[] { ContainerButton.StylePseudoClassPressed }), new[]
+                    {
+                        new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorPressed),
+                    }),
+                new StyleRule(
+                    new SelectorElement(typeof(OptionButton), null, null,
+                        new[] { ContainerButton.StylePseudoClassDisabled }), new[]
+                    {
+                        new StyleProperty(Control.StylePropertyModulateSelf, ButtonColorDisabled),
+                    }),
 
-                new StyleRule(new SelectorElement(typeof(TextureRect), new[] {OptionButton.StyleClassOptionTriangle}, null, null), new[]
-                {
-                    new StyleProperty(TextureRect.StylePropertyTexture, textureInvertedTriangle),
-                    //new StyleProperty(Control.StylePropertyModulateSelf, Color.FromHex("#FFFFFF")),
-                }),
+                new StyleRule(
+                    new SelectorElement(typeof(TextureRect), new[] { OptionButton.StyleClassOptionTriangle }, null,
+                        null), new[]
+                    {
+                        new StyleProperty(TextureRect.StylePropertyTexture, textureInvertedTriangle),
+                        //new StyleProperty(Control.StylePropertyModulateSelf, Color.FromHex("#FFFFFF")),
+                    }),
 
-                new StyleRule(new SelectorElement(typeof(Label), new[] { OptionButton.StyleClassOptionButton }, null, null), new[]
-                {
-                    new StyleProperty(Label.StylePropertyAlignMode, Label.AlignMode.Center),
-                }),
+                new StyleRule(
+                    new SelectorElement(typeof(Label), new[] { OptionButton.StyleClassOptionButton }, null, null), new[]
+                    {
+                        new StyleProperty(Label.StylePropertyAlignMode, Label.AlignMode.Center),
+                    }),
 
-                new StyleRule(new SelectorElement(typeof(PanelContainer), new []{ ClassHighDivider}, null, null), new []
+                new StyleRule(new SelectorElement(typeof(PanelContainer), new[] { ClassHighDivider }, null, null), new[]
                 {
-                    new StyleProperty(PanelContainer.StylePropertyPanel, new StyleBoxFlat { BackgroundColor = NanoGold, ContentMarginBottomOverride = 2, ContentMarginLeftOverride = 2}),
+                    new StyleProperty(PanelContainer.StylePropertyPanel,
+                        new StyleBoxFlat
+                        {
+                            BackgroundColor = NanoGold, ContentMarginBottomOverride = 2, ContentMarginLeftOverride = 2
+                        }),
                 }),
 
                 // Labels ---
@@ -1337,7 +1425,7 @@ namespace Content.Client.Stylesheets
                     .Prop(Label.StylePropertyFont, notoSans16),
 
                 Element<Label>().Class(StyleClassLabelSmall)
-                 .Prop(Label.StylePropertyFont, notoSans10),
+                    .Prop(Label.StylePropertyFont, notoSans10),
                 // ---
 
                 // Different Background shapes ---
@@ -1386,7 +1474,8 @@ namespace Content.Client.Stylesheets
 
                 // Window Footer
                 Element<TextureRect>().Class("NTLogoDark")
-                    .Prop(TextureRect.StylePropertyTexture, resCache.GetTexture("/Textures/Interface/Nano/ntlogo.svg.png"))
+                    .Prop(TextureRect.StylePropertyTexture,
+                        resCache.GetTexture("/Textures/Interface/Nano/ntlogo.svg.png"))
                     .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#757575")),
 
                 Element<Label>().Class("WindowFooterText")
@@ -1395,7 +1484,8 @@ namespace Content.Client.Stylesheets
 
                 // X Texture button ---
                 Element<TextureButton>().Class("CrossButtonRed")
-                    .Prop(TextureButton.StylePropertyTexture, resCache.GetTexture("/Textures/Interface/Nano/cross.svg.png"))
+                    .Prop(TextureButton.StylePropertyTexture,
+                        resCache.GetTexture("/Textures/Interface/Nano/cross.svg.png"))
                     .Prop(Control.StylePropertyModulateSelf, DangerousRedFore),
 
                 Element<TextureButton>().Class("CrossButtonRed").Pseudo(TextureButton.StylePseudoClassHover)
@@ -1407,10 +1497,12 @@ namespace Content.Client.Stylesheets
 
                 // Profile Editor
                 Element<TextureButton>().Class("SpeciesInfoDefault")
-                    .Prop(TextureButton.StylePropertyTexture, resCache.GetTexture("/Textures/Interface/VerbIcons/information.svg.192dpi.png")),
+                    .Prop(TextureButton.StylePropertyTexture,
+                        resCache.GetTexture("/Textures/Interface/VerbIcons/information.svg.192dpi.png")),
 
                 Element<TextureButton>().Class("SpeciesInfoWarning")
-                    .Prop(TextureButton.StylePropertyTexture, resCache.GetTexture("/Textures/Interface/info.svg.192dpi.png"))
+                    .Prop(TextureButton.StylePropertyTexture,
+                        resCache.GetTexture("/Textures/Interface/info.svg.192dpi.png"))
                     .Prop(Control.StylePropertyModulateSelf, Color.FromHex("#eeee11")),
 
                 // The default look of paper in UIs. Pages can have components which override this
