@@ -71,9 +71,14 @@ public sealed partial class SurgerySystem
             {
                 return;
             }
+
             _xformSystem.AttachToGridOrMap(ev.PartUid);
-            var slotg = _bodySystem.GetBodyAllSlots(ev.Uid).First(g => g.Type == partType);
-            _bodySystem.AttachPart(root.Value.Entity, slotg.Id, ev.PartUid);
+            var slotgId = _bodySystem.GetBodyAllSlots(ev.Uid).First(g => g.Type == partType).Id;
+            slotgId = Enum.Parse<BodyPartSymmetry>(surgeryInProgressComponent.Symmetry.ToString()) ==
+                      BodyPartSymmetry.Left
+                ? slotgId.Replace("right", "left")
+                : slotgId.Replace("left", "right");
+            _bodySystem.AttachPart(root.Value.Entity, slotgId, ev.PartUid);
             return;
         }
 
@@ -124,7 +129,6 @@ public sealed partial class SurgerySystem
             g.Component.Symmetry == ev.Symmetry).ToList();
         if (damagedParts.ToList().Count == 0)
         {
-
             if (surgeryInProgressComponent.CurrentStep != null)
                 surgeryInProgressComponent.CurrentStep.Repeatable = false;
             return;
@@ -215,7 +219,7 @@ public sealed partial class SurgerySystem
             var part = damagedPart.Component.Wounds.Where(e => e.Type == WoundTypeEnum.Blunt).ToList();
             if (part.ToList().Count != 0)
             {
-                damagedPart.Component.Wounds.RemoveAll( i => i.Type == WoundTypeEnum.Blunt);
+                damagedPart.Component.Wounds.RemoveAll(i => i.Type == WoundTypeEnum.Blunt);
                 _popupSystem.PopupEntity("Кость восстановлена.", ev.Uid, PopupType.LargeGreen);
             }
 
@@ -233,7 +237,7 @@ public sealed partial class SurgerySystem
         var operation = _prototypeManager.Index<SurgeryOperationPrototype>(ev.PrototypeId);
         var damagedParts = _bodySystem.GetBodyChildren(ev.Uid).Where(g =>
             g.Component.Wounds.Count is > 0 and < 5 &&
-            g.Component.Wounds.Where(i => i.Type == WoundTypeEnum.Blunt).ToList().Count !=0 &&
+            g.Component.Wounds.Where(i => i.Type == WoundTypeEnum.Blunt).ToList().Count != 0 &&
             g.Component.PartType == Enum.Parse<BodyPartType>(operation.BodyPart) &&
             g.Component.Symmetry == ev.Symmetry).ToList();
         if (damagedParts.ToList().Count == 0)

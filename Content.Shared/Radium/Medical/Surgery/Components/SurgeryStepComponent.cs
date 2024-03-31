@@ -5,15 +5,14 @@ using YamlDotNet.Core.Tokens;
 
 namespace Content.Shared.Radium.Medical.Surgery.Components;
 
-[DataDefinition, RegisterComponent]
+[RegisterComponent]
 public sealed partial class SurgeryStepComponent : Component
 {
-    public SurgeryStepComponent(LocId name, LocId description, string? icon)
-    {
-        Name = name;
-        Description = description;
-        Icon = icon;
-    }
+    [DataField("repeatable")]
+    public bool Repeatable;
+
+    [DataField("repeatIndex")]
+    public int RepeatIndex;
 
     [DataField]
     private LocId Name { get; set; }
@@ -29,12 +28,6 @@ public sealed partial class SurgeryStepComponent : Component
 
     [DataField]
     public string? Icon { get; set; }
-
-    [DataField("repeatable")]
-    public bool Repeatable;
-
-    [DataField("repeatIndex")]
-    public int RepeatIndex;
 
     [DataField("action", required: true)]
     public Enum Key = default!;

@@ -26,7 +26,7 @@ public sealed partial class SurgeryOperationPrototype : IPrototype
     public string LocalizedDescription => Loc.GetString(Description);
 
     [DataField("bodyPart")]
-    public string BodyPart { get; private set; } = "Head";
+    public string BodyPart { get; set; } = "Head";
 
     [DataField]
     public SpriteSpecifier? Icon { get; private set; }

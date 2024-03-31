@@ -26,6 +26,7 @@ using Content.Shared.Radium.Medical.Surgery.Components;
 using Content.Shared.Radium.Medical.Surgery.Events;
 using Content.Shared.Radium.Medical.Surgery.Prototypes;
 using Content.Shared.Radium.Medical.Surgery.Systems;
+using Content.Shared.Stacks;
 using Content.Shared.Weapons.Melee;
 using Robust.Server.Player;
 using Robust.Shared.Player;
@@ -392,6 +393,8 @@ public sealed partial class SurgerySystem : EntitySystem
                 out var surgeryOperationPrototype) || surgeryOperationPrototype.Steps == null ||
             !TryComp<SurgeryInProgressComponent>(args.Target, out var surgery))
             return;
+        _prototypeManager.TryIndex<SurgeryOperationPrototype>(component.SurgeryPrototypeId,
+            out var test);
         var nextStep = surgery.CurrentStep;
         if (surgery.CurrentStep is { Repeatable: true })
         {
@@ -418,6 +421,7 @@ public sealed partial class SurgerySystem : EntitySystem
             nextStep = operation.Steps[repeatIndex];
 
             nextStep.StepIndex = surgery.CurrentStep.RepeatIndex;
+            nextStep.Repeatable = true;
             surgery.CurrentStep = nextStep;
             return;
         }
@@ -425,13 +429,18 @@ public sealed partial class SurgerySystem : EntitySystem
         Check:
         if (surgery.CurrentStep != null && surgeryOperationPrototype.Steps.Count == surgery.CurrentStep.StepIndex + 1)
         {
-            if (args.Used != null)
+            if (args.Used != null && HasComp<StackComponent>(args.Used))
+            {
                 _stackSystem.Use(args.Used.Value, 1);
+            }
+
+
             var type = _reflectionManager.LooseGetType(surgeryOperationPrototype.EventKey);
             object? ev = null;
             if (component.CurrentStep != null)
             {
-                var stepAction = Enum.Parse<SurgeryTypeEnum>(component.CurrentStep.Key.ToString());
+                var stepAction = Enum.Parse<SurgeryTypeEnum>(surgeryOperationPrototype
+                    .Steps[component.CurrentStep.StepIndex - 1].Key.ToString());
                 if (stepAction is not
                     (SurgeryTypeEnum.AddPart or SurgeryTypeEnum.AddAdditionalPart))
                 {
@@ -484,7 +493,10 @@ public sealed partial class SurgerySystem : EntitySystem
             }
         }
 
-        surgery.CurrentStep = nextStep;
+        if (HasComp<SurgeryInProgressComponent>(uid))
+        {
+            surgery.CurrentStep = nextStep;
+        }
 
         UpdateStepIcon(ref surgery);
     }
@@ -495,6 +507,10 @@ public sealed partial class SurgerySystem : EntitySystem
         float time;
         if (!_prototypeManager.TryIndex<SurgeryOperationPrototype>(component.SurgeryPrototypeId!, out var operation))
             return;
+        if (operation.BodyPart == "Eyes")
+        {
+            operation.BodyPart = "Head";
+        }
         var origin = Enum.Parse<BodyPartType>(operation.BodyPart);
         var additionalPart = origin switch
         {
@@ -507,8 +523,14 @@ public sealed partial class SurgerySystem : EntitySystem
 
         var key = Enum.Parse<SurgeryTypeEnum>(component.CurrentStep.Key.ToString());
         if (TryComp<BodyPartComponent>(args.Used, out var partUsed) &&
-            (key == SurgeryTypeEnum.AddPart && partUsed.PartType == origin
-             || key == SurgeryTypeEnum.AddAdditionalPart && partUsed.PartType == additionalPart))
+            (
+                key == SurgeryTypeEnum.AddPart &&
+                partUsed.PartType == origin &&
+                partUsed.Symmetry == Enum.Parse<BodyPartSymmetry>(component.Symmetry.ToString())
+                || key == SurgeryTypeEnum.AddAdditionalPart &&
+                partUsed.PartType == additionalPart &&
+                partUsed.Symmetry == Enum.Parse<BodyPartSymmetry>(component.Symmetry.ToString())
+            ))
         {
             time = 15f;
             goto G;
@@ -581,7 +603,7 @@ public sealed partial class SurgerySystem : EntitySystem
             component.CurrentStep.Icon = component.CurrentStep.Key switch
             {
                 //Refer to RSI instead... TODO
-                SurgeryTypeEnum.Bandage => "/Texture/Objects/Specific/Medical/medical.rsi/medicated-suture.png",
+                SurgeryTypeEnum.Bandage => "/Texture/Objects/Specific/Medical/medical.rsi/gauze.png",
                 SurgeryTypeEnum.Burn => "/Textures/Objects/Specific/Medical/Surgery/cautery.rsi/cautery.png",
                 SurgeryTypeEnum.Clamp => "/Textures/Objects/Specific/Medical/Surgery/scissors.rsi/hemostat.png",
                 SurgeryTypeEnum.Cut => "/Textures/Objects/Specific/Medical/Surgery/saw.rsi/advanced.png",
@@ -590,8 +612,8 @@ public sealed partial class SurgerySystem : EntitySystem
                 SurgeryTypeEnum.Repair => "/Textures/Radium/Objects/Specific/Medical/healing.rsi/bone_mesh.png",
                 SurgeryTypeEnum.Retract => "/Textures/Objects/Specific/Medical/Surgery/scissors.rsi/retractor.png",
                 SurgeryTypeEnum.Revive => "/Textures/Objects/Specific/Medical/defib.rsi/icon.png",
-                SurgeryTypeEnum.AddPart => "/Textures/Objects/Specific/Medical/handheldcrewmonitor.rsi",
-                SurgeryTypeEnum.AddAdditionalPart => "/Textures/Objects/Specific/Medical/handheldcrewmonitor.rsi",
+                SurgeryTypeEnum.AddPart => "/Textures/Objects/Specific/Medical/handheldcrewmonitor.rsi/icon.png",
+                SurgeryTypeEnum.AddAdditionalPart => "/Textures/Objects/Specific/Medical/handheldcrewmonitor.rsi/icon.png",
                 _ => component.CurrentStep.Icon
             };
         }

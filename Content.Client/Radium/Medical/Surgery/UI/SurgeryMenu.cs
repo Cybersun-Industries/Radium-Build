@@ -273,12 +273,12 @@ public sealed class SurgeryMenu : DefaultWindow
                     case >= 36 and <= 57:
                         //left leg
                         DollContainer.TexturePath = "/Textures/Radium/Interface/Surgery/surgery_leg_left.png";
-                        CurrentSelection = "LLeg";
+                        CurrentSelection = "RLeg";
                         break;
                     case >= 63 and <= 88:
                         //right leg
                         DollContainer.TexturePath = "/Textures/Radium/Interface/Surgery/surgery_leg_right.png";
-                        CurrentSelection = "RLeg";
+                        CurrentSelection = "LLeg";
                         break;
                 }
 
