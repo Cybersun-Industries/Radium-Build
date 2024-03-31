@@ -1,0 +1,82 @@
+﻿- type: entity
+  id: ClownBadMigration
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-badclown-start-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    startDelay: 10
+    earliestStart: 5
+    minimumPlayers: 10
+    duration: 60
+  - type: VentCrittersRule
+    entries:
+    - id: MobClownBad
+      prob: 0.05
+
+- type: entity
+  id: ClownPepeMigration
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-badclown-start-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    startDelay: 10
+    earliestStart: 5
+    minimumPlayers: 10
+    duration: 60
+  - type: VentCrittersRule
+    entries:
+    - id: MobClownPepe
+      prob: 0.07
+
+- type: entity
+  id: ClownPepeBallMigration
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-badclown-start-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    startDelay: 10
+    earliestStart: 5
+    minimumPlayers: 10
+    duration: 60
+  - type: VentCrittersRule
+    entries:
+    - id: MobClownPepeBall
+      prob: 0.03
+
+  id: RealTysonMigration
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    startAnnouncement: station-event-vent-creatures-tyson-start-announcement
+    startAudio:
+      path: /Audio/Announcements/attention.ogg
+    startDelay: 10
+    earliestStart: 5
+    minimumPlayers: 10
+    duration: 60
+  - type: VentCrittersRule
+    entries:
+    - id: MobTysonReal
+      prob: 0.04
+
+- type: entity
+  parent: BaseGameRule
+  id: MaxwellSpawn
+  noSpawn: true
+  components:
+  - type: StationEvent
+    duration: 1
+    earliestStart: 45
+    minimumPlayers: 10
+  - type: RandomSpawnRule
+    prototype: maxwell
