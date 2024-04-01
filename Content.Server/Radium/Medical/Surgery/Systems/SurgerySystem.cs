@@ -600,20 +600,20 @@ public sealed partial class SurgerySystem : EntitySystem
     {
         if (component.CurrentStep != null)
         {
+
             component.CurrentStep.Icon = component.CurrentStep.Key switch
             {
-                //Refer to RSI instead... TODO
-                SurgeryTypeEnum.Bandage => "/Texture/Objects/Specific/Medical/medical.rsi/gauze.png",
-                SurgeryTypeEnum.Burn => "/Textures/Objects/Specific/Medical/Surgery/cautery.rsi/cautery.png",
-                SurgeryTypeEnum.Clamp => "/Textures/Objects/Specific/Medical/Surgery/scissors.rsi/hemostat.png",
-                SurgeryTypeEnum.Cut => "/Textures/Objects/Specific/Medical/Surgery/saw.rsi/advanced.png",
-                SurgeryTypeEnum.Filter => "/Textures/Objects/Specific/Medical/medical.rsi/bloodpack.png",
-                SurgeryTypeEnum.Incise => "/Textures/Objects/Specific/Medical/Surgery/scalpel.rsi/advanced.png",
-                SurgeryTypeEnum.Repair => "/Textures/Radium/Objects/Specific/Medical/healing.rsi/bone_mesh.png",
-                SurgeryTypeEnum.Retract => "/Textures/Objects/Specific/Medical/Surgery/scissors.rsi/retractor.png",
-                SurgeryTypeEnum.Revive => "/Textures/Objects/Specific/Medical/defib.rsi/icon.png",
-                SurgeryTypeEnum.AddPart => "/Textures/Objects/Specific/Medical/handheldcrewmonitor.rsi/icon.png",
-                SurgeryTypeEnum.AddAdditionalPart => "/Textures/Objects/Specific/Medical/handheldcrewmonitor.rsi/icon.png",
+                SurgeryTypeEnum.Bandage => "gauze",
+                SurgeryTypeEnum.Burn => "cautery",
+                SurgeryTypeEnum.Clamp => "hemostat",
+                SurgeryTypeEnum.Cut => "saw",
+                SurgeryTypeEnum.Filter => "bloodpack",
+                SurgeryTypeEnum.Incise => "laser",
+                SurgeryTypeEnum.Repair => "bone_mesh",
+                SurgeryTypeEnum.Retract => "retractor",
+                SurgeryTypeEnum.Revive => "defibrillator",
+                SurgeryTypeEnum.AddPart => "analyzer",
+                SurgeryTypeEnum.AddAdditionalPart => "analyzer",
                 _ => component.CurrentStep.Icon
             };
         }

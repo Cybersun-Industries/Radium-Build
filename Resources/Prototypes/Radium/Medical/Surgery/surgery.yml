@@ -113,7 +113,7 @@
       desc: surgery-clampAction-desc
       action: enum.SurgeryTypeEnum.Clamp
     - type: SurgeryStep
-      name: surgery-hemostatAction-name
+      name: surgery-eyeAction-name
       desc: surgery-eyeAction-desc
       action: enum.SurgeryTypeEnum.Repair
     - type: SurgeryStep
@@ -141,8 +141,8 @@
       desc: surgery-clampAction-desc
       action: enum.SurgeryTypeEnum.Clamp
     - type: SurgeryStep
-      name: surgery-hemostatAction-name
-      desc: surgery-eyeAction-desc
+      name: surgery-scalpelAction-name
+      desc: surgery-eyeActionB-desc
       action: enum.SurgeryTypeEnum.Incise
     - type: SurgeryStep
       name: surgery-CauteryAction-name
@@ -193,7 +193,7 @@
       name: surgery-BBgStAction-name
       desc: surgery-reapirAction-desc
       action: enum.SurgeryTypeEnum.Repair
-  key: RepairBoneFASurgeryEvent
+  key: RepairBoneFSurgeryEvent
 - type: surgeryOperation
   id: RepairBoneFLOperation
   name: surgery-reapirBFOperation-name

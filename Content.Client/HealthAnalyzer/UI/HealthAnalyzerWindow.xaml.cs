@@ -27,7 +27,6 @@ namespace Content.Client.HealthAnalyzer.UI
         private readonly SpriteSystem _spriteSystem;
         private readonly IPrototypeManager _prototypes;
         private readonly IResourceCache _cache;
-
         //private const int AnalyzerHeight = 430;
         //private const int AnalyzerWidth = 600;
 
@@ -134,8 +133,9 @@ namespace Content.Client.HealthAnalyzer.UI
                 SurgeryProcedureLabel.Text = Loc.GetString("health-analyzer-window-instructions") + " ";
                 SurgeryStep.Text = step.LocalizedName;
                 SurgeryStepDesc.Text = step.LocalizedDescription;
-                if (step.Icon != null)
-                    SurgeryIcon.Texture = _cache.GetResource<TextureResource>(step.Icon);
+                if (step.Icon == null)
+                    return;
+                SurgeryIcon.Texture = _spriteSystem.Frame0(new SpriteSpecifier.Rsi(new ResPath("/Textures/Radium/Interface/instructions.rsi"), step.Icon));
             }
             else
             {

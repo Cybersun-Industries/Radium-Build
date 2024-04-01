@@ -1,0 +1,41 @@
+{
+  "version": 1,
+  "license": null,
+  "copyright": null,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "gauze"
+    },
+    {
+      "name": "cautery"
+    },
+    {
+      "name": "saw"
+    },
+    {
+      "name": "laser"
+    },
+    {
+      "name": "hemostat"
+    },
+    {
+      "name": "retractor"
+    },
+    {
+      "name": "analyzer"
+    },
+    {
+      "name": "bone_mesh"
+    },
+    {
+      "name": "bloodpack"
+    },
+    {
+      "name": "defibrillator"
+    }
+  ]
+}

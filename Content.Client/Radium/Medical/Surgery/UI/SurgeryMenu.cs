@@ -354,6 +354,7 @@ public sealed class SurgeryMenu : DefaultWindow
                         TooltipText = operation.LocalizedDescription,
                         TooltipEnabled = true,
                     });
+                    EyesEventIndexes.Add(0, operation.ID);
                 }
                 else
                 {

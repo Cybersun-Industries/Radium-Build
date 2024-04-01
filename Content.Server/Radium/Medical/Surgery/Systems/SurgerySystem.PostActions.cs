@@ -109,7 +109,6 @@ public sealed partial class SurgerySystem
 
     private void OnEyeBlindSurgeryPostAction(EyeBlindSurgeryEvent ev)
     {
-        _blindableSystem.AdjustEyeDamage(ev.Uid, 100);
         AddComp<PermanentBlindnessComponent>(ev.Uid);
         _blindableSystem.UpdateIsBlind(ev.Uid);
     }
@@ -124,7 +123,7 @@ public sealed partial class SurgerySystem
             return;
         var operation = _prototypeManager.Index<SurgeryOperationPrototype>(ev.PrototypeId);
         var damagedParts = _bodySystem.GetBodyChildren(ev.Uid).Where(g =>
-            g.Component.Wounds.Count is > 0 and < 7 &&
+            g.Component.Wounds.Count > 0 &&
             g.Component.PartType == Enum.Parse<BodyPartType>(operation.BodyPart) &&
             g.Component.Symmetry == ev.Symmetry).ToList();
         if (damagedParts.ToList().Count == 0)
@@ -198,7 +197,7 @@ public sealed partial class SurgerySystem
     {
         var operation = _prototypeManager.Index<SurgeryOperationPrototype>(ev.PrototypeId);
         var damagedParts = _bodySystem.GetBodyChildren(ev.Uid).Where(g =>
-            g.Component.Wounds.Count is > 0 and < 7 &&
+            g.Component.Wounds.Count > 0 &&
             g.Component.PartType == Enum.Parse<BodyPartType>(operation.BodyPart) &&
             g.Component.Symmetry == ev.Symmetry).ToList();
         if (damagedParts.ToList().Count == 0)
@@ -301,10 +300,9 @@ public sealed partial class SurgerySystem
     private void OnEyeSurgeryPostAction(EyeSurgeryEvent ev)
     {
         _statusEffectsSystem.TryRemoveStatusEffect(ev.Uid, TemporaryBlindnessSystem.BlindingStatusEffect);
-        _blindableSystem.AdjustEyeDamage(ev.Uid, -100);
         RemComp<TemporaryBlindnessComponent>(ev.Uid);
         RemComp<PermanentBlindnessComponent>(ev.Uid);
-        _blindableSystem.UpdateIsBlind(ev.Uid);
+        _blindableSystem.AdjustEyeDamage(ev.Uid, -100);
     }
 
     #endregion

@@ -84,6 +84,7 @@ surgery-cauterizeStomachAction-desc = Восстановите нижнюю ча
 surgery-extractImplantAction-desc = Вытащите имплант.
 surgery-brainAction-desc = Проведите операцию на мозге.
 surgery-eyeAction-desc = Вылечите глаз.
+surgery-eyeActionB-desc = Повредите глаз.
 surgery-bypassHemoAction-desc = Соедените сосуды.
 
 surgery-handsAction-name = Руки
