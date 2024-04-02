@@ -25,6 +25,9 @@ seeds-replicapod-display-name = под-репликант
 seeds-clownpod-name = клоун-под
 seeds-clownpod-display-name = клоун-под
 
+seeds-mimepod-name = мим-под
+seeds-mimepod-display-name = мим-под
+
 seeds-honkplant-name = растение клаксона
 seeds-honkplant-display-name = куст клаксона
 

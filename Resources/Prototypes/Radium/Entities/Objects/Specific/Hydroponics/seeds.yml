@@ -90,6 +90,16 @@
 
 - type: entity
   parent: SeedBase
+  name: пакет семян (мим-под)
+  id: MimepodSeeds
+  components:
+  - type: Seed
+    seedId: mimepod
+  - type: Sprite
+    sprite: Radium/Objects/Specific/Hydroponics/mimepod.rsi
+
+- type: entity
+  parent: SeedBase
   name: пакет семян (растение-клаксона)
   id: HonkplantSeeds
   components:
