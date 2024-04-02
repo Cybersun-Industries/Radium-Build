@@ -4,3 +4,14 @@
     jumpsuit: ClothingUniformJumpsuitClown
     shoes: ClothingShoesClown
     mask: ClothingMaskClown
+
+- type: startingGear
+  id: PodMimeGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitMime
+    head: ClothingHeadHatBeret
+    belt: ClothingBeltSuspenders
+    gloves: ClothingHandsGlovesLatex
+    shoes: ClothingShoesColorWhite
+    mask: ClothingMaskMime
+  innerClothingSkirt: ClothingUniformJumpskirtMime
