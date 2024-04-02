@@ -18,7 +18,7 @@
   description: uplink-clustersoap-seeds-desc
   productEntity: ClusterSoap
   cost:
-    Telecrystal: 3
+    Telecrystal: 2
   categories:
   - UplinkJob
   conditions:
