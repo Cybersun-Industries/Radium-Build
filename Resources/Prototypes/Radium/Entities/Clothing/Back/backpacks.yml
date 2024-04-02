@@ -1,0 +1,11 @@
+- type: entity
+  noSpawn: true
+  parent: ClothingBackpackSatchel
+  id: ClothingBackpackSatchelEDrone
+  name: Сумка авиадрона
+  components:
+  - type: Storage
+    maxTotalWeight: 9999
+  - type: Tag
+    tags:
+    - InnateDontDelete
