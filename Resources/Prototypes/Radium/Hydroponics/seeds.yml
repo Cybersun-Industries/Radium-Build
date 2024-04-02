@@ -202,8 +202,8 @@
   mutationPrototypes:
     - clownpod
   lifespan: 40
-  maturation: 5
-  production: 3
+  maturation: 7
+  production: 7
   potency: 2
   yield: 1
 
@@ -216,10 +216,28 @@
   packetPrototype: ClownpodSeeds
   productPrototypes:
     - HumanReplicaClown
+  mutationPrototypes:
+    - mimepod
   harvestRepeat: Repeat
   lifespan: 30
-  maturation: 5
-  production: 3
+  maturation: 7
+  production: 7
+  potency: 2
+  yield: 1
+
+- type: seed
+  id: mimepod
+  name: seeds-mimepod-name
+  noun: seeds-noun-seeds
+  displayName: seeds-mimepod-display-name
+  plantRsi: Radium/Objects/Specific/Hydroponics/mimepod.rsi
+  packetPrototype: MimepodSeeds
+  productPrototypes:
+  - HumanReplicaMime
+  harvestRepeat: Repeat
+  lifespan: 30
+  maturation: 7
+  production: 7
   potency: 2
   yield: 1
 

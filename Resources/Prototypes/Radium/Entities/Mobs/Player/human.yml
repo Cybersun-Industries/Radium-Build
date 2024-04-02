@@ -50,3 +50,29 @@
       factions:
       - NanoTrasen
 #     - Clown
+
+- type: entity
+  parent: MobHuman
+  id: HumanReplicaMime
+  name: Мим репликант
+  components:
+  - type: Icon
+    sprite: Markers/jobs.rsi
+    state: mime
+  - type: GhostRole
+    name: ghost-role-information-replica-mime-name
+    description: ghost-role-information-replica-mime-description
+    rules: ghost-role-information-replica-mime-rules
+  - type: GhostTakeoverAvailable
+  - type: Loadout
+    prototypes: [PodMimeGear]
+  - type: RandomMetadata
+    nameSegments: [mime_names]
+  - type: TriggerOnMobstateChange
+    mobState:
+    - Dead
+  - type: MimePowers
+  - type: FrenchAccent
+  - type: NpcFactionMember
+    factions:
+    - NanoTrasen
