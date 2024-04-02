@@ -26,3 +26,12 @@ ghost-role-information-bad-clown-rules =
 ghost-role-information-pepe-clown-name = Пепе клоун
 ghost-role-information-pepe-clown-description = Honk. Co проводила жуткие эксперименты, чтобы создать гибрид клоуна и лягушки, но все эксперименты провались и Пепе Клоуны сбежали.
 
+ghost-role-information-replica-mime-name = Мим репликант
+ghost-role-information-replica-mime-description =
+    Мистико Тагма Мимон создала репликантские мим-поды для штампования мимов.
+ghost-role-information-replica-mime-rules =
+    Вас вырастили из [color=red]капусты[/color] для помощи [color=white]Мимам[/color] и для создания [color=white]тишины[/color].
+        Вам запрещено кому-либо [color=red]вредить[/color]. Если они, конечно, не навредили [color=white]вам[/color].
+        Вы можете [color=green]устроить[/color] революцию, но при условии что вас будут [color=red]сильно притеснять[/color] либо [color=red]ограничивать[/color] в отношении [color=white]мимов репликантов[/color].
+        Помогайте [color=white]Мимам[/color] во исполнении [color=white]тихих[/color] планов!
+
