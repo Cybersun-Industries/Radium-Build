@@ -1,14 +1,3 @@
-- type: entity
-  noSpawn: true
-  parent: ClothingBackpackSatchel
-  id: BSSClothingBackpackSatchelDrone
-  name: Сумка авиа Дрона
-  components:
-  - type: Storage
-    maxTotalWeight: 9999
-  - type: Tag
-    tags:
-    - InnateDontDelete
 
 - type: entity
   name: Blue Evil Drone
@@ -22,7 +11,7 @@
   - type: BSSDrone
   - type: InnateTool
     tools:
-      - id: BSSClothingBackpackSatchelDrone
+      - id: ClothingBackpackSatchelEDrone
       - id: trayScanner
       - id: Omnitool
       - id: WelderExperimental
