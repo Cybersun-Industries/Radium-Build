@@ -24,7 +24,7 @@
       shader: unshaded
   # spawn animation lasts 3.5 seconds
   - type: TimedDespawn
-    lifetime: 3.5
+    lifetime: 3
   - type: SpawnOnDespawn
     prototype: MobHmom
 
@@ -61,11 +61,11 @@
     allowMovement: true
     makeSentient: true
     name: Хонкоматерь
-    description: Милость  клоунам, смерть не верующим.
+    description: Милость клоунам, смерть неверующим.
   - type: GhostTakeoverAvailable
   - type: CombatMode
   - type: AnnounceOnSpawn
-    message: Хонкоматерь пробудилась
+    message: Хонкоматерь пробудилась!
     sender: Генерал Клувень
     sound:
       path: /Audio/Misc/delta_alt.ogg
