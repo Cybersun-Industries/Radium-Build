@@ -65,8 +65,8 @@
   - type: GhostTakeoverAvailable
   - type: CombatMode
   - type: AnnounceOnSpawn
-    message: Хонкоматерь пробудилась!
-    sender: Генерал Клувень
+    message: honk-awoken
+    sender: honk-sender
     sound:
       path: /Audio/Misc/delta_alt.ogg
     color: cyan
