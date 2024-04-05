@@ -549,15 +549,15 @@
     minimumEntitiesSpawned: 1
     maximumEntitiesSpawned: 2
   - type: MeleeWeapon
-  soundHit:
-      path: /Audio/Weapons/punch3.ogg
-  angle: 0
-  animation: WeaponArcPunch
-  damage:
-    types:
-      Blunt: 8
-      Structural: 10
-      Caustic: 6
+    soundHit:
+       path: /Audio/Weapons/punch3.ogg
+    angle: 0
+    animation: WeaponArcPunch
+    damage:
+      types:
+        Blunt: 8
+        Structural: 10
+        Caustic: 6
 #bss
 - type: entity
   name: Bluespace Slime
