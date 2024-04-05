@@ -1,5 +1,9 @@
+﻿- type: npcFaction
+  id: AshesWizzy
+  hostile:
+    - Ashes
 - type: npcFaction
-  id: Dragon
+  id: Ashes
   hostile:
     - NanoTrasen
     - Syndicate
@@ -9,105 +13,19 @@
     - Blob
     - Flesh
     - Revolutionary
-    - SuperZloy
-
+  friendly:
+    - AshesWizzy
 - type: npcFaction
-  id: NanoTrasen
+  id: Legion
   hostile:
-  - SimpleHostile
-  - Syndicate
-  - Xeno
-  - Zombie
-  - Blob
-  - Flesh
-  - Revolutionary
-  - MalfunctioningRobot
-  - SuperZloy
-
-- type: npcFaction
-  id: Mouse
-  hostile:
+    - NanoTrasen
+    - Syndicate
+    - Xeno
     - PetsNT
-
-- type: npcFaction
-  id: Passive
-
-- type: npcFaction
-  id: PetsNT
-  hostile:
-  - Mouse
-  - SimpleHostile
-  - Zombie
-  - Xeno
-  - Blob
-  - Flesh
-  - SuperZloy
-
-- type: npcFaction
-  id: SimpleHostile
-  hostile:
-  - NanoTrasen
-  - Syndicate
-  - Passive
-  - PetsNT
-  - Zombie
-  - Blob
-  - Flesh
-  - Revolutionary
-  - SuperZloy
-
-- type: npcFaction
-  id: SimpleNeutral
-
-- type: npcFaction
-  id: Syndicate
-  hostile:
-  - NanoTrasen
-  - SimpleHostile
-  - Xeno
-  - PetsNT
-  - Zombie
-  - Blob
-  - Flesh
-  - SuperZloy
-
-- type: npcFaction
-  id: Xeno
-  hostile:
-  - NanoTrasen
-  - Syndicate
-  - Passive
-  - PetsNT
-  - Zombie
-  - Blob
-  - Flesh
-  - Revolutionary
-  - SuperZloy
-
-- type: npcFaction
-  id: Zombie
-  hostile:
-  - NanoTrasen
-  - SimpleNeutral
-  - SimpleHostile
-  - Syndicate
-  - Passive
-  - PetsNT
-  - Blob
-  - Flesh
-  - SuperZloy
-
-
-  - Revolutionary
-
-- type: npcFaction
-  id: Revolutionary
-  hostile:
-  - NanoTrasen
-  - Zombie
-  - SimpleHostile
-  - Dragon
-  - MalfunctioningRobot
-  - Blob
-  - Flesh
-  - SuperZloy
+    - Zombie
+    - Blob
+    - Flesh
+    - Revolutionary
+  friendly:
+    - AshesWizzy
+    - Ashes
