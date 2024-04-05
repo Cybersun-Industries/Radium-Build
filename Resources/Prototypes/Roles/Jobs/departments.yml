@@ -76,6 +76,7 @@
   - MedicalIntern
   - Psychologist
   - Paramedic
+  - Surgeon # Radium
   accountNumber: 1319 #backmen: currency
 
 - type: department
