@@ -1,0 +1,12 @@
+- type: entity
+  id: CrateExoslimeEgg
+  parent: CrateScienceSecure
+  name: Ящик яиц экзослизи
+  description: Содержит яйца экзослизи. Успей до вылупления.
+  components:
+  - type: StorageFill
+    contents:
+      - id: FoodEggSlimeFertilized
+      - id: FoodEggSlimeFertilized
+      - id: FoodEggSlimeFertilized
+      - id: FoodEggSlimeFertilized
