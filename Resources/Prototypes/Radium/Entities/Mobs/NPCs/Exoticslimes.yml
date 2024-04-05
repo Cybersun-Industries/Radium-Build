@@ -1,0 +1,432 @@
+#exotic slimes 
+- type: entity
+  name: basic exo slime
+  id: MobExoSlimes
+  parent: [ SimpleMobBase, MobCombat ]
+  components:
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      120: Dead
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2
+    baseSprintSpeed: 4
+  - type: FootstepModifier
+    footstepSoundCollection:
+      path: /Audio/Effects/Footsteps/slime1.ogg
+      params:
+        volume: 3
+  - type: Tag
+    tags:
+    - FootstepSound
+  - type: Butcherable
+    butcheringType: Knife
+    spawned:
+    - id: FoodMeatSlime
+      amount: 2
+  - type: Respirator
+    damage:
+      types:
+        Asphyxiation: 0.2
+    damageRecovery:
+      types:
+        Asphyxiation: -1.0
+    maxSaturation: 15
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: Slime
+  - type: Bloodstream
+    bloodReagent: Slime
+    bloodlossDamage:
+      types:
+        Bloodloss:
+          0.5
+    bloodlossHealDamage:
+      types:
+        Bloodloss:
+          -0.25
+  - type: Barotrauma
+    damage:
+      types:
+        Blunt: 0.45
+  - type: Reactive
+    groups:
+      Flammable: [ Touch ]
+      Extinguish: [ Touch ]
+    reactions:
+    - reagents: [ Water, SpaceCleaner ]
+      methods: [ Touch ]
+      effects:
+      - !type:WashCreamPieReaction
+    - reagents: [ Water ]
+      methods: [ Touch ]
+      effects:
+      - !type:HealthChange
+        scaled: true
+        damage:
+          types:
+            Heat: 3
+      - !type:PopupMessage
+        type: Local
+        messages: [ "slime-hurt-by-water-popup" ]
+        probability: 0.25
+  - type: Body
+    prototype: Slimes
+    requiredLegs: 1
+  - type: MeleeWeapon
+    soundHit:
+        path: /Audio/Weapons/punch3.ogg
+    angle: 0
+    animation: WeaponArcPunch
+    damage:
+      types:
+        Blunt: 6
+        Structural: 4
+        Caustic: 4
+  - type: InteractionPopup
+    successChance: 0.5
+    interactSuccessString: petting-success-slimes
+    interactFailureString: petting-failure-generic
+  - type: ReplacementAccent
+    accent: slimes
+  - type: Speech
+    speechVerb: Slime
+    speechSounds: Slime
+  - type: TypingIndicator
+    proto: slime
+#egg
+- type: entity
+  id: FoodEggSlimeFertilized
+  name: Slime Egg
+  parent: FoodEgg
+  suffix: Fertilized, Slime, IBoss
+  components:
+  - type: Timer
+  - type: TimedSpawner
+    prototypes:
+    - MobExoBluespaceSlime
+    - MobExoGoldenSlime
+    - MobExoMetalSlime
+    - MobExoPlasmaSlime
+    - MobExoSilverSlime
+    - MobExoCoalSlime
+    - MobExoUranSlime
+    - MobExoBoxSlime
+    - MobExoQuartzSlime
+    intervalSeconds: 300
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: TimedDespawn #delete the egg after the chicken spawns
+    lifetime: 301
+#gold
+- type: entity
+  name: Golden Slime
+  suffix: Iboss
+  id: MobExoGoldenSlime
+  parent: MobExoSlimes
+  description: It looks so much like jelly. I wonder what it tastes like?
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SimpleNeutral
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: Radium/Mobs/Aliens/slimes.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: slimegold
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: slimegold
+      Dead:
+        Base: rainbow_baby_slime_dead
+  - type: TimedSpawner
+    prototypes:
+    - GoldOre1
+    intervalSeconds: 60
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 2
+  - type: MeleeWeapon
+    soundHit:
+       path: /Audio/Weapons/punch3.ogg
+    angle: 0
+    animation: WeaponArcPunch
+    damage:
+      types:
+        Blunt: 8
+        Structural: 10
+        Caustic: 6
+#bss
+- type: entity
+  name: Bluespace Slime
+  suffix: Iboss
+  id: MobExoBluespaceSlime
+  parent: MobExoSlimes
+  description: It looks so much like jelly. I wonder what it tastes like?
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SimpleNeutral
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: Radium/Mobs/Aliens/slimes.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: slimedarkblue
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: slimedarkblue
+      Dead:
+        Base: rainbow_baby_slime_dead
+  - type: TimedSpawner
+    prototypes:
+    - MaterialBluespace1
+    intervalSeconds: 180
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 2
+#metal
+- type: entity
+  name: Metal Slime
+  suffix: Iboss
+  id: MobExoMetalSlime
+  parent: MobExoSlimes
+  description: It looks so much like jelly. I wonder what it tastes like?
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SimpleNeutral
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: Radium/Mobs/Aliens/slimes.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: slimemetal
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: slimemetal
+      Dead:
+        Base: rainbow_baby_slime_dead
+  - type: TimedSpawner
+    prototypes:
+    - SteelOre1
+    intervalSeconds: 70
+    minimumEntitiesSpawned: 2
+    maximumEntitiesSpawned: 4
+#plasma
+- type: entity
+  name: Plasma Slime
+  suffix: Iboss
+  id: MobExoPlasmaSlime
+  parent: MobExoSlimes
+  description: It looks so much like jelly. I wonder what it tastes like?
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SimpleNeutral
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: Radium/Mobs/Aliens/slimes.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: slimepurple
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: slimepurple
+      Dead:
+        Base: rainbow_baby_slime_dead
+  - type: TimedSpawner
+    prototypes:
+    - PlasmaOre1
+    intervalSeconds: 60
+    minimumEntitiesSpawned: 2
+    maximumEntitiesSpawned: 2
+#silver
+- type: entity
+  name: Silver Slime
+  suffix: Iboss
+  id: MobExoSilverSlime
+  parent: MobExoSlimes
+  description: It looks so much like jelly. I wonder what it tastes like?
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SimpleNeutral
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: Radium/Mobs/Aliens/slimes.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: slimesilver
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: slimesilver
+      Dead:
+        Base: rainbow_baby_slime_dead
+  - type: TimedSpawner
+    prototypes:
+    - SilverOre1
+    intervalSeconds: 60
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 2
+#coal
+- type: entity
+  name: Coal Slime
+  suffix: Iboss
+  id: MobExoCoalSlime
+  parent: MobExoSlimes
+  description: It looks so much like jelly. I wonder what it tastes like?
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SimpleNeutral
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: Radium/Mobs/Aliens/slimes.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: slimeblack
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: slimeblack
+      Dead:
+        Base: rainbow_baby_slime_dead
+  - type: TimedSpawner
+    prototypes:
+    - Coal1
+    intervalSeconds: 40
+    minimumEntitiesSpawned: 2
+    maximumEntitiesSpawned: 5
+#uran
+- type: entity
+  name: Uranus Slime
+  suffix: Iboss
+  id: MobExoUranSlime
+  parent: MobExoSlimes
+  description: It looks so much like jelly. I wonder what it tastes like?
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SimpleNeutral
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: Radium/Mobs/Aliens/slimes.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: slimeadamantine
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: slimeadamantine
+      Dead:
+        Base: rainbow_baby_slime_dead
+  - type: TimedSpawner
+    prototypes:
+    - UraniumOre1
+    intervalSeconds: 50
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 4
+#present
+- type: entity
+  name: Present Slime
+  suffix: Iboss
+  id: MobExoBoxSlime
+  parent: MobExoSlimes
+  description: It looks so much like jelly. I wonder what it tastes like?
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SimpleNeutral
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: Radium/Mobs/Aliens/slimes.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: slimered
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: slimeadred
+      Dead:
+        Base: rainbow_baby_slime_dead
+  - type: TimedSpawner
+    prototypes:
+    - PresentRandom
+    - PresentRandomUnsafe
+    - PresentRandomInsane
+    - PresentRandomAsh
+    - Present
+    intervalSeconds: 60
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 1
+  - type: MeleeWeapon
+    soundHit:
+        path: /Audio/Weapons/punch3.ogg
+    angle: 0
+    animation: WeaponArcPunch
+    damage:
+      types:
+        Blunt: 8
+        Structural: 10
+        Caustic: 6
+#quartz
+- type: entity
+  name: Quartz Slime
+  suffix: Iboss
+  id: MobExoQuartzSlime
+  parent: MobExoSlimes
+  description: It looks so much like jelly. I wonder what it tastes like?
+  components:
+  - type: NpcFactionMember
+    factions:
+    - SimpleNeutral
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: Radium/Mobs/Aliens/slimes.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: slimecerculean
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: slimecerculean
+      Dead:
+        Base: rainbow_baby_slime_dead
+  - type: TimedSpawner
+    prototypes:
+    - SpaceQuartz1
+    intervalSeconds: 30
+    minimumEntitiesSpawned: 1
+    maximumEntitiesSpawned: 2
