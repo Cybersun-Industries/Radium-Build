@@ -2,8 +2,6 @@
   id: AshesWizzy
   hostile:
     - Ashes
-  friendly:
-    - 
 - type: npcFaction
   id: Ashes
   hostile:
