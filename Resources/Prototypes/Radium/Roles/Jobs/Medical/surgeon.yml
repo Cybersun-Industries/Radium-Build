@@ -25,13 +25,12 @@
 - type: startingGear
   id: SurgeonGear
   equipment:
-    jumpsuit: ClothingUniformJumpsuitMedicalDoctor
+    jumpsuit: UniformScrubsColorBlue
     back: ClothingBackpackMedicalFilled
     shoes: ClothingShoesColorWhite
     head: ClothingHeadHatSurgcapBlue
     mask: ClothingMaskSterile
     gloves: ClothingHandsGlovesNitrile
-    outerClothing: ClothingOuterCoatLab
     id: SurgeonPDA
     ears: ClothingHeadsetMedical
     belt: ClothingBeltMedicalFilled
