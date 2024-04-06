@@ -1,0 +1,15 @@
+﻿{
+    "version": 1,
+    "license": "CC-BY-SA-3.0",
+    "copyright": "Made by lopata 123 | Discord: ogr8314",
+    "size": {
+        "x": 8,
+        "y": 8
+    },
+    "states": [
+        {
+            "name": "Surgeon"
+
+        }
+    ]
+}
