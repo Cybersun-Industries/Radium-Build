@@ -1,8 +1,9 @@
 #exotic slimes 
 - type: entity
   name: basic exo slime
-  id: MobExoSlimes
+  id: BaseMobExoSlimes
   parent: [ SimpleMobBase, MobCombat ]
+  abstract: true
   components:
   - type: MobThresholds
     thresholds:
@@ -123,7 +124,7 @@
   name: Golden Slime
   suffix: Iboss
   id: MobExoGoldenSlime
-  parent: MobExoSlimes
+  parent: BaseMobExoSlimes
   description: It looks so much like jelly. I wonder what it tastes like?
   components:
   - type: NpcFactionMember
@@ -165,7 +166,7 @@
   name: Bluespace Slime
   suffix: Iboss
   id: MobExoBluespaceSlime
-  parent: MobExoSlimes
+  parent: BaseMobExoSlimes
   description: It looks so much like jelly. I wonder what it tastes like?
   components:
   - type: NpcFactionMember
@@ -197,7 +198,7 @@
   name: Metal Slime
   suffix: Iboss
   id: MobExoMetalSlime
-  parent: MobExoSlimes
+  parent: BaseMobExoSlimes
   description: It looks so much like jelly. I wonder what it tastes like?
   components:
   - type: NpcFactionMember
@@ -229,7 +230,7 @@
   name: Plasma Slime
   suffix: Iboss
   id: MobExoPlasmaSlime
-  parent: MobExoSlimes
+  parent: BaseMobExoSlimes
   description: It looks so much like jelly. I wonder what it tastes like?
   components:
   - type: NpcFactionMember
@@ -261,7 +262,7 @@
   name: Silver Slime
   suffix: Iboss
   id: MobExoSilverSlime
-  parent: MobExoSlimes
+  parent: BaseMobExoSlimes
   description: It looks so much like jelly. I wonder what it tastes like?
   components:
   - type: NpcFactionMember
@@ -293,7 +294,7 @@
   name: Coal Slime
   suffix: Iboss
   id: MobExoCoalSlime
-  parent: MobExoSlimes
+  parent: BaseMobExoSlimes
   description: It looks so much like jelly. I wonder what it tastes like?
   components:
   - type: NpcFactionMember
@@ -325,7 +326,7 @@
   name: Uranus Slime
   suffix: Iboss
   id: MobExoUranSlime
-  parent: MobExoSlimes
+  parent: BaseMobExoSlimes
   description: It looks so much like jelly. I wonder what it tastes like?
   components:
   - type: NpcFactionMember
@@ -357,7 +358,7 @@
   name: Present Slime
   suffix: Iboss
   id: MobExoBoxSlime
-  parent: MobExoSlimes
+  parent: BaseMobExoSlimes
   description: It looks so much like jelly. I wonder what it tastes like?
   components:
   - type: NpcFactionMember
@@ -403,7 +404,7 @@
   name: Quartz Slime
   suffix: Iboss
   id: MobExoQuartzSlime
-  parent: MobExoSlimes
+  parent: BaseMobExoSlimes
   description: It looks so much like jelly. I wonder what it tastes like?
   components:
   - type: NpcFactionMember
