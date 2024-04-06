@@ -34,8 +34,13 @@ ent-MobExoQuartzSlime = кварц слизень
     .desc = Изучай их!
 ent-FoodEggSlimeFertilized = яйцо экзослизня
     .desc = 5 МИНУТ
-ent-MobAshWalkerWizard = Ящер Шаман
+ent-MobAshWalkerWizard = ящер шаман
     .desc = Лечит? А может?..
+ent-MobLingBoss = хитиновый воин
+    .desc = Жжжжжжжжжжжжж!??!!
+ent-ClothingBeltQuiverArrows = колчан со стрелами
+    .desc = 5 штук. Это все. что есть..
+
 ghost-role-information-legionm-name = Черепок
 ghost-role-information-legionm-description = Летай и жги
 
