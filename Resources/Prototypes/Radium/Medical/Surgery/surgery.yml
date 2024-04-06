@@ -470,6 +470,8 @@
       name: surgery-CauteryAction-name
       desc: surgery-bypassCautAction-desc
       action: enum.SurgeryTypeEnum.Burn
+      repeatable: true
+      repeatIndex: 1
     - type: SurgeryStep
       name: surgery-CauteryAction-name
       desc: surgery-sealAction-desc

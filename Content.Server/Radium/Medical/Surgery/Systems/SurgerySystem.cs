@@ -126,14 +126,14 @@ public sealed partial class SurgerySystem : EntitySystem
                         tempSolution.AddSolution(newSol, _prototypeManager);
                         if (tempSolution.Volume > component.BleedPuddleThreshold)
                         {
-                            var amt = component.BloodlossDamage * 20;
+                            var amt = component.BloodlossDamage * 8;
                             _damageableSystem.TryChangeDamage(uid, amt);
                             // Pass some of the chemstream into the spilled blood.
                             if (_solutionContainerSystem.ResolveSolution(uid,
                                     component.ChemicalSolutionName, ref component.ChemicalSolution))
                             {
                                 var temp = _solutionContainerSystem.SplitSolution(
-                                    component.ChemicalSolution.Value, tempSolution.Volume / 10);
+                                    component.ChemicalSolution.Value, tempSolution.Volume / 15);
                                 tempSolution.AddSolution(temp, _prototypeManager);
                             }
 
@@ -198,13 +198,20 @@ public sealed partial class SurgerySystem : EntitySystem
                         var currentBaseSprintSpeed = move.BaseSprintSpeed;
                         switch (part.Value.Component.Wounds.Count)
                         {
+                            case <= 2:
+                                if (currentBaseSprintSpeed >= 4.5)
+                                {
+                                    break;
+                                }
+                                _movement.ChangeBaseSpeed(uid, 2.5f, 4.5f, 20);
+                                break;
                             case > 2 and < 6:
                                 if (currentBaseSprintSpeed <= 3f)
                                 {
                                     break;
                                 }
 
-                                _movement.ChangeBaseSpeed(uid, 2f, 3f, 8);
+                                _movement.ChangeBaseSpeed(uid, 2f, 3f, 10);
                                 break;
                             case > 6:
                                 if (currentBaseSprintSpeed <= 2f)
@@ -212,7 +219,7 @@ public sealed partial class SurgerySystem : EntitySystem
                                     break;
                                 }
 
-                                _movement.ChangeBaseSpeed(uid, 1f, 2f, 4);
+                                _movement.ChangeBaseSpeed(uid, 1f, 2f, 10);
                                 break;
                         }
 
@@ -236,7 +243,7 @@ public sealed partial class SurgerySystem : EntitySystem
 
     private void OnMeleeEvent(EntityUid uid, MeleeWeaponComponent component, DamageChangedEvent args)
     {
-        if (args.Origin == null || args.DamageDelta == null || args.DamageDelta.GetTotal() < 5)
+        if (args.Origin == null || args.DamageDelta == null || args.DamageDelta.GetTotal() <= 3.5f)
             return;
 
         foreach (var keyValuePair in args.DamageDelta.DamageDict)
