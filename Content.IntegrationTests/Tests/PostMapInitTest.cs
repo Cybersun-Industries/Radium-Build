@@ -46,8 +46,7 @@ namespace Content.IntegrationTests.Tests
             // Corvax-Start
             "CorvaxAvrite",
             "CorvaxDelta",
-			"CorvaxSpectrum",
-            //"CorvaxGate",
+            "CorvaxGate",
             "CorvaxSilly",
             "CorvaxOutpost",
             "CorvaxAstra",
@@ -81,6 +80,7 @@ namespace Content.IntegrationTests.Tests
             "TheHive",
             "Cogmap",
 			"Shoukou",
+            "BargeVsShip",
             //end-backmen
             "Reach",
             "Train"

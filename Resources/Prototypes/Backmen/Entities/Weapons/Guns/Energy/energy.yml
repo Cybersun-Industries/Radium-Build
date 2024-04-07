@@ -17,7 +17,7 @@
   - type: Gun
     projectileSpeed: 75
   - type: Item
-    size: Small
+    size: SmallNormal
   - type: ProjectileBatteryAmmoProvider
     proto: X01Attack
     fireCost: 100
@@ -79,7 +79,7 @@
     soundGunshot:
       path: /Audio/Weapons/Guns/Gunshots/laser.ogg
   - type: Item
-    size: Normal
+    size: SmallNormal
   - type: ProjectileBatteryAmmoProvider
     proto: X01Attack
     fireCost: 200

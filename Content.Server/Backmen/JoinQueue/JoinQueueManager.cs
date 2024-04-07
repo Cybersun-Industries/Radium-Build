@@ -1,8 +1,9 @@
 ﻿using System.Linq;
 using Content.Server.Connection;
-using Content.Server.Corvax;
+using Content.Server.GameTicking;
 using Content.Shared.Backmen.JoinQueue;
 using Content.Shared.CCVar;
+using Content.Shared.GameTicking;
 using Prometheus;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
@@ -38,7 +39,7 @@ public sealed class JoinQueueManager : Content.Corvax.Interfaces.Server.IServerJ
     [Dependency] private readonly IConnectionManager _connectionManager = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly IServerNetManager _netManager = default!;
-    [Dependency] private readonly IServerDiscordAuthManager _discordAuthManager = default!;
+    [Dependency] private readonly Content.Corvax.Interfaces.Server.IServerDiscordAuthManager _discordAuthManager = default!;
 
     /// <summary>
     ///     Queue of active player sessions
@@ -56,8 +57,17 @@ public sealed class JoinQueueManager : Content.Corvax.Interfaces.Server.IServerJ
         _netManager.RegisterNetMessage<MsgQueueUpdate>();
 
         _cfg.OnValueChanged(Shared.Backmen.CCVar.CCVars.QueueEnabled, OnQueueCVarChanged, true);
+        _cfg.OnValueChanged(CCVars.SoftMaxPlayers, OnSoftMaxPlayerChanged, true);
         _playerManager.PlayerStatusChanged += OnPlayerStatusChanged;
         _discordAuthManager.PlayerVerified += OnPlayerVerified;
+    }
+
+    private int _softMaxPlayers = 30;
+
+    private void OnSoftMaxPlayerChanged(int val)
+    {
+        _softMaxPlayers = val;
+        ProcessQueue(false, DateTime.Now);
     }
 
     public void PostInitialize()
@@ -88,8 +98,13 @@ public sealed class JoinQueueManager : Content.Corvax.Interfaces.Server.IServerJ
 
         var isPrivileged = await _connectionManager.HavePrivilegedJoin(session.UserId);
         var currentOnline = _playerManager.PlayerCount - 1; // Do not count current session in general online, because we are still deciding her fate
-        var haveFreeSlot = currentOnline < _cfg.GetCVar(CCVars.SoftMaxPlayers);
-        if (isPrivileged || haveFreeSlot)
+        var haveFreeSlot = currentOnline < _softMaxPlayers;
+
+        var wasInGame = _entityManager.TrySystem<GameTicker>(out var ticker) &&
+                        ticker.PlayerGameStatuses.TryGetValue(session.UserId, out var status) &&
+                        status == PlayerGameStatus.JoinedGame;
+
+        if (isPrivileged || haveFreeSlot || wasInGame)
         {
             SendToGame(session);
 
@@ -130,7 +145,7 @@ public sealed class JoinQueueManager : Content.Corvax.Interfaces.Server.IServerJ
         if (isDisconnect)
             players--; // Decrease currently disconnected session but that has not yet been deleted
 
-        var haveFreeSlot = players < _cfg.GetCVar(CCVars.SoftMaxPlayers);
+        var haveFreeSlot = players < _softMaxPlayers;
         var queueContains = _queue.Count > 0;
         if (haveFreeSlot && queueContains)
         {

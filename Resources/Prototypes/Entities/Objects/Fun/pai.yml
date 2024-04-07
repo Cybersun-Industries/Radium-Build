@@ -52,8 +52,8 @@
   - type: Actions
   - type: TypingIndicator
     proto: robot
-#  - type: TTS # Corvax-TTS
-#    voice: TrainingRobot
+  - type: TTS # Corvax-TTS
+    voice: TrainingRobot
   - type: Speech
     speechVerb: Robotic
     speechSounds: Pai
@@ -140,6 +140,7 @@
   components:
   - type: InstantAction
     checkCanInteract: false
+    checkConsciousness: false
     icon: Interface/Actions/pai-midi.png
     event: !type:OpenUiActionEvent
       key: enum.InstrumentUiKey.Key
@@ -152,6 +153,7 @@
   components:
     - type: InstantAction
       checkCanInteract: false
+      checkConsciousness: false
       icon: { sprite: Interface/Actions/pai-map.rsi, state: icon }
       event: !type:OpenUiActionEvent
         key: enum.StationMapUiKey.Key

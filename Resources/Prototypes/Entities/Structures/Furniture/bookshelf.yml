@@ -67,3 +67,4 @@
   - type: Construction
     graph: Bookshelf
     node: bookshelf
+  - type: BlockWeather

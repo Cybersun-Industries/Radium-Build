@@ -49,7 +49,8 @@
     sprite: Objects/Fun/toys.rsi
     state: spbox
   - type: Storage
-    maxTotalWeight: 20
+    grid:
+    - 0,0,4,3
     areaInsert: true
     maxItemSize: Tiny
   - type: StorageFill

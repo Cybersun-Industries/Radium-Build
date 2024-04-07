@@ -116,7 +116,10 @@ public sealed partial class StorageSystem : SharedStorageSystem
         // prevent spamming bag open / honkerton honk sound
         if (!silent)
         {
-            Audio.PlayPvs(storageComp.StorageOpenSound, uid);
+            if (!storageComp.IsUiOpen)
+                _audio.PlayPvs(storageComp.StorageOpenSound, uid);
+            if (useDelay != null)
+                _useDelay.TryResetDelay((uid, useDelay));
         }
 
         Log.Debug($"Storage (UID {uid}) \"used\" by player session (UID {player.PlayerSession.AttachedEntity}).");

@@ -6,11 +6,17 @@
   components:
   - type: Item
     size: Large
+    shape:
+    - 0,0,2,2
   - type: Storage
     maxItemSize: Small
-    maxTotalWeight: 24
+    grid:
+    - 0,0,2,2
   - type: Sprite
     state: box
+  - type: Tag
+    tags:
+    - BoxCardboard
 
 - type: entity
   name: mousetrap box
@@ -42,7 +48,8 @@
       - state: box
       - state: light
   - type: Storage
-    maxSlots: 12
+    grid:
+    - 0,0,5,3
     whitelist:
       components:
       - LightBulb
@@ -62,7 +69,8 @@
       - state: box
       - state: lighttube
   - type: Storage
-    maxSlots: 12
+    grid:
+    - 0,0,5,3
     whitelist:
       components:
       - LightBulb
@@ -84,8 +92,8 @@
       - state: box
       - state: lightmixed
   - type: Storage
-    maxItemSize: Normal
-    maxTotalWeight: 24
+    grid:
+    - 0,0,5,3
     whitelist:
       components:
       - LightBulb
@@ -234,7 +242,8 @@
       - id: TrashBag
         amount: 6
   - type: Storage
-    maxTotalWeight: 48
+    grid:
+    - 0,0,5,3
     maxItemSize: Large
     whitelist:
       tags:
@@ -372,7 +381,8 @@
       - id: HandheldGPSBasic
         amount: 6
   - type: Storage
-    maxSlots: 12
+    grid:
+    - 0,0,5,3
   - type: Sprite
     layers:
       - state: box
@@ -400,8 +410,8 @@
       - state: box
       - state: candle
   - type: Storage
-    maxItemSize: Normal
-    maxSlots: 15
+    grid:
+    - 0,0,9,2
   - type: StorageFill
     contents:
       - id: Candle
@@ -425,8 +435,8 @@
       - state: box
       - state: candle
   - type: Storage
-    maxItemSize: Normal
-    maxSlots: 25
+    grid:
+    - 0,0,9,2
   - type: StorageFill
     contents:
       - id: CandleSmall
@@ -459,7 +469,8 @@
       - id: DartYellow
         amount: 3
   - type: Storage
-    maxSlots: 12
+    grid:
+    - 0,0,5,3
   - type: Sprite
     layers:
       - state: box

@@ -106,6 +106,8 @@
       types:
         Blunt: 8
         Piercing: 2 # I guess you can stab it into them?
+    soundHit:
+      collection: MetalThud
   - type: Item
     sprite: Objects/Tools/Hydroponics/spade.rsi
   - type: Shovel
@@ -127,7 +129,8 @@
     slots:
     - belt
   - type: Storage
-    maxSlots: 40
+    grid:
+    - 0,0,7,4
     maxItemSize: Small
     quickInsert: true
     areaInsert: true
