@@ -14,8 +14,6 @@ public abstract partial class SharedDoAfterSystem : EntitySystem
 
     private DoAfter[] _doAfters = Array.Empty<DoAfter>();
 
-    private DoAfter[] _doAfters = Array.Empty<DoAfter>();
-
     public override void Update(float frameTime)
     {
         base.Update(frameTime);

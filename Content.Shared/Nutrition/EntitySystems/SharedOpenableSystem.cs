@@ -185,15 +185,3 @@ public abstract partial class SharedOpenableSystem : EntitySystem
         return true;
     }
 }
-
-/// <summary>
-/// Raised after an Openable is opened.
-/// </summary>
-[ByRefEvent]
-public record struct OpenableOpenedEvent;
-
-/// <summary>
-/// Raised after an Openable is closed.
-/// </summary>
-[ByRefEvent]
-public record struct OpenableClosedEvent;

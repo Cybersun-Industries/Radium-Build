@@ -112,6 +112,11 @@ namespace Content.Shared.Storage
         }
 
         [Serializable, NetSerializable]
+        public sealed class StorageInsertItemMessage : BoundUserInterfaceMessage
+        {
+        }
+
+        [Serializable, NetSerializable]
         public enum StorageUiKey
         {
             Key,

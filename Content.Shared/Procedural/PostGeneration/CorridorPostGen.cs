@@ -20,9 +20,6 @@ public sealed partial class CorridorPostGen : IPostDunGen
     [DataField]
     public ProtoId<ContentTileDefinition> Tile = "FloorSteel";
 
-    [DataField]
-    public ProtoId<ContentTileDefinition> Tile = "FloorSteel";
-
     /// <summary>
     /// How wide to make the corridor.
     /// </summary>

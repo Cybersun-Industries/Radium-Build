@@ -12,8 +12,6 @@ public sealed partial class IFFComponent : Component
 {
     public static readonly Color SelfColor = Color.MediumSpringGreen;
 
-    public static readonly Color SelfColor = Color.MediumSpringGreen;
-
     /// <summary>
     /// Default color to use for IFF if no component is found.
     /// </summary>
