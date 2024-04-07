@@ -197,36 +197,6 @@ namespace Content.Server.Atmos.EntitySystems
             return true;
         }
 
-        public bool TryGetPressureProtectionValues(
-            Entity<PressureProtectionComponent?> ent,
-            [NotNullWhen(true)] out float? highMultiplier,
-            [NotNullWhen(true)] out float? highModifier,
-            [NotNullWhen(true)] out float? lowMultiplier,
-            [NotNullWhen(true)] out float? lowModifier)
-        {
-            highMultiplier = null;
-            highModifier = null;
-            lowMultiplier = null;
-            lowModifier = null;
-            if (!Resolve(ent, ref ent.Comp, false))
-                return false;
-
-            var comp = ent.Comp;
-            var ev = new GetPressureProtectionValuesEvent
-            {
-                HighPressureMultiplier = comp.HighPressureMultiplier,
-                HighPressureModifier = comp.HighPressureModifier,
-                LowPressureMultiplier = comp.LowPressureMultiplier,
-                LowPressureModifier = comp.LowPressureModifier
-            };
-            RaiseLocalEvent(ent, ref ev);
-            highMultiplier = ev.HighPressureMultiplier;
-            highModifier = ev.HighPressureModifier;
-            lowMultiplier = ev.LowPressureMultiplier;
-            lowModifier = ev.LowPressureModifier;
-            return true;
-        }
-
         public override void Update(float frameTime)
         {
             _timer += frameTime;

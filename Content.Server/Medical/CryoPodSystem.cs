@@ -293,16 +293,5 @@ public sealed partial class CryoPodSystem : SharedCryoPodSystem
         _uiSystem.TryCloseAll(cryoPod.Owner, HealthAnalyzerUiKey.Key);
     }
 
-    private void OnEjected(Entity<CryoPodComponent> cryoPod, ref EntRemovedFromContainerMessage args)
-    {
-        if (TryComp<HealthAnalyzerComponent>(cryoPod.Owner, out var healthAnalyzer))
-        {
-            healthAnalyzer.ScannedEntity = null;
-        }
-
-        // if body is ejected - no need to display health-analyzer
-        _uiSystem.TryCloseAll(cryoPod.Owner, HealthAnalyzerUiKey.Key);
-    }
-
     #endregion
 }

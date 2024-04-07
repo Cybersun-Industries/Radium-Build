@@ -2,6 +2,7 @@ using Content.Shared.Hands.Components;
 using Robust.Shared.GameStates;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization;
+using Robust.Shared.Utility;
 
 namespace Content.Shared.Item;
 
@@ -34,6 +35,31 @@ public sealed partial class ItemComponent : Component
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField("sprite")]
     public string? RsiPath;
+
+    /// <summary>
+    /// An optional override for the shape of the item within the grid storage.
+    /// If null, a default shape will be used based on <see cref="Size"/>.
+    /// </summary>
+    [DataField]
+    public List<Box2i>? Shape;
+
+    /// <summary>
+    /// A sprite used to depict this entity specifically when it is displayed in the storage UI.
+    /// </summary>
+    [DataField]
+    public SpriteSpecifier? StoredSprite;
+
+    /// <summary>
+    /// An additional angle offset, in degrees, applied to the visual depiction of the item when displayed in the storage UI.
+    /// </summary>
+    [DataField]
+    public float? StoredRotation = 0;
+
+    /// <summary>
+    /// An additional offset, in pixels, applied to the visual depiction of the item when displayed in the storage UI.
+    /// </summary>
+    [DataField]
+    public Vector2i? StoredOffset;
 }
 
 [Serializable, NetSerializable]

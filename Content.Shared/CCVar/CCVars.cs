@@ -371,7 +371,7 @@ namespace Content.Shared.CCVar
             CVarDef.Create("game.round_restart_time", 120f, CVar.SERVERONLY);
 
         /// <summary>
-        /// The prototype to use for secret weights. 
+        /// The prototype to use for secret weights.
         /// </summary>
         public static readonly CVarDef<string> SecretWeightPrototype =
             CVarDef.Create("game.secret_weight_prototype", "Secret", CVar.SERVERONLY);
@@ -852,7 +852,7 @@ namespace Content.Shared.CCVar
 
         /// <summary>
         ///     The threshold of minutes to appear as a "new player" in the ahelp menu
-        ///     If 0, appearing as a new player is disabled. 
+        ///     If 0, appearing as a new player is disabled.
         /// </summary>
         public static readonly CVarDef<int> NewPlayerThreshold =
             CVarDef.Create("admin.new_player_threshold", 0, CVar.ARCHIVE | CVar.REPLICATED | CVar.SERVER);
@@ -2060,5 +2060,7 @@ namespace Content.Shared.CCVar
         /// </summary>
         public static readonly CVarDef<bool> DebugOptionVisualizerTest =
             CVarDef.Create("debug.option_visualizer_test", false, CVar.CLIENTONLY);
+
+
     }
 }

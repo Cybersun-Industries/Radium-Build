@@ -7,8 +7,7 @@
   - type: Item
     size: Ginormous
   - type: Storage
-    grid:
-    - 0,0,5,3
+    maxTotalWeight: 32
   - type: Tag
     tags:
     - Briefcase

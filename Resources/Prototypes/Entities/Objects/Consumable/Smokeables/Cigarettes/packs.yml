@@ -44,11 +44,8 @@
   - type: SpaceGarbage
   - type: Item
     size: Tiny
-    shape: # Yes, this is cursed, but it breaks otherwise, dont question it.
-    - 0,0,0,1
   - type: Storage
-    grid:
-    - 0,0,4,1
+    maxSlots: 10
   - type: StorageFill
     contents:
     - id: Cigarette
@@ -112,11 +109,8 @@
   - type: SpaceGarbage
   - type: Item
     size: Tiny
-    shape: # Yes, this is cursed, but it breaks otherwise, dont question it.
-    - 0,0,0,1
   - type: Storage
-    grid:
-    - 0,0,4,1
+    maxSlots: 6
   - type: StorageFill
     contents:
     - id: CigaretteRandom

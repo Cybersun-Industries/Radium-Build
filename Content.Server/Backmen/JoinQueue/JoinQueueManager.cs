@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Content.Server.Connection;
+using Content.Server.Corvax;
 using Content.Server.GameTicking;
 using Content.Shared.Backmen.JoinQueue;
 using Content.Shared.CCVar;
@@ -39,7 +40,7 @@ public sealed class JoinQueueManager : Content.Corvax.Interfaces.Server.IServerJ
     [Dependency] private readonly IConnectionManager _connectionManager = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!;
     [Dependency] private readonly IServerNetManager _netManager = default!;
-    [Dependency] private readonly Content.Corvax.Interfaces.Server.IServerDiscordAuthManager _discordAuthManager = default!;
+    [Dependency] private readonly IServerDiscordAuthManager _discordAuthManager = default!;
 
     /// <summary>
     ///     Queue of active player sessions
