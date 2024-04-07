@@ -196,30 +196,35 @@ public sealed partial class SurgerySystem : EntitySystem
                         if (!TryComp<MovementSpeedModifierComponent>(uid, out var move))
                             break;
                         var currentBaseSprintSpeed = move.BaseSprintSpeed;
+                        var difSymmetry = part.Value.Component.Symmetry switch
+                        {
+                            BodyPartSymmetry.Left => BodyPartSymmetry.Right,
+                            BodyPartSymmetry.Right => BodyPartSymmetry.Left,
+                            _ => BodyPartSymmetry.None
+                        };
+                        var diffpart = list.FirstOrNull(g => g.Component.PartType == pair.Key.Item1 &&
+                                                             g.Component.Symmetry == difSymmetry);
+
                         switch (part.Value.Component.Wounds.Count)
                         {
                             case <= 2:
-                                if (currentBaseSprintSpeed >= 4.5)
+                                if (diffpart?.Component.Wounds.Count <= 2)
                                 {
-                                    break;
+                                    _movement.ChangeBaseSpeed(uid, 2.5f, 4.5f, 20);
                                 }
-                                _movement.ChangeBaseSpeed(uid, 2.5f, 4.5f, 20);
                                 break;
                             case > 2 and < 6:
-                                if (currentBaseSprintSpeed <= 3f)
+                                if (diffpart?.Component.Wounds.Count is < 6)
                                 {
-                                    break;
+                                    _movement.ChangeBaseSpeed(uid, 2f, 3f, 20);
                                 }
-
-                                _movement.ChangeBaseSpeed(uid, 2f, 3f, 10);
                                 break;
                             case > 6:
                                 if (currentBaseSprintSpeed <= 2f)
                                 {
                                     break;
                                 }
-
-                                _movement.ChangeBaseSpeed(uid, 1f, 2f, 10);
+                                _movement.ChangeBaseSpeed(uid, 1f, 2f, 20);
                                 break;
                         }
 
@@ -428,7 +433,6 @@ public sealed partial class SurgerySystem : EntitySystem
             nextStep = operation.Steps[repeatIndex];
 
             nextStep.StepIndex = surgery.CurrentStep.RepeatIndex;
-            nextStep.Repeatable = true;
             surgery.CurrentStep = nextStep;
             return;
         }
@@ -518,6 +522,7 @@ public sealed partial class SurgerySystem : EntitySystem
         {
             operation.BodyPart = "Head";
         }
+
         var origin = Enum.Parse<BodyPartType>(operation.BodyPart);
         var additionalPart = origin switch
         {
@@ -607,7 +612,6 @@ public sealed partial class SurgerySystem : EntitySystem
     {
         if (component.CurrentStep != null)
         {
-
             component.CurrentStep.Icon = component.CurrentStep.Key switch
             {
                 SurgeryTypeEnum.Bandage => "gauze",
