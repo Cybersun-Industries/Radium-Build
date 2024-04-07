@@ -1,7 +1,7 @@
 ﻿- type: entity
   parent: BaseItem
   id: CargoCash
-  name: вексели
+  name: Векселя
   description: Деньги Станции
   components:
   - type: Cash

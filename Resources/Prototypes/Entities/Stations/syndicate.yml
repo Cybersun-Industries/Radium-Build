@@ -2,6 +2,7 @@
   abstract: true
   id: BaseStationSyndicate
   components:
+    - type: StationRecords
     - type: NpcFactionMember
       factions:
         - Syndicate
@@ -14,4 +15,3 @@
   noSpawn: true
   components:
     - type: Transform
-    - type: StationRecords

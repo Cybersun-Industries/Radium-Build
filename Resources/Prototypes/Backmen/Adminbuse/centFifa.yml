@@ -2227,7 +2227,7 @@
   id: RXBZZFlamer
   equipment:
     jumpsuit: ClothingUniformJumpsuitColorBlack
-    back: FirethrowerGun
+    back: PowerpackFlame
     shoes: ClothingShoesBootsNedoSpetsnaz
     mask: ClothingMaskGasExplorer
     eyes: ClothingEyesGlassesSecurity
@@ -2239,6 +2239,8 @@
     ears: ClothingHeadsetCentComCCMTFSR6
     belt: ClothingBeltMilitaryWebbingFlamer
     pocket1: WeaponLaserGun
+  inhand:
+    - WeaponflamethrowerSG
 
 - type: startingGear
   id: RXBZZLeader
@@ -2328,8 +2330,11 @@
       contents:
         - id: MedkitAdvancedRXBZZ
         - id: WeaponDisabler
-        - id: FuelTankFirethrower
-          amount: 5
+        - id: WeaponLauncherM81
+        - id: GrenadeFrag
+          amount: 2
+        - id: GrenadeBlast
+          amount: 2
 
 - type: entity
   name:  РХБЗЗ Реагент
