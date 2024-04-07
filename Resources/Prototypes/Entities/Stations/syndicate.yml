@@ -2,6 +2,7 @@
   abstract: true
   id: BaseStationSyndicate
   components:
+    - type: StationRecords
     - type: NpcFactionMember
       factions:
         - Syndicate

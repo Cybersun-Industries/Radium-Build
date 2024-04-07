@@ -407,8 +407,8 @@
       - state: box
       - state: candle
   - type: Storage
-    grid:
-    - 0,0,9,2
+    maxItemSize: Normal
+    maxSlots: 15
   - type: StorageFill
     contents:
       - id: Candle
