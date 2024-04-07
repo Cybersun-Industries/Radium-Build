@@ -1,0 +1,14 @@
+﻿- type: entity
+  id: StandardNanotrasenStationVsShip
+  parent:
+  - BaseStation
+  - BaseStationCargo
+  - BaseStationJobsSpawning
+  - BaseStationRecords
+  - BaseStationAlertLevels
+  - BaseStationSiliconLawCrewsimov
+  - BaseStationAllEventsEligible
+  - BaseStationNanotrasen
+  noSpawn: true
+  components:
+  - type: Transform

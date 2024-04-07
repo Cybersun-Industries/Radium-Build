@@ -5,7 +5,9 @@
   name: Сумка БСС Дрона
   components:
   - type: Storage
-    maxTotalWeight: 9999
+    maxItemSize: Huge
+    grid:
+    - 0,0,20,10
   - type: Tag
     tags:
     - InnateDontDelete
@@ -38,7 +40,7 @@
     - key: enum.SiliconLawsUiKey.Key
       type: SiliconLawBoundUserInterface
   - type: GhostRole
-    #whitelistRequired: true
+    whitelistRequired: false
     makeSentient: true
     allowSpeech: true # backmen
     allowMovement: true # backmen
@@ -46,10 +48,13 @@
     description: ghost-role-information-drone-description # backmen
     requirements:
       - !type:OverallPlaytimeRequirement
-        time: 36000
-      - !type:RoleTimeRequirement
-        role: JobChiefEngineer
         time: 24000
+      - !type:DepartmentTimeRequirement
+        department: Engineering
+        time: 14400
+      - !type:RoleTimeRequirement
+        role: JobCentralCommandAssistant
+        time: 18000
     rules: | # backmen
       Вы обязаны подчиняться законам, которые будут доступны вам после вселения, если вам не скажут иное в Ahelp.
   - type: GhostTakeoverAvailable
@@ -121,8 +126,6 @@
       - Binary
       - Common
       - Engineering
- # - type: TTS
- #   voice: TrainingRobot
   - type: ZombieImmune
   - type: Repairable
     fuelcost: 15
