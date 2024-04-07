@@ -28,6 +28,21 @@
   - SubGamemodesRule
   
 - type: gamePreset
+  id: FleshCult
+  alias:
+  - fleshcult
+  - fs
+  name: flesh-cult-title
+  description: flesh-cult-description
+  showInVote: false
+  rules:
+  - FleshCult
+  - BasicStationEventScheduler
+  - WageScheduler #backmen: currency
+  - BasicRoundstartVariation
+  - SubGamemodesRule
+  
+- type: gamePreset
   id: PiratesNukeops
   alias:
     - nukeops

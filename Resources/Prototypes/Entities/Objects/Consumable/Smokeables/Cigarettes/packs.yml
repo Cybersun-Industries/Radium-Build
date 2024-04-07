@@ -110,7 +110,7 @@
   - type: Item
     size: Tiny
   - type: Storage
-    maxSlots: 6
+    maxSlots: 10
   - type: StorageFill
     contents:
     - id: CigaretteRandom

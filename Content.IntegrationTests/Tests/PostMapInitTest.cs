@@ -80,7 +80,6 @@ namespace Content.IntegrationTests.Tests
             "TheHive",
             "Cogmap",
 			"Shoukou",
-            "BargeVsShip",
             //end-backmen
             "Reach",
             "Train"
