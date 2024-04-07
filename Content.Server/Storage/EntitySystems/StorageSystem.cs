@@ -9,6 +9,7 @@ using Content.Shared.Storage.Components;
 using Content.Shared.Storage.EntitySystems;
 using Content.Shared.Timing;
 using Content.Shared.Verbs;
+using Robust.Server.Audio;
 using Robust.Server.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Player;
@@ -22,6 +23,8 @@ public sealed partial class StorageSystem : SharedStorageSystem
     [Dependency] private readonly IAdminManager _admin = default!;
     [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
+    [Dependency] private readonly AudioSystem _audio = default!;
+    [Dependency] private readonly UseDelaySystem _useDelay = default!;
 
     public override void Initialize()
     {
@@ -116,7 +119,8 @@ public sealed partial class StorageSystem : SharedStorageSystem
         // prevent spamming bag open / honkerton honk sound
         if (!silent)
         {
-            Audio.PlayPvs(storageComp.StorageOpenSound, uid);
+            if (!storageComp.IsUiOpen)
+                _audio.PlayPvs(storageComp.StorageOpenSound, uid);
         }
 
         Log.Debug($"Storage (UID {uid}) \"used\" by player session (UID {player.PlayerSession.AttachedEntity}).");
