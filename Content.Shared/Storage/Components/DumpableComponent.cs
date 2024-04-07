@@ -25,7 +25,7 @@ public sealed partial class DumpableComponent : Component
     /// How long each item adds to the doafter.
     /// </summary>
     [DataField("delayPerItem"), AutoNetworkedField]
-    public TimeSpan DelayPerItem = TimeSpan.FromSeconds(SharedStorageSystem.AreaInsertDelayPerItem);
+    public TimeSpan DelayPerItem = TimeSpan.FromSeconds(1f);
 
     /// <summary>
     /// The multiplier modifier
