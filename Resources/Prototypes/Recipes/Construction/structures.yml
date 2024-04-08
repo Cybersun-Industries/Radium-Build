@@ -53,13 +53,13 @@
     - !type:TileNotBlocked
 
 - type: construction
-  name: ent-WallBase
+  name: ent-WallSolid
   id: Wall
   graph: Girder
   startNode: start
   targetNode: wall
   category: construction-category-structures
-  description: ent-WallBase.desc
+  description: ent-WallSolid.desc
   icon:
     sprite: Structures/Walls/solid.rsi
     state: full
@@ -1224,7 +1224,7 @@
   canBuildInImpassable: false
   conditions:
   - !type:TileNotBlocked
-  
+
 - type: construction
   name: ent-FenceWoodSmallGate
   id: FenceWoodGateSmall
@@ -1365,13 +1365,13 @@
     - !type:TileNotBlocked
 
 - type: construction
-  name: ent-BaseSecureWindoor
+  name: ent-WindoorSecure
   id: SecureWindoor
   graph: Windoor
   startNode: start
   targetNode: windoorSecure
   category: construction-category-structures
-  description: ent-BaseSecureWindoor.desc
+  description: ent-WindoorSecure.desc
   icon:
     sprite: Structures/Doors/Windoors/windoor.rsi
     state: closed
@@ -1400,13 +1400,13 @@
 
 #lighting
 - type: construction
-  name: ent-LightTube
+  name: ent-WallLight
   id: LightTubeFixture
   graph: LightFixture
   startNode: start
   targetNode: tubeLight
   category: construction-category-structures
-  description: ent-LightTube.desc
+  description: ent-WallLight.desc
   icon:
     sprite: Structures/Wallmounts/Lighting/light_tube.rsi
     state: base

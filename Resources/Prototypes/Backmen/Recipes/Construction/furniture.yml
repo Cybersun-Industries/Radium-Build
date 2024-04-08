@@ -322,13 +322,13 @@
 #    - !type:TileNotBlocked
 
 - type: construction
-  name: tatami square
+  name: ent-tatamisingle
   id: tatamisingle
   graph: tatami
   startNode: start
   targetNode: tatamiSquare
   category: construction-category-furniture
-  description: It's tatami, but a square.
+  description: ent-tatamisingle.desc
   icon:
     sprite: Backmen/Structures/Furniture/tatami.rsi
     state: tatami_1x1
@@ -339,13 +339,13 @@
     - !type:TileNotBlocked
 
 - type: construction
-  name: tatami mat
+  name: ent-tatamimat
   id: tatamimat
   graph: tatami
   startNode: start
   targetNode: tatamiPart
   category: construction-category-furniture
-  description: It's a portion of a tatami mat.
+  description: ent-tatamimat.desc
   icon:
     sprite: Backmen/Structures/Furniture/tatami.rsi
     state: tatami_1x1P
@@ -356,13 +356,13 @@
     - !type:TileNotBlocked
 
 - type: construction
-  name: comfy dark chair
+  name: ent-ComfyDarkChair
   id: ChairDarkComfy
   graph: Seat
   startNode: start
   targetNode: chairDarkComfy
   category: construction-category-furniture
-  description: Quite a comfortable dark chair.
+  description: ent-ComfyDarkChair.desc
   icon:
     sprite: Backmen/Structures/Furniture/chairs.rsi
     state: dark-comfy

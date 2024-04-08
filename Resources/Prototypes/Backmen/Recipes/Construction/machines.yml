@@ -1,7 +1,7 @@
 - type: construction
   id: GlimmerProber
-  name: glimmer prober
-  description: Increases glimmer and research points.
+  name: ent-GlimmerProber
+  description: ent-GlimmerProber.desc
   graph: GlimmerDevices
   startNode: start
   targetNode: glimmerProber
@@ -17,8 +17,8 @@
 
 - type: construction
   id: GlimmerDrain
-  name: glimmer drain
-  description: Decreases glimmer.
+  name: ent-GlimmerDrain
+  description: ent-GlimmerDrain.desc
   graph: GlimmerDevices
   startNode: start
   targetNode: glimmerDrain
@@ -34,8 +34,8 @@
 
 - type: construction
   id: Golem
-  name: golem
-  description: Your very own personal servant! Requires a soul crystal to activate.
+  name: ent-MobGolemCult
+  description: ent-MobGolemCult.desc
   graph: Golem
   startNode: start
   targetNode: golem
@@ -51,8 +51,8 @@
 
 - type: construction
   id: GolemWood
-  name: wood golem
-  description: Your very own personal servant! This one can hold plants. Requires a soul crystal to activate.
+  name: ent-MobGolemWood
+  description: ent-MobGolemWood.desc
   graph: GolemWood
   startNode: start
   targetNode: golem
@@ -68,8 +68,8 @@
 
 - type: construction
   id: GolemSilver
-  name: silver golem
-  description: Your very own personal servant! Requires a soul crystal to activate.
+  name: ent-MobGolemSilver
+  description: ent-MobGolemSilver.desc
   graph: GolemSilver
   startNode: start
   targetNode: golem

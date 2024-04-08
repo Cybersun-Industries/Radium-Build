@@ -48,13 +48,13 @@
 
 # POWER
 - type: construction
-  name: ent-APC
+  name: ent-BaseAPC
   id: APC
   graph: APC
   startNode: start
   targetNode: apc
   category: construction-category-utilities
-  description: ent-APC.desc
+  description: ent-BaseAPC.desc
   icon:
     sprite: Structures/Power/apc.rsi
     state: base
@@ -96,13 +96,13 @@
   canBuildInImpassable: false
 
 - type: construction
-  name: ent-WallmountSubstation
+  name: ent-BaseSubstationWall
   id: WallmountSubstation
   graph: WallmountSubstation
   startNode: start
   targetNode: substation
   category: construction-category-utilities
-  description: ent-WallmountSubstation.desc
+  description: ent-BaseSubstationWall.desc
   icon:
     sprite: Structures/Power/substation.rsi
     state: substation_wall
@@ -111,13 +111,13 @@
   canBuildInImpassable: true
 
 - type: construction
-  name: ent-WallmountGenerator
+  name: ent-GeneratorWallmountBasic
   id: WallmountGenerator
   graph: WallmountGenerator
   startNode: start
   targetNode: generator
   category: construction-category-utilities
-  description: ent-WallmountGenerator.desc
+  description: ent-GeneratorWallmountBasic.desc
   icon:
     sprite: Structures/Power/Generation/wallmount_generator.rsi
     state: panel
@@ -126,13 +126,13 @@
   canBuildInImpassable: true
 
 - type: construction
-  name: ent-WallmountGeneratorAPU
+  name: ent-GeneratorWallmountAPU
   id: WallmountGeneratorAPU
   graph: WallmountGenerator
   startNode: start
   targetNode: APU
   category: construction-category-utilities
-  description: ent-WallmountGeneratorAPU.desc
+  description: ent-GeneratorWallmountAPU.desc
   icon:
     sprite: Structures/Power/Generation/wallmount_generator.rsi
     state: panel
@@ -358,7 +358,7 @@
   startNode: start
   targetNode: fire_alarm
   category: construction-category-structures
-  description: A fire alarm. Spicy!
+  description: ent-FireAlarm.desc
   icon:
     sprite: Structures/Wallmounts/air_monitors.rsi
     state: fire0
@@ -774,7 +774,7 @@
 - type: construction
   id: PressureControlledValve
   name: ent-PressureControlledValve
-  description: ent-PressureControlledValved.desc
+  description: ent-PressureControlledValve.desc
   graph: GasTrinary
   startNode: start
   targetNode: pneumaticvalve

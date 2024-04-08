@@ -54,8 +54,8 @@
   objectType: Item
 
 - type: construction
-  name: ent-SheetRPGlass0
-  description: ent-SheetRPGlass0.desc
+  name: ent-SheetRPGlass
+  description: ent-SheetRPGlass.desc
   id: SheetRPGlass0
   graph: Glass
   startNode: start
@@ -109,8 +109,8 @@
   objectType: Item
 
 - type: construction
-  name: ent-SheetRUGlass0
-  description: ent-SheetRUGlass0.desc
+  name: ent-SheetUGlass
+  description: ent-SheetUGlass.desc
   id: SheetRUGlass0
   graph: Glass
   startNode: start
