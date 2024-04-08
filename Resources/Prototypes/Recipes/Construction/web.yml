@@ -1,11 +1,11 @@
 - type: construction
-  name: web wall
+  name: ent-WallWeb
   id: WallWeb
   graph: WebStructures
   startNode: start
   targetNode: wall
   category: construction-category-structures
-  description: A fairly weak yet silky smooth wall.
+  description: ent-WallWeb.desc
   icon:
     sprite: Structures/Walls/web.rsi
     state: full
@@ -20,13 +20,13 @@
     - !type:TileNotBlocked
 
 - type: construction
-  name: web table
+  name: ent-TableWeb
   id: TableWeb
   graph: WebStructures
   startNode: start
   targetNode: table
   category: construction-category-furniture
-  description: Essential for any serious web development.
+  description: ent-TableWeb.desc
   icon:
     sprite: Structures/Furniture/Tables/web.rsi
     state: full
@@ -41,13 +41,13 @@
     - !type:TileNotBlocked
 
 - type: construction
-  name: web bed
+  name: ent-WebBed
   id: WebBed
   graph: WebStructures
   startNode: start
   targetNode: bed
   category: construction-category-furniture
-  description: Fun fact, you eating spiders in your sleep is false.
+  description: ent-WebBed.desc
   icon:
     sprite: Structures/Web/bed.rsi
     state: icon
@@ -62,13 +62,13 @@
     - !type:TileNotBlocked
 
 - type: construction
-  name: web chair
+  name: ent-ChairWeb
   id: ChairWeb
   graph: WebStructures
   startNode: start
   targetNode: chair
   category: construction-category-furniture
-  description: You want to get serious about web development? Get this chair!
+  description: ent-ChairWeb.desc
   icon:
     sprite: Structures/Web/chair.rsi
     state: icon
@@ -80,13 +80,13 @@
     - SpiderCraft
 
 - type: construction
-  name: web crate
+  name: ent-CrateWeb
   id: CrateWeb
   graph: WebStructures
   startNode: start
   targetNode: crate
   category: construction-category-storage
-  description: For containment of food and other things. Not as durable as a normal crate, and can't be welded shut.
+  description: ent-CrateWeb.desc
   icon:
     sprite: Structures/Storage/Crates/web.rsi
     state: icon
@@ -99,13 +99,13 @@
     - SpiderCraft
 
 - type: construction
-  name: web door
+  name: ent-WebDoor
   id: WebDoor
   graph: WebStructures
   startNode: start
   targetNode: door
   category: construction-category-structures
-  description: A manual door made from web, normally placed right before a pit or trap.
+  description: ent-WebDoor.desc
   icon:
     sprite: Structures/Doors/web_door.rsi
     state: closed
