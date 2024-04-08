@@ -328,7 +328,7 @@
   startNode: start
   targetNode: tatamiSquare
   category: construction-category-furniture
-  description: ent-tatamisingle.descd
+  description: ent-tatamisingle.desc
   icon:
     sprite: Backmen/Structures/Furniture/tatami.rsi
     state: tatami_1x1
