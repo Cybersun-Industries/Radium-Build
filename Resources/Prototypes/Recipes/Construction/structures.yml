@@ -1224,7 +1224,7 @@
   canBuildInImpassable: false
   conditions:
   - !type:TileNotBlocked
-
+  
 - type: construction
   name: ent-FenceWoodSmallGate
   id: FenceWoodGateSmall

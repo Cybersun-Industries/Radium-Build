@@ -732,7 +732,7 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: true
-
+   
 - type: construction
   id: CurtainsBlack
   name: ent-CurtainsBlack
