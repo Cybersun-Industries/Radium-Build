@@ -1,8 +1,8 @@
 #bureaucracy
 - type: construction
   id: FilingCabinet
-  name: ent-FilingCabinet
-  description: ent-FilingCabinet.desc
+  name: ent-filingCabinet
+  description: ent-filingCabinet.desc
   graph: FilingCabinet
   startNode: start
   targetNode: filingCabinet

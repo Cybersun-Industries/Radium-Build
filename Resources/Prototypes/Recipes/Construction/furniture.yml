@@ -91,7 +91,7 @@
   startNode: start
   targetNode: chairOfficeDark
   category: construction-category-furniture
-  description: You sit in this. Either by will or force.
+  description: ent-ChairOfficeDark.desc
   icon:
     sprite: Structures/Furniture/chairs.rsi
     state: office-dark
@@ -108,7 +108,7 @@
   startNode: start
   targetNode: chairComfy
   category: construction-category-furniture
-  description: ent-ComfyChair-desc
+  description: ent-ComfyChair.desc
   icon:
     sprite: Structures/Furniture/chairs.rsi
     state: comfy
@@ -615,8 +615,8 @@
 
 #bedroom
 - type: construction
-  id: ent-Bed
-  name: bed
+  id: Bed
+  name: ent-Bed
   description: ent-Bed.desc
   graph: bed
   startNode: start
@@ -632,8 +632,8 @@
     - !type:TileNotBlocked
 
 - type: construction
-  id: ent-MedicalBed
-  name: medical bed
+  id: MedicalBed
+  name: ent-MedicalBed
   description: ent-MedicalBed.desc
   graph: bed
   startNode: start
@@ -666,8 +666,8 @@
     - !type:TileNotBlocked
 
 - type: construction
-  id: ent-Dresser
-  name: dresser
+  id: Dresser
+  name: ent-Dresser
   description: ent-Dresser.desc
   graph: Dresser
   startNode: start
@@ -732,11 +732,11 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: true
-   
+
 - type: construction
   id: CurtainsBlack
   name: ent-CurtainsBlack
-  description: ent-CurtainsBlack
+  description: ent-CurtainsBlack.desc
   graph: Curtains
   startNode: start
   targetNode: CurtainsBlack
