@@ -1,0 +1,371 @@
+{
+  "version": 1,
+  "license": null,
+  "copyright": null,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "clowncar",
+      "directions": 4
+    },
+    {
+      "name": "clowncar2",
+      "directions": 4,
+      "delays": [
+        [
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "clowncar-d"
+    },
+    {
+      "name": "segwaycat",
+      "directions": 4,
+      "delays": [
+        [
+          2,
+          0.1
+        ],
+        [
+          2,
+          0.1
+        ],
+        [
+          2,
+          0.1
+        ],
+        [
+          2,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "garfield",
+      "directions": 4
+    },
+    {
+      "name": "garfield1",
+      "directions": 4
+    },
+    {
+      "name": "odie",
+      "directions": 4
+    },
+    {
+      "name": "adminbus",
+      "directions": 4
+    },
+    {
+      "name": "adminbus2",
+      "directions": 4,
+      "delays": [
+        [
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "cluwnecar",
+      "directions": 4
+    },
+    {
+      "name": "cluwnecar2",
+      "directions": 4,
+      "delays": [
+        [
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "floorbuffer",
+      "directions": 4
+    },
+    {
+      "name": "floorbuffer0",
+      "directions": 4
+    },
+    {
+      "name": "floorbuffer1",
+      "directions": 4,
+      "delays": [
+        [
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "floorbuffer1a",
+      "directions": 4
+    },
+    {
+      "name": "marsrover",
+      "directions": 4
+    },
+    {
+      "name": "marsrover2",
+      "directions": 4,
+      "delays": [
+        [
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "badminbus",
+      "directions": 4
+    },
+    {
+      "name": "badminbus2",
+      "directions": 4,
+      "delays": [
+        [
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "boost-bus",
+      "directions": 4,
+      "delays": [
+        [
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "tractor",
+      "directions": 4
+    },
+    {
+      "name": "flatbed",
+      "directions": 4
+    },
+    {
+      "name": "titanic",
+      "directions": 4
+    },
+    {
+      "name": "forklift",
+      "directions": 4
+    },
+    {
+      "name": "forklift1",
+      "directions": 4
+    },
+    {
+      "name": "forklift_light",
+      "directions": 4,
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "forklift_panel",
+      "directions": 4
+    },
+    {
+      "name": "forklift_crate",
+      "directions": 4
+    },
+    {
+      "name": "forklift_crate2",
+      "directions": 4
+    },
+    {
+      "name": "forklift_crate3",
+      "directions": 4
+    },
+    {
+      "name": "forklift_crate4",
+      "directions": 4
+    },
+    {
+      "name": "skateboard",
+      "directions": 4
+    },
+    {
+      "name": "skateboard0"
+    },
+    {
+      "name": "tractor-sec",
+      "directions": 4
+    },
+    {
+      "name": "tractor-sec2",
+      "directions": 4,
+      "delays": [
+        [
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1
+        ]
+      ]
+    },
+    {
+      "name": "aircart",
+      "directions": 4
+    },
+    {
+      "name": "odie1",
+      "directions": 4
+    },
+    {
+      "name": "amogbus",
+      "directions": 4
+    },
+    {
+      "name": "amogbus2",
+      "directions": 4,
+      "delays": [
+        [
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1
+        ],
+        [
+          0.1,
+          0.1
+        ]
+      ]
+    }
+  ]
+}
