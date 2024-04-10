@@ -1167,7 +1167,7 @@
   productPrototypes:
     - FoodAmbrosiaDeus
   mutationPrototypes:
-    - ambrosiaDeus # Radium
+    - ambrosiaGaia # Radium
   lifespan: 25
   maturation: 10
   production: 3
