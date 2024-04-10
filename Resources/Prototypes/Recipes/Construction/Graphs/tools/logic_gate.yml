@@ -32,7 +32,7 @@
         icon:
           sprite: Objects/Tools/multitool.rsi
           state: icon
-        name: a multitool
+        name: ent-Multitool
   - node: logic_gate
     entity: LogicGate
   - node: edge_detector
