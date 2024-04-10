@@ -4,8 +4,6 @@
   name: campari bottle
   description: Tincture based on aromatic herbs and citrus fruits. Non-GMO!
   components:
-  - type: Label
-    currentLabel: reagent-name-campari
   - type: SolutionContainerManager
     solutions:
       drink:

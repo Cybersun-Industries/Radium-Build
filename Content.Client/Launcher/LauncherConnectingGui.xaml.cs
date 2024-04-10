@@ -93,7 +93,7 @@ namespace Content.Client.Launcher
 
         private void ChangeLoginTip()
         {
-            var tipsDataset = _cfg.GetCVar(CCVars.LoginTipsDataset);
+            var tipsDataset = _cfg.GetCVar(CCVars.TipsDataset);
             var loginTipsEnabled = _prototype.TryIndex<DatasetPrototype>(tipsDataset, out var tips);
 
             LoginTips.Visible = loginTipsEnabled;

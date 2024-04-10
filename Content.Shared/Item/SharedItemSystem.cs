@@ -39,12 +39,12 @@ public abstract class SharedItemSystem : EntitySystem
         Dirty(uid, component);
     }
 
-    public void SetHeldPrefix(EntityUid uid, string? heldPrefix, bool force = false, ItemComponent? component = null)
+    public void SetHeldPrefix(EntityUid uid, string? heldPrefix, ItemComponent? component = null)
     {
         if (!Resolve(uid, ref component, false))
             return;
 
-        if (!force && component.HeldPrefix == heldPrefix)
+        if (component.HeldPrefix == heldPrefix)
             return;
 
         component.HeldPrefix = heldPrefix;
@@ -84,7 +84,7 @@ public abstract class SharedItemSystem : EntitySystem
             return;
 
         component.Size = state.Size;
-        SetHeldPrefix(uid, state.HeldPrefix, false, component);
+        SetHeldPrefix(uid, state.HeldPrefix, component);
     }
 
     private void OnGetState(EntityUid uid, ItemComponent component, ref ComponentGetState args)

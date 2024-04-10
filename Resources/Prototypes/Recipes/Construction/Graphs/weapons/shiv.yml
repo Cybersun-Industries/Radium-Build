@@ -22,7 +22,7 @@
     - to: icon
       steps:
       - tag: GlassShard
-        name: Glass Shard
+        name: ent-ShardGlass
         icon:
           sprite: Objects/Materials/Shards/shard.rsi
           state: shard1
@@ -57,7 +57,7 @@
     - to: icon
       steps:
       - tag: ReinforcedGlassShard
-        name: Reinforced Glass Shard
+        name: ent-ShardGlassReinforced
         icon:
           sprite: Objects/Materials/Shards/shard.rsi
           state: shard1
@@ -92,7 +92,7 @@
     - to: icon
       steps:
       - tag: PlasmaGlassShard
-        name: Plasma Glass Shard
+        name: ent-ShardGlassPlasma
         icon:
           sprite: Objects/Materials/Shards/shard.rsi
           state: shard1
@@ -127,7 +127,7 @@
     - to: icon
       steps:
       - tag: UraniumGlassShard
-        name: Uranium Glass Shard
+        name: ent-ShardGlassUranium
         icon:
           sprite: Objects/Materials/Shards/shard.rsi
           state: shard1

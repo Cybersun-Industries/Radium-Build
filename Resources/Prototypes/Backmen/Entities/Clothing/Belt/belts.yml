@@ -21,7 +21,6 @@
           tags:
           - SwordSquadRO
   - type: Appearance
-
 - type: entity
   parent: ClothingBeltStorageBase
   id: ClothingBeltKatanaSheath

@@ -123,6 +123,23 @@
     state: frag
     suffix: false
     
+
+# Cannon Balls
+
+- type: entity
+  id: BaseCannonBall
+  name: base cannon ball
+  parent: BaseItem
+  abstract: true
+  components:
+  - type: Tag
+    tags:
+    - CannonBall
+  - type: Item
+    size: Small
+  - type: Sprite
+# Cannon Balls
+
 - type: entity
   id: GrenadeEMP
   name: EMP grenade
@@ -140,20 +157,6 @@
     state: frag
     suffix: false
 
-# Cannon Balls
-
-- type: entity
-  id: BaseCannonBall
-  name: base cannon ball
-  parent: BaseItem
-  abstract: true
-  components:
-  - type: Tag
-    tags:
-    - CannonBall
-  - type: Item
-    size: Small
-  - type: Sprite
 # Cannon Balls
 
 - type: entity

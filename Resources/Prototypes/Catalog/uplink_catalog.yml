@@ -66,6 +66,17 @@
   - UplinkWeaponry
 
 - type: listing
+  id: UplinkThrowingKnivesKit
+  name: uplink-knives-kit-name
+  description: uplink-knives-kit-desc
+  icon: { sprite: /Textures/Objects/Storage/boxicons.rsi, state: throwing_knives }
+  productEntity: ThrowingKnivesKit
+  cost:
+    Telecrystal: 6
+  categories:
+    - UplinkWeaponry
+
+- type: listing
   id: UplinkGlovesNorthStar
   name: uplink-gloves-north-star-name
   description: uplink-gloves-north-star-desc
@@ -105,6 +116,61 @@
     whitelist:
       tags:
       - NukeOpsUplink
+
+#- type: listing
+#  id: UplinkSniperBundle
+#  name: uplink-sniper-bundle-name
+#  description: uplink-sniper-bundle-desc
+#  icon: { sprite: /Textures/Objects/Weapons/Guns/Snipers/heavy_sniper.rsi, state: base }
+#  productEntity: BriefcaseSyndieSniperBundleFilled
+#  cost:
+#    Telecrystal: 12
+#  categories:
+#  - UplinkWeaponry
+
+#- type: listing
+#  id: UplinkC20RBundle
+#  name: uplink-c20r-bundle-name
+#  description: uplink-c20r-bundle-desc
+#  icon: { sprite: /Textures/Objects/Weapons/Guns/SMGs/c20r.rsi, state: icon }
+#  productEntity: ClothingBackpackDuffelSyndicateFilledSMG
+#  cost:
+#    Telecrystal: 17
+#  categories:
+#  - UplinkWeaponry
+
+#- type: listing
+#  id: UplinkBulldogBundle
+#  name: uplink-buldog-bundle-name
+#  description: uplink-buldog-bundle-desc
+#  icon: { sprite: /Textures/Objects/Weapons/Guns/Shotguns/bulldog.rsi, state: icon }
+#  productEntity: ClothingBackpackDuffelSyndicateFilledShotgun
+#  cost:
+#    Telecrystal: 20
+#  categories:
+#  - UplinkWeaponry
+
+#- type: listing
+#  id: UplinkGrenadeLauncherBundle
+#  name: uplink-grenade-launcher-bundle-name
+#  description: uplink-grenade-launcher-bundle-desc
+#  icon: { sprite: /Textures/Objects/Weapons/Guns/Launchers/china_lake.rsi, state: icon }
+#  productEntity: ClothingBackpackDuffelSyndicateFilledGrenadeLauncher
+#  cost:
+#    Telecrystal: 25
+#  categories:
+#  - UplinkWeaponry
+
+#- type: listing
+#  id: UplinkL6SawBundle
+#  name: uplink-l6-saw-bundle-name
+#  description: uplink-l6-saw-bundle-desc
+#  icon: { sprite: /Textures/Objects/Weapons/Guns/LMGs/l6.rsi, state: icon }
+#  productEntity: ClothingBackpackDuffelSyndicateFilledLMG
+#  cost:
+#    Telecrystal: 30
+#  categories:
+#  - UplinkWeaponry
 
 # Explosives
 
@@ -334,11 +400,6 @@
     Telecrystal: 2
   categories:
   - UplinkAmmo
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - NukeOpsUplink
 
 # For the Cobra
 - type: listing
@@ -449,7 +510,7 @@
   cost:
     Telecrystal: 40
   categories:
-  - UplinkBundles
+  - UplinkChemicals
   conditions:
   - !type:StoreWhitelistCondition
     whitelist:
@@ -641,6 +702,16 @@
   productEntity: ClothingBackpackDuffelSyndicateDecoyKitFilled
   cost:
     Telecrystal: 6
+  categories:
+  - UplinkDeception
+
+- type: listing
+  id: UplinkSyndicateBombFake
+  name: uplink-exploding-syndicate-bomb-fake-name
+  description: uplink-exploding-syndicate-bomb-fake-desc
+  productEntity: SyndicateBombFake
+  cost:
+    Telecrystal: 4
   categories:
   - UplinkDeception
 
@@ -862,7 +933,7 @@
   productEntity: ReinforcementRadioSyndicateMonkey
   icon: { sprite: Objects/Devices/communication.rsi, state: old-radio }
   cost:
-    Telecrystal: 8
+    Telecrystal: 6
   categories:
   - UplinkAllies
   conditions:
@@ -878,7 +949,7 @@
   productEntity: ReinforcementRadioSyndicateMonkeyNukeops
   icon: { sprite: Objects/Devices/communication.rsi, state: old-radio }
   cost:
-    Telecrystal: 8
+    Telecrystal: 6
   categories:
   - UplinkAllies
   conditions:
@@ -958,6 +1029,17 @@
   productEntity: FreedomImplanter
   cost:
     Telecrystal: 5
+  categories:
+  - UplinkImplants
+
+- type: listing
+  id: UplinkScramImplanter
+  name: uplink-scram-implanter-name
+  description: uplink-scram-implanter-desc
+  icon: { sprite: /Textures/Structures/Specific/anomaly.rsi, state: anom4 }
+  productEntity: ScramImplanter
+  cost:
+    Telecrystal: 6 # it's a gamble that may kill you easily so 6 TC per 2 uses, second one more of a backup
   categories:
   - UplinkImplants
 
@@ -1107,6 +1189,16 @@
   - UplinkWearables
 
 - type: listing
+  id: UplinkChestRig
+  name: uplink-chest-rig-name
+  description: uplink-chest-rig-desc
+  productEntity: ClothingBeltMilitaryWebbing
+  cost:
+    Telecrystal: 1
+  categories:
+  - UplinkWearables
+
+- type: listing
   id: UplinkChameleon
   name: uplink-chameleon-name
   description: uplink-chameleon-desc
@@ -1200,11 +1292,6 @@
     Telecrystal: 12
   categories:
   - UplinkWearables
-  conditions:
-  - !type:StoreWhitelistCondition
-    whitelist:
-      tags:
-      - NukeOpsUplink
 
 - type: listing
   id: UplinkClothingEyesHudSyndicate
@@ -1231,7 +1318,17 @@
   categories:
   - UplinkWearables
 
-# Pointless
+- type: listing
+  id: UplinkBackpackSyndicate
+  name: uplink-backpack-syndicate-name
+  description: uplink-backpack-syndicate-desc
+  productEntity: ClothingBackpackSyndicate
+  cost:
+    Telecrystal: 2
+  categories:
+    - UplinkWearables
+
+ # Pointless
 
 - type: listing
   id: UplinkBarberScissors
@@ -1584,59 +1681,3 @@
     - Scientist
     - ResearchDirector
     - Chef
-
-# Bundles
-
-#- type: listing
-#  id: UplinkSniperBundle
-#  name: uplink-sniper-bundle-name
-#  description: uplink-sniper-bundle-desc
-#  icon: { sprite: /Textures/Objects/Weapons/Guns/Snipers/heavy_sniper.rsi, state: base }
-#  productEntity: BriefcaseSyndieSniperBundleFilled
-#  cost:
-#    Telecrystal: 12
-#  categories:
-#  - UplinkBundles
-
-#- type: listing
-#  id: UplinkC20RBundle
-#  name: uplink-c20r-bundle-name
-#  description: uplink-c20r-bundle-desc
-#  icon: { sprite: /Textures/Objects/Weapons/Guns/SMGs/c20r.rsi, state: icon }
-#  productEntity: ClothingBackpackDuffelSyndicateFilledSMG
-#  cost:
-#    Telecrystal: 17
-#  categories:
-#  - UplinkBundles
-
-#- type: listing
-#  id: UplinkBulldogBundle
-#  name: uplink-buldog-bundle-name
-#  description: uplink-buldog-bundle-desc
-#  icon: { sprite: /Textures/Objects/Weapons/Guns/Shotguns/bulldog.rsi, state: icon }
-#  productEntity: ClothingBackpackDuffelSyndicateFilledShotgun
-#  cost:
-#    Telecrystal: 20
-#  categories:
-#  - UplinkBundles
-
-#- type: listing
-#  name: uplink-grenade-launcher-bundle-name
-#  description: uplink-grenade-launcher-bundle-desc
-#  icon: { sprite: /Textures/Objects/Weapons/Guns/Launchers/china_lake.rsi, state: icon }
-#  productEntity: ClothingBackpackDuffelSyndicateFilledGrenadeLauncher
-#  cost:
-#    Telecrystal: 25
-#  categories:
-# - UplinkBundles
-
-#- type: listing
-#  id: UplinkL6SawBundle
-#  name: uplink-l6-saw-bundle-name
-#  description: uplink-l6-saw-bundle-desc
-#  icon: { sprite: /Textures/Objects/Weapons/Guns/LMGs/l6.rsi, state: icon }
-#  productEntity: ClothingBackpackDuffelSyndicateFilledLMG
-#  cost:
-#    Telecrystal: 30
-#  categories:
-#  - UplinkBundles

@@ -7,20 +7,20 @@
         - to: flowerwreath
           steps:
             - tag: Flower
-              name: flower
+              name: ent-FoodPoppy
               icon:
                 sprite: Objects/Specific/Hydroponics/poppy.rsi
                 state: produce
             - tag: Flower
-              name: flower
+              name: ent-FoodPoppy
               icon:
                 sprite: Objects/Specific/Hydroponics/poppy.rsi
                 state: produce
             - tag: Ambrosia
-              name: ambrosia
+              name: ent-FoodAmbrosiaDeus
               icon:
                 sprite: Objects/Specific/Hydroponics/ambrosia_vulgaris.rsi
                 state: produce
               doAfter: 10
     - node: flowerwreath
-      entity: ClothingNeckFlowerWreath
+      entity: ClothingHeadHatFlowerWreath

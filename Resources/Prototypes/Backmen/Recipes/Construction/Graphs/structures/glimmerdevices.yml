@@ -35,31 +35,31 @@
               icon:
                 sprite: Backmen/Objects/Materials/materials.rsi
                 state: bluespace
-              name: a normality crystal
+              name: ent-MaterialBluespace
               doAfter: 1
             - tag: NormalityCrystal
               icon:
                 sprite: Backmen/Objects/Materials/materials.rsi
                 state: bluespace
-              name: a normality crystal
+              name: ent-MaterialBluespace
               doAfter: 1
             - tag: NormalityCrystal
               icon:
                 sprite: Backmen/Objects/Materials/materials.rsi
                 state: bluespace
-              name: a normality crystal
+              name: ent-MaterialBluespace
               doAfter: 1
             - tag: NormalityCrystal
               icon:
                 sprite: Backmen/Objects/Materials/materials.rsi
                 state: bluespace
-              name: a normality crystal
+              name: ent-MaterialBluespace
               doAfter: 1
             - tag: NormalityCrystal
               icon:
                 sprite: Backmen/Objects/Materials/materials.rsi
                 state: bluespace
-              name: a normality crystal
+              name: ent-MaterialBluespace
               doAfter: 1
             - tool: Welding
               doAfter: 5
