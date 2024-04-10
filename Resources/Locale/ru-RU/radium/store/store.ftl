@@ -16,3 +16,4 @@ store-category-misc = Разное
 
 store-ui-default-refresh-text = Обновить
 store-ui-default-refund-text = Вернуть
+store-ui-default-search-text = Поиск
