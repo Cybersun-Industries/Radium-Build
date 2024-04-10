@@ -22,3 +22,5 @@ ent-ClothingBackpackDuffelSyndicateFilledRPD = набор "RPD"
     .desc = { ent-ClothingBackpackDuffelSyndicate.desc }
 ent-ClothingBackpackDuffelSyndicateFilledBR64 = набор "BR-64"
     .desc = { ent-ClothingBackpackDuffelSyndicate.desc }
+ent-CrateFlamethrowerBundle = набор "Огнемёт M6"
+    .desc = { ent-ClothingBackpackDuffelSyndicate.desc }

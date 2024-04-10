@@ -545,6 +545,8 @@
   packetPrototype: CabbageSeeds
   productPrototypes:
     - FoodCabbage
+  mutationPrototypes:
+    - replicapod
   lifespan: 50
   maturation: 7
   production: 5
@@ -1086,7 +1088,7 @@
   productPrototypes:
     - FoodAmbrosiaDeus
   mutationPrototypes:
-    - ambrosiaDeus # Radium
+    - ambrosiaGaia # Radium
   lifespan: 25
   maturation: 10
   production: 3
