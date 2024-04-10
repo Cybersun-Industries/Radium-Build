@@ -574,9 +574,8 @@ public sealed partial class SurgerySystem : EntitySystem
             new DoAfterArgs(EntityManager, args.User, time, new SurgeryDoAfterEvent(chance), args.Target, args.Target,
                 args.Used)
             {
-                BreakOnUserMove = true,
                 BreakOnDamage = true,
-                BreakOnTargetMove = true,
+                BreakOnMove = true,
                 BreakOnHandChange = true,
                 RequireCanInteract = true,
                 BreakOnWeightlessMove = true
