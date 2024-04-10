@@ -16,7 +16,7 @@
                     Name="RefreshButton"
                     MinWidth="64"
                     HorizontalAlignment="Right"
-                    Text="Refresh" />
+                    Text="{ Loc 'store-ui-default-refresh-text'}"  />
                 <Button
                     Name="WithdrawButton"
                     MinWidth="64"
@@ -26,9 +26,9 @@
                     Name="RefundButton"
                     MinWidth="64"
                     HorizontalAlignment="Right"
-                    Text="Refund" />
+                    Text="{ Loc 'store-ui-default-refund-text'}" />
             </BoxContainer>
-            <LineEdit Name="SearchBar" Margin="4" PlaceHolder="Search" HorizontalExpand="True"/>
+            <LineEdit Name="SearchBar" Margin="4" PlaceHolder="{ Loc 'store-ui-default-search-text'}" HorizontalExpand="True"/>
                 <PanelContainer VerticalExpand="True">
                 <PanelContainer.PanelOverride>
                     <gfx:StyleBoxFlat BackgroundColor="#000000FF" />
