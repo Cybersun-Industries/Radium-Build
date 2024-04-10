@@ -10,6 +10,17 @@
     sprite: Corvax/Objects/Decoration/containers.rsi
     netsync: false
     drawdepth: Overdoors
+  - type: Storage
+    MaxItemSize: Huge
+    maxSlots: 999
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        ents: []
+  - type: UserInterface
+    interfaces:
+    - key: enum.StorageUiKey.Key
+      type: StorageBoundUserInterface
   - type: Physics
     bodyType: Static
   - type: Fixtures

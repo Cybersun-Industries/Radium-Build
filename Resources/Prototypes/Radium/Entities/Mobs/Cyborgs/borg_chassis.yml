@@ -1,0 +1,84 @@
+- type: entity
+  id: BorgChassisClown
+  parent: BaseBorgChassisNT
+  name: clown cyborg
+  components:
+  - type: Sprite
+    layers:
+    - state: clown
+    - state: clown_e_r
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: clown_l
+      shader: unshaded
+      map: ["light"]
+      visible: false
+  - type: BorgChassis
+    maxModules: 4
+    moduleWhitelist:
+      tags:
+      - BorgModuleGeneric
+      - BorgModuleService
+    hasMindState: clown_e
+    noMindState: clown_e_r
+  - type: Construction
+    node: service
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Service
+    - Binary
+    - Common
+    - Science
+  - type: ActiveRadio
+    channels:
+    - Service
+    - Binary
+    - Common
+    - Science
+  - type: AccessReader
+    access: [["Service"], ["Command"], ["Research"]]
+  - type: Inventory
+    templateId: borgTall
+
+- type: entity
+  id: BorgChassisPeace
+  parent: BaseBorgChassisNT
+  name: peace cyborg
+  components:
+  - type: Construction
+    node: service
+  - type: Sprite
+    layers:
+    - state: peace
+    - state: peace_e_r
+      map: ["enum.BorgVisualLayers.Light"]
+      shader: unshaded
+      visible: false
+    - state: peace_l
+      shader: unshaded
+      map: ["light"]
+      visible: false
+  - type: BorgChassis
+    maxModules: 4
+    moduleWhitelist:
+      tags:
+      - BorgModuleGeneric
+    hasMindState: peace_e
+    noMindState: peace_e_r
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Service
+    - Binary
+    - Common
+    - Science
+  - type: ActiveRadio
+    channels:
+    - Service
+    - Binary
+    - Common
+    - Science
+  - type: AccessReader
+    access: [["Service"], ["Command"], ["Research"]]
+  - type: Inventory
+    templateId: borgTall

@@ -7,3 +7,23 @@
   cost: 10000
   category: cargoproduct-category-name-service
   group: market
+
+- type: cargoProduct
+  id: ServiceBorgClown
+  icon:
+    sprite: Mobs/Silicon/chassis.rsi
+    state: clown
+  product: BorgChassisClown
+  cost: 10000
+  category: cargoproduct-category-name-service
+  group: market
+
+- type: cargoProduct
+  id: ServiceBorgPeace
+  icon:
+    sprite: Mobs/Silicon/chassis.rsi
+    state: peace
+  product: BorgChassisPeace
+  cost: 10000
+  category: cargoproduct-category-name-service
+  group: market
