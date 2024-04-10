@@ -12,7 +12,7 @@
         doAfter: 1
 
   - node: emptyCase
-    entity: ModularGrenade      
+    entity: ModularGrenade
     actions:
     - !type:AppearanceChange
     edges:
@@ -31,7 +31,7 @@
         doAfter: 2
 
   - node: wiredCase
-    entity: ModularGrenade      
+    entity: ModularGrenade
     actions:
     - !type:AppearanceChange
     - !type:PlaySound
@@ -48,7 +48,7 @@
       steps:
       - component: PayloadTrigger
         store: payloadTrigger
-        name: Trigger
+        name: ent-TimerTrigger
         doAfter: 0.5
 
   - node: caseWithTrigger
@@ -68,7 +68,7 @@
       steps:
       - tag: Payload
         store: payload
-        name: Payload
+        name: ent-ChemicalPayload
         doAfter: 0.5
 
   - node: grenade

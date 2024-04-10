@@ -139,7 +139,7 @@ public sealed class DiscordAuthManager : IServerDiscordAuthManager
         if (!response.IsSuccessStatusCode)
         {
             var content = await response.Content.ReadAsStringAsync(cancel);
-            _sawmill.Debug(
+            _sawmill.Error(
                 $"Verification API returned bad status code: {response.StatusCode}\nResponse: {content}");
         }
 

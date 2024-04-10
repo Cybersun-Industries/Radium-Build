@@ -23,11 +23,16 @@ public sealed partial class ConstructionPrototype : IPrototype
     [DataField("name")]
     public string Name = string.Empty;
 
+    [ViewVariables(VVAccess.ReadOnly)]
+    public string LocalizedName => Loc.GetString(Name);
     /// <summary>
     ///     "Useful" description displayed in the construction GUI.
     /// </summary>
     [DataField("description")]
     public string Description = string.Empty;
+
+    [ViewVariables(VVAccess.ReadOnly)]
+    public string LocalizedDescription => Loc.GetString(Description);
 
     /// <summary>
     ///     The <see cref="ConstructionGraphPrototype"/> this construction will be using.
