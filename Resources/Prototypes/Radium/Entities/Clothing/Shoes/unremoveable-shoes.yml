@@ -1,0 +1,5 @@
+﻿- type: entity
+  parent: ClothingShoesClown
+  id: UnremoveableClothingShoesClown
+  components:
+  - type: Unremoveable

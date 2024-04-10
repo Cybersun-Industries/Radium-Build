@@ -1,0 +1,11 @@
+﻿- type: entity
+  parent: ClothingMaskClown
+  id: UnremoveableClothingMaskClown
+  components:
+  - type: Unremoveable
+
+- type: entity
+  parent: ClothingMaskMime
+  id: UnremoveableClothingMaskMime
+  components:
+  - type: Unremoveable
