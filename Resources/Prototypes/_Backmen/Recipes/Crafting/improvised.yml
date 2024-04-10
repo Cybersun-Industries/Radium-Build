@@ -1,11 +1,11 @@
 ﻿- type: construction
-  name: tinfoil hat
+  name: ent-ClothingHeadTinfoil
   id: tinfoilhat
   graph: TinfoilHat
   startNode: start
   targetNode: tinfoilhat
   category: construction-category-misc
-  description: Protect yourself from all the psionics on board this cursed vessel.
+  description: ent-ClothingHeadTinfoil.desc
   icon:
     sprite: Backmen/Clothing/Head/Hats/tinfoil.rsi
     state: icon

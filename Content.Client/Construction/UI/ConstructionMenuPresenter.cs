@@ -166,7 +166,7 @@ namespace Content.Client.Construction.UI
 
                 if (!string.IsNullOrEmpty(search))
                 {
-                    if (!recipe.Name.ToLowerInvariant().Contains(search.Trim().ToLowerInvariant()))
+                    if (!recipe.LocalizedName.ToLowerInvariant().Contains(search.Trim().ToLowerInvariant()))
                         continue;
                 }
 
@@ -179,7 +179,7 @@ namespace Content.Client.Construction.UI
                 recipes.Add(recipe);
             }
 
-            recipes.Sort((a, b) => string.Compare(a.Name, b.Name, StringComparison.InvariantCulture));
+            recipes.Sort((a, b) => string.Compare(a.LocalizedName, b.LocalizedName, StringComparison.InvariantCulture));
 
             foreach (var recipe in recipes)
             {
@@ -222,7 +222,7 @@ namespace Content.Client.Construction.UI
         {
             var spriteSys = _systemManager.GetEntitySystem<SpriteSystem>();
             _constructionView.ClearRecipeInfo();
-            _constructionView.SetRecipeInfo(prototype.Name, prototype.Description, spriteSys.Frame0(prototype.Icon), prototype.Type != ConstructionType.Item);
+            _constructionView.SetRecipeInfo(prototype.LocalizedName, prototype.LocalizedDescription, spriteSys.Frame0(prototype.Icon), prototype.Type != ConstructionType.Item);
 
             var stepList = _constructionView.RecipeStepList;
             GenerateStepList(prototype, stepList);
@@ -259,10 +259,10 @@ namespace Content.Client.Construction.UI
             return new(itemList)
             {
                 Metadata = recipe,
-                Text = recipe.Name,
+                Text = recipe.LocalizedName,
                 Icon = recipe.Icon.Frame0(),
                 TooltipEnabled = true,
-                TooltipText = recipe.Description
+                TooltipText = recipe.LocalizedDescription
             };
         }
 
