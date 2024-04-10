@@ -8,11 +8,11 @@
       - id: ClothingOuterHardsuitSpatio
       - id: ClothingShoesBootsMag
       - id: ClothingMaskGasExplorer
+      - id: SurvivalMedipen # Radium
       - id: ClothingBeltUtilityFilled
       - id: SurvivalKnife
       - id: HandheldGPSBasic
       - id: RadioHandheld
-      - id: SurvivalMedipen # Radium
       - id: SeismicCharge
         amount: 2
       - id: OreBag
@@ -36,8 +36,8 @@
       - id: ClothingBeltUtilityFilled
       - id: SurvivalKnife
       - id: HandheldGPSBasic
-      - id: RadioHandheld
       - id: SurvivalMedipen # Radium
+      - id: RadioHandheld
       - id: SeismicCharge
         amount: 2
       - id: OreBag

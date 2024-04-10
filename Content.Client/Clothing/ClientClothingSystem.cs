@@ -147,7 +147,7 @@ public sealed class ClientClothingSystem : ClothingSystem
         else if (TryComp(uid, out SpriteComponent? sprite))
             rsi = sprite.BaseRSI;
 
-        if (rsi == null || rsi.Path == null)
+        if (rsi == null)
             return false;
 
         var correctedSlot = slot;
@@ -315,6 +315,9 @@ public sealed class ClientClothingSystem : ClothingSystem
                 // note that every insertion requires reshuffling & remapping all the existing layers.
                 sprite.AddBlankLayer(index);
                 sprite.LayerMapSet(key, index);
+
+                if (layerData.Color != null)
+                    sprite.LayerSetColor(key, layerData.Color.Value);
             }
             else
                 index = sprite.LayerMapReserveBlank(key);

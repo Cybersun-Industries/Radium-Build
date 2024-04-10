@@ -45,7 +45,7 @@ public sealed class FoldableClothingSystem : EntitySystem
                     _clothingSystem.SetEquippedPrefix(ent.Owner, ent.Comp.FoldedEquippedPrefix, clothingComp);
 
                 if (ent.Comp.FoldedHeldPrefix != null)
-                    _itemSystem.SetHeldPrefix(ent.Owner, ent.Comp.FoldedHeldPrefix, false, itemComp);
+                    _itemSystem.SetHeldPrefix(ent.Owner, ent.Comp.FoldedHeldPrefix, itemComp);
             }
             else
             {
@@ -56,8 +56,7 @@ public sealed class FoldableClothingSystem : EntitySystem
                     _clothingSystem.SetEquippedPrefix(ent.Owner, null, clothingComp);
 
                 if (ent.Comp.FoldedHeldPrefix != null)
-                    _itemSystem.SetHeldPrefix(ent.Owner, null, false, itemComp);
-
+                    _itemSystem.SetHeldPrefix(ent.Owner, null, itemComp);
             }
         }
     }

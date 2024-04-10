@@ -44,8 +44,8 @@
             - !type:EntityAnchored
               anchored: true
           steps:
-            - tag: DoorElectronics
-              name: Door Electronics
+            - component: DoorElectronics
+              name: ent-DoorElectronics
               icon:
                 sprite: "Objects/Misc/module.rsi"
                 state: "door_electronics"

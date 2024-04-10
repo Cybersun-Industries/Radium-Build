@@ -23,6 +23,7 @@ materials-meat = мясо
 materials-web = шёлк
 materials-bones = кости
 materials-coal = уголь
+materials-gunpowder = чёрный порох
 # Ores
 materials-raw-iron = руда железа
 materials-raw-quartz = руда кварца
@@ -32,3 +33,17 @@ materials-raw-plasma = руда плазмы
 materials-raw-uranium = руда урана
 materials-raw-bananium = руда бананиума
 materials-raw-salt = каменная соль
+# Radium-g-fix
+# That's awful
+materials-dried-tobacco-leaves = сушёные листья табака
+materials-ground-cannabis = сушёные листья конопли
+materials-lv-cable = НВ кабеля
+materials-rods = металлических стержней
+materials-bluespace = блюспейс кристаллов
+materials-clockwork-glass = заводного стекла
+materials-artifact-fragment = НВ кабеля
+materials-silk = шёлк
+materials-brass = латунь
+materials-meatsheet = мясо
+materials-cotton = хлопок
+materials-uraniumglass = урановое стекло

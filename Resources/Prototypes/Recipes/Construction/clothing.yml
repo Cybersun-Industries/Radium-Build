@@ -1,87 +1,109 @@
 - type: construction
-  name: clown hardsuit
+  name: ent-ClothingOuterHardsuitClown
   id: ClownHardsuit
   graph: ClownHardsuit
   startNode: start
   targetNode: clownHardsuit
   category: construction-category-clothing
-  description: A modified hardsuit fit for a clown.
+  description: ent-ClothingOuterHardsuitClown.desc
   icon: { sprite: Clothing/OuterClothing/Hardsuits/clown.rsi, state: icon }
   objectType: Item
 
 - type: construction
-  name: mime hardsuit
+  name: ent-ClothingOuterHardsuitMime
   id: MimeHardsuit
   graph: MimeHardsuit
   startNode: start
   targetNode: mimeHardsuit
   category: construction-category-clothing
-  description: A modified hardsuit fit for a mime.
+  description: ent-ClothingOuterHardsuitMime.desc
   icon: { sprite: Clothing/OuterClothing/Hardsuits/mime.rsi, state: icon }
   objectType: Item
 
 - type: construction
-  name: bone armor
+  name: ent-ClothingOuterArmorBone
   id: BoneArmor
   graph: BoneArmor
   startNode: start
   targetNode: armor
   category: construction-category-clothing
-  description: Armor made of bones.
+  description: ent-ClothingOuterArmorBone.desc
   icon: { sprite: Clothing/OuterClothing/Armor/bone_armor.rsi, state: icon }
   objectType: Item
 
 - type: construction
-  name: bone helmet
+  name: ent-ClothingHeadHelmetBone
   id: BoneHelmet
   graph: BoneHelmet
   startNode: start
   targetNode: helmet
   category: construction-category-clothing
-  description: Helmet made of bones.
+  description: ent-ClothingHeadHelmetBone.desc
   icon: { sprite: Clothing/Head/Helmets/bone_helmet.rsi, state: icon }
   objectType: Item
 
 - type: construction
-  name: banana clown mask
+  name: ent-ClothingMaskClownBanana
   id: BananaClownMask
   graph: BananaClownMask
   startNode: start
   targetNode: mask
   category: construction-category-clothing
-  description: A clown mask upgraded with banana peels.
+  description: ent-ClothingMaskClownBanana.desc
   icon: { sprite: Clothing/Mask/clown_banana.rsi, state: icon }
   objectType: Item
 
 - type: construction
-  name: banana clown suit
+  name: ent-ClothingUniformJumpsuitClownBanana
   id: BananaClownJumpsuit
   graph: BananaClownJumpsuit
   startNode: start
   targetNode: jumpsuit
   category: construction-category-clothing
-  description: A clown suit upgraded with banana peels.
+  description: ent-ClothingUniformJumpsuitClownBanana.desc
   icon: { sprite: Clothing/Uniforms/Jumpsuit/clown_banana.rsi, state: icon }
   objectType: Item
 
 - type: construction
-  name: banana clown shoes
+  name: ent-ClothingShoesClownBanana
   id: BananaClownShoes
   graph: BananaClownShoes
   startNode: start
   targetNode: shoes
   category: construction-category-clothing
-  description: A pair of clown shoes upgraded with banana peels.
+  description: ent-ClothingShoesClownBanana.desc
   icon: { sprite: Clothing/Shoes/Specific/clown_banana.rsi, state: icon }
   objectType: Item
 
 - type: construction
-  name: medsec hud
+  name: ent-ClothingEyesHudMedSec
   id: ClothingEyesHudMedSec
   graph: HudMedSec
   startNode: start
   targetNode: medsecHud
   category: construction-category-clothing
-  description: Two huds joined by arms
+  description: ent-ClothingEyesHudMedSec.desc
   icon: { sprite: Clothing/Eyes/Hud/medsec.rsi, state: icon }
+  objectType: Item
+
+- type: construction
+  name: ent-ClothingShoeSlippersDuck
+  id: ClothingShoeSlippersDuck
+  graph: ClothingShoeSlippersDuck
+  startNode: start
+  targetNode: shoes
+  category: construction-category-clothing
+  description: ent-ClothingShoeSlippersDuck.desc
+  icon: { sprite: Clothing/Shoes/Misc/duck-slippers.rsi, state: icon }
+  objectType: Item
+
+- type: construction
+  name: ent-ClothingEyesGlassesSecurity
+  id: ClothingEyesGlassesSecurity
+  graph: GlassesSecHUD
+  startNode: start
+  targetNode: glassesSec
+  category: construction-category-clothing
+  description: ent-ClothingEyesGlassesSecurity.desc
+  icon: { sprite: Clothing/Eyes/Glasses/secglasses.rsi, state: icon }
   objectType: Item

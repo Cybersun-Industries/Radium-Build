@@ -1,0 +1,5 @@
+﻿- type: entity
+  parent: ClothingUniformJumpskirtMime
+  id: UnremoveableClothingUniformJumpskirtMime
+  components:
+  - type: Unremoveable

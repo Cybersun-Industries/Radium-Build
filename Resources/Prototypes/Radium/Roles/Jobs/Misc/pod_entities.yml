@@ -1,17 +1,17 @@
 - type: startingGear
   id: PodClownGear
   equipment:
-    jumpsuit: ClothingUniformJumpsuitClown
-    shoes: ClothingShoesClown
-    mask: ClothingMaskClown
+    jumpsuit: UnremoveableClothingUniformJumpsuitClown
+    shoes: UnremoveableClothingShoesClown
+    mask: UnremoveableClothingMaskClown
 
 - type: startingGear
   id: PodMimeGear
   equipment:
-    jumpsuit: ClothingUniformJumpsuitMime
+    jumpsuit: UnremoveableClothingUniformJumpsuitMime
     head: ClothingHeadHatBeret
-    belt: ClothingBeltSuspenders
-    gloves: ClothingHandsGlovesLatex
+    belt: UnremoveableClothingBeltSuspenders
+    gloves: UnremoveableClothingHandsGlovesLatex
     shoes: ClothingShoesColorWhite
-    mask: ClothingMaskMime
-  innerClothingSkirt: ClothingUniformJumpskirtMime
+    mask: UnremoveableClothingMaskMime
+  innerClothingSkirt: UnremoveableClothingUniformJumpskirtMime
