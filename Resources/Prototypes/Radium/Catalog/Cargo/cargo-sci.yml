@@ -1,9 +1,0 @@
-- type: cargoProduct
-  id: CrateExoslimeEggCra
-  icon:
-    sprite: Radium/Mobs/Aliens/slimes.rsi
-    state: slimegold
-  product: CrateExoslimeEgg
-  cost: 5000
-  category: cargoproduct-category-name-science
-  group: market
