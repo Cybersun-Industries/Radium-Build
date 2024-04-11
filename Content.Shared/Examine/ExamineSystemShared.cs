@@ -154,7 +154,7 @@ namespace Content.Shared.Examine
             return InRangeUnOccluded(origin, other, range, predicate, wrapped, ignoreInsideBlocker, entMan);
         }
 
-        public static bool InRangeUnOccluded<TState>(MapCoordinates origin, MapCoordinates other, float range,
+        public bool InRangeUnOccluded<TState>(MapCoordinates origin, MapCoordinates other, float range,
             TState state, Func<EntityUid, TState, bool> predicate, bool ignoreInsideBlocker = true, IEntityManager? entMan = null)
         {
             if (other.MapId != origin.MapId ||
@@ -171,6 +171,7 @@ namespace Content.Shared.Examine
 
             if (length > MaxRaycastRange)
             {
+                Log.Warning("InRangeUnOccluded check performed over extreme range. Limiting CollisionRay size.");
                 length = MaxRaycastRange;
             }
 

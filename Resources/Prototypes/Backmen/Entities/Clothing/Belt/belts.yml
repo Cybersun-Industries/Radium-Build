@@ -10,7 +10,8 @@
   - type: Clothing
     sprite: Backmen/Clothing/Belt/orden_sheath.rsi
   - type: Storage
-    maxSlots: 12
+    grid:
+    - 0,0,4,3
     whitelist:
       tags:
         - SwordSquadRO
@@ -21,6 +22,7 @@
           tags:
           - SwordSquadRO
   - type: Appearance
+  
 - type: entity
   parent: ClothingBeltStorageBase
   id: ClothingBeltKatanaSheath
@@ -34,7 +36,8 @@
     sprite: Backmen/Clothing/Belt/katanasheath.rsi
   - type: Storage
     maxItemSize: Normal
-    maxSlots: 12
+    grid:
+    - 0,0,4,1
     whitelist:
       tags:
         - Katana

@@ -54,6 +54,7 @@ namespace Content.IntegrationTests.Tests
 			"CorvaxMaus",
 			"CorvaxIshimura",
 			"CorvaxPaper",
+            "CorvaxSplit",
             // Corvax-End
             "Dev",
             "TestTeg",
@@ -76,10 +77,15 @@ namespace Content.IntegrationTests.Tests
             //start-backmen
             "CentCommv2",
             "CentCommv3",
+            "ShwrAdventurer",
+            "ShwrBig",
+            "shwrDust",
             "Tortuga",
             "TheHive",
             "Cogmap",
 			"Shoukou",
+			"BackmenAspid",
+            "BargeVsShip",
             //end-backmen
             "Reach",
             "Train"
