@@ -1,4 +1,5 @@
 using System.Collections.Immutable;
+using System.Runtime.InteropServices;
 using System.Text.Json.Nodes;
 using System.Threading.Tasks;
 using Content.Corvax.Interfaces.Server;
@@ -53,7 +54,7 @@ namespace Content.Server.Connection
         [Dependency] private readonly IGameTiming _gameTiming = default!;
         [Dependency] private readonly ILogManager _logManager = default!;
 
-        private readonly Dictionary<NetUserId, TimeSpan> _temporaryBypasses = [];
+        private readonly Dictionary<NetUserId, TimeSpan> _temporaryBypasses = new();
         private ISawmill _sawmill = default!;
 
         public void Initialize()

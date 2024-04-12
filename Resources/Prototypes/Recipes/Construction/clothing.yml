@@ -21,17 +21,6 @@
   objectType: Item
 
 - type: construction
-  name: ent-ClothingOuterHardsuitMime
-  id: MimeHardsuit
-  graph: MimeHardsuit
-  startNode: start
-  targetNode: mimeHardsuit
-  category: construction-category-clothing
-  description: ent-ClothingOuterHardsuitMime.desc
-  icon: { sprite: Clothing/OuterClothing/Hardsuits/mime.rsi, state: icon }
-  objectType: Item
-
-- type: construction
   name: ent-ClothingOuterArmorBone
   id: BoneArmor
   graph: BoneArmor

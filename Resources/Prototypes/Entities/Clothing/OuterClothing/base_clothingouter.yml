@@ -86,62 +86,6 @@
 
 - type: entity
   abstract: true
-  parent: [ClothingOuterStorageBase, BaseFoldable]
-  id: ClothingOuterStorageFoldableBase
-  components:
-  - type: Appearance
-  - type: Foldable
-    canFoldInsideContainer: true
-    unfoldVerbText: fold-zip-verb
-    foldVerbText: fold-unzip-verb
-  - type: FoldableClothing
-    foldedEquippedPrefix: open
-    foldedHeldPrefix: open
-  - type: Sprite
-    layers:
-    - state: icon
-      map: [ "unfoldedLayer" ]
-    - state: icon-open
-      map: ["foldedLayer"]
-      visible: false
-
-- type: entity
-  abstract: true
-  parent: ClothingOuterStorageFoldableBase
-  id: ClothingOuterStorageFoldableBaseOpened
-  suffix: opened
-  components:
-  - type: Foldable
-    folded: true
-  - type: Clothing
-    equippedPrefix: open
-  - type: Item
-    heldPrefix: open
-  - type: Sprite
-    layers:
-    - state: icon
-      map: [ "unfoldedLayer" ]
-      visible: false
-    - state: icon-open
-      map: ["foldedLayer"]
-      visible: true
-
-- type: entity
-  abstract: true
-  parent: ClothingOuterStorageBase
-  id: ClothingOuterStorageToggleableBase
-  components:
-  - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHatHoodWinterDefault
-    slot: head
-  - type: ContainerContainer
-    containers:
-      toggleable-clothing: !type:ContainerSlot {}
-      storagebase: !type:Container
-        ents: []
-
-- type: entity
-  abstract: true
   parent: [ClothingOuterBase, GeigerCounterClothing]
   id: ClothingOuterHardsuitBase
   name: base hardsuit
@@ -176,6 +120,20 @@
     - FullBodyOuter
     - Hardsuit
     - WhitelistChameleon
+
+- type: entity
+  abstract: true
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterStorageToggleableBase
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodWinterDefault
+    slot: head
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
+      storagebase: !type:Container
+        ents: []
 
 - type: entity
   abstract: true

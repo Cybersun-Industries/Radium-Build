@@ -1,11 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-<<<<<<<< HEAD:Resources/Textures/Clothing/Head/Hats/beret_qm.rsi/meta.json
   "copyright": "Created by SlamBamActionman",
-========
-  "copyright": "Spritework done by Hanzdegloker",
->>>>>>>> rxup/master:Resources/Textures/Clothing/Head/Hats/brownflatcap.rsi/meta.json
   "size": {
     "x": 32,
     "y": 32
@@ -16,10 +12,6 @@
     },
     {
       "name": "equipped-HELMET",
-      "directions": 4
-    },
-    {
-      "name": "equipped-HELMET-hamster",
       "directions": 4
     },
     {

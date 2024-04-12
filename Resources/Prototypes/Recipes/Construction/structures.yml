@@ -53,24 +53,6 @@
     - !type:TileNotBlocked
 
 - type: construction
-  name: ent-ClockworkGirder
-  id: ClockworkGirder
-  graph: ClockworkGirder
-  startNode: start
-  targetNode: clockGirder
-  category: construction-category-structures
-  description: ent-ClockworkGirder.desc
-  icon:
-    sprite: /Textures/Structures/Walls/clock.rsi
-    state: wall_gear
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canRotate: false
-  canBuildInImpassable: false
-  conditions:
-    - !type:TileNotBlocked
-
-- type: construction
   name: ent-WallSolid
   id: Wall
   graph: Girder
@@ -342,24 +324,6 @@
   canRotate: false
 
 - type: construction
-  name: clockwork grille
-  id: ClockGrille
-  graph: ClockGrille
-  startNode: start
-  targetNode: clockGrille
-  category: construction-category-structures
-  description: A flimsy framework of iron rods assembled in traditional ratvarian fashion.
-  conditions:
-    - !type:TileNotBlocked
-      failIfSpace: false
-  icon:
-    sprite: Structures/Walls/clockwork_grille.rsi
-    state: ratvargrille
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canRotate: false
-
-- type: construction
   name: ent-ClockworkGrille
   id: ClockGrille
   graph: ClockGrille
@@ -391,23 +355,6 @@
   icon:
     sprite: Structures/Walls/grille.rsi
     state: grille_diagonal
-  objectType: Structure
-  placementMode: SnapgridCenter
-
-- type: construction
-  name: diagonal clockwork grille
-  id: ClockworkGrilleDiagonal
-  graph: GrilleDiagonal
-  startNode: start
-  targetNode: clockworkGrilleDiagonal
-  category: construction-category-structures
-  description: A flimsy framework of iron rods assembled in traditional ratvarian fashion.
-  conditions:
-    - !type:TileNotBlocked
-      failIfSpace: false
-  icon:
-    sprite: Structures/Walls/clockwork_grille.rsi
-    state: ratvargrille_diagonal
   objectType: Structure
   placementMode: SnapgridCenter
 
@@ -522,25 +469,6 @@
   canRotate: false
 
 - type: construction
-  name: clockwork window
-  id: ClockworkWindow
-  graph: Window
-  startNode: start
-  targetNode: clockworkWindow
-  category: construction-category-structures
-  description: Clear and tough, with a golden tint.
-  canBuildInImpassable: true
-  conditions:
-    - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
-  icon:
-    sprite: Structures/Windows/clockwork_window.rsi
-    state: full
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canRotate: false
-
-- type: construction
   name: diagonal clockwork window
   id: ClockworkWindowDiagonal
   graph: WindowDiagonal
@@ -576,24 +504,6 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
-
-- type: construction
-  name: ent-ClockworkWindowDiagonal
-  id: ClockworkWindowDiagonal
-  graph: WindowDiagonal
-  startNode: start
-  targetNode: clockworkWindowDiagonal
-  category: construction-category-structures
-  description: ent-ClockworkWindowDiagonal.desc
-  canBuildInImpassable: true
-  conditions:
-    - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
-  icon:
-    sprite: Structures/Windows/clockwork_diagonal.rsi
-    state: state0
-  objectType: Structure
-  placementMode: SnapgridCenter
 
 - type: construction
   name: ent-PlasmaWindow
@@ -721,24 +631,6 @@
   icon:
     sprite: Structures/Windows/directional.rsi
     state: reinforced_window
-  objectType: Structure
-  placementMode: SnapgridCenter
-
-- type: construction
-  name: directional clockwork window
-  id: WindowClockworkDirectional
-  graph: WindowDirectional
-  startNode: start
-  targetNode: windowClockworkDirectional
-  category: construction-category-structures
-  description: Clear and tough, with a golden tint.
-  canBuildInImpassable: true
-  conditions:
-    - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
-  icon:
-    sprite: Structures/Windows/directional.rsi
-    state: clock_window
   objectType: Structure
   placementMode: SnapgridCenter
 
@@ -961,21 +853,6 @@
   description: ent-ShuttersRadiation.desc
   icon:
     sprite: Structures/Doors/Shutters/shutters_radiation.rsi
-    state: closed
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canBuildInImpassable: true
-
-- type: construction
-  name: blast door
-  id: BlastDoor
-  graph: BlastDoor
-  startNode: start
-  targetNode: blastdoor
-  category: construction-category-structures
-  description: This one says 'BLAST DONGER'.
-  icon:
-    sprite: Structures/Doors/Shutters/blastdoor.rsi
     state: closed
   objectType: Structure
   placementMode: SnapgridCenter
@@ -1210,58 +1087,6 @@
   conditions:
   - !type:TileNotBlocked
 
-#Wooden fence high
-- type: construction
-  name: ent-BaseFenceWood
-  id: FenceWood
-  graph: FenceWood
-  startNode: start
-  targetNode: straight
-  category: construction-category-structures
-  description: ent-BaseFenceWood.desc
-  icon:
-    sprite: Structures/Walls/wooden_fence.rsi
-    state: straight
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canBuildInImpassable: false
-  conditions:
-  - !type:TileNotBlocked
-
-- type: construction
-  name: ent-FenceWoodHighEnd
-  id: FenceWoodEnd
-  graph: FenceWood
-  startNode: start
-  targetNode: end
-  category: construction-category-structures
-  description: ent-FenceWoodHighEnd.desc
-  icon:
-    sprite: Structures/Walls/wooden_fence.rsi
-    state: end
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canBuildInImpassable: false
-  conditions:
-  - !type:TileNotBlocked
-
-- type: construction
-  name: ent-FenceWoodHighCorner
-  id: FenceWoodCorner
-  graph: FenceWood
-  startNode: start
-  targetNode: corner
-  category: construction-category-structures
-  description: ent-FenceWoodHighCorner.desc
-  icon:
-    sprite: Structures/Walls/wooden_fence.rsi
-    state: corner
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canBuildInImpassable: false
-  conditions:
-  - !type:TileNotBlocked
-
 - type: construction
   name: ent-FenceWoodHighTJunction
   id: FenceWoodTJunction
@@ -1332,58 +1157,6 @@
   - !type:TileNotBlocked
 
 - type: construction
-  name: wooden high fence t-junction
-  id: FenceWoodTJunction
-  graph: FenceWood
-  startNode: start
-  targetNode: tjunction
-  category: construction-category-structures
-  description: Part of a wooden fence meant to cordon off areas.
-  icon:
-    sprite: Structures/Walls/wooden_fence.rsi
-    state: tjunction
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canBuildInImpassable: false
-  conditions:
-  - !type:TileNotBlocked
-
-- type: construction
-  name: wooden high fence gate
-  id: FenceWoodGate
-  graph: FenceWood
-  startNode: start
-  targetNode: gate
-  category: construction-category-structures
-  description: Part of a wooden fence meant to cordon off areas.
-  icon:
-    sprite: Structures/Walls/wooden_fence.rsi
-    state: door_closed
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canBuildInImpassable: false
-  conditions:
-  - !type:TileNotBlocked
-
-#Wooden fence small
-- type: construction
-  name: wooden small fence
-  id: FenceWoodSmall
-  graph: FenceWood
-  startNode: start
-  targetNode: straight_small
-  category: construction-category-structures
-  description: Part of a wooden fence meant to cordon off areas.
-  icon:
-    sprite: Structures/Walls/wooden_fence.rsi
-    state: straight_small
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canBuildInImpassable: false
-  conditions:
-  - !type:TileNotBlocked
-
-- type: construction
   name: wooden small fence end
   id: FenceWoodEndSmall
   graph: FenceWood
@@ -1394,40 +1167,6 @@
   icon:
     sprite: Structures/Walls/wooden_fence.rsi
     state: end_small
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canBuildInImpassable: false
-  conditions:
-  - !type:TileNotBlocked
-
-- type: construction
-  name: wooden small fence corner
-  id: FenceWoodCornerSmall
-  graph: FenceWood
-  startNode: start
-  targetNode: corner_small
-  category: construction-category-structures
-  description: Part of a wooden fence meant to cordon off areas.
-  icon:
-    sprite: Structures/Walls/wooden_fence.rsi
-    state: corner_small
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canBuildInImpassable: false
-  conditions:
-  - !type:TileNotBlocked
-
-- type: construction
-  name: wooden small fence t-junction
-  id: FenceWoodTJunctionSmall
-  graph: FenceWood
-  startNode: start
-  targetNode: tjunction_small
-  category: construction-category-structures
-  description: Part of a wooden fence meant to cordon off areas.
-  icon:
-    sprite: Structures/Walls/wooden_fence.rsi
-    state: tjunction_small
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
@@ -1488,23 +1227,6 @@
   - !type:TileNotBlocked
 
 - type: construction
-  name: ent-FenceWoodSmallEnd
-  id: FenceWoodEndSmall
-  graph: FenceWood
-  startNode: start
-  targetNode: end_small
-  category: construction-category-structures
-  description: ent-FenceWoodSmallEnd.desc
-  icon:
-    sprite: Structures/Walls/wooden_fence.rsi
-    state: end_small
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canBuildInImpassable: false
-  conditions:
-  - !type:TileNotBlocked
-
-- type: construction
   name: ent-FenceWoodSmallCorner
   id: FenceWoodCornerSmall
   graph: FenceWood
@@ -1539,41 +1261,6 @@
   - !type:TileNotBlocked
 
 - type: construction
-  name: ent-FenceWoodSmallGate
-  id: FenceWoodGateSmall
-  graph: FenceWood
-  startNode: start
-  targetNode: gate_small
-  category: construction-category-structures
-  description: ent-FenceWoodSmallGate.desc
-  icon:
-    sprite: Structures/Walls/wooden_fence.rsi
-    state: door_closed_small
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canBuildInImpassable: false
-  conditions:
-  - !type:TileNotBlocked
-
-#Airlocks
-- type: construction
-  name: ent-Airlock
-  id: Airlock
-  graph: Airlock
-  startNode: start
-  targetNode: airlock
-  category: construction-category-structures
-  description: ent-Airlock.desc
-  icon:
-    sprite: Structures/Doors/Airlocks/Standard/basic.rsi
-    state: assembly
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canBuildInImpassable: false
-  conditions:
-    - !type:TileNotBlocked
-
-- type: construction
   name: ent-AirlockGlass
   id: AirlockGlass
   graph: Airlock
@@ -1583,40 +1270,6 @@
   description: ent-AirlockGlass.desc
   icon:
     sprite: Structures/Doors/Airlocks/Glass/glass.rsi
-    state: assembly
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canBuildInImpassable: false
-  conditions:
-    - !type:TileNotBlocked
-
-- type: construction
-  name: pinion airlock
-  id: PinionAirlock
-  graph: PinionAirlock
-  startNode: start
-  targetNode: airlock
-  category: construction-category-structures
-  description: It opens, it closes, and maybe crushes you.
-  icon:
-    sprite: Structures/Doors/Airlocks/Standard/clockwork_pinion.rsi
-    state: assembly
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canBuildInImpassable: false
-  conditions:
-    - !type:TileNotBlocked
-
-- type: construction
-  name: glass pinion airlock
-  id: PinionAirlockGlass
-  graph: PinionAirlock
-  startNode: start
-  targetNode: glassAirlock
-  category: construction-category-structures
-  description: It opens, it closes, and maybe crushes you.
-  icon:
-    sprite: Structures/Doors/Airlocks/Glass/clockwork_pinion.rsi
     state: assembly
   objectType: Structure
   placementMode: SnapgridCenter
@@ -1956,23 +1609,6 @@
     - !type:TileNotBlocked
 
 - type: construction
-  name: opaque plastic flaps
-  id: PlasticFlapsOpaque
-  graph: PlasticFlapsGraph
-  startNode: start
-  targetNode: opaqueFlaps
-  category: construction-category-structures
-  placementMode: SnapgridCenter
-  description: An opaque plastic flap to let items through and keep people out.
-  objectType: Structure
-  canBuildInImpassable: false
-  icon:
-    sprite: Structures/plastic_flaps.rsi
-    state: plasticflaps
-  conditions:
-    - !type:TileNotBlocked
-
-- type: construction
   name: airtight opaque plastic flaps
   id: PlasticFlapsAirtightOpaque
   graph: PlasticFlapsGraph
@@ -1990,23 +1626,6 @@
     - !type:TileNotBlocked
 
 - type: construction
-  name: ent-PlasticFlapsAirtightClear
-  id: PlasticFlapsAirtight
-  graph: PlasticFlapsGraph
-  startNode: start
-  targetNode: airtightFlaps
-  category: construction-category-structures
-  placementMode: SnapgridCenter
-  description: ent-PlasticFlapsAirtightClear.desc
-  objectType: Structure
-  canBuildInImpassable: false
-  icon:
-    sprite: Structures/plastic_flaps.rsi
-    state: plasticflaps
-  conditions:
-    - !type:TileNotBlocked
-
-- type: construction
   name: ent-PlasticFlapsOpaque
   id: PlasticFlapsOpaque
   graph: PlasticFlapsGraph
@@ -2015,23 +1634,6 @@
   category: construction-category-structures
   placementMode: SnapgridCenter
   description: ent-PlasticFlapsOpaque.desc
-  objectType: Structure
-  canBuildInImpassable: false
-  icon:
-    sprite: Structures/plastic_flaps.rsi
-    state: plasticflaps
-  conditions:
-    - !type:TileNotBlocked
-
-- type: construction
-  name: ent-PlasticFlapsAirtightOpaque
-  id: PlasticFlapsAirtightOpaque
-  graph: PlasticFlapsGraph
-  startNode: start
-  targetNode: airtightopaqueFlaps
-  category: construction-category-structures
-  placementMode: SnapgridCenter
-  description: ent-PlasticFlapsAirtightOpaque.desc
   objectType: Structure
   canBuildInImpassable: false
   icon:
