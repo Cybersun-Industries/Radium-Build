@@ -910,7 +910,7 @@
     - state: mag-0
       map: ["enum.GunVisualLayers.Mag"]
   - type: Item
-    size: NormalLarge
+    size: Normal
   - type: GunWieldBonus
     minAngle: -23
     maxAngle: 0

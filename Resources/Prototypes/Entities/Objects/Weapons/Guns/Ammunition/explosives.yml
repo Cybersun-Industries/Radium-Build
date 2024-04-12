@@ -175,6 +175,19 @@
     state: grapeshot
 
 - type: entity
+  id: CannonBall
+  name: cannonball
+  suffix: Pirate
+  parent: BaseCannonBall
+  components:
+  - type: CartridgeAmmo
+    proto: BulletCannonBall
+    deleteOnSpawn: true
+  - type: Sprite
+    sprite: Objects/Weapons/Guns/Ammunition/Explosives/explosives.rsi
+    state: ball
+
+- type: entity
   id: CannonBallGlassshot
   name: glassshot
   suffix: Pirate

@@ -679,6 +679,19 @@
     node: TableFancyPurple
 
 - type: entity
+  id: TableFancyCyan
+  parent: TableFancyBase
+  suffix: Cyan
+  components:
+  - type: Sprite
+    sprite: Structures/Furniture/Tables/Fancy/cyan.rsi
+  - type: Icon
+    sprite: Structures/Furniture/Tables/Fancy/cyan.rsi
+  - type: Construction
+    graph: Table
+    node: TableFancyCyan
+
+- type: entity
   id: TableFancyPink
   parent: TableFancyBase
   suffix: Pink

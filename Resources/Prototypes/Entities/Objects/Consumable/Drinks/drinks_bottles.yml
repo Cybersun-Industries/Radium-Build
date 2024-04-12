@@ -858,6 +858,23 @@
 
 - type: entity
   parent: DrinkBottlePlasticBaseFull
+  id: DrinkEnergyDrinkJug
+  name: red bool jug
+  description: A jug of Red Bool, with enough caffine to kill a whole station.
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      drink:
+        maxVol: 100
+        reagents:
+        - ReagentId: EnergyDrink
+          Quantity: 100
+  - type: Drink
+  - type: Label
+    currentLabel: red bool
+
+- type: entity
+  parent: DrinkBottlePlasticBaseFull
   id: CustomDrinkJug
   name: beverage jug
   description: A jug for storing custom made drinks.
