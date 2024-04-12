@@ -1088,7 +1088,6 @@
   - !type:TileNotBlocked
 
   #Wooden fence high
-=======
 - type: construction
   name: ent-FenceWoodHighTJunction
   id: FenceWoodTJunction
