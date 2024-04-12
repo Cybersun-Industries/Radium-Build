@@ -1192,9 +1192,6 @@
   - !type:TileNotBlocked
 
 - type: construction
-  name: ent-BaseFenceWoodSmall
-  id: FenceWoodSmall
-- type: construction
   name: ent-FenceWoodSmallGate
   id: FenceWoodGate
   graph: FenceWood
