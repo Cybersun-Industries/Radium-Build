@@ -40,9 +40,9 @@
         - SAIShip
       - type: StationJobs
         overflowJobs:
-        - Freelancer
+        - Passenger
         availableJobs:
-          Freelancer: [ -1, -1 ]
+          Passenger: [ -1, -1 ]
           StationEngineer: [ 5, 5 ]
           Captain: [ 1, 1 ]
           SAIShip: [ 1, 1 ]
@@ -67,9 +67,9 @@
         - SAIShip
       - type: StationJobs
         overflowJobs:
-        - Freelancer
+        - Passenger
         availableJobs:
-          Freelancer: [ -1, -1 ]
+          Passenger: [ -1, -1 ]
           StationEngineer: [ 5, 5 ]
           Captain: [ 1, 1 ]
           SAIShip: [ 1, 1 ]

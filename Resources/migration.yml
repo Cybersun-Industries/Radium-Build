@@ -434,4 +434,4 @@ BodyBag_Folded: BodyBagFolded
 # SpiderClownSpawn: ClownPepeBallMigration
 # VentCritters: ClownPepeMigration
 # SlimesSpawn: RealTysonMigration
-SpawnFreelancer: null
+SpawnFreelancer: SpawnPointPassenger
