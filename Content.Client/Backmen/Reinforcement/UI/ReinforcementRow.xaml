@@ -16,9 +16,9 @@
         <Label Name="Count"
                Access="Public"
                MinSize="32 32"
-               Align="Right" />
+               Align="Center" />
         <Label Name="JobName"
                Access="Public"
-               HorizontalExpand="True" />
+               HorizontalExpand="False" />
     </BoxContainer>
 </PanelContainer>

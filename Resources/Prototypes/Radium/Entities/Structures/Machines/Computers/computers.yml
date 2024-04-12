@@ -1,0 +1,54 @@
+﻿- type: reinforcement
+  id: ERTLeader
+  name: Лидер
+  job: ERTLeader
+  min: 1
+  max: 1
+
+- type: reinforcement
+  id: ERTSecurity
+  name: Офицер
+  job: ERTSecurity 
+  max: 3
+
+- type: entity
+  parent: BaseComputer
+  id: ComputerERTReinforcementCentCom
+  name: ert reinforcement console
+  description: allows you to call for special reasons persons to solve these reasons
+  components:
+  - type: Construction
+    graph: nullgraph
+    node: nullnode
+  - type: ReinforcementConsole
+    min: 1
+    max: 4
+    available:
+    - ERTLeader
+    - ERTSecurity
+    - ERTEngineer
+    - ERTMedical
+    - ERTJanitor
+  - type: UserInterface
+    interfaces:
+    - key: enum.ReinforcementConsoleKey.Key
+      type: ReinforcementConsoleBoundUserInterface
+  - type: ActivatableUI
+    key: enum.ReinforcementConsoleKey.Key
+    singleUser: true
+  - type: Sprite
+    layers:
+    - map: ["computerLayerBody"]
+      state: computer
+    - map: ["computerLayerKeyboard"]
+      state: generic_keyboard
+    - map: ["computerLayerScreen"]
+      state: explosive
+    - map: ["computerLayerKeys"]
+      state: security_key
+  - type: PointLight
+    radius: 1.5
+    energy: 1.6
+    color: "#1f8c28"
+  - type: AccessReader
+    access: [["CCOfficer"]]
