@@ -1,79 +1,79 @@
 # These should be lathe recipes but lathe code sucks so hard rn so they'll be crafted by hand.
 
 - type: construction
-  name: steel tile
+  name: ent-FloorTileItemSteel
   id: TileSteel
   graph: TileSteel
   startNode: start
   targetNode: steeltile
   category: construction-category-tiles
-  description: "Four steel station tiles."
+  description: ent-FloorTileItemSteel.desc
   icon: { sprite: Objects/Tiles/tile.rsi, state: steel }
   objectType: Item
 
 - type: construction
-  name: wood floor
+  name: ent-FloorTileItemWood
   id: TileWood
   graph: TileWood
   startNode: start
   targetNode: woodtile
   category: construction-category-tiles
-  description: "Four pieces of wooden station flooring."
+  description: ent-FloorTileItemWood.desc
   icon: { sprite: Objects/Tiles/tile.rsi, state: wood }
   objectType: Item
-  
+
 - type: construction
-  name: filled brass plate
+  name: ent-FloorTileItemBrassFilled
   id: TileBrassFilled
   graph: TilesBrass
   startNode: start
   targetNode: filledPlate
   category: construction-category-tiles
-  description: "Four pieces of brass station flooring, only compatible with brass plating."
+  description: ent-FloorTileItemBrassFilled.desc
   icon: { sprite: Objects/Tiles/tile.rsi, state: brass-filled }
   objectType: Item
-  
+
 - type: construction
-  name: smooth brass plate
+  name: ent-FloorTileItemBrassReebe
   id: TileBrassReebe
   graph: TilesBrass
   startNode: start
   targetNode: reebe
   category: construction-category-tiles
-  description: "Four pieces of smooth brass station flooring, only compatible with brass plating."
+  description: ent-FloorTileItemBrassReebe.desc
   icon: { sprite: Objects/Tiles/tile.rsi, state: reebe }
   objectType: Item
 
 - type: construction
-  name: white tile
+  name: ent-FloorTileItemWhite
   id: TileWhite
   graph: TileWhite
   startNode: start
   targetNode: whitetile
   category: construction-category-tiles
-  description: "Four white station tiles."
+  description: ent-FloorTileItemWhite.desc
   icon: { sprite: Objects/Tiles/tile.rsi, state: white }
   objectType: Item
 
 - type: construction
-  name: dark tile
+  name: ent-FloorTileItemDark
   id: TileDark
   graph: TileDark
   startNode: start
   targetNode: darktile
   category: construction-category-tiles
-  description: "Four dark station tiles."
+  description: ent-FloorTileItemDark.desc
   icon: { sprite: Objects/Tiles/tile.rsi, state: dark }
   objectType: Item
 
 - type: construction
-  name: flesh tile
+  name: ent-FloorTileItemFlesh
   id: TileFlesh
   graph: TileFlesh
   startNode: start
   targetNode: fleshTile
   category: construction-category-tiles
-  description: "Four fleshy tiles."
+  description: ent-FloorTileItemFlesh.desc
   icon: { sprite: Objects/Tiles/tile.rsi, state: meat }
   objectType: Item
 
@@ -188,12 +188,12 @@
 #   objectType: Item
 
 - type: construction
-  name: large wood floor
+  name: ent-FloorTileItemWoodLarge
   id: TileWoodLarge
   graph: TileWoodLarge
   startNode: start
   targetNode: woodtilelarge
   category: construction-category-tiles
-  description: "Four pieces of wooden station flooring."
+  description: ent-FloorTileItemWoodLarge.desc
   icon: { sprite: Objects/Tiles/tile.rsi, state: wood-large }
   objectType: Item

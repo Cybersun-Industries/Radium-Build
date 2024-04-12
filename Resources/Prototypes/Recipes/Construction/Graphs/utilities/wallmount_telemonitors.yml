@@ -38,7 +38,7 @@
             - tool: Screwing
               doAfter: 2
             - tag: SurveillanceCameraMonitorCircuitboard
-              name: surveillance camera monitor board
+              name: ent-SurveillanceWirelessCameraAnchoredCircuitboard
               icon:
                 sprite: Objects/Misc/module.rsi
                 state: cpuboard
@@ -49,7 +49,7 @@
               prototype: CableApcStack1
               amount: 5
             - !type:GivePrototype
-              prototype: SurveillanceCameraMonitorCircuitboard
+              prototype: ent-ComputerTelevisionCircuitboard
               amount: 1
           steps:
             - tool: Cutting
