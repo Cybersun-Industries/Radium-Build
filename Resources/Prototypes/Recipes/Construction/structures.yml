@@ -1260,23 +1260,6 @@
   conditions:
   - !type:TileNotBlocked
 
-- type: construction
-  name: ent-FenceWoodSmallGate
-  id: FenceWoodGateSmall
-  graph: FenceWood
-  startNode: start
-  targetNode: gate_small
-  category: construction-category-structures
-  description: ent-FenceWoodSmallGate.desc
-  icon:
-    sprite: Structures/Walls/wooden_fence.rsi
-    state: door_closed_small
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canBuildInImpassable: false
-  conditions:
-  - !type:TileNotBlocked
-
   #Airlocks
 - type: construction
   name: ent-Airlock
