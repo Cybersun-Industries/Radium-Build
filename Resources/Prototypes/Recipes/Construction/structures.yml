@@ -1644,23 +1644,6 @@
   - !type:TileNotBlocked
 
 - type: construction
-  name: ent-PlasticFlapsOpaque
-  id: PlasticFlapsOpaque
-  graph: PlasticFlapsGraph
-  startNode: start
-  targetNode: opaqueFlaps
-  category: construction-category-structures
-  placementMode: SnapgridCenter
-  description: ent-PlasticFlapsOpaque.desc
-  objectType: Structure
-  canBuildInImpassable: false
-  icon:
-    sprite: Structures/plastic_flaps.rsi
-    state: plasticflaps
-  conditions:
-  - !type:TileNotBlocked
-
-- type: construction
   name: ent-StatueBananiumClown
   id: BananiumClownStatue
   graph: BananiumStatueClown
