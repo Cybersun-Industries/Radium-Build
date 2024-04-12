@@ -10,13 +10,13 @@
   objectType: Item
 
 - type: construction
-  name: ent-ClothingOuterHardsuitMime
+  name: mime hardsuit
   id: MimeHardsuit
   graph: MimeHardsuit
   startNode: start
   targetNode: mimeHardsuit
   category: construction-category-clothing
-  description: ent-ClothingOuterHardsuitMime.desc
+  description: A modified hardsuit fit for a mime.
   icon: { sprite: Clothing/OuterClothing/Hardsuits/mime.rsi, state: icon }
   objectType: Item
 

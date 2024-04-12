@@ -138,7 +138,7 @@ public sealed partial class LatheMenu : DefaultWindow
                 : _spriteSystem.Frame0(prototype.Icon);
             var canProduce = _lathe.CanProduce(_owner, prototype, quantity);
 
-            var control = new RecipeControl(prototype, sb.ToString(), canProduce, icon);
+            var control = new RecipeControl(prototype, sb.ToString, canProduce, icon);
             control.OnButtonPressed += s =>
             {
                 if (!int.TryParse(AmountLineEdit.Text, out var amount) || amount <= 0)

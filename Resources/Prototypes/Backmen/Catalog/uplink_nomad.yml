@@ -2,8 +2,8 @@
 
 - type: listing
   id: UplinkP90Bundle
-  name: uplink-bundle-p90-name # Radium
-  description: uplink-bundle-p90-desc # Radium
+  name: набор "P90"
+  description: Старый добрый п90 военного образца, стал символом специальных операций, в комплетке 3 магазина.
   icon: { sprite: Backmen/Objects/Weapons/Gunsx64/SMGs/p90.rsi, state: icon }
   productEntity: ClothingBackpackDuffelSyndicateFilledP90
   cost:
@@ -24,8 +24,8 @@
 
 - type: listing
   id: UplinkAKMSBundle
-  name: uplink-bundle-AKMS-name # Radium
-  description: uplink-bundle-AKMS-desc # Radium
+  name: набор "AKMS"
+  description: Символ войны, легендарное оружие зарекомендовавшие себя как самое надежное оружие в истории. В комплетке 3 магазина.
   icon: { sprite: Backmen/Objects/Weapons/Gunsx64/Rifles/akms/big.rsi, state: icon }
   productEntity: ClothingBackpackDuffelSyndicateFilledAKMS
   cost:
@@ -46,8 +46,8 @@
 
 - type: listing
   id: UplinkV31Bundle
-  name: uplink-bundle-V31-name # Radium
-  description: uplink-bundle-V31-desc # Radium
+  name: набор "V31"
+  description: Основная винтовка вооруженных сил Сынов Марса, имеет реактивные патроны, эффективен против всего. В комплетке 3 магазина.
   icon: { sprite: Backmen/Objects/Weapons/Gunsx64/Rifles/v31/big.rsi, state: icon }
   productEntity: ClothingBackpackDuffelSyndicateFilledV31
   cost:
@@ -68,8 +68,8 @@
 
 - type: listing
   id: UplinkAKSUBundle
-  name: uplink-bundle-AKSU-name  # Radium
-  description: uplink-bundle-AKSU-desc  # Radium
+  name: набор "AKSU"
+  description: Оружие ГРУ СССП, надежное, компактное, а самое главное что ничем не отличается от своего более старшего брата, поэтому его и любят отряды особого назначения. В комплетке 3 магазина.
   icon: { sprite: Backmen/Objects/Weapons/Gunsx64/Rifles/aksu.rsi, state: icon }
   productEntity: ClothingBackpackDuffelSyndicateFilledAKSU
   cost:
@@ -90,8 +90,8 @@
 
 - type: listing
   id: UplinkStG44Bundle
-  name: uplink-bundle-StG44-name # Radium
-  description: uplink-bundle-StG44-desc # Radium
+  name: набор "StG44"
+  description: Первая "Штурмовая Винтовка" в истории, в отличии от её образца 1944 года, имеет современные внутренности, из-за особенности конструкции имеет более высокую скорострельность. В комплетке 3 магазина.
   icon: { sprite: Backmen/Objects/Weapons/Gunsx64/Rifles/stg44/big.rsi, state: icon }
   productEntity: ClothingBackpackDuffelSyndicateFilledStG44
   cost:
@@ -112,8 +112,8 @@
 
 - type: listing
   id: UplinkMP7Bundle
-  name: uplink-bundle-MP7-name # Radium
-  description: uplink-bundle-MP7-desc # Radium
+  name: набор "MP7"
+  description: Запрещенная на территории ОПЗ оружие, из-за её специфического назначения и функционала, зарекомендовала себя как оружие ганстеров галактики. В комплетке 3 магазина.
   icon: { sprite: Backmen/Objects/Weapons/Gunsx64/SMGs/mp7/big.rsi, state: icon }
   productEntity: ClothingBackpackDuffelSyndicateFilledMP7
   cost:
@@ -134,8 +134,8 @@
 
 - type: listing
   id: UplinkMP38Bundle
-  name: uplink-bundle-MP38-name # Radium
-  description: uplink-bundle-MP38-desc # Radium
+  name: набор "MP38"
+  description: Дешевая, простая пушка с открытым затвором, не нуждается в обслуживании... Скорее всего это оружие с тех самых времен... В комплетке 3 магазина.
   icon: { sprite: Backmen/Objects/Weapons/Gunsx64/SMGs/mp38/big.rsi, state: icon }
   productEntity: ClothingBackpackDuffelSyndicateFilledMP38
   cost:
@@ -156,8 +156,8 @@
 
 - type: listing
   id: UplinkPPSH41Bundle
-  name: uplink-bundle-PPSH41-name # Radium
-  description: uplink-bundle-PPSH41-desc # Radium
+  name: набор "PPSH41"
+  description: ПиПиСиЭйч 41, стандартный пистолет-пулемет на вооружении СССП, попал на черный рынок из-за частых "набегов" на склады СССП, явно не проданных местными командирами. В комплетке 2 магазина.
   icon: { sprite: Backmen/Objects/Weapons/Gunsx64/SMGs/ppsh41/big.rsi, state: icon }
   productEntity: ClothingBackpackDuffelSyndicateFilledPPSH41
   cost:
@@ -177,8 +177,8 @@
 
 - type: listing
   id: UplinkDEagle
-  name: uplink-weaponry-deagle-name # Radium
-  description: uplink-weaponry-deagle-desc # Radium
+  name: Пустынный орёл
+  description: Большой, стильный, мощный дигл на базе .45 калибра, был создан для охоты на слонов, но чем СБешник не слон? Не так-ли?
   icon: { sprite: Backmen/Objects/Weapons/Gunsx64/Pistols/deagle/big.rsi, state: icon }
   productEntity: WeaponPistolDEagle
   cost:
@@ -186,21 +186,21 @@
   categories:
   - UplinkWeaponry
 
-#- type: listing
-#  id: UplinkMagazineMagnumPistol
-#  name: магазин (.45 магнум)
-#  description: Магазин для того самого пустынного орла.
-#  icon: { sprite: Backmen/Objects/Weapons/Gunsx64/Magazines/Magnum/magnum_pistol_mag.rsi, state: base }
-#  productEntity: MagazineMagnumPistol
-#  cost:
-#    Telecrystal: 1
-#  categories:
-#  - UplinkAmmo
+- type: listing
+  id: UplinkMagazineMagnumPistol
+  name: магазин (.45 магнум)
+  description: Магазин для того самого пустынного орла.
+  icon: { sprite: Backmen/Objects/Weapons/Gunsx64/Magazines/Magnum/magnum_pistol_mag.rsi, state: base }
+  productEntity: MagazineMagnumPistol
+  cost:
+    Telecrystal: 1
+  categories:
+  - UplinkAmmo
 
 - type: listing
   id: UplinkZauerBundle
-  name: uplink-bundle-zauer-name # Radium
-  description: uplink-bundle-zauer-desc # Radium
+  name: набор "Zauer"
+  description: Простой и надеждный, штурмовой автоматически дробовик зауер. содержит 2 барабан пуль и 4 барабана дроби.
   icon: { sprite: Backmen/Objects/Weapons/Gunsx64/Shotguns/zauer/big.rsi, state: icon }
   productEntity: ClothingBackpackDuffelSyndicateFilledZauer
   cost:
@@ -224,8 +224,8 @@
 
 - type: listing
   id: UplinkGrenadeLauncher79Bundle
-  name: uplink-bundle-GL-79-name # Radium
-  description: uplink-bundle-GL-79-desc # Radium
+  name: набор "GL-79"
+  description: Новенький, ручной гранатомет с барабанным системой, имеет 12 гранат в комплекте
   icon: { sprite: Backmen/Objects/Weapons/Gunsx64/Launchers/gl-64/big.rsi, state: icon }
   productEntity: ClothingBackpackDuffelSyndicateFilledGL79
   cost:
@@ -248,8 +248,8 @@
 
 - type: listing
   id: UplinkGrenadeLauncherM81Bundle
-  name: uplink-bundle-M-81-name # Radium
-  description: uplink-bundle-M-81-desc # Radium
+  name: набор "M-81"
+  description: Однозарядный армейский штатный гранатомёт, используется пехотными подраздилениями для блокирывания зон и поддержки, имеет 6 гранат в комплекте
   icon: { sprite: Backmen/Objects/Weapons/Gunsx64/Launchers/m81.rsi, state: base }
   productEntity: ClothingBackpackDuffelSyndicateFilledM81
   cost:
@@ -272,8 +272,8 @@
 
 - type: listing
   id: UplinkRPDBundle
-  name: uplink-bundle-RPD-name # Radium
-  description: uplink-bundle-RPD-desc # Radium
+  name: Набор "RPD"
+  description: Старый добрый ПК, который был успешно "украден" со старых складов СССП, отличная дакка, подходит для всех возрастов террористов. имеет 3 коробки патронов.
   icon: { sprite: Backmen/Objects/Weapons/Gunsx64/LMGs/rpd/big.rsi, state: icon }
   productEntity: ClothingBackpackDuffelSyndicateFilledRPD
   cost:
@@ -294,8 +294,8 @@
 
 - type: listing
   id: UplinkMG42Bundle
-  name: uplink-bundle-MG42-name # Radium
-  description: uplink-bundle-MG42-desc # Radium
+  name: Набор "MG42"
+  description: Очень старый общевойсковой пулемет Объеденненого Правительства Земли, все оригинальные компоненты были заменены более усовршенственными, а барабан был дополнен БлюСпейс технологией, для более бесперебойной стрельбы. Имеет 1 магазин и 2 ящика патронов.
   icon: { sprite: Backmen/Objects/Weapons/Gunsx64/LMGs/mg42/big.rsi, state: icon }
   productEntity: ClothingBackpackDuffelSyndicateFilledMG42
   cost:
@@ -316,8 +316,8 @@
 
 - type: listing
   id: UplinkBR64Bundle
-  name: uplink-bundle-BR-64-name # Radium
-  description: uplink-bundle-BR-64-name # Radium
+  name: Набор "BR-64"
+  description: Марксменская тяжелая винтовка, имеет автодосылатель затвора, что облегчает эксплоатирование оружия (но не его чистку). Имеет 3 магазина .60 калибра.
   icon: { sprite: Backmen/Objects/Weapons/Gunsx64/Rifles/br-64/big.rsi, state: icon }
   productEntity: ClothingBackpackDuffelSyndicateFilledBR64
   cost:
@@ -338,8 +338,8 @@
 
 - type: listing
   id: UplinkSVDBundle
-  name: uplink-bundle-SVD-name # Radium
-  description: uplink-bundle-SVD-desc # Radium
+  name: набор "SVD"
+  description: Легендарное оружие, зарекомендовала себя за счёт платформы АК на которой он был создан. В комплетке 3 магазина.
   icon: { sprite: Backmen/Objects/Weapons/Gunsx64/Snipers/dragunov/big.rsi, state: icon }
   productEntity: ClothingBackpackDuffelSyndicateFilledSVD
   cost:
@@ -360,8 +360,8 @@
 
 - type: listing
   id: UplinkSpas12Bundle
-  name: uplink-bundle-SPAS12-name # Radium
-  description: uplink-bundle-SPAS12-desc # Radium
+  name: набор "SPAS-12"
+  description: Спас-12, великолепное оружие которое показала свою надежность и убойную силу. В комплетке 43 патрона.
   icon: { sprite: Backmen/Objects/Weapons/Gunsx64/Shotguns/spas-16/big.rsi, state: icon }
   productEntity: ClothingBackpackDuffelSyndicateFilledSPAS12
   cost:
@@ -381,8 +381,8 @@
 
 - type: listing
   id: UplinkFlamethrowerBundle
-  name: uplink-bundle-flamethrowerM6-name # Radium
-  description: uplink-bundle-flamethrowerM6-desc # Radium
+  name: набор "Огнемет М6"
+  description: Огнемет имеющий шланг под специальный резервуар с огненой смесью, которая способна гореть даже в полном вакууме! Имеет в наборе 1 powerpack.
   icon: { sprite: Backmen/Objects/Weapons/Gunsx64/Flamethrowers/M6/big.rsi, state: icon }
   productEntity: CrateFlamethrowerBundle
   cost:
@@ -404,8 +404,8 @@
 
 - type: listing
   id: UplinkFlamethrower
-  name: uplink-weaponry-flamethrower-name # Radium
-  description: uplink-weaponry-flamethrower-desc # Radium
+  name: Огнемет М6
+  description: Огнемет с небольшой специальным портом под маленькие баллоны с огненой смесью, которая способна гореть даже в полном вакууме!
   icon: { sprite: Backmen/Objects/Weapons/Gunsx64/Flamethrowers/M6/big.rsi, state: icon }
   productEntity: FirethrowerGun
   cost:
@@ -415,8 +415,8 @@
 
 - type: listing
   id: UplinkFuelTankFirethrower
-  name: uplink-ammo-firethrower-name # Radium
-  description: uplink-ammo-firethrower-desc # Radium
+  name: Топливный бак
+  description: Топливный бак для огнемёта.
   icon: { sprite: Backmen/Objects/Weapons/Gunsx64/Flamethrowers/tank.rsi, state: base }
   productEntity: FuelTankFirethrower
   cost:
@@ -426,8 +426,8 @@
 
 - type: listing
   id: UplinkNightVisionDevice
-  name: uplink-wearables-night-vision-name # Radium
-  description: uplink-wearables-night-vision-desc # Radium
+  name: прибор ночного видения
+  description: Ты можешь смотреть в темноте...
   icon: { sprite: Clothing/Eyes/Glasses/ninjavisor.rsi, state: icon }
   productEntity: ClothingEyesVisionNuki
   cost:

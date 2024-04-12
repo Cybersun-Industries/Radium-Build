@@ -425,8 +425,13 @@ ClothingNeckFlowerWreath: ClothingHeadHatFlowerWreath
 ClothingHeadHatFlowerCrown: ClothingHeadHatFlowerWreath
 BriefcaseSyndieBase: null
 
+# 2024-04-08
+BodyBag_Container: BodyBag
+BodyBag_Folded: BodyBagFolded
+
 #2024-03-31 - Radium (April Fools)
 # SpiderSpawn: ClownBadMigration
 # SpiderClownSpawn: ClownPepeBallMigration
 # VentCritters: ClownPepeMigration
 # SlimesSpawn: RealTysonMigration
+SpawnFreelancer: SpawnPointPassenger
