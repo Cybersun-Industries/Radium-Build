@@ -86,7 +86,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
-  - !type:TileNotBlocked
+    - !type:TileNotBlocked
 
 - type: construction
   name: ent-WallClock
@@ -469,6 +469,24 @@
   canRotate: false
 
 - type: construction
+  name: ent-ClockworkWindowDiagonal
+  id: ClockworkWindowDiagonal
+  graph: WindowDiagonal
+  startNode: start
+  targetNode: clockworkWindowDiagonal
+  category: construction-category-structures
+  description: ent-ClockworkWindowDiagonal.desc
+  canBuildInImpassable: true
+  conditions:
+  - !type:EmptyOrWindowValidInTile
+  - !type:NoWindowsInTile
+  icon:
+    sprite: Structures/Windows/clockwork_diagonal.rsi
+    state: state0
+  objectType: Structure
+  placementMode: SnapgridCenter
+
+- type: construction
   name: ent-ClockworkWindow
   id: ClockworkWindow
   graph: Window
@@ -486,24 +504,6 @@
   objectType: Structure
   placementMode: SnapgridCenter
   canRotate: false
-
-- type: construction
-  name: ent-ClockworkWindowDiagonal
-  id: ClockworkWindowDiagonal
-  graph: WindowDiagonal
-  startNode: start
-  targetNode: clockworkWindowDiagonal
-  category: construction-category-structures
-  description: ent-ClockworkWindowDiagonal.desc
-  canBuildInImpassable: true
-  conditions:
-  - !type:EmptyOrWindowValidInTile
-  - !type:NoWindowsInTile
-  icon:
-    sprite: Structures/Windows/clockwork_diagonal.rsi
-    state: state0
-  objectType: Structure
-  placementMode: SnapgridCenter
 
 - type: construction
   name: ent-PlasmaWindow
@@ -797,6 +797,23 @@
   - !type:TileNotBlocked
 
 - type: construction
+  name: ent-FirelockEdge
+  id: FirelockEdge
+  graph: Firelock
+  startNode: start
+  targetNode: FirelockEdge
+  category: construction-category-structures
+  description: ent-FirelockEdge.desc
+  icon:
+    sprite: Structures/Doors/edge_door_hazard.rsi
+    state: closed
+  placementMode: SnapgridCenter
+  objectType: Structure
+  canBuildInImpassable: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
   name: ent-ShuttersNormal
   id: Shutters
   graph: Shutters
@@ -1071,6 +1088,25 @@
   - !type:TileNotBlocked
 
   #Wooden fence high
+=======
+- type: construction
+  name: ent-FenceWoodHighTJunction
+  id: FenceWoodTJunction
+  graph: FenceWood
+  startNode: start
+  targetNode: tjunction
+  category: construction-category-structures
+  description: ent-FenceWoodHighTJunction.desc
+  icon:
+    sprite: Structures/Walls/wooden_fence.rsi
+    state: tjunction
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+#Wooden fence high
 - type: construction
   name: ent-BaseFenceWood
   id: FenceWood
@@ -1123,22 +1159,42 @@
   - !type:TileNotBlocked
 
 - type: construction
-  name: ent-FenceWoodHighTJunction
-  id: FenceWoodTJunction
+  name: ent-FenceWoodSmallGate
+  id: FenceWoodEndSmall
   graph: FenceWood
   startNode: start
-  targetNode: tjunction
+  targetNode: end_small
   category: construction-category-structures
-  description: ent-FenceWoodHighTJunction.desc
+  description: ent-FenceWoodSmallGate.desc
   icon:
     sprite: Structures/Walls/wooden_fence.rsi
-    state: tjunction
+    state: end_small
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
   conditions:
   - !type:TileNotBlocked
 
+- type: construction
+  name: ent-FenceWoodSmallGate
+  id: FenceWoodGateSmall
+  graph: FenceWood
+  startNode: start
+  targetNode: gate_small
+  category: construction-category-structures
+  description: ent-FenceWoodSmallGate.desc
+  icon:
+    sprite: Structures/Walls/wooden_fence.rsi
+    state: door_closed_small
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  name: ent-BaseFenceWoodSmall
+  id: FenceWoodSmall
 - type: construction
   name: ent-FenceWoodSmallGate
   id: FenceWoodGate
@@ -1156,7 +1212,7 @@
   conditions:
   - !type:TileNotBlocked
 
-  #Wooden fence small
+#Wooden fence small
 - type: construction
   name: ent-BaseFenceWoodSmall
   id: FenceWoodSmall
@@ -1168,23 +1224,6 @@
   icon:
     sprite: Structures/Walls/wooden_fence.rsi
     state: straight_small
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canBuildInImpassable: false
-  conditions:
-  - !type:TileNotBlocked
-
-- type: construction
-  name: ent-FenceWoodSmallEnd
-  id: FenceWoodEndSmall
-  graph: FenceWood
-  startNode: start
-  targetNode: end_small
-  category: construction-category-structures
-  description: ent-FenceWoodSmallEnd.desc
-  icon:
-    sprite: Structures/Walls/wooden_fence.rsi
-    state: end_small
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
@@ -1613,7 +1652,7 @@
   id: PlasticFlapsOpaque
   graph: PlasticFlapsGraph
   startNode: start
-  targetNode: opaqueFlaps
+  targetNode: airtightopaqueFlaps
   category: construction-category-structures
   placementMode: SnapgridCenter
   description: ent-PlasticFlapsOpaque.desc
@@ -1626,14 +1665,14 @@
   - !type:TileNotBlocked
 
 - type: construction
-  name: ent-PlasticFlapsAirtightOpaque
-  id: PlasticFlapsAirtightOpaque
+  name: ent-PlasticFlapsOpaque
+  id: PlasticFlapsOpaque
   graph: PlasticFlapsGraph
   startNode: start
-  targetNode: airtightopaqueFlaps
+  targetNode: opaqueFlaps
   category: construction-category-structures
   placementMode: SnapgridCenter
-  description: ent-PlasticFlapsAirtightOpaque.desc
+  description: ent-PlasticFlapsOpaque.desc
   objectType: Structure
   canBuildInImpassable: false
   icon:

@@ -1,7 +1,4 @@
-﻿
-
-
-- type: htnCompound
+﻿- type: htnCompound
   id: WispCombatCompound
   branches:
     - tasks:

@@ -1,0 +1,5 @@
+﻿- type: entity
+  parent: ClothingHandsGlovesLatex
+  id: UnremoveableClothingHandsGlovesLatex
+  components:
+  - type: Unremoveable

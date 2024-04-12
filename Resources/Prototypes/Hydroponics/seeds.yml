@@ -425,7 +425,6 @@
   nutrientConsumption: 0.40
   idealLight: 8
   idealHeat: 298
-  juicy: true
   splatPrototype: PuddleSplatter
   chemicals:
     Nutriment:
@@ -460,7 +459,6 @@
   nutrientConsumption: 0.70
   idealLight: 8
   idealHeat: 298
-  juicy: true
   splatPrototype: PuddleSplatter
   chemicals:
     Nutriment:
@@ -495,7 +493,6 @@
   nutrientConsumption: 0.70
   idealLight: 8
   idealHeat: 298
-  juicy: true
   splatPrototype: PuddleSplatter
   chemicals:
     Blood:
@@ -545,6 +542,8 @@
   packetPrototype: CabbageSeeds
   productPrototypes:
     - FoodCabbage
+  mutationPrototypes:
+    - replicapod
   lifespan: 50
   maturation: 7
   production: 5
@@ -1086,7 +1085,7 @@
   productPrototypes:
     - FoodAmbrosiaDeus
   mutationPrototypes:
-    - ambrosiaDeus # Radium
+    - ambrosiaGaia # Radium
   lifespan: 25
   maturation: 10
   production: 3

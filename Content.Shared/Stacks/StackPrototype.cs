@@ -16,7 +16,24 @@ public sealed partial class StackPrototype : IPrototype
     /// </summary>
     /// <remarks>This is a localization string ID.</remarks>
     [DataField("name")]
-    public string Name { get; private set; } = string.Empty;
+    public string PrName { get; private set; } = string.Empty;
+    public string Name
+    {
+        get
+        {
+            //BURN ALL OF THIS WITH FIRE
+            var name = Loc.TryGetString("materials-" + PrName.ToLower().Replace(' ', '-').Replace("-plank", ""), out var m1)? m1 :
+                Loc.TryGetString("ent-" + PrName.ToLower().Replace(" ", ""), out var m2)? m2 : "";
+            #if DEBUG
+            if (name == "")
+            {
+                Logger.GetSawmill("Localization-g-menu").Error($"Can't find locale for materials-{PrName.ToLower().Replace(" ", "")}");
+            }
+            #endif
+
+            return name;
+        }
+    }
 
     /// <summary>
     ///     An icon that will be used to represent this stack type.
