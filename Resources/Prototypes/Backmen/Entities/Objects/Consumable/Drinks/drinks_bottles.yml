@@ -4,8 +4,6 @@
   name: tokkuri
   description: Floral and full of osake!
   components:
-  - type: Label
-    currentLabel: reagent-name-sake
   - type: SolutionContainerManager
     solutions:
       drink:
@@ -22,8 +20,6 @@
   name: soju bottle
   description: It's like sake but if you're trying to get FUCKED. UP.
   components:
-  - type: Label
-    currentLabel: reagent-name-soju
   - type: SolutionContainerManager
     solutions:
       drink:
@@ -32,23 +28,3 @@
           Quantity: 100
   - type: Sprite
     sprite: Backmen/Objects/Consumable/Drinks/sojubottle.rsi
-
-- type: entity
-  parent: DrinkBottleGlassBaseFull
-  id: DrinkSakeBottleFull
-  name: sake bottle
-  description: |
-    Clear, or sometimes foggy
-    Chilled like ice cream alcohol
-    Fill a cup, drink up!
-  components:
-  - type: Label
-    currentLabel: reagent-name-sake
-  - type: SolutionContainerManager
-    solutions:
-      drink:
-        reagents:
-        - ReagentId: Sake
-          Quantity: 100
-  - type: Sprite
-    sprite: Backmen/Objects/Consumable/Drinks/sakebottle.rsi

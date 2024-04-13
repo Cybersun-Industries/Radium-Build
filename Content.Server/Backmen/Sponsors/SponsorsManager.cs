@@ -1,4 +1,5 @@
 ﻿using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Json;
@@ -11,6 +12,7 @@ using Robust.Server.Player;
 using Robust.Shared.Configuration;
 using Robust.Shared.Network;
 using Robust.Shared.Utility;
+using Exception = System.Exception;
 
 namespace Content.Server.Backmen.Sponsors;
 
@@ -38,7 +40,6 @@ public sealed class SponsorsManager : IServerSponsorsManager
 
         _netMgr.Connecting += OnConnecting;
         _netMgr.Connected += OnConnected;
-        _netMgr.Disconnect += OnDisconnect;
     }
 
     public bool TryGetInfo(NetUserId userId, [NotNullWhen(true)] out SponsorInfo? sponsor)
@@ -48,19 +49,28 @@ public sealed class SponsorsManager : IServerSponsorsManager
 
     private async Task OnConnecting(NetConnectingArgs e)
     {
-        _lock.EnterWriteLock();
+        SponsorInfo? info;
         try
         {
-            var info = await LoadSponsorInfo(e.UserId);
+            info = await LoadSponsorInfo(e.UserId);
             if (info?.Tier == null)
             {
                 _cachedSponsors.Remove(e.UserId); // Remove from cache if sponsor expired
                 return;
             }
+        }
+        catch (Exception err)
+        {
+            _sawmill.Error(err.ToString());
+            return;
+        }
 
-            DebugTools.Assert(!_cachedSponsors.ContainsKey(e.UserId), "Cached data was found on client connect");
 
-            _cachedSponsors[e.UserId] = info;
+            //DebugTools.Assert(!_cachedSponsors.ContainsKey(e.UserId), "Cached data was found on client connect");
+
+        _lock.EnterWriteLock();
+        try
+        {_cachedSponsors[e.UserId] = info;
         }
         finally
         {
@@ -74,8 +84,7 @@ public sealed class SponsorsManager : IServerSponsorsManager
         try
         {
             var info = _cachedSponsors.TryGetValue(e.Channel.UserId, out var sponsor) ? sponsor : null;
-            var msg = new MsgSponsorInfo() { Info = info };
-            _netMgr.ServerSendMessage(msg, e.Channel);
+            _netMgr.ServerSendMessage(new MsgSponsorInfo() { Info = info }, e.Channel);
         }
         finally
         {
@@ -83,12 +92,16 @@ public sealed class SponsorsManager : IServerSponsorsManager
         }
     }
 
-    private void OnDisconnect(object? sender, NetDisconnectedArgs e)
+    public void Cleanup()
     {
         _lock.EnterWriteLock();
         try
         {
-            _cachedSponsors.Remove(e.Channel.UserId);
+            var online = _playerManager.SessionsDict.Keys.ToArray();
+            foreach (var userId in _cachedSponsors.Keys.Where(x => !online.Contains(x)).ToArray())
+            {
+                _cachedSponsors.Remove(userId);
+            }
         }
         finally
         {

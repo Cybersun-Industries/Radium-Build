@@ -171,6 +171,7 @@ namespace Content.Shared.Examine
 
             if (length > MaxRaycastRange)
             {
+                Logger.GetSawmill("InRangeOccluder").Warning("InRangeUnOccluded check performed over extreme range. Limiting CollisionRay size.");
                 length = MaxRaycastRange;
             }
 

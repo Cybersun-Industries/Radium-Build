@@ -77,8 +77,8 @@
   placementMode: SnapgridCenter
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
-      failIfSpace: false
+  - !type:TileNotBlocked
+    failIfSpace: false
 
 - type: construction
   name: ent-CableTerminal
@@ -475,7 +475,7 @@
   - sprite: Structures/Piping/Atmospherics/vent.rsi
     state: vent_off
   conditions:
-    - !type:NoUnstackableInTile
+  - !type:NoUnstackableInTile
 
 - type: construction
   name: ent-GasPassiveVent
@@ -496,7 +496,7 @@
   - sprite: Structures/Piping/Atmospherics/vent.rsi
     state: vent_off
   conditions:
-    - !type:NoUnstackableInTile
+  - !type:NoUnstackableInTile
 
 - type: construction
   name: ent-GasVentScrubber
@@ -517,7 +517,7 @@
   - sprite: Structures/Piping/Atmospherics/scrubber.rsi
     state: scrub_off
   conditions:
-    - !type:NoUnstackableInTile
+  - !type:NoUnstackableInTile
 
 - type: construction
   name: ent-GasOutletInjector
@@ -538,9 +538,9 @@
   - sprite: Structures/Piping/Atmospherics/outletinjector.rsi
     state: injector
   conditions:
-    - !type:NoUnstackableInTile
+  - !type:NoUnstackableInTile
 
-# ATMOS BINARY
+  # ATMOS BINARY
 - type: construction
   name: ent-GasPressurePump
   id: GasPressurePump
@@ -560,7 +560,7 @@
   - sprite: Structures/Piping/Atmospherics/pump.rsi
     state: pumpPressure
   conditions:
-    - !type:NoUnstackableInTile
+  - !type:NoUnstackableInTile
 
 - type: construction
   name: ent-GasVolumePump
@@ -581,7 +581,7 @@
   - sprite: Structures/Piping/Atmospherics/pump.rsi
     state: pumpVolume
   conditions:
-    - !type:NoUnstackableInTile
+  - !type:NoUnstackableInTile
 
 - type: construction
   id: GasPassiveGate
@@ -602,7 +602,7 @@
   - sprite: Structures/Piping/Atmospherics/pump.rsi
     state: pumpPassiveGate
   conditions:
-    - !type:NoUnstackableInTile
+  - !type:NoUnstackableInTile
 
 - type: construction
   id: GasValve
@@ -623,7 +623,7 @@
   - sprite: Structures/Piping/Atmospherics/pump.rsi
     state: pumpManualValve
   conditions:
-    - !type:NoUnstackableInTile
+  - !type:NoUnstackableInTile
 
 - type: construction
   id: SignalControlledValve
@@ -665,7 +665,7 @@
   - sprite: Structures/Piping/Atmospherics/gascanisterport.rsi
     state: gasCanisterPort
   conditions:
-    - !type:NoUnstackableInTile
+  - !type:NoUnstackableInTile
 
 - type: construction
   id: GasDualPortVentPump
@@ -716,7 +716,7 @@
     state: gasFilter
   mirror: GasFilterFlipped
   conditions:
-    - !type:NoUnstackableInTile
+  - !type:NoUnstackableInTile
 
 - type: construction
   id: GasFilterFlipped
@@ -734,7 +734,7 @@
     state: gasFilterF
   mirror: GasFilter
   conditions:
-    - !type:NoUnstackableInTile
+  - !type:NoUnstackableInTile
 
 - type: construction
   id: GasMixer
@@ -751,7 +751,7 @@
     state: gasMixer
   mirror: GasMixerFlipped
   conditions:
-    - !type:NoUnstackableInTile
+  - !type:NoUnstackableInTile
 
 - type: construction
   id: GasMixerFlipped
@@ -769,7 +769,7 @@
     state: gasMixerF
   mirror: GasMixer
   conditions:
-    - !type:NoUnstackableInTile
+  - !type:NoUnstackableInTile
 
 - type: construction
   id: PressureControlledValve
@@ -785,9 +785,9 @@
     sprite: Structures/Piping/Atmospherics/pneumaticvalve.rsi
     state: off
   conditions:
-    - !type:NoUnstackableInTile
+  - !type:NoUnstackableInTile
 
-# INTERCOM
+  # INTERCOM
 - type: construction
   name: ent-IntercomAssesmbly
   id: IntercomAssesmbly
