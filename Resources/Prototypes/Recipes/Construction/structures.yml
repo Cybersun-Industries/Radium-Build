@@ -1163,7 +1163,7 @@
   graph: FenceWood
   startNode: start
   targetNode: end_small
-  category: construction-category-structures
+  category: construction-category-structures 
   description: ent-FenceWoodSmallEnd.desc
   icon:
     sprite: Structures/Walls/wooden_fence.rsi
