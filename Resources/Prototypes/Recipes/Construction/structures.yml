@@ -35,13 +35,13 @@
   - !type:TileNotBlocked
 
 - type: construction
-  name: wall gear
+  name: ent-ClockworkGirder
   id: ClockworkGirder
   graph: ClockworkGirder
   startNode: start
   targetNode: clockGirder
   category: construction-category-structures
-  description: A large gear with mounting brackets for additional plating.
+  description: ent-ClockworkGirder.desc
   icon:
     sprite: /Textures/Structures/Walls/clock.rsi
     state: wall_gear
@@ -86,7 +86,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-WallClock
@@ -811,24 +811,7 @@
   objectType: Structure
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
-
-- type: construction
-  name: Thin firelock
-  id: FirelockEdge
-  graph: Firelock
-  startNode: start
-  targetNode: FirelockEdge
-  category: construction-category-structures
-  description: This is a firelock - it locks an area when a fire alarm in the area is triggered. Don't get squished!
-  icon:
-    sprite: Structures/Doors/edge_door_hazard.rsi
-    state: closed
-  placementMode: SnapgridCenter
-  objectType: Structure
-  canBuildInImpassable: false
-  conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-ShuttersNormal
@@ -1122,15 +1105,15 @@
   conditions:
   - !type:TileNotBlocked
 
-#Wooden fence high
+  #Wooden fence high
 - type: construction
-  name: wooden high fence
+  name: ent-BaseFenceWood
   id: FenceWood
   graph: FenceWood
   startNode: start
   targetNode: straight
   category: construction-category-structures
-  description: Part of a wooden fence meant to cordon off areas.
+  description: ent-BaseFenceWood.desc
   icon:
     sprite: Structures/Walls/wooden_fence.rsi
     state: straight
@@ -1141,13 +1124,13 @@
   - !type:TileNotBlocked
 
 - type: construction
-  name: wooden high fence end
+  name: ent-FenceWoodHighEnd
   id: FenceWoodEnd
   graph: FenceWood
   startNode: start
   targetNode: end
   category: construction-category-structures
-  description: Part of a wooden fence meant to cordon off areas.
+  description: ent-FenceWoodHighEnd.desc
   icon:
     sprite: Structures/Walls/wooden_fence.rsi
     state: end
@@ -1158,13 +1141,13 @@
   - !type:TileNotBlocked
 
 - type: construction
-  name: wooden high fence corner
+  name: ent-FenceWoodHighCorner
   id: FenceWoodCorner
   graph: FenceWood
   startNode: start
   targetNode: corner
   category: construction-category-structures
-  description: Part of a wooden fence meant to cordon off areas.
+  description: ent-FenceWoodHighCorner.desc
   icon:
     sprite: Structures/Walls/wooden_fence.rsi
     state: corner
@@ -1191,7 +1174,6 @@
   conditions:
   - !type:TileNotBlocked
 
-#Airlocks
 - type: construction
   name: ent-FenceWoodSmallGate
   id: FenceWoodGateSmall
@@ -1226,7 +1208,7 @@
   conditions:
   - !type:TileNotBlocked
 
-#Wooden fence small
+  #Wooden fence small
 - type: construction
   name: ent-BaseFenceWoodSmall
   id: FenceWoodSmall
@@ -1628,14 +1610,14 @@
   - !type:TileNotBlocked
 
 - type: construction
-  name: airtight plastic flaps
+  name: ent-PlasticFlapsAirtightClear
   id: PlasticFlapsAirtight
   graph: PlasticFlapsGraph
   startNode: start
   targetNode: airtightFlaps
   category: construction-category-structures
   placementMode: SnapgridCenter
-  description: An airtight plastic flap to let items through and keep people out.
+  description: ent-PlasticFlapsAirtightClear.desc
   objectType: Structure
   canBuildInImpassable: false
   icon:
@@ -1645,8 +1627,8 @@
   - !type:TileNotBlocked
 
 - type: construction
-  name: airtight opaque plastic flaps
-  id: PlasticFlapsAirtightOpaque
+  name: ent-PlasticFlapsOpaque
+  id: PlasticFlapsOpaque
   graph: PlasticFlapsGraph
   startNode: start
   targetNode: airtightopaqueFlaps

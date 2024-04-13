@@ -409,13 +409,13 @@
   - !type:TileNotBlocked
 
 - type: construction
-  name: fancy black table
+  name: ent-TableFancyBlack
   id: TableFancyBlack
   graph: Table
   startNode: start
   targetNode: TableFancyBlack
   category: construction-category-furniture
-  description: A table covered with a beautiful cloth.
+  description: ent-TableFancyBlack.desc
   icon:
     sprite: Structures/Furniture/Tables/Fancy/black.rsi
     state: full
