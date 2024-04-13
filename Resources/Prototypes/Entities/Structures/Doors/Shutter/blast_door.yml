@@ -4,40 +4,42 @@
   name: blast door
   description: This one says 'BLAST DONGER'.
   components:
-  - type: AccessReader
-  - type: Sprite
-    sprite: Structures/Doors/Shutters/blastdoor.rsi
-    layers:
-    - state: closed
-      map: ["enum.DoorVisualLayers.Base"]
-  - type: Door
-    closeTimeOne: 0.4
-    closeTimeTwo: 0.4
-    openTimeOne: 0.4
-    openTimeTwo: 0.4
-    openingAnimationTime: 1.0
-    closingAnimationTime: 1.0
-    canPry: false
-    crushDamage:
-      types:
-        Blunt: 25 # yowch
-  - type: Occluder
-  - type: Appearance
-  - type: RadiationBlocker
-    resistance: 8
-  - type: Damageable
-    damageContainer: StructuralInorganic
-    damageModifierSet: StrongMetallic
-  - type: ContainerFill
-    containers:
-      board: [ DoorElectronics ]
-  - type: Construction
-    graph: BlastDoor
-    node: blastdoor
-    containers:
-    - board
-  - type: StaticPrice
-    price: 280
+    - type: AccessReader
+    - type: Sprite
+      sprite: Structures/Doors/Shutters/blastdoor.rsi
+      layers:
+        - state: closed
+          map:
+            - enum.DoorVisualLayers.Base
+    - type: Door
+      closeTimeOne: 0.4
+      closeTimeTwo: 0.4
+      openTimeOne: 0.4
+      openTimeTwo: 0.4
+      openingAnimationTime: 1
+      closingAnimationTime: 1
+      canPry: false
+      crushDamage:
+        types:
+          Blunt: 25
+    - type: Occluder
+    - type: Appearance
+    - type: RadiationBlocker
+      resistance: 8
+    - type: Damageable
+      damageContainer: StructuralInorganic
+      damageModifierSet: StrongMetallic
+    - type: ContainerFill
+      containers:
+        board:
+          - DoorElectronics
+    - type: Construction
+      graph: BlastDoor
+      node: blastdoor
+      containers:
+        - board
+    - type: StaticPrice
+      price: 280
 
 - type: entity
   id: BlastDoorOpen

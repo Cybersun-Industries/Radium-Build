@@ -2,7 +2,7 @@
 - type: rcd
   id: Invalid   # Hidden prototype - do not add to RCDs
   mode: Invalid
-  
+
 - type: rcd
   id: Deconstruct
   name: rcd-component-deconstruct
@@ -13,22 +13,24 @@
   rotation: Camera
 
 - type: rcd
-  id: DeconstructLattice   # Hidden prototype - do not add to RCDs  
+  id: DeconstructLattice   # Hidden prototype - do not add to RCDs
+  name: rcd-component-deconstruct
   mode: Deconstruct
   cost: 2
   delay: 1
   rotation: Camera
   fx: EffectRCDDeconstruct2
-    
+
 - type: rcd
   id: DeconstructTile      # Hidden prototype - do not add to RCDs
+  name: rcd-component-deconstruct
   mode: Deconstruct
   cost: 4
   delay: 4
   rotation: Camera
   fx: EffectRCDDeconstruct4
 
-# Flooring 
+# Flooring
 - type: rcd
   id: Plating
   name: rcd-component-plating
@@ -42,7 +44,7 @@
   rules:
     - CanBuildOnEmptyTile
   fx: EffectRCDConstruct1
-  
+
 - type: rcd
   id: FloorSteel
   name: rcd-component-floor-steel
@@ -80,7 +82,7 @@
   category: WallsAndFlooring
   sprite: /Textures/Interface/Radial/RCD/solid_wall.png
   mode: ConstructObject
-  prototype: WallSolid 
+  prototype: WallSolid
   cost: 4
   delay: 2
   collisionMask: FullTileMask
@@ -115,7 +117,7 @@
     - IsWindow
   rotation: Fixed
   fx: EffectRCDConstruct2
-  
+
 - type: rcd
   id: WindowDirectional
   name: rcd-component-window-directional
@@ -131,7 +133,7 @@
     - IsWindow
   rotation: User
   fx: EffectRCDConstruct1
-  
+
 - type: rcd
   id: ReinforcedWindow
   name: rcd-component-reinforced-window
@@ -146,7 +148,7 @@
     - IsWindow
   rotation: User
   fx: EffectRCDConstruct3
-    
+
 - type: rcd
   id: WindowReinforcedDirectional
   name: rcd-component-window-reinforced-directional
@@ -176,7 +178,7 @@
   collisionMask: FullTileMask
   rotation: Camera
   fx: EffectRCDConstruct4
-  
+
 - type: rcd
   id: AirlockGlass
   name: rcd-component-airlock-glass
@@ -189,7 +191,7 @@
   collisionMask: FullTileMask
   rotation: Camera
   fx: EffectRCDConstruct4
-  
+
 - type: rcd
   id: Firelock
   name: rcd-component-firelock
@@ -217,7 +219,7 @@
   collisionBounds: "-0.23,-0.49,0.23,-0.36"
   rotation: User
   fx: EffectRCDConstruct1
-  
+
 - type: rcd
   id: BulbLight
   name: rcd-component-window-bulb-light
@@ -247,7 +249,7 @@
   - MustBuildOnSubfloor
   rotation: Fixed
   fx: EffectRCDConstruct0
-    
+
 - type: rcd
   id: MVCable
   name: rcd-component-window-mv-cable
@@ -262,7 +264,7 @@
   - MustBuildOnSubfloor
   rotation: Fixed
   fx: EffectRCDConstruct0
-    
+
 - type: rcd
   id: HVCable
   name: rcd-component-window-hv-cable
@@ -277,7 +279,7 @@
   - MustBuildOnSubfloor
   rotation: Fixed
   fx: EffectRCDConstruct0
-    
+
 - type: rcd
   id: CableTerminal
   name: rcd-component-window-cable-terminal

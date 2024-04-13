@@ -7,7 +7,6 @@
   components:
   - type: ApcPowerReceiver
     powerLoad: 350
-    priority: Low
   - type: ExtensionCableReceiver
   - type: PointLight
     radius: 1.8
@@ -70,7 +69,8 @@
   - type: PointLight
     color: "#e3a136"
   - type: SpaceVillainArcade
-    rewardAmount: 0
+    rewardMinAmount: 0
+    rewardMaxAmount: 0
     possibleRewards:
     - ToyMouse
     - ToyAi

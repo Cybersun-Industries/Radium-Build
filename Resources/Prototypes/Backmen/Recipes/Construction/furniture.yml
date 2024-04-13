@@ -336,7 +336,7 @@
   placementMode: SnapgridCenter
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-tatamimat
@@ -353,7 +353,7 @@
   placementMode: SnapgridCenter
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-ComfyDarkChair
@@ -370,4 +370,4 @@
   placementMode: SnapgridCenter
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked

@@ -42,7 +42,7 @@
   category: construction-category-misc
   description: ent-GroundCannabis.desc
   icon: { sprite: Objects/Misc/reagent_fillings.rsi, state: powderpile }
-#    color: darkgreen
+  #    color: darkgreen
   objectType: Item
 
 - type: construction
@@ -54,5 +54,5 @@
   category: construction-category-misc
   description: ent-GroundTobacco.desc
   icon: { sprite: Objects/Misc/reagent_fillings.rsi, state: powderpile }
-#    color: brown
+  #    color: brown
   objectType: Item
