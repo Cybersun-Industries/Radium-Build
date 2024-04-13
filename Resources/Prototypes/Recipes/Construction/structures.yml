@@ -1158,13 +1158,13 @@
   - !type:TileNotBlocked
 
 - type: construction
-  name: ent-FenceWoodSmallGate
+  name: ent-FenceWoodSmallEnd
   id: FenceWoodEndSmall
   graph: FenceWood
   startNode: start
   targetNode: end_small
   category: construction-category-structures
-  description: ent-FenceWoodSmallGate.desc
+  description: ent-FenceWoodSmallEnd.desc
   icon:
     sprite: Structures/Walls/wooden_fence.rsi
     state: end_small
@@ -1192,13 +1192,13 @@
   - !type:TileNotBlocked
 
 - type: construction
-  name: ent-FenceWoodSmallGate
+  name: ent-FenceWoodHighGate
   id: FenceWoodGate
   graph: FenceWood
   startNode: start
   targetNode: gate
   category: construction-category-structures
-  description: ent-FenceWoodSmallGate.desc
+  description: ent-FenceWoodHighGate.desc
   icon:
     sprite: Structures/Walls/wooden_fence.rsi
     state: door_closed
