@@ -126,6 +126,8 @@
   name: Jailbreaker Verte
   description: One sip of this and you just know you're gonna have a good time.
   components:
+  - type: Label
+    currentLabel: reagent-name-absinthe
   - type: SolutionContainerManager
     solutions:
       drink:
@@ -142,6 +144,8 @@
   name: Miss Blue Curacao
   description: A fruity, exceptionally azure drink. Does not allow the imbiber to use the fifth magic.
   components:
+  - type: Label
+    currentLabel: reagent-name-bluecuracao
   - type: SolutionContainerManager
     solutions:
       drink:
@@ -166,6 +170,8 @@
   name: bottle of nothing
   description: A bottle filled with nothing.
   components:
+  - type: Label
+    currentLabel: reagent-name-nothing
   - type: SolutionContainerManager
     solutions:
       drink:
@@ -182,6 +188,8 @@
   name: champagne bottle
   description: Only people devoid of imagination can't find an excuse for champagne.
   components:
+  - type: Label
+    currentLabel: reagent-name-champagne
   - type: SolutionContainerManager
     solutions:
       drink:
@@ -206,7 +214,7 @@
         - ReagentId: Cognac
           Quantity: 100
   - type: Label
-    currentLabel: cognac
+    currentLabel: reagent-name-cognac
   - type: Sprite
     sprite: Objects/Consumable/Drinks/cognacbottle.rsi
   - type: Sealable
@@ -224,7 +232,7 @@
         - ReagentId: Cola
           Quantity: 100
   - type: Label
-    currentLabel: cola
+    currentLabel: reagent-name-cola
   - type: Sprite
     sprite: Objects/Consumable/Drinks/colabottle.rsi
   - type: Sealable
@@ -235,6 +243,8 @@
   name: briar rose grenadine syrup bottle
   description: Sweet and tangy, a bar syrup used to add color or flavor to drinks.
   components:
+  - type: Label
+    currentLabel: reagent-name-grenadine
   - type: SolutionContainerManager
     solutions:
       drink:
@@ -262,7 +272,7 @@
         - ReagentId: Gin
           Quantity: 100
   - type: Label
-    currentLabel: gin
+    currentLabel: reagent-name-gin
   - type: Sprite
     sprite: Objects/Consumable/Drinks/ginbottle.rsi
   - type: Sealable
@@ -273,6 +283,8 @@
   name: gildlager bottle
   description: 100 proof cinnamon schnapps, made for alcoholic teen girls on spring break.
   components:
+  - type: Label
+    currentLabel: reagent-name-gildlager
   - type: SolutionContainerManager
     solutions:
       drink:
@@ -296,7 +308,7 @@
         - ReagentId: CoffeeLiqueur
           Quantity: 100
   - type: Label
-    currentLabel: coffee liqueur
+    currentLabel: reagent-name-coffee-liqueur
   - type: Sprite
     sprite: Objects/Consumable/Drinks/coffeeliqueurbottle.rsi
   - type: Sealable
@@ -307,6 +319,8 @@
   name: emeraldine melon liquor
   description: A bottle of 46 proof Emeraldine Melon Liquor. Sweet and light.
   components:
+  - type: Label
+    currentLabel: reagent-name-melon-liquor
   - type: SolutionContainerManager
     solutions:
       drink:
@@ -331,6 +345,8 @@
   name: wrapp artiste patron bottle
   description: Silver laced tequilla, served in space night clubs across the galaxy.
   components:
+  - type: Label
+    currentLabel: reagent-name-patron
   - type: SolutionContainerManager
     solutions:
       drink:
@@ -346,6 +362,8 @@
   name: warlock's velvet bottle
   description: What a delightful packaging for a surely high quality wine! The vintage must be amazing!
   components:
+  - type: Label
+    currentLabel: reagent-name-poison-wine
   - type: SolutionContainerManager
     solutions:
       drink:
@@ -372,7 +390,7 @@
         - ReagentId: Rum
           Quantity: 100
   - type: Label
-    currentLabel: rum
+    currentLabel: reagent-name-rum
   - type: Sprite
     sprite: Objects/Consumable/Drinks/rumbottle.rsi
   - type: Sealable
@@ -391,7 +409,7 @@
           Quantity: 100
   - type: Drink
   - type: Label
-    currentLabel: space mountain wind
+    currentLabel: reagent-name-space-mountain-wind
   - type: Sprite
     sprite: Objects/Consumable/Drinks/space_mountain_wind_bottle.rsi
   - type: Sealable
@@ -410,7 +428,7 @@
           Quantity: 100
   - type: Drink
   - type: Label
-    currentLabel: space-up
+    currentLabel: reagent-name-spaceup
   - type: Sprite
     sprite: Objects/Consumable/Drinks/space-up_bottle.rsi
   - type: Sealable
@@ -428,7 +446,7 @@
         - ReagentId: Tequila
           Quantity: 100
   - type: Label
-    currentLabel: tequila
+    currentLabel: reagent-name-tequila
   - type: Sprite
     sprite: Objects/Consumable/Drinks/tequillabottle.rsi
   - type: Sealable
@@ -446,7 +464,7 @@
         - ReagentId: Vermouth
           Quantity: 100
   - type: Label
-    currentLabel: vermouth
+    currentLabel: reagent-name-vermouth
   - type: Sprite
     sprite: Objects/Consumable/Drinks/vermouthbottle.rsi
   - type: Sealable
@@ -464,7 +482,7 @@
         - ReagentId: Vodka
           Quantity: 100
   - type: Label
-    currentLabel: vodka
+    currentLabel: reagent-name-vodka
   - type: Sprite
     sprite: Objects/Consumable/Drinks/vodkabottle.rsi
   - type: Sealable
@@ -482,7 +500,7 @@
         - ReagentId: Whiskey
           Quantity: 100
   - type: Label
-    currentLabel: whiskey
+    currentLabel: reagent-name-whiskey
   - type: Sprite
     sprite: Objects/Consumable/Drinks/whiskeybottle.rsi
   - type: Sealable
@@ -500,7 +518,7 @@
         - ReagentId: Wine
           Quantity: 100
   - type: Label
-    currentLabel: wine
+    currentLabel: reagent-name-wine
   - type: Sprite
     sprite: Objects/Consumable/Drinks/winebottle.rsi
   - type: Sealable
@@ -516,6 +534,8 @@
   name: beer  # beer it is. coffee. beer? coff-ee? be-er? c-o... b-e
   description: An alcoholic beverage made from malted grains, hops, yeast, and water.
   components:
+  - type: Label
+    currentLabel: reagent-name-beer
   - type: Item
     size: Small
   - type: SolutionContainerManager
@@ -547,7 +567,7 @@
         - ReagentId: Beer
           Quantity: 150
   - type: Label
-    currentLabel: beer
+    currentLabel: reagent-name-beer
   - type: Sprite
     sprite: Objects/Consumable/Drinks/beer.rsi
   - type: Openable
@@ -563,6 +583,8 @@
   name: Magm-Ale
   description: A true dorf's drink of choice.
   components:
+  - type: Label
+    currentLabel: reagent-name-ale
   - type: Item
     size: Small
   - type: SolutionContainerManager
@@ -591,7 +613,7 @@
         - ReagentId: Ale
           Quantity: 150
   - type: Label
-    currentLabel: ale
+    currentLabel: reagent-name-ale
   - type: Sprite
     sprite: Objects/Consumable/Drinks/alebottle.rsi
   - type: Openable
@@ -603,6 +625,8 @@
   name: water bottle
   description: Simple clean water of unknown origin. You think that maybe you dont want to know it.
   components:
+  - type: Label
+    currentLabel: reagent-name-water
   - type: Item
     size: Small
   - type: SolutionContainerManager
@@ -629,7 +653,6 @@
     inHandsFillBaseName: -fill-
   - type: Sealable
 
-
 # Cartons, TODO: this needs to be moved elsewhere eventually, since cartons shouldnt smash into glass shards
 
 - type: entity
@@ -647,7 +670,7 @@
           Quantity: 150
   - type: Drink
   - type: Label
-    currentLabel: lime juice
+    currentLabel: reagent-name-juice-lime
   - type: Sprite
     sprite: Objects/Consumable/Drinks/limejuice.rsi
 
@@ -666,7 +689,7 @@
           Quantity: 150
   - type: Drink
   - type: Label
-    currentLabel: cream
+    currentLabel: reagent-name-cream
   - type: Sprite
     sprite: Objects/Consumable/Drinks/cream.rsi
 
@@ -679,6 +702,8 @@
   suffix: for drinks
   description: some people put this in their coffee...
   components:
+  - type: Label
+    currentLabel: reagent-name-sugar
   - type: SolutionContainerManager
     solutions:
       drink:
@@ -703,7 +728,7 @@
           Quantity: 300
   - type: Drink
   - type: Label
-    currentLabel: lemon-lime
+    currentLabel: reagent-name-lemon-lime
 
 - type: entity
   parent: DrinkBottlePlasticBaseFull
@@ -720,7 +745,7 @@
           Quantity: 150
   - type: Drink
   - type: Label
-    currentLabel: mead
+    currentLabel: reagent-name-mead
 
 - type: entity
   parent: DrinkBottlePlasticBaseFull
@@ -737,7 +762,7 @@
           Quantity: 300
   - type: Drink
   - type: Label
-    currentLabel: ice
+    currentLabel: reagent-name-ice
 
 - type: entity
   parent: DrinkBottlePlasticBaseFull
@@ -754,7 +779,7 @@
           Quantity: 300
   - type: Drink
   - type: Label
-    currentLabel: coconut water
+    currentLabel: reagent-name-coconutwater
 
 - type: entity
   parent: DrinkBottlePlasticBaseFull
@@ -771,7 +796,7 @@
           Quantity: 300
   - type: Drink
   - type: Label
-    currentLabel: coffee
+    currentLabel: reagent-name-coffee
 
 - type: entity
   parent: DrinkBottlePlasticBaseFull
@@ -788,7 +813,7 @@
           Quantity: 300
   - type: Drink
   - type: Label
-    currentLabel: tea
+    currentLabel: reagent-name-tea
 
 - type: entity
   parent: DrinkBottlePlasticBaseFull
@@ -805,7 +830,7 @@
           Quantity: 300
   - type: Drink
   - type: Label
-    currentLabel: green tea
+    currentLabel: reagent-name-green-tea
 
 - type: entity
   parent: DrinkBottlePlasticBaseFull
@@ -813,6 +838,8 @@
   name: iced tea jug
   description: for when the regular tea is too hot for you boohoo
   components:
+  - type: Label
+    currentLabel: reagent-name-iced-tea
   - type: SolutionContainerManager
     solutions:
       drink:
@@ -837,7 +864,7 @@
           Quantity: 300
   - type: Drink
   - type: Label
-    currentLabel: dr gibb
+    currentLabel: reagent-name-drgibb
 
 - type: entity
   parent: DrinkBottlePlasticBaseFull
@@ -854,7 +881,7 @@
           Quantity: 300
   - type: Drink
   - type: Label
-    currentLabel: watermelon juice
+    currentLabel: reagent-name-watermelon-juice
 
 - type: entity
   parent: DrinkBottlePlasticBaseFull
@@ -871,7 +898,7 @@
           Quantity: 100
   - type: Drink
   - type: Label
-    currentLabel: red bool
+    currentLabel: reagent-name-red-bool
 
 - type: entity
   parent: DrinkBottlePlasticBaseFull
@@ -879,6 +906,8 @@
   name: beverage jug
   description: A jug for storing custom made drinks.
   components:
+  - type: Label
+    currentLabel: reagent-name-jug
   - type: SolutionContainerManager
     solutions:
       drink:
@@ -912,7 +941,7 @@
         - ReagentId: SodaWater
           Quantity: 150
   - type: Label
-    currentLabel: soda water
+    currentLabel: reagent-name-soda-water
 
 - type: entity
   parent: DrinkWaterBottleFull
@@ -928,7 +957,7 @@
         - ReagentId: TonicWater
           Quantity: 150
   - type: Label
-    currentLabel: tonic water
+    currentLabel: reagent-name-tonic
 
 - type: entity
   parent: [DrinkBottleVisualsOpenable, DrinkBottleGlassBaseFull]
@@ -943,7 +972,7 @@
         - ReagentId: Sake
           Quantity: 50
   - type: Label
-    currentLabel: Sake
+    currentLabel: reagent-name-sake
   - type: Sprite
     sprite: Objects/Consumable/Drinks/sakebottle.rsi
   - type: Sealable
@@ -965,7 +994,7 @@
           Quantity: 150
   - type: Drink
   - type: Label
-    currentLabel: orange juice
+    currentLabel: reagent-name-juice-orange
   - type: Sprite
     sprite: Objects/Consumable/Drinks/orangejuice.rsi
 
@@ -987,4 +1016,4 @@
           Quantity: 300
   - type: Drink
   - type: Label
-    currentLabel: root beer
+    currentLabel: reagent-name-root-bear

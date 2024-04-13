@@ -336,7 +336,7 @@
   placementMode: SnapgridCenter
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: tatami mat
@@ -353,7 +353,7 @@
   placementMode: SnapgridCenter
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: comfy dark chair
@@ -370,4 +370,4 @@
   placementMode: SnapgridCenter
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
