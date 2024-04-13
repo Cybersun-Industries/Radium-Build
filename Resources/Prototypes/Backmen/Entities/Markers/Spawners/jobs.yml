@@ -318,7 +318,6 @@
     - state: jobicon
       sprite: Backmen/Markers/jobs.rsi
 
-
 - type: entity
   id: SpawnFreelancer
   parent: SpawnPointJobBase

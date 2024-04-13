@@ -2212,7 +2212,6 @@
     jumpsuit: ClothingUniformJumpsuitColorBlack
     back: ClothingBackpackDuffelRXBZZ
     shoes: ClothingShoesBootsNedoSpetsnaz
-    mask: ClothingMaskGasExplorer
     eyes: ClothingEyesGlassesSecurity
     neck: CombatKnifeSpetsnaz
     gloves: ClothingHandsGlovesCombat
@@ -2229,7 +2228,6 @@
     jumpsuit: ClothingUniformJumpsuitColorBlack
     back: PowerpackFlame
     shoes: ClothingShoesBootsNedoSpetsnaz
-    mask: ClothingMaskGasExplorer
     eyes: ClothingEyesGlassesSecurity
     neck: CombatKnifeSpetsnaz
     gloves: ClothingHandsGlovesCombat
@@ -2248,7 +2246,6 @@
     jumpsuit: ClothingUniformJumpsuitColorBlack
     back: ClothingBackpackDuffelRXBZZ
     shoes: ClothingShoesBootsNedoSpetsnaz
-    mask: ClothingMaskGasExplorer
     eyes: ClothingEyesGlassesSecurity
     neck: CombatKnifeSpetsnaz
     gloves: ClothingHandsGlovesCombat

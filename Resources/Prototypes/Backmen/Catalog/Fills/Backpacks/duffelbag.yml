@@ -28,7 +28,7 @@
       contents:
         - id: PsiGrenade
           amount: 20
-
+          
 - type: entity
   parent: ClothingBackpackDuffelSyndicateBundle
   id: ClothingBackpackDuffelSyndicateAntiPsiGrenadeBundle
@@ -47,7 +47,7 @@
   description: "Contains 3 wizard outfits."
   components:
     - type: StorageFill
-      contents:
+      contents: 
         - id: ClothingOuterWizardReal
         - id: ClothingHeadHatWizardReal
         - id: ClothingOuterWizardVioletReal
