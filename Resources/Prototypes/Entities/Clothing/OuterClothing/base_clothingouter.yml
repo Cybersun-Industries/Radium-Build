@@ -40,7 +40,7 @@
     - key: enum.StorageUiKey.Key
       type: StorageBoundUserInterface
   - type: StaticPrice
-    price: 80
+    price: 70
 
 - type: entity
   abstract: true
@@ -86,20 +86,6 @@
 
 - type: entity
   abstract: true
-  parent: ClothingOuterStorageBase
-  id: ClothingOuterStorageToggleableBase
-  components:
-  - type: ToggleableClothing
-    clothingPrototype: ClothingHeadHatHoodWinterDefault
-    slot: head
-  - type: ContainerContainer
-    containers:
-      toggleable-clothing: !type:ContainerSlot {}
-      storagebase: !type:Container
-        ents: []
-
-- type: entity
-  abstract: true
   parent: [ClothingOuterBase, GeigerCounterClothing]
   id: ClothingOuterHardsuitBase
   name: base hardsuit
@@ -134,6 +120,20 @@
     - FullBodyOuter
     - Hardsuit
     - WhitelistChameleon
+
+- type: entity
+  abstract: true
+  parent: ClothingOuterStorageBase
+  id: ClothingOuterStorageToggleableBase
+  components:
+  - type: ToggleableClothing
+    clothingPrototype: ClothingHeadHatHoodWinterDefault
+    slot: head
+  - type: ContainerContainer
+    containers:
+      toggleable-clothing: !type:ContainerSlot {}
+      storagebase: !type:Container
+        ents: []
 
 - type: entity
   abstract: true

@@ -13,7 +13,7 @@
   placementMode: SnapgridCenter
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   id: GlimmerDrain
@@ -30,7 +30,7 @@
   placementMode: SnapgridCenter
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   id: Golem
@@ -41,13 +41,13 @@
   targetNode: golem
   category: construction-category-machines
   icon:
-      sprite: Backmen/Mobs/Species/Golem/cult.rsi
-      state: full
+    sprite: Backmen/Mobs/Species/Golem/cult.rsi
+    state: full
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: False
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   id: GolemWood
@@ -58,13 +58,13 @@
   targetNode: golem
   category: construction-category-machines
   icon:
-      sprite: Mobs/Species/Diona/parts.rsi
-      state: full
+    sprite: Mobs/Species/Diona/parts.rsi
+    state: full
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: False
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   id: GolemSilver
@@ -75,10 +75,10 @@
   targetNode: golem
   category: construction-category-machines
   icon:
-      sprite: Backmen/Mobs/Species/Golem/silver.rsi
-      state: full
+    sprite: Backmen/Mobs/Species/Golem/silver.rsi
+    state: full
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: False
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
