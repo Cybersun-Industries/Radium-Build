@@ -426,7 +426,7 @@
   - !type:TileNotBlocked
 
 - type: construction
-  name: fancy green table
+  name: ent-TableFancyGreen
   id: TableFancyGreen
   graph: Table
   startNode: start
@@ -443,7 +443,7 @@
   - !type:TileNotBlocked
 
 - type: construction
-  name: fancy orange table
+  name: ent-TableFancyOrange
   id: TableFancyOrange
   graph: Table
   startNode: start
