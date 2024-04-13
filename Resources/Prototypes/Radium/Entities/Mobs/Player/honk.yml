@@ -1,0 +1,121 @@
+- type: entity
+  abstract: true
+  id: MobHmomBase
+  name: Хонкоматерь
+  description: Вас одолевает смех, вы слышите запах бананов.
+  components:
+  - type: Sprite
+    sprite: Mobs/Demons/honkmother.rsi
+    drawdepth: Ghosts
+    scale: 2.0,2.0
+    layers:
+    - state: honkmother
+      shader: unshaded
+
+# spawn animation, spawns actual narsie when it ends
+- type: entity
+  parent: MobHmomBase
+  id: MobHmomSpawn
+  suffix: Spawn
+  components:
+  - type: Sprite
+    layers:
+    - state: spawn
+      shader: unshaded
+  # spawn animation lasts 3.5 seconds
+  - type: TimedDespawn
+    lifetime: 3
+  - type: SpawnOnDespawn
+    prototype: MobHmom
+
+- type: entity
+  parent: [MobHmomBase, BaseMob]
+  id: MobHmom
+  components:
+  - type: ShowRevIcons
+  - type: InnateTool
+    tools:
+        - id: WeaponBehonkerLaser
+        - id: BikeHorn
+  - type: UserInterface
+    interfaces:
+      - key: enum.StrippingUiKey.Key
+        type: StrippableBoundUserInterface
+  - type: HitscanBatteryAmmoProvider
+    proto: Pulse
+    fireCost: 62.5
+  - type: Battery
+    maxCharge: 10000
+    startingCharge: 10000
+  - type: BatterySelfRecharger
+    autoRecharge: true
+    autoRechargeRate: 40
+  - type: Gun
+    fireRate: 5
+    useKey: false
+    selectedMode: FullAuto
+    availableModes:
+        - FullAuto
+    soundGunshot: /Audio/Weapons/Guns/Gunshots/laser_clown.ogg
+  - type: GhostRole
+    allowMovement: true
+    makeSentient: true
+    name: Хонкоматерь
+    description: Милость клоунам, смерть неверующим.
+  - type: GhostTakeoverAvailable
+  - type: CombatMode
+  - type: AnnounceOnSpawn
+    message: honk-awoken
+    sender: honk-sender
+    sound:
+      path: /Audio/Misc/delta_alt.ogg
+    color: cyan
+  - type: CargoSellBlacklist
+  # big mom needs to see the universe
+  - type: ContentEye
+    maxZoom: 2.0,2.0
+  - type: Fixtures
+    fixtures:
+      EventHorizonCollider:
+        shape:
+          !type:PhysShapeCircle
+            radius: 5
+        hard: false
+        restitution: 0.8
+        density: 99999
+        mask:
+        - AllMask
+        layer:
+        - AllMask
+      EventHorizonConsumer:
+        shape:
+          !type:PhysShapeCircle
+            radius: 5
+        hard: false
+        mask:
+        - AllMask
+        layer:
+        - AllMask
+  - type: Input
+    context: "ghost"
+  - type: MovementIgnoreGravity
+  # narnar hears all
+  - type: IntrinsicRadioReceiver
+  - type: ActiveRadio
+    channels:
+    - Binary
+    - Common
+    - Command
+    - CentCom
+    - Engineering
+    - Medical
+    - Science
+    - Security
+    - Service
+    - Supply
+    - Syndicate
+    globalReceive: true
+  - type: Physics
+    bodyType: Dynamic
+    bodyStatus: InAir
+  - type: CanMoveInAir
