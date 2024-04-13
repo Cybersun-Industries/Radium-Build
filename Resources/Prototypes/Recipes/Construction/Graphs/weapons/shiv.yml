@@ -92,6 +92,12 @@
     - to: icon
       steps:
       - tag: PlasmaGlassShard
+        name: Plasma Glass Shard
+        icon:
+          sprite: Objects/Materials/Shards/shard.rsi
+          state: shard1
+        doAfter: 1
+      - tag: PlasmaGlassShard
         name: ent-ShardGlassPlasma
         icon:
           sprite: Objects/Materials/Shards/shard.rsi
