@@ -86,7 +86,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-WallClock
@@ -811,7 +811,7 @@
   objectType: Structure
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-ShuttersNormal
@@ -1105,7 +1105,7 @@
   conditions:
   - !type:TileNotBlocked
 
-#Wooden fence high
+  #Wooden fence high
 - type: construction
   name: ent-BaseFenceWood
   id: FenceWood
@@ -1163,7 +1163,7 @@
   graph: FenceWood
   startNode: start
   targetNode: end_small
-  category: construction-category-structures 
+  category: construction-category-structures
   description: ent-FenceWoodSmallEnd.desc
   icon:
     sprite: Structures/Walls/wooden_fence.rsi
@@ -1208,7 +1208,7 @@
   conditions:
   - !type:TileNotBlocked
 
-#Wooden fence small
+  #Wooden fence small
 - type: construction
   name: ent-BaseFenceWoodSmall
   id: FenceWoodSmall
