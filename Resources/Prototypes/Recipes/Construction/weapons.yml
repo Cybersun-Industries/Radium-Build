@@ -1,34 +1,23 @@
 - type: construction
-  name: grey bladed flatcap
+  name: ent-ClothingHeadHatGreyFlatcap
   id: BladedFlatcapGrey
   graph: BladedFlatcapGrey
   startNode: start
   targetNode: icon
   category: construction-category-weapons
-  description: An inconspicuous hat with glass shards sewn into the brim.
+  description: ent-ClothingHeadHatGreyFlatcap.desc
   icon: { sprite: Clothing/Head/Hats/greyflatcap.rsi, state: icon }
   objectType: Item
 
 - type: construction
-  name: brown bladed flatcap
+  name: ent-ClothingHeadHatBrownFlatcap
   id: BladedFlatcapBrown
   graph: BladedFlatcapBrown
   startNode: start
   targetNode: icon
   category: construction-category-weapons
-  description: An inconspicuous hat with glass shards sewn into the brim.
+  description: ent-ClothingHeadHatBrownFlatcap.desc
   icon: { sprite: Clothing/Head/Hats/brownflatcap.rsi, state: icon }
-  objectType: Item
-
-- type: construction
-  name: uranium shiv
-  id: UraniumShiv
-  graph: UraniumShiv
-  startNode: start
-  targetNode: icon
-  category: construction-category-weapons
-  description: A uranium shard with a piece of cloth wrapped around it.
-  icon: { sprite: Objects/Weapons/Melee/uranium_shiv.rsi, state: icon }
   objectType: Item
 
 - type: construction
@@ -62,6 +51,17 @@
   category: construction-category-weapons
   description: ent-PlasmaShiv.desc
   icon: { sprite: Objects/Weapons/Melee/plasma_shiv.rsi, state: icon }
+  objectType: Item
+
+- type: construction
+  name: ent-UraniumShiv
+  id: UraniumShiv
+  graph: UraniumShiv
+  startNode: start
+  targetNode: icon
+  category: construction-category-weapons
+  description: ent-UraniumShiv.desc
+  icon: { sprite: Objects/Weapons/Melee/uranium_shiv.rsi, state: icon }
   objectType: Item
 
 - type: construction

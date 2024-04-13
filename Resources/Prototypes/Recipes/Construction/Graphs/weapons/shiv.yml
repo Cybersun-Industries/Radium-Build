@@ -92,7 +92,7 @@
     - to: icon
       steps:
       - tag: PlasmaGlassShard
-        name: Plasma Glass Shard
+        name: ent-ShardGlassPlasma
         icon:
           sprite: Objects/Materials/Shards/shard.rsi
           state: shard1
