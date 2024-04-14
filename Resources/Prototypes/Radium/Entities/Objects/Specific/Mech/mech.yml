@@ -4,6 +4,7 @@
   parent: BaseMech
   name: Death-Ripley
   description: Versatile and lightly armored, the Ripley is useful for almost any heavy work scenario. The "APLU" stands for Autonomous Power Loading Unit.
+  abstract: true
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -48,6 +49,7 @@
   parent: BaseMech
   name: Ripley APLU
   description: Versatile and lightly armored, the Ripley is useful for almost any heavy work scenario. The "APLU" stands for Autonomous Power Loading Unit.
+  abstract: true
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -93,6 +95,7 @@
   parent: BaseMech
   name: Hauler
   description: Versatile and lightly armored, the Ripley is useful for almost any heavy work scenario. The "APLU" stands for Autonomous Power Loading Unit.
+  abstract: true
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -138,6 +141,7 @@
   parent: BaseMech
   name: Ripley MKII
   description: Versatile and lightly armored, the Ripley is useful for almost any heavy work scenario. The "APLU" stands for Autonomous Power Loading Unit.
+  abstract: true
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -183,6 +187,7 @@
   id: MechMarsrover
   name: Marsrover
   description: Lorem ipsum
+  abstract: true
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -220,7 +225,7 @@
 
 - type: entity
   parent: MechMarsrover
-  id: MechMarsBattery
+  id: MechMarsRoverBattery
   suffix: Battery
   components:
   - type: ContainerFill
@@ -233,6 +238,7 @@
   id: MechClownCar
   name: Catafalc
   description: Lorem ipsum
+  abstract: true
   components:
   - type: Sprite
     drawdepth: Mobs
@@ -260,7 +266,7 @@
   - type: Mech
     baseState: clowncar2
     brokenState: clowncar
-    maxEquipmentAmount: 2
+    maxEquipmentAmount: 1
     # keep mouse safe
     mechToPilotDamageMultiplier: 0.6
   - type: MovementSpeedModifier
@@ -287,6 +293,7 @@
   id: MechFlatbedCar
   name: Flatbed
   description: Lorem ipsum
+  abstract: true
   components:
   - type: Sprite
     drawdepth: Mobs
