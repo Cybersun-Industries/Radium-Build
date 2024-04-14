@@ -14,7 +14,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-ReinforcedGirder
@@ -32,7 +32,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-ClockworkGirder
@@ -50,7 +50,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-WallSolid
@@ -68,7 +68,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-WallReinforced
@@ -86,7 +86,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-WallClock
@@ -104,9 +104,9 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
-# here
+  # here
 - type: construction
   name: ent-WallWood
   id: WoodWall
@@ -123,7 +123,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-WallUranium
@@ -141,7 +141,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-WallSilver
@@ -159,7 +159,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-WallPlastic
@@ -177,7 +177,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-WallPlasma
@@ -195,7 +195,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-WallGold
@@ -213,7 +213,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-WallShuttle
@@ -231,7 +231,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-WallShuttleInterior
@@ -249,7 +249,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-WallShuttleDiagonal
@@ -267,7 +267,7 @@
   canRotate: true
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-WallClown
@@ -285,7 +285,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-WallMeat
@@ -314,8 +314,8 @@
   category: construction-category-structures
   description: ent-Grille.desc
   conditions:
-    - !type:TileNotBlocked
-      failIfSpace: false
+  - !type:TileNotBlocked
+    failIfSpace: false
   icon:
     sprite: Structures/Walls/grille.rsi
     state: grille
@@ -332,8 +332,8 @@
   category: construction-category-structures
   description: ent-ClockworkGrille.desc
   conditions:
-    - !type:TileNotBlocked
-      failIfSpace: false
+  - !type:TileNotBlocked
+    failIfSpace: false
   icon:
     sprite: Structures/Walls/clockwork_grille.rsi
     state: ratvargrille
@@ -350,8 +350,8 @@
   category: construction-category-structures
   description: ent-GrilleDiagonal.desc
   conditions:
-    - !type:TileNotBlocked
-      failIfSpace: false
+  - !type:TileNotBlocked
+    failIfSpace: false
   icon:
     sprite: Structures/Walls/grille.rsi
     state: grille_diagonal
@@ -367,8 +367,8 @@
   category: construction-category-structures
   description: ent-ClockworkGrilleDiagonal.desc
   conditions:
-    - !type:TileNotBlocked
-      failIfSpace: false
+  - !type:TileNotBlocked
+    failIfSpace: false
   icon:
     sprite: Structures/Walls/clockwork_grille.rsi
     state: ratvargrille_diagonal
@@ -385,8 +385,8 @@
   description: ent-Window.desc
   canBuildInImpassable: true
   conditions:
-    - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
+  - !type:EmptyOrWindowValidInTile
+  - !type:NoWindowsInTile
   icon:
     sprite: Structures/Windows/window.rsi
     state: full
@@ -404,8 +404,8 @@
   description: ent-WindowDiagonal.desc
   canBuildInImpassable: true
   conditions:
-    - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
+  - !type:EmptyOrWindowValidInTile
+  - !type:NoWindowsInTile
   icon:
     sprite: Structures/Windows/window_diagonal.rsi
     state: state1
@@ -422,8 +422,8 @@
   description: ent-ReinforcedWindow.desc
   canBuildInImpassable: true
   conditions:
-    - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
+  - !type:EmptyOrWindowValidInTile
+  - !type:NoWindowsInTile
   icon:
     sprite: Structures/Windows/reinforced_window.rsi
     state: full
@@ -441,8 +441,8 @@
   description: ent-ReinforcedWindowDiagonal.desc
   canBuildInImpassable: true
   conditions:
-    - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
+  - !type:EmptyOrWindowValidInTile
+  - !type:NoWindowsInTile
   icon:
     sprite: Structures/Windows/reinforced_window_diagonal.rsi
     state: state1
@@ -459,29 +459,10 @@
   description: ent-TintedWindow.desc
   canBuildInImpassable: true
   conditions:
-    - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
+  - !type:EmptyOrWindowValidInTile
+  - !type:NoWindowsInTile
   icon:
     sprite: Structures/Windows/tinted_window.rsi
-    state: full
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canRotate: false
-
-- type: construction
-  name: ent-ClockworkWindow
-  id: ClockworkWindow
-  graph: Window
-  startNode: start
-  targetNode: clockworkWindow
-  category: construction-category-structures
-  description: ent-ClockworkWindow.desc
-  canBuildInImpassable: true
-  conditions:
-    - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
-  icon:
-    sprite: Structures/Windows/clockwork_window.rsi
     state: full
   objectType: Structure
   placementMode: SnapgridCenter
@@ -497,13 +478,32 @@
   description: ent-ClockworkWindowDiagonal.desc
   canBuildInImpassable: true
   conditions:
-    - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
+  - !type:EmptyOrWindowValidInTile
+  - !type:NoWindowsInTile
   icon:
     sprite: Structures/Windows/clockwork_diagonal.rsi
     state: state0
   objectType: Structure
   placementMode: SnapgridCenter
+
+- type: construction
+  name: ent-ClockworkWindow
+  id: ClockworkWindow
+  graph: Window
+  startNode: start
+  targetNode: clockworkWindow
+  category: construction-category-structures
+  description: ent-ClockworkWindow.desc
+  canBuildInImpassable: true
+  conditions:
+  - !type:EmptyOrWindowValidInTile
+  - !type:NoWindowsInTile
+  icon:
+    sprite: Structures/Windows/clockwork_window.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
 
 - type: construction
   name: ent-PlasmaWindow
@@ -515,8 +515,8 @@
   canBuildInImpassable: true
   description: ent-PlasmaWindow.desc
   conditions:
-    - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
+  - !type:EmptyOrWindowValidInTile
+  - !type:NoWindowsInTile
   icon:
     sprite: Structures/Windows/plasma_window.rsi
     state: full
@@ -534,8 +534,8 @@
   canBuildInImpassable: true
   description: ent-ReinforcedPlasmaWindow.desc
   conditions:
-    - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
+  - !type:EmptyOrWindowValidInTile
+  - !type:NoWindowsInTile
   icon:
     sprite: Structures/Windows/reinforced_plasma_window.rsi
     state: full
@@ -553,8 +553,8 @@
   canBuildInImpassable: true
   description: ent-ShuttleWindow.desc
   conditions:
-    - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
+  - !type:EmptyOrWindowValidInTile
+  - !type:NoWindowsInTile
   icon:
     sprite: Structures/Windows/shuttle_window.rsi
     state: full
@@ -572,8 +572,8 @@
   canBuildInImpassable: true
   description: ent-PlasmaWindowDiagonal.desc
   conditions:
-    - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
+  - !type:EmptyOrWindowValidInTile
+  - !type:NoWindowsInTile
   icon:
     sprite: Structures/Windows/plasma_diagonal.rsi
     state: state1
@@ -590,8 +590,8 @@
   canBuildInImpassable: true
   description: ent-ReinforcedPlasmaWindowDiagonal.desc
   conditions:
-    - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
+  - !type:EmptyOrWindowValidInTile
+  - !type:NoWindowsInTile
   icon:
     sprite: Structures/Windows/reinforced_plasma_diagonal.rsi
     state: state1
@@ -608,8 +608,8 @@
   description: ent-WindowDirectional.desc
   canBuildInImpassable: true
   conditions:
-    - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
+  - !type:EmptyOrWindowValidInTile
+  - !type:NoWindowsInTile
   icon:
     sprite: Structures/Windows/directional.rsi
     state: window
@@ -626,8 +626,8 @@
   description: ent-WindowReinforcedDirectional.desc
   canBuildInImpassable: true
   conditions:
-    - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
+  - !type:EmptyOrWindowValidInTile
+  - !type:NoWindowsInTile
   icon:
     sprite: Structures/Windows/directional.rsi
     state: reinforced_window
@@ -644,8 +644,8 @@
   description: ent-WindowClockworkDirectional.desc
   canBuildInImpassable: true
   conditions:
-    - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
+  - !type:EmptyOrWindowValidInTile
+  - !type:NoWindowsInTile
   icon:
     sprite: Structures/Windows/directional.rsi
     state: clock_window
@@ -662,8 +662,8 @@
   canBuildInImpassable: true
   description: ent-PlasmaWindowDirectional.desc
   conditions:
-    - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
+  - !type:EmptyOrWindowValidInTile
+  - !type:NoWindowsInTile
   icon:
     sprite: Structures/Windows/directional.rsi
     state: plasma_window
@@ -680,8 +680,8 @@
   canBuildInImpassable: true
   description: ent-PlasmaReinforcedWindowDirectional.desc
   conditions:
-    - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
+  - !type:EmptyOrWindowValidInTile
+  - !type:NoWindowsInTile
   icon:
     sprite: Structures/Windows/directional.rsi
     state: plasma_reinforced_window
@@ -698,8 +698,8 @@
   canBuildInImpassable: true
   description: ent-UraniumWindow.desc
   conditions:
-    - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
+  - !type:EmptyOrWindowValidInTile
+  - !type:NoWindowsInTile
   icon:
     sprite: Structures/Windows/uranium_window.rsi
     state: full
@@ -717,8 +717,8 @@
   canBuildInImpassable: true
   description: ent-ReinforcedUraniumWindow.desc
   conditions:
-    - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
+  - !type:EmptyOrWindowValidInTile
+  - !type:NoWindowsInTile
   icon:
     sprite: Structures/Windows/reinforced_uranium_window.rsi
     state: full
@@ -736,8 +736,8 @@
   canBuildInImpassable: true
   description: ent-UraniumWindowDiagonal.desc
   conditions:
-    - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
+  - !type:EmptyOrWindowValidInTile
+  - !type:NoWindowsInTile
   icon:
     sprite: Structures/Windows/uranium_window_diagonal.rsi
     state: state1
@@ -754,8 +754,8 @@
   canBuildInImpassable: true
   description: ent-ReinforcedUraniumWindowDiagonal.desc
   conditions:
-    - !type:EmptyOrWindowValidInTile
-    - !type:NoWindowsInTile
+  - !type:EmptyOrWindowValidInTile
+  - !type:NoWindowsInTile
   icon:
     sprite: Structures/Windows/reinforced_uranium_diagonal.rsi
     state: state1
@@ -777,7 +777,7 @@
   placementMode: SnapgridCenter
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-FirelockGlass
@@ -794,7 +794,24 @@
   placementMode: SnapgridCenter
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
+
+- type: construction
+  name: ent-FirelockEdge
+  id: FirelockEdge
+  graph: Firelock
+  startNode: start
+  targetNode: FirelockEdge
+  category: construction-category-structures
+  description: ent-FirelockEdge.desc
+  icon:
+    sprite: Structures/Doors/edge_door_hazard.rsi
+    state: closed
+  placementMode: SnapgridCenter
+  objectType: Structure
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-ShuttersNormal
@@ -865,12 +882,12 @@
   category: construction-category-structures
   description: ent-Catwalk.desc
   conditions:
-    - !type:TileNotBlocked
-      failIfSpace: false
-    - !type:TileType
-      targets:
-        - Lattice
-        - Plating
+  - !type:TileNotBlocked
+    failIfSpace: false
+  - !type:TileType
+    targets:
+    - Lattice
+    - Plating
   icon:
     sprite: Structures/catwalk.rsi
     state: catwalk_preview
@@ -887,11 +904,11 @@
   category: construction-category-structures
   description: ent-FloorBananiumEntity.desc
   conditions:
-    - !type:TileNotBlocked
-      failIfSpace: false
-    - !type:TileType
-      targets:
-        - Plating
+  - !type:TileNotBlocked
+    failIfSpace: false
+  - !type:TileType
+    targets:
+    - Plating
   icon:
     sprite: Tiles/Misc/bananium.rsi
     state: bananium
@@ -914,7 +931,7 @@
   placementMode: SnapgridCenter
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-BarricadeDirectional
@@ -931,7 +948,7 @@
   placementMode: SnapgridCenter
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-Railing
@@ -1001,7 +1018,7 @@
   conditions:
   - !type:TileNotBlocked
 
-# Chain link fencing
+  # Chain link fencing
 - type: construction
   name: ent-BaseFenceMetal
   id: FenceMetal
@@ -1070,7 +1087,25 @@
   conditions:
   - !type:TileNotBlocked
 
-#Wooden fence high
+  #Wooden fence high
+- type: construction
+  name: ent-FenceWoodHighTJunction
+  id: FenceWoodTJunction
+  graph: FenceWood
+  startNode: start
+  targetNode: tjunction
+  category: construction-category-structures
+  description: ent-FenceWoodHighTJunction.desc
+  icon:
+    sprite: Structures/Walls/wooden_fence.rsi
+    state: tjunction
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+  #Wooden fence high
 - type: construction
   name: ent-BaseFenceWood
   id: FenceWood
@@ -1123,16 +1158,16 @@
   - !type:TileNotBlocked
 
 - type: construction
-  name: ent-FenceWoodHighTJunction
-  id: FenceWoodTJunction
+  name: ent-FenceWoodSmallEnd
+  id: FenceWoodEndSmall
   graph: FenceWood
   startNode: start
-  targetNode: tjunction
+  targetNode: end_small
   category: construction-category-structures
-  description: ent-FenceWoodHighTJunction.desc
+  description: ent-FenceWoodSmallEnd.desc
   icon:
     sprite: Structures/Walls/wooden_fence.rsi
-    state: tjunction
+    state: end_small
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
@@ -1141,12 +1176,29 @@
 
 - type: construction
   name: ent-FenceWoodSmallGate
+  id: FenceWoodGateSmall
+  graph: FenceWood
+  startNode: start
+  targetNode: gate_small
+  category: construction-category-structures
+  description: ent-FenceWoodSmallGate.desc
+  icon:
+    sprite: Structures/Walls/wooden_fence.rsi
+    state: door_closed_small
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canBuildInImpassable: false
+  conditions:
+  - !type:TileNotBlocked
+
+- type: construction
+  name: ent-FenceWoodHighGate
   id: FenceWoodGate
   graph: FenceWood
   startNode: start
   targetNode: gate
   category: construction-category-structures
-  description: ent-FenceWoodSmallGate.desc
+  description: ent-FenceWoodHighGate.desc
   icon:
     sprite: Structures/Walls/wooden_fence.rsi
     state: door_closed
@@ -1156,7 +1208,7 @@
   conditions:
   - !type:TileNotBlocked
 
-#Wooden fence small
+  #Wooden fence small
 - type: construction
   name: ent-BaseFenceWoodSmall
   id: FenceWoodSmall
@@ -1168,23 +1220,6 @@
   icon:
     sprite: Structures/Walls/wooden_fence.rsi
     state: straight_small
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canBuildInImpassable: false
-  conditions:
-  - !type:TileNotBlocked
-
-- type: construction
-  name: ent-FenceWoodSmallEnd
-  id: FenceWoodEndSmall
-  graph: FenceWood
-  startNode: start
-  targetNode: end_small
-  category: construction-category-structures
-  description: ent-FenceWoodSmallEnd.desc
-  icon:
-    sprite: Structures/Walls/wooden_fence.rsi
-    state: end_small
   objectType: Structure
   placementMode: SnapgridCenter
   canBuildInImpassable: false
@@ -1225,24 +1260,7 @@
   conditions:
   - !type:TileNotBlocked
 
-- type: construction
-  name: ent-FenceWoodSmallGate
-  id: FenceWoodGateSmall
-  graph: FenceWood
-  startNode: start
-  targetNode: gate_small
-  category: construction-category-structures
-  description: ent-FenceWoodSmallGate.desc
-  icon:
-    sprite: Structures/Walls/wooden_fence.rsi
-    state: door_closed_small
-  objectType: Structure
-  placementMode: SnapgridCenter
-  canBuildInImpassable: false
-  conditions:
-  - !type:TileNotBlocked
-
-#Airlocks
+  #Airlocks
 - type: construction
   name: ent-Airlock
   id: Airlock
@@ -1258,7 +1276,7 @@
   placementMode: SnapgridCenter
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-AirlockGlass
@@ -1275,7 +1293,7 @@
   placementMode: SnapgridCenter
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-PinionAirlock
@@ -1292,7 +1310,7 @@
   placementMode: SnapgridCenter
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-PinionAirlockGlass
@@ -1309,7 +1327,7 @@
   placementMode: SnapgridCenter
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-AirlockShuttle
@@ -1345,7 +1363,7 @@
   placementMode: SnapgridCenter
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-Windoor
@@ -1362,7 +1380,7 @@
   placementMode: SnapgridCenter
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-WindoorSecure
@@ -1379,7 +1397,7 @@
   placementMode: SnapgridCenter
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-BaseClockworkWindoor
@@ -1396,9 +1414,9 @@
   placementMode: SnapgridCenter
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
-#lighting
+  #lighting
 - type: construction
   name: ent-WallLight
   id: LightTubeFixture
@@ -1417,7 +1435,7 @@
   conditions:
   # Need an *additional* condition here that forces there to be a wall in the opposite direction to the one used for placement.
   # Also see below. Didn't add it b/c construction ECS work going on. Cheers, - 20kdc
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-SmallLight
@@ -1436,7 +1454,7 @@
   canBuildInImpassable: false
   conditions:
   # Same here. - 20kdc
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-PoweredLightPostSmallEmpty
@@ -1454,9 +1472,9 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
-#conveyor
+  #conveyor
 - type: construction
   name: ent-ConveyorBelt
   id: ConveyorBelt
@@ -1472,7 +1490,7 @@
     sprite: Structures/conveyor.rsi
     state: conveyor_stopped_cw
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-MetalDoor
@@ -1489,7 +1507,7 @@
     sprite: Structures/Doors/MineralDoors/metal_door.rsi
     state: closed
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-WoodDoor
@@ -1506,7 +1524,7 @@
     sprite: Structures/Doors/MineralDoors/wood_door.rsi
     state: closed
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-PlasmaDoor
@@ -1523,7 +1541,7 @@
     sprite: Structures/Doors/MineralDoors/plasma_door.rsi
     state: closed
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-GoldDoor
@@ -1540,7 +1558,7 @@
     sprite: Structures/Doors/MineralDoors/gold_door.rsi
     state: closed
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-SilverDoor
@@ -1557,7 +1575,7 @@
     sprite: Structures/Doors/MineralDoors/silver_door.rsi
     state: closed
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-PaperDoor
@@ -1589,7 +1607,7 @@
     sprite: Structures/plastic_flaps.rsi
     state: plasticflaps
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-PlasticFlapsAirtightClear
@@ -1606,14 +1624,14 @@
     sprite: Structures/plastic_flaps.rsi
     state: plasticflaps
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-PlasticFlapsOpaque
   id: PlasticFlapsOpaque
   graph: PlasticFlapsGraph
   startNode: start
-  targetNode: opaqueFlaps
+  targetNode: airtightopaqueFlaps
   category: construction-category-structures
   placementMode: SnapgridCenter
   description: ent-PlasticFlapsOpaque.desc
@@ -1623,24 +1641,7 @@
     sprite: Structures/plastic_flaps.rsi
     state: plasticflaps
   conditions:
-    - !type:TileNotBlocked
-
-- type: construction
-  name: ent-PlasticFlapsAirtightOpaque
-  id: PlasticFlapsAirtightOpaque
-  graph: PlasticFlapsGraph
-  startNode: start
-  targetNode: airtightopaqueFlaps
-  category: construction-category-structures
-  placementMode: SnapgridCenter
-  description: ent-PlasticFlapsAirtightOpaque.desc
-  objectType: Structure
-  canBuildInImpassable: false
-  icon:
-    sprite: Structures/plastic_flaps.rsi
-    state: plasticflaps
-  conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-StatueBananiumClown
@@ -1657,7 +1658,7 @@
     sprite: Structures/Decoration/statues.rsi
     state: bananium_clown
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-BananiumDoor
@@ -1674,7 +1675,7 @@
     sprite: Structures/Doors/MineralDoors/bananium_door.rsi
     state: closed
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-AltarBananium
@@ -1692,7 +1693,7 @@
   canRotate: false
   canBuildInImpassable: false
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked
 
 - type: construction
   name: ent-SolidSecretDoor
@@ -1709,4 +1710,4 @@
     sprite: Structures/Doors/secret_door.rsi
     state: closed
   conditions:
-    - !type:TileNotBlocked
+  - !type:TileNotBlocked

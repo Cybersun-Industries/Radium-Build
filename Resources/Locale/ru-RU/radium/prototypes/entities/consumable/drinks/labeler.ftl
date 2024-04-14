@@ -3,6 +3,7 @@ reagent-name-absinthe = джейлбрейк верте
 reagent-name-ale = эль
 reagent-name-bluecuracao = синий кюрасао
 reagent-name-nothing = ничего
+reagent-name-coconutwater = кокосовая вода
 reagent-name-champagne = шампанское
 reagent-name-beer = пиво
 reagent-name-water = вода
