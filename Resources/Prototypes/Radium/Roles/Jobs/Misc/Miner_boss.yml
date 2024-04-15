@@ -1,0 +1,59 @@
+- type: startingGear
+  id: SalvageBossGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitSalvageSpecialist
+    outerClothing: ClothingOuterHardsuitMaxim
+    back: ClothingBackpackSalvageFilled
+    shoes: ClothingShoesBootsSalvage
+    head: ClothingHeadHelmetHardsuitMaxim
+    id: SalvagePDA
+    ears: ClothingHeadsetCargo
+  satchel: ClothingBackpackSatchelSalvageFilled
+  duffelbag: ClothingBackpackDuffelSalvageFilled
+
+- type: startingGear
+  id: GrenadeBossGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitTacticool
+    outerClothing: ClothingOuterHardsuitBerserk
+    back: ClothingBackpackSatchelLeather
+    shoes: ClothingShoesBootsCombat
+    head: ClothingHeadHelmetHardsuitBerserk
+    id: SyndiAgentPDA
+    ears: ClothingHeadsetUSSP
+
+- type: startingGear
+  id: AshwalkRangeGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitGladiator
+    outerClothing: ClothingOuterArmorBone
+    shoes: ClothingShoesCult
+    head: ClothingHeadHelmetBone
+    belt: ClothingBeltQuiverArrows
+
+- type: startingGear
+  id: AshwalkWizardGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitGladiator
+    outerClothing: ClothingOuterArmorBone
+    shoes: ClothingShoesCult
+    head: ClothingHeadHelmetBone
+    belt: ClothingBeltWandFilled
+    back: ClothingBackpackSatchelLeatherBooks
+    
+- type: startingGear
+  id: ClockworkDefGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitGladiator
+    outerClothing: ClothingOuterArmorPodWars
+    shoes: ClothingShoesCult
+    head: ClothingHeadHelmetPodWars
+    gloves: ClothingHandsWatchDivine
+
+- type: startingGear
+  id: LingGear
+  equipment:
+    jumpsuit: ClothingUniformJumpsuitGladiator
+    outerClothing: ClothingOuterArmorChangeling
+    shoes: ClothingShoesCult
+    head: ClothingHeadHelmetLing

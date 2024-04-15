@@ -1,0 +1,31 @@
+﻿- type: npcFaction
+  id: AshesWizzy
+  hostile:
+    - Ashes
+- type: npcFaction
+  id: Ashes
+  hostile:
+    - NanoTrasen
+    - Syndicate
+    - Xeno
+    - PetsNT
+    - Zombie
+    - Blob
+    - Flesh
+    - Revolutionary
+  friendly:
+    - AshesWizzy
+- type: npcFaction
+  id: Legion
+  hostile:
+    - NanoTrasen
+    - Syndicate
+    - Xeno
+    - PetsNT
+    - Zombie
+    - Blob
+    - Flesh
+    - Revolutionary
+  friendly:
+    - AshesWizzy
+    - Ashes

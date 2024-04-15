@@ -1,0 +1,398 @@
+#angry men
+- type: entity
+  name: Boss Miner
+  description: His eyes looks creepy..
+  parent: BaseMobHuman
+  id: MobSalvageBoss
+  suffix: "IBoss"
+  components:
+    - type: NpcFactionMember
+      factions:
+        - Syndicate
+    - type: Loadout
+      prototypes:
+        - SalvageBossGear
+    - type: InputMover
+    - type: MobMover
+    - type: HTN
+      rootTask:
+        task: SimpleHumanoidHostileCompound
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: InnateTool
+      tools:
+        - id: WeaponProtoKineticAccelerator
+#boom boom angry man
+- type: entity
+  name: Boss Grenader
+  description: His eyes looks creepy..
+  parent: BaseMobHuman
+  id: MobGrenadeBoss
+  suffix: "IBoss"
+  components:
+    - type: NpcFactionMember
+      factions:
+        - Syndicate
+    - type: Loadout
+      prototypes:
+        - GrenadeBossGear
+    - type: InputMover
+    - type: MobMover
+    - type: HTN
+      rootTask:
+        task: SimpleHumanoidHostileCompound
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: InnateTool
+      tools:
+        - id: WeaponGrenadeFragLauncher9000
+#Ling
+- type: entity
+  name: Boss Ling
+  description: His eyes looks creepy..
+  parent: BaseMobHuman
+  id: MobLingBoss
+  suffix: "IBoss"
+  components:
+    - type: NpcFactionMember
+      factions:
+        - Syndicate
+    - type: Loadout
+      prototypes:
+        - LingGear
+    - type: InputMover
+    - type: MobMover
+    - type: HTN
+      rootTask:
+        task: SimpleHumanoidHostileCompound
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: InnateTool
+      tools:
+        - id: ArmBlade
+#SHITCODE BRASS CLOCKWORK MAN
+- type: entity
+  name: Clockwork man
+  description: His brothers gone
+  parent: BaseMobHuman
+  id: MobClockworkDefBoss
+  suffix: "IBoss"
+  components:
+    - type: NpcFactionMember
+      factions:
+        - Syndicate
+    - type: Loadout
+      prototypes:
+        - ClockworkDefGear
+    - type: InputMover
+    - type: MobMover
+    - type: HTN
+      rootTask:
+        task: SimpleHumanoidHostileCompound
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: InnateTool
+      tools:
+        - id: Claymore
+        - id: ClockworkShield
+#lizards
+- type: entity
+  name: Ash Walker
+  description: His eyes looks creepy..
+  parent: BaseMobReptilian
+  id: MobAshWalkerMelee
+  suffix: "IBoss, Melee"
+  components:
+    - type: NpcFactionMember
+      factions:
+        - Ashes
+    - type: Loadout
+      prototypes:
+        - AshWalker
+    - type: InputMover
+    - type: MobMover
+    - type: HTN
+      rootTask:
+        task: SimpleHumanoidHostileCompound
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: InnateTool
+      tools:
+        - id: SpearBone
+- type: entity
+  parent: MobAshWalkerMelee
+  id: MobAshWalkerGhost
+  suffix: "IBoss,Ghostme"
+  components:
+    - type: GhostRole
+      allowMovement: true
+      makeSentient: true
+      name: ghost-role-information-ash-name
+      description: ghost-role-information-ash-description
+    - type: GhostTakeoverAvailable
+- type: entity
+  name: Ash Walker
+  description: So ashy
+  parent: BaseMobReptilian
+  id: MobAshWalkerRange
+  suffix: "IBoss,Range"
+  components:
+    - type: NpcFactionMember
+      factions:
+        - Ashes
+    - type: Loadout
+      prototypes:
+        - AshwalkRangeGear
+    - type: InputMover
+    - type: MobMover
+    - type: HTN
+      rootTask:
+        task: SimpleHumanoidHostileCompound
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+    - type: InnateTool
+      tools:
+        - id: BowImprovised
+- type: entity
+  parent: MobAshWalkerRange
+  id: MobAshWalkerGhostr
+  suffix: "IBoss,Ghostr"
+  components:
+    - type: GhostRole
+      allowMovement: true
+      makeSentient: true
+      name: ghost-role-information-ash-name
+      description: ghost-role-information-ash-description
+    - type: GhostTakeoverAvailable
+- type: entity
+  name: Ash Walker
+  description: So ashy
+  parent: BaseMobReptilian
+  id: MobAshWalkerWizard
+  suffix: "IBoss,Wizard"
+  components:
+    - type: NpcFactionMember
+      factions:
+        - AshesWizzy
+    - type: Loadout
+      prototypes:
+        - AshwalkWizardGear
+    - type: InputMover
+    - type: MobMover
+    - type: HTN
+      rootTask:
+        task: SimpleHumanoidHostileCompound
+    - type: RandomHumanoidAppearance
+      randomizeName: true
+#true lavaland
+#big bro
+- type: entity
+  name: Legion Boss
+  suffix: "IBoss"
+  parent:
+  - BaseSimpleMob
+  - MobCombat
+  - MobBloodstream
+  id: MobLegion
+  description: An unstoppable force of carnage.
+  components:
+  - type: TimedSpawner
+    prototypes:
+    - MobLegionMinion
+    intervalSeconds: 35
+  - type: GhostRole
+    allowMovement: true
+    makeSentient: true
+    name: ghost-role-information-legion-name
+    description: ghost-role-information-legion-description
+  - type: RotationVisuals
+    defaultRotation: 90
+    horizontalRotation: 90
+  - type: GhostTakeoverAvailable
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: NpcFactionMember
+    factions:
+      - SimpleHostile
+  - type: Body
+    prototype: Animal
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: HellSpawn
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 6
+  - type: Sprite
+    sprite: Radium/Mobs/Lavaland/96x96megafauna.rsi
+    layers:
+      - map: [ "enum.DamageStateVisualLayers.Base" ]
+        state: mega_legion
+  #- type: DamageStateVisuals
+  #  states:
+  #    Alive:
+  #      Base: alive
+  #    Dead:
+  #      Base: dead
+  - type: Firestarter
+  - type: NameIdentifier
+    group: GenericNumber
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      500: 0.7
+      900: 0.5
+  - type: MobPrice
+    price: 1000 # Living critters are valuable in space.
+  - type: Perishable
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 1.4
+        density: 1000
+        mask:
+        - FlyingMobMask
+        layer:
+        - FlyingMobLayer
+  - type: MobState
+  - type: Tag
+    tags:
+      - CannotSuicide
+      - DoorBumpOpener
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      1000: Dead
+  - type: Butcherable
+    spawned:
+      - id: MaterialBones1
+        amount: 15
+  - type: MeleeWeapon
+    range: 1.8
+    altDisarm: false
+    angle: 10
+    soundHit:
+     collection: AlienClaw
+    animation: WeaponArcBite
+    attackRate: 0.6
+    hidden: true
+    damage:
+      types:
+        Blunt: 50
+        Structural: 20
+  - type: PointLight
+    radius: 7
+    energy: 4.5
+    color: "#ff4242"
+    castShadows: false
+#minis
+- type: entity
+  name: Legion Minion
+  suffix: "IBoss"
+  parent:
+  - BaseSimpleMob
+  - MobCombat
+  - MobBloodstream
+  id: MobLegionMinion
+  description: An unstoppable force of carnage.
+  components:
+  - type: Anomaly
+    pulseSound:
+      collection: RadiationPulse
+      params:
+        volume: 5
+    anomalyContactDamage:
+      types:
+        Heat: 10
+  - type: PyroclasticAnomaly
+  - type: ProjectileAnomaly
+    projectilePrototype: ProjectileAnomalyFireball
+    targetNonSentientChance: 0.1
+  - type: TempAffectingAnomaly
+    tempChangePerSecond: 200
+    hotspotExposeTemperature: 1000
+  - type: GhostRole
+    allowMovement: true
+    makeSentient: true
+    name: ghost-role-information-legionm-name
+    description: ghost-role-information-legionm-description
+  - type: RotationVisuals
+    defaultRotation: 90
+    horizontalRotation: 90
+  - type: GhostTakeoverAvailable
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+  - type: NpcFactionMember
+    factions:
+      - SimpleHostile
+  - type: Body
+    prototype: Animal
+  - type: Damageable
+    damageContainer: Biological
+    damageModifierSet: HellSpawn
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4
+    baseSprintSpeed: 5
+  - type: Sprite
+    sprite: Radium/Mobs/Demons/legionMin.rsi
+    layers:
+      - map: [ "enum.DamageStateVisualLayers.Base" ]
+        state: alive
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: alive
+      Dead:
+        Base: dead
+  - type: Firestarter
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      0: 0.7
+      5: 0.5
+  - type: MobPrice
+    price: 1000 # Living critters are valuable in space.
+  - type: Perishable
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.2
+        density: 200
+        mask:
+        - FlyingMobMask
+        layer:
+        - FlyingMobLayer
+  - type: MobState
+  - type: Tag
+    tags:
+      - CannotSuicide
+      - DoorBumpOpener
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      10: Dead
+  - type: Butcherable
+    spawned:
+      - id: MaterialBones1
+        amount: 2
+  - type: PointLight
+    radius: 1.2
+    energy: 4.5
+    color: "#ff4242"
+    castShadows: false
+  - type: MeleeWeapon
+    range: 1
+    altDisarm: false
+    angle: 10
+    soundHit:
+     collection: AlienClaw
+    animation: WeaponArcBite
+    attackRate: 0.6
+    hidden: true
+    damage:
+      types:
+        Blunt: 0
+        Structural: 0
