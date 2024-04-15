@@ -1,0 +1,24 @@
+- type: entity
+  id: ClothingBeltQuiverArrows
+  parent: ClothingBeltQuiver
+  suffix: IBoss
+  components:
+  - type: StorageFill
+    contents:
+      - id: ArrowRegular
+      - id: ArrowRegular
+      - id: ArrowRegular
+      - id: ArrowRegular
+      - id: ArrowRegular
+      - id: ArrowRegular
+- type: entity
+  parent: ClothingBackpackSatchelLeather
+  id: ClothingBackpackSatchelLeatherBooks
+  suffix: Filled, IBoss
+  components:
+  - type: StorageFill
+    contents:
+    - id: BlinkBook
+    - id: KnockSpellbook
+    - id: ForceWallSpellbook
+    - id: WeaponStaffHealing
