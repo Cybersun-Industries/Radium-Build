@@ -4,5 +4,5 @@
 ent-MobArcIndHoloparasiteGuardian = взломанный голостраж
     .desc = Эм.. Дело рук Arcadian Ind.
 
-ent-SimpleSpaceMobBase = МЛЮ
+ent-MobArcIndBlaster = МЛЮ
     .desc = Мобильный Лазерный Юнит. Дело рук Arcadian Ind.

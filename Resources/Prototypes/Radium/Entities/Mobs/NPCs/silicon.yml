@@ -46,6 +46,11 @@
   name: taxibot
   description: Give a ride?
   components:
+  - type: Strap
+    position: Down
+    buckleOffset: "0, 0"
+    rotation: 0
+   size: 200
   - type: Sprite
     sprite: Mobs/Silicon/Bots/taxibot.rsi
     layers:

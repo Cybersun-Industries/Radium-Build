@@ -181,164 +181,111 @@
     containers:
       mech-battery-slot:
       - PowerCellHigh
+
+#stored until revork
 # Rover
-- type: entity
-  parent: BaseMech
-  id: MechMarsrover
-  name: Marsrover
-  description: Lorem ipsum
-  abstract: true
-  components:
-  - type: Sprite
-    drawdepth: Mobs
-    noRot: true
-    sprite: Radium/Objects/Specific/Mecha/vehicles.rsi
-    layers:
-    - map: [ "enum.MechVisualLayers.Base" ]
-      state: marsrover2
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeCircle
-          radius: 0.4
-        density: 80
-        mask:
-        - MobMask
-        layer:
-        - MobLayer
-  - type: FootstepModifier
-    footstepSoundCollection:
-      path: /Audio/Radium/Mecha/sound_machines_tractor_running.ogg
-      params:
-        volume: 3
-  - type: Mech
-    baseState: marsrover2
-    brokenState: marsrover
-    maxEquipmentAmount: 2
-    # keep mouse safe
-    mechToPilotDamageMultiplier: 0.6
-    airtight: true
-  - type: MovementSpeedModifier
-    baseWalkSpeed: 6
-    baseSprintSpeed: 7
+#- type: entity
+#  parent: BaseMech
+#  id: MechMarsrover
+#  name: Marsrover
+#  description: Lorem ipsum
+#  abstract: true
+#  components:
+#  - type: Sprite
+#    drawdepth: Mobs
+#    noRot: true
+#    sprite: Radium/Objects/Specific/Mecha/vehicles.rsi
+#    layers:
+#    - map: [ "enum.MechVisualLayers.Base" ]
+#      state: marsrover2
+#  - type: Fixtures
+#    fixtures:
+#      fix1:
+#        shape:
+#          !type:PhysShapeCircle
+#          radius: 0.4
+#        density: 80
+#        mask:
+#        - MobMask
+#        layer:
+#        - MobLayer
+#  - type: FootstepModifier
+#    footstepSoundCollection:
+#      path: /Audio/Radium/Mecha/sound_machines_tractor_running.ogg
+#      params:
+#        volume: 3
+#  - type: Mech
+#    baseState: marsrover2
+#    brokenState: marsrover
+#    maxEquipmentAmount: 2
+#    # keep mouse safe
+#    mechToPilotDamageMultiplier: 0.6
+#    airtight: true
+#  - type: MovementSpeedModifier
+#    baseWalkSpeed: 6
+#    baseSprintSpeed: 7
 
-- type: entity
-  parent: MechMarsrover
-  id: MechMarsRoverBattery
-  suffix: Battery
-  components:
-  - type: ContainerFill
-    containers:
-      mech-battery-slot:
-      - PowerCellHigh
+#- type: entity
+#  parent: MechMarsrover
+#  id: MechMarsRoverBattery
+#  suffix: Battery
+#  components:
+#  - type: ContainerFill
+#    containers:
+#      mech-battery-slot:
+#      - PowerCellHigh
 #Clowncar
-- type: entity
-  parent: BaseMech
-  id: MechClownCar
-  name: Catafalc
-  description: Lorem ipsum
-  abstract: true
-  components:
-  - type: Sprite
-    drawdepth: Mobs
-    noRot: true
-    sprite: Radium/Objects/Specific/Mecha/vehicles.rsi
-    layers:
-    - map: [ "enum.MechVisualLayers.Base" ]
-      state: clowncar2
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeCircle
-          radius: 0.4
-        density: 80
-        mask:
-        - MobMask
-        layer:
-        - MobLayer
-  - type: FootstepModifier
-    footstepSoundCollection:
-      collection: FootstepSlip
-      params:
-        volume: 3
-  - type: Mech
-    baseState: clowncar2
-    brokenState: clowncar
-    maxEquipmentAmount: 1
-    # keep mouse safe
-    mechToPilotDamageMultiplier: 0.6
-  - type: MovementSpeedModifier
-    baseWalkSpeed: 6
-    baseSprintSpeed: 7
-  - type: Strap
-    position: Down
-    buckleOffset: "0, 0"
-    rotation: 90
-    size: 300
+#- type: entity
+#  parent: BaseMech
+#  id: MechClownCar
+#  name: Catafalc
+#  description: Lorem ipsum
+#  abstract: true
+#  components:
+#  - type: Sprite
+#    drawdepth: Mobs
+#    noRot: true
+#    sprite: Radium/Objects/Specific/Mecha/vehicles.rsi
+#    layers:
+#    - map: [ "enum.MechVisualLayers.Base" ]
+#      state: clowncar2
+#  - type: Fixtures
+#    fixtures:
+#      fix1:
+#        shape:
+#          !type:PhysShapeCircle
+#          radius: 0.4
+#        density: 80
+#        mask:
+#        - MobMask
+#        layer:
+#        - MobLayer
+#  - type: FootstepModifier
+#    footstepSoundCollection:
+#      collection: FootstepSlip
+#      params:
+#        volume: 3
+#  - type: Mech
+#    baseState: clowncar2
+#    brokenState: clowncar
+#    maxEquipmentAmount: 1
+#    # keep mouse safe
+#    mechToPilotDamageMultiplier: 0.6
+#  - type: MovementSpeedModifier
+#    baseWalkSpeed: 6
+#    baseSprintSpeed: 7
+#  - type: Strap
+#    position: Down
+#    buckleOffset: "0, 0"
+#    rotation: 90
+#    size: 300
 
-- type: entity
-  parent: MechClownCar
-  id: MechClownCarBattery
-  suffix: Battery
-  components:
-  - type: ContainerFill
-    containers:
-      mech-battery-slot:
-      - PowerCellHigh
-#flatbed
-- type: entity
-  parent: BaseMech
-  id: MechFlatbedCar
-  name: Flatbed
-  description: Lorem ipsum
-  abstract: true
-  components:
-  - type: Sprite
-    drawdepth: Mobs
-    noRot: true
-    sprite: Radium/Objects/Specific/Mecha/vehicles.rsi
-    layers:
-    - map: [ "enum.MechVisualLayers.Base" ]
-      state: flatbed
-  - type: Fixtures
-    fixtures:
-      fix1:
-        shape:
-          !type:PhysShapeCircle
-          radius: 0.4
-        density: 80
-        mask:
-        - MobMask
-        layer:
-        - MobLayer
-  - type: FootstepModifier
-    footstepSoundCollection:
-      path: /Audio/Radium/Mecha/sound_machines_tractor_running.ogg
-      params:
-        volume: 3
-  - type: Mech
-    baseState: flatbed
-    brokenState: flatbed
-    maxEquipmentAmount: 2
-    # keep mouse safe
-    mechToPilotDamageMultiplier: 0.6
-  - type: MovementSpeedModifier
-    baseWalkSpeed: 6
-    baseSprintSpeed: 7
-  - type: Strap
-    position: Down
-    buckleOffset: "0, 0"
-    rotation: 90
-    size: 400
-
-- type: entity
-  parent: MechFlatbedCar
-  id: MechFlatbedCarBattery
-  suffix: Battery
-  components:
-  - type: ContainerFill
-    containers:
-      mech-battery-slot:
-      - PowerCellHigh
+#- type: entity
+#  parent: MechClownCar
+#  id: MechClownCarBattery
+#  suffix: Battery
+#  components:
+#  - type: ContainerFill
+#    containers:
+#      mech-battery-slot:
+#      - PowerCellHigh
