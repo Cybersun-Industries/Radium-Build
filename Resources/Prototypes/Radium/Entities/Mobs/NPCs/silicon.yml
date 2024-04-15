@@ -46,11 +46,7 @@
   name: taxibot
   description: Give a ride?
   components:
-  - type: Strap
-    position: Down
-    buckleOffset: "0, 0"
-    rotation: 0
-   size: 200
+
   - type: Sprite
     sprite: Mobs/Silicon/Bots/taxibot.rsi
     layers:
@@ -58,15 +54,18 @@
   - type: GhostRole
     name: ghost-role-information-taxibot-name
     description: ghost-role-information-taxibot-description
-  - type: Strap
-    buckleOffset: "0, 0"
-    maxBuckleDistance: 1
   - type: Construction
     graph: TaxiBot
     node: bot
   - type: MovementSpeedModifier
     baseWalkSpeed : 6
     baseSprintSpeed : 8
+  - type: Strap
+    position: Down
+    buckleOffset: "0, 0"
+    rotation: 0
+    size: 200
+    maxBuckleDistance: 1
 
 - type: entity
   parent: MobSiliconBaseVehicle

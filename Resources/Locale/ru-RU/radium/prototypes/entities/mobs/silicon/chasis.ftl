@@ -1,4 +1,4 @@
-﻿ent-BorgChassisClown = Хонк киборг
+﻿ent-BorgChassisClown = хонк киборг
     .desc = Подмога бедняге
-ent-BorgChassisPeace = Базовый киборг
+ent-BorgChassisPeace = базовый киборг
     .desc = Киборг, способный на ничто.
