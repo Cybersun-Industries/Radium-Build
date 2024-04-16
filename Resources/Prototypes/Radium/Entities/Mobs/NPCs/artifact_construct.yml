@@ -119,6 +119,10 @@
       availableModes:
         - FullAuto
       soundGunshot: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
+    - type: Butcherable
+      spawned:
+      - id: ArtifactFragment1
+        amount: 3
 
 - type: entity
   parent: BaseMobArtifactConstruct
@@ -171,3 +175,7 @@
       availableModes:
         - FullAuto
       soundGunshot: /Audio/Weapons/Guns/Gunshots/laser_cannon.ogg
+    - type: Butcherable
+      spawned:
+      - id: ArtifactFragment1
+        amount: 7

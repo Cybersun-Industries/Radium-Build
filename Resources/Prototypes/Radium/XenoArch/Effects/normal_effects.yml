@@ -1,6 +1,6 @@
 - type: artifactEffect
   id: EffectGolem1Spawn
-  targetDepth: 1
+  targetDepth: 2
   effectHint: artifact-effect-hint-creation
   components:
   - type: SpawnArtifact
@@ -9,7 +9,7 @@
     - id: MobGrimForgedXray
 - type: artifactEffect
   id: EffectGolem2Spawn
-  targetDepth: 1
+  targetDepth: 3
   effectHint: artifact-effect-hint-creation
   components:
   - type: SpawnArtifact
