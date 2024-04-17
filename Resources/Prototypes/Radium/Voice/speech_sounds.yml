@@ -1,0 +1,8 @@
+- type: speechSounds
+  id: SlugCat
+  saySound:
+    path: /Audio/Radium/Animals/Slugcat/wawa_chatter.ogg
+  askSound:
+    path: /Audio/Radium/Animals/Slugcat/wawa_statement.ogg
+  exclaimSound:
+    path: /Audio/Radium/Animals/Slugcat/wawa_exclaim.ogg
