@@ -1,0 +1,19 @@
+name: "Предложить идею"
+description: "Для тех, кто хочет предложить свои правки разработчикам."
+labels: ["enhancement"]
+body:
+  - type: textarea
+    id: description
+    validations:
+      required: true
+    attributes:
+      label: "Описание"
+      description: "Опишите предложение"
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: "Скриншоты"
+      description: |
+        Если приемлемо, добавьте скриншоты
+        **Подсказка**: Вы можете прикрепить изображения щелкнув по области ниже, чтобы выделить её, а затем перетащив в нее файлы
