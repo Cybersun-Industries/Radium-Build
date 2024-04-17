@@ -1,5 +1,5 @@
 - type: entity
-  name: cat
+  name: Slugcat
   parent: SimpleMobBase
   id: MobSlugCat
   description: Feline pet, very funny.
@@ -10,14 +10,13 @@
     layers:
     - map: [ "enum.DamageStateVisualLayers.Base" ]
       state: slugcat
-    - map: [ "jumpsuit" ]
   - type: Physics
   - type: Fixtures
     fixtures:
       fix1:
         shape:
           !type:PhysShapeCircle
-          radius: 0.35
+          radius: 0.3
         density: 15
         mask:
         - MobMask
@@ -25,6 +24,7 @@
         - MobLayer
   - type: Stripping
   - type: Hands
+  - type: Pacified
   - type: Body
     prototype: Human
     requiredLegs: 2
@@ -54,7 +54,7 @@
     accent: slugcat
   - type: InteractionPopup
     successChance: 0.7
-    interactSuccessString: petting-success-cat
+    interactSuccessString: petting-success-slugcat
     interactFailureString: petting-failure-generic
     interactSuccessSpawn: EffectHearts
     interactSuccessSound:
@@ -71,3 +71,15 @@
   - type: Tag
     tags:
     - VimPilot
+    - DoorBumpOpener
+  - type: GhostRole
+    makeSentient: true
+    name: ghost-role-information-slugcat-name
+    description: ghost-role-information-slugcat-description
+    rules: ghost-role-information-slugcat-rules
+  - type: GhostTakeoverAvailable
+  - type: RandomSprite
+    getAllGroups: true
+    available:
+    - enum.DamageStateVisualLayers.Base:
+        slugcat: KoboldColors

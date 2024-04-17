@@ -166,6 +166,20 @@ public sealed partial class AdminVerbSystem
             args.Verbs.Add(flames);
         }
 
+        Verb slug = new()
+        {
+            Text = "Slugcating",
+            Category = VerbCategory.Smite,
+            Icon = new SpriteSpecifier.Rsi(new ("/Textures/Radium/Mobs/Animals/SlugCat/parts.rsi"), "dead1"),
+            Act = () =>
+            {
+                _polymorphSystem.PolymorphEntity(args.Target, "AdminSlugSmite");
+            },
+            Impact = LogImpact.Extreme,
+            Message = Loc.GetString("admin-smite-slugcat-description")
+        };
+        args.Verbs.Add(slug);
+
         Verb monkey = new()
         {
             Text = "Monkeyify",
@@ -179,6 +193,7 @@ public sealed partial class AdminVerbSystem
             Message = Loc.GetString("admin-smite-monkeyify-description")
         };
         args.Verbs.Add(monkey);
+
 
         Verb disposalBin = new()
         {
