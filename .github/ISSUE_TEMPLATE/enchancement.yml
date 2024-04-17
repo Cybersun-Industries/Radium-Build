@@ -1,5 +1,5 @@
 name: "Предложить идею"
-description: "Если что-то работает не так, как ожидалось."
+description: "Для тех, кто хочет предложить свои правки разработчикам."
 labels: ["enhancement"]
 body:
   - type: textarea
