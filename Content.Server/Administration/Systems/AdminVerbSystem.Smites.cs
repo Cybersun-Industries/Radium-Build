@@ -170,7 +170,7 @@ public sealed partial class AdminVerbSystem
         {
             Text = "Slugcating",
             Category = VerbCategory.Smite,
-            Icon = new SpriteSpecifier.Rsi(new ("/Textures/Radium/Mobs/Animals/SlugCat/parts.rsi"), "dead1"),
+            Icon = new SpriteSpecifier.Rsi(new ("/Textures/Radium/Mobs/SlugCat/parts.rsi"), "dead1"),
             Act = () =>
             {
                 _polymorphSystem.PolymorphEntity(args.Target, "AdminSlugSmite");

@@ -30,7 +30,7 @@
     requiredLegs: 2
   - type: Inventory
     speciesId: monkey
-    templateId: monkey
+    templateId: aghost
   - type: InventorySlots
   - type: Strippable
   - type: UserInterface
