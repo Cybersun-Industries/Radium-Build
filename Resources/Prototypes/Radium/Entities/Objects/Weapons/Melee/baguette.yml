@@ -1,0 +1,33 @@
+﻿- type: entity
+  parent: BaseItem
+  id: FoodBreadBaguetteWeapon
+  suffix: Syndicate
+  components:
+  - type: Sprite
+    sprite: Objects/Consumable/Food/Baked/bread.rsi
+    state: baguette
+  - type: MeleeWeapon
+    wideAnimationRotation: 135
+    damage:
+      types:
+        Blunt: 25
+        Structural: 15
+  - type: Tag
+    tags:
+    - Baguette
+  # Radium-HiddenDesc-Start
+  - type: HiddenDescription
+    entries:
+    - label: radium-hidden-desc-baguette-syndicate
+      whitelistMind:
+        components:
+        - TraitorRole
+        - NukeOperative
+    - label: radium-hidden-desc-baguette-security
+      jobRequired:
+      - HeadOfSecurity
+      - Detective
+      - SecurityCadet
+      - SecurityOfficer
+      - Warden
+# Radium-HiddenDesc-End

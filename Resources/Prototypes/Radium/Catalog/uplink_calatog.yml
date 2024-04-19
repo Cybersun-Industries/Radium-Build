@@ -25,3 +25,17 @@
   - !type:BuyerJobCondition
     whitelist:
     - Clown
+
+- type: listing
+  id: uplinkBaguetteWeapon
+  name: uplink-baguetteweapon-seeds-name
+  description: uplink-baguetteweapon-seeds-desc
+  productEntity: FoodBreadBaguetteWeapon
+  cost:
+    Telecrystal: 7
+  categories:
+  - UplinkJob
+  conditions:
+  - !type:BuyerJobCondition
+    whitelist:
+    - Mime
