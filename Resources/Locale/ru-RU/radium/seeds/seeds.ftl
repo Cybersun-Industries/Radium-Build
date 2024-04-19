@@ -42,3 +42,6 @@ seeds-moonlin-display-name = мунлин
 
 seeds-3Dorange-name = 3D апельсин
 seeds-3Dorange-display-name = 3D апельсиновое дерево
+
+seeds-killertomato-name = томаты-убийцы
+seeds-killertomato-display-name = томаты-убийцы
