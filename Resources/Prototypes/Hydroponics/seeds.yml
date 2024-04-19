@@ -415,6 +415,7 @@
   mutationPrototypes:
     - blueTomato
     - bloodTomato
+    - killerTomato
   harvestRepeat: Repeat
   lifespan: 25
   maturation: 8
