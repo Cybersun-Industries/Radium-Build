@@ -1,10 +1,9 @@
 ﻿- type: entity
   parent: SeedBase
   name: packet of killer tomato seeds
-  description: Killer taste.
   id: KillerTomatoSeeds
   components:
     - type: Seed
-      seedId: killertomato
+      seedId: killerTomato
     - type: Sprite
       sprite: Backmen/Mobs/Mutants/killer_tomato.rsi
