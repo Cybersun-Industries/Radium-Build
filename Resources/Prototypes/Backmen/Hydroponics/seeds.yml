@@ -1,7 +1,8 @@
 ﻿- type: seed
-  id: killertomato
-  name: killer tomato
-  displayName: killer tomatoes
+  id: killerTomato
+  name: seeds-killertomato-name
+  noun: seeds-noun-seeds
+  displayName: seeds-killertomato-display-name
   plantRsi: Backmen/Mobs/Mutants/killer_tomato.rsi
   packetPrototype: KillerTomatoSeeds
   productPrototypes:

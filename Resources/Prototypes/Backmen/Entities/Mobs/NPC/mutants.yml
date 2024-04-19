@@ -47,8 +47,6 @@
     spawned:
     - id: FoodMeatTomato
       amount: 3
-    - id: KillerTomatoSeeds
-      amount: 1
   - type: Bloodstream
     bloodReagent: DemonsBlood
     bloodMaxVolume: 100

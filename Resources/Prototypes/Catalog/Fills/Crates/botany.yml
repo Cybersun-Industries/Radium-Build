@@ -18,15 +18,13 @@
         amount: 2
       - id: FlyAmanitaSeeds
         amount: 2
-      - id: KillerTomatoSeeds
-        amount: 2
       - id: PineappleSeeds
         amount: 2
       - id: BungoSeeds
         amount: 2
       - id: ReplicapodSeeds # Radium
         amount: 2
-      - id: MoonlinSeeds
+      - id: MoonlinSeeds # Radium
         amount: 2
 
 - type: entity
