@@ -4,6 +4,6 @@
   id: KillerTomatoSeeds
   components:
     - type: Seed
-      seedId: killertomato
+      seedId: killerTomato
     - type: Sprite
       sprite: Backmen/Mobs/Mutants/killer_tomato.rsi
