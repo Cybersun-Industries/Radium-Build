@@ -1,0 +1,281 @@
+## Plushies
+#Base
+- type: entity
+  parent: BasePlushie
+  id: BasePlushieRadium
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Radium/Objects/Fun/radplushes.rsi
+- type: entity
+  parent: BasePlushieRadium
+  id: BasePlushieRadium64
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Radium/Objects/Fun/radplushes64.rsi
+#------Basic
+#Niko
+- type: entity
+  parent: BasePlushieRadium
+  id: PlushieNiko
+  name: niko plushie
+  description: LOrem Ipsum
+  components:
+  - type: Sprite
+    state: niko
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Radium/Radtoys/meowrgh.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Items/hiss.ogg
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/Radium/Radtoys/meowrgh.ogg
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/Radium/Radtoys/meowrgh.ogg
+  - type: MeleeWeapon
+    wideAnimationRotation: 180
+    soundHit:
+      path: /Audio/Radium/Radtoys/meowrgh.ogg
+#Abd
+- type: entity
+  parent: BasePlushieRadium
+  id: PlushieAbductor
+  name: abductor plushie
+  description: LOrem Ipsum
+  components:
+  - type: Sprite
+    state: abductor
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Radium/Radtoys/virtual_scream.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Items/hiss.ogg
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/Radium/Radtoys/virtual_scream.ogg
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/Radium/Radtoys/virtual_scream.ogg
+  - type: MeleeWeapon
+    wideAnimationRotation: 180
+    soundHit:
+      path: /Audio/Radium/Radtoys/virtual_scream.ogg
+- type: entity
+  parent: PlushieAbductor
+  id: PlushieAbductorAgent
+  components:
+  - type: Sprite
+    sprite: Radium/Objects/Fun/radplushes.rsi
+    state: abductor_agent
+#Buble
+- type: entity
+  parent: BasePlushieRadium
+  id: PlushieBubble
+  name: bubble plushie
+  description: LOrem Ipsum
+  components:
+  - type: Sprite
+    state: bubbleplush
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Radium/Lavaland/tendril_destroyed.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Radium/Lavaland/pop_expl.ogg
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/Radium/Lavaland/tendril_destroyed.ogg
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/Radium/Lavaland/pop_expl.ogg
+  - type: MeleeWeapon
+    wideAnimationRotation: 180
+    soundHit:
+      path: /Audio/Radium/Lavaland/pop_expl.ogg
+#Peng
+- type: entity
+  parent: BasePlushieRadium
+  id: PlushieRPenguin
+  name: peng plushie
+  description: LOrem Ipsum
+  components:
+  - type: Sprite
+    state: penguin
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Animals/penguin_squawk.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Animals/penguin_squawk.ogg
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/Animals/penguin_squawk.ogg
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/Animals/penguin_squawk.ogg
+  - type: MeleeWeapon
+    wideAnimationRotation: 180
+    soundHit:
+      path: /Audio/Animals/penguin_squawk.ogg
+- type: entity
+  parent: PlushieRPenguin
+  id: PlushieRPenguinCool
+  components:
+  - type: Sprite
+    sprite: Radium/Objects/Fun/radplushes.rsi
+    state: penguin_cool
+
+#People
+- type: entity
+  parent: BasePlushieRadium
+  id: PlushieOsman
+  name: osman plushie
+  description: LOrem Ipsum
+  components:
+  - type: Sprite
+    state: osman
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Backmen/Voice/Felinid/cat_wilhelm.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Voice/Human/malescream_guardian.ogg
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/Voice/Human/whistle_3.ogg
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/Voice/Human/whistle_3.ogg
+  - type: MeleeWeapon
+    wideAnimationRotation: 180
+    soundHit:
+      path: /Audio/Voice/Human/male_yawn_1.ogg
+
+- type: entity
+  parent: BasePlushieRadium
+  id: PlushieRfradio
+  name: emilia plushie
+  description: LOrem Ipsum
+  components:
+  - type: Sprite
+    state: RFRadio
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Voice/Human/female_sneeze_1.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Backmen/Voice/Felinid/cat_growl1.ogg
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/Voice/Human/whistle_3.ogg
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/Voice/Human/whistle_3.ogg
+  - type: MeleeWeapon
+    wideAnimationRotation: 180
+    soundHit:
+      path: /Audio/Backmen/Voice/Felinid/cat_purr1.ogg
+
+#-----Basic64
+#Ariral
+- type: entity
+  parent: BasePlushieRadium64
+  id: PlushieAriral
+  name: Argemia plushie
+  description: LOrem Ipsum
+  components:
+  - type: Sprite
+    state: argemia
+    scale: 0.5,0.5
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Radium/Radtoys/argemusScream.ogg
+      volume: 5
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Radium/Radtoys/sonar.ogg
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/Radium/Radtoys/argemusScream.ogg
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/Radium/Radtoys/argemusScream.ogg
+  - type: MeleeWeapon
+    wideAnimationRotation: 180
+    soundHit:
+      path: /Audio/Radium/Radtoys/argemusScream.ogg
+
+- type: entity
+  parent: BasePlushieRadium64
+  id: PlushieHamSterr
+  name: HamSter plushie
+  description: LOrem Ipsum
+  components:
+  - type: Sprite
+    state: ham_ster
+    scale: 0.5,0.5
+  - type: EmitSoundOnUse
+    sound:
+      path: /Audio/Items/Toys/mousesqueek.ogg
+  - type: EmitSoundOnLand
+    sound:
+      path: /Audio/Items/Toys/mousesqueek.ogg
+  - type: EmitSoundOnActivate
+    sound:
+      path: /Audio/Items/Toys/mousesqueek.ogg
+  - type: EmitSoundOnTrigger
+    sound:
+      path: /Audio/Items/Toys/mousesqueek.ogg
+  - type: Food
+    requiresSpecialDigestion: true
+    useSound:
+      path: /Audio/Items/Toys/mousesqueek.ogg
+  - type: MeleeWeapon
+    wideAnimationRotation: 180
+    soundHit:
+      path: /Audio/Items/Toys/mousesqueek.ogg
+# MISC
+- type: entity
+  parent: BaseItem
+  id: Stressball
+  name: stressball
+  description: Get out da stress
+  components:
+  - type: Sprite
+    sprite: Radium/Objects/Fun/radplushes.rsi
+    state: stress_ball
+    scale: 0.7,0.7
+  - type: EmitSoundOnCollide
+    sound:
+      path: /Audio/Effects/Footsteps/bounce.ogg
+  - type: Item
+    size: Normal
+    sprite: Objects/Fun/toys.rsi
+    heldPrefix: bask
+  - type: TileFrictionModifier
+    modifier: 0.0005
+
+- type: entity
+  parent: BaseItem
+  id: SingulooseToy
+  name: singuloth-brand toy
+  description: Mass-produced by a sadistic corporate conglomerate!
+  components:
+  - type: Sprite
+    sprite: Radium/Objects/Fun/radplushes.rsi
+    state: singuloose
+  - type: Icon
+    sprite: Radium/Objects/Fun/radplushes.rsi
+    state: singuloose
+  - type: SingularityDistortion
+    intensity: 1000
+    falloffPower: 13
+  - type: Item
+    size: Normal
+    sprite: Objects/Fun/toys.rsi
+    heldPrefix: singularitytoy
