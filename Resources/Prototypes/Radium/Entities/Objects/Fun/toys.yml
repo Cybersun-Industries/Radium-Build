@@ -195,7 +195,6 @@
   - type: EmitSoundOnUse
     sound:
       path: /Audio/Radium/Radtoys/argemusScream.ogg
-      volume: 5
   - type: EmitSoundOnLand
     sound:
       path: /Audio/Radium/Radtoys/sonar.ogg

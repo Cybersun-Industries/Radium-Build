@@ -1,7 +1,7 @@
 - type: entity
   id: CrateToyBoxRadium
   parent: CrateToyBox
-  name: ящик игрушек
+  name: ящик странных игрушек 
   description: Содержит в себе игрушки CheapSun.Co
   components:
   - type: StorageFill
