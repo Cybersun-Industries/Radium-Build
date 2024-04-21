@@ -20,11 +20,3 @@
 "No C#":
 - all: ["!**/*.cs"]
 
-"Radium":
-- 'Resources/Prototypes/Radium/*'
-
-"Backmen":
-- 'Resources/Prototypes/Backmen/*'
-
-"Corvax":
-- 'Resources/Prototypes/Corvax/*'
