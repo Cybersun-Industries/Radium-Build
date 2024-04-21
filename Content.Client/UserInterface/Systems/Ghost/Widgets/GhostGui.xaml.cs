@@ -85,6 +85,9 @@ public sealed partial class GhostGui : UIWidget
 
     public void UpdateTime(int i, bool isAvailable)
     {
+        GhostRespawnButton.StyleClasses.Remove(StyleBase.ButtonCaution);
+        GhostRespawnButton.StyleClasses.Add(StyleBase.ButtonGold);
+        
         if (!isAvailable)
         {
             GhostRespawnButton.Text =
