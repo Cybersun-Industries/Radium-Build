@@ -165,7 +165,8 @@ public sealed partial class AdminVerbSystem
             };
             args.Verbs.Add(flames);
         }
-
+        
+        //Radium-start
         Verb slug = new()
         {
             Text = "Slugcating",
@@ -179,7 +180,8 @@ public sealed partial class AdminVerbSystem
             Message = Loc.GetString("admin-smite-slugcat-description")
         };
         args.Verbs.Add(slug);
-
+        //Radium-end
+        
         Verb monkey = new()
         {
             Text = "Monkeyify",
