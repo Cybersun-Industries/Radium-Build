@@ -602,6 +602,11 @@
   - type: SliceableFood
     count: 12
     slice: FoodBreadBaguetteSlice
+  - type: MeleeWeapon     # Radium
+    wideAnimationRotation: 135
+    damage:
+      types:
+        Blunt: 1
   - type: SolutionContainerManager
     solutions:
       food:
