@@ -1,0 +1,85 @@
+- type: entity
+  name: Slugcat
+  parent: SimpleMobBase
+  id: MobSlugCat
+  description: Милый слизнекот
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: Radium/Mobs/SlugCat/parts.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: slugcat
+  - type: Physics
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.3
+        density: 15
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: Stripping
+  - type: Hands
+  - type: Pacified
+  - type: Body
+    prototype: Human
+    requiredLegs: 2
+  - type: Inventory
+    speciesId: monkey
+    templateId: slugcat
+  - type: InventorySlots
+  - type: Strippable
+  - type: UserInterface
+    interfaces:
+    - key: enum.StrippingUiKey.Key
+      type: StrippableBoundUserInterface
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: slugcat
+      Dead:
+        Base: dead
+  - type: Speech
+    speechSounds: SlugCat
+    speechVerb: SmallMob
+  - type: Butcherable
+    spawned:
+    - id: FoodMeat
+      amount: 3
+  - type: ReplacementAccent
+    accent: slugcat
+  - type: InteractionPopup
+    successChance: 0.7
+    interactSuccessString: petting-success-slugcat
+    interactFailureString: petting-failure-generic
+    interactSuccessSpawn: EffectHearts
+    interactSuccessSound:
+      path: /Audio/Radium/Animals/Slugcat/wawa_chillin.ogg
+  - type: MeleeWeapon
+    damage:
+      types:
+        Piercing: 5
+  - type: Grammar
+    attributes:
+      gender: epicene
+  - type: MobPrice
+    price: 200
+  - type: Tag
+    tags:
+    - VimPilot
+    - DoorBumpOpener
+  - type: GhostRole
+    makeSentient: true
+    name: ghost-role-information-slugcat-name
+    description: ghost-role-information-slugcat-description
+    rules: ghost-role-information-slugcat-rules
+  - type: GhostTakeoverAvailable
+  - type: RandomSprite
+    getAllGroups: true
+    available:
+    - enum.DamageStateVisualLayers.Base:
+        slugcat: KoboldColors
