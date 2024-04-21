@@ -1,0 +1,97 @@
+{
+  "version": 1,
+  "license": null,
+  "copyright": null,
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "osman"
+    },
+    {
+      "name": "RFRadio"
+    },
+    {
+      "name": "bubbleplush"
+    },
+    {
+      "name": "plushie_pman"
+    },
+    {
+      "name": "niko"
+    },
+    {
+      "name": "pkplush"
+    },
+    {
+      "name": "abductor"
+    },
+    {
+      "name": "abductor_agent"
+    },
+    {
+      "name": "claw"
+    },
+    {
+      "name": "claw_playing",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.3,
+          0.1,
+          0.1,
+          0.2,
+          0.1,
+          0.3,
+          0.1,
+          0.1,
+          0.1,
+          0.2,
+          0.8
+        ]
+      ]
+    },
+    {
+      "name": "claw_broken"
+    },
+    {
+      "name": "claw_action"
+    },
+    {
+      "name": "buddy"
+    },
+    {
+      "name": "buddy-eyes"
+    },
+    {
+      "name": "buddy_future"
+    },
+    {
+      "name": "penguin"
+    },
+    {
+      "name": "penguin_cool",
+      "delays": [
+        [
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5,
+          0.5
+        ]
+      ]
+    },
+    {
+      "name": "stress_ball"
+    },
+    {
+      "name": "singuloose"
+    }
+  ]
+}
