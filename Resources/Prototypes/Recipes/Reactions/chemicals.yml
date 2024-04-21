@@ -490,13 +490,3 @@
       amount: 1
   products:
     Nocturine: 1
-
-- type: reaction
-  id: Vestine
-  reactants:
-    Cyanide:
-      amount: 1
-    Blood:
-      amount: 1
-  products:
-    Vestine: 2
