@@ -1,4 +1,4 @@
-﻿ent-MobSlugCat = слизнекот
+﻿ent-MobSlugCat = слизнекися
     .desc = Милое и пуш.. скользкое!
 
 petting-success-slugcat = Вы гладите слизнекисю по её скользской голове!
