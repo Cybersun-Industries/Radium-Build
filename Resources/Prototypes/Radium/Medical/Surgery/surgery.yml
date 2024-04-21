@@ -228,7 +228,7 @@
       desc: surgery-clampAction-desc
       action: enum.SurgeryTypeEnum.Clamp
     - type: SurgeryStep
-      name: surgery-bonesetterAction-name 
+      name: surgery-bonesetterAction-name
       desc: surgery-resetBoneAction-desc
       action: enum.SurgeryTypeEnum.Repair
     - type: SurgeryStep
@@ -377,7 +377,7 @@
       desc: surgery-bandageAction-desc
       action: enum.SurgeryTypeEnum.Bandage
   key: BurnSurgeryEvent
-- type: surgeryOperation  
+- type: surgeryOperation
   id: PierceHOperation
   name: surgery-pierceOperation-name
   desc: surgery-pierceOperation-desc
@@ -402,7 +402,7 @@
       desc: surgery-sealAction-desc
       action: enum.SurgeryTypeEnum.Burn
   key: PierceSurgeryEvent
-- type: surgeryOperation  
+- type: surgeryOperation
   id: PierceBOperation
   name: surgery-pierceOperation-name
   desc: surgery-pierceOperation-desc
@@ -427,7 +427,7 @@
       desc: surgery-sealAction-desc
       action: enum.SurgeryTypeEnum.Burn
   key: PierceSurgeryEvent
-- type: surgeryOperation  
+- type: surgeryOperation
   id: PierceAOperation
   name: surgery-pierceOperation-name
   desc: surgery-pierceOperation-desc
@@ -452,7 +452,7 @@
       desc: surgery-sealAction-desc
       action: enum.SurgeryTypeEnum.Burn
   key: PierceSurgeryEvent
-- type: surgeryOperation  
+- type: surgeryOperation
   id: PierceLOperation
   name: surgery-pierceOperation-name
   desc: surgery-pierceOperation-desc
@@ -477,7 +477,7 @@
       desc: surgery-sealAction-desc
       action: enum.SurgeryTypeEnum.Burn
   key: PierceSurgeryEvent
-- type: surgeryOperation  
+- type: surgeryOperation
   id: AddLOperation
   name: surgery-addOperationL-name
   desc: surgery-addOperationL-desc
@@ -505,7 +505,7 @@
       action: enum.SurgeryTypeEnum.Burn
   key: AddSurgeryEvent
   hidden: true
-- type: surgeryOperation  
+- type: surgeryOperation
   id: AddAOperation
   name: surgery-addOperationA-name
   desc: surgery-addOperationA-desc

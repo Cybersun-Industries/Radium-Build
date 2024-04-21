@@ -31,7 +31,7 @@
       path: /Audio/Effects/lightburn.ogg
   - type: SurgeryTool
     action: enum.SurgeryTypeEnum.Burn
-    modifier: 1.5
+    modifier: 2.1
 
 # Drill
 
@@ -88,7 +88,7 @@
       path: /Audio/Weapons/bladeslice.ogg
   - type: SurgeryTool
     action: enum.SurgeryTypeEnum.Incise
-    modifier: 1.0
+    modifier: 1.6
 
 - type: entity
   name: shiv
@@ -102,7 +102,7 @@
     heldPrefix: shiv
   - type: SurgeryTool
     action: enum.SurgeryTypeEnum.Incise
-    modifier: 0.8
+    modifier: 1.2
 
 - type: entity
   name: advanced scalpel
@@ -120,7 +120,7 @@
         Slash: 12
   - type: SurgeryTool
     action: enum.SurgeryTypeEnum.Incise
-    modifier: 1.3
+    modifier: 2.1
 
 - type: entity
   name: laser scalpel
@@ -134,7 +134,7 @@
     heldPrefix: laser
   - type: SurgeryTool
     action: enum.SurgeryTypeEnum.Incise
-    modifier: 1.8
+    modifier: 2.5
 
 # Scissors
 
@@ -152,7 +152,7 @@
     storedRotation: 90
   - type: SurgeryTool
     action: enum.SurgeryTypeEnum.Retract
-    modifier: 2.0
+    modifier: 2.2
 
 - type: entity
   name: hemostat
@@ -167,7 +167,7 @@
     storedRotation: 90
   - type: SurgeryTool
     action: enum.SurgeryTypeEnum.Clamp
-    modifier: 2.0
+    modifier: 2.2
   # - type: entity
   #   name: bone setter
   #   id: BoneSetter
@@ -198,7 +198,7 @@
     speed: 1.0
   - type: SurgeryTool
     action: enum.SurgeryTypeEnum.Cut
-    modifier: 2.0
+    modifier: 1.4
 # No melee for regular saw because have you ever seen someone use a band saw as a weapon? It's dumb.
 
 - type: entity
@@ -223,7 +223,7 @@
     speed: 0.5
   - type: SurgeryTool
     action: enum.SurgeryTypeEnum.Cut
-    modifier: 1.3
+    modifier: 1.8
 - type: entity
   name: circular saw
   id: SawElectric
@@ -273,4 +273,4 @@
     speed: 2.0
   - type: SurgeryTool
     action: enum.SurgeryTypeEnum.Cut
-    modifier: 2.0
+    modifier: 2.2
