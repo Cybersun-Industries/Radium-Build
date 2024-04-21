@@ -1,9 +1,12 @@
 ﻿<widgets:GhostGui xmlns="https://spacestation14.io"
                   xmlns:widgets="clr-namespace:Content.Client.UserInterface.Systems.Ghost.Widgets"
-                  HorizontalAlignment="Center">
-    <BoxContainer Orientation="Horizontal">
-        <Button Name="ReturnToBodyButton" Text="{Loc ghost-gui-return-to-body-button}" />
-        <Button Name="GhostWarpButton" Text="{Loc ghost-gui-ghost-warp-button}" />
-        <Button Name="GhostRolesButton" />
+                  HorizontalAlignment="Center" VerticalExpand="False">
+    <BoxContainer Orientation="Horizontal" VerticalAlignment="Bottom" VerticalExpand="False">
+        <Button Name="ReturnToBodyButton" Text="{Loc ghost-gui-return-to-body-button}" VerticalExpand="False" VerticalAlignment="Bottom"/>
+        <BoxContainer Orientation="Vertical">
+            <Button Name="GhostRespawnButton" Text="{Loc ghost-gui-ghost-respawn}" StyleClasses="Gold"></Button>
+            <Button Name="GhostWarpButton" Text="{Loc ghost-gui-ghost-warp-button}"/>
+        </BoxContainer>
+        <Button Name="GhostRolesButton" VerticalExpand="False" VerticalAlignment="Bottom"/>
     </BoxContainer>
 </widgets:GhostGui>

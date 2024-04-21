@@ -1,0 +1,20 @@
+- type: entity
+  id: CrateToyBoxRadium
+  parent: CrateToyBox
+  name: ящик странных игрушек 
+  description: Содержит в себе игрушки CheapSun.Co
+  components:
+  - type: StorageFill
+    contents:
+      - id: PlushieNiko
+      - id: PlushieAbductor
+      - id: PlushieAbductorAgent
+      - id: PlushieBubble
+      - id: PlushieRPenguin
+      - id: PlushieRPenguinCool
+      - id: PlushieOsman
+      - id: PlushieRfradio
+      - id: PlushieAriral
+      - id: PlushieHamSterr
+      - id: Stressball
+      - id: SingulooseToy

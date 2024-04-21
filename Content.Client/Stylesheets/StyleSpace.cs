@@ -22,6 +22,12 @@ namespace Content.Client.Stylesheets
         public static readonly Color ButtonColorCautionPressed = Color.FromHex("#3e6c45");
         public static readonly Color ButtonColorCautionDisabled = Color.FromHex("#602a2a");
 
+        //Radium-start
+        public static readonly Color ButtonColorGoldDefault = Color.FromHex("#d4af37");
+        public static readonly Color ButtonColorGoldHovered = Color.FromHex("#a28834");
+        public static readonly Color ButtonColorGoldPressed = Color.FromHex("#3e6c45");
+        //Radium-end
+
         public override Stylesheet Stylesheet { get; }
 
         public StyleSpace(IResourceCache resCache) : base(resCache)
@@ -194,7 +200,19 @@ namespace Content.Client.Stylesheets
                         new StyleProperty(TabContainer.StylePropertyTabStyleBox, tabContainerBoxActive),
                         new StyleProperty(TabContainer.StylePropertyTabStyleBoxInactive, tabContainerBoxInactive),
                     }),
+                //Radium-start
+                Element<ContainerButton>().Class(ContainerButton.StyleClassButton).Class(ButtonGold)
+                    .Pseudo(ContainerButton.StylePseudoClassNormal)
+                    .Prop(Control.StylePropertyModulateSelf, ButtonColorGoldDefault),
 
+                Element<ContainerButton>().Class(ContainerButton.StyleClassButton).Class(ButtonGold)
+                    .Pseudo(ContainerButton.StylePseudoClassHover)
+                    .Prop(Control.StylePropertyModulateSelf, ButtonColorGoldHovered),
+
+                Element<ContainerButton>().Class(ContainerButton.StyleClassButton).Class(ButtonGold)
+                    .Pseudo(ContainerButton.StylePseudoClassPressed)
+                    .Prop(Control.StylePropertyModulateSelf, ButtonColorGoldPressed),
+                //Radium-end
             }).ToList());
         }
     }

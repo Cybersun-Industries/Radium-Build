@@ -26,6 +26,9 @@ namespace Content.Client.Stylesheets
 
         public const string ButtonCaution = "Caution";
 
+        //Radium-start
+        public const string ButtonGold = "Gold";
+        //Radium-end
         public const int DefaultGrabberSize = 10;
 
         public abstract Stylesheet Stylesheet { get; }
@@ -242,6 +245,7 @@ namespace Content.Client.Stylesheets
                         new StyleProperty(ScrollBar.StylePropertyGrabber,
                             hScrollBarGrabberGrabbed),
                     }),
+
             };
         }
     }
