@@ -1,4 +1,4 @@
-﻿name: "Labels Radium"
+﻿name: "Labels Wiki"
 
 on:
   pull_request_target:
@@ -10,6 +10,9 @@ on:
     - 'Resources/Prototypes/Reagents/**.yml'
     - 'Resources/Prototypes/Chemistry/**.yml'
     - 'Resources/Prototypes/Recipes/Reactions/**.yml'
+    - 'Resources/Prototypes/Backmen/Reagents/**.yml'
+    - 'Resources/Prototypes/Backmen/Recipes/Reactions/**.yml'
+    - 'Resources/Prototypes/Backmen/Hydroponics/**.yml'
     types: [opened]
 
 jobs:
