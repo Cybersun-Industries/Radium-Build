@@ -2,7 +2,7 @@
   name: Slugcat
   parent: SimpleMobBase
   id: MobSlugCat
-  description: Feline pet, very funny.
+  description: Милый слизнекот
   components:
   - type: Sprite
     drawdepth: Mobs
