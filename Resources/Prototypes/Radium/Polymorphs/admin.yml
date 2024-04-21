@@ -1,0 +1,7 @@
+﻿- type: polymorph
+  id: AdminSlugSmite
+  configuration:
+    entity: MobSlugCat
+    forced: true
+    inventory: Drop
+    allowRepeatedMorphs: true
