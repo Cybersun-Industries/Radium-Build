@@ -16,7 +16,9 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Events;
 using Content.Shared.Movement.Systems;
+using Content.Shared.Radium.Events;
 using Content.Shared.Storage.Components;
+using Robust.Server.Console;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
 using Robust.Shared.Physics.Components;
@@ -42,7 +44,6 @@ namespace Content.Server.Ghost
         [Dependency] private readonly GameTicker _ticker = default!;
         [Dependency] private readonly TransformSystem _transformSystem = default!;
         [Dependency] private readonly VisibilitySystem _visibilitySystem = default!;
-
         public override void Initialize()
         {
             base.Initialize();
@@ -69,6 +70,7 @@ namespace Content.Server.Ghost
 
             SubscribeLocalEvent<RoundEndTextAppendEvent>(_ => MakeVisible(true));
         }
+
 
         private void OnGhostHearingAction(EntityUid uid, GhostComponent component, ToggleGhostHearingActionEvent args)
         {
@@ -240,7 +242,7 @@ namespace Content.Server.Ghost
 
         private void OnGhostReturnToBodyRequest(GhostReturnToBodyRequest msg, EntitySessionEventArgs args)
         {
-            if (args.SenderSession.AttachedEntity is not {Valid: true} attached
+            if (args.SenderSession.AttachedEntity is not { Valid: true } attached
                 || !TryComp(attached, out GhostComponent? ghost)
                 || !ghost.CanReturnToBody
                 || !TryComp(attached, out ActorComponent? actor))
@@ -256,10 +258,11 @@ namespace Content.Server.Ghost
 
         private void OnGhostWarpsRequest(GhostWarpsRequestEvent msg, EntitySessionEventArgs args)
         {
-            if (args.SenderSession.AttachedEntity is not {Valid: true} entity
+            if (args.SenderSession.AttachedEntity is not { Valid: true } entity
                 || !HasComp<GhostComponent>(entity))
             {
-                Log.Warning($"User {args.SenderSession.Name} sent a {nameof(GhostWarpsRequestEvent)} without being a ghost.");
+                Log.Warning(
+                    $"User {args.SenderSession.Name} sent a {nameof(GhostWarpsRequestEvent)} without being a ghost.");
                 return;
             }
 
@@ -269,7 +272,7 @@ namespace Content.Server.Ghost
 
         private void OnGhostWarpToTargetRequest(GhostWarpToTargetRequestEvent msg, EntitySessionEventArgs args)
         {
-            if (args.SenderSession.AttachedEntity is not {Valid: true} attached
+            if (args.SenderSession.AttachedEntity is not { Valid: true } attached
                 || !TryComp(attached, out GhostComponent? _))
             {
                 Log.Warning($"User {args.SenderSession.Name} tried to warp to {msg.Target} without being a ghost.");
@@ -311,10 +314,11 @@ namespace Content.Server.Ghost
         {
             foreach (var player in _playerManager.Sessions)
             {
-                if (player.AttachedEntity is not {Valid: true} attached)
+                if (player.AttachedEntity is not { Valid: true } attached)
                     continue;
 
-                if (attached == except) continue;
+                if (attached == except)
+                    continue;
 
                 TryComp<MindContainerComponent>(attached, out var mind);
 
@@ -328,7 +332,8 @@ namespace Content.Server.Ghost
 
         #endregion
 
-        private void OnEntityStorageInsertAttempt(EntityUid uid, GhostComponent comp, ref InsertIntoEntityStorageAttemptEvent args)
+        private void OnEntityStorageInsertAttempt(EntityUid uid, GhostComponent comp,
+            ref InsertIntoEntityStorageAttemptEvent args)
         {
             args.Cancelled = true;
         }
@@ -351,6 +356,7 @@ namespace Content.Server.Ghost
                     _visibilitySystem.AddLayer(uid, vis, (int) VisibilityFlags.Ghost, false);
                     _visibilitySystem.RemoveLayer(uid, vis, (int) VisibilityFlags.Normal, false);
                 }
+
                 _visibilitySystem.RefreshVisibility(uid, visibilityComponent: vis);
             }
         }
