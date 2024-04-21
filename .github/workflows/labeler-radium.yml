@@ -1,0 +1,24 @@
+﻿name: "Labels Radium"
+
+on:
+  pull_request_target:
+    paths:
+    - 'Resources/Prototypes/Radium/Chemicals/**.yml'
+    - 'Resources/Prototypes/Radium/Chemicals/Reactions/**.yml'
+    - 'Resources/Prototypes/Radium/Hydroponics/**.yml'
+    - 'Resources/Prototypes/Hydroponics/**.yml'
+    - 'Resources/Prototypes/Reagents/**.yml'
+    - 'Resources/Prototypes/Chemistry/**.yml'
+    - 'Resources/Prototypes/Recipes/Reactions/**.yml'
+    types: [opened]
+
+jobs:
+  add_label:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+    - uses: actions-ecosystem/action-add-labels@v1
+      with:
+        labels: "Wiki changes"
