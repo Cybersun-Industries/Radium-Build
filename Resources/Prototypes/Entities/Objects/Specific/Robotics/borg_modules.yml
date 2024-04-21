@@ -493,7 +493,6 @@
     - BikeHorn
     - ClownRecorder
     - BikeHornInstrument
-    - ClothingBackpackClown
 
 #syndicate modules
 - type: entity
