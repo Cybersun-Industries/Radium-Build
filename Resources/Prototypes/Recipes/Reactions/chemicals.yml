@@ -492,12 +492,11 @@
     Nocturine: 1
 
 - type: reaction
-  id: Tazinide
-  impact: Medium
+  id: Vestine
   reactants:
-    Licoxide:
+    Cyanide:
       amount: 1
-    Vestine:
+    Blood:
       amount: 1
   products:
-    Tazinide: 1
+    Vestine: 2
