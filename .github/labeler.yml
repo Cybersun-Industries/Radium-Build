@@ -11,5 +11,12 @@
 "Changes: Localization":
 - 'Resources/Locale/**/*.ftl'
 
+"Changes: Audio":
+- 'Resources/Audio/**/*.ogg'
+
+"Changes: Migration":
+- 'Resources/migration.yml'
+
 "No C#":
 - all: ["!**/*.cs"]
+
