@@ -47,6 +47,10 @@
     - Book
   - type: StealTarget
     stealGroup: Bible
+  - type: PointLight
+    softness: 1
+    radius: 1.15
+    color: "#F0E68C"
 
 - type: entity
   parent: Bible
