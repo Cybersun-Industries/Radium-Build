@@ -49,10 +49,6 @@ public sealed class StoreBoundUserInterface : BoundUserInterface
             SendMessage(new StoreRequestWithdrawMessage(type, amount));
         };
 
-        _menu.OnRefreshButtonPressed += (_) =>
-        {
-            SendMessage(new StoreRequestUpdateInterfaceMessage());
-        };
 
         _menu.SearchTextUpdated += (_, search) =>
         {
@@ -60,10 +56,6 @@ public sealed class StoreBoundUserInterface : BoundUserInterface
             UpdateListingsWithSearchFilter();
         };
 
-        _menu.OnRefundAttempt += (_) =>
-        {
-            SendMessage(new StoreRequestRefundMessage());
-        };
     }
     protected override void UpdateState(BoundUserInterfaceState state)
     {
@@ -84,7 +76,6 @@ public sealed class StoreBoundUserInterface : BoundUserInterface
                 _menu.UpdateBalance(msg.Balance);
                 UpdateListingsWithSearchFilter();
                 _menu.SetFooterVisibility(msg.ShowFooter);
-                _menu.UpdateRefund(msg.AllowRefund);
                 break;
             case StoreInitializeState msg:
                 _windowName = msg.Name;
