@@ -1,0 +1,16 @@
+﻿ent-MechDeathRipley = Смерть-Рипли
+    .desc = МАТЬ ТВОЮ!
+ent-MechDeathRipleyBattery = Смерть-Рипли
+    .desc = МАТЬ ТВОЮ!
+ent-MechFireRipley = Огнеборец
+    .desc = Борется с огнем
+ent-MechFireRipleyBattery = Огнеборец
+    .desc = Борется с огнем
+ent-MechHauler = Хаулер
+    .desc = Это вообще чье?
+ent-MechHaulerBattery = Хаулер
+    .desc = Это вообще чье?
+ent-MechRipleyMK11 = Рипли МКII
+    .desc = Еще и дышать можно!
+ent-MechRipleyMK11Battery = Рипли МКII
+    .desc = Еще и дышать можно!

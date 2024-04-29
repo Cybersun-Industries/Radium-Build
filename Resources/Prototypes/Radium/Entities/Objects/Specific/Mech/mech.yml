@@ -1,0 +1,291 @@
+#death
+- type: entity
+  id: MechDeathRipley
+  parent: BaseMech
+  name: Death-Ripley
+  description: Versatile and lightly armored, the Ripley is useful for almost any heavy work scenario. The "APLU" stands for Autonomous Power Loading Unit.
+  abstract: true
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    noRot: true
+    sprite: Objects/Specific/Mech/mecha.rsi
+    layers:
+    - map: [ "enum.MechVisualLayers.Base" ]
+      state: deathripley
+  - type: FootstepModifier
+    footstepSoundCollection:
+      path: /Audio/Mecha/sound_mecha_powerloader_step.ogg
+  - type: Mech
+    baseState: deathripley
+    openState: deathripley-open
+    brokenState: deathripley-broken
+    mechToPilotDamageMultiplier: 0.75
+    pilotWhitelist:
+      components:
+        - HumanoidAppearance
+  - type: MeleeWeapon
+    hidden: true
+    attackRate: 1
+    damage:
+      types:
+        Blunt: 14 #intentionally shit so people realize that going into combat with the ripley is usually a bad idea.
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.25
+    baseSprintSpeed: 4.6
+
+- type: entity
+  id: MechDeathRipleyBattery
+  parent: MechDeathRipley
+  suffix: Battery
+  components:
+  - type: ContainerFill
+    containers:
+      mech-battery-slot:
+      - PowerCellHigh
+#fire
+- type: entity
+  id: MechFireRipley
+  parent: BaseMech
+  name: Ripley APLU
+  description: Versatile and lightly armored, the Ripley is useful for almost any heavy work scenario. The "APLU" stands for Autonomous Power Loading Unit.
+  abstract: true
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    noRot: true
+    sprite: Objects/Specific/Mech/mecha.rsi
+    layers:
+    - map: [ "enum.MechVisualLayers.Base" ]
+      state: firefighter
+  - type: FootstepModifier
+    footstepSoundCollection:
+      path: /Audio/Mecha/sound_mecha_powerloader_step.ogg
+  - type: Mech
+    airtight: true
+    baseState: firefighter
+    openState: firefighter-open
+    brokenState: firefighter-broken
+    mechToPilotDamageMultiplier: 0.4
+    pilotWhitelist:
+      components:
+        - HumanoidAppearance
+  - type: MeleeWeapon
+    hidden: true
+    attackRate: 1
+    damage:
+      types:
+        Blunt: 14 #intentionally shit so people realize that going into combat with the ripley is usually a bad idea.
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.25
+    baseSprintSpeed: 4.6
+
+- type: entity
+  id: MechFireRipleyBattery
+  parent: MechFireRipley
+  suffix: Battery
+  components:
+  - type: ContainerFill
+    containers:
+      mech-battery-slot:
+      - PowerCellHigh
+#hauler
+- type: entity
+  id: MechHauler
+  parent: BaseMech
+  name: Hauler
+  description: Versatile and lightly armored, the Ripley is useful for almost any heavy work scenario. The "APLU" stands for Autonomous Power Loading Unit.
+  abstract: true
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    noRot: true
+    sprite: Objects/Specific/Mech/mecha.rsi
+    layers:
+    - map: [ "enum.MechVisualLayers.Base" ]
+      state: hauler
+  - type: FootstepModifier
+    footstepSoundCollection:
+      path: /Audio/Mecha/sound_mecha_powerloader_step.ogg
+  - type: Mech
+    airtight: true
+    baseState: hauler
+    openState: hauler-open
+    brokenState: hauler-broken
+    mechToPilotDamageMultiplier: 0.75
+    pilotWhitelist:
+      components:
+        - HumanoidAppearance
+  - type: MeleeWeapon
+    hidden: true
+    attackRate: 1
+    damage:
+      types:
+        Blunt: 14 #intentionally shit so people realize that going into combat with the ripley is usually a bad idea.
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4.25
+    baseSprintSpeed: 5.6
+
+- type: entity
+  id: MechHaulerBattery
+  parent: MechHauler
+  suffix: Battery
+  components:
+  - type: ContainerFill
+    containers:
+      mech-battery-slot:
+      - PowerCellHigh
+#MK II
+- type: entity
+  id: MechRipleyMK11
+  parent: BaseMech
+  name: Ripley MKII
+  description: Versatile and lightly armored, the Ripley is useful for almost any heavy work scenario. The "APLU" stands for Autonomous Power Loading Unit.
+  abstract: true
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    noRot: true
+    sprite: Objects/Specific/Mech/mecha.rsi
+    layers:
+    - map: [ "enum.MechVisualLayers.Base" ]
+      state: ripleymkii
+  - type: FootstepModifier
+    footstepSoundCollection:
+      path: /Audio/Mecha/sound_mecha_powerloader_step.ogg
+  - type: Mech
+    airtight: true
+    baseState: ripleymkii
+    openState: ripleymkii-open
+    brokenState: ripleymkii-broken
+    mechToPilotDamageMultiplier: 0.75
+    pilotWhitelist:
+      components:
+        - HumanoidAppearance
+  - type: MeleeWeapon
+    hidden: true
+    attackRate: 1
+    damage:
+      types:
+        Blunt: 14 #intentionally shit so people realize that going into combat with the ripley is usually a bad idea.
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 4.25
+    baseSprintSpeed: 5.6
+
+- type: entity
+  id: MechRipleyMK11Battery
+  parent: MechRipleyMK11
+  suffix: Battery
+  components:
+  - type: ContainerFill
+    containers:
+      mech-battery-slot:
+      - PowerCellHigh
+
+#stored until revork
+# Rover
+#- type: entity
+#  parent: BaseMech
+#  id: MechMarsrover
+#  name: Marsrover
+#  description: Lorem ipsum
+#  abstract: true
+#  components:
+#  - type: Sprite
+#    drawdepth: Mobs
+#    noRot: true
+#    sprite: Radium/Objects/Specific/Mecha/vehicles.rsi
+#    layers:
+#    - map: [ "enum.MechVisualLayers.Base" ]
+#      state: marsrover2
+#  - type: Fixtures
+#    fixtures:
+#      fix1:
+#        shape:
+#          !type:PhysShapeCircle
+#          radius: 0.4
+#        density: 80
+#        mask:
+#        - MobMask
+#        layer:
+#        - MobLayer
+#  - type: FootstepModifier
+#    footstepSoundCollection:
+#      path: /Audio/Radium/Mecha/sound_machines_tractor_running.ogg
+#      params:
+#        volume: 3
+#  - type: Mech
+#    baseState: marsrover2
+#    brokenState: marsrover
+#    maxEquipmentAmount: 2
+#    # keep mouse safe
+#    mechToPilotDamageMultiplier: 0.6
+#    airtight: true
+#  - type: MovementSpeedModifier
+#    baseWalkSpeed: 6
+#    baseSprintSpeed: 7
+
+#- type: entity
+#  parent: MechMarsrover
+#  id: MechMarsRoverBattery
+#  suffix: Battery
+#  components:
+#  - type: ContainerFill
+#    containers:
+#      mech-battery-slot:
+#      - PowerCellHigh
+#Clowncar
+#- type: entity
+#  parent: BaseMech
+#  id: MechClownCar
+#  name: Catafalc
+#  description: Lorem ipsum
+#  abstract: true
+#  components:
+#  - type: Sprite
+#    drawdepth: Mobs
+#    noRot: true
+#    sprite: Radium/Objects/Specific/Mecha/vehicles.rsi
+#    layers:
+#    - map: [ "enum.MechVisualLayers.Base" ]
+#      state: clowncar2
+#  - type: Fixtures
+#    fixtures:
+#      fix1:
+#        shape:
+#          !type:PhysShapeCircle
+#          radius: 0.4
+#        density: 80
+#        mask:
+#        - MobMask
+#        layer:
+#        - MobLayer
+#  - type: FootstepModifier
+#    footstepSoundCollection:
+#      collection: FootstepSlip
+#      params:
+#        volume: 3
+#  - type: Mech
+#    baseState: clowncar2
+#    brokenState: clowncar
+#    maxEquipmentAmount: 1
+#    # keep mouse safe
+#    mechToPilotDamageMultiplier: 0.6
+#  - type: MovementSpeedModifier
+#    baseWalkSpeed: 6
+#    baseSprintSpeed: 7
+#  - type: Strap
+#    position: Down
+#    buckleOffset: "0, 0"
+#    rotation: 90
+#    size: 300
+
+#- type: entity
+#  parent: MechClownCar
+#  id: MechClownCarBattery
+#  suffix: Battery
+#  components:
+#  - type: ContainerFill
+#    containers:
+#      mech-battery-slot:
+#      - PowerCellHigh
