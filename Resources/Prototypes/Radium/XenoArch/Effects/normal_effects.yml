@@ -1,0 +1,18 @@
+- type: artifactEffect
+  id: EffectGolem1Spawn
+  targetDepth: 2
+  effectHint: artifact-effect-hint-creation
+  components:
+  - type: SpawnArtifact
+    maxSpawns: 1
+    spawns:
+    - id: MobGrimForgedXray
+- type: artifactEffect
+  id: EffectGolem2Spawn
+  targetDepth: 3
+  effectHint: artifact-effect-hint-creation
+  components:
+  - type: SpawnArtifact
+    maxSpawns: 1
+    spawns:
+    - id: MobGrimForged
