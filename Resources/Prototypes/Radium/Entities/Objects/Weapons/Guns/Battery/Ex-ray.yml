@@ -1,0 +1,44 @@
+- type: entity
+  name: ЕКС-винтовка
+  parent: BaseWeaponBattery
+  id: WeaponEXRay
+  suffix: Винтовка
+  description: Элитный экземпляр лучевой винтовки, созданный специально для высших членов центкома! Правда, никто не сказал, кому она принадлежит, поэтому за неё регулярно происходят баталии.
+  components:
+  - type: Sprite
+    sprite: Radium/Objects/Weapons/Gunsx64/Ex-ray/big.rsi
+    layers:
+    - state: base
+      map: ["enum.GunVisualLayers.Base"]
+    - state: mag-unshaded-5
+      map: ["enum.GunVisualLayers.MagUnshaded"]
+      shader: unshaded
+  - type: Clothing
+    sprite: Radium/Objects/Weapons/Gunsx64/Ex-ray/tiny.rsi
+  - type: Item
+    sprite: Radium/Objects/Weapons/Gunsx64/Ex-ray/tiny.rsi
+  - type: GunWieldBonus
+    minAngle: -23
+    maxAngle: -34
+  - type: Gun
+    minAngle: 24
+    maxAngle: 35
+    fireRate: 3
+    selectedMode: SemiAuto
+    availableModes:
+    - SemiAuto
+    soundGunshot:
+      path: /Audio/Weapons/Guns64/EG-R/shot.ogg
+  - type: MagazineVisuals
+    magState: mag
+    steps: 6
+    zeroVisible: true
+  - type: Battery
+    maxCharge: 3000
+    startingCharge: 3000
+  - type: HitscanBatteryAmmoProvider
+    proto: XrayLaser
+    fireCost: 100
+  - type: Wieldable
+  - type: UseDelay
+    delay: 1
