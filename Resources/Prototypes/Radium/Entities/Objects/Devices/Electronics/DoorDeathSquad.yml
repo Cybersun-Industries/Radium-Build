@@ -1,0 +1,7 @@
+- type: entity
+  parent: DoorElectronics
+  id: DoorElectronicsDeathSquad
+  suffix: deathsquad, Locked
+  components:
+  - type: AccessReader
+    access: [["DeathSquad"]]
