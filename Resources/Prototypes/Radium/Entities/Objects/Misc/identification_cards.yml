@@ -1,7 +1,7 @@
 ﻿- type: entity
   parent: IDCardStandard
   id: SurgeonIDCard
-  name: айди карта (хирург)
+  name: ID карта (хирург)
   components:
   - type: Sprite
     sprite: Radium/Objects/Misc/id_cards.rsi
@@ -10,3 +10,26 @@
     - state: idsurgeon
   - type: PresetIdCard
     job: Surgeon
+
+- type: entity
+  parent: CentcomIDCard
+  id: DeathSquadIDcard
+  name: ID карта (агент эскадрона смерти)
+  components:
+  - type: Sprite
+    sprite: Radium/Objects/Misc/id_cards.rsi
+    layers:
+    - state: black
+    - state: iddeathsquad
+
+  - type: Item
+    heldPrefix: blue
+  - type: IdCard
+    jobTitle: DeathSquad
+    jobIcon: DeathSquadron
+  - type: Access
+    groups:
+    - AllAccess
+    tags:
+    - CentralCommand
+    - DeathSquad
