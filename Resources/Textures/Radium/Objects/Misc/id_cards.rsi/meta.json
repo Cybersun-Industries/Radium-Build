@@ -8,6 +8,12 @@
     },
     "states": [
         {
+            "name": "iddeathsquad"
+        },
+        {
+            "name": "black"
+        },
+        {
             "name": "default"
         },
         {
