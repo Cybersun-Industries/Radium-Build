@@ -1,0 +1,10 @@
+- type: entity
+  parent: ClothingNeckBase
+  id: ClothingNeckScarfStripedNiko
+  name: Пышный шарф
+  description: "Пышный и уютный шарфик"
+  components:
+  - type: Sprite
+    sprite: Radium/Clothing/Neck/Scarfs/niko.rsi
+  - type: Clothing
+    sprite: Radium/Clothing/Neck/Scarfs/niko.rsi
