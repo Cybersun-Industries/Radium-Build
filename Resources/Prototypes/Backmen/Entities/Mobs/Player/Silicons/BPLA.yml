@@ -60,7 +60,7 @@
   - type: GhostTakeoverAvailable
   - type: SiliconLawBound
   - type: SiliconLawProvider
-    laws: Crewsimov
+    laws: Drone
   - type: MovementSpeedModifier
     baseWalkSpeed : 5
     baseSprintSpeed : 5
