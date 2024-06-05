@@ -1,25 +1,25 @@
 - type: construction
-  name: таксибот
+  name: ent-MobTaxiBot
   id: taxibot
   graph: TaxiBot
   startNode: start
   targetNode: bot
   category: construction-category-utilities
   objectType: Item
-  description: Возит людей
+  description: ent-MobTaxiBot.desc
   icon:
     sprite: Mobs/Silicon/Bots/taxibot.rsi
     state: taxibot
 
 - type: construction
-  name: грузобот
+  name: ent-MobSupplybot
   id: supplybot
   graph: SupplyBot
   startNode: start
   targetNode: bot
   category: construction-category-utilities
   objectType: Item
-  description: Возит грузы
+  description: ent-MobSupplybot.desc
   icon:
     sprite: Mobs/Silicon/Bots/supplybot.rsi
     state: supplybot

@@ -1,5 +1,5 @@
 - type: constructionGraph
-  id: TaxiBot
+  id: TaxiBot1
   start: start
   graph:
   - node: start
@@ -24,6 +24,6 @@
         name: borg arm
         doAfter: 2
       - material: Steel
-        amount: 5
+        amount: 15
   - node: bot
     entity: MobTaxiBot

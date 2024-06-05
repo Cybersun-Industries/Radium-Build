@@ -1,5 +1,5 @@
 - type: constructionGraph
-  id: SupplyBot
+  id: SupplyBot1
   start: start
   graph:
   - node: start
@@ -18,6 +18,6 @@
         name: borg head
         doAfter: 1
       - material: Steel
-        amount: 10
+        amount: 20
   - node: bot
     entity: MobSupplyBot
