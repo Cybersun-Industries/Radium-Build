@@ -1,0 +1,498 @@
+# - - - Usual meteors - - - 
+
+#Small
+- type: entity
+  id: MeteorSmall
+  name: meteor
+  suffix: Small
+  components:
+  - type: Sprite
+    noRot: false
+    sprite: Radium/Objects/Weapons/Guns/Projectiles/meteor.rsi
+    scale: 2,2
+    layers:
+    - state: small1
+      shader: unshaded
+  - type: ExplodeOnTrigger
+  - type: DeleteOnTrigger
+  - type: TriggerOnCollide
+    fixtureID: projectile
+  - type: Projectile
+    damage: {}
+    deleteOnCollide: false
+  - type: Explosive
+    explosionType: Default
+    totalIntensity: 200.0
+    intensitySlope: 30
+    maxIntensity: 45
+  - type: Physics
+    bodyType: Dynamic
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.5
+        density: 100
+        hard: true
+        # Didn't use MapGridComponent for now as the bounds are stuffed.
+        layer:
+        - LargeMobLayer
+        mask:
+        - Impassable
+        - BulletImpassable
+
+#Dust
+- type: entity
+  id: MeteorDust
+  name: meteor
+  suffix: Small
+  components:
+  - type: Sprite
+    noRot: false
+    sprite: Radium/Objects/Weapons/Guns/Projectiles/meteor.rsi
+    scale: 1,1
+    layers:
+    - state: dust
+      shader: unshaded
+  - type: ExplodeOnTrigger
+  - type: DeleteOnTrigger
+  - type: TriggerOnCollide
+    fixtureID: projectile
+  - type: Projectile
+    damage: {}
+    deleteOnCollide: false
+  - type: Explosive
+    explosionType: Default
+    totalIntensity: 100.0
+    intensitySlope: 30
+    maxIntensity: 45
+  - type: Physics
+    bodyType: Dynamic
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.5
+        density: 100
+        hard: true
+        # Didn't use MapGridComponent for now as the bounds are stuffed.
+        layer:
+        - LargeMobLayer
+        mask:
+        - Impassable
+        - BulletImpassable
+
+#Sharp
+- type: entity
+  id: MeteorSharp
+  name: meteor
+  suffix: Sharp
+  components:
+  - type: Sprite
+    noRot: false
+    sprite: Radium/Objects/Weapons/Guns/Projectiles/meteor.rsi
+    scale: 2,2
+    layers:
+    - state: sharp
+      shader: unshaded
+  - type: ExplodeOnTrigger
+  - type: DeleteOnTrigger
+  - type: TriggerOnCollide
+    fixtureID: projectile
+  - type: Projectile
+    damage: {}
+    deleteOnCollide: false
+  - type: Explosive
+    explosionType: Default
+    totalIntensity: 700.0
+    intensitySlope: 30
+    maxIntensity: 45
+  - type: Physics
+    bodyType: Dynamic
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.5
+        density: 100
+        hard: true
+        # Didn't use MapGridComponent for now as the bounds are stuffed.
+        layer:
+        - LargeMobLayer
+        mask:
+        - Impassable
+        - BulletImpassable
+
+# - - - Unusual meteors - - -
+
+#Carps
+- type: entity
+  id: MeteorCarpH
+  name: meteor
+  suffix: Carp, Holo
+  components:
+  - type: Sprite
+    noRot: false
+    sprite: Radium/Objects/Weapons/Guns/Projectiles/meteor.rsi
+    scale: 1,1
+    layers:
+    - state: carp
+      shader: unshaded
+  - type: ExplodeOnTrigger
+  - type: SpawnOnTrigger
+    proto: MobCarpHolo
+  - type: DeleteOnTrigger
+  - type: TriggerOnCollide
+    fixtureID: projectile
+  - type: Projectile
+    damage: {}
+    deleteOnCollide: false
+  - type: Explosive
+    explosionType: Cryo
+    totalIntensity: 10.0
+    intensitySlope: 10
+    maxIntensity: 10
+  - type: Physics
+    bodyType: Dynamic
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.5
+        density: 100
+        hard: true
+        # Didn't use MapGridComponent for now as the bounds are stuffed.
+        layer:
+        - LargeMobLayer
+        mask:
+        - Impassable
+        - BulletImpassable
+
+- type: entity
+  id: MeteorCarpM
+  suffix: Carp, Magi
+  parent: MeteorCarpH
+  components:
+  - type: SpawnOnTrigger
+    proto: MobCarpMagic
+
+- type: entity
+  id: MeteorCarpR
+  suffix: Carp, Rainbow
+  parent: MeteorCarpH
+  components:
+  - type: SpawnOnTrigger
+    proto: MobCarpRainbow
+
+#Bluespace
+- type: entity
+  id: MeteorBluespace
+  name: meteor
+  suffix: Bluespace
+  components:
+  - type: Sprite
+    noRot: false
+    sprite: Radium/Objects/Weapons/Guns/Projectiles/meteor.rsi
+    scale: 1,1
+    layers:
+    - state: bluespace
+      shader: unshaded
+  - type: SpawnOnTrigger
+    proto: MaterialBluespace
+  - type: ExplodeOnTrigger
+  - type: DeleteOnTrigger
+  - type: TriggerOnCollide
+    fixtureID: projectile
+  - type: Projectile
+    damage: {}
+    deleteOnCollide: false
+  - type: Explosive
+    explosionType: Cryo
+    totalIntensity: 5
+    intensitySlope: 5
+    maxIntensity: 5
+  - type: Physics
+    bodyType: Dynamic
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.5
+        density: 100
+        hard: true
+        # Didn't use MapGridComponent for now as the bounds are stuffed.
+        layer:
+        - LargeMobLayer
+        mask:
+        - Impassable
+        - BulletImpassable
+
+#Plasma
+- type: entity
+  id: MeteorPlasma
+  name: meteor
+  suffix: Plasma
+  components:
+  - type: Sprite
+    noRot: false
+    sprite: Radium/Objects/Weapons/Guns/Projectiles/meteor.rsi
+    scale: 2,2
+    layers:
+    - state: flaming
+      shader: unshaded
+  - type: SpawnOnTrigger
+    proto: PlasmaOre
+  - type: ExplodeOnTrigger
+  - type: DeleteOnTrigger
+  - type: TriggerOnCollide
+    fixtureID: projectile
+  - type: Projectile
+    damage: {}
+    deleteOnCollide: false
+  - type: Explosive
+    explosionType: Blob
+    totalIntensity: 50
+    intensitySlope: 35
+    maxIntensity: 15
+  - type: Physics
+    bodyType: Dynamic
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.5
+        density: 100
+        hard: true
+        # Didn't use MapGridComponent for now as the bounds are stuffed.
+        layer:
+        - LargeMobLayer
+        mask:
+        - Impassable
+        - BulletImpassable
+
+#Uranium
+- type: entity
+  id: MeteorUranium
+  name: meteor
+  suffix: Uranium
+  components:
+  - type: Sprite
+    noRot: false
+    sprite: Radium/Objects/Weapons/Guns/Projectiles/meteor.rsi
+    scale: 2,2
+    layers:
+    - state: glowing
+      shader: unshaded
+  - type: SpawnOnTrigger
+    proto: UraniumOre
+  - type: ExplodeOnTrigger
+  - type: DeleteOnTrigger
+  - type: TriggerOnCollide
+    fixtureID: projectile
+  - type: Projectile
+    damage: {}
+    deleteOnCollide: false
+  - type: Explosive
+    explosionType: Radioactive
+    totalIntensity: 50
+    intensitySlope: 35
+    maxIntensity: 15
+  - type: Physics
+    bodyType: Dynamic
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.5
+        density: 100
+        hard: true
+        # Didn't use MapGridComponent for now as the bounds are stuffed.
+        layer:
+        - LargeMobLayer
+        mask:
+        - Impassable
+        - BulletImpassable
+
+#Bananas
+- type: entity
+  id: MeteorBananium
+  name: meteor
+  suffix: Bananium
+  components:
+  - type: Sprite
+    noRot: false
+    sprite: Radium/Objects/Weapons/Guns/Projectiles/meteor.rsi
+    scale: 2,2
+    layers:
+    - state: bananium
+      shader: unshaded
+  - type: SpawnOnTrigger
+    proto: BananiumOre
+  - type: ExplodeOnTrigger
+  - type: DeleteOnTrigger
+  - type: TriggerOnCollide
+    fixtureID: projectile
+  - type: Projectile
+    damage: {}
+    deleteOnCollide: false
+  - type: Explosive
+    explosionType: Radioactive
+    totalIntensity: 50
+    intensitySlope: 35
+    maxIntensity: 15
+  - type: Physics
+    bodyType: Dynamic
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.5
+        density: 100
+        hard: true
+        # Didn't use MapGridComponent for now as the bounds are stuffed.
+        layer:
+        - LargeMobLayer
+        mask:
+        - Impassable
+        - BulletImpassable
+
+#Dark
+- type: entity
+  id: MeteorDarkMatter
+  name: meteor
+  suffix: Dark
+  components:
+  - type: Sprite
+    noRot: false
+    sprite: Radium/Objects/Weapons/Guns/Projectiles/meteor.rsi
+    scale: 1,1
+    layers:
+    - state: dark_matter
+      shader: unshaded
+  - type: ExplodeOnTrigger
+  - type: SpawnOnTrigger
+    proto: AnomalyGravity
+  - type: DeleteOnTrigger
+  - type: TriggerOnCollide
+    fixtureID: projectile
+  - type: Projectile
+    damage: {}
+    deleteOnCollide: false
+  - type: Explosive
+    explosionType: Default
+    totalIntensity: 0.5
+    intensitySlope: 0.5
+    maxIntensity: 0.5
+  - type: Physics
+    bodyType: Dynamic
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.5
+        density: 100
+        hard: true
+        # Didn't use MapGridComponent for now as the bounds are stuffed.
+        layer:
+        - LargeMobLayer
+        mask:
+        - Impassable
+        - BulletImpassable
+
+#Meat
+- type: entity
+  id: MeteorMeat
+  name: meteor
+  suffix: Meat
+  components:
+  - type: Sprite
+    noRot: false
+    sprite: Radium/Objects/Weapons/Guns/Projectiles/meteor.rsi
+    scale: 1,1
+    layers:
+    - state: meateor
+      shader: unshaded
+  - type: ExplodeOnTrigger
+  - type: SpawnOnTrigger
+    proto: AnomalyFlesh
+  - type: DeleteOnTrigger
+  - type: TriggerOnCollide
+    fixtureID: projectile
+  - type: Projectile
+    damage: {}
+    deleteOnCollide: false
+  - type: Explosive
+    explosionType: Flesh
+    totalIntensity: 100
+    intensitySlope: 25
+    maxIntensity: 25
+  - type: Physics
+    bodyType: Dynamic
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.5
+        density: 100
+        hard: true
+        # Didn't use MapGridComponent for now as the bounds are stuffed.
+        layer:
+        - LargeMobLayer
+        mask:
+        - Impassable
+        - BulletImpassable
+
+#Changeling, without himself it just powerful meteor
+#TODO: Add changeling, haha
+- type: entity
+  id: MeteorChangeling
+  name: meteor
+  suffix: Changeling
+  components:
+  - type: Sprite
+    noRot: false
+    sprite: Radium/Objects/Weapons/Guns/Projectiles/meteor.rsi
+    scale: 1,1
+    layers:
+    - state: changeling
+      shader: unshaded
+  - type: ExplodeOnTrigger
+  - type: SpawnOnTrigger
+    proto: DrinkChangelingStingCan
+  - type: DeleteOnTrigger
+  - type: TriggerOnCollide
+    fixtureID: projectile
+  - type: Projectile
+    damage: {}
+    deleteOnCollide: false
+  - type: Explosive
+    explosionType: Flesh
+    totalIntensity: 700
+    intensitySlope: 100
+    maxIntensity: 100
+  - type: Physics
+    bodyType: Dynamic
+  - type: Fixtures
+    fixtures:
+      projectile:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.5
+        density: 100
+        hard: true
+        # Didn't use MapGridComponent for now as the bounds are stuffed.
+        layer:
+        - LargeMobLayer
+        mask:
+        - Impassable
+        - BulletImpassable

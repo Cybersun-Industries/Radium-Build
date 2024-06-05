@@ -1,0 +1,168 @@
+- type: entity
+  name: meteorlauncher
+  parent: WeaponLauncherMultipleRocket
+  id: WeaponLauncherAdmemeMeteorSmall
+  suffix: Small
+  description: It fires small meteors
+  components:
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+        - CartridgeRocket
+    proto: MeteorSmall
+
+- type: entity
+  name: meteorlauncher
+  parent: WeaponLauncherMultipleRocket
+  id: WeaponLauncherAdmemeMeteorCarpH
+  suffix: Carp, Holo
+  description: It fires carp meteors
+  components:
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+        - CartridgeRocket
+    proto: MeteorCarpH
+
+- type: entity
+  name: meteorlauncher
+  parent: WeaponLauncherAdmemeMeteorCarpH
+  id: WeaponLauncherAdmemeMeteorCarpMagi
+  suffix: Carp, Magi
+  description: It fires carp meteors
+  components:
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+        - CartridgeRocket
+    proto: MeteorCarpM
+
+- type: entity
+  name: meteorlauncher
+  parent: WeaponLauncherMultipleRocket
+  id: WeaponLauncherAdmemeMeteorCarpR
+  suffix: Carp, Rainbow
+  description: It fires carp meteors
+  components:
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+        - CartridgeRocket
+    proto: MeteorCarpR
+
+- type: entity
+  name: meteorlauncher
+  parent: WeaponLauncherMultipleRocket
+  id: WeaponLauncherAdmemeMeteorBluespace
+  suffix: Bluespace
+  description: It fires BP meteors
+  components:
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+        - CartridgeRocket
+    proto: MeteorBluespace
+  
+- type: entity
+  name: meteorlauncher
+  parent: WeaponLauncherMultipleRocket
+  id: WeaponLauncherAdmemeMeteorDust
+  suffix: Dust
+  description: It fires small meteors
+  components:
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+        - CartridgeRocket
+    proto: MeteorDust
+
+- type: entity
+  name: meteorlauncher
+  parent: WeaponLauncherMultipleRocket
+  id: WeaponLauncherAdmemeMeteorDarkM
+  suffix: DM
+  description: It fires meteors
+  components:
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+        - CartridgeRocket
+    proto: MeteorDarkMatter
+
+- type: entity
+  name: meteorlauncher
+  parent: WeaponLauncherMultipleRocket
+  id: WeaponLauncherAdmemeMeteorMeat
+  suffix: Meat
+  description: It fires meteors
+  components:
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+        - CartridgeRocket
+    proto: MeteorMeat
+
+- type: entity
+  name: meteorlauncher
+  parent: WeaponLauncherMultipleRocket
+  id: WeaponLauncherAdmemeMeteorChangeling
+  suffix: Changeling
+  description: It fires meteors
+  components:
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+        - CartridgeRocket
+    proto: MeteorChangeling
+
+- type: entity
+  name: meteorlauncher
+  parent: WeaponLauncherMultipleRocket
+  id: WeaponLauncherAdmemeMeteorSharp
+  suffix: Sharp
+  description: It fires meteors
+  components:
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+        - CartridgeRocket
+    proto: MeteorSharp
+
+- type: entity
+  name: meteorlauncher
+  parent: WeaponLauncherMultipleRocket
+  id: WeaponLauncherAdmemeMeteorBananium
+  suffix: Bananium
+  description: It fires meteors
+  components:
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+        - CartridgeRocket
+    proto: MeteorBananium
+
+- type: entity
+  name: meteorlauncher
+  parent: WeaponLauncherMultipleRocket
+  id: WeaponLauncherAdmemeMeteorUranium
+  suffix: Uranium
+  description: It fires meteors
+  components:
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+        - CartridgeRocket
+    proto: MeteorUranium
+
+- type: entity
+  name: meteorlauncher
+  parent: WeaponLauncherMultipleRocket
+  id: WeaponLauncherAdmemeMeteorPlasma
+  suffix: Plasma
+  description: It fires meteors
+  components:
+  - type: BallisticAmmoProvider
+    whitelist:
+      tags:
+        - CartridgeRocket
+    proto: MeteorPlasma
