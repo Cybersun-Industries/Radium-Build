@@ -1,5 +1,5 @@
 - type: constructionGraph
-  id: TaxiBot1
+  id: TaxiBot
   start: start
   graph:
   - node: start

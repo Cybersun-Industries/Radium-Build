@@ -12,14 +12,14 @@
     state: taxibot
 
 - type: construction
-  name: ent-MobSupplybot
+  name: ent-MobSupplyBot
   id: supplybot
   graph: SupplyBot
   startNode: start
   targetNode: bot
   category: construction-category-utilities
   objectType: Item
-  description: ent-MobSupplybot.desc
+  description: ent-MobSupplyBot.desc
   icon:
     sprite: Mobs/Silicon/Bots/supplybot.rsi
     state: supplybot

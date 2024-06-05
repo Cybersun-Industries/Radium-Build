@@ -1,5 +1,5 @@
 - type: constructionGraph
-  id: SupplyBot1
+  id: SupplyBot
   start: start
   graph:
   - node: start
