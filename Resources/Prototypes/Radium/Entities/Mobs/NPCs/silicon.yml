@@ -85,7 +85,7 @@
     node: bot
   - type: Storage
     maxItemSize: Huge
-    maxSlots: 80
+    maxSlots: 14
   - type: Access
     groups:
     - Cargo
