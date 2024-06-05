@@ -30,8 +30,6 @@ public sealed partial class StoreMenu : DefaultWindow
     public event Action<BaseButton.ButtonEventArgs, ListingData>? OnListingButtonPressed;
     public event Action<BaseButton.ButtonEventArgs, string>? OnCategoryButtonPressed;
     public event Action<BaseButton.ButtonEventArgs, string, int>? OnWithdrawAttempt;
-    public event Action<BaseButton.ButtonEventArgs>? OnRefreshButtonPressed;
-    public event Action<BaseButton.ButtonEventArgs>? OnRefundAttempt;
 
     public Dictionary<string, FixedPoint2> Balance = new();
     public string CurrentCategory = string.Empty;
@@ -44,8 +42,6 @@ public sealed partial class StoreMenu : DefaultWindow
         _gameTicker = _entitySystem.GetEntitySystem<ClientGameTicker>();
 
         WithdrawButton.OnButtonDown += OnWithdrawButtonDown;
-        RefreshButton.OnButtonDown += OnRefreshButtonDown;
-        RefundButton.OnButtonDown += OnRefundButtonDown;
         SearchBar.OnTextChanged += _ => SearchTextUpdated?.Invoke(this, SearchBar.Text);
 
         if (Window != null)
@@ -105,12 +101,6 @@ public sealed partial class StoreMenu : DefaultWindow
         TraitorFooter.Visible = visible;
     }
 
-
-    private void OnRefreshButtonDown(BaseButton.ButtonEventArgs args)
-    {
-        OnRefreshButtonPressed?.Invoke(args);
-    }
-
     private void OnWithdrawButtonDown(BaseButton.ButtonEventArgs args)
     {
         // check if window is already open
@@ -128,10 +118,6 @@ public sealed partial class StoreMenu : DefaultWindow
         _withdrawWindow.OnWithdrawAttempt += OnWithdrawAttempt;
     }
 
-    private void OnRefundButtonDown(BaseButton.ButtonEventArgs args)
-    {
-        OnRefundAttempt?.Invoke(args);
-    }
 
     private void AddListingGui(ListingData listing)
     {
@@ -274,11 +260,6 @@ public sealed partial class StoreMenu : DefaultWindow
     {
         base.Close();
         _withdrawWindow?.Close();
-    }
-
-    public void UpdateRefund(bool allowRefund)
-    {
-        RefundButton.Disabled = !allowRefund;
     }
 
     private sealed class StoreCategoryButton : Button

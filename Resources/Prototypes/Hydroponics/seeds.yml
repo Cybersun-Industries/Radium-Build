@@ -180,6 +180,7 @@
     - FoodLemon
   mutationPrototypes:
     - lemoon
+    - bomblemon # Radium
   harvestRepeat: Repeat
   lifespan: 55
   maturation: 6
@@ -206,8 +207,6 @@
   packetPrototype: LemoonSeeds
   productPrototypes:
     - FoodLemoon
-  mutationPrototypes:
-    - bomblemon # Radium
   harvestRepeat: Repeat
   lifespan: 90
   maturation: 8
@@ -415,6 +414,7 @@
   mutationPrototypes:
     - blueTomato
     - bloodTomato
+    - killerTomato
   harvestRepeat: Repeat
   lifespan: 25
   maturation: 8

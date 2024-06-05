@@ -1,6 +1,7 @@
 using Content.Client.Movement.Systems;
 using Content.Shared.Actions;
 using Content.Shared.Ghost;
+using Content.Shared.Radium.Events;
 using Robust.Client.Console;
 using Robust.Client.GameObjects;
 using Robust.Client.Graphics;
@@ -47,6 +48,8 @@ namespace Content.Client.Ghost
         public event Action<GhostComponent>? PlayerUpdated;
         public event Action<GhostComponent>? PlayerAttached;
         public event Action? PlayerDetached;
+
+        public event Action<int, bool>? TimeSync;
         public event Action<GhostWarpsResponseEvent>? GhostWarpsResponse;
         public event Action<GhostUpdateGhostRoleCountEvent>? GhostRoleCountUpdated;
 
@@ -67,6 +70,13 @@ namespace Content.Client.Ghost
             SubscribeLocalEvent<EyeComponent, ToggleLightingActionEvent>(OnToggleLighting);
             SubscribeLocalEvent<EyeComponent, ToggleFoVActionEvent>(OnToggleFoV);
             SubscribeLocalEvent<GhostComponent, ToggleGhostsActionEvent>(OnToggleGhosts);
+
+            SubscribeNetworkEvent<SyncTimeEvent>(OnTimeSync);
+        }
+
+        private void OnTimeSync(SyncTimeEvent ev)
+        {
+            TimeSync?.Invoke(ev.TimeRemaining, ev.IsAvailable);
         }
 
         private void OnStartup(EntityUid uid, GhostComponent component, ComponentStartup args)
@@ -180,6 +190,11 @@ namespace Content.Client.Ghost
         public void ToggleGhostVisibility()
         {
             GhostVisibility = !GhostVisibility;
+        }
+
+        public void Respawn()
+        {
+            RaiseNetworkEvent(new RespawnRequestEvent());
         }
     }
 }

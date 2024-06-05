@@ -444,12 +444,14 @@
   - type: SolutionContainerManager
     solutions:
       food:
-        maxVol: 5
+        maxVol: 14
         reagents:
         - ReagentId: Nutriment
           Quantity: 3
         - ReagentId: Vitamin
           Quantity: 1
+        - ReagentId: SlugCatBlob
+          Quantity: 15
 # Tastes like jelly-donut, fizzy tutti frutti.
 
 # Poison donut
