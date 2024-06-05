@@ -1,0 +1,99 @@
+
+- type: entity
+  parent: [ MobSiliconBase ]
+  id: MobSiliconBaseVehicle # for vehicles
+  abstract: true
+  components:
+  - type: NoSlip
+  - type: GhostTakeoverAvailable
+  - type: GhostRole
+    makeSentient: true
+  - type: UnpoweredFlashlight
+  - type: PointLight
+    enabled: false
+    radius: 3.5
+    softness: 2
+    mask: /Textures/Effects/LightMasks/cone.png
+    autoRot: true
+  - type: IntrinsicRadioReceiver
+  - type: ActiveRadio
+    channels:
+    - Binary
+    - Common
+    - Command
+    - Engineering
+    - Medical
+    - Science
+    - Security
+    - Service
+    - Supply
+    globalReceive: true
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Binary
+    - Common
+    - Command
+    - Engineering
+    - Medical
+    - Science
+    - Security
+    - Service
+    - Supply
+
+- type: entity
+  parent: MobSiliconBaseVehicle
+  id: MobTaxiBot
+  name: taxibot
+  description: Give a ride?
+  components:
+
+  - type: Sprite
+    sprite: Mobs/Silicon/Bots/taxibot.rsi
+    layers:
+    - state: taxibot
+  - type: GhostRole
+    name: ghost-role-information-taxibot-name
+    description: ghost-role-information-taxibot-description
+  - type: Construction
+    graph: TaxiBot
+    node: bot
+  - type: MovementSpeedModifier
+    baseWalkSpeed : 6
+    baseSprintSpeed : 8
+  - type: Strap
+    position: Down
+    buckleOffset: "0, 0"
+    rotation: 0
+    size: 200
+    maxBuckleDistance: 1
+
+- type: entity
+  parent: MobSiliconBaseVehicle
+  id: MobSupplyBot
+  name: supplybot
+  description: Delivers cargo!
+  components:
+  - type: Sprite
+    sprite: Mobs/Silicon/Bots/supplybot.rsi
+    layers:
+    - state: supplybot
+  - type: GhostRole
+    name: ghost-role-information-supplybot-name
+    description: ghost-role-information-supplybot-description
+  - type: Construction
+    graph: SupplyBot
+    node: bot
+  - type: Storage
+    maxItemSize: Huge
+    maxSlots: 14
+  - type: Access
+    groups:
+    - Cargo
+  - type: UserInterface
+    interfaces:
+    - key: enum.StorageUiKey.Key
+      type: StorageBoundUserInterface
+  - type: ContainerContainer
+    containers:
+      storagebase: !type:Container
+        ents: []
