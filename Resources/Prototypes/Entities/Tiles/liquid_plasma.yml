@@ -31,6 +31,21 @@
   - type: IconSmooth
     key: floor
     base: plasma
+  - type: SolutionContainerManager
+    solutions:
+      pool:
+        maxVol: 9999999 #.inf seems to break the whole yaml file, but would definitely be preferable. 
+        reagents:
+        - ReagentId: Plasma
+          Quantity: 9999999
+  - type: SolutionRegeneration
+    solution: tank
+    generated:
+      reagents:
+      - ReagentId: Plasma
+        Quantity: 100
+  - type: DrainableSolution
+    solution: pool
   - type: Physics
     bodyType: Static
   - type: Fixtures
@@ -45,6 +60,3 @@
         - ItemMask
         density: 1000
         hard: false
-  - type: Tag
-    tags:
-    - HideContextMenu

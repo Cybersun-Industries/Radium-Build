@@ -1,0 +1,14 @@
+- type: reaction
+  id: CreateSheetPlasma
+  impact: Low
+  quantized: true
+  conserveEnergy: false
+  reactants:
+    Sugar:
+      amount: 15
+    Plasma:
+      amount: 10
+      catalyst: true
+  effects:
+    - !type:CreateEntityReactionEffect
+      entity: SheetPlasma1
