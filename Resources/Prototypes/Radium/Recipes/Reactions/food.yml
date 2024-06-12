@@ -4,11 +4,10 @@
   quantized: true
   conserveEnergy: false
   reactants:
-    Sugar:
-      amount: 15
+    Carbon:
+      amount: 30
     Plasma:
-      amount: 10
-      catalyst: true
+      amount: 20
   effects:
     - !type:CreateEntityReactionEffect
       entity: SheetPlasma1
