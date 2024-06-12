@@ -5,9 +5,9 @@
   conserveEnergy: false
   reactants:
     Carbon:
-      amount: 30
+      amount: 15
     Plasma:
-      amount: 20
+      amount: 30
   effects:
     - !type:CreateEntityReactionEffect
       entity: SheetPlasma1
