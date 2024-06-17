@@ -17,6 +17,7 @@ using Content.Server.Info;
 using Content.Server.Maps;
 using Content.Server.MoMMI;
 using Content.Server.NodeContainer.NodeGroups;
+using Content.Server.Players.JobWhitelist;
 using Content.Server.Players.PlayTimeTracking;
 using Content.Server.Preferences.Managers;
 using Content.Server.ServerInfo;
@@ -59,15 +60,18 @@ namespace Content.Server.IoC
             IoCManager.Register<IAdminLogManager, AdminLogManager>();
             IoCManager.Register<PlayTimeTrackingManager>();
             IoCManager.Register<UserDbDataManager>();
+            IoCManager.Register<ServerApi>();
             IoCManager.Register<TTSManager>(); // Corvax-TTS
             IoCManager.Register<ServerInfoManager>();
             IoCManager.Register<PoissonDiskSampler>();
             IoCManager.Register<DiscordWebhook>();
-
+            IoCManager.Register<JobWhitelistManager>();
             // start-backmen: IoC
             IoCManager.Register<ISharedSponsorsManager, Backmen.Sponsors.SponsorsManager>();
             IoCManager.Register<IServerDiscordAuthManager, Radium.DiscordAuth.DiscordAuthManager>();
             IoCManager.Register<IServerJoinQueueManager, Backmen.JoinQueue.JoinQueueManager>();
+            IoCManager
+                .Register<ISharedLoadoutsManager, Backmen.Sponsors.LoadoutsManager>();
             // end-backmen: IoC
             IoCManager.Register<ServerDbEntryManager>();
         }
