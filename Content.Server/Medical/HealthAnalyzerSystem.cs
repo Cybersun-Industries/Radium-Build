@@ -58,7 +58,9 @@ public sealed class HealthAnalyzerSystem : EntitySystem
 
             //Get distance between health analyzer and the scanned entity
             var patientCoordinates = Transform(patient).Coordinates;
-            if (!patientCoordinates.InRange(EntityManager, _transformSystem, transform.Coordinates,
+            if (!patientCoordinates.InRange(EntityManager,
+                    _transformSystem,
+                    transform.Coordinates,
                     component.MaxScanRange))
             {
                 //Range too far, disable updates
@@ -81,11 +83,16 @@ public sealed class HealthAnalyzerSystem : EntitySystem
 
         _audio.PlayPvs(uid.Comp.ScanningBeginSound, uid);
 
-        _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, args.User, uid.Comp.ScanDelay,
-            new HealthAnalyzerDoAfterEvent(), uid, target: args.Target, used: uid)
+        _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager,
+            args.User,
+            uid.Comp.ScanDelay,
+            new HealthAnalyzerDoAfterEvent(),
+            uid,
+            target: args.Target,
+            used: uid)
         {
-            BreakOnTargetMove = true,
-            BreakOnUserMove = true,
+            BreakOnHandChange = true,
+            BreakOnMove = true,
             NeedHand = true
         });
     }
@@ -133,10 +140,10 @@ public sealed class HealthAnalyzerSystem : EntitySystem
     private void OpenUserInterface(EntityUid user, EntityUid analyzer)
     {
         if (!TryComp<ActorComponent>(user, out var actor) ||
-            !_uiSystem.TryGetUi(analyzer, HealthAnalyzerUiKey.Key, out var ui))
+            !_uiSystem.TryGetOpenUi(analyzer, HealthAnalyzerUiKey.Key, out var ui))
             return;
 
-        _uiSystem.OpenUi(ui, actor.PlayerSession);
+        _uiSystem.OpenUi(ui.Owner, ui.UiKey, actor.PlayerSession);
     }
 
     /// <summary>
@@ -177,7 +184,7 @@ public sealed class HealthAnalyzerSystem : EntitySystem
     /// <param name="scanMode">True makes the UI show ACTIVE, False makes the UI show INACTIVE</param>
     public void UpdateScannedUser(EntityUid healthAnalyzer, EntityUid target, bool scanMode)
     {
-        if (!_uiSystem.TryGetUi(healthAnalyzer, HealthAnalyzerUiKey.Key, out var ui))
+        if (!_uiSystem.TryGetOpenUi(healthAnalyzer, HealthAnalyzerUiKey.Key, out var ui))
             return;
 
         if (!HasComp<DamageableComponent>(target))
@@ -192,8 +199,10 @@ public sealed class HealthAnalyzerSystem : EntitySystem
         var bleeding = false;
 
         if (TryComp<BloodstreamComponent>(target, out var bloodstream) &&
-            _solutionContainerSystem.ResolveSolution(target, bloodstream.BloodSolutionName,
-                ref bloodstream.BloodSolution, out var bloodSolution))
+            _solutionContainerSystem.ResolveSolution(target,
+                bloodstream.BloodSolutionName,
+                ref bloodstream.BloodSolution,
+                out var bloodSolution))
         {
             bloodAmount = bloodSolution.FillFraction;
             bleeding = bloodstream.BleedAmount > 0;
@@ -215,13 +224,14 @@ public sealed class HealthAnalyzerSystem : EntitySystem
             }
         }
 
-        _uiSystem.SendUiMessage(ui, new HealthAnalyzerScannedUserMessage(
-            GetNetEntity(target),
-            bodyTemperature,
-            bloodAmount,
-            scanMode,
-            bleeding,
-            new SurgeryStepData(currentStep, operationName)
-        ));
+        _uiSystem.SendPredictedUiMessage(ui,
+            new HealthAnalyzerScannedUserMessage(
+                GetNetEntity(target),
+                bodyTemperature,
+                bloodAmount,
+                scanMode,
+                bleeding,
+                new SurgeryStepData(currentStep, operationName)
+            ));
     }
 }

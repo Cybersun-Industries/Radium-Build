@@ -99,9 +99,9 @@ public sealed class DrapesSystem : EntitySystem
     private void OpenUserInterface(EntityUid user, EntityUid target)
     {
         if (!TryComp<ActorComponent>(user, out var actor) ||
-            !_uiSystem.TryGetUi(target, SurgeryUiKey.Key, out var ui))
+            !_uiSystem.TryGetOpenUi(target, SurgeryUiKey.Key, out var ui))
             return;
 
-        _uiSystem.OpenUi(ui, actor.PlayerSession);
+        _uiSystem.OpenUi(ui.Owner, ui.UiKey, actor.PlayerSession);
     }
 }
