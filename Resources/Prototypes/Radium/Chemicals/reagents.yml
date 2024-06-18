@@ -86,7 +86,7 @@
       - !type:HealthChange
         damage:
           types:
-            Airloss: 1
+            Asphyxiation: 1
       - !type:HealthChange
         conditions:
           - !type:ReagentThreshold
@@ -748,24 +748,6 @@
         conditions:
         - !type:ReagentThreshold
           min: 15
-
-- type: reagent
-  id: Lipolicide
-  name: reagent-name-lipolicide
-  group: Toxins
-  desc: reagent-desc-lipolicide
-  physicalDesc: reagent-physical-desc-syrupy
-  flavor: bitter
-  color: "#bed1c7"
-  metabolisms:
-    Poison:
-      effects:
-      - !type:HealthChange
-        damage:
-          types:
-            Poison: 1
-      - !type:SatiateHunger
-        factor: -1
 
 - type: reagent
   id: Lye

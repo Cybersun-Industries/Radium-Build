@@ -149,18 +149,6 @@
     Ether: 3
 
 - type: reaction
-  id: Lipolicide
-  reactants:
-    Mercury:
-      amount: 1
-    Diethylamine:
-      amount: 1
-    Ephedrine:
-      amount: 1
-  products:
-    Lipolicide: 3
-
-- type: reaction
   id: Lye
   reactants:
     Sodium:
