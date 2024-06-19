@@ -2,7 +2,7 @@
   id: RXBZZ
   equipment:
     jumpsuit: ClothingUniformJumpsuitColorBlack
-    back: ClothingBackpackDuffelRXBZZ
+    back: ClothingBackpackDuffelRXBZZRebalanced
     shoes: ClothingShoesBootsMagArmy
     mask: ClothingMaskGasRXBZZ
     eyes: ClothingEyesGlassesSecurity
@@ -38,7 +38,7 @@
   id: RXBZZLeader
   equipment:
     jumpsuit: ClothingUniformJumpsuitColorBlack
-    back: ClothingBackpackDuffelRXBZZ
+    back: ClothingBackpackDuffelRXBZZRebalanced
     shoes: ClothingShoesBootsMagArmy
     mask: ClothingMaskGasRXBZZ
     eyes: ClothingEyesGlassesSecurity
