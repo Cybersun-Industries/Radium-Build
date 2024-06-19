@@ -115,7 +115,8 @@ public sealed partial class SurgerySystem : EntitySystem
                         if (!TryComp<BloodstreamComponent>(uid, out var component))
                             break;
                         if (!_solutionContainerSystem.ResolveSolution(uid,
-                                component.BloodTemporarySolutionName, ref component.TemporarySolution,
+                                component.BloodTemporarySolutionName,
+                                ref component.TemporarySolution,
                                 out var tempSolution))
                             break;
                         if (component.BloodSolution == null)
@@ -126,14 +127,16 @@ public sealed partial class SurgerySystem : EntitySystem
                         tempSolution.AddSolution(newSol, _prototypeManager);
                         if (tempSolution.Volume > component.BleedPuddleThreshold)
                         {
-                            var amt = component.BloodlossDamage * 8;
+                            var amt = component.BloodlossDamage * 2;
                             _damageableSystem.TryChangeDamage(uid, amt);
                             // Pass some of the chemstream into the spilled blood.
                             if (_solutionContainerSystem.ResolveSolution(uid,
-                                    component.ChemicalSolutionName, ref component.ChemicalSolution))
+                                    component.ChemicalSolutionName,
+                                    ref component.ChemicalSolution))
                             {
                                 var temp = _solutionContainerSystem.SplitSolution(
-                                    component.ChemicalSolution.Value, tempSolution.Volume / 15);
+                                    component.ChemicalSolution.Value,
+                                    tempSolution.Volume / 20);
                                 tempSolution.AddSolution(temp, _prototypeManager);
                             }
 
@@ -146,12 +149,15 @@ public sealed partial class SurgerySystem : EntitySystem
                             _player.TryGetSessionByEntity(uid, out var session);
                             if (session != null)
                             {
-                                _popupSystem.PopupEntity(Loc.GetString("surgery-bleeding"), uid, session,
+                                _popupSystem.PopupEntity(Loc.GetString("surgery-bleeding"),
+                                    uid,
+                                    session,
                                     PopupType.LargeCaution);
                             }
                             else
                             {
-                                _popupSystem.PopupEntity(Loc.GetString("surgery-bleeding"), uid,
+                                _popupSystem.PopupEntity(Loc.GetString("surgery-bleeding"),
+                                    uid,
                                     PopupType.LargeCaution);
                             }
                         }
@@ -212,18 +218,21 @@ public sealed partial class SurgerySystem : EntitySystem
                                 {
                                     _movement.ChangeBaseSpeed(uid, 2.5f, 4.5f, 20);
                                 }
+
                                 break;
                             case > 2 and < 6:
                                 if (diffpart?.Component.Wounds.Count is < 6)
                                 {
                                     _movement.ChangeBaseSpeed(uid, 2f, 3f, 20);
                                 }
+
                                 break;
                             case > 6:
                                 if (currentBaseSprintSpeed <= 2f)
                                 {
                                     break;
                                 }
+
                                 _movement.ChangeBaseSpeed(uid, 1f, 2f, 20);
                                 break;
                         }
@@ -451,7 +460,8 @@ public sealed partial class SurgerySystem : EntitySystem
             if (component.CurrentStep != null)
             {
                 var stepAction = Enum.Parse<SurgeryTypeEnum>(surgeryOperationPrototype
-                    .Steps[component.CurrentStep.StepIndex - 1].Key.ToString());
+                    .Steps[component.CurrentStep.StepIndex - 1]
+                    .Key.ToString());
                 if (stepAction is not
                     (SurgeryTypeEnum.AddPart or SurgeryTypeEnum.AddAdditionalPart))
                 {
@@ -571,7 +581,12 @@ public sealed partial class SurgerySystem : EntitySystem
         }
 
         var doArgs =
-            new DoAfterArgs(EntityManager, args.User, time, new SurgeryDoAfterEvent(chance), args.Target, args.Target,
+            new DoAfterArgs(EntityManager,
+                args.User,
+                time,
+                new SurgeryDoAfterEvent(chance),
+                args.Target,
+                args.Target,
                 args.Used)
             {
                 BreakOnDamage = true,
