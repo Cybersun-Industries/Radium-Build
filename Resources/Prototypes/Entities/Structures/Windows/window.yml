@@ -221,6 +221,8 @@
   - type: Icon
     sprite: Structures/Windows/directional.rsi
     state: frosted_window
+  - type: Damageable
+    damageModifierSet: RGlass
 
 - type: entity
   parent: Window
