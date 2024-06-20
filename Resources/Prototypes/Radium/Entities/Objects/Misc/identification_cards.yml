@@ -8,5 +8,5 @@
     layers:
     - state: default
     - state: idsurgeon
-  - type: PresetIdCard
-    job: Surgeon
+#  - type: PresetIdCard
+#    job: Surgeon

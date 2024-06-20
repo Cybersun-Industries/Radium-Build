@@ -14,4 +14,4 @@
     gloves: UnremoveableClothingHandsGlovesLatex
     shoes: ClothingShoesColorWhite
     mask: UnremoveableClothingMaskMime
-  innerClothingSkirt: UnremoveableClothingUniformJumpskirtMime
+    innerClothingSkirt: UnremoveableClothingUniformJumpskirtMime

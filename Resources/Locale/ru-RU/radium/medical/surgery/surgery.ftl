@@ -8,13 +8,13 @@ surgery-LobectomyOperation-name = Лобэктомия
 surgery-LobectomyOperation-desc = Эта операция позволяет полностью вылечить лёгкие, но может быть проведена только один раз. Не путать с лоботомией!
 
 surgery-coronaryOperation-name = Коронарное шунтирование
-surgery-coronaryOperation-desc = Эта операция позволяет полностью вылечить и запустить сердце, но может быть проведена только один раз. 
+surgery-coronaryOperation-desc = Эта операция позволяет полностью вылечить и запустить сердце, но может быть проведена только один раз.
 
 surgery-hepatectomyOperation-name = Гепатэктомия
-surgery-hepatectomyOperation-desc = Удаляет поврежденные части печени, чтобы печень могла должным образом регенерировать. Операция доступна только если печень не отказала. Может быть проведена только один раз. 
+surgery-hepatectomyOperation-desc = Удаляет поврежденные части печени, чтобы печень могла должным образом регенерировать. Операция доступна только если печень не отказала. Может быть проведена только один раз.
 
 surgery-gastrectomyOperation-name = Гастрэктомия
-surgery-gastrectomyOperation-desc = Удаляет часть двенадцатиперстной кишки, прикрепляя желудок обратно к нижним отделам кишечника.  Позволяет полностью вылечить желудок, но может быть проведена только один раз. 
+surgery-gastrectomyOperation-desc = Удаляет часть двенадцатиперстной кишки, прикрепляя желудок обратно к нижним отделам кишечника.  Позволяет полностью вылечить желудок, но может быть проведена только один раз.
 
 surgery-amputationOperation-name = Ампутация
 surgery-amputationOperation-desc = Эта хирургическая операция позволяет ампутировать конечность.
@@ -26,7 +26,7 @@ surgery-implantRemovalOperation-name = Удаление импланта
 surgery-implantRemovalOperation-desc = Эта хирургическая операция позволяет удалить имплант.
 
 surgery-brainOperation-name = Операция на головном мозге
-surgery-brainOperation-desc = Эта процедура излечивает все тяжелые и элементарные травмы и значительно уменьшает повреждение головного мозга. 
+surgery-brainOperation-desc = Эта процедура излечивает все тяжелые и элементарные травмы и значительно уменьшает повреждение головного мозга.
 
 surgery-eyeOperation-name = Коррекция зрения
 surgery-eyeOperation-desc = Эта процедура устраняет все повреждения, нанесенные глазам и устраняет слепоту.
@@ -84,6 +84,7 @@ surgery-cauterizeStomachAction-desc = Восстановите нижнюю ча
 surgery-extractImplantAction-desc = Вытащите имплант.
 surgery-brainAction-desc = Проведите операцию на мозге.
 surgery-eyeAction-desc = Вылечите глаз.
+surgery-eyeAction-name = Откорректируйте зрение.
 surgery-eyeActionB-desc = Повредите глаз.
 surgery-bypassHemoAction-desc = Соедените сосуды.
 
@@ -125,7 +126,7 @@ surgery-addFirstPartA-desc = Пришейте руку.
 surgery-addSecondPartA-name = Кисть
 surgery-addSecondPartA-desc = Пришейте кисть.
 
-health-analyzer-window-currentOperation = Текущая операция: 
+health-analyzer-window-currentOperation = Текущая операция:
 health-analyzer-window-instructions = Указания к операции:
 health-analyzer-window-noOperation = Операция не проводится.
 

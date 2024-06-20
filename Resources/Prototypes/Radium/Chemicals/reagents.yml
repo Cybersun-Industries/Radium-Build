@@ -402,25 +402,6 @@
         probability: 0.7
 
 - type: reagent
-  id: ToiletWater
-  name: reagent-name-toiletwater
-  group: Special
-  desc: reagent-desc-toiletwater
-  physicalDesc: reagent-physical-desc-skunky
-  flavor: terrible
-  color: "#7a8361"
-  slippery: true
-  metabolisms:
-    Drink:
-      effects:
-      - !type:HealthChange
-        damage:
-          types:
-            Poison: 1
-      - !type:ChemVomit
-        probability: 0.05
-
-- type: reagent
   id: Perfluorodecalin
   name: reagent-name-perfluorodecalin
   group: Medicine

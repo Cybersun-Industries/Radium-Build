@@ -127,7 +127,7 @@ public sealed partial class SurgerySystem : EntitySystem
                         tempSolution.AddSolution(newSol, _prototypeManager);
                         if (tempSolution.Volume > component.BleedPuddleThreshold)
                         {
-                            var amt = component.BloodlossDamage * 2;
+                            var amt = component.BloodlossDamage * 8;
                             _damageableSystem.TryChangeDamage(uid, amt);
                             // Pass some of the chemstream into the spilled blood.
                             if (_solutionContainerSystem.ResolveSolution(uid,
@@ -136,7 +136,7 @@ public sealed partial class SurgerySystem : EntitySystem
                             {
                                 var temp = _solutionContainerSystem.SplitSolution(
                                     component.ChemicalSolution.Value,
-                                    tempSolution.Volume / 20);
+                                    tempSolution.Volume / 45);
                                 tempSolution.AddSolution(temp, _prototypeManager);
                             }
 
