@@ -533,3 +533,4 @@
       action: enum.SurgeryTypeEnum.Burn
   key: AddSurgeryEvent
   hidden: true
+
