@@ -79,7 +79,7 @@
     Ammonia:
       amount: 1
   products:
-    Jenkem: 3
+    Jenkem: 2
 
 - type: reaction
   id: Teslium

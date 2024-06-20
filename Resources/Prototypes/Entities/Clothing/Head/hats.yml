@@ -834,7 +834,7 @@
         offset: "0, 0.12"
     sprite: Clothing/Head/Hats/magician.rsi
   - type: Item
-    size: Small
+    size: Normal
     sprite: Clothing/Head/Hats/magician.rsi
     storedRotation: 0
   - type: Storage
