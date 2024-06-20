@@ -74,8 +74,6 @@
 - type: reaction
   id: Jenkem
   reactants:
-    ToiletWater:
-      amount: 1
     Water:
       amount: 1
     Ammonia:
