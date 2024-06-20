@@ -19,9 +19,9 @@
   id: Drapes
   components:
   - type: Drapes
-    BeginSound:
+    beginSound:
       path: "/Audio/Items/Medical/ointment_begin.ogg"
-    EndSound:
+    endSound:
       path: "/Audio/Items/Medical/ointment_end.ogg"
   - type: Sprite
     state: drapes

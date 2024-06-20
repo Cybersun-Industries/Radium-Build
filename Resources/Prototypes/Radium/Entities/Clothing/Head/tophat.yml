@@ -20,8 +20,9 @@
     size: Huge
     sprite: Radium/Clothing/Head/Hats/tophat.rsi
   - type: Storage
-    maxItemSize: Small
-    maxSlots: 10
+    maxItemSize: Normal
+    grid:
+    - 0,0,8,4
   - type: MeleeWeapon
     wideAnimationRotation: -135
     damage:
