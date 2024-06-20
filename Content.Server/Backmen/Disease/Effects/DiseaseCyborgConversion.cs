@@ -46,7 +46,7 @@ public sealed partial class DiseaseEffectSystem
         {
             _appearanceSystem.SetSex(ent, Sex.Female, true, appearanceComponent);
             _appearanceSystem.SetSkinColor(ent, Color.Red, true, true, appearanceComponent);
-            _appearanceSystem.SetTTSVoice(ent, "Baya", appearanceComponent);
+            _appearanceSystem.SetTTSVoice(ent, "Oleg", appearanceComponent);
             if (appearanceComponent.MarkingSet.Markings.TryGetValue(MarkingCategories.Tail, out var tails))
             {
                 foreach (var marking in tails.ToArray())
