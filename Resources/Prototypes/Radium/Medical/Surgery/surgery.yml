@@ -1,36 +1,4 @@
 - type: surgeryOperation
-  id: AmputationHOperation
-  name: surgery-amputationOperation-name
-  desc: surgery-amputationOperation-desc
-  bodyPart: Head
-  steps:
-    - type: SurgeryStep
-      name: surgery-scalpelAction-name
-      desc: surgery-incisionAction-desc
-      action: enum.SurgeryTypeEnum.Incise
-    - type: SurgeryStep
-      name: surgery-retractorAction-name
-      desc: surgery-retractAction-desc
-      action: enum.SurgeryTypeEnum.Retract
-    - type: SurgeryStep
-      name: surgery-hemostatAction-name
-      desc: surgery-clampAction-desc
-      action: enum.SurgeryTypeEnum.Clamp
-    - type: SurgeryStep
-      name: surgery-sawAction-name
-      desc: surgery-sawAction-desc
-      action: enum.SurgeryTypeEnum.Cut
-    - type: SurgeryStep
-      name: surgery-hemostatAction-name
-      desc: surgery-clampAction-desc
-      action: enum.SurgeryTypeEnum.Clamp
-    - type: SurgeryStep
-      name: surgery-sawAction-name
-      desc: surgery-severLimbAction-desc
-      action: enum.SurgeryTypeEnum.Cut
-  key: AmputationSurgeryEvent
-  unique: true
-- type: surgeryOperation
   id: AmputationLOperation
   name: surgery-amputationOperation-name
   desc: surgery-amputationOperation-desc
@@ -533,4 +501,35 @@
       action: enum.SurgeryTypeEnum.Burn
   key: AddSurgeryEvent
   hidden: true
-
+- type: surgeryOperation
+  id: AmputationHOperation
+  name: surgery-amputationOperation-name
+  desc: surgery-amputationOperation-desc
+  bodyPart: Head
+  steps:
+    - type: SurgeryStep
+      name: surgery-scalpelAction-name
+      desc: surgery-incisionAction-desc
+      action: enum.SurgeryTypeEnum.Incise
+    - type: SurgeryStep
+      name: surgery-retractorAction-name
+      desc: surgery-retractAction-desc
+      action: enum.SurgeryTypeEnum.Retract
+    - type: SurgeryStep
+      name: surgery-hemostatAction-name
+      desc: surgery-clampAction-desc
+      action: enum.SurgeryTypeEnum.Clamp
+    - type: SurgeryStep
+      name: surgery-sawAction-name
+      desc: surgery-sawAction-desc
+      action: enum.SurgeryTypeEnum.Cut
+    - type: SurgeryStep
+      name: surgery-hemostatAction-name
+      desc: surgery-clampAction-desc
+      action: enum.SurgeryTypeEnum.Clamp
+    - type: SurgeryStep
+      name: surgery-sawAction-name
+      desc: surgery-severLimbAction-desc
+      action: enum.SurgeryTypeEnum.Cut
+  key: AmputationSurgeryEvent
+  unique: true

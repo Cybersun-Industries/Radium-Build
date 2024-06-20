@@ -219,7 +219,6 @@
   - type: Tool
     qualities:
       - Sawing
-    speed: 0.5
   - type: SurgeryTool
     action: enum.SurgeryTypeEnum.Cut
     modifier: 1.8
@@ -243,7 +242,6 @@
   - type: Tool
     qualities:
       - Sawing
-    speed: 1.5
   - type: SurgeryTool
     action: enum.SurgeryTypeEnum.Cut
     modifier: 1.5
@@ -269,7 +267,6 @@
   - type: Tool
     qualities:
       - Sawing
-    speed: 2.0
   - type: SurgeryTool
     action: enum.SurgeryTypeEnum.Cut
     modifier: 2.2
