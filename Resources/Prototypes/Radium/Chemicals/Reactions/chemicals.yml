@@ -72,16 +72,6 @@
     Cyanide: 3
 
 - type: reaction
-  id: Jenkem
-  reactants:
-    Water:
-      amount: 1
-    Ammonia:
-      amount: 1
-  products:
-    Jenkem: 2
-
-- type: reaction
   id: Teslium
   minTemp: 400
   reactants:

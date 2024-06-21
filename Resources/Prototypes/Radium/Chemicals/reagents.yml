@@ -178,30 +178,6 @@
            Genetic: 0.75
 
 - type: reagent
-  id: Jenkem
-  name: reagent-name-jenkem
-  group: Narcotics
-  desc: reagent-desc-jenkem
-  physicalDesc: reagent-physical-desc-syrupy
-  flavor: terrible
-  color: "#625822"
-  metabolisms:
-    Narcotic:
-      effects:
-      - !type:GenericStatusEffect
-        key: SeeingRainbows
-        component: SeeingRainbows
-        type: Add
-        time: 5
-        refresh: false
-      - !type:HealthChange
-        damage:
-          types:
-            Poison: 1
-      - !type:ChemVomit
-        probability: 0.05
-
-- type: reagent
   id: Rezadone
   name: reagent-name-rezadone
   parent: BaseAlcohol
