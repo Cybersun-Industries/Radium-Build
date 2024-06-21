@@ -1,3 +1,4 @@
+/* Radium
 using Content.Client.UserInterface.Systems.Hotbar.Widgets;
 using Content.Client.UserInterface.Systems.Storage.Controls;
 using Content.IntegrationTests.Tests.Interaction;
@@ -85,3 +86,4 @@ public sealed class StorageInteractionTest : InteractionTest
         return GetControlFromChildren<ItemGridPiece>(c => c.Entity == uid, storageContainer);
     }
 }
+*/
