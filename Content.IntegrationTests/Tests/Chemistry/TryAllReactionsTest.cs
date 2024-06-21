@@ -81,6 +81,7 @@ namespace Content.IntegrationTests.Tests.Chemistry
                         .ToDictionary(x => x, _ => false);
                     foreach (var (reagent, quantity) in solution.Contents)
                     {
+                        Console.WriteLine($"Testing {reactionPrototype.ID}");
                         Assert.That(foundProductsMap.TryFirstOrNull(x => x.Key.Key == reagent.Prototype && x.Key.Value == quantity, out var foundProduct));
                         foundProductsMap[foundProduct.Value.Key] = true;
                     }
