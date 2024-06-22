@@ -82,14 +82,14 @@ public sealed class StorageUIController : UIController, IOnSystemChanged<Storage
 
         if (nullEnt is not null)
         {
-            _container.Open();
-            LayoutContainer.SetPosition(_container, _lastContainerPosition);
-
-            //_lastContainerPosition = _container.GlobalPosition;
+            _container.OpenCenteredAt(_lastContainerPosition);
+            if (_lastContainerPosition != new Vector2(0.5f, 0.75f)) //Bruh..
+            {
+                LayoutContainer.SetPosition(_container, _lastContainerPosition);
+            }
         }
         else
         {
-            //_lastContainerPosition = _container.GlobalPosition;
             _container.Close();
         }
     }
