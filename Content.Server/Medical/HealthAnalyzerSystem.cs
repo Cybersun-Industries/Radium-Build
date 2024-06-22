@@ -51,17 +51,20 @@ public sealed class HealthAnalyzerSystem : EntitySystem
             if (component.NextUpdate > _timing.CurTime)
                 continue;
 
-            if (component.ScannedEntity is not { } patient)
+            if (component.ScannedEntity is not {} patient)
                 continue;
+
+            if (Deleted(patient))
+            {
+                StopAnalyzingEntity((uid, component), patient);
+                continue;
+            }
 
             component.NextUpdate = _timing.CurTime + component.UpdateInterval;
 
             //Get distance between health analyzer and the scanned entity
             var patientCoordinates = Transform(patient).Coordinates;
-            if (!patientCoordinates.InRange(EntityManager,
-                    _transformSystem,
-                    transform.Coordinates,
-                    component.MaxScanRange))
+            if (!patientCoordinates.InRange(EntityManager, _transformSystem, transform.Coordinates, component.MaxScanRange))
             {
                 //Range too far, disable updates
                 StopAnalyzingEntity((uid, component), patient);
@@ -77,23 +80,15 @@ public sealed class HealthAnalyzerSystem : EntitySystem
     /// </summary>
     private void OnAfterInteract(Entity<HealthAnalyzerComponent> uid, ref AfterInteractEvent args)
     {
-        if (args.Target == null || !args.CanReach || !HasComp<MobStateComponent>(args.Target) ||
-            !_cell.HasDrawCharge(uid, user: args.User))
+        if (args.Target == null || !args.CanReach || !HasComp<MobStateComponent>(args.Target) || !_cell.HasDrawCharge(uid, user: args.User))
             return;
 
         _audio.PlayPvs(uid.Comp.ScanningBeginSound, uid);
 
-        _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager,
-            args.User,
-            uid.Comp.ScanDelay,
-            new HealthAnalyzerDoAfterEvent(),
-            uid,
-            target: args.Target,
-            used: uid)
+        _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, args.User, uid.Comp.ScanDelay, new HealthAnalyzerDoAfterEvent(), uid, target: args.Target, used: uid)
         {
-            BreakOnHandChange = true,
-            BreakOnMove = true,
-            NeedHand = true
+            NeedHand = true,
+            BreakOnMove = true
         });
     }
 
@@ -139,11 +134,10 @@ public sealed class HealthAnalyzerSystem : EntitySystem
 
     private void OpenUserInterface(EntityUid user, EntityUid analyzer)
     {
-        if (!TryComp<ActorComponent>(user, out var actor) ||
-            !_uiSystem.TryGetOpenUi(analyzer, HealthAnalyzerUiKey.Key, out var ui))
+        if (!_uiSystem.HasUi(analyzer, HealthAnalyzerUiKey.Key))
             return;
 
-        _uiSystem.OpenUi(ui.Owner, ui.UiKey, actor.PlayerSession);
+        _uiSystem.OpenUi(analyzer, HealthAnalyzerUiKey.Key, user);
     }
 
     /// <summary>
@@ -184,7 +178,7 @@ public sealed class HealthAnalyzerSystem : EntitySystem
     /// <param name="scanMode">True makes the UI show ACTIVE, False makes the UI show INACTIVE</param>
     public void UpdateScannedUser(EntityUid healthAnalyzer, EntityUid target, bool scanMode)
     {
-        if (!_uiSystem.TryGetOpenUi(healthAnalyzer, HealthAnalyzerUiKey.Key, out var ui))
+        if (!_uiSystem.HasUi(healthAnalyzer, HealthAnalyzerUiKey.Key))
             return;
 
         if (!HasComp<DamageableComponent>(target))
@@ -224,7 +218,8 @@ public sealed class HealthAnalyzerSystem : EntitySystem
             }
         }
 
-        _uiSystem.SendPredictedUiMessage(ui,
+        _uiSystem.ServerSendUiMessage(healthAnalyzer,
+            HealthAnalyzerUiKey.Key,
             new HealthAnalyzerScannedUserMessage(
                 GetNetEntity(target),
                 bodyTemperature,
