@@ -71,12 +71,14 @@ public sealed class DrapesSystem : EntitySystem
         }
 
 
-        _audio.PlayPvs(component.BeginSound, uid,
+        _audio.PlayPvs(component.BeginSound,
+            uid,
             AudioHelpers.WithVariation(0.125f, _random).WithVolume(1f));
 
         if (!_players.TryGetSessionByEntity(args.User, out _))
         {
-            _popupSystem.PopupEntity("Мозговая активность остутствует. Нет смысла что-либо делать.", args.User,
+            _popupSystem.PopupEntity("Мозговая активность остутствует. Нет смысла что-либо делать.",
+                args.User,
                 args.User);
             return false;
         }
@@ -89,7 +91,8 @@ public sealed class DrapesSystem : EntitySystem
         _adminLogger.Add(LogType.Healed,
             $"{EntityManager.ToPrettyString(args.User):user} used drapes on {target}");
 
-        _audio.PlayPvs(drapes.EndSound, uid,
+        _audio.PlayPvs(drapes.EndSound,
+            uid,
             AudioHelpers.WithVariation(0.125f, _random).WithVolume(1f));
 
         args.Handled = true;
@@ -98,10 +101,15 @@ public sealed class DrapesSystem : EntitySystem
 
     private void OpenUserInterface(EntityUid user, EntityUid target)
     {
-        if (!TryComp<ActorComponent>(user, out var actor) ||
-            !_uiSystem.TryGetOpenUi(target, SurgeryUiKey.Key, out var ui))
+        if (!_uiSystem.HasUi(target, SurgeryUiKey.Key))
             return;
 
-        _uiSystem.OpenUi(ui.Owner, ui.UiKey, actor.PlayerSession);
+        _uiSystem.OpenUi(target, SurgeryUiKey.Key, user);
+
+        //if (!TryComp<ActorComponent>(user, out var actor) ||
+        //    !_uiSystem.TryGetOpenUi(target, SurgeryUiKey.Key, out var ui))
+        //    return;
+
+        //_uiSystem.OpenUi(ui.Owner, ui.UiKey, actor.PlayerSession);
     }
 }
