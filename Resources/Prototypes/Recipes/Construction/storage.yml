@@ -53,8 +53,8 @@
 # ItemCabinets
 - type: construction
   id: ShowCase
-  name: showcase
-  description: A sturdy showcase for an expensive exhibit.
+  name: ent-GlassBox
+  description: ent-GlassBox.desc
   graph: GlassBox
   startNode: start
   targetNode: glassBox

@@ -887,8 +887,8 @@
 
 - type: construction
   id: NoticeBoard
-  name: notice board
-  description: Wooden notice board, can store paper inside itself.
+  name: ent-NoticeBoard
+  description: ent-NoticeBoard.desc
   graph: NoticeBoard
   startNode: start
   targetNode: noticeBoard
