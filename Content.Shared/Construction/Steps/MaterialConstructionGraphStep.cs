@@ -11,7 +11,7 @@ namespace Content.Shared.Construction.Steps
     {
         // TODO: Make this use the material system.
         // TODO TODO: Make the material system not shit.
-        [DataField("material", required:true, customTypeSerializer:typeof(PrototypeIdSerializer<StackPrototype>))]
+        [DataField("material", required: true, customTypeSerializer: typeof(PrototypeIdSerializer<StackPrototype>))]
         public string MaterialPrototypeId { get; private set; } = "Steel";
 
         [DataField("amount")] public int Amount { get; private set; } = 1;
@@ -20,17 +20,20 @@ namespace Content.Shared.Construction.Steps
         {
             var material = IoCManager.Resolve<IPrototypeManager>().Index<StackPrototype>(MaterialPrototypeId);
 
-            examinedEvent.PushMarkup(Loc.GetString("construction-insert-material-entity", ("amount", Amount), ("materialName", material.Name)));
+            examinedEvent.PushMarkup(Loc.GetString("construction-insert-material-entity", ("amount", Amount),
+                ("materialName", material.Name)));
         }
 
         public override bool EntityValid(EntityUid uid, IEntityManager entityManager, IComponentFactory compFactory)
         {
-            return entityManager.TryGetComponent(uid, out StackComponent? stack) && stack.StackTypeId == MaterialPrototypeId && stack.Count >= Amount;
+            return entityManager.TryGetComponent(uid, out StackComponent? stack) &&
+                   stack.StackTypeId == MaterialPrototypeId && stack.Count >= Amount;
         }
 
         public bool EntityValid(EntityUid entity, [NotNullWhen(true)] out StackComponent? stack)
         {
-            if (IoCManager.Resolve<IEntityManager>().TryGetComponent(entity, out StackComponent? otherStack) && otherStack.StackTypeId == MaterialPrototypeId && otherStack.Count >= Amount)
+            if (IoCManager.Resolve<IEntityManager>().TryGetComponent(entity, out StackComponent? otherStack) &&
+                otherStack.StackTypeId == MaterialPrototypeId && otherStack.Count >= Amount)
                 stack = otherStack;
             else
                 stack = null;
@@ -45,7 +48,11 @@ namespace Content.Shared.Construction.Steps
             return new ConstructionGuideEntry()
             {
                 Localization = "construction-presenter-material-step",
-                Arguments = new (string, object)[]{("amount", Amount), ("material", material.Name)},
+                Arguments = new (string, object)[]
+                {
+                    ("amount", Amount), ("material", material
+                        .Name)
+                },
                 Icon = material.Icon,
             };
         }

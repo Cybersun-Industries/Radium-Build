@@ -66,7 +66,7 @@ public sealed class GhostRoleRollerSystem : SharedGhostRoleRollerSystem
                 SetPopupContainer(game.RollerMenu);
                 break;
             case SeparatedChatGameScreen separated:
-                SetPopupContainer(separated.RollerMenu);
+                SetPopupContainer(separated.ChatBox);
                 break;
         }
     }

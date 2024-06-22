@@ -42,7 +42,6 @@ namespace Content.Client.Info
                 guidebookController.ToggleGuidebook();
             };
             buttons.AddChild(guidebookButton);
-
             var changelogButton = new ChangelogButton();
             changelogButton.OnPressed += args => UserInterfaceManager.GetUIController<ChangelogUIController>().ToggleWindow();
             buttons.AddChild(changelogButton);

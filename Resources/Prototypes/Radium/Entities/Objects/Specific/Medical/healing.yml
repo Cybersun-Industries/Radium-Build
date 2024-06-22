@@ -1,0 +1,12 @@
+- type: entity
+  name: insulin syringe
+  parent: BaseSyringe
+  id: SyringeInsulin
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      injector:
+        maxVol: 15
+        reagents:
+        - ReagentId: Insulin
+          Quantity: 15

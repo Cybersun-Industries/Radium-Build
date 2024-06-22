@@ -1,0 +1,149 @@
+- type: entity
+  parent: SeedBase
+  name: пакет семян (кока)
+  id: CocaSeeds
+  components:
+    - type: Seed
+      seedId: coca
+    - type: Sprite
+      sprite: Radium/Objects/Specific/Hydroponics/coca.rsi
+
+- type: entity
+  parent: SeedBase
+  name: пакет семян (ледяные цветы)
+  id: IcesproutSeeds
+  components:
+    - type: Seed
+      seedId: icesprout
+    - type: Sprite
+      sprite: Radium/Objects/Specific/Hydroponics/icesprout.rsi
+
+- type: entity
+  parent: SeedBase
+  name: пакет семян (лавовые цветы)
+  id: LavasproutSeeds
+  components:
+    - type: Seed
+      seedId: lavasprout
+    - type: Sprite
+      sprite: Radium/Objects/Specific/Hydroponics/lavasprout.rsi
+
+- type: entity
+  parent: SeedBase
+  name: пакет семян (ядовитые ягоды)
+  id: PoisonBerrySeeds
+  components:
+    - type: Seed
+      seedId: poisonberries
+    - type: Sprite
+      sprite: Radium/Objects/Specific/Hydroponics/poisonberries.rsi
+
+- type: entity
+  parent: SeedBase
+  name: пакет семян (полипень)
+  id: PolypniumSeeds
+  components:
+    - type: Seed
+      seedId: polypnium
+    - type: Sprite
+      sprite: Radium/Objects/Specific/Hydroponics/polypnium.rsi
+
+- type: entity
+  parent: SeedBase
+  name: пакет семян (амброзия гайа)
+  id: AmbrosiaGaiaSeeds
+  components:
+    - type: Seed
+      seedId: ambrosiaGaia
+    - type: Sprite
+      sprite: Radium/Objects/Specific/Hydroponics/ambrosia_gaia.rsi
+
+- type: entity
+  parent: SeedBase
+  name: пакет семян (святой арбуз)
+  id: HolymelonSeeds
+  components:
+    - type: Seed
+      seedId: holymelon
+    - type: Sprite
+      sprite: Radium/Objects/Specific/Hydroponics/holymelon.rsi
+
+- type: entity
+  parent: SeedBase
+  name: пакет семян (реплика-под)
+  id: ReplicapodSeeds
+  components:
+    - type: Seed
+      seedId: replicapod
+    - type: Sprite
+      sprite: Radium/Objects/Specific/Hydroponics/replicapod.rsi
+
+- type: entity
+  parent: SeedBase
+  name: пакет семян (клоун-под)
+  id: ClownpodSeeds
+  components:
+    - type: Seed
+      seedId: clownpod
+    - type: Sprite
+      sprite: Radium/Objects/Specific/Hydroponics/clownpod.rsi
+
+- type: entity
+  parent: SeedBase
+  name: пакет семян (мим-под)
+  id: MimepodSeeds
+  components:
+  - type: Seed
+    seedId: mimepod
+  - type: Sprite
+    sprite: Radium/Objects/Specific/Hydroponics/mimepod.rsi
+
+- type: entity
+  parent: SeedBase
+  name: пакет семян (растение-клаксона)
+  id: HonkplantSeeds
+  components:
+    - type: Seed
+      seedId: honkplant
+    - type: Sprite
+      sprite: Radium/Objects/Specific/Hydroponics/honkplant.rsi
+
+- type: entity
+  parent: SeedBase
+  name: пакет семян (огурец)
+  id: CucumberSeeds
+  components:
+    - type: Seed
+      seedId: cucumber
+    - type: Sprite
+      sprite: Radium/Objects/Specific/Hydroponics/cucumber.rsi
+
+- type: entity
+  parent: SeedBase
+  name: пакет семян (взрывной лимон)
+  id: BombLemonSeeds
+  components:
+    - type: Seed
+      seedId: bomblemon
+    - type: Sprite
+      sprite: Radium/Objects/Specific/Hydroponics/bomblemon.rsi
+
+- type: entity
+  parent: SeedBase
+  name: пакет семян (мунлин)
+  id: MoonlinSeeds
+  components:
+    - type: Seed
+      seedId: moonlin
+    - type: Sprite
+      sprite: Radium/Objects/Specific/Hydroponics/seedmoonlin.rsi
+
+- type: entity
+  parent: SeedBase
+  name: пакет семян (3d апельсин)
+  id: 3DOrangeSeeds
+  components:
+    - type: Seed
+      seedId: 3Dorange
+    - type: Sprite
+      sprite: Radium/Objects/Specific/Hydroponics/3Dorange.rsi

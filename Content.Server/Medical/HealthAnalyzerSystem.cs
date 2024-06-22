@@ -2,6 +2,7 @@ using Content.Server.Body.Components;
 using Content.Server.Chemistry.Containers.EntitySystems;
 using Content.Server.Medical.Components;
 using Content.Server.PowerCell;
+using Content.Server.Radium.Medical.Surgery.Components;
 using Content.Server.Temperature.Components;
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
@@ -10,10 +11,13 @@ using Content.Shared.Interaction.Events;
 using Content.Shared.MedicalScanner;
 using Content.Shared.Mobs.Components;
 using Content.Shared.PowerCell;
+using Content.Shared.Radium.Medical.Surgery.Components;
+using Content.Shared.Radium.Medical.Surgery.Prototypes;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Player;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
 
 namespace Content.Server.Medical;
@@ -27,6 +31,7 @@ public sealed class HealthAnalyzerSystem : EntitySystem
     [Dependency] private readonly SolutionContainerSystem _solutionContainerSystem = default!;
     [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
     [Dependency] private readonly TransformSystem _transformSystem = default!;
+    [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
     public override void Initialize()
     {
@@ -102,7 +107,8 @@ public sealed class HealthAnalyzerSystem : EntitySystem
     /// <summary>
     /// Turn off when placed into a storage item or moved between slots/hands
     /// </summary>
-    private void OnInsertedIntoContainer(Entity<HealthAnalyzerComponent> uid, ref EntGotInsertedIntoContainerMessage args)
+    private void OnInsertedIntoContainer(Entity<HealthAnalyzerComponent> uid,
+        ref EntGotInsertedIntoContainerMessage args)
     {
         if (uid.Comp.ScannedEntity is { } patient)
             StopAnalyzingEntity(uid, patient);
@@ -187,19 +193,40 @@ public sealed class HealthAnalyzerSystem : EntitySystem
         var bleeding = false;
 
         if (TryComp<BloodstreamComponent>(target, out var bloodstream) &&
-            _solutionContainerSystem.ResolveSolution(target, bloodstream.BloodSolutionName,
-                ref bloodstream.BloodSolution, out var bloodSolution))
+            _solutionContainerSystem.ResolveSolution(target,
+                bloodstream.BloodSolutionName,
+                ref bloodstream.BloodSolution,
+                out var bloodSolution))
         {
             bloodAmount = bloodSolution.FillFraction;
             bleeding = bloodstream.BleedAmount > 0;
         }
 
-        _uiSystem.ServerSendUiMessage(healthAnalyzer, HealthAnalyzerUiKey.Key, new HealthAnalyzerScannedUserMessage(
-            GetNetEntity(target),
-            bodyTemperature,
-            bloodAmount,
-            scanMode,
-            bleeding
-        ));
+        SurgeryStepComponent? currentStep = null;
+        string? operationName = null;
+
+        if (TryComp<SurgeryInProgressComponent>(target, out var surgeryComponent))
+        {
+            currentStep = surgeryComponent.CurrentStep;
+            if (surgeryComponent.SurgeryPrototypeId != null)
+            {
+                if (_prototypeManager.TryIndex<SurgeryOperationPrototype>(surgeryComponent.SurgeryPrototypeId,
+                        out var surgery))
+                {
+                    operationName = surgery.LocalizedName;
+                }
+            }
+        }
+
+        _uiSystem.ServerSendUiMessage(healthAnalyzer,
+            HealthAnalyzerUiKey.Key,
+            new HealthAnalyzerScannedUserMessage(
+                GetNetEntity(target),
+                bodyTemperature,
+                bloodAmount,
+                scanMode,
+                bleeding,
+                new SurgeryStepData(currentStep, operationName)
+            ));
     }
 }

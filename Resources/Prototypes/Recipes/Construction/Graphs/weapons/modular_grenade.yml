@@ -48,7 +48,7 @@
       steps:
       - component: PayloadTrigger
         store: payloadTrigger
-        name: Trigger
+        name: ent-TimerTrigger
         doAfter: 0.5
     - to: caseWithPayload
       steps:
@@ -74,7 +74,7 @@
       steps:
       - tag: Payload
         store: payload
-        name: Payload
+        name: ent-ChemicalPayload
         doAfter: 0.5
 
   - node: caseWithPayload

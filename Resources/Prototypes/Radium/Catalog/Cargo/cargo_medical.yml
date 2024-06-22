@@ -1,0 +1,27 @@
+- type: cargoProduct
+  id: CrateMedicalSyringe
+  icon:
+    sprite: Objects/Specific/Chemistry/syringe.rsi
+    state: syringe_base0
+  product: CrateMedicalSyringeInsulin
+  cost: 600
+  category: cargoproduct-category-name-medical
+  group: market
+
+- type: cargoProduct
+  id: CrateMedicalMedipenKit
+  icon:
+    sprite: Objects/Specific/Medical/medipen.rsi
+    state: medipen
+  product: CrateMedicalMedkitMedipenFilled
+  cost: 1500
+  category: cargoproduct-category-name-medical
+  group: market
+
+- type: cargoProduct
+  id: CrateMedicalSurvivalMedipenKit
+  icon:
+    sprite: Radium/Objects/Specific/Medical/survivalmedipen.rsi
+    state: survivalpen
+  product: CrateMedicalSurvivalMedipenFilled
+  cost: 2500

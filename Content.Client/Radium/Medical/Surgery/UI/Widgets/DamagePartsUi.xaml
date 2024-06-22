@@ -1,0 +1,7 @@
+﻿<widgets:DamagePartsUi xmlns="https://spacestation14.io"
+                       xmlns:widgets="clr-namespace:Content.Client.Radium.Medical.Surgery.UI.Widgets"
+                       MinSize="64 64">
+    <PanelContainer HorizontalAlignment="Right" VerticalAlignment="Bottom">
+        <BoxContainer Name="Surface" Access="Public" Orientation="Vertical" />
+    </PanelContainer>
+</widgets:DamagePartsUi>

@@ -1,0 +1,4 @@
+- type: emote
+  id: Drooling
+  name: "Пускает слюни."
+  chatMessages: ["Пускает слюни."]

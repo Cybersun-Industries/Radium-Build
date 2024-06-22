@@ -1,0 +1,21 @@
+- type: entity
+  name: корректирующая сеть
+  description: Используется для корректировки положения костей при переломах.
+  parent: BaseHealingItem
+  id: BoneMesh
+  suffix: Full
+  components:
+  - type: Sprite
+    sprite: Radium/Objects/Specific/Medical/healing.rsi
+    state: bone_mesh
+  - type: Item
+    sprite: Radium/Objects/Specific/Medical/healing.rsi
+    heldPrefix: bone_mesh
+  - type: Stack
+    stackType: RegenerativeMesh
+    count: 10
+  - type: StackPrice
+    price: 20
+  - type: SurgeryTool
+    action: enum.SurgeryTypeEnum.Repair
+    modifier: 1.5

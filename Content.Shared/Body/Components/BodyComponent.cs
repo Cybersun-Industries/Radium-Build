@@ -8,7 +8,6 @@ using Robust.Shared.Prototypes;
 namespace Content.Shared.Body.Components;
 
 [RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
-[Access(typeof(SharedBodySystem))]
 public sealed partial class BodyComponent : Component
 {
     /// <summary>

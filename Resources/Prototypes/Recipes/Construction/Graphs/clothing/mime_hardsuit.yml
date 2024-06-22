@@ -10,31 +10,31 @@
               amount: 5
               doAfter: 1
             - tag: SuitEVA
-              name: An EVA suit
+              name: ent-ClothingOuterHardsuitEVA
               icon:
                 sprite: Clothing/OuterClothing/Suits/eva.rsi
                 state: icon
               doAfter: 1
             - tag: HelmetEVA
-              name: An EVA helmet
+              name: ent-ClothingHeadHelmetEVA
               icon:
                 sprite: Clothing/Head/Helmets/eva.rsi
                 state: icon
               doAfter: 1
             - tag: CrayonRed
-              name: red crayon
+              name: ent-CrayonRed
               icon:
                 sprite: Objects/Fun/crayons.rsi
                 state: red
               doAfter: 1
             - tag: CrayonBlack
-              name: black crayon
+              name: ent-CrayonBlack
               icon:
                 sprite: Objects/Fun/crayons.rsi
                 state: black
               doAfter: 1
             - tag: MimeBelt
-              name: suspenders
+              name: ent-ClothingBeltSuspenders
               icon:
                 sprite: Clothing/Belt/suspenders.rsi
                 state: icon

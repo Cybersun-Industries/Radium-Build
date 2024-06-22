@@ -1,0 +1,32 @@
+- type: entity
+  id: CrateMedicalSyringeInsulin
+  parent: CrateMedical
+  name: медицинский ящик со шприцами с инсулином
+  description: Ящик со шприцами с инсулином.
+  components:
+  - type: StorageFill
+    contents:
+      - id: SyringeInsulin
+        amount: 3
+
+- type: entity
+  id: CrateMedicalSurvivalMedipenFilled
+  parent: CrateMedical
+  name: аварийный набор автоинъекторов выживания
+  description: Ящик с автоинъекторами выживания.
+  components:
+  - type: StorageFill
+    contents:
+    - id: MedkitSurvivalMedipenFilled
+      amount: 1
+
+- type: entity
+  id: CrateMedicalMedkitMedipenFilled
+  parent: CrateMedical
+  name: аварийный набор медипенов
+  description: Ящик с медипенами.
+  components:
+  - type: StorageFill
+    contents:
+    - id: MedkitMedipenFilled
+      amount: 1

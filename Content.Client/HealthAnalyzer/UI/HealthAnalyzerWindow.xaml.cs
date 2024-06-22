@@ -1,6 +1,6 @@
 using System.Linq;
 using System.Numerics;
-using Content.Shared.Atmos;
+using Content.Client.Guidebook.Richtext;
 using Content.Client.UserInterface.Controls;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
@@ -27,9 +27,8 @@ namespace Content.Client.HealthAnalyzer.UI
         private readonly SpriteSystem _spriteSystem;
         private readonly IPrototypeManager _prototypes;
         private readonly IResourceCache _cache;
-
-        private const int AnalyzerHeight = 430;
-        private const int AnalyzerWidth = 300;
+        //private const int AnalyzerHeight = 430;
+        //private const int AnalyzerWidth = 600;
 
         public HealthAnalyzerWindow()
         {
@@ -66,8 +65,10 @@ namespace Content.Client.HealthAnalyzer.UI
             if (msg.ScanMode.HasValue)
             {
                 ScanModePanel.Visible = true;
-                ScanModeText.Text = Loc.GetString(msg.ScanMode.Value ? "health-analyzer-window-scan-mode-active" : "health-analyzer-window-scan-mode-inactive");
-                ScanModeText.FontColorOverride = msg.ScanMode.Value ? Color.Green : Color.Red;
+                ScanModeText.Text = Loc.GetString(msg.ScanMode.Value
+                    ? "health-analyzer-window-scan-mode-active"
+                    : "health-analyzer-window-scan-mode-inactive");
+                ScanModeText.FontColorOverride = msg.ScanMode.Value ? Color.Yellow : Color.Red;
             }
             else
             {
@@ -80,7 +81,8 @@ namespace Content.Client.HealthAnalyzer.UI
             );
 
             Temperature.Text = Loc.GetString("health-analyzer-window-entity-temperature-text",
-                ("temperature", float.IsNaN(msg.Temperature) ? "N/A" : $"{msg.Temperature - Atmospherics.T0C:F1} °C ({msg.Temperature:F1} K)")
+                ("temperature",
+                    float.IsNaN(msg.Temperature) ? "N/A" : $"{msg.Temperature - 273f:F1} °C ({msg.Temperature:F1} °K)")
             );
 
             BloodLevel.Text = Loc.GetString("health-analyzer-window-entity-blood-level-text",
@@ -94,7 +96,7 @@ namespace Content.Client.HealthAnalyzer.UI
             }
             else
             {
-                Bleeding.Text = string.Empty;  // Clear the text
+                Bleeding.Text = string.Empty; // Clear the text
             }
 
             patientDamageAmount.Text = Loc.GetString(
@@ -122,62 +124,114 @@ namespace Content.Client.HealthAnalyzer.UI
                 GroupsContainer.AddChild(box);
             }
 
-            SetHeight = AnalyzerHeight;
-            SetWidth = AnalyzerWidth;
+            if (msg.SurgeryData!.Value.LocalizedName != "")
+            {
+                var step = msg.SurgeryData.Value;
+
+                SurgeryNameLabel.Text =
+                    Loc.GetString("health-analyzer-window-currentOperation") + " " + step.OperationName;
+                SurgeryProcedureLabel.Text = Loc.GetString("health-analyzer-window-instructions") + " ";
+                SurgeryStep.Text = step.LocalizedName;
+                SurgeryStepDesc.Text = step.LocalizedDescription;
+                if (step.Icon == null)
+                    return;
+                SurgeryIcon.Texture = _spriteSystem.Frame0(new SpriteSpecifier.Rsi(new ResPath("/Textures/Radium/Interface/instructions.rsi"), step.Icon));
+            }
+            else
+            {
+                SurgeryNameLabel.Text = Loc.GetString("health-analyzer-window-noOperation");
+                SurgeryProcedureLabel.Text = "";
+                SurgeryStep.Text = "";
+                SurgeryStepDesc.Text = "";
+                SurgeryIcon.Texture = Texture.Transparent;
+            }
+
+            //SetHeight = AnalyzerHeight;
+            //SetWidth = AnalyzerWidth;
         }
 
         private void DrawDiagnosticGroups(
             Dictionary<string, FixedPoint2> groups, IReadOnlyDictionary<string, FixedPoint2> damageDict)
         {
             HashSet<string> shownTypes = new();
-
+            var index = 0;
+            var container1 = new Box
+            {
+                Orientation = BoxContainer.LayoutOrientation.Vertical,
+                Margin = new Thickness(0, 0, 0, 15),
+                Align = BoxContainer.AlignMode.Begin
+            };
+            var container2 = new Box
+            {
+                Orientation = BoxContainer.LayoutOrientation.Vertical,
+                Margin = new Thickness(0, 0, 0, 15),
+                Align = BoxContainer.AlignMode.Begin
+            };
+            var container3 = new Box
+            {
+                Orientation = BoxContainer.LayoutOrientation.Vertical,
+                Margin = new Thickness(0, 0, 0, 15),
+                Align = BoxContainer.AlignMode.Begin
+            };
             // Show the total damage and type breakdown for each damage group.
             foreach (var (damageGroupId, damageAmount) in groups.Reverse())
             {
                 if (damageAmount == 0)
                     continue;
 
-                var groupTitleText = $"{Loc.GetString(
-                    "health-analyzer-window-damage-group-text",
-                    ("damageGroup", _prototypes.Index<DamageGroupPrototype>(damageGroupId).LocalizedName),
-                    ("amount", damageAmount)
-                )}";
+                var groupTitleText =
+                    $"{Loc.GetString("health-analyzer-window-damage-group-text", ("damageGroup", Loc.GetString("health-analyzer-window-damage-group-" + damageGroupId)), ("amount", damageAmount))}";
 
                 var groupContainer = new BoxContainer
                 {
-                    Margin = new Thickness(0, 0, 0, 15),
-                    Align = BoxContainer.AlignMode.Begin,
                     Orientation = BoxContainer.LayoutOrientation.Vertical,
                 };
+                switch (index)
+                {
+                    case <= 2:
+                        container1.AddChild(CreateDiagnosticGroupTitle(groupTitleText, damageGroupId));
+                        break;
+                    case <= 4:
+                        container2.AddChild(CreateDiagnosticGroupTitle(groupTitleText, damageGroupId));
+                        break;
+                    default:
+                        container3.AddChild(CreateDiagnosticGroupTitle(groupTitleText, damageGroupId));
+                        break;
+                }
 
-                groupContainer.AddChild(CreateDiagnosticGroupTitle(groupTitleText, damageGroupId));
-
-                GroupsContainer.AddChild(groupContainer);
 
                 // Show the damage for each type in that group.
+                /*
                 var group = _prototypes.Index<DamageGroupPrototype>(damageGroupId);
 
                 foreach (var type in group.DamageTypes)
                 {
-                    if (damageDict.TryGetValue(type, out var typeAmount) && typeAmount > 0)
-                    {
-                        // If damage types are allowed to belong to more than one damage group,
-                        // they may appear twice here. Mark them as duplicate.
-                        if (shownTypes.Contains(type))
-                            continue;
+                    if (!damageDict.TryGetValue(type, out var typeAmount) || typeAmount <= 0)
+                        continue;
+                    // If damage types are allowed to belong to more than one damage group,
+                    // they may appear twice here. Mark them as duplicate.
+                    if (shownTypes.Contains(type))
+                        continue;
 
-                        shownTypes.Add(type);
+                    shownTypes.Add(type);
 
-                        var damageString = Loc.GetString(
-                            "health-analyzer-window-damage-type-text",
-                            ("damageType", _prototypes.Index<DamageTypePrototype>(type).LocalizedName),
-                            ("amount", typeAmount)
-                        );
+                    var damageString = Loc.GetString(
+                        "health-analyzer-window-damage-type-text",
+                        ("damageType", Loc.GetString("health-analyzer-window-damage-type-" + type)),
+                        ("amount", typeAmount)
+                    );
 
-                        groupContainer.AddChild(CreateDiagnosticItemLabel(damageString.Insert(0, "- ")));
-                    }
+                    groupContainer.AddChild(CreateDiagnosticItemLabel(damageString.Insert(0, "- ")));
                 }
+                */
+
+                index++;
             }
+
+            GroupsContainer.Orientation = BoxContainer.LayoutOrientation.Horizontal;
+            GroupsContainer.AddChild(container1);
+            GroupsContainer.AddChild(container2);
+            GroupsContainer.AddChild(container3);
         }
 
         private Texture GetTexture(string texture)

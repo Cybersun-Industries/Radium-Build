@@ -1,0 +1,12 @@
+﻿- type: entity
+  id: ProjectilePolyboltMothroach
+  parent: ProjectilePolyboltBase
+  name: полизаряд таракамоли
+  description: Нееет, я не хочу быть таракамолью!
+  noSpawn: true
+  components:
+  - type: PolymorphOnCollide
+    polymorph: WizardForcedMothroach
+    whitelist:
+      components:
+      - Body

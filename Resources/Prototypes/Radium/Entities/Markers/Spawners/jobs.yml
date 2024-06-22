@@ -1,0 +1,12 @@
+﻿#- type: entity
+#  id: SpawnPointSurgeon
+#  parent: SpawnPointJobBase
+#  name: хирург
+#  components:
+#  - type: SpawnPoint
+#    job_id: Surgeon
+#  - type: Sprite
+#    sprite: Radium/Markers/jobs.rsi
+#    layers:
+#    - state: green
+#    - state: surgeon

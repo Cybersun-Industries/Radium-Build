@@ -32,7 +32,7 @@ public sealed partial class ShipwreckedRuleComponent : Component
 
     [ViewVariables]
     [DataField("tts")]
-    public ProtoId<TTSVoicePrototype> Tts = "Baya";
+    public ProtoId<TTSVoicePrototype> Tts = "Oleg";
 
     /// <summary>
     /// The destinations for the shipwreck.

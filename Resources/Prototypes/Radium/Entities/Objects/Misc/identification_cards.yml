@@ -1,0 +1,12 @@
+﻿- type: entity
+  parent: IDCardStandard
+  id: SurgeonIDCard
+  name: айди карта (хирург)
+  components:
+  - type: Sprite
+    sprite: Radium/Objects/Misc/id_cards.rsi
+    layers:
+    - state: default
+    - state: idsurgeon
+#  - type: PresetIdCard
+#    job: Surgeon

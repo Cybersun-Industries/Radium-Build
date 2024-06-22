@@ -1,48 +1,63 @@
 ﻿<controls:FancyWindow
     xmlns="https://spacestation14.io"
     xmlns:controls="clr-namespace:Content.Client.UserInterface.Controls"
-    SetSize="250 100">
+    SetSize="650 530"
+    Resizable="False">
     <ScrollContainer
         VerticalExpand="True">
-        <BoxContainer
-            Name="RootContainer"
-            Orientation="Vertical">
-            <Label
-                Name="NoPatientDataText"
-                Text="{Loc health-analyzer-window-no-patient-data-text}" />
+        <TextureRect Stretch="Scale" TexturePath="/Textures/Radium/Interface/Surgery/analyzer_template.png"
+                     HorizontalExpand="True" VerticalExpand="True">
             <BoxContainer
-                Name="PatientDataContainer"
+                Name="RootContainer"
                 Orientation="Vertical"
-                Margin="0 0 5 10">
-                <BoxContainer Name="ScanModePanel" HorizontalExpand="True" Visible="False" Margin="0 5 0 0">
+                Margin="40 15 0 0">
+                <Label
+                    Name="NoPatientDataText"
+                    Text="{Loc health-analyzer-window-no-patient-data-text}" />
+                <BoxContainer
+                    Name="PatientDataContainer"
+                    Orientation="Vertical"
+                    Margin="0 5 5 10">
+                    <BoxContainer Name="ScanModePanel" HorizontalExpand="True" Visible="False" Margin="0 20 30 0">
+                        <Label
+                            Name="ScanMode"
+                            Align="Left"
+                            Text="{Loc health-analyzer-window-scan-mode-text}" />
+                        <Label
+                            Name="ScanModeText"
+                            Align="Right"
+                            HorizontalExpand="True"
+                            Margin="0 0 0 10" />
+                    </BoxContainer>
                     <Label
-                    Name="ScanMode"
-                    Align="Left"
-                    Text="{Loc health-analyzer-window-scan-mode-text}"/>
+                        Name="PatientName" />
                     <Label
-                    Name="ScanModeText"
-                    Align="Right"
-                    HorizontalExpand="True"/>
+                        Name="Temperature"
+                        Margin="0 5 0 0" />
+                    <Label
+                        Name="BloodLevel"
+                        Margin="0 5 0 0" />
+                    <Label
+                        Name="Bleeding"
+                        Margin="0 5 0 0" />
+                    <controls:HLine Color="#113E1B" SetHeight="5" Margin="-37 5 0 0" SetWidth="605"></controls:HLine>
+                    <Label
+                        Name="patientDamageAmount"
+                        Margin="0 10 0 0" />
                 </BoxContainer>
-                <Label
-                    Name="PatientName"/>
-                <Label
-                    Name="Temperature"
-                    Margin="0 5 0 0"/>
-                <Label
-                    Name="BloodLevel"
-                    Margin="0 5 0 0"/>
-                <Label
-                    Name="Bleeding"
-                    Margin="0 5 0 0"/>
-                <Label
-                    Name="patientDamageAmount"
-                    Margin="0 15 0 0"/>
+                <BoxContainer
+                    Name="GroupsContainer"
+                    Orientation="Vertical">
+                </BoxContainer>
+                <controls:HLine Color="#113E1B" SetHeight="5" Margin="-40 0 0 0" SetWidth="605"></controls:HLine>
+                <Label Name="SurgeryNameLabel" Margin="0 10 0 0" />
+                <Label Name="SurgeryProcedureLabel" Margin="0 5 0 0" />
+                <BoxContainer Orientation="Horizontal" VerticalAlignment="Center">
+                    <Label Name="SurgeryStepDesc" Margin="0 10 0 0"></Label>
+                    <TextureRect Name="SurgeryIcon" VerticalAlignment="Center" Margin="10 0 0 0"></TextureRect>
+                    <Label Name="SurgeryStep" Margin="0 10 0 0"></Label>
+                </BoxContainer>
             </BoxContainer>
-            <BoxContainer
-                Name="GroupsContainer"
-                Orientation="Vertical">
-            </BoxContainer>
-        </BoxContainer>
+        </TextureRect>
     </ScrollContainer>
 </controls:FancyWindow>

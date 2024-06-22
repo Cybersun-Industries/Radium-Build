@@ -43,7 +43,7 @@
         steps:
         - tag: WallmountSubstationElectronics
           store: board
-          name: "wallmount substation circuit board"
+          name: ent-WallmountSubstationElectronics
           icon:
             sprite: "Objects/Misc/module.rsi"
             state: "charger_APC"

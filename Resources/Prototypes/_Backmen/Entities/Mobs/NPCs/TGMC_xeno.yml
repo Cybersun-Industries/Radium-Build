@@ -51,8 +51,8 @@
     channel: Hivemind
   - type: ReplacementAccent
     accent: xeno
-  - type: TTS
-    voice: Xenia
+#  - type: TTS
+#    voice: Xenia
   - type: Hands
     showInHands: true
   - type: MobState
