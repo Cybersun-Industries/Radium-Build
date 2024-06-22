@@ -1,0 +1,63 @@
+﻿- type: entity
+  name: Майк Тайсон
+  id: MobTysonReal
+  parent: [BaseMob, MobCombat, MobBloodstream, MobRespirator, MobAtmosStandard, MobDamageable, MobFlammable]
+  description: О, нет! Это же великий ЖЕЛЕЗНЫЙ Майк!
+  components:
+  - type: InputMover
+  - type: MobMover
+  - type: HTN
+    rootTask:
+      task: SimpleHostileCompound
+    blackboard:
+        NavSmash: !type:Bool
+          true
+  - type: NpcFactionMember
+    factions:
+      - SimpleHostile
+  - type: Sprite
+    drawdepth: Mobs
+    sprite: Radium/Mobs/Tysonreal/tysonreal.rsi
+    layers:
+    - map: [ "enum.DamageStateVisualLayers.Base" ]
+      state: alive
+  - type: CombatMode
+  - type: Physics
+  - type: MobState
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      500: Dead
+  - type: Stamina
+    critThreshold: 500
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: alive
+      Dead:
+        Base: dead
+  - type: Butcherable
+    spawned:
+    - id: FoodMeat
+      amount: 2
+    - id: ClothingHandsGlovesBoxingRed
+      amount: 1
+  - type: Bloodstream
+    bloodMaxVolume: 250
+    bloodReagent: Blood
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3
+    baseSprintSpeed: 3
+  - type: MeleeWeapon
+    attackRate: 1.5
+    altDisarm: true
+    angle: 0
+    animation: WeaponArcFist
+    soundHit:
+      path: /Audio/Effects/tysonrealpunch.ogg
+    damage:
+      groups:
+        Brute: 15
+  - type: TypingIndicator
+    proto: default
+

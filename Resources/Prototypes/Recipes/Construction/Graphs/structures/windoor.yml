@@ -109,7 +109,7 @@
       steps:
       - component: DoorElectronics
         store: board
-        name: "door electronics circuit board"
+        name: ent-DoorElectronics
         icon:
           sprite: "Objects/Misc/module.rsi"
           state: "door_electronics"
@@ -183,7 +183,7 @@
       steps:
       - tag: DoorElectronics
         store: board
-        name: "door electronics circuit board"
+        name: ent-DoorElectronics
         icon:
           sprite: "Objects/Misc/module.rsi"
           state: "door_electronics"
@@ -257,7 +257,7 @@
       steps:
       - tag: DoorElectronics
         store: board
-        name: "door electronics circuit board"
+        name: ent-DoorElectronics
         icon:
           sprite: "Objects/Misc/module.rsi"
           state: "door_electronics"
@@ -380,7 +380,7 @@
       steps:
       - component: DoorElectronics
         store: board
-        name: "door electronics circuit board"
+        name: ent-DoorElectronics
         icon:
           sprite: "Objects/Misc/module.rsi"
           state: "door_electronics"
@@ -479,7 +479,7 @@
       steps:
       - tag: DoorElectronics
         store: board
-        name: "door electronics circuit board"
+        name: ent-DoorElectronics
         icon:
           sprite: "Objects/Misc/module.rsi"
           state: "door_electronics"
@@ -554,7 +554,7 @@
       steps:
       - tag: DoorElectronics
         store: board
-        name: "door electronics circuit board"
+        name: ent-DoorElectronics
         icon:
           sprite: "Objects/Misc/module.rsi"
           state: "door_electronics"
@@ -629,7 +629,7 @@
       steps:
       - tag: DoorElectronics
         store: board
-        name: "door electronics circuit board"
+        name: ent-DoorElectronics
         icon:
           sprite: "Objects/Misc/module.rsi"
           state: "door_electronics"

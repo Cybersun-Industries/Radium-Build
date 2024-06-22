@@ -3,7 +3,7 @@ rules_file = "RulesCorvax.txt"
 
 [game]
 fallbackpreset = "extended"
-lobbyenabled = true
+lobbyenabled = false
 role_timers = true
 
 [ic]

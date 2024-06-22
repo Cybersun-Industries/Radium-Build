@@ -50,7 +50,7 @@ public abstract class SharedHumanoidAppearanceSystem : EntitySystem
     {
         { Sex.Male, "Aidar" },
         { Sex.Female, "Kseniya" },
-        { Sex.Unsexed, "Baya" },
+        { Sex.Unsexed, "Oleg" },
     };
     // Corvax-TTS-End
 

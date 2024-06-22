@@ -90,7 +90,7 @@ namespace Content.Client.Construction
             {
                 args.PushMarkup(Loc.GetString(
                     "construction-ghost-examine-message",
-                    ("name", component.Prototype.Name)));
+                    ("name", component.Prototype.LocalizedName)));
 
                 if (!_prototypeManager.TryIndex(component.Prototype.Graph, out ConstructionGraphPrototype? graph))
                     return;

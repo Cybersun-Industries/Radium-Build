@@ -2,6 +2,7 @@
 using Content.Client.Changelog;
 using Content.Client.Chat.Managers;
 using Content.Client.Clickable;
+using Content.Client.Corvax;
 using Content.Client.Corvax.TTS;
 using Content.Client.Eui;
 using Content.Client.GhostKick;
@@ -31,7 +32,7 @@ namespace Content.Client.IoC
             collection.Register<Content.Corvax.Interfaces.Shared.ISharedSponsorsManager,Backmen.Sponsors.SponsorsManager>(); // Corvax-Sponsors
             collection.Register<Content.Corvax.Interfaces.Client.ISponsorWindowCreator,Backmen.Sponsors.SponsorWindowCreator>(); // Corvax-Sponsors
             collection.Register<Content.Corvax.Interfaces.Client.IClientJoinQueueManager,Backmen.JoinQueue.JoinQueueManager>(); // Corvax-Queue
-            collection.Register<Content.Corvax.Interfaces.Client.IClientDiscordAuthManager,Backmen.DiscordAuth.DiscordAuthManager>(); // Corvax-DiscordAuth
+            collection.Register<IClientDiscordAuthManager,Radium.DiscordAuth.DiscordAuthManager>(); // Corvax-DiscordAuth
             collection.Register<Content.Corvax.Interfaces.Shared.ISharedLoadoutsManager, Backmen.Sponsors.LoadoutsManager>(); // Corvax-Sponsors
 
             collection.Register<IParallaxManager, ParallaxManager>();

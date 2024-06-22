@@ -133,6 +133,9 @@
     count: 10
   - type: StackPrice
     price: 5
+  - type: SurgeryTool
+    action: enum.SurgeryTypeEnum.Bandage
+    modifier: 2.5
 
 - type: entity
   id: Brutepack1
@@ -288,6 +291,9 @@
     count: 10
   - type: StackPrice
     price: 10
+  - type: SurgeryTool
+    action: enum.SurgeryTypeEnum.Bandage
+    modifier: 1.5
 
 - type: entity
   id: Gauze1

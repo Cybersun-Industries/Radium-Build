@@ -1,0 +1,5 @@
+﻿- type: entity
+  parent: ClothingBeltSuspenders
+  id: UnremoveableClothingBeltSuspenders
+  components:
+  - type: Unremoveable

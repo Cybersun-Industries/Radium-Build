@@ -1,0 +1,39 @@
+- type: entity
+  parent: BaseMobSpeciesOrganic
+  id: BaseMobReplicant
+  noSpawn: true
+  name: Урист МакРепликант
+  components:
+  - type: Hunger
+  - type: Icon
+    sprite: Mobs/Species/Human/parts.rsi
+    state: full
+  - type: Thirst
+  - type: Butcherable
+    butcheringType: Spike
+    spawned:
+    - id: FoodMeatHuman
+      amount: 5
+
+- type: entity
+  parent: BaseMobSpeciesOrganic
+  id: BaseMobReplicantGhostRole
+  noSpawn: true
+  name: Урист МакРепликант
+  suffix: GhostRole
+  components:
+  - type: Hunger
+  - type: Icon
+    sprite: Mobs/Species/Human/parts.rsi
+    state: full
+  - type: Thirst
+  - type: Butcherable
+    butcheringType: Spike
+    spawned:
+    - id: FoodMeatHuman
+      amount: 5
+  - type: GhostRole
+    name: ghost-role-information-replica-human-name
+    description: ghost-role-information-replica-human-description
+    rules: ghost-role-information-replica-human-rules
+  - type: GhostTakeoverAvailable

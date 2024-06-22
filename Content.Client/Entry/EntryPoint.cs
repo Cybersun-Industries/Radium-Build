@@ -1,6 +1,7 @@
 using Content.Client.Administration.Managers;
 using Content.Client.Changelog;
 using Content.Client.Chat.Managers;
+using Content.Client.Corvax;
 using Content.Client.Corvax.TTS;
 using Content.Client.Options;
 using Content.Client.Eui;
@@ -15,6 +16,7 @@ using Content.Client.MainMenu;
 using Content.Client.Parallax.Managers;
 using Content.Client.Players.PlayTimeTracking;
 using Content.Client.Radiation.Overlays;
+using Content.Client.Radium.Medical.Surgery.UI;
 using Content.Client.Replay;
 using Content.Client.Screenshot;
 using Content.Client.Singularity;
@@ -178,8 +180,8 @@ namespace Content.Client.Entry
             // start-backmen: ioc
             IoCManager.Resolve<Content.Corvax.Interfaces.Shared.ISharedSponsorsManager>().Initialize();
             IoCManager.Resolve<Content.Corvax.Interfaces.Client.IClientJoinQueueManager>().Initialize();
-            IoCManager.Resolve<Content.Corvax.Interfaces.Client.IClientDiscordAuthManager>().Initialize();
             IoCManager.Resolve<Content.Corvax.Interfaces.Shared.ISharedLoadoutsManager>().Initialize();
+            IoCManager.Resolve<IClientDiscordAuthManager>().Initialize();
             // end-backmen: ioc
 
             _baseClient.RunLevelChanged += (_, args) =>

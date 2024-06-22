@@ -29,7 +29,7 @@ public sealed class StorageSystem : SharedStorageSystem
         SubscribeNetworkEvent<PickupAnimationEvent>(HandlePickupAnimation);
         SubscribeAllEvent<AnimateInsertingEntitiesEvent>(HandleAnimatingInsertingEntities);
     }
-
+    //TODO
     public override void UpdateUI(Entity<StorageComponent?> entity)
     {
         if (Resolve(entity.Owner, ref entity.Comp))
@@ -87,7 +87,7 @@ public sealed class StorageSystem : SharedStorageSystem
         }
 
         Entity<StorageComponent>? last = null;
-        if (_openStorages.Any())
+        if (_openStorages.Count != 0)
             last = _openStorages.LastOrDefault();
         StorageOrderChanged?.Invoke(last);
     }

@@ -4,7 +4,7 @@
   name: centcom briefcase
   components:
   - type: Sprite
-    sprite: Radium\Objects\Storage\Briefcases\briefcase_centcom.rsi
+    sprite: Radium/Objects/Storage/Briefcases/briefcase_centcom.rsi
     state: icon
   - type: Item
-    sprite: Radium\Objects\Storage\Briefcases\briefcase_centcom.rsi
+    sprite: Radium/Objects/Storage/Briefcases/briefcase_centcom.rsi

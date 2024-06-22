@@ -5,12 +5,16 @@ using Robust.Client.UserInterface.Controls;
 using Robust.Client.UserInterface.XAML;
 using Robust.Shared;
 using Robust.Shared.Configuration;
+using Robust.Shared.Utility;
 
 namespace Content.Client.MainMenu.UI;
 
 [GenerateTypedNameReferences]
 public sealed partial class MainMenuControl : Control
 {
+    public static readonly SpriteSpecifier Sprite =
+        new SpriteSpecifier.Rsi(new ResPath("/Textures/Radium/Menu/maina.rsi"), "maina");
+
     public MainMenuControl(IResourceCache resCache, IConfigurationManager configMan)
     {
         RobustXamlLoader.Load(this);
@@ -21,7 +25,10 @@ public sealed partial class MainMenuControl : Control
         LayoutContainer.SetMarginRight(VBox, -25);
         LayoutContainer.SetMarginTop(VBox, 30);
         LayoutContainer.SetGrowHorizontal(VBox, LayoutContainer.GrowDirection.Begin);
-
+        Background.SetFromSpriteSpecifier(Sprite);
+        Background.HorizontalAlignment = HAlignment.Stretch;
+        Background.VerticalAlignment = VAlignment.Stretch;
+        Background.DisplayRect.Stretch = TextureRect.StretchMode.KeepAspectCentered;
         var logoTexture = resCache.GetResource<TextureResource>("/Textures/Logo/logo.png");
         Logo.Texture = logoTexture;
 

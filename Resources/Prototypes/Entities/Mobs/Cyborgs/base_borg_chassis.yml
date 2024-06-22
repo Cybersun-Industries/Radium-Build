@@ -213,8 +213,8 @@
     - FootstepSound
     - CanPilot
   - type: Emoting
-  - type: TTS # Corvax-TTS
-    voice: Borgs
+#  - type: TTS # Corvax-TTS
+#    voice: Borgs
   - type: GuideHelp
     guides:
       - Cyborgs

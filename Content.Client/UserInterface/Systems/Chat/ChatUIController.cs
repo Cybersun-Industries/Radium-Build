@@ -267,7 +267,7 @@ public sealed class ChatUIController : UIController
     {
         var chatBox = UIManager.ActiveScreen?.GetWidget<ChatBox>() ?? UIManager.ActiveScreen?.GetWidget<ResizableChatBox>();
 
-        var panel = chatBox?.ChatWindowPanel;
+        var panel = chatBox?.ChatInput;
         if (panel is null)
             return;
 

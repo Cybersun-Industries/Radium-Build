@@ -2,8 +2,8 @@
 
 - type: listing
   id: UplinkP90Bundle
-  name: набор "P90"
-  description: Старый добрый п90 военного образца, стал символом специальных операций, в комплетке 3 магазина.
+  name: uplink-bundle-p90-name # Radium
+  description: uplink-bundle-p90-desc # Radium
   icon: { sprite: Backmen/Objects/Weapons/Gunsx64/SMGs/p90.rsi, state: icon }
   productEntity: ClothingBackpackDuffelSyndicateFilledP90
   cost:
@@ -24,8 +24,8 @@
 
 - type: listing
   id: UplinkAKMSBundle
-  name: набор "AKMS"
-  description: Символ войны, легендарное оружие зарекомендовавшие себя как самое надежное оружие в истории. В комплетке 3 магазина.
+  name: uplink-bundle-AKMS-name # Radium
+  description: uplink-bundle-AKMS-desc # Radium
   icon: { sprite: Backmen/Objects/Weapons/Gunsx64/Rifles/akms/big.rsi, state: icon }
   productEntity: ClothingBackpackDuffelSyndicateFilledAKMS
   cost:
@@ -46,8 +46,8 @@
 
 - type: listing
   id: UplinkV31Bundle
-  name: набор "V31"
-  description: Основная винтовка вооруженных сил Сынов Марса, имеет реактивные патроны, эффективен против всего. В комплетке 3 магазина.
+  name: uplink-bundle-V31-name # Radium
+  description: uplink-bundle-V31-desc # Radium
   icon: { sprite: Backmen/Objects/Weapons/Gunsx64/Rifles/v31/big.rsi, state: icon }
   productEntity: ClothingBackpackDuffelSyndicateFilledV31
   cost:
@@ -68,8 +68,8 @@
 
 - type: listing
   id: UplinkAKSUBundle
-  name: набор "AKSU"
-  description: Оружие ГРУ СССП, надежное, компактное, а самое главное что ничем не отличается от своего более старшего брата, поэтому его и любят отряды особого назначения. В комплетке 3 магазина.
+  name: uplink-bundle-AKSU-name  # Radium
+  description: uplink-bundle-AKSU-desc  # Radium
   icon: { sprite: Backmen/Objects/Weapons/Gunsx64/Rifles/aksu.rsi, state: icon }
   productEntity: ClothingBackpackDuffelSyndicateFilledAKSU
   cost:
@@ -90,8 +90,8 @@
 
 - type: listing
   id: UplinkStG44Bundle
-  name: набор "StG44"
-  description: Первая "Штурмовая Винтовка" в истории, в отличии от её образца 1944 года, имеет современные внутренности, из-за особенности конструкции имеет более высокую скорострельность. В комплетке 3 магазина.
+  name: uplink-bundle-StG44-name # Radium
+  description: uplink-bundle-StG44-desc # Radium
   icon: { sprite: Backmen/Objects/Weapons/Gunsx64/Rifles/stg44/big.rsi, state: icon }
   productEntity: ClothingBackpackDuffelSyndicateFilledStG44
   cost:

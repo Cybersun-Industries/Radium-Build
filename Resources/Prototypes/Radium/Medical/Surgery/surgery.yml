@@ -1,0 +1,446 @@
+- type: surgeryOperation
+  id: AddAOperation
+  name: surgery-addOperationA-name
+  desc: surgery-addOperationA-desc
+  bodyPart: Arm
+  steps:
+    - name: surgery-scalpelAction-name
+      desc: surgery-incisionAction-desc
+      action: enum.SurgeryTypeEnum.Incise
+    - name: surgery-hemostatAction-name
+      desc: surgery-bypassHemoAction-desc
+      action: enum.SurgeryTypeEnum.Clamp
+    - name: surgery-addFirstPartA-name
+      desc: surgery-addFirstPartA-desc
+      action: enum.SurgeryTypeEnum.AddPart
+    - name: surgery-addSecondPartA-name
+      desc: surgery-addSecondPartA-desc
+      action: enum.SurgeryTypeEnum.AddAdditionalPart
+    - name: surgery-CauteryAction-name
+      desc: surgery-sealAction-desc
+      action: enum.SurgeryTypeEnum.Burn
+  key: AddSurgeryEvent
+  hidden: true
+- type: surgeryOperation
+  id: AmputationHOperation
+  name: surgery-amputationOperation-name
+  desc: surgery-amputationOperation-desc
+  bodyPart: Head
+  steps:
+    - name: surgery-scalpelAction-name
+      desc: surgery-incisionAction-desc
+      action: enum.SurgeryTypeEnum.Incise
+    - name: surgery-retractorAction-name
+      desc: surgery-retractAction-desc
+      action: enum.SurgeryTypeEnum.Retract
+    - name:  surgery-hemostatAction-name
+      desc: surgery-clampAction-desc
+      action: enum.SurgeryTypeEnum.Clamp
+    - name:  surgery-sawAction-name
+      desc: surgery-sawAction-desc
+      action: enum.SurgeryTypeEnum.Cut
+    - name: surgery-hemostatAction-name
+      desc: surgery-clampAction-desc
+      action: enum.SurgeryTypeEnum.Clamp
+    - name: surgery-sawAction-name
+      desc: surgery-severLimbAction-desc
+      action: enum.SurgeryTypeEnum.Cut
+  key: AmputationSurgeryEvent
+  unique: true
+- type: surgeryOperation
+  id: AmputationLOperation
+  name: surgery-amputationOperation-name
+  desc: surgery-amputationOperation-desc
+  bodyPart: Leg
+  steps:
+    - name: surgery-scalpelAction-name
+      desc: surgery-incisionAction-desc
+      action: enum.SurgeryTypeEnum.Incise
+    - name: surgery-retractorAction-name
+      desc: surgery-retractAction-desc
+      action: enum.SurgeryTypeEnum.Retract
+    - name: surgery-hemostatAction-name
+      desc: surgery-clampAction-desc
+      action: enum.SurgeryTypeEnum.Clamp
+    - name: surgery-sawAction-name
+      desc: surgery-sawAction-desc
+      action: enum.SurgeryTypeEnum.Cut
+    - name: surgery-hemostatAction-name
+      desc: surgery-clampAction-desc
+      action: enum.SurgeryTypeEnum.Clamp
+    - name: surgery-sawAction-name
+      desc: surgery-severLimbAction-desc
+      action: enum.SurgeryTypeEnum.Cut
+  key: AmputationSurgeryEvent
+  unique: true
+- type: surgeryOperation
+  id: AmputationAOperation
+  name: surgery-amputationOperation-name
+  desc: surgery-amputationOperation-desc
+  bodyPart: Arm
+  steps:
+    - name: surgery-scalpelAction-name
+      desc: surgery-incisionAction-desc
+      action: enum.SurgeryTypeEnum.Incise
+    - name: surgery-retractorAction-name
+      desc: surgery-retractAction-desc
+      action: enum.SurgeryTypeEnum.Retract
+    - name: surgery-hemostatAction-name
+      desc: surgery-clampAction-desc
+      action: enum.SurgeryTypeEnum.Clamp
+    - name: surgery-sawAction-name
+      desc: surgery-sawAction-desc
+      action: enum.SurgeryTypeEnum.Cut
+    - name: surgery-hemostatAction-name
+      desc: surgery-clampAction-desc
+      action: enum.SurgeryTypeEnum.Clamp
+    - name: surgery-sawAction-name
+      desc: surgery-severLimbAction-desc
+      action: enum.SurgeryTypeEnum.Cut
+  key: AmputationSurgeryEvent
+  unique: true
+- type: surgeryOperation
+  id: EyeCureOperation
+  name: surgery-eyeOperation-name
+  desc: surgery-eyeOperation-desc
+  bodyPart: Eyes
+  steps:
+    - name: surgery-scalpelAction-name
+      desc: surgery-incisionAction-desc
+      action: enum.SurgeryTypeEnum.Incise
+    - name: surgery-retractorAction-name
+      desc: surgery-retractAction-desc
+      action: enum.SurgeryTypeEnum.Retract
+    - name: surgery-hemostatAction-name
+      desc: surgery-clampAction-desc
+      action: enum.SurgeryTypeEnum.Clamp
+    - name: surgery-eyeAction-name
+      desc: surgery-eyeAction-desc
+      action: enum.SurgeryTypeEnum.Repair
+    - name: surgery-CauteryAction-name
+      desc: surgery-mendAction-desc
+      action: enum.SurgeryTypeEnum.Burn
+  key: EyeSurgeryEvent
+  hidden: true
+- type: surgeryOperation
+  id: EyeBlindOperation
+  name: surgery-eyeBlindOperation-name
+  desc: surgery-eyeBlindOperation-desc
+  bodyPart: Eyes
+  steps:
+    - name: surgery-scalpelAction-name
+      desc: surgery-incisionAction-desc
+      action: enum.SurgeryTypeEnum.Incise
+    - name: surgery-retractorAction-name
+      desc: surgery-retractAction-desc
+      action: enum.SurgeryTypeEnum.Retract
+    - name: surgery-hemostatAction-name
+      desc: surgery-clampAction-desc
+      action: enum.SurgeryTypeEnum.Clamp
+    - name: surgery-scalpelAction-name
+      desc: surgery-eyeActionB-desc
+      action: enum.SurgeryTypeEnum.Incise
+    - name: surgery-CauteryAction-name
+      desc: surgery-mendAction-desc
+      action: enum.SurgeryTypeEnum.Burn
+  key: EyeBlindSurgeryEvent
+- type: surgeryOperation
+  id: RepairBoneFBOperation
+  name: surgery-reapirBFOperation-name
+  desc: surgery-reapirBFOperation-desc
+  bodyPart: Torso
+  steps:
+    - name: surgery-scalpelAction-name
+      desc: surgery-incisionAction-desc
+      action: enum.SurgeryTypeEnum.Incise
+    - name: surgery-BBgStAction-name
+      desc: surgery-reapirAction-desc
+      action: enum.SurgeryTypeEnum.Repair
+  key: RepairBoneFSurgeryEvent
+- type: surgeryOperation
+  id: RepairBoneFHOperation
+  name: surgery-reapirBFOperation-name
+  desc: surgery-reapirBFOperation-desc
+  bodyPart: Head
+  steps:
+    - name: surgery-scalpelAction-name
+      desc: surgery-incisionAction-desc
+      action: enum.SurgeryTypeEnum.Incise
+    - name: surgery-BBgStAction-name
+      desc: surgery-reapirAction-desc
+      action: enum.SurgeryTypeEnum.Repair
+  key: RepairBoneFSurgeryEvent
+- type: surgeryOperation
+  id: RepairBoneFAOperation
+  name: surgery-reapirBFOperation-name
+  desc: surgery-reapirBFOperation-desc
+  bodyPart: Arm
+  steps:
+    - name: surgery-scalpelAction-name
+      desc: surgery-incisionAction-desc
+      action: enum.SurgeryTypeEnum.Incise
+    - name: surgery-BBgStAction-name
+      desc: surgery-reapirAction-desc
+      action: enum.SurgeryTypeEnum.Repair
+  key: RepairBoneFSurgeryEvent
+- type: surgeryOperation
+  id: RepairBoneFLOperation
+  name: surgery-reapirBFOperation-name
+  desc: surgery-reapirBFOperation-desc
+  bodyPart: Leg
+  steps:
+    - name: surgery-scalpelAction-name
+      desc: surgery-incisionAction-desc
+      action: enum.SurgeryTypeEnum.Incise
+    - name: surgery-BBgStAction-name
+      desc: surgery-reapirAction-desc
+      action: enum.SurgeryTypeEnum.Repair
+  key: RepairBoneFSurgeryEvent
+- type: surgeryOperation
+  id: RepairCompFBOperation
+  name: surgery-reapirCompBFOperation-name
+  desc: surgery-reapirCompBFOperation-desc
+  bodyPart: Torso
+  steps:
+    - name: surgery-scalpelAction-name
+      desc: surgery-incisionAction-desc
+      action: enum.SurgeryTypeEnum.Incise
+    - name: surgery-retractorAction-name
+      desc: surgery-retractAction-desc
+      action: enum.SurgeryTypeEnum.Retract
+    - name: surgery-hemostatAction-name
+      desc: surgery-clampAction-desc
+      action: enum.SurgeryTypeEnum.Clamp
+    - name: surgery-bonesetterAction-name
+      desc: surgery-resetBoneAction-desc
+      action: enum.SurgeryTypeEnum.Repair
+    - name: surgery-BgStAction-name
+      desc: surgery-reapirAction-desc
+      action: enum.SurgeryTypeEnum.Repair
+  key: RepairCompFSurgeryEvent
+- type: surgeryOperation
+  id: RepairCompFHOperation
+  name: surgery-reapirCompBFOperation-name
+  desc: surgery-reapirCompBFOperation-desc
+  bodyPart: Head
+  steps:
+    - name: surgery-scalpelAction-name
+      desc: surgery-incisionAction-desc
+      action: enum.SurgeryTypeEnum.Incise
+    - name: surgery-retractorAction-name
+      desc: surgery-retractAction-desc
+      action: enum.SurgeryTypeEnum.Retract
+    - name: surgery-hemostatAction-name
+      desc: surgery-clampAction-desc
+      action: enum.SurgeryTypeEnum.Clamp
+    - name: surgery-bonesetterAction-name
+      desc: surgery-resetBoneAction-desc
+      action: enum.SurgeryTypeEnum.Repair
+    - name: surgery-BgStAction-name
+      desc: surgery-reapirAction-desc
+      action: enum.SurgeryTypeEnum.Repair
+  key: RepairCompFHSurgeryEvent
+- type: surgeryOperation
+  id: RepairCompFLOperation
+  name: surgery-reapirCompBFOperation-name
+  desc: surgery-reapirCompBFOperation-desc
+  bodyPart: Leg
+  steps:
+    - name: surgery-scalpelAction-name
+      desc: surgery-incisionAction-desc
+      action: enum.SurgeryTypeEnum.Incise
+    - name: surgery-retractorAction-name
+      desc: surgery-retractAction-desc
+      action: enum.SurgeryTypeEnum.Retract
+    - name: surgery-hemostatAction-name
+      desc: surgery-clampAction-desc
+      action: enum.SurgeryTypeEnum.Clamp
+    - name: surgery-bonesetterAction-name
+      desc: surgery-resetBoneAction-desc
+      action: enum.SurgeryTypeEnum.Repair
+    - name: surgery-BgStAction-name
+      desc: surgery-reapirAction-desc
+      action: enum.SurgeryTypeEnum.Repair
+  key: RepairCompFSurgeryEvent
+- type: surgeryOperation
+  id: RepairCompFAOperation
+  name: surgery-reapirCompBFOperation-name
+  desc: surgery-reapirCompBFOperation-desc
+  bodyPart: Arm
+  steps:
+    - name: surgery-scalpelAction-name
+      desc: surgery-incisionAction-desc
+      action: enum.SurgeryTypeEnum.Incise
+    - name: surgery-retractorAction-name
+      desc: surgery-retractAction-desc
+      action: enum.SurgeryTypeEnum.Retract
+    - name: surgery-hemostatAction-name
+      desc: surgery-clampAction-desc
+      action: enum.SurgeryTypeEnum.Clamp
+    - name: surgery-bonesetterAction-name
+      desc: surgery-resetBoneAction-desc
+      action: enum.SurgeryTypeEnum.Repair
+    - name: surgery-BgStAction-name
+      desc: surgery-reapirAction-desc
+      action: enum.SurgeryTypeEnum.Repair
+  key: RepairCompFSurgeryEvent
+- type: surgeryOperation
+  id: BurnHOperation
+  name: surgery-burnOperation-name
+  desc: surgery-burnOperation-desc
+  bodyPart: Head
+  steps:
+    - name: surgery-hemostatAction-name
+      desc: surgery-exciseInfectionAction-desc
+      action: enum.SurgeryTypeEnum.Clamp
+    - name: surgery-MgStAction-name
+      desc: surgery-bandageAction-desc
+      action: enum.SurgeryTypeEnum.Bandage
+  key: BurnSurgeryEvent
+- type: surgeryOperation
+  id: BurnBOperation
+  name: surgery-burnOperation-name
+  desc: surgery-burnOperation-desc
+  bodyPart: Torso
+  steps:
+    - name: surgery-hemostatAction-name
+      desc: surgery-exciseInfectionAction-desc
+      action: enum.SurgeryTypeEnum.Clamp
+    - name: surgery-MgStAction-name
+      desc: surgery-bandageAction-desc
+      action: enum.SurgeryTypeEnum.Bandage
+  key: BurnSurgeryEvent
+- type: surgeryOperation
+  id: BurnLOperation
+  name: surgery-burnOperation-name
+  desc: surgery-burnOperation-desc
+  bodyPart: Leg
+  steps:
+    - name: surgery-hemostatAction-name
+      desc: surgery-exciseInfectionAction-desc
+      action: enum.SurgeryTypeEnum.Clamp
+    - name: surgery-MgStAction-name
+      desc: surgery-bandageAction-desc
+      action: enum.SurgeryTypeEnum.Bandage
+  key: BurnSurgeryEvent
+- type: surgeryOperation
+  id: BurnAOperation
+  name: surgery-burnOperation-name
+  desc: surgery-burnOperation-desc
+  bodyPart: Arm
+  steps:
+    - name: surgery-hemostatAction-name
+      desc: surgery-exciseInfectionAction-desc
+      action: enum.SurgeryTypeEnum.Clamp
+    - name: surgery-MgStAction-name
+      desc: surgery-bandageAction-desc
+      action: enum.SurgeryTypeEnum.Bandage
+  key: BurnSurgeryEvent
+- type: surgeryOperation
+  id: PierceHOperation
+  name: surgery-pierceOperation-name
+  desc: surgery-pierceOperation-desc
+  bodyPart: Head
+  steps:
+    - name: surgery-scalpelAction-name
+      desc: surgery-incisionAction-desc
+      action: enum.SurgeryTypeEnum.Incise
+    - name: surgery-hemostatAction-name
+      desc: surgery-bypassHemoAction-desc
+      action: enum.SurgeryTypeEnum.Clamp
+    - name: surgery-CauteryAction-name
+      desc: surgery-bypassCautAction-desc
+      action: enum.SurgeryTypeEnum.Burn
+      repeatable: true
+      repeatIndex: 1
+    - name: surgery-CauteryAction-name
+      desc: surgery-sealAction-desc
+      action: enum.SurgeryTypeEnum.Burn
+  key: PierceSurgeryEvent
+- type: surgeryOperation
+  id: PierceBOperation
+  name: surgery-pierceOperation-name
+  desc: surgery-pierceOperation-desc
+  bodyPart: Torso
+  steps:
+    - name: surgery-scalpelAction-name
+      desc: surgery-incisionAction-desc
+      action: enum.SurgeryTypeEnum.Incise
+    - name: surgery-hemostatAction-name
+      desc: surgery-bypassHemoAction-desc
+      action: enum.SurgeryTypeEnum.Clamp
+    - name: surgery-CauteryAction-name
+      desc: surgery-bypassCautAction-desc
+      action: enum.SurgeryTypeEnum.Burn
+      repeatable: true
+      repeatIndex: 1
+    - name: surgery-CauteryAction-name
+      desc: surgery-sealAction-desc
+      action: enum.SurgeryTypeEnum.Burn
+  key: PierceSurgeryEvent
+- type: surgeryOperation
+  id: PierceAOperation
+  name: surgery-pierceOperation-name
+  desc: surgery-pierceOperation-desc
+  bodyPart: Arm
+  steps:
+    - name: surgery-scalpelAction-name
+      desc: surgery-incisionAction-desc
+      action: enum.SurgeryTypeEnum.Incise
+    - name: surgery-hemostatAction-name
+      desc: surgery-bypassHemoAction-desc
+      action: enum.SurgeryTypeEnum.Clamp
+    - name: surgery-CauteryAction-name
+      desc: surgery-bypassCautAction-desc
+      action: enum.SurgeryTypeEnum.Burn
+      repeatable: true
+      repeatIndex: 1
+    - name: surgery-CauteryAction-name
+      desc: surgery-sealAction-desc
+      action: enum.SurgeryTypeEnum.Burn
+  key: PierceSurgeryEvent
+- type: surgeryOperation
+  id: PierceLOperation
+  name: surgery-pierceOperation-name
+  desc: surgery-pierceOperation-desc
+  bodyPart: Leg
+  steps:
+    - name: surgery-scalpelAction-name
+      desc: surgery-incisionAction-desc
+      action: enum.SurgeryTypeEnum.Incise
+    - name: surgery-hemostatAction-name
+      desc: surgery-bypassHemoAction-desc
+      action: enum.SurgeryTypeEnum.Clamp
+    - name: surgery-CauteryAction-name
+      desc: surgery-bypassCautAction-desc
+      action: enum.SurgeryTypeEnum.Burn
+      repeatable: true
+      repeatIndex: 1
+    - name: surgery-CauteryAction-name
+      desc: surgery-sealAction-desc
+      action: enum.SurgeryTypeEnum.Burn
+  key: PierceSurgeryEvent
+- type: surgeryOperation
+  id: AddLOperation
+  name: surgery-addOperationL-name
+  desc: surgery-addOperationL-desc
+  bodyPart: Leg
+  steps:
+    - name: surgery-scalpelAction-name
+      desc: surgery-incisionAction-desc
+      action: enum.SurgeryTypeEnum.Incise
+    - name: surgery-hemostatAction-name
+      desc: surgery-bypassHemoAction-desc
+      action: enum.SurgeryTypeEnum.Clamp
+    - name: surgery-addFirstPartL-name
+      desc: surgery-addFirstPartL-desc
+      action: enum.SurgeryTypeEnum.AddPart
+    - name: surgery-addSecondPartL-name
+      desc: surgery-addSecondPartL-desc
+      action: enum.SurgeryTypeEnum.AddAdditionalPart
+    - name: surgery-CauteryAction-name
+      desc: surgery-sealAction-desc
+      action: enum.SurgeryTypeEnum.Burn
+  key: AddSurgeryEvent
+  hidden: true
+

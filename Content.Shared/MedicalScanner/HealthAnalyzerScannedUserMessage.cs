@@ -1,3 +1,4 @@
+using Content.Shared.Radium.Medical.Surgery.Components;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.MedicalScanner;
@@ -13,14 +14,16 @@ public sealed class HealthAnalyzerScannedUserMessage : BoundUserInterfaceMessage
     public float BloodLevel;
     public bool? ScanMode;
     public bool? Bleeding;
+    public SurgeryStepData? SurgeryData;
 
-    public HealthAnalyzerScannedUserMessage(NetEntity? targetEntity, float temperature, float bloodLevel, bool? scanMode, bool? bleeding)
+    public HealthAnalyzerScannedUserMessage(NetEntity? targetEntity, float temperature, float bloodLevel, bool? scanMode, bool? bleeding, SurgeryStepData? surgeryStep)
     {
         TargetEntity = targetEntity;
         Temperature = temperature;
         BloodLevel = bloodLevel;
         ScanMode = scanMode;
         Bleeding = bleeding;
+        SurgeryData = surgeryStep;
     }
 }
 

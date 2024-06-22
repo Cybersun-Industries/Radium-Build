@@ -1,0 +1,29 @@
+- type: entity
+  parent: BaseItem
+  id: BaseSurgeryItem
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Radium/Objects/Specific/Medical/surgery.rsi
+  - type: Item
+    size: Small
+    sprite: Radium/Objects/Specific/Medical/surgery.rsi
+    heldPrefix: drapes
+  - type: StaticPrice
+    price: 50
+
+- type: entity
+  name: хирургическая простыня
+  description: Стерильная простыня, необходима для проведения операций.
+  parent: BaseSurgeryItem
+  id: Drapes
+  components:
+  - type: Drapes
+    beginSound:
+      path: "/Audio/Items/Medical/ointment_begin.ogg"
+    endSound:
+      path: "/Audio/Items/Medical/ointment_end.ogg"
+  - type: Sprite
+    state: drapes
+  - type: Item
+    heldPrefix: drapes

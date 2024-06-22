@@ -1,0 +1,15 @@
+- type: entity
+  parent: ClothingHeadBase
+  id: ClothingHeadHatHolymelon
+  name: святой арбузный шлем
+  description: Безопасно и свято!
+  components:
+  - type: Sprite
+    sprite: Radium/Clothing/Head/Hats/holymelon.rsi
+  - type: Clothing
+    sprite: Radium/Clothing/Head/Hats/holymelon.rsi
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Heat: 0.95

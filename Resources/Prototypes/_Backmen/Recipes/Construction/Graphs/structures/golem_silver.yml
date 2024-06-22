@@ -14,7 +14,7 @@
               icon:
                 sprite: Objects/Misc/guardian_info.rsi
                 state: guardian_info
-              name: a silver core
+              name: ent-CoreSilver
               doAfter: 10
 
 

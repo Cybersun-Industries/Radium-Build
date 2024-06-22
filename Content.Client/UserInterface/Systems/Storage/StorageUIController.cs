@@ -31,7 +31,7 @@ public sealed class StorageUIController : UIController, IOnSystemChanged<Storage
     private readonly DragDropHelper<ItemGridPiece> _menuDragHelper;
     private StorageContainer? _container;
 
-    private Vector2? _lastContainerPosition;
+    private Vector2 _lastContainerPosition = new(0.5f, 0.75f);
 
     private HotbarGui? Hotbar => UIManager.GetActiveUIWidgetOrNull<HotbarGui>();
 
@@ -82,38 +82,14 @@ public sealed class StorageUIController : UIController, IOnSystemChanged<Storage
 
         if (nullEnt is not null)
         {
-            // center it if we knock it off screen somehow.
-            if (!StaticStorageUIEnabled &&
-                (_lastContainerPosition == null ||
-                _lastContainerPosition.Value.X < 0 ||
-                _lastContainerPosition.Value.Y < 0 ||
-                _lastContainerPosition.Value.X > _ui.WindowRoot.Width ||
-                _lastContainerPosition.Value.Y > _ui.WindowRoot.Height))
+            _container.OpenCenteredAt(_lastContainerPosition);
+            if (_lastContainerPosition != new Vector2(0.5f, 0.75f)) //Bruh..
             {
-                _container.OpenCenteredAt(new Vector2(0.5f, 0.75f));
+                LayoutContainer.SetPosition(_container, _lastContainerPosition);
             }
-            else
-            {
-                _container.Open();
-
-                var pos = !StaticStorageUIEnabled && _lastContainerPosition != null
-                    ? _lastContainerPosition.Value
-                    : Vector2.Zero;
-
-                LayoutContainer.SetPosition(_container, pos);
-            }
-
-            if (StaticStorageUIEnabled)
-            {
-                // we have to orphan it here because Open() sets the parent.
-                _container.Orphan();
-                Hotbar?.StorageContainer.AddChild(_container);
-            }
-            _lastContainerPosition = _container.GlobalPosition;
         }
         else
         {
-            _lastContainerPosition = _container.GlobalPosition;
             _container.Close();
         }
     }
@@ -124,7 +100,6 @@ public sealed class StorageUIController : UIController, IOnSystemChanged<Storage
             return;
 
         StaticStorageUIEnabled = obj;
-        _lastContainerPosition = null;
 
         if (_container == null)
             return;
@@ -221,9 +196,6 @@ public sealed class StorageUIController : UIController, IOnSystemChanged<Storage
         _container = container;
         container.OnPiecePressed += OnPiecePressed;
         container.OnPieceUnpressed += OnPieceUnpressed;
-
-        if (!StaticStorageUIEnabled)
-            _container.Orphan();
     }
 
     private void OnPiecePressed(GUIBoundKeyEventArgs args, ItemGridPiece control)
@@ -242,7 +214,7 @@ public sealed class StorageUIController : UIController, IOnSystemChanged<Storage
         }
         else if (args.Function == ContentKeyFunctions.SaveItemLocation)
         {
-            if (_container?.StorageEntity is not {} storage)
+            if (_container?.StorageEntity is not { } storage)
                 return;
 
             _entity.RaisePredictiveEvent(new StorageSaveItemLocationEvent(
@@ -268,7 +240,8 @@ public sealed class StorageUIController : UIController, IOnSystemChanged<Storage
         }
         else if (args.Function == ContentKeyFunctions.AltActivateItemInWorld)
         {
-            _entity.RaisePredictiveEvent(new InteractInventorySlotEvent(_entity.GetNetEntity(control.Entity), altInteract: true));
+            _entity.RaisePredictiveEvent(new InteractInventorySlotEvent(_entity.GetNetEntity(control.Entity),
+                altInteract: true));
             args.Handle();
         }
     }
@@ -278,7 +251,8 @@ public sealed class StorageUIController : UIController, IOnSystemChanged<Storage
         if (args.Function != ContentKeyFunctions.MoveStoredItem)
             return;
 
-        if (_container?.StorageEntity is not { } storageEnt|| !_entity.TryGetComponent<StorageComponent>(storageEnt, out var storageComp))
+        if (_container?.StorageEntity is not { } storageEnt ||
+            !_entity.TryGetComponent<StorageComponent>(storageEnt, out var storageComp))
             return;
 
         if (DraggingGhost is { } draggingGhost)
@@ -324,6 +298,7 @@ public sealed class StorageUIController : UIController, IOnSystemChanged<Storage
                 _entity.GetNetEntity(control.Entity),
                 _entity.GetNetEntity(storageEnt)));
         }
+
         args.Handle();
     }
 
@@ -365,7 +340,7 @@ public sealed class StorageUIController : UIController, IOnSystemChanged<Storage
             _entity);
 
         // I don't know why it divides the position by 2. Hope this helps! -emo
-        LayoutContainer.SetPosition(DraggingGhost, UIManager.MousePositionScaled.Position / 2 - offset );
+        LayoutContainer.SetPosition(DraggingGhost, UIManager.MousePositionScaled.Position / 2 - offset);
     }
 
     private void OnMenuEndDrag()
@@ -383,7 +358,8 @@ public sealed class StorageUIController : UIController, IOnSystemChanged<Storage
 
         _menuDragHelper.Update(args.DeltaSeconds);
 
-        if (!StaticStorageUIEnabled && _container?.Parent != null && _lastContainerPosition != null)
-            _lastContainerPosition = _container.GlobalPosition;
+        if (_container?.Parent != null)
+            _lastContainerPosition = _container.Position;
+        //Logger.GetSawmill("Storage").Debug($"{_lastContainerPosition.X},${_lastContainerPosition.Y}");
     }
 }

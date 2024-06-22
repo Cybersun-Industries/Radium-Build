@@ -1,0 +1,6 @@
+﻿- type: statusIcon
+  parent: JobIcon
+  id: JobIconSurgeon
+  icon:
+    sprite: /Textures/Radium/Interface/Misc/job_icons.rsi
+    state: Surgeon

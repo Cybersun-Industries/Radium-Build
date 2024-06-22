@@ -1,0 +1,17 @@
+- type: startingGear
+  id: PodClownGear
+  equipment:
+    jumpsuit: UnremoveableClothingUniformJumpsuitClown
+    shoes: UnremoveableClothingShoesClown
+    mask: UnremoveableClothingMaskClown
+
+- type: startingGear
+  id: PodMimeGear
+  equipment:
+    jumpsuit: UnremoveableClothingUniformJumpsuitMime
+    head: ClothingHeadHatBeret
+    belt: UnremoveableClothingBeltSuspenders
+    gloves: UnremoveableClothingHandsGlovesLatex
+    shoes: ClothingShoesColorWhite
+    mask: UnremoveableClothingMaskMime
+    innerClothingSkirt: UnremoveableClothingUniformJumpskirtMime

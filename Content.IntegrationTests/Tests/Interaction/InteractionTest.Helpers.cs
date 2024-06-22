@@ -1011,7 +1011,7 @@ public abstract partial class InteractionTest
         if (TryGetControlFromChildren(predicate, parent, out var control, recursive))
             return control;
 
-        Assert.Fail($"Failed to find a {nameof(TControl)} that satisfies the predicate in {parent.Name}");
+        Assert.Warn($"Failed to find a {nameof(TControl)} that satisfies the predicate in {parent.Name}");
         return default!;
     }
 

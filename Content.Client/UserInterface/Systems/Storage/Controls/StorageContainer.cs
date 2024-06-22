@@ -4,6 +4,7 @@ using System.Numerics;
 using Content.Client.Hands.Systems;
 using Content.Client.Items.Systems;
 using Content.Client.Storage.Systems;
+using Content.Client.UserInterface.Controls;
 using Content.Shared.Input;
 using Content.Shared.Item;
 using Content.Shared.Storage;
@@ -16,7 +17,7 @@ using Robust.Shared.Utility;
 
 namespace Content.Client.UserInterface.Systems.Storage.Controls;
 
-public sealed class StorageContainer : BaseWindow
+public sealed class StorageContainer : FancyWindow
 {
     [Dependency] private readonly IEntityManager _entity = default!;
     private readonly StorageUIController _storageController;
@@ -25,7 +26,6 @@ public sealed class StorageContainer : BaseWindow
 
     private readonly GridContainer _pieceGrid;
     private readonly GridContainer _backgroundGrid;
-    private readonly GridContainer _sidebar;
 
     public event Action<GUIBoundKeyEventArgs, ItemGridPiece>? OnPiecePressed;
     public event Action<GUIBoundKeyEventArgs, ItemGridPiece>? OnPieceUnpressed;
@@ -54,32 +54,27 @@ public sealed class StorageContainer : BaseWindow
     public StorageContainer()
     {
         IoCManager.InjectDependencies(this);
-
         _storageController = UserInterfaceManager.GetUIController<StorageUIController>();
 
         OnThemeUpdated();
 
-        MouseFilter = MouseFilterMode.Stop;
+        Title = "Хранилище";
 
-        _sidebar = new GridContainer
-        {
-            HSeparationOverride = 0,
-            VSeparationOverride = 0,
-            Columns = 1
-        };
+        MouseFilter = MouseFilterMode.Stop;
 
         _pieceGrid = new GridContainer
         {
+            Margin = new Thickness(0, 30),
             HSeparationOverride = 0,
             VSeparationOverride = 0
         };
 
         _backgroundGrid = new GridContainer
         {
+            Margin = new Thickness(0, 30),
             HSeparationOverride = 0,
             VSeparationOverride = 0
         };
-
         var container = new BoxContainer
         {
             Orientation = BoxContainer.LayoutOrientation.Vertical,
@@ -90,7 +85,6 @@ public sealed class StorageContainer : BaseWindow
                     Orientation = BoxContainer.LayoutOrientation.Horizontal,
                     Children =
                     {
-                        _sidebar,
                         new Control
                         {
                             Children =
@@ -131,6 +125,7 @@ public sealed class StorageContainer : BaseWindow
             return;
 
         BuildGridRepresentation();
+        BuildItemPieces();
     }
 
     private void BuildGridRepresentation()
@@ -138,72 +133,7 @@ public sealed class StorageContainer : BaseWindow
         if (!_entity.TryGetComponent<StorageComponent>(StorageEntity, out var comp) || !comp.Grid.Any())
             return;
 
-        var boundingGrid = comp.Grid.GetBoundingBox();
-
         BuildBackground();
-
-        #region Sidebar
-        _sidebar.Children.Clear();
-        _sidebar.Rows = boundingGrid.Height + 1;
-        var exitButton = new TextureButton
-        {
-            TextureNormal = _entity.System<StorageSystem>().OpenStorageAmount == 1
-                ?_exitTexture
-                : _backTexture,
-            Scale = new Vector2(2, 2),
-        };
-        exitButton.OnPressed += _ =>
-        {
-            Close();
-        };
-        exitButton.OnKeyBindDown += args =>
-        {
-            // it just makes sense...
-            if (!args.Handled && args.Function == ContentKeyFunctions.ActivateItemInWorld)
-            {
-                Close();
-                args.Handle();
-            }
-        };
-        var exitContainer = new BoxContainer
-        {
-            Children =
-            {
-                new TextureRect
-                {
-                    Texture = boundingGrid.Height != 0
-                        ? _sidebarTopTexture
-                        : _sidebarFatTexture,
-                    TextureScale = new Vector2(2, 2),
-                    Children =
-                    {
-                        exitButton
-                    }
-                }
-            }
-        };
-        _sidebar.AddChild(exitContainer);
-        for (var i = 0; i < boundingGrid.Height - 1; i++)
-        {
-            _sidebar.AddChild(new TextureRect
-            {
-                Texture = _sidebarMiddleTexture,
-                TextureScale = new Vector2(2, 2),
-            });
-        }
-
-        if (boundingGrid.Height > 0)
-        {
-            _sidebar.AddChild(new TextureRect
-            {
-                Texture = _sidebarBottomTexture,
-                TextureScale = new Vector2(2, 2),
-            });
-        }
-
-        #endregion
-
-        BuildItemPieces();
     }
 
     public void BuildBackground()
@@ -339,7 +269,11 @@ public sealed class StorageContainer : BaseWindow
             currentLocation = dragging.Location;
         }
         else if (handsSystem.GetActiveHandEntity() is { } handEntity &&
-                 storageSystem.CanInsert(StorageEntity.Value, handEntity, out _, storageComp: storageComponent, ignoreLocation: true))
+                 storageSystem.CanInsert(StorageEntity.Value,
+                     handEntity,
+                     out _,
+                     storageComp: storageComponent,
+                     ignoreLocation: true))
         {
             currentEnt = handEntity;
             currentLocation = new ItemStorageLocation(_storageController.DraggingRotation, Vector2i.Zero);
@@ -369,7 +303,8 @@ public sealed class StorageContainer : BaseWindow
 
         foreach (var locations in storageComponent.SavedLocations)
         {
-            if (!_entity.TryGetComponent<MetaDataComponent>(currentEnt, out var meta) || meta.EntityName != locations.Key)
+            if (!_entity.TryGetComponent<MetaDataComponent>(currentEnt, out var meta) ||
+                meta.EntityName != locations.Key)
                 continue;
 
             float spot = 0;
@@ -417,15 +352,7 @@ public sealed class StorageContainer : BaseWindow
 
     protected override DragMode GetDragModeFor(Vector2 relativeMousePos)
     {
-        if (_storageController.StaticStorageUIEnabled)
-            return DragMode.None;
-
-        if (_sidebar.SizeBox.Contains(relativeMousePos - _sidebar.Position))
-        {
-            return DragMode.Move;
-        }
-
-        return DragMode.None;
+        return DragMode.Move;
     }
 
     public Vector2i GetMouseGridPieceLocation(Entity<ItemComponent?> entity, ItemStorageLocation location)

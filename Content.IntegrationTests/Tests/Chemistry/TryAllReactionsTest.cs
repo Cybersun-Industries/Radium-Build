@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Content.Server.Chemistry.Containers.EntitySystems;
 using Content.Shared.Chemistry.Reaction;
 using Content.Shared.Chemistry.Components;
@@ -77,20 +78,26 @@ namespace Content.IntegrationTests.Tests.Chemistry
                     //you just got linq'd fool
                     //(i'm sorry)
                     var foundProductsMap = reactionPrototype.Products
-                        .Concat(reactionPrototype.Reactants.Where(x => x.Value.Catalyst).ToDictionary(x => x.Key, x => x.Value.Amount))
+                        .Concat(reactionPrototype.Reactants.Where(x => x.Value.Catalyst)
+                            .ToDictionary(x => x.Key, x => x.Value.Amount))
                         .ToDictionary(x => x, _ => false);
                     foreach (var (reagent, quantity) in solution.Contents)
                     {
-                        Assert.That(foundProductsMap.TryFirstOrNull(x => x.Key.Key == reagent.Prototype && x.Key.Value == quantity, out var foundProduct));
+                        Assert.That(
+                            foundProductsMap.TryFirstOrNull(
+                                x => x.Key.Key == reagent.Prototype && x.Key.Value == quantity,
+                                out var foundProduct),
+                            message:
+                            $"Failed at reaction prototype: {reactionPrototype.ID} on reagent: {reagent.Prototype} with list: {foundProductsMap.ToString()}");
+                        Debug.Assert(foundProduct != null, nameof(foundProduct) + " != null");
                         foundProductsMap[foundProduct.Value.Key] = true;
                     }
 
                     Assert.That(foundProductsMap.All(x => x.Value));
                 });
-
             }
+
             await pair.CleanReturnAsync();
         }
     }
-
 }

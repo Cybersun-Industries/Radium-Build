@@ -205,6 +205,8 @@
         type: StrippableBoundUserInterface
       enum.StoreUiKey.Key:
         type: StoreBoundUserInterface
+      enum.SurgeryUiKey.Key:
+        type: SurgeryBoundUserInterface
   - type: Puller
   - type: Speech
     speechSounds: Alto

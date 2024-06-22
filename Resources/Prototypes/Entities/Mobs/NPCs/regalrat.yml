@@ -121,8 +121,8 @@
   - type: Grammar
     attributes:
       gender: male
-  - type: TTS # Corvax-TTS
-    voice: Npc1
+#  - type: TTS # Corvax-TTS
+#    voice: Npc1
 
 - type: entity
   id: MobRatKingBuff
