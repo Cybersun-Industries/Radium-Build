@@ -109,12 +109,12 @@
   objectType: Item
 
 - type: construction
-  name: quiver
+  name: ent-ClothingBeltQuiver
   id: ClothingBeltQuiver
   graph: Quiver
   startNode: start
   targetNode: Quiver
   category: construction-category-clothing
-  description: Can hold up to 15 arrows, and fits snug around your waist.
+  description: ent-ClothingBeltQuiver.desc
   icon: { sprite: Clothing/Belt/quiver.rsi, state: icon }
   objectType: Item
