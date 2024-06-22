@@ -796,13 +796,13 @@
     - !type:TileNotBlocked
 
 - type: construction
-  name: Thin firelock
+  name: ent-FirelockFrame
   id: FirelockEdge
   graph: Firelock
   startNode: start
   targetNode: FirelockEdge
   category: construction-category-structures
-  description: This is a firelock - it locks an area when a fire alarm in the area is triggered. Don't get squished!
+  description: ent-FirelockFrame.desc
   icon:
     sprite: Structures/Doors/edge_door_hazard.rsi
     state: closed
@@ -1473,13 +1473,13 @@
     - !type:TileNotBlocked
 
 - type: construction
-  name: strobe light
+  name: ent-AlwaysPoweredStrobeLight
   id: LightStrobeFixture
   graph: LightFixture
   startNode: start
   targetNode: strobeLight
   category: construction-category-structures
-  description: A wall light fixture. Use light bulbs.
+  description: ent-AlwaysPoweredStrobeLight.desc
   icon:
     sprite: Structures/Wallmounts/Lighting/strobe_light.rsi
     state: base
