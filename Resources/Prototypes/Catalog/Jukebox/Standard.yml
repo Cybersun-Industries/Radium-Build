@@ -39,3 +39,63 @@
   name: PigeonBeans - Sunset
   path:
     path: /Audio/Jukebox/sunset.ogg
+
+- type: jukebox
+  id: SpaceAsshole
+  name: Chris Remo - Space Asshole
+  path:
+    path: /Audio/Lobby/space_asshole.ogg
+
+- type: jukebox
+  id: engineerz
+  name: David Bowie - Engineers
+  path:
+    path: /Audio/Lobby/Engineerz.ogg
+
+- type: jukebox
+  id: title2
+  name: Eric Shumaker - Title2
+  path:
+    path: /Audio/Lobby/title2.ogg
+
+- type: jukebox
+  id: andromeda
+  name: Radium - Andromeda
+  path:
+    path: /Audio/Radium/Lobby/Andromeda.ogg
+
+- type: jukebox
+  id: apex
+  name: Radium - Apex
+  path:
+    path: /Audio/Radium/Lobby/Apex.ogg
+
+- type: jukebox
+  id: quasar
+  name: Radium - Quasar
+  path:
+    path: /Audio/Radium/Lobby/Quasar.ogg
+
+- type: jukebox
+  id: maxwell
+  name: Maxwell
+  path:
+    path: /Audio/Radium/Maxwell/maxwell.ogg
+
+- type: jukebox
+  id: deadline
+  name: Bolgarich - Deadline
+  path:
+    path: /Audio/Expedition/deadline.ogg
+
+- type: jukebox
+  id: countdown
+  name: Qwertyquerty - Countdown
+  path:
+    path: /Audio/StationEvents/countdown.ogg
+
+- type: jukebox
+  id: runningout
+  name: Bolgarich - Running Out
+  path:
+    path: /Audio/StationEvents/running_out.ogg
