@@ -180,7 +180,7 @@ namespace Content.Client.HealthAnalyzer.UI
                     continue;
 
                 var groupTitleText =
-                    $"{Loc.GetString("health-analyzer-window-damage-group-text", ("damageGroup", Loc.GetString("health-analyzer-window-damage-group-" + damageGroupId)), ("amount", damageAmount))}";
+                    $"{Loc.GetString("health-analyzer-window-damage-group-text", ("damageGroup", Loc.GetString("damage-group-" + damageGroupId.ToLower())), ("amount", damageAmount))}";
 
                 var groupContainer = new BoxContainer
                 {
