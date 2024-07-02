@@ -1,0 +1,46 @@
+﻿- type: entity
+  abstract: true
+  parent: BaseObjective
+  id: BaseGenestealerObjective
+  components:
+    - type: Objective
+      issuer: Генокрад
+      difficulty: 1
+    - type: RoleRequirement
+      roles:
+        components:
+          - GenestealerRole
+- type: entity
+  noSpawn: true
+  parent:
+    - BaseGenestealerObjective
+  id: GenesObjectiveGenestealer
+  name: Собрать достаточно генов.
+  description: objective-condition-genes-description
+  components:
+    - type: Objective
+      unique: true
+      difficulty: 1
+      icon:
+        sprite: Structures/Specific/carp_rift.rsi
+        state: icon_blue
+    - type: NumberObjective
+      min: 3
+      max: 6
+      title: objective-condition-genes-title
+      description: objective-condition-genes-description
+    - type: GenesCondition
+- type: entity
+  noSpawn: true
+  parent:
+    - BaseGenestealerObjective
+    - BaseLivingObjective
+  id: EscapeShuttleObjectiveGenestealer
+  name: Выживите до конца смены и улетите в Центком живым и свободным.
+  components:
+    - type: Objective
+      difficulty: 1.3
+      icon:
+        sprite: Structures/Furniture/chairs.rsi
+        state: shuttle
+    - type: EscapeShuttleCondition
