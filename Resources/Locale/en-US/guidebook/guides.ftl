@@ -133,6 +133,7 @@ guide-entry-rules-sl-restricted-gear = Restricted Gear
 guide-entry-rules-sl-restricted-weapons = Restricted Weapons
 guide-entry-rules-ban-types = Ban Types
 guide-entry-rules-ban-durations = Ban Durations
+guide-entry-rules-radium = Radium Server Rules
 
 guide-entry-writing = Writing
 guide-entry-glossary = Glossary
