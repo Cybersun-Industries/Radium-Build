@@ -1,5 +1,5 @@
 <Document>
   <Box>
-    <GuideEntityEmbed Entity="MaxwellSingularity" Caption="Maxwell the cat"/>
+    <GuideEntityEmbed Entity="MaxwellSingularitySprite" Caption="Maxwell the cat"/>
   </Box>
 </Document>
