@@ -17,8 +17,10 @@ using Content.Server.Info;
 using Content.Server.Maps;
 using Content.Server.MoMMI;
 using Content.Server.NodeContainer.NodeGroups;
+using Content.Server.Players;
 using Content.Server.Players.JobWhitelist;
 using Content.Server.Players.PlayTimeTracking;
+using Content.Server.Players.RateLimiting;
 using Content.Server.Preferences.Managers;
 using Content.Server.ServerInfo;
 using Content.Server.ServerUpdates;
@@ -27,6 +29,7 @@ using Content.Server.Worldgen.Tools;
 using Content.Shared.Administration.Logs;
 using Content.Shared.Administration.Managers;
 using Content.Shared.Kitchen;
+using Content.Shared.Players.PlayTimeTracking;
 using Content.Shared.Radium.Medical.Surgery.Systems;
 
 namespace Content.Server.IoC
@@ -60,12 +63,10 @@ namespace Content.Server.IoC
             IoCManager.Register<IAdminLogManager, AdminLogManager>();
             IoCManager.Register<PlayTimeTrackingManager>();
             IoCManager.Register<UserDbDataManager>();
-            IoCManager.Register<ServerApi>();
             IoCManager.Register<TTSManager>(); // Corvax-TTS
             IoCManager.Register<ServerInfoManager>();
             IoCManager.Register<PoissonDiskSampler>();
             IoCManager.Register<DiscordWebhook>();
-            IoCManager.Register<JobWhitelistManager>();
             // start-backmen: IoC
             IoCManager.Register<ISharedSponsorsManager, Backmen.Sponsors.SponsorsManager>();
             IoCManager.Register<IServerDiscordAuthManager, Radium.DiscordAuth.DiscordAuthManager>();
@@ -74,6 +75,10 @@ namespace Content.Server.IoC
                 .Register<ISharedLoadoutsManager, Backmen.Sponsors.LoadoutsManager>();
             // end-backmen: IoC
             IoCManager.Register<ServerDbEntryManager>();
+            IoCManager.Register<ISharedPlaytimeManager, PlayTimeTrackingManager>();
+            IoCManager.Register<ServerApi>();
+            IoCManager.Register<JobWhitelistManager>();
+            IoCManager.Register<PlayerRateLimitManager>();
         }
     }
 }
