@@ -78,8 +78,6 @@ namespace Content.Server.IoC
             // end-backmen: IoC
             IoCManager.Register<ServerDbEntryManager>();
             IoCManager.Register<ISharedPlaytimeManager, PlayTimeTrackingManager>();
-            IoCManager.Register<ServerApi>();
-            IoCManager.Register<JobWhitelistManager>();
             IoCManager.Register<PlayerRateLimitManager>();
         }
     }
