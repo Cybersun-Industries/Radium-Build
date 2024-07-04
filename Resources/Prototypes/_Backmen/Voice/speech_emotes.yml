@@ -5,8 +5,8 @@
 #   category: Vocal
 #   name: chat-emote-name-ring
 #   whitelist:
-#     tags:
-#     - Felinid
+#     components:
+#     - Vocal
 #   blacklist:
 #     components:
 #     - BorgChassis
@@ -23,8 +23,8 @@
 #   category: Vocal
 #   name: chat-emote-name-pew
 #   whitelist:
-#     tags:
-#     - Felinid
+#     components:
+#     - Vocal
 #   blacklist:
 #     components:
 #     - BorgChassis
@@ -39,8 +39,8 @@
 #   category: Vocal
 #   name: chat-emote-name-bang
 #   whitelist:
-#     tags:
-#     - Felinid
+#     components:
+#     - Vocal
 #   blacklist:
 #     components:
 #     - BorgChassis
@@ -57,8 +57,8 @@
 #   category: Vocal
 #   name: chat-emote-name-rev
 #   whitelist:
-#     tags:
-#     - Felinid
+#     components:
+#     - Vocal
 #   blacklist:
 #     components:
 #     - BorgChassis
@@ -75,8 +75,8 @@
 #   category: Vocal
 #   name: chat-emote-name-caw
 #   whitelist:
-#     tags:
-#     - Felinid
+#     components:
+#     - Vocal
 #   blacklist:
 #     components:
 #     - BorgChassis
@@ -135,8 +135,8 @@
 #   category: Vocal
 #   name: chat-emote-name-mew
 #   whitelist:
-#     tags:
-#     - Felinid
+#     components:
+#     - Vocal
 #   blacklist:
 #     components:
 #     - BorgChassis
