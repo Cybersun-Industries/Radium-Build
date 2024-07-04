@@ -1,0 +1,12 @@
+﻿- type: entity
+  id: MaxwellSingularitySprite
+  name: MaxwellSinguloSprite
+  description: Maxwell the cat
+  components:
+  - type: Appearance
+  - type: Sprite
+    sprite: Radium/Structures/Power/Generation/Singularity/singularity_1-maxwell.rsi
+    shader: unshaded
+    layers:
+    - map: [ "VisualLevel" ]
+      state: maxwell
