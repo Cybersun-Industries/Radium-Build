@@ -1,0 +1,5 @@
+- type: guideEntry
+  id: RulesRadium
+  name: guide-entry-rules-radium
+  ruleEntry: true
+  text: "/ServerInfo/Guidebook/ServerRules/RulesRadium.xml"
