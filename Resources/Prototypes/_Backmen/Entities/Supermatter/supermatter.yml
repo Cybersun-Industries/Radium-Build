@@ -6,7 +6,7 @@
   components:
   - type: Sprite
     layers:
-    - state: ame-part
+    - state: supermatter
   - type: Flatpack
     entity: supermatter
   - type: StaticPrice
@@ -72,3 +72,6 @@
     maxIntensity: 10000
     intensitySlope: 10
     totalIntensity: 10000
+  - type: GuideHelp 
+    guides:
+    - Supermatter
