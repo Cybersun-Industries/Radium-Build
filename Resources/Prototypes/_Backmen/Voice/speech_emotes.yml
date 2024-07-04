@@ -93,9 +93,10 @@
   id: Hiss
   category: Vocal
   name: chat-emote-name-hiss
+  available: false
   whitelist:
-    tags:
-    - Felinid
+    components:
+    - Vocal
   blacklist:
     components:
     - BorgChassis
@@ -110,9 +111,10 @@
   id: Mews
   category: Vocal
   name: chat-emote-name-mews
+  available: false
   whitelist:
-    tags:
-    - Felinid
+    components:
+    - Vocal
   blacklist:
     components:
     - BorgChassis
@@ -128,30 +130,31 @@
     - мя.
     - мя!
 
-- type: emote
-  id: Mew
-  category: Vocal
-  name: chat-emote-name-mew
-  whitelist:
-    tags:
-    - Felinid
-  blacklist:
-    components:
-    - BorgChassis
-  chatMessages: ["chat-emote-msg-mew"]
-  chatTriggers:
-    - мяв
-    - мяв!
-    - мяв
-    - мявкнул
+# - type: emote
+#   id: Mew
+#   category: Vocal
+#   name: chat-emote-name-mew
+#   whitelist:
+#     tags:
+#     - Felinid
+#   blacklist:
+#     components:
+#     - BorgChassis
+#   chatMessages: ["chat-emote-msg-mew"]
+#   chatTriggers:
+#     - мяв
+#     - мяв!
+#     - мяв
+#     - мявкнул
 
 - type: emote
   id: Meows
   category: Vocal
   name: chat-emote-name-meows
+  available: false
   whitelist:
-    tags:
-    - Felinid
+    components:
+    - Vocal
   blacklist:
     components:
     - BorgChassis
@@ -174,9 +177,10 @@
   id: Purrs
   category: Vocal
   name: chat-emote-name-purrs
+  available: false
   whitelist:
-    tags:
-    - Felinid
+    components:
+    - Vocal
   blacklist:
     components:
     - BorgChassis

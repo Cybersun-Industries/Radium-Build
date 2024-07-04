@@ -5,9 +5,6 @@
   id: MobFelinidBase
   abstract: true
   components:
-  - type: Tag # Radium start
-    tags:
-    - Felinid # Radium
   - type: Sprite
     scale: 0.8, 0.8
   - type: HumanoidAppearance
@@ -47,6 +44,7 @@
     stripTimeReduction: 1
   - type: Speech
     speechSounds: Alto
+    allowedEmotes: ['Hiss', 'Mews', 'Meows', 'Purrs']
   - type: DamageOnHighSpeedImpact
     damage:
       types:
