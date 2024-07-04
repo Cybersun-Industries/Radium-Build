@@ -44,6 +44,7 @@
     stripTimeReduction: 1
   - type: Speech
     speechSounds: Alto
+    allowedEmotes: ['Hiss', 'Mews', 'Meows', 'Purrs']
   - type: DamageOnHighSpeedImpact
     damage:
       types:
