@@ -2,6 +2,8 @@
   id: CorvaxFrame
   mapName: 'Frame Station'
   mapPath: /Maps/corvax_frame.yml
+  maxRandomOffset: 0
+  randomRotation: false
   minPlayers: 0
   maxPlayers: 15
   stations:
@@ -40,13 +42,9 @@
               - /Maps/Ruins/derelict.yml
               - /Maps/Ruins/djstation.yml
               - /Maps/Ruins/old_ai_sat.yml
-              - /Maps/Ruins/relaystation.yml
               - /Maps/Ruins/syndicate_dropship.yml
               - /Maps/Ruins/whiteship_ancient.yml
               - /Maps/Ruins/whiteship_bluespacejumper.yml
-        - type: StationRandomTransform
-          enableStationRotation: false
-          maxStationOffset: null
         - type: StationJobs
           availableJobs:
             # service
@@ -72,3 +70,6 @@
             Brigmedic: [ 0, 1 ] # backmen-Brigmedic
             BKBPLATech: [0, 3] # backmen-BPLA-Silicons
             BKBPLAMED: [0, 3] # backmen-BPLAMED-Silicons
+        - type: StationGoal
+          goals:
+          - FrameRepair
