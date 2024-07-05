@@ -76,3 +76,36 @@
   - type: NpcFactionMember
     factions:
     - NanoTrasen
+
+#Changeling
+
+- type: entity
+  parent: MobHuman
+  id: MobChangeling
+  name: Changeling
+  components:
+    - type: Genestealer
+      evolution: 1
+#    - type: NpcFactionMember
+#      factions:
+#        - Flesh
+    - type: UserInterface
+      interfaces:
+        enum.StoreUiKey.Key:
+          type: StoreBoundUserInterface
+    - type: Store
+      categories:
+        - ChangelingDefensive
+        - ChangelingOffensive
+      currencyWhitelist:
+        - ChangelingEvolution
+#    - type: IntrinsicRadioReceiver
+#    - type: IntrinsicRadioTransmitter
+#      channels:
+#        - Flesh
+#    - type: ActiveRadio
+#      channels:
+#        - Flesh
+#    - type: Psionic
+#      channel: Flesh
+#      channelColor: "#cf1b48"

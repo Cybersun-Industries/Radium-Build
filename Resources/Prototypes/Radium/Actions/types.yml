@@ -48,13 +48,280 @@
       components:
       - MobState
 
+#Changeling defensive abilities
+
 - type: entity
   id: ActionGenestealerSpeedUp
-  name: Transform
+  name: Speed Up (Test)
   description: Costs 15 Essence.
   noSpawn: true
   components:
   - type: InstantAction
     icon: Radium/Interface/Actions/adrenaline.png
+    event: !type:GenestealerSpeedUpActionEvent
+    useDelay: 30
+
+- type: entity
+  id: ActionChangelingStrainedMuscules
+  name: Strained Muscles
+  description: The changeling reduces lactic acid buildup in their leg muscles, allowing them to move at extremely fast speeds. While active, the changeling will take steadily incrementing stamina damage and eventually pass out, if he doesn't take a rest. Doesn't work in monkey form.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: Radium/Interface/Actions/strained_muscules.png
+    event: !type:GenestealerSpeedUpActionEvent
+    useDelay: 30
+
+- type: entity
+  id: ActionChangelingAnatomicPanacea
+  name: Anatomic Panacea
+  description: 	Cures the changeling of many ailments including brain traumas, mutations, diseases, radiation, and toxins. Generally covers the things that Fleshmend doesn't; it can be used to purge the poison that the chemist just shot you up with, or to get rid of that debilitating mutation from an absorbed identity. Can also remove alien larvae and zombie infection. Usable while unconscious. Do not use if you are a slimeperson.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: Radium/Interface/Actions/panacea.png
+    event: !type:GenestealerSpeedUpActionEvent
+    useDelay: 30
+
+- type: entity
+  id: ActionChangelingChitinousArmor
+  name: Chitinous Armor
+  description: Inflates the changeling's body into an all-consuming chitinous mass of armor. Provides extensive protection against physical damage, but less against other types. Its mass slows the changeling's movement, and maintaining its shape slows chemical generation by 25%.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: Radium/Interface/Actions/chitinous_armor.png
+    event: !type:GenestealerSpeedUpActionEvent
+    useDelay: 30
+
+- type: entity
+  id: ActionChangelingVoidAdaptation
+  name: Void Adaptation
+  description: Grants the Changeling a passive ability that allows it to resist cold, low pressure, snowstorms, and a need for oxygen. While in use, slows chemical regeneration by 25%.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: Radium/Interface/Actions/organic_suit.png
+    event: !type:GenestealerSpeedUpActionEvent
+    useDelay: 30
+
+- type: entity
+  id: ActionChangelingOrganicShield
+  name: Organic Shield
+  description: Reforms one of the changeling's arms into a large, fleshy shield. Has a chance to block or mitigate a number of attacks, the amount increasing by 3 with each genome absorbed.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: Radium/Interface/Actions/organic_shield.png
+    event: !type:GenestealerSpeedUpActionEvent
+    useDelay: 30
+
+- type: entity
+  id: ActionChangelingMimicVoice
+  name: Mimic Voice
+  description: Allows the changeling to form their voice of a name they enter. This doesn't have to be anyone that exists on the station, it can be a made up name. Maintaining this façade slows chemical generation by 50%.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: Radium/Interface/Actions/mimic_voice.png
+    event: !type:GenestealerSpeedUpActionEvent
+    useDelay: 30
+
+- type: entity
+  id: ActionChangelingLesserForm
+  name: Lesser Form
+  description: The changeling transforms into a monkey after a brief period of time. Causes all equipment to be dropped on the floor. It can then return to human form by using Human Form.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: Radium/Interface/Actions/lesser_form.png
+    event: !type:GenestealerSpeedUpActionEvent
+    useDelay: 30
+
+- type: entity
+  id: ActionChangelingFleshmend
+  name: Fleshmend
+  description: The changeling will rapidly heal brute and oxygen damage, as well as burn at a slower rate over 10 seconds. Repeated use while the effect is added will restart the regeneration timer, but the user will still heal at the same rate. Usable while unconscious.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: Radium/Interface/Actions/fleshmend.png
+    event: !type:GenestealerSpeedUpActionEvent
+    useDelay: 30
+
+- type: entity
+  id: ActionChangelingChameleonSkin
+  name: Chameleon Skin
+  description: Our skin pigmentation rapidly changes to suit our current environment. Allows us to become invisible after a few seconds of standing still. Can be toggled on and off.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: Radium/Interface/Actions/chameleon_skin.png
+    event: !type:GenestealerSpeedUpActionEvent
+    useDelay: 30
+
+- type: entity
+  id: ActionChangelingBiodegrade
+  name: Biodegrade
+  description: Dissolves restraints or other objects preventing free movement. This is obvious to nearby people, and can destroy standard restraints and closets. When the cuffs are melted completely a pile of green goo will appear below you.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: Radium/Interface/Actions/biodegrade.png
+    event: !type:GenestealerSpeedUpActionEvent
+    useDelay: 30
+
+- type: entity
+  id: PassiveChangelingAugmentedEyesight #TODO PASSIVE!
+  name: Augmented Eyesight
+  description: The changeling evolves additional features in their eyes, giving them a toggleable night-vision and xray-vision mode. The changeling will become more vulnerable to flash-based devices while this ability is active. While it's inactive, it will instead protect you from flashes and bright lights, such as welders. This cannot be detected by normal means.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: Radium/Interface/Actions/augmented_eyesight.png
+    event: !type:GenestealerSpeedUpActionEvent
+    useDelay: 30
+
+- type: entity
+  id: PassiveChangelingDefibrillatorGrasp #TODO PASSIVE!
+  name: Defibrillator Grasp
+  description: Free to evolve. We prepare ourselves while in stasis. If one of our enemies attempts to defibrillate us, we will snatch their arms off and instantly finalize our stasis. This ability is passive, and will trigger when a defibrillator paddle is applied to our chest while we are dead or in stasis. Will also stun cyborgs momentarily.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: Radium/Interface/Actions/defib.png
+    event: !type:GenestealerSpeedUpActionEvent
+    useDelay: 30
+
+#Changeling offensive abilities
+
+- type: entity
+  id: ActionChangelingDNASting
+  name: Extract DNA Sting
+  description: Free to evolve. The changeling can sting a target to extract their genetic information. They can then use the DNA like they just absorbed it. Helps the changeling reach their genome objective.
+  noSpawn: true
+  components:
+  - type: EntityTargetAction
+    icon: Radium/Interface/Actions/sting_transform.png
+    event: !type:GenestealerAbsorbDnaActionEvent
+    useDelay: 0
+    whitelist:
+      components:
+      - MobState
+
+- type: entity
+  id: ActionChangelingTransformationSting
+  name: Transformation Sting
+  description: The changeling injects a retrovirus that forces their human victim to transform into another.
+  noSpawn: true
+  components:
+  - type: EntityTargetAction
+    icon: Radium/Interface/Actions/sting_transform.png
+    event: !type:GenestealerAbsorbDnaActionEvent
+    useDelay: 0
+    whitelist:
+      components:
+      - MobState
+
+- type: entity
+  id: ActionChangelingMuteSting
+  name: Mute Sting
+  description: The changeling silently stings a human, completely silencing them for about thirty seconds.
+  noSpawn: true
+  components:
+  - type: EntityTargetAction
+    icon: Radium/Interface/Actions/sting_mute.png
+    event: !type:GenestealerAbsorbDnaActionEvent
+    useDelay: 0
+    whitelist:
+      components:
+      - MobState
+
+- type: entity
+  id: ActionChangelingBlindSting
+  name: Blind Sting
+  description: The changeling silently stings a human, completely blinding them for a short time and and leaves them with blurred vision for a long time.
+  noSpawn: true
+  components:
+  - type: EntityTargetAction
+    icon: Radium/Interface/Actions/sting_blind.png
+    event: !type:GenestealerAbsorbDnaActionEvent
+    useDelay: 0
+    whitelist:
+      components:
+      - MobState
+
+- type: entity
+  id: ActionChangelingHallutinationSting
+  name: Hallucination Sting
+  description: The changeling injects large doses of hallucinogenic chemicals into their victim. Effect occurs after 30 to 60 seconds. The victim does not notice they've been stung until they start tripping.
+  noSpawn: true
+  components:
+  - type: EntityTargetAction
+    icon: Radium/Interface/Actions/sting_lsd.png
+    event: !type:GenestealerAbsorbDnaActionEvent
+    useDelay: 0
+    whitelist:
+      components:
+      - MobState
+
+- type: entity
+  id: ActionChangelingCryogenicSting
+  name: Cryogenic Sting
+  description: The changeling injects the target with a blend of chemicals that begins to turn their blood to ice. The victim will walk slower and take some damage over the full duration. Victims wearing armor or insulated material will take more damage, since they are insulated from the ambient warmth. Can be countered with space heaters, coffee, and other warming objects and foods.
+  noSpawn: true
+  components:
+  - type: EntityTargetAction
+    icon: Radium/Interface/Actions/sting_cryo.png
+    event: !type:GenestealerAbsorbDnaActionEvent
+    useDelay: 0
+    whitelist:
+      components:
+      - MobState
+
+- type: entity
+  id: ActionChangelingFalseArmbladeSting
+  name: False Armblade Sting
+  description: The changeling silently injects a retrovirus that mutates their victim's arm into an armblade. The victim will form an armblade much like a changeling would, except the armblade is dull and useless. The transformation occurs immediately after the sting, and will last for about a minute.
+  noSpawn: true
+  components:
+  - type: EntityTargetAction
+    icon: Radium/Interface/Actions/sting_armblade.png
+    event: !type:GenestealerAbsorbDnaActionEvent
+    useDelay: 0
+    whitelist:
+      components:
+      - MobState
+
+- type: entity
+  id: ActionChangelingArmBlade
+  name: Arm Blade
+  description: Reforms one of the changeling's arms into a grotesque blade made out of bone and flesh. The arm blade does 25 damage per hit and can be retracted by using the ability again; however, it is visible on your body and a dead giveaway to onlookers and silicons that you are a changeling.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: Radium/Interface/Actions/armblade.png
+    event: !type:GenestealerSpeedUpActionEvent
+    useDelay: 30
+
+- type: entity
+  id: ActionChangelingResonantShriek
+  name: Resonant Shriek
+  description: The changeling emits a tone beyond the range of human hearing, causing deafness and disorientation in an area around itself and bursting lights in the area, while overloading cyborg sensors. Good for escaping groups or preventing people from fleeing from you.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: Radium/Interface/Actions/resonant_shriek.png
+    event: !type:GenestealerSpeedUpActionEvent
+    useDelay: 30
+
+- type: entity
+  id: ActionChangelingDissonantShriek
+  name: Dissonant Shriek
+  description: The changeling emits an EMP, which disables technology in the surrounding area, including radio headsets. Good for escaping borgs and preventing people from shouting over the radio.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: Radium/Interface/Actions/dissonant_shriek.png
     event: !type:GenestealerSpeedUpActionEvent
     useDelay: 30

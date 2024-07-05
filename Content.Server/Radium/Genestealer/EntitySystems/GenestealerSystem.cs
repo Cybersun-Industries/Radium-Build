@@ -41,6 +41,7 @@ using Content.Shared.Store;
 using Content.Shared.Store.Components;
 using Content.Shared.Stunnable;
 using Content.Shared.Tag;
+using Robust.Server.Console;
 using Robust.Server.GameObjects;
 using Robust.Server.Player;
 using Robust.Shared.Configuration;
@@ -61,11 +62,17 @@ public sealed partial class GenestealerSystem : EntitySystem
     [ValidatePrototypeId<EntityPrototype>]
     private const string AbsorbDNA = "GenestealerAbsorbDNA";
 
+    [ValidatePrototypeId<StoreCategoryPrototype>]
+    private const string GenestealerCategoriesDefensive = "GenestealerDefensive";
+
+    [ValidatePrototypeId<StoreCategoryPrototype>]
+    private const string GenestealerCategoriesOffensive = "GenestealerOffensive";
+
     private const string StasisId = "ActionGenestealerStasis";
     private const string TransformId = "ActionGenestealerTransform";
 
-    private const string GenestealerCurrency = "StolenResource";
-    private const string GenestealerCategories = "GenestealerAbilities";
+    private const string GenestealerCurrency = "ChangelingEvolution";
+
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly ActionsSystem _action = default!;
     [Dependency] private readonly AlertsSystem _alerts = default!;
@@ -83,9 +90,9 @@ public sealed partial class GenestealerSystem : EntitySystem
     [Dependency] private readonly MetaDataSystem _metaSystem = default!;
     [Dependency] private readonly RoleSystem _roles = default!;
     [Dependency] private readonly IConfigurationManager _configurationManager = default!;
-    [Dependency] private readonly HumanoidAppearanceSystem _humanoidSystem = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly TagSystem _tagSystem = default!;
+    [Dependency] private readonly IServerConsoleHost _console = default!;
 
     [ValidatePrototypeId<EntityPrototype>]
     private const string SpawnPointPrototype = "SpawnPointGenestealer";
@@ -216,6 +223,26 @@ public sealed partial class GenestealerSystem : EntitySystem
         QueueDel(uid);
     }
 
+    private void InitShop(EntityUid stealerUid)
+    {
+        var stealer = EnsureComp<GenestealerComponent>(stealerUid);
+        var store = EnsureComp<StoreComponent>(stealerUid);
+        var userInterface = EnsureComp<UserInterfaceComponent>(stealerUid);
+        store.Categories.Add(GenestealerCategoriesDefensive);
+        store.Categories.Add(GenestealerCategoriesOffensive);
+        store.RefundAllowed = false;
+        store.CurrencyWhitelist.Add(stealer.EvolutionCurrencyPrototype);
+        _action.AddAction(stealerUid, GenestealerShopId);
+
+        //_store.TryAddCurrency(new Dictionary<string, FixedPoint2>
+        //        { { stealer.EvolutionCurrencyPrototype, stealer.Evolution } },
+        //    stealerUid,
+        //    store);
+
+        //_prototype.TryIndex<ListingPrototype>("GenestealerSpeedUp", out var listing);
+        //store.Listings.Add(listing!);
+    }
+
     private (EntityUid?, HumanoidCharacterProfile? pref) SpawnGenestealer(EntityUid target, EntityCoordinates coords)
     {
         if (!_mindSystem.TryGetMind(target, out var mindId, out var mind) ||
@@ -232,12 +259,15 @@ public sealed partial class GenestealerSystem : EntitySystem
         }
 
         var pref = (HumanoidCharacterProfile) _prefs.GetPreferences(targetSession.Value).SelectedCharacter;
-        if (!_prototype.TryIndex<SpeciesPrototype>(pref.Species, out var species))
-        {
-            return (null, null);
-        }
 
-        var stealerUid = Spawn(species.Prototype, coords);
+        //var stealerUid = Spawn(species.Prototype, coords);
+        var stealerUid = Spawn("MobChangeling", coords);
+        InitShop(stealerUid);
+
+        _action.AddAction(stealerUid, AbsorbDNA);
+        _action.AddAction(stealerUid, StasisId);
+        _action.AddAction(stealerUid, TransformId);
+
         _humanoid.LoadProfile(stealerUid, pref);
         _metaSystem.SetEntityName(stealerUid, MetaData(target).EntityName);
         if (TryComp<DetailExaminableComponent>(target, out var detail))
@@ -245,7 +275,7 @@ public sealed partial class GenestealerSystem : EntitySystem
             EnsureComp<DetailExaminableComponent>(stealerUid).Content = detail.Content;
         }
 
-        _humanoidSystem.LoadProfile(stealerUid, pref);
+        //_humanoid.LoadProfile(stealerUid, pref);
 
         if (pref.FlavorText != "" && _configurationManager.GetCVar(CCVars.FlavorText))
         {
@@ -262,40 +292,32 @@ public sealed partial class GenestealerSystem : EntitySystem
             EnsureComp<DnaComponent>(stealerUid).DNA = dnaComponent.DNA;
         }
 
-
-        if (TryComp<JobComponent>(mindId, out var jobComponent) && jobComponent.Prototype != null &&
-            _prototype.TryIndex<JobPrototype>(jobComponent.Prototype, out var targetMindJob))
+        if (_prototype.TryIndex(pref.Species, out var species)) //Probably I shouldn't do that..
         {
-            if (_prototype.TryIndex<StartingGearPrototype>(targetMindJob.StartingGear!, out var gear))
+            if (species.Prototype.Id == "MobFelinid")
             {
-                _stationSpawning.EquipStartingGear(stealerUid, gear);
-                _stationSpawning.SetPdaAndIdCardData(stealerUid,
-                    pref.Name,
-                    targetMindJob,
-                    _stationSystem.GetOwningStation(target));
-            }
-
-            foreach (var special in targetMindJob.Special)
-            {
-                special.AfterEquip(stealerUid);
+                _console.ExecuteCommand($"scale {stealerUid} 0,8");
             }
         }
 
-        var stealer = AddComp<GenestealerComponent>(stealerUid);
-        var store = AddComp<StoreComponent>(stealerUid);
-        store.Categories.Add(GenestealerCategories);
-        store.CurrencyWhitelist.Add(GenestealerCurrency);
-        _store.TryAddCurrency(new Dictionary<string, FixedPoint2>
-                { { stealer.StolenResourceCurrencyPrototype, stealer.Resource } },
-            stealerUid,
-            store);
-        _prototype.TryIndex<ListingPrototype>("GenestealerSpeedUp", out var listing);
-        //store.Listings.Add(listing!);
+        if (!TryComp<JobComponent>(mindId, out var jobComponent) || jobComponent.Prototype == null ||
+            !_prototype.TryIndex(jobComponent.Prototype, out var targetMindJob))
+            return (stealerUid, pref);
 
-        _action.AddAction(stealerUid, AbsorbDNA);
-        _action.AddAction(stealerUid, GenestealerShopId);
-        _action.AddAction(stealerUid, StasisId);
-        _action.AddAction(stealerUid, TransformId);
+        if (_prototype.TryIndex<StartingGearPrototype>(targetMindJob.StartingGear!, out var gear))
+        {
+            _stationSpawning.EquipStartingGear(stealerUid, gear);
+            _stationSpawning.SetPdaAndIdCardData(stealerUid,
+                pref.Name,
+                targetMindJob,
+                _stationSystem.GetOwningStation(target));
+        }
+
+        foreach (var special in targetMindJob.Special)
+        {
+            special.AfterEquip(stealerUid);
+        }
+
         return (stealerUid, pref);
     }
 

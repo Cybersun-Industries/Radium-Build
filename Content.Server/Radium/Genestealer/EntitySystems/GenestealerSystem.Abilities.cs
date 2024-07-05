@@ -66,16 +66,22 @@ public sealed partial class GenestealerSystem
             return;
 
         args.Handled = true;
-        BeginHarvestDoAfter(uid, target, component,
+        BeginHarvestDoAfter(uid,
+            target,
+            component,
             !TryComp<ResourceComponent>(target, out var resource) ? EnsureComp<ResourceComponent>(target) : resource);
     }
 
-    private void BeginHarvestDoAfter(EntityUid uid, EntityUid target, GenestealerComponent genestealer,
+    private void BeginHarvestDoAfter(EntityUid uid,
+        EntityUid target,
+        GenestealerComponent genestealer,
         ResourceComponent resource)
     {
         if (resource.Harvested)
         {
-            _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("genestealer-dna-harvested"), target, uid,
+            _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("genestealer-dna-harvested"),
+                target,
+                uid,
                 PopupType.SmallCaution);
             return;
         }
@@ -94,13 +100,20 @@ public sealed partial class GenestealerSystem
         _inventorySystem.TryUnequip(target, Goggles, true, true);
         _inventorySystem.TryUnequip(uid, Goggles, true, true);
         _flash.Flash(target: uid, flashDuration: 1000f, user: uid, used: null, slowTo: 1000F, displayPopup: false);
-        _flash.Flash(target: target, flashDuration: 12000f, user: target, used: null, slowTo: 1000F,
+        _flash.Flash(target: target,
+            flashDuration: 12000f,
+            user: target,
+            used: null,
+            slowTo: 1000F,
             displayPopup: false);
         _stun.TryStun(target, TimeSpan.FromSeconds(25), true);
         _stun.TryKnockdown(target, TimeSpan.FromSeconds(25), true);
 
-        var doAfter = new DoAfterArgs(EntityManager, uid, genestealer.HarvestDebuffs.X,
-            new HarvestEvent(), uid,
+        var doAfter = new DoAfterArgs(EntityManager,
+            uid,
+            genestealer.HarvestDebuffs.X,
+            new HarvestEvent(),
+            uid,
             target: target)
         {
             DistanceThreshold = 2,
@@ -115,7 +128,8 @@ public sealed partial class GenestealerSystem
         _appearance.SetData(uid, GenestealerVisuals.Harvesting, true);
 
         _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("genestealer-begin-harvest", ("target", target)),
-            target, PopupType.LargeCaution);
+            target,
+            PopupType.LargeCaution);
 
         TryUseAbility(uid, genestealer, 0, genestealer.HarvestDebuffs);
     }
@@ -138,13 +152,15 @@ public sealed partial class GenestealerSystem
         resource.Harvested = true;
         ChangeEssenceAmount(uid, resource.ResourceAmount, component);
         _store.TryAddCurrency(new Dictionary<string, FixedPoint2>
-            { { component.StolenResourceCurrencyPrototype, resource.ResourceAmount } }, uid);
+                { { component.EvolutionCurrencyPrototype, 1 } },
+            uid);
         if (!HasComp<MobStateComponent>(args.Args.Target))
             return;
 
         if (_mobState.IsAlive(args.Args.Target.Value) || _mobState.IsCritical(args.Args.Target.Value))
         {
-            _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("genestealer-max-resource-increased"), uid,
+            _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("genestealer-max-resource-increased"),
+                uid,
                 uid);
             component.ResourceRegenCap += component.MaxEssenceUpgradeAmount;
         }
@@ -175,14 +191,16 @@ public sealed partial class GenestealerSystem
             {
                 _popup.PopupEntity(
                     Robust.Shared.Localization.Loc.GetString("genestealer-no-session", ("target", args.Args.User)),
-                    args.Args.User, PopupType.LargeCaution);
+                    args.Args.User,
+                    PopupType.LargeCaution);
             }
         }
         else
         {
             _popup.PopupEntity(
                 Robust.Shared.Localization.Loc.GetString("no-mind-container", ("target", args.Args.User)),
-                args.Args.User, PopupType.LargeCaution);
+                args.Args.User,
+                PopupType.LargeCaution);
         }
 
         if (_mindSystem.TryGetObjectiveComp<GenesConditionComponent>(uid, out var obj))
@@ -226,7 +244,8 @@ public sealed partial class GenestealerSystem
         {
             _popup.PopupEntity(
                 Robust.Shared.Localization.Loc.GetString("genestealer-handled", ("target", uid)),
-                args.Performer, PopupType.LargeCaution);
+                args.Performer,
+                PopupType.LargeCaution);
             return;
         }
 
@@ -234,7 +253,8 @@ public sealed partial class GenestealerSystem
         {
             _popup.PopupEntity(
                 Robust.Shared.Localization.Loc.GetString("genestealer-abiltiy-failed", ("target", uid)),
-                args.Performer, PopupType.LargeCaution);
+                args.Performer,
+                PopupType.LargeCaution);
             return;
         }
 
@@ -242,7 +262,8 @@ public sealed partial class GenestealerSystem
         {
             _popup.PopupEntity(
                 Robust.Shared.Localization.Loc.GetString("genestealer-no-session", ("target", uid)),
-                args.Performer, PopupType.LargeCaution);
+                args.Performer,
+                PopupType.LargeCaution);
             return;
         }
 
@@ -289,11 +310,11 @@ public sealed partial class GenestealerSystem
         targetHumanoid.SkinColor = component.SourceHumanoid.SkinColor;
         targetHumanoid.EyeColor = component.SourceHumanoid.EyeColor;
         targetHumanoid.Age = component.SourceHumanoid.Age;
-        _humanoidSystem.SetSex(uid, component.SourceHumanoid.Sex, false, targetHumanoid);
+        _humanoid.SetSex(uid, component.SourceHumanoid.Sex, false, targetHumanoid);
         targetHumanoid.CustomBaseLayers =
-        new Dictionary<HumanoidVisualLayers, CustomBaseLayerInfo>(component.SourceHumanoid.CustomBaseLayers);
+            new Dictionary<HumanoidVisualLayers, CustomBaseLayerInfo>(component.SourceHumanoid.CustomBaseLayers);
         targetHumanoid.MarkingSet = new MarkingSet(component.SourceHumanoid.MarkingSet);
-        _humanoidSystem.SetTTSVoice(uid, component.SourceHumanoid.Voice, targetHumanoid); // Corvax-TTS
+        _humanoid.SetTTSVoice(uid, component.SourceHumanoid.Voice, targetHumanoid); // Corvax-TTS
 
         targetHumanoid.Gender = component.SourceHumanoid.Gender;
 
@@ -302,13 +323,17 @@ public sealed partial class GenestealerSystem
             grammar.Gender = component.SourceHumanoid.Gender;
         }
 
-        _humanoidSystem.LoadProfile(uid, component.Preferences!);
+        _humanoid.LoadProfile(uid, component.Preferences!);
 
         Dirty(uid, targetHumanoid);
 
         _inventorySystem.TryUnequip(uid, Goggles, true, true);
 
-        _flash.Flash(target: uid, flashDuration: 12000f, user: args.Performer, used: null, slowTo: 0.8F,
+        _flash.Flash(target: uid,
+            flashDuration: 12000f,
+            user: args.Performer,
+            used: null,
+            slowTo: 0.8F,
             displayPopup: false);
 
         //EnsureComp<DetailExaminableComponent>(uid).Content = component.Detail;

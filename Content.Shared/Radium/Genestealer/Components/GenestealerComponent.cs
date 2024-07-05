@@ -15,14 +15,19 @@ namespace Content.Shared.Radium.Genestealer.Components;
 public sealed partial class GenestealerComponent : Component
 {
     #region Base Stats
+
     /// <summary>
     /// The total amount of Essence the genestealer has.
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite)]
     public FixedPoint2 Resource = 10;
 
-    [DataField("stolenResourceCurrencyPrototype", customTypeSerializer: typeof(PrototypeIdSerializer<CurrencyPrototype>))]
-    public string StolenResourceCurrencyPrototype = "StolenResource";
+    [ViewVariables(VVAccess.ReadWrite)]
+    [DataField]
+    public FixedPoint2 Evolution = 0;
+
+    [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<CurrencyPrototype>))]
+    public string EvolutionCurrencyPrototype = "ChangelingEvolution";
 
     /// <summary>
     /// The entity's current max amount of essence. Can be increased
@@ -43,6 +48,7 @@ public sealed partial class GenestealerComponent : Component
     #endregion
 
     #region Absorb DNA Ability
+
     // Here's the gist of the harvest ability:
     // Step 1: The revenant clicks on an entity to "search" for it's soul, which creates a doafter.
     // Step 2: After the doafter is completed, the soul is "found" and can be harvested.
@@ -62,9 +68,11 @@ public sealed partial class GenestealerComponent : Component
     /// </summary>
     [ViewVariables(VVAccess.ReadWrite), DataField("maxEssenceUpgradeAmount")]
     public float MaxEssenceUpgradeAmount = 5;
+
     #endregion
 
     #region Regenerative Statis Ability
+
     /// <summary>
     /// The amount of essence that is needed to use the ability.
     /// </summary>
@@ -81,9 +89,11 @@ public sealed partial class GenestealerComponent : Component
 
     [DataField("stasisDuration")]
     public FixedPoint2 StatisDuration = 120; //seconds
+
     #endregion
 
     #region Transform Ability
+
     /// <summary>
     /// The amount of essence that is needed to use the ability.
     /// </summary>
@@ -101,12 +111,16 @@ public sealed partial class GenestealerComponent : Component
     #endregion
 
     #region Visualizer
+
     [DataField("state")]
     public string State = "idle";
+
     [DataField("stunnedState")]
     public string StunnedState = "stunned";
+
     [DataField("harvestingState")]
     public string HarvestingState = "harvesting";
+
     #endregion
 
     #region TransformPool
@@ -122,6 +136,7 @@ public sealed partial class GenestealerComponent : Component
     [DataField] public NetUserId? Session;
 
     [DataField] public ActionsComponent? Actions;
+
     #endregion
 
     [DataField] public EntityUid? Action;

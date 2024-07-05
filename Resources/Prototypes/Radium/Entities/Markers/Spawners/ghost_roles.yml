@@ -9,7 +9,7 @@
     description: Вы генокрад. Ваша задача собрать как можно больше очков эволюции.
     rules: Вы генокра. Ваша задача собрать как можно больше очков эволюции путём копирования ДНК человека. Вам разрешены убийства, но только в крайних случаях. Оглушайте цель и получайте ресурсы, при этом цель выживет.
   - type: GhostRoleMobSpawner
-    prototype: MobGenestealer
+    prototype: MobGenestealerSpawner
   - type: Sprite
     sprite: Markers/jobs.rsi
     layers:

@@ -1,15 +1,7 @@
-﻿- type: storeCategory #deprecated
-  id: GenestealerAbilities
-  name: store-category-genestealershop
-
-- type: storeCategory
+﻿- type: storeCategory
   id: ChangelingDefensive
   name: store-category-changeling-defensive
 
 - type: storeCategory
   id: ChangelingOffensive
   name: store-category-changeling-offensive
-
-- type: storeCategory
-  id: ChangelingUtility
-  name: store-category-changeling-utility
