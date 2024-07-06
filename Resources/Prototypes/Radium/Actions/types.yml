@@ -68,7 +68,7 @@
   noSpawn: true
   components:
   - type: InstantAction
-    icon: Radium/Interface/Actions/strained_muscules.png
+    icon: Radium/Interface/Actions/strained_muscles.png
     event: !type:GenestealerSpeedUpActionEvent
     useDelay: 30
 
