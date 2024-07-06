@@ -1,19 +1,13 @@
-﻿using System.Linq;
-using Content.Shared.Body.Components;
+﻿using Content.Shared.Body.Components;
 using Content.Shared.Body.Part;
 using Content.Shared.Body.Systems;
-using Content.Shared.Humanoid;
-using Content.Shared.Radium.Medical.Surgery.Components;
-using Robust.Shared.Prototypes;
-using Robust.Shared.Timing;
 
 namespace Content.Shared.Radium.Medical.Surgery.Systems;
 
-public class DamagePartsSystem : EntitySystem
+public abstract class DamagePartsSystem : EntitySystem
 {
     //[Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     //[Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly SharedBodySystem _bodySystem = default!;
 
     public IReadOnlyDictionary<(BodyPartType, BodyPartSymmetry), (int, bool)> GetDamagedParts(EntityUid euid)
     {
@@ -24,7 +18,7 @@ public class DamagePartsSystem : EntitySystem
         //}
         if (!TryComp<BodyComponent>(euid, out var bodyComponent))
             return partsWounds;
-        foreach (var (_, component) in _bodySystem.GetBodyChildren(euid, bodyComponent))
+        foreach (var (_, component) in GetBodyChildren(euid, bodyComponent))
         {
             //var organs = _bodySystem.GetPartOrgans(adjacentId).ToList();
             //var isDamaged = organs.Select(g => g.Component.Condition != OrganCondition.Healthy).ToList().Contains(true);
@@ -42,4 +36,8 @@ public class DamagePartsSystem : EntitySystem
 
         return partsWounds;
     }
+
+
+    public abstract IEnumerable<(EntityUid Id, BodyPartComponent Component)> GetBodyChildren(EntityUid euid,
+        BodyComponent bodyComponent);
 }

@@ -13,6 +13,7 @@ using Content.Shared.Mobs.Components;
 using Content.Shared.PowerCell;
 using Content.Shared.Radium.Medical.Surgery.Components;
 using Content.Shared.Radium.Medical.Surgery.Prototypes;
+using Content.Shared.Radium.Medical.Surgery.Systems;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
@@ -217,7 +218,6 @@ public sealed class HealthAnalyzerSystem : EntitySystem
                 }
             }
         }
-
         _uiSystem.ServerSendUiMessage(healthAnalyzer,
             HealthAnalyzerUiKey.Key,
             new HealthAnalyzerScannedUserMessage(
