@@ -1,4 +1,5 @@
-﻿using Content.Shared.Body.Components;
+﻿using Content.Client.Body.Systems;
+using Content.Shared.Body.Components;
 using Content.Shared.Body.Part;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
@@ -12,9 +13,15 @@ namespace Content.Client.Radium.Medical.Surgery.UI.Widgets.Systems;
 public sealed class ClientDamagePartsSystem : DamagePartsSystem
 {
     [Dependency] private readonly IPlayerManager _playerManager = default!;
+    [Dependency] private readonly IEntityManager _entManager = default!;
 
     public event EventHandler<IReadOnlyDictionary<(BodyPartType, BodyPartSymmetry), (int, bool)>>?
         SyncParts;
+
+    public override IEnumerable<(EntityUid Id, BodyPartComponent Component)> GetBodyChildren(EntityUid euid, BodyComponent bodyComponent)
+    {
+        return _entManager.System<BodySystem>().GetBodyChildren(euid, bodyComponent);
+    }
 
     public event EventHandler? Dispose;
 
@@ -48,4 +55,5 @@ public sealed class ClientDamagePartsSystem : DamagePartsSystem
     {
         Dispose?.Invoke(this, EventArgs.Empty);
     }
+
 }

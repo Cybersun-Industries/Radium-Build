@@ -1,5 +1,6 @@
 ﻿using System.Numerics;
 using Content.Client.Guidebook.Richtext;
+using Content.Client.Radium.Medical.Surgery.UI.Widgets.Systems;
 using Content.Shared.Body.Part;
 using Content.Shared.Radium.Medical.Surgery.Systems;
 using Robust.Client.UserInterface.Controls;
@@ -71,7 +72,7 @@ public sealed partial class DamagePartsUi : UIWidget
         LLeg.Texture = Texture.Transparent;
         RLeg.Texture = Texture.Transparent;
     }
-    public void SyncControls(DamagePartsSystem partsSystem,
+    public void SyncControls(ClientDamagePartsSystem partsSystem,
         IReadOnlyDictionary<(BodyPartType, BodyPartSymmetry), (int, bool)> partsStates)
     {
         Clear();

@@ -47,7 +47,7 @@ public sealed partial class SurgerySystem : EntitySystem
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly PopupSystem _popupSystem = default!;
     [Dependency] private readonly MovementSpeedModifierSystem _movement = default!;
-    [Dependency] private readonly DamagePartsSystem _damageParts = default!;
+    [Dependency] private readonly ServerDamagePartsSystem _damageParts = default!;
     [Dependency] private readonly DrunkSystem _drunkSystem = default!;
     [Dependency] private readonly SolutionContainerSystem _solutionContainerSystem = default!;
     [Dependency] private readonly StutteringSystem _stutteringSystem = default!;

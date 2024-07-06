@@ -1,3 +1,4 @@
+using Content.Shared.Body.Part;
 using Content.Shared.Radium.Medical.Surgery.Components;
 using Robust.Shared.Serialization;
 
@@ -15,8 +16,9 @@ public sealed class HealthAnalyzerScannedUserMessage : BoundUserInterfaceMessage
     public bool? ScanMode;
     public bool? Bleeding;
     public SurgeryStepData? SurgeryData;
+    public IReadOnlyDictionary<(BodyPartType, BodyPartSymmetry), (int, bool)>? DamagedBodyParts;
 
-    public HealthAnalyzerScannedUserMessage(NetEntity? targetEntity, float temperature, float bloodLevel, bool? scanMode, bool? bleeding, SurgeryStepData? surgeryStep)
+    public HealthAnalyzerScannedUserMessage(NetEntity? targetEntity, float temperature, float bloodLevel, bool? scanMode, bool? bleeding, SurgeryStepData? surgeryStep, IReadOnlyDictionary<(BodyPartType, BodyPartSymmetry), (int, bool)>? damagedBodyParts = null)
     {
         TargetEntity = targetEntity;
         Temperature = temperature;
@@ -24,6 +26,7 @@ public sealed class HealthAnalyzerScannedUserMessage : BoundUserInterfaceMessage
         ScanMode = scanMode;
         Bleeding = bleeding;
         SurgeryData = surgeryStep;
+        DamagedBodyParts = damagedBodyParts;
     }
 }
 
