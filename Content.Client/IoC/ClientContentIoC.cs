@@ -4,6 +4,7 @@ using Content.Client.Chat.Managers;
 using Content.Client.Clickable;
 using Content.Client.Corvax;
 using Content.Client.Corvax.TTS;
+using Content.Client.DebugMon;
 using Content.Client.Eui;
 using Content.Client.GhostKick;
 using Content.Client.Launcher;
@@ -20,6 +21,8 @@ using Content.Client.Lobby;
 using Content.Client.Replay;
 using Content.Shared.Administration.Managers;
 using Content.Shared.Players.PlayTimeTracking;
+using Content.Client.Radium.Medical.Surgery.UI.Widgets.Systems;
+using Content.Shared.Radium.Medical.Surgery.Systems;
 
 
 namespace Content.Client.IoC
@@ -55,6 +58,8 @@ namespace Content.Client.IoC
             collection.Register<DocumentParsingManager>();
             collection.Register<ContentReplayPlaybackManager, ContentReplayPlaybackManager>();
             collection.Register<ISharedPlaytimeManager, JobRequirementsManager>();
+            collection.Register<DebugMonitorManager>();
+            collection.Register<ClientDamagePartsSystem, ClientDamagePartsSystem>();
         }
     }
 }

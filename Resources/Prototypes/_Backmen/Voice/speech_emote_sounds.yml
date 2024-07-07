@@ -22,10 +22,13 @@
       collection: FelinidMeows
     Purrs:
       collection: FelinidPurrs
+    Hiss:
+      collection: FelinidHisses
     Growl:
       collection: FelinidGrowls
     Weh:
       collection: Weh
+
 
 - type: emoteSounds
   id: FemaleFelinid

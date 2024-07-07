@@ -9,18 +9,18 @@ jobs:
   diff:
     name: Diff
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
     steps:
       - name: Checkout
         uses: actions/checkout@v3.6.0
 
       - name: Get changed files
         id: files
-        uses: Ana06/get-changed-files@v1.2
+        uses: Ana06/get-changed-files@v2.3.0
         with:
           format: 'space-delimited'
+          filter: | 
+            **.rsi
+            **.png
 
       - name: Diff changed RSIs
         id: diff
