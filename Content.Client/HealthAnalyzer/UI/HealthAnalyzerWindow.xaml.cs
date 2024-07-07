@@ -17,6 +17,10 @@ using Robust.Client.ResourceManagement;
 using Robust.Client.UserInterface;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Utility;
+using Content.Shared.Radium.Medical.Surgery.Events;
+using Content.Shared.Radium.Medical.Surgery.Systems;
+using Content.Client.Radium.Medical.Surgery.UI.Widgets.Systems;
+using Content.Shared.Body.Part;
 
 namespace Content.Client.HealthAnalyzer.UI
 {
@@ -124,6 +128,154 @@ namespace Content.Client.HealthAnalyzer.UI
                 GroupsContainer.AddChild(box);
             }
 
+            if (msg.DamagedBodyParts == null)
+                return;
+            BaseDollTransparent.Texture = Texture.Transparent;
+            foreach (var pair in msg.DamagedBodyParts)
+            {
+                switch (pair.Key.Item1)
+                {
+                    case BodyPartType.Head:
+                        if (pair.Value.Item2)
+                        {
+                            BodyPartIconHead.TexturePath = "/Textures/Radium/Interface/Surgery/test_doll/head7.png";
+                            break;
+                        }
+
+                        BodyPartIconHead.TexturePath = pair.Value.Item1 switch
+                        {
+                            0 => "/Textures/Radium/Interface/Surgery/test_doll/head0.png",
+                            1 => "/Textures/Radium/Interface/Surgery/test_doll/head1.png",
+                            2 => "/Textures/Radium/Interface/Surgery/test_doll/head2.png",
+                            3 => "/Textures/Radium/Interface/Surgery/test_doll/head3.png",
+                            4 => "/Textures/Radium/Interface/Surgery/test_doll/head4.png",
+                            5 => "/Textures/Radium/Interface/Surgery/test_doll/head5.png",
+                            6 => "/Textures/Radium/Interface/Surgery/test_doll/head6.png",
+                            _ => "/Textures/Radium/Interface/Surgery/test_doll/head6.png"
+                        };
+                        break;
+                    case BodyPartType.Other:
+                        break;
+                    case BodyPartType.Torso:
+                        if (pair.Value.Item2)
+                        {
+                            BodyPartIconTorso.TexturePath = "/Textures/Radium/Interface/Surgery/test_doll/chest7.png";
+                            break;
+                        }
+
+                        BodyPartIconTorso.TexturePath = pair.Value.Item1 switch
+                        {
+                            0 => "/Textures/Radium/Interface/Surgery/test_doll/chest0.png",
+                            1 => "/Textures/Radium/Interface/Surgery/test_doll/chest1.png",
+                            2 => "/Textures/Radium/Interface/Surgery/test_doll/chest2.png",
+                            3 => "/Textures/Radium/Interface/Surgery/test_doll/chest3.png",
+                            4 => "/Textures/Radium/Interface/Surgery/test_doll/chest4.png",
+                            5 => "/Textures/Radium/Interface/Surgery/test_doll/chest5.png",
+                            6 => "/Textures/Radium/Interface/Surgery/test_doll/chest6.png",
+                            _ => "/Textures/Radium/Interface/Surgery/test_doll/chest6.png"
+                        };
+                        break;
+                    case BodyPartType.Arm:
+                        if (pair.Key.Item2 == BodyPartSymmetry.Left)
+                        {
+                            if (pair.Value.Item2)
+                            {
+                                BodyPartIconLeftHand.TexturePath =
+                                    "/Textures/Radium/Interface/Surgery/test_doll/l_arm7.png";
+                                break;
+                            }
+
+                            BodyPartIconLeftHand.TexturePath = pair.Value.Item1 switch
+                            {
+                                0 => "/Textures/Radium/Interface/Surgery/test_doll/l_arm0.png",
+                                1 => "/Textures/Radium/Interface/Surgery/test_doll/l_arm1.png",
+                                2 => "/Textures/Radium/Interface/Surgery/test_doll/l_arm2.png",
+                                3 => "/Textures/Radium/Interface/Surgery/test_doll/l_arm3.png",
+                                4 => "/Textures/Radium/Interface/Surgery/test_doll/l_arm4.png",
+                                5 => "/Textures/Radium/Interface/Surgery/test_doll/l_arm5.png",
+                                6 => "/Textures/Radium/Interface/Surgery/test_doll/l_arm6.png",
+                                _ => "/Textures/Radium/Interface/Surgery/test_doll/l_arm6.png"
+                            };
+                        }
+                        else
+                        {
+                            if (pair.Value.Item2)
+                            {
+                                BodyPartIconRightHand.TexturePath =
+                                    "/Textures/Radium/Interface/Surgery/test_doll/r_arm7.png";
+                                break;
+                            }
+
+                            BodyPartIconRightHand.TexturePath = pair.Value.Item1 switch
+                            {
+                                0 => "/Textures/Radium/Interface/Surgery/test_doll/r_arm0.png",
+                                1 => "/Textures/Radium/Interface/Surgery/test_doll/r_arm1.png",
+                                2 => "/Textures/Radium/Interface/Surgery/test_doll/r_arm2.png",
+                                3 => "/Textures/Radium/Interface/Surgery/test_doll/r_arm3.png",
+                                4 => "/Textures/Radium/Interface/Surgery/test_doll/r_arm4.png",
+                                5 => "/Textures/Radium/Interface/Surgery/test_doll/r_arm5.png",
+                                6 => "/Textures/Radium/Interface/Surgery/test_doll/r_arm6.png",
+                                _ => "/Textures/Radium/Interface/Surgery/test_doll/r_arm6.png"
+                            };
+                        }
+
+                        break;
+                    case BodyPartType.Hand:
+                        break;
+                    case BodyPartType.Leg:
+                        if (pair.Key.Item2 == BodyPartSymmetry.Left)
+                        {
+                            if (pair.Value.Item2)
+                            {
+                                BodyPartIconLeftLeg.TexturePath =
+                                    "/Textures/Radium/Interface/Surgery/test_doll/l_leg7.png";
+                                break;
+                            }
+
+                            BodyPartIconLeftLeg.TexturePath = pair.Value.Item1 switch
+                            {
+                                0 => "/Textures/Radium/Interface/Surgery/test_doll/l_leg0.png",
+                                1 => "/Textures/Radium/Interface/Surgery/test_doll/l_leg1.png",
+                                2 => "/Textures/Radium/Interface/Surgery/test_doll/l_leg2.png",
+                                3 => "/Textures/Radium/Interface/Surgery/test_doll/l_leg3.png",
+                                4 => "/Textures/Radium/Interface/Surgery/test_doll/l_leg4.png",
+                                5 => "/Textures/Radium/Interface/Surgery/test_doll/l_leg5.png",
+                                6 => "/Textures/Radium/Interface/Surgery/test_doll/l_leg6.png",
+                                _ => "/Textures/Radium/Interface/Surgery/test_doll/l_leg6.png"
+                            };
+                        }
+                        else
+                        {
+                            if (pair.Value.Item2)
+                            {
+                                BodyPartIconRightLeg.TexturePath =
+                                    "/Textures/Radium/Interface/Surgery/test_doll/r_leg7.png";
+                                break;
+                            }
+
+                            BodyPartIconRightLeg.TexturePath = pair.Value.Item1 switch
+                            {
+                                0 => "/Textures/Radium/Interface/Surgery/test_doll/r_leg0.png",
+                                1 => "/Textures/Radium/Interface/Surgery/test_doll/r_leg1.png",
+                                2 => "/Textures/Radium/Interface/Surgery/test_doll/r_leg2.png",
+                                3 => "/Textures/Radium/Interface/Surgery/test_doll/r_leg3.png",
+                                4 => "/Textures/Radium/Interface/Surgery/test_doll/r_leg4.png",
+                                5 => "/Textures/Radium/Interface/Surgery/test_doll/r_leg5.png",
+                                6 => "/Textures/Radium/Interface/Surgery/test_doll/r_leg6.png",
+                                _ => "/Textures/Radium/Interface/Surgery/test_doll/r_leg6.png"
+                            };
+                        }
+
+                        break;
+                    case BodyPartType.Foot:
+                        break;
+                    case BodyPartType.Tail:
+                        break;
+                    default:
+                        throw new Exception($"No body part with value: {pair.Key.Item1}");
+                }
+            }
+
             if (msg.SurgeryData!.Value.LocalizedName != "")
             {
                 var step = msg.SurgeryData.Value;
@@ -135,7 +287,10 @@ namespace Content.Client.HealthAnalyzer.UI
                 SurgeryStepDesc.Text = step.LocalizedDescription;
                 if (step.Icon == null)
                     return;
-                SurgeryIcon.Texture = _spriteSystem.Frame0(new SpriteSpecifier.Rsi(new ResPath("/Textures/Radium/Interface/instructions.rsi"), step.Icon));
+                SurgeryIcon.Texture =
+                    _spriteSystem.Frame0(
+                        new SpriteSpecifier.Rsi(new ResPath("/Textures/Radium/Interface/instructions.rsi"), step.Icon));
+                // BodyPartsDescription.Text = "";
             }
             else
             {
@@ -144,10 +299,12 @@ namespace Content.Client.HealthAnalyzer.UI
                 SurgeryStep.Text = "";
                 SurgeryStepDesc.Text = "";
                 SurgeryIcon.Texture = Texture.Transparent;
-            }
+                // BodyPartsDescription.Text = Loc.GetString("health-analyzer-window-doll-description");
 
-            //SetHeight = AnalyzerHeight;
-            //SetWidth = AnalyzerWidth;
+
+                //SetHeight = AnalyzerHeight;
+                //SetWidth = AnalyzerWidth;
+            }
         }
 
         private void DrawDiagnosticGroups(
