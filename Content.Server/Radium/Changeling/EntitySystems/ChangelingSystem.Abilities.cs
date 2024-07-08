@@ -295,11 +295,11 @@ public sealed partial class ChangelingSystem
         _metaSystem.SetEntityName(uid, component.Metadata!.EntityName);
         if (targetHumanoid.Species.Id == "Felinid" && component.SourceHumanoid.Species.Id != "Felinid")
         {
-            _console.ExecuteCommand("scale {uid} 1,2");
+            _console.ExecuteCommand($"scale {uid} 1,2");
         }
         else if (targetHumanoid.Species.Id != "Felinid" && component.SourceHumanoid.Species.Id == "Felinid")
         {
-            _console.ExecuteCommand("scale {uid} 0,8");
+            _console.ExecuteCommand($"scale {uid} 0,8");
         }
 
         targetHumanoid.Species = component.SourceHumanoid.Species;
