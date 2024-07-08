@@ -1,48 +1,48 @@
 #Changeling basic abilities
 
 - type: entity
-  id: ActionGenestealerShop
+  id: ActionChangelingShop
   name: Shop
   description: Opens the ability shop.
   noSpawn: true
   components:
   - type: InstantAction
     icon: Interface/Actions/shop.png
-    event: !type:GenestealerShopActionEvent
+    event: !type:ChangelingShopActionEvent
 
 - type: entity
-  id: ActionGenestealerStasis
+  id: ActionChangelingStasis
   name: Stasis
   description: Costs 15 Essence.
   noSpawn: true
   components:
   - type: InstantAction
     icon: Radium/Interface/Actions/fake_death.png
-    event: !type:GenestealerStasisActionEvent
+    event: !type:ChangelingStasisActionEvent
     useDelay: 120
     checkCanInteract: false
     checkConsciousness: false
 
 - type: entity
-  id: ActionGenestealerTransform
+  id: ActionChangelingTransform
   name: Transform
   description: Costs 5 Essence.
   noSpawn: true
   components:
   - type: InstantAction
     icon: Radium/Interface/Actions/transform.png
-    event: !type:GenestealerTransformActionEvent
+    event: !type:ChangelingTransformActionEvent
     useDelay: 30
 
 - type: entity
-  id: GenestealerAbsorbDNA
+  id: ActionChangelingAbsorbDNA
   name: Absorb DNA
   description: You can absorb DNA of any humanoid creature to gain evolution points and transform your appearance.
   noSpawn: true
   components:
   - type: EntityTargetAction
     icon: Radium/Interface/Actions/absorb_dna.png
-    event: !type:GenestealerAbsorbDnaActionEvent
+    event: !type:ChangelingAbsorbDnaActionEvent
     useDelay: 0
     whitelist:
       components:
@@ -51,14 +51,14 @@
 #Changeling defensive abilities
 
 - type: entity
-  id: ActionGenestealerSpeedUp
-  name: Speed Up (Test)
-  description: Costs 15 Essence.
+  id: ActionChangelingAdrenalineSacs
+  name: Adrenaline Sacs
+  description: Allows to the changeling to make use of additional adrenaline to almost instantly recover from knockdown, unconsciousness and having no stamina. Injects 4u Changeling Adrenaline, which gives about 20 seconds of slight reduction of further stuns. High chemical cost.
   noSpawn: true
   components:
   - type: InstantAction
     icon: Radium/Interface/Actions/adrenaline.png
-    event: !type:GenestealerSpeedUpActionEvent
+    event: !type:ChangelingSpeedUpActionEvent
     useDelay: 30
 
 - type: entity
@@ -69,7 +69,7 @@
   components:
   - type: InstantAction
     icon: Radium/Interface/Actions/strained_muscles.png
-    event: !type:GenestealerSpeedUpActionEvent
+    event: !type:ChangelingSpeedUpActionEvent
     useDelay: 30
 
 - type: entity
@@ -80,7 +80,7 @@
   components:
   - type: InstantAction
     icon: Radium/Interface/Actions/panacea.png
-    event: !type:GenestealerSpeedUpActionEvent
+    event: !type:ChangelingSpeedUpActionEvent
     useDelay: 30
 
 - type: entity
@@ -91,7 +91,7 @@
   components:
   - type: InstantAction
     icon: Radium/Interface/Actions/chitinous_armor.png
-    event: !type:GenestealerSpeedUpActionEvent
+    event: !type:ChangelingSpeedUpActionEvent
     useDelay: 30
 
 - type: entity
@@ -102,7 +102,7 @@
   components:
   - type: InstantAction
     icon: Radium/Interface/Actions/organic_suit.png
-    event: !type:GenestealerSpeedUpActionEvent
+    event: !type:ChangelingSpeedUpActionEvent
     useDelay: 30
 
 - type: entity
@@ -113,7 +113,7 @@
   components:
   - type: InstantAction
     icon: Radium/Interface/Actions/organic_shield.png
-    event: !type:GenestealerSpeedUpActionEvent
+    event: !type:ChangelingSpeedUpActionEvent
     useDelay: 30
 
 - type: entity
@@ -124,7 +124,7 @@
   components:
   - type: InstantAction
     icon: Radium/Interface/Actions/mimic_voice.png
-    event: !type:GenestealerSpeedUpActionEvent
+    event: !type:ChangelingSpeedUpActionEvent
     useDelay: 30
 
 - type: entity
@@ -135,7 +135,7 @@
   components:
   - type: InstantAction
     icon: Radium/Interface/Actions/lesser_form.png
-    event: !type:GenestealerSpeedUpActionEvent
+    event: !type:ChangelingSpeedUpActionEvent
     useDelay: 30
 
 - type: entity
@@ -146,7 +146,7 @@
   components:
   - type: InstantAction
     icon: Radium/Interface/Actions/fleshmend.png
-    event: !type:GenestealerSpeedUpActionEvent
+    event: !type:ChangelingSpeedUpActionEvent
     useDelay: 30
 
 - type: entity
@@ -157,7 +157,7 @@
   components:
   - type: InstantAction
     icon: Radium/Interface/Actions/chameleon_skin.png
-    event: !type:GenestealerSpeedUpActionEvent
+    event: !type:ChangelingSpeedUpActionEvent
     useDelay: 30
 
 - type: entity
@@ -168,7 +168,7 @@
   components:
   - type: InstantAction
     icon: Radium/Interface/Actions/biodegrade.png
-    event: !type:GenestealerSpeedUpActionEvent
+    event: !type:ChangelingSpeedUpActionEvent
     useDelay: 30
 
 - type: entity
@@ -179,7 +179,7 @@
   components:
   - type: InstantAction
     icon: Radium/Interface/Actions/augmented_eyesight.png
-    event: !type:GenestealerSpeedUpActionEvent
+    event: !type:ChangelingSpeedUpActionEvent
     useDelay: 30
 
 - type: entity
@@ -190,7 +190,7 @@
   components:
   - type: InstantAction
     icon: Radium/Interface/Actions/defib.png
-    event: !type:GenestealerSpeedUpActionEvent
+    event: !type:ChangelingSpeedUpActionEvent
     useDelay: 30
 
 #Changeling offensive abilities
@@ -203,7 +203,7 @@
   components:
   - type: EntityTargetAction
     icon: Radium/Interface/Actions/sting_transform.png
-    event: !type:GenestealerAbsorbDnaActionEvent
+    event: !type:ChangelingAbsorbDnaActionEvent
     useDelay: 0
     whitelist:
       components:
@@ -217,7 +217,7 @@
   components:
   - type: EntityTargetAction
     icon: Radium/Interface/Actions/sting_transform.png
-    event: !type:GenestealerAbsorbDnaActionEvent
+    event: !type:ChangelingAbsorbDnaActionEvent
     useDelay: 0
     whitelist:
       components:
@@ -231,7 +231,7 @@
   components:
   - type: EntityTargetAction
     icon: Radium/Interface/Actions/sting_mute.png
-    event: !type:GenestealerAbsorbDnaActionEvent
+    event: !type:ChangelingAbsorbDnaActionEvent
     useDelay: 0
     whitelist:
       components:
@@ -245,7 +245,7 @@
   components:
   - type: EntityTargetAction
     icon: Radium/Interface/Actions/sting_blind.png
-    event: !type:GenestealerAbsorbDnaActionEvent
+    event: !type:ChangelingAbsorbDnaActionEvent
     useDelay: 0
     whitelist:
       components:
@@ -259,7 +259,7 @@
   components:
   - type: EntityTargetAction
     icon: Radium/Interface/Actions/sting_lsd.png
-    event: !type:GenestealerAbsorbDnaActionEvent
+    event: !type:ChangelingAbsorbDnaActionEvent
     useDelay: 0
     whitelist:
       components:
@@ -273,7 +273,7 @@
   components:
   - type: EntityTargetAction
     icon: Radium/Interface/Actions/sting_cryo.png
-    event: !type:GenestealerAbsorbDnaActionEvent
+    event: !type:ChangelingAbsorbDnaActionEvent
     useDelay: 0
     whitelist:
       components:
@@ -287,7 +287,7 @@
   components:
   - type: EntityTargetAction
     icon: Radium/Interface/Actions/sting_armblade.png
-    event: !type:GenestealerAbsorbDnaActionEvent
+    event: !type:ChangelingAbsorbDnaActionEvent
     useDelay: 0
     whitelist:
       components:
@@ -301,7 +301,7 @@
   components:
   - type: InstantAction
     icon: Radium/Interface/Actions/armblade.png
-    event: !type:GenestealerSpeedUpActionEvent
+    event: !type:ChangelingSpeedUpActionEvent
     useDelay: 30
 
 - type: entity
@@ -312,7 +312,7 @@
   components:
   - type: InstantAction
     icon: Radium/Interface/Actions/resonant_shriek.png
-    event: !type:GenestealerSpeedUpActionEvent
+    event: !type:ChangelingSpeedUpActionEvent
     useDelay: 30
 
 - type: entity
@@ -323,5 +323,5 @@
   components:
   - type: InstantAction
     icon: Radium/Interface/Actions/dissonant_shriek.png
-    event: !type:GenestealerSpeedUpActionEvent
+    event: !type:ChangelingSpeedUpActionEvent
     useDelay: 30

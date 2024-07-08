@@ -1,6 +1,0 @@
-- type: antag
-  id: Genestealer
-  name: roles-antag-genestealer-name
-  antagonist: true
-  setPreference: false
-  objective: roles-genestealer-objective

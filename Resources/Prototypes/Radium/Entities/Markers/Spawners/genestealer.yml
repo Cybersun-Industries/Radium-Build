@@ -1,6 +1,6 @@
 - type: entity
   name: Генокрад
-  id: MobGenestealerSpawner
+  id: MobChangelingSpawner
   parent: SimpleMobBase
   components:
-  - type: GenestealerSpawner
+  - type: ChangelingSpawner

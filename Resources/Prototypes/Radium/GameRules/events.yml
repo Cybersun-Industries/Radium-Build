@@ -71,7 +71,7 @@
 #      prob: 0.04
 
 #- type: entity
-#  id: GenestealerSpawn
+#  id: ChangelingSpawn
 #  parent: BaseGameRule
 #  noSpawn: true
 #  components:
@@ -79,4 +79,4 @@
 #    weight: 10
 #    earliestStart: 15
 #    minimumPlayers: 5
-#  - type: GenestealerRule
+#  - type: ChangelingRule

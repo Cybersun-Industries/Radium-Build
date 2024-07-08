@@ -1,0 +1,6 @@
+- type: antag
+  id: Changeling
+  name: roles-antag-changeling-name
+  antagonist: true
+  setPreference: false
+  objective: roles-changeling-objective

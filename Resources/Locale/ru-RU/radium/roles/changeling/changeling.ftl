@@ -1,0 +1,14 @@
+﻿genestealer-resource-amount = У вас [color=plum]{ $current } очков ресурсов[/color]. Ваш максимум — [color=plum]{ $max } [/color].
+genestealer-max-resource-increased = Максимальный запас ресурсов увеличился!
+genestealer-not-enough-resource = Недостаточно ресурсов!
+genestealer-too-powerful = Цель должна быть оглушена или связана!
+genestealer-harvested = Вы уже собрали ресурсы с этой цели!
+genestealer-begin-harvest = Жало впивается в { CAPITALIZE($target) }.
+genestealer-finish-harvest = { CAPITALIZE($target) } падает на землю!
+#UI
+genestealer-user-interface-title = Окно эволюции
+genestealer-user-interface-resource-amount = [color=plum]{ $amount }[/color] украденных ресурсов
+genestealer-user-interface-cost = { $price } ресурсов
+objective-condition-genes-description = Используйте своё жало, чтобы извелечь гены нескольких человек.
+
+changeling-transform-window-title = Хранилище ДНК

@@ -1,7 +1,7 @@
 ﻿- type: entity
   abstract: true
   parent: BaseObjective
-  id: BaseGenestealerObjective
+  id: BaseChangelingObjective
   components:
     - type: Objective
       issuer: Генокрад
@@ -9,12 +9,12 @@
     - type: RoleRequirement
       roles:
         components:
-          - GenestealerRole
+          - ChangelingRole
 - type: entity
   noSpawn: true
   parent:
-    - BaseGenestealerObjective
-  id: GenesObjectiveGenestealer
+    - BaseChangelingObjective
+  id: GenesObjectiveChangeling
   name: Собрать достаточно генов.
   description: objective-condition-genes-description
   components:
@@ -33,9 +33,9 @@
 - type: entity
   noSpawn: true
   parent:
-    - BaseGenestealerObjective
+    - BaseChangelingObjective
     - BaseLivingObjective
-  id: EscapeShuttleObjectiveGenestealer
+  id: EscapeShuttleObjectiveChangeling
   name: Выживите до конца смены и улетите в Центком живым и свободным.
   components:
     - type: Objective

@@ -1,15 +1,15 @@
 - type: entity
-  id: SpawnPointGenestealer
-  name: ghost role spawn point
-  suffix: genestealer
+  id: SpawnPointChangeling
+  name: Changeling ghost spawn point
+  suffix: changeling
   parent: MarkerBase
   components:
   - type: GhostRole
-    name: Генокрад (Антагонист)
-    description: Вы генокрад. Ваша задача собрать как можно больше очков эволюции.
-    rules: Вы генокра. Ваша задача собрать как можно больше очков эволюции путём копирования ДНК человека. Вам разрешены убийства, но только в крайних случаях. Оглушайте цель и получайте ресурсы, при этом цель выживет.
+    name: ghost-role-information-changeling-name
+    description: ghost-role-information-changeling-description
+    rules: ghost-role-information-changeling-rules
   - type: GhostRoleMobSpawner
-    prototype: MobGenestealerSpawner
+    prototype: MobChangelingSpawner
   - type: Sprite
     sprite: Markers/jobs.rsi
     layers:

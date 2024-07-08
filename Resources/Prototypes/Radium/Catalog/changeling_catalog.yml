@@ -2,8 +2,8 @@
 
 - type: listing
   id: ChangelingStrainedMuscules
-  name: Strained Muscles
-  description: The changeling reduces lactic acid buildup in their leg muscles, allowing them to move at extremely fast speeds. While active, the changeling will take steadily incrementing stamina damage and eventually pass out, if he doesn't take a rest. Doesn't work in monkey form.
+  name: ent-ActionChangelingStrainedMuscules
+  description: ent-ActionChangelingStrainedMuscules.desc
   productAction: ActionChangelingStrainedMuscules
   cost:
     ChangelingEvolution: 1
@@ -15,8 +15,8 @@
 
 - type: listing
   id: ChangelingAnatomicPanacea
-  name: Anatomic Panacea
-  description: Cures the changeling of many ailments including brain traumas, mutations, diseases, radiation, and toxins. Generally covers the things that Fleshmend doesn't; it can be used to purge the poison that the chemist just shot you up with, or to get rid of that debilitating mutation from an absorbed identity. Can also remove alien larvae and zombie infection. Usable while unconscious. Do not use if you are a slimeperson.
+  name: ent-ActionChangelingAnatomicPanacea #Anatomic Panacea
+  description: ent-ActionChangelingAnatomicPanacea.desc #Cures the changeling of many ailments including brain traumas, mutations, diseases, radiation, and toxins. Generally covers the things that Fleshmend doesn't; it can be used to purge the poison that the chemist just shot you up with, or to get rid of that debilitating mutation from an absorbed identity. Can also remove alien larvae and zombie infection. Usable while unconscious. Do not use if you are a slimeperson.
   productAction: ActionChangelingAnatomicPanacea
   cost:
     ChangelingEvolution: 1
@@ -28,8 +28,8 @@
 
 - type: listing
   id: ChangelingChitinousArmor
-  name: Chitinous Armor
-  description: Inflates the changeling's body into an all-consuming chitinous mass of armor. Provides extensive protection against physical damage, but less against other types. Its mass slows the changeling's movement, and maintaining its shape slows chemical generation by 25%.
+  name: ent-ActionChangelingChitinousArmor
+  description: ent-ActionChangelingChitinousArmor.desc
   productAction: ActionChangelingChitinousArmor
   cost:
     ChangelingEvolution: 1
@@ -41,8 +41,8 @@
 
 - type: listing
   id: ChangelingVoidAdaptation
-  name: Void Adaptation
-  description: Grants the Changeling a passive ability that allows it to resist cold, low pressure, snowstorms, and a need for oxygen. While in use, slows chemical regeneration by 25%.
+  name: ent-ActionChangelingVoidAdaptation
+  description: ent-ActionChangelingVoidAdaptation.desc
   productAction: ActionChangelingVoidAdaptation
   cost:
     ChangelingEvolution: 2
@@ -54,8 +54,8 @@
 
 - type: listing
   id: ChangelingOrganicShield
-  name: Organic Shield
-  description: Reforms one of the changeling's arms into a large, fleshy shield. Has a chance to block or mitigate a number of attacks, the amount increasing by 3 with each genome absorbed.
+  name: ent-ActionChangelingOrganicShield
+  description: ent-ActionChangelingOrganicShield.desc
   productAction: ActionChangelingOrganicShield
   cost:
     ChangelingEvolution: 1
@@ -67,8 +67,8 @@
 
 - type: listing
   id: ChangelingMimicVoice
-  name: Mimic Voice
-  description: Allows the changeling to form their voice of a name they enter. This doesn't have to be anyone that exists on the station, it can be a made up name. Maintaining this façade slows chemical generation by 50%.
+  name: ent-ActionChangelingMimicVoice
+  description: ent-ActionChangelingMimicVoice.desc
   productAction: ActionChangelingMimicVoice
   cost:
     ChangelingEvolution: 1
@@ -80,8 +80,8 @@
 
 - type: listing
   id: ChangelingLesserForm
-  name: Lesser Form
-  description: The changeling transforms into a monkey after a brief period of time. Causes all equipment to be dropped on the floor. It can then return to human form by using Human Form.
+  name: ent-ActionChangelingLesserForm
+  description: ent-ActionChangelingLesserForm.desc
   productAction: ActionChangelingLesserForm
   cost:
     ChangelingEvolution: 1
@@ -93,8 +93,8 @@
 
 - type: listing
   id: ChangelingFleshmend
-  name: Fleshmend
-  description: The changeling will rapidly heal brute and oxygen damage, as well as burn at a slower rate over 10 seconds. Repeated use while the effect is added will restart the regeneration timer, but the user will still heal at the same rate. Usable while unconscious.
+  name: ent-ActionChangelingFleshmend
+  description: ent-ActionChangelingFleshmend.desc
   productAction: ActionChangelingFleshmend
   cost:
     ChangelingEvolution: 2
@@ -106,8 +106,8 @@
 
 - type: listing
   id: ChangelingChameleonSkin
-  name: Chameleon Skin
-  description: Our skin pigmentation rapidly changes to suit our current environment. Allows us to become invisible after a few seconds of standing still. Can be toggled on and off.
+  name: ent-ActionChangelingChameleonSkin
+  description: ent-ActionChangelingChameleonSkin.desc
   productAction: ActionChangelingChameleonSkin
   cost:
     ChangelingEvolution: 2
@@ -119,8 +119,8 @@
 
 - type: listing
   id: ChangelingBiodegrade
-  name: Biodegrade
-  description: Dissolves restraints or other objects preventing free movement. This is obvious to nearby people, and can destroy standard restraints and closets. When the cuffs are melted completely a pile of green goo will appear below you.
+  name: ent-ActionChangelingBiodegrade
+  description: ent-ActionChangelingBiodegrade.desc
   productAction: ActionChangelingBiodegrade
   cost:
     ChangelingEvolution: 2
@@ -132,8 +132,8 @@
 
 - type: listing
   id: ChangelingAugmentedEyesight #TODO use productEvent!
-  name: Augmented Eyesight
-  description: The changeling evolves additional features in their eyes, giving them a toggleable night-vision and xray-vision mode. The changeling will become more vulnerable to flash-based devices while this ability is active. While it's inactive, it will instead protect you from flashes and bright lights, such as welders. This cannot be detected by normal means.
+  name: ent-PassiveChangelingAugmentedEyesight
+  description: ent-PassiveChangelingAugmentedEyesight.desc
   productAction: PassiveChangelingAugmentedEyesight
   cost:
     ChangelingEvolution: 2
@@ -145,11 +145,11 @@
 
 - type: listing
   id: ChangelingDefibrillatorGrasp #TODO
-  name: Defibrillator Grasp
-  description: Free to evolve. We prepare ourselves while in stasis. If one of our enemies attempts to defibrillate us, we will snatch their arms off and instantly finalize our stasis. This ability is passive, and will trigger when a defibrillator paddle is applied to our chest while we are dead or in stasis. Will also stun cyborgs momentarily.
+  name: ent-PassiveChangelingDefibrillatorGrasp
+  description: ent-PassiveChangelingDefibrillatorGrasp.desc
   productAction: PassiveChangelingDefibrillatorGrasp
-  cost:
-    ChangelingEvolution: 0
+#  cost:
+#    ChangelingEvolution: 0
   categories:
   - ChangelingDefensive
   conditions:
@@ -160,8 +160,8 @@
 
 - type: listing
   id: ChangelingTransformationSting
-  name: Transformation Sting
-  description: The changeling injects a retrovirus that forces their human victim to transform into another.
+  name: ent-ActionChangelingTransformationSting
+  description: ent-ActionChangelingTransformationSting.desc
   productAction: ActionChangelingTransformationSting
   cost:
     ChangelingEvolution: 2
@@ -173,8 +173,8 @@
 
 - type: listing
   id: ChangelingMuteSting
-  name: Mute Sting
-  description: The changeling silently stings a human, completely silencing them for about thirty seconds.
+  name: ent-ActionChangelingMuteSting
+  description: ent-ActionChangelingMuteSting.desc
   productAction: ActionChangelingMuteSting
   cost:
     ChangelingEvolution: 2
@@ -186,8 +186,8 @@
 
 - type: listing
   id: ChangelingBlindSting
-  name: Blind Sting
-  description: The changeling silently stings a human, completely blinding them for a short time and and leaves them with blurred vision for a long time.
+  name: ent-ActionChangelingBlindSting
+  description: ent-ActionChangelingBlindSting.desc
   productAction: ActionChangelingBlindSting
   cost:
     ChangelingEvolution: 1
@@ -199,8 +199,8 @@
 
 - type: listing
   id: ChangelingHallutinationSting
-  name: Hallucination Sting
-  description: The changeling injects large doses of hallucinogenic chemicals into their victim. Effect occurs after 30 to 60 seconds. The victim does not notice they've been stung until they start tripping.
+  name: ent-ActionChangelingHallutinationSting
+  description: ent-ActionChangelingHallutinationSting.desc
   productAction: ActionChangelingHallutinationSting
   cost:
     ChangelingEvolution: 1
@@ -212,8 +212,8 @@
 
 - type: listing
   id: ChangelingCryogenicSting
-  name: Cryogenic Sting
-  description: The changeling injects the target with a blend of chemicals that begins to turn their blood to ice. The victim will walk slower and take some damage over the full duration. Victims wearing armor or insulated material will take more damage, since they are insulated from the ambient warmth. Can be countered with space heaters, coffee, and other warming objects and foods.
+  name: ent-ActionChangelingCryogenicSting
+  description: ent-ActionChangelingCryogenicSting.desc
   productAction: ActionChangelingCryogenicSting
   cost:
     ChangelingEvolution: 2
@@ -225,11 +225,11 @@
 
 - type: listing
   id: ChangelingDNASting
-  name: Extract DNA Sting
-  description: Free to evolve. The changeling can sting a target to extract their genetic information. They can then use the DNA like they just absorbed it. Helps the changeling reach their genome objective.
+  name: ent-ActionChangelingDNASting
+  description: ent-ActionChangelingDNASting.desc
   productAction: ActionChangelingDNASting
-  cost:
-    ChangelingEvolution: 0
+#  cost:
+#    ChangelingEvolution: 0
   categories:
   - ChangelingOffensive
   conditions:
@@ -238,8 +238,8 @@
 
 - type: listing
   id: ChangelingFalseArmbladeSting
-  name: False Armblade Sting
-  description: The changeling silently injects a retrovirus that mutates their victim's arm into an armblade. The victim will form an armblade much like a changeling would, except the armblade is dull and useless. The transformation occurs immediately after the sting, and will last for about a minute.
+  name: ent-ActionChangelingFalseArmbladeSting
+  description: ent-ActionChangelingFalseArmbladeSting.desc
   productAction: ActionChangelingFalseArmbladeSting
   cost:
     ChangelingEvolution: 1
@@ -251,8 +251,8 @@
 
 - type: listing
   id: ChangelingResonantShriek
-  name: Resonant Shriek
-  description: The changeling emits a tone beyond the range of human hearing, causing deafness and disorientation in an area around itself and bursting lights in the area, while overloading cyborg sensors. Good for escaping groups or preventing people from fleeing from you.
+  name: ent-ActionChangelingResonantShriek
+  description: ent-ActionChangelingResonantShriek.desc
   productAction: ActionChangelingResonantShriek
   cost:
     ChangelingEvolution: 1
@@ -264,8 +264,8 @@
 
 - type: listing
   id: ChangelingDissonantShriek
-  name: Dissonant Shriek
-  description: The changeling emits an EMP, which disables technology in the surrounding area, including radio headsets. Good for escaping borgs and preventing people from shouting over the radio.
+  name: ent-ActionChangelingDissonantShriek
+  description: ent-ActionChangelingDissonantShriek.desc
   productAction: ActionChangelingDissonantShriek
   cost:
     ChangelingEvolution: 1
