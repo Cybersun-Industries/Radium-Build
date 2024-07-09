@@ -10,11 +10,9 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.Inventory;
-using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
-using Content.Shared.Preferences;
 using Content.Shared.Radium.Changeling;
 using Content.Shared.Radium.Changeling.Components;
 using Content.Shared.Radium.Changeling.Events;
@@ -32,10 +30,12 @@ public sealed partial class ChangelingSystem
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly DamageableSystem _heal = default!;
     [Dependency] private readonly FlashSystem _flash = default!;
+    [Dependency] private readonly DamageableSystem _damageSystem = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
     [Dependency] private readonly PolymorphSystem _polymorphSystem = default!;
     [Dependency] private readonly InventorySystem _inventorySystem = default!;
     [Dependency] private readonly ObjectivesSystem _objectivesSystem = default!;
+    [Dependency] private readonly GrammarSystem _grammar = default!;
 
     private void InitializeAbilities()
     {
@@ -153,28 +153,41 @@ public sealed partial class ChangelingSystem
         if (args.Handled || args.Args.Target == null)
             return;
 
+        var target = args.Args.Target.Value;
+
         _appearance.SetData(uid, RevenantVisuals.Harvesting, false);
 
         EnsureComp<ResourceComponent>(args.Args.Target.Value, out var resource);
 
         resource.Harvested = true;
+
         ChangeEssenceAmount(uid, 30, component);
+
         _store.TryAddCurrency(new Dictionary<string, FixedPoint2>
                 { { component.EvolutionCurrencyPrototype, 1 } },
             uid);
-        if (!HasComp<MobStateComponent>(args.Args.Target))
+
+        var damage = new DamageSpecifier();
+
+        damage.DamageDict.Add("Slash", 25);
+        damage.DamageDict.Add("Heat", 400);
+
+        _damageSystem.TryChangeDamage(target, damage, true);
+        RemComp<DamageableComponent>(target);
+        if (!HasComp<MobStateComponent>(target))
             return;
 
-        component.Metadata = MetaData(args.Args.Target.Value);
+        component.Metadata = MetaData(target);
+
         if (TryComp<HumanoidAppearanceComponent>(args.Args.Target.Value, out var humanoidAppearance) &&
             TryComp<MetaDataComponent>(args.Args.Target.Value, out var metaData))
         {
             component.SourceHumanoid = humanoidAppearance;
             component.ServerIdentitiesList.Add(component.ServerIdentitiesList.Count, (metaData, humanoidAppearance));
-            component.ClientIdentitiesList.Add(component.ServerIdentitiesList.Count - 1, metaData.EntityName); //Idk how to do better. Was messing with component but no luck there..
+            component.ClientIdentitiesList.Add(component.ServerIdentitiesList.Count - 1,
+                metaData.EntityName); //Idk how to do better. Was messing with component but no luck there..
             Dirty(uid, component);
             _userInterface.SetUiState(uid, ChangelingStorageUiKey.Key, new ChangelingStorageUiState());
-
         }
 
         TryComp<ActionsComponent>(args.Args.Target.Value, out var actions);
@@ -188,6 +201,7 @@ public sealed partial class ChangelingSystem
 
         if (_mindSystem.TryGetObjectiveComp<GenesConditionComponent>(uid, out var obj))
             obj.GenesExtracted++;
+
         args.Handled = true;
     }
 
@@ -302,11 +316,6 @@ public sealed partial class ChangelingSystem
         _humanoid.SetTTSVoice(uid, component.SourceHumanoid.Voice, targetHumanoid); // Corvax-TTS
 
         targetHumanoid.Gender = component.SourceHumanoid.Gender;
-
-        if (TryComp<GrammarComponent>(uid, out var grammar))
-        {
-            grammar.Gender = component.SourceHumanoid.Gender;
-        }
 
         //_humanoid.LoadProfile(uid, component.Preferences!);
 
