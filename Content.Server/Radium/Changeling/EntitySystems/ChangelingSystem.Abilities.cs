@@ -100,8 +100,6 @@ public sealed partial class ChangelingSystem
             return;
         }
 
-        //_inventorySystem.TryUnequip(target, Goggles, true, true);
-        //_inventorySystem.TryUnequip(uid, Goggles, true, true);
         _flash.Flash(target: uid,
             flashDuration: 1000f,
             user: uid,
@@ -160,21 +158,12 @@ public sealed partial class ChangelingSystem
         EnsureComp<ResourceComponent>(args.Args.Target.Value, out var resource);
 
         resource.Harvested = true;
-        ChangeEssenceAmount(uid, resource.ResourceAmount, component);
+        ChangeEssenceAmount(uid, 30, component);
         _store.TryAddCurrency(new Dictionary<string, FixedPoint2>
                 { { component.EvolutionCurrencyPrototype, 1 } },
             uid);
         if (!HasComp<MobStateComponent>(args.Args.Target))
             return;
-/* TODO: REMOVE
-        if (_mobState.IsAlive(args.Args.Target.Value) || _mobState.IsCritical(args.Args.Target.Value))
-        {
-            _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("changeling-max-resource-increased"),
-                uid,
-                uid);
-            component.ResourceRegenCap += component.MaxEssenceUpgradeAmount;
-        }
-*/
 
         component.Metadata = MetaData(args.Args.Target.Value);
         if (TryComp<HumanoidAppearanceComponent>(args.Args.Target.Value, out var humanoidAppearance) &&
@@ -322,8 +311,6 @@ public sealed partial class ChangelingSystem
         //_humanoid.LoadProfile(uid, component.Preferences!);
 
         Dirty(uid, targetHumanoid);
-
-        _inventorySystem.TryUnequip(uid, Goggles, true, true);
 
         _flash.Flash(target: uid,
             flashDuration: 12000f,
