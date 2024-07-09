@@ -1,4 +1,5 @@
-﻿using Content.Server.Flash;
+﻿using Content.Server.DetailExaminable;
+using Content.Server.Flash;
 using Content.Server.Objectives;
 using Content.Server.Polymorph.Systems;
 using Content.Server.Radium.Changeling.Components;
@@ -19,6 +20,7 @@ using Content.Shared.Radium.Changeling.Events;
 using Content.Shared.Revenant;
 using Content.Shared.StatusEffect;
 using Robust.Shared.GameObjects.Components.Localization;
+using Robust.Shared.Serialization.Manager;
 using HarvestEvent = Content.Shared.Radium.Changeling.HarvestEvent;
 
 namespace Content.Server.Radium.Changeling.EntitySystems;
@@ -36,6 +38,7 @@ public sealed partial class ChangelingSystem
     [Dependency] private readonly InventorySystem _inventorySystem = default!;
     [Dependency] private readonly ObjectivesSystem _objectivesSystem = default!;
     [Dependency] private readonly GrammarSystem _grammar = default!;
+    [Dependency] private readonly ISerializationManager _serializationManager = default!;
 
     private void InitializeAbilities()
     {
@@ -177,27 +180,33 @@ public sealed partial class ChangelingSystem
         if (!HasComp<MobStateComponent>(target))
             return;
 
+
         component.Metadata = MetaData(target);
 
         if (TryComp<HumanoidAppearanceComponent>(args.Args.Target.Value, out var humanoidAppearance) &&
             TryComp<MetaDataComponent>(args.Args.Target.Value, out var metaData))
         {
-            component.SourceHumanoid = humanoidAppearance;
+            _serializationManager.CopyTo(humanoidAppearance, ref component.SourceHumanoid);
             component.ServerIdentitiesList.Add(component.ServerIdentitiesList.Count, (metaData, humanoidAppearance));
             component.ClientIdentitiesList.Add(component.ServerIdentitiesList.Count - 1,
                 metaData.EntityName); //Idk how to do better. Was messing with component but no luck there..
             Dirty(uid, component);
             _userInterface.SetUiState(uid, ChangelingStorageUiKey.Key, new ChangelingStorageUiState());
+            humanoidAppearance.SkinColor = Color.Gray;
+
+            Dirty(args.Args.Target.Value, humanoidAppearance);
+            _metaSystem.SetEntityName(target, Loc.GetString("changeling-absorbed-corpse-name"));
+            _metaSystem.SetEntityDescription(target, Loc.GetString("changeling-absorbed-corpse-description"));
         }
 
         TryComp<ActionsComponent>(args.Args.Target.Value, out var actions);
         component.Actions = actions;
-        /*
+
         if (TryComp<DetailExaminableComponent>(args.Args.Target.Value, out var detail))
         {
-            component.Detail = detail.Content;
+            detail.Content = Loc.GetString("changeling-absorbed-corpse-detailed-description");
         }
-        */
+
 
         if (_mindSystem.TryGetObjectiveComp<GenesConditionComponent>(uid, out var obj))
             obj.GenesExtracted++;

@@ -5,6 +5,7 @@ using Content.Server.Actions;
 using Content.Server.Backmen.Cloning;
 using Content.Server.Backmen.EvilTwin;
 using Content.Server.Backmen.Fugitive;
+using Content.Server.Backmen.Loadout;
 using Content.Server.DetailExaminable;
 using Content.Server.Forensics;
 using Content.Server.GameTicking;
@@ -32,6 +33,7 @@ using Content.Shared.NukeOps;
 using Content.Shared.Players;
 using Content.Shared.Popups;
 using Content.Shared.Preferences;
+using Content.Shared.Preferences.Loadouts;
 using Content.Shared.Radium.Changeling;
 using Content.Shared.Radium.Changeling.Components;
 using Content.Shared.Roles;
@@ -51,6 +53,7 @@ using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
 using Robust.Shared.Timing;
 using Robust.Shared.Utility;
+using LoadoutSystem = Content.Shared.Clothing.LoadoutSystem;
 
 namespace Content.Server.Radium.Changeling.EntitySystems;
 
@@ -146,6 +149,12 @@ public sealed partial class ChangelingSystem : EntitySystem
         EnsureComp<PendingClockInComponent>(uid);
 
         _tagSystem.AddTag(uid, "CannotSuicide");
+
+        InitShop(uid);
+
+        _action.AddAction(uid, AbsorbDnaId);
+        _action.AddAction(uid, StasisId);
+        _action.AddAction(uid, TransformId);
     }
 
     private void OnPlayerAttached(Entity<ChangelingSpawnerComponent> uid, ref PlayerAttachedEvent args)
@@ -268,11 +277,6 @@ public sealed partial class ChangelingSystem : EntitySystem
 
         //var stealerUid = Spawn(species.Prototype, coords);
         var stealerUid = Spawn("MobChangeling", coords);
-        InitShop(stealerUid);
-
-        _action.AddAction(stealerUid, AbsorbDnaId);
-        _action.AddAction(stealerUid, StasisId);
-        _action.AddAction(stealerUid, TransformId);
 
         _humanoid.LoadProfile(stealerUid, pref);
         _metaSystem.SetEntityName(stealerUid, MetaData(target).EntityName);
@@ -307,21 +311,53 @@ public sealed partial class ChangelingSystem : EntitySystem
         }
 
         if (!TryComp<JobComponent>(mindId, out var jobComponent) || jobComponent.Prototype == null ||
-            !_prototype.TryIndex(jobComponent.Prototype, out var targetMindJob))
+            !_prototype.TryIndex(jobComponent.Prototype, out var twinTargetMindJob))
             return (stealerUid, pref);
-
-        if (_prototype.TryIndex<StartingGearPrototype>(targetMindJob.StartingGear!, out var gear))
+        if (_prototype.TryIndex<StartingGearPrototype>(twinTargetMindJob.StartingGear!, out var gear))
         {
             _stationSpawning.EquipStartingGear(stealerUid, gear);
-            _stationSpawning.SetPdaAndIdCardData(stealerUid,
-                pref.Name,
-                targetMindJob,
-                _stationSystem.GetOwningStation(target));
         }
 
-        foreach (var special in targetMindJob.Special)
+        // Run loadouts after so stuff like storage loadouts can get
+        var jobLoadout = LoadoutSystem.GetJobPrototype(jobComponent.Prototype);
+
+        if (!_prototype.TryIndex(jobLoadout, out RoleLoadoutPrototype? roleProto))
+            return (stealerUid, pref);
+        pref.Loadouts.TryGetValue(jobLoadout, out var loadout);
+
+        // Set to default if not present
+        if (loadout == null)
         {
-            special.AfterEquip(stealerUid);
+            loadout = new RoleLoadout(jobLoadout);
+
+            loadout.SetDefault(pref,
+                _playerManager.TryGetSessionById(targetSession.Value, out var sess) ? sess : null,
+                _prototype,
+                true);
+        }
+
+        // Order loadout selections by the order they appear on the prototype.
+        foreach (var group in
+                 loadout.SelectedLoadouts.OrderBy(x => roleProto.Groups.FindIndex(e => e == x.Key)))
+        {
+            foreach (var items in group.Value)
+            {
+                if (!_prototype.TryIndex(items.Prototype, out var loadoutProto))
+                {
+                    Log.Error($"Unable to find loadout prototype for {items.Prototype}");
+                    continue;
+                }
+
+                if (!_prototype.TryIndex(loadoutProto.Equipment, out var startingGear))
+                {
+                    Log.Error(
+                        $"Unable to find starting gear {loadoutProto.Equipment} for loadout {loadoutProto}");
+                    continue;
+                }
+
+                // Handle any extra data here.
+                _stationSpawning.EquipStartingGear(stealerUid, startingGear, raiseEvent: false);
+            }
         }
 
         return (stealerUid, pref);
