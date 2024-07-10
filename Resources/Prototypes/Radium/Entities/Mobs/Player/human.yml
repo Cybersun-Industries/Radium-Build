@@ -82,7 +82,7 @@
 - type: entity
   parent: MobHuman
   id: MobChangeling
-  name: Changeling
+  name: Человек молодого возраста #SSSHITCODE!
   components:
     - type: Changeling
       evolution: 5

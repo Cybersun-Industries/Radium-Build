@@ -27,6 +27,7 @@ using Content.Shared.DoAfter;
 using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Prototypes;
+using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.NukeOps;
@@ -102,6 +103,7 @@ public sealed partial class ChangelingSystem : EntitySystem
     [Dependency] private readonly TagSystem _tagSystem = default!;
     [Dependency] private readonly IServerConsoleHost _console = default!;
     [Dependency] private readonly UserInterfaceSystem _userInterface = default!;
+    [Dependency] private readonly ActorSystem _actors = default!;
 
     [ValidatePrototypeId<EntityPrototype>]
     private const string SpawnPointPrototype = "SpawnPointChangeling";
@@ -112,6 +114,8 @@ public sealed partial class ChangelingSystem : EntitySystem
 
     [ValidatePrototypeId<EntityPrototype>] private const string EscapeObjective = "EscapeShuttleObjectiveChangeling";
 
+    [ValidatePrototypeId<JobPrototype>] private const string JobSpawn = "Passenger";
+
     public override void Initialize()
     {
         base.Initialize();
@@ -119,6 +123,7 @@ public sealed partial class ChangelingSystem : EntitySystem
         SubscribeLocalEvent<ChangelingComponent, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<ChangelingSpawnerComponent, PlayerAttachedEvent>(OnPlayerAttached);
         SubscribeLocalEvent<ChangelingComponent, MindAddedMessage>(OnMindAdded);
+        SubscribeLocalEvent<ChangelingComponent, MindRemovedMessage>(OnMindRemoved);
         SubscribeLocalEvent<ChangelingComponent, ChangelingShopActionEvent>(OnShop);
         SubscribeLocalEvent<ChangelingComponent, StatusEffectAddedEvent>(OnStatusAdded);
         SubscribeLocalEvent<ChangelingComponent, StatusEffectEndedEvent>(OnStatusEnded);
@@ -128,6 +133,14 @@ public sealed partial class ChangelingSystem : EntitySystem
         InitializeAbilities();
     }
 
+    private void OnMindRemoved(Entity<ChangelingComponent> ent, ref MindRemovedMessage args)
+    {
+        _action.RemoveAction(ent, ent.Comp.AbsorbDnaAction);
+        _action.RemoveAction(ent, ent.Comp.StasisAction);
+        _action.RemoveAction(ent, ent.Comp.TransformAction);
+        _action.RemoveAction(ent, ent.Comp.ShopAction);
+    }
+
     private void OnMindAdded(EntityUid uid, ChangelingComponent component, MindAddedMessage args)
     {
         if (!_mindSystem.TryGetMind(uid, out var mindId, out var mind))
@@ -135,12 +148,24 @@ public sealed partial class ChangelingSystem : EntitySystem
             return;
         }
 
+        _action.AddAction(uid, ref component.AbsorbDnaAction, AbsorbDnaId);
+        _action.AddAction(uid, ref component.StasisAction, StasisId);
+        _action.AddAction(uid, ref component.TransformAction ,TransformId);
+        _action.AddAction(uid, ref component.ShopAction , ChangelingShopId);
+
+        InitShop(uid);
+
+        if (_roles.MindHasRole<ChangelingRoleComponent>(mindId))
+            return;
+
         _roles.MindAddRole(mindId,
             new ChangelingRoleComponent
                 { PrototypeId = ChangelingRole });
-
         _mindSystem.TryAddObjective(mindId, mind, GenesObjective);
         _mindSystem.TryAddObjective(mindId, mind, EscapeObjective);
+
+
+
         component.Mind = mind;
         mind.PreventGhosting = true;
 
@@ -149,12 +174,6 @@ public sealed partial class ChangelingSystem : EntitySystem
         EnsureComp<PendingClockInComponent>(uid);
 
         _tagSystem.AddTag(uid, "CannotSuicide");
-
-        InitShop(uid);
-
-        _action.AddAction(uid, AbsorbDnaId);
-        _action.AddAction(uid, StasisId);
-        _action.AddAction(uid, TransformId);
     }
 
     private void OnPlayerAttached(Entity<ChangelingSpawnerComponent> uid, ref PlayerAttachedEvent args)
@@ -166,71 +185,40 @@ public sealed partial class ChangelingSystem : EntitySystem
     {
         var uid = ev.Entity.Owner;
         var component = ev.Entity.Comp;
-        HumanoidCharacterProfile? pref;
 
-        EntityUid? targetUid = null;
-
-        if (component.TargetForce != EntityUid.Invalid)
+        var xform = Transform(uid);
+        var (changelingMob, pref) = SpawnChangeling(xform.Coordinates);
+        var playerData = ev.Session.ContentData();
+        if (playerData != null && _mindSystem.TryGetMind(playerData.UserId, out var mindId, out var mind))
         {
-            if (IsEligibleHumanoid(component.TargetForce))
-            {
-                targetUid = component.TargetForce;
-            }
-        }
-        else
-        {
-            TryGetEligibleHumanoid(out targetUid);
-        }
-
-        if (targetUid.HasValue)
-        {
-            var xform = Transform(uid);
-            (var changelingMob, pref) = SpawnChangeling(targetUid.Value, xform.Coordinates);
-            if (changelingMob != null)
-            {
-                var playerData = ev.Session.ContentData();
-                if (playerData != null && _mindSystem.TryGetMind(playerData.UserId, out var mindId, out var mind))
+            _mindSystem.TransferTo(mindId.Value, null, true, false, mind);
+            RemComp<MindContainerComponent>(changelingMob);
+            Timer.Spawn(0,
+                () =>
                 {
-                    _mindSystem.TransferTo(mindId.Value, null, true, false, mind);
-                    RemComp<MindContainerComponent>(changelingMob.Value);
-                    Timer.Spawn(0,
-                        () =>
-                        {
-                            _mindSystem.TransferTo(mindId.Value, changelingMob, true, false, mind);
-                        });
+                    _mindSystem.TransferTo(mindId.Value, changelingMob, true, false, mind);
+                });
+            ;
+            var station = _stationSystem.GetStations()
+                .FirstOrNull(HasComp<StationEventEligibleComponent>);
+            {
+                var session = _mindSystem.GetSession(Comp<MindComponent>(mindId.Value));
+                if (station != null && session != null)
+                {
+                    RaiseLocalEvent(new PlayerSpawnCompleteEvent(
+                        changelingMob,
+                        session,
+                        "Passenger",
+                        false,
+                        0,
+                        station.Value,
+                        pref)
+                    );
+                }
 
-                    var station = _stationSystem.GetOwningStation(targetUid.Value) ?? _stationSystem.GetStations()
-                        .FirstOrNull(HasComp<StationEventEligibleComponent>);
-                    if (pref != null && station != null &&
-                        _mindSystem.TryGetMind(targetUid.Value, out var targetMindId, out var targetMind)
-                        && _roles.MindHasRole<JobComponent>(targetMindId))
-                    {
-                        var currentJob = Comp<JobComponent>(targetMindId);
-
-                        var targetSession = targetMind.Session;
-                        var targetUserId = targetMind.UserId ?? targetMind.OriginalOwnerUserId;
-                        if (targetUserId == null)
-                        {
-                            targetSession = ev.Session;
-                        }
-                        else if (targetSession == null)
-                        {
-                            targetSession = _playerManager.GetSessionById(targetUserId.Value);
-                        }
-
-                        RaiseLocalEvent(new PlayerSpawnCompleteEvent(changelingMob.Value,
-                            targetSession,
-                            currentJob.Prototype,
-                            false,
-                            0,
-                            station.Value,
-                            pref));
-
-                        if (!_roles.MindHasRole<JobComponent>(mindId.Value))
-                        {
-                            _roles.MindAddRole(mindId.Value, new JobComponent { Prototype = currentJob.Prototype });
-                        }
-                    }
+                if (!_roles.MindHasRole<JobComponent>(mindId.Value))
+                {
+                    _roles.MindAddRole(mindId.Value, new JobComponent { Prototype = "Passenger" });
                 }
             }
         }
@@ -242,12 +230,10 @@ public sealed partial class ChangelingSystem : EntitySystem
     {
         var stealer = EnsureComp<ChangelingComponent>(stealerUid);
         var store = EnsureComp<StoreComponent>(stealerUid);
-        var userInterface = EnsureComp<UserInterfaceComponent>(stealerUid);
         store.Categories.Add(ChangelingCategoriesDefensive);
         store.Categories.Add(ChangelingCategoriesOffensive);
         store.RefundAllowed = false;
         store.CurrencyWhitelist.Add(stealer.EvolutionCurrencyPrototype);
-        _action.AddAction(stealerUid, ChangelingShopId);
 
         //_store.TryAddCurrency(new Dictionary<string, FixedPoint2>
         //        { { stealer.EvolutionCurrencyPrototype, stealer.Evolution } },
@@ -258,35 +244,22 @@ public sealed partial class ChangelingSystem : EntitySystem
         //store.Listings.Add(listing!);
     }
 
-    private (EntityUid?, HumanoidCharacterProfile? pref) SpawnChangeling(EntityUid target, EntityCoordinates coords)
+    private (EntityUid stealerUid, HumanoidCharacterProfile pref) SpawnChangeling(EntityCoordinates coords)
     {
-        if (!_mindSystem.TryGetMind(target, out var mindId, out var mind) ||
-            !HasComp<HumanoidAppearanceComponent>(target))
-        {
-            return (null, null);
-        }
-
-        var targetSession = mind.UserId ?? mind.OriginalOwnerUserId;
-
-        if (targetSession == null)
-        {
-            return (null, null);
-        }
-
-        var pref = (HumanoidCharacterProfile) _prefs.GetPreferences(targetSession.Value).SelectedCharacter;
-
-        //var stealerUid = Spawn(species.Prototype, coords);
         var stealerUid = Spawn("MobChangeling", coords);
 
-        _humanoid.LoadProfile(stealerUid, pref);
-        _metaSystem.SetEntityName(stealerUid, MetaData(target).EntityName);
-        if (TryComp<DetailExaminableComponent>(target, out var detail))
-        {
-            EnsureComp<DetailExaminableComponent>(stealerUid).Content = detail.Content;
-        }
+        //var stealerUid = Spawn(species.Prototype, coords);
+
 
         //_humanoid.LoadProfile(stealerUid, pref);
+        //_metaSystem.SetEntityName(stealerUid, MetaData(target).EntityName);
+        //if (TryComp<DetailExaminableComponent>(target, out var detail))
+        //{
+        //    EnsureComp<DetailExaminableComponent>(stealerUid).Content = detail.Content;
+        //}
 
+        //_humanoid.LoadProfile(stealerUid, pref);
+        /*
         if (pref.FlavorText != "" && _configurationManager.GetCVar(CCVars.FlavorText))
         {
             EnsureComp<DetailExaminableComponent>(stealerUid).Content = pref.FlavorText;
@@ -335,6 +308,51 @@ public sealed partial class ChangelingSystem : EntitySystem
                 _prototype,
                 true);
         }
+
+        // Order loadout selections by the order they appear on the prototype.
+        foreach (var group in
+                 loadout.SelectedLoadouts.OrderBy(x => roleProto.Groups.FindIndex(e => e == x.Key)))
+        {
+            foreach (var items in group.Value)
+            {
+                if (!_prototype.TryIndex(items.Prototype, out var loadoutProto))
+                {
+                    Log.Error($"Unable to find loadout prototype for {items.Prototype}");
+                    continue;
+                }
+
+                if (!_prototype.TryIndex(loadoutProto.Equipment, out var startingGear))
+                {
+                    Log.Error(
+                        $"Unable to find starting gear {loadoutProto.Equipment} for loadout {loadoutProto}");
+                    continue;
+                }
+
+                // Handle any extra data here.
+                _stationSpawning.EquipStartingGear(stealerUid, startingGear, raiseEvent: false);
+            }
+        }
+        */
+        var spawnJob = _prototype.Index<JobPrototype>(JobSpawn);
+        if (_prototype.TryIndex<StartingGearPrototype>(spawnJob.StartingGear!, out var gear))
+        {
+            _stationSpawning.EquipStartingGear(stealerUid, gear);
+        }
+
+        var pref = HumanoidCharacterProfile.Random();
+        // Run loadouts after so stuff like storage loadouts can get
+        var jobLoadout = LoadoutSystem.GetJobPrototype(spawnJob.ID);
+
+        if (!_prototype.TryIndex(jobLoadout, out RoleLoadoutPrototype? roleProto))
+            return (stealerUid, pref);
+
+        var loadout = new RoleLoadout(jobLoadout);
+
+        loadout.SetDefault(
+            pref,
+            _actors.GetSession(stealerUid),
+            _prototype,
+            true);
 
         // Order loadout selections by the order they appear on the prototype.
         foreach (var group in
@@ -504,54 +522,6 @@ public sealed partial class ChangelingSystem : EntitySystem
             Entity = entity;
             Session = session;
         }
-    }
-
-    private bool IsEligibleHumanoid(EntityUid? uid)
-    {
-        if (!uid.HasValue || !uid.Value.IsValid())
-        {
-            return false;
-        }
-
-        return !(HasComp<MetempsychosisKarmaComponent>(uid) ||
-                 HasComp<FugitiveComponent>(uid) ||
-                 HasComp<EvilTwinComponent>(uid) ||
-                 HasComp<NukeOperativeComponent>(uid));
-    }
-
-    private void TryGetEligibleHumanoid([NotNullWhen(true)] out EntityUid? uid)
-    {
-        var targets = new List<EntityUid>();
-        {
-            var query = AllEntityQuery<ActorComponent, MindContainerComponent, HumanoidAppearanceComponent>();
-            while (query.MoveNext(out var entityUid, out _, out var mindContainer, out _))
-            {
-                if (!IsEligibleHumanoid(entityUid))
-                    continue;
-
-                if (!mindContainer.HasMind || mindContainer.Mind == null ||
-                    TerminatingOrDeleted(mindContainer.Mind.Value))
-                {
-                    continue;
-                }
-
-                if (!_roles.MindHasRole<JobComponent>(mindContainer.Mind.Value))
-                {
-                    continue;
-                }
-
-                targets.Add(entityUid);
-            }
-        }
-
-        uid = null;
-
-        if (targets.Count == 0)
-        {
-            return;
-        }
-
-        uid = _random.Pick(targets);
     }
 
     private void OnGhostRoleSpawnerUsed(EntityUid uid,

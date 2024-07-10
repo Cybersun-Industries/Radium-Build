@@ -3,6 +3,7 @@ using Content.Server.Flash;
 using Content.Server.Objectives;
 using Content.Server.Polymorph.Systems;
 using Content.Server.Radium.Changeling.Components;
+using Content.Server.Radium.Medical.Surgery.Systems;
 using Content.Shared.Actions;
 using Content.Shared.Cuffs.Components;
 using Content.Shared.Damage;
@@ -33,6 +34,7 @@ public sealed partial class ChangelingSystem
     [Dependency] private readonly DamageableSystem _heal = default!;
     [Dependency] private readonly FlashSystem _flash = default!;
     [Dependency] private readonly DamageableSystem _damageSystem = default!;
+    [Dependency] private readonly SurgerySystem _surgerySystem = default!;
     [Dependency] private readonly StatusEffectsSystem _statusEffectsSystem = default!;
     [Dependency] private readonly PolymorphSystem _polymorphSystem = default!;
     [Dependency] private readonly InventorySystem _inventorySystem = default!;
@@ -180,21 +182,23 @@ public sealed partial class ChangelingSystem
         if (!HasComp<MobStateComponent>(target))
             return;
 
-
-        component.Metadata = MetaData(target);
-
         if (TryComp<HumanoidAppearanceComponent>(args.Args.Target.Value, out var humanoidAppearance) &&
             TryComp<MetaDataComponent>(args.Args.Target.Value, out var metaData))
         {
             _serializationManager.CopyTo(humanoidAppearance, ref component.SourceHumanoid);
-            component.ServerIdentitiesList.Add(component.ServerIdentitiesList.Count, (metaData, humanoidAppearance));
+            _serializationManager.CopyTo(metaData, ref component.Metadata);
+
+            component.ServerIdentitiesList.Add(component.ServerIdentitiesList.Count,
+                (component.Metadata, humanoidAppearance)!);
             component.ClientIdentitiesList.Add(component.ServerIdentitiesList.Count - 1,
-                metaData.EntityName); //Idk how to do better. Was messing with component but no luck there..
+                component.Metadata!.EntityName); //Idk how to do better. Was messing with component but no luck there..
+
             Dirty(uid, component);
             _userInterface.SetUiState(uid, ChangelingStorageUiKey.Key, new ChangelingStorageUiState());
             humanoidAppearance.SkinColor = Color.Gray;
 
             Dirty(args.Args.Target.Value, humanoidAppearance);
+
             _metaSystem.SetEntityName(target, Loc.GetString("changeling-absorbed-corpse-name"));
             _metaSystem.SetEntityDescription(target, Loc.GetString("changeling-absorbed-corpse-description"));
         }
@@ -237,6 +241,7 @@ public sealed partial class ChangelingSystem
             _heal.TryChangeDamage(uid, new DamageSpecifier());
             _mobState.ChangeMobState(uid, MobState.Alive, state);
             component.IsInStasis = false;
+            _surgerySystem.HealAllWounds(uid);
             return;
         }
 

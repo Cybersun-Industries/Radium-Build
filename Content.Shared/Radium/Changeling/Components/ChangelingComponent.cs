@@ -137,9 +137,17 @@ public sealed partial class ChangelingComponent : Component
 
     [DataField] public ActionsComponent? Actions;
 
+    [DataField] public EntityUid[] ActiveActions = [];
+
     #endregion
 
-    [DataField] public EntityUid? Action;
+    [DataField] public EntityUid? AbsorbDnaAction;
+
+    [DataField] public EntityUid? StasisAction;
+
+    [DataField] public EntityUid? TransformAction;
+
+    [DataField] public EntityUid? ShopAction;
 
     [DataField] public bool IsInStasis;
 

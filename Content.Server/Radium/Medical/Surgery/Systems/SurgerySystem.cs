@@ -348,13 +348,13 @@ public sealed partial class SurgerySystem : EntitySystem
     }
     */
 
-    private void TryApplySurgeryDamage(EntityUid uid, WoundTypeEnum woundType)
+    public bool TryApplySurgeryDamage(EntityUid uid, WoundTypeEnum woundType)
     {
         var part = RandomizePart(uid, woundType);
         var symmetry = RandomizeSymmetry(part);
         if (part == SurgeryPartEnum.None)
         {
-            return;
+            return false;
         }
 
         var list = _bodySystem.GetBodyChildren(uid).ToList();
@@ -365,12 +365,12 @@ public sealed partial class SurgerySystem : EntitySystem
 
         if (partComponentRaw == null)
         {
-            return;
+            return false;
         }
 
         var partComponentId = partComponentRaw.Value.Id;
         if (!TryComp<BodyPartComponent>(partComponentId, out var partComponent))
-            return;
+            return false;
         TryComp<MetaDataComponent>(partComponentId, out var metadata);
         switch (woundType)
         {
@@ -384,13 +384,13 @@ public sealed partial class SurgerySystem : EntitySystem
                 partComponent.Wounds.Add(new PartWound(WoundTypeEnum.Heat));
                 break;
             default:
-                return;
+                return false;
         }
 
         Dirty(partComponentId, partComponent, metadata);
 
         if (part is not (SurgeryPartEnum.Arm or SurgeryPartEnum.Leg) || partComponent.Wounds.Count < 7)
-            return;
+            return false;
 
         var additionalPart = part switch
         {
@@ -405,6 +405,20 @@ public sealed partial class SurgerySystem : EntitySystem
             p.Component.Symmetry == symmetry);
         _xformSystem.AttachToGridOrMap(hand.Id);
         _xformSystem.AttachToGridOrMap(arm.Id);
+        return true;
+    }
+
+    public bool HealAllWounds(EntityUid uid)
+    {
+        var list = _bodySystem.GetBodyChildren(uid).ToList();
+        foreach (var part in list)
+        {
+            part.Component.Wounds.Clear();
+            Dirty(part.Id, part.Component);
+        }
+
+        RaiseNetworkEvent(new SyncPartsEvent(_entityManager.GetNetEntity(uid)));
+        return true;
     }
 
     private void OnSurgeryDoAfter(EntityUid uid, SurgeryInProgressComponent component, SurgeryDoAfterEvent args)
