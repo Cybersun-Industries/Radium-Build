@@ -17,7 +17,9 @@
   noSpawn: true
   components:
   - type: InstantAction
-    icon: Radium/Interface/Actions/fake_death.png
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: fake_death
     event: !type:ChangelingStasisActionEvent
     useDelay: 120
     checkCanInteract: false
@@ -30,7 +32,9 @@
   noSpawn: true
   components:
   - type: InstantAction
-    icon: Radium/Interface/Actions/transform.png
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: transform
     event: !type:ChangelingTransformActionEvent
     useDelay: 30
 
@@ -41,7 +45,9 @@
   noSpawn: true
   components:
   - type: EntityTargetAction
-    icon: Radium/Interface/Actions/absorb_dna.png
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: absorb_dna
     event: !type:ChangelingAbsorbDnaActionEvent
     useDelay: 0
     whitelist:
@@ -57,7 +63,9 @@
   noSpawn: true
   components:
   - type: InstantAction
-    icon: Radium/Interface/Actions/adrenaline.png
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: adrenaline
     event: !type:ChangelingSpeedUpActionEvent
     useDelay: 30
 
@@ -68,7 +76,9 @@
   noSpawn: true
   components:
   - type: InstantAction
-    icon: Radium/Interface/Actions/strained_muscles.png
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: strained_muscles
     event: !type:ChangelingSpeedUpActionEvent
     useDelay: 30
 
@@ -79,7 +89,9 @@
   noSpawn: true
   components:
   - type: InstantAction
-    icon: Radium/Interface/Actions/panacea.png
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: panacea
     event: !type:ChangelingSpeedUpActionEvent
     useDelay: 30
 
@@ -90,7 +102,9 @@
   noSpawn: true
   components:
   - type: InstantAction
-    icon: Radium/Interface/Actions/chitinous_armor.png
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: chitinous_armor
     event: !type:ChangelingSpeedUpActionEvent
     useDelay: 30
 
@@ -101,7 +115,9 @@
   noSpawn: true
   components:
   - type: InstantAction
-    icon: Radium/Interface/Actions/organic_suit.png
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: organic_suit
     event: !type:ChangelingSpeedUpActionEvent
     useDelay: 30
 
@@ -112,7 +128,9 @@
   noSpawn: true
   components:
   - type: InstantAction
-    icon: Radium/Interface/Actions/organic_shield.png
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: organic_shield
     event: !type:ChangelingSpeedUpActionEvent
     useDelay: 30
 
@@ -123,7 +141,9 @@
   noSpawn: true
   components:
   - type: InstantAction
-    icon: Radium/Interface/Actions/mimic_voice.png
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: mimic_voice
     event: !type:ChangelingSpeedUpActionEvent
     useDelay: 30
 
@@ -134,7 +154,9 @@
   noSpawn: true
   components:
   - type: InstantAction
-    icon: Radium/Interface/Actions/lesser_form.png
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: lesser_form
     event: !type:ChangelingSpeedUpActionEvent
     useDelay: 30
 
@@ -145,7 +167,9 @@
   noSpawn: true
   components:
   - type: InstantAction
-    icon: Radium/Interface/Actions/fleshmend.png
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: fleshmend
     event: !type:ChangelingSpeedUpActionEvent
     useDelay: 30
 
@@ -156,7 +180,9 @@
   noSpawn: true
   components:
   - type: InstantAction
-    icon: Radium/Interface/Actions/chameleon_skin.png
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: chameleon_skin
     event: !type:ChangelingSpeedUpActionEvent
     useDelay: 30
 
@@ -167,7 +193,9 @@
   noSpawn: true
   components:
   - type: InstantAction
-    icon: Radium/Interface/Actions/biodegrade.png
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: biodegrade
     event: !type:ChangelingSpeedUpActionEvent
     useDelay: 30
 
@@ -178,7 +206,9 @@
   noSpawn: true
   components:
   - type: InstantAction
-    icon: Radium/Interface/Actions/augmented_eyesight.png
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: augmented_eyesight
     event: !type:ChangelingSpeedUpActionEvent
     useDelay: 30
 
@@ -189,7 +219,9 @@
   noSpawn: true
   components:
   - type: InstantAction
-    icon: Radium/Interface/Actions/defib.png
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: defibrilator
     event: !type:ChangelingSpeedUpActionEvent
     useDelay: 30
 
@@ -202,7 +234,9 @@
   noSpawn: true
   components:
   - type: EntityTargetAction
-    icon: Radium/Interface/Actions/sting_transform.png
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: sting_extract
     event: !type:ChangelingAbsorbDnaActionEvent
     useDelay: 0
     whitelist:
@@ -216,7 +250,9 @@
   noSpawn: true
   components:
   - type: EntityTargetAction
-    icon: Radium/Interface/Actions/sting_transform.png
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: sting_transform
     event: !type:ChangelingAbsorbDnaActionEvent
     useDelay: 0
     whitelist:
@@ -230,7 +266,9 @@
   noSpawn: true
   components:
   - type: EntityTargetAction
-    icon: Radium/Interface/Actions/sting_mute.png
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: sting_mute
     event: !type:ChangelingAbsorbDnaActionEvent
     useDelay: 0
     whitelist:
@@ -244,7 +282,9 @@
   noSpawn: true
   components:
   - type: EntityTargetAction
-    icon: Radium/Interface/Actions/sting_blind.png
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: sting_blind
     event: !type:ChangelingAbsorbDnaActionEvent
     useDelay: 0
     whitelist:
@@ -258,7 +298,9 @@
   noSpawn: true
   components:
   - type: EntityTargetAction
-    icon: Radium/Interface/Actions/sting_lsd.png
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: sting_lsd
     event: !type:ChangelingAbsorbDnaActionEvent
     useDelay: 0
     whitelist:
@@ -272,7 +314,9 @@
   noSpawn: true
   components:
   - type: EntityTargetAction
-    icon: Radium/Interface/Actions/sting_cryo.png
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: sting_cryo
     event: !type:ChangelingAbsorbDnaActionEvent
     useDelay: 0
     whitelist:
@@ -286,7 +330,9 @@
   noSpawn: true
   components:
   - type: EntityTargetAction
-    icon: Radium/Interface/Actions/sting_armblade.png
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: sting_armblade
     event: !type:ChangelingAbsorbDnaActionEvent
     useDelay: 0
     whitelist:
@@ -300,7 +346,9 @@
   noSpawn: true
   components:
   - type: InstantAction
-    icon: Radium/Interface/Actions/armblade.png
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: armblade
     event: !type:ChangelingSpeedUpActionEvent
     useDelay: 30
 
@@ -311,7 +359,9 @@
   noSpawn: true
   components:
   - type: InstantAction
-    icon: Radium/Interface/Actions/resonant_shriek.png
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: resonant_shriek
     event: !type:ChangelingSpeedUpActionEvent
     useDelay: 30
 
@@ -322,6 +372,8 @@
   noSpawn: true
   components:
   - type: InstantAction
-    icon: Radium/Interface/Actions/dissonant_shriek.png
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: dissonant_shriek
     event: !type:ChangelingSpeedUpActionEvent
     useDelay: 30
