@@ -2,9 +2,9 @@
 
 - type: listing
   id: ChangelingStrainedMuscules
-  name: ent-ActionChangelingStrainedMuscules
-  description: ent-ActionChangelingStrainedMuscules.desc
-  productAction: ActionChangelingStrainedMuscules
+  name: ent-ActionChangelingStrainedMuscles
+  description: ent-ActionChangelingStrainedMuscles.desc
+  productAction: ActionChangelingStrainedMuscles
   cost:
     ChangelingEvolution: 1
   categories:

@@ -66,11 +66,11 @@
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: adrenaline
-    event: !type:ChangelingSpeedUpActionEvent
+    event: !type:ActionChangelingAdrenalineSacsEvent
     useDelay: 30
 
 - type: entity
-  id: ActionChangelingStrainedMuscules
+  id: ActionChangelingStrainedMuscles
   name: Strained Muscles
   description: The changeling reduces lactic acid buildup in their leg muscles, allowing them to move at extremely fast speeds. While active, the changeling will take steadily incrementing stamina damage and eventually pass out, if he doesn't take a rest. Doesn't work in monkey form.
   noSpawn: true
@@ -79,7 +79,7 @@
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: strained_muscles
-    event: !type:ChangelingSpeedUpActionEvent
+    event: !type:ActionChangelingStrainedMusclesEvent
     useDelay: 30
 
 - type: entity
@@ -92,7 +92,7 @@
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: panacea
-    event: !type:ChangelingSpeedUpActionEvent
+    event: !type:ActionChangelingAnatomicPanaceaEvent
     useDelay: 30
 
 - type: entity
@@ -105,7 +105,7 @@
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: chitinous_armor
-    event: !type:ChangelingSpeedUpActionEvent
+    event: !type:ActionChangelingChitinousArmorEvent
     useDelay: 30
 
 - type: entity
@@ -118,7 +118,7 @@
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: organic_suit
-    event: !type:ChangelingSpeedUpActionEvent
+    event: !type:ActionChangelingVoidAdaptationEvent
     useDelay: 30
 
 - type: entity
@@ -131,7 +131,7 @@
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: organic_shield
-    event: !type:ChangelingSpeedUpActionEvent
+    event: !type:ActionChangelingOrganicShieldEvent
     useDelay: 30
 
 - type: entity
@@ -144,7 +144,7 @@
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: mimic_voice
-    event: !type:ChangelingSpeedUpActionEvent
+    event: !type:ActionChangelingMimicVoiceEvent
     useDelay: 30
 
 - type: entity
@@ -157,7 +157,7 @@
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: lesser_form
-    event: !type:ChangelingSpeedUpActionEvent
+    event: !type:ActionChangelingLesserFormEvent
     useDelay: 30
 
 - type: entity
@@ -170,7 +170,7 @@
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: fleshmend
-    event: !type:ChangelingSpeedUpActionEvent
+    event: !type:ActionChangelingFleshmendEvent
     useDelay: 30
 
 - type: entity
@@ -183,7 +183,7 @@
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: chameleon_skin
-    event: !type:ChangelingSpeedUpActionEvent
+    event: !type:ActionChangelingChameleonSkinEvent
     useDelay: 30
 
 - type: entity
@@ -196,7 +196,7 @@
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: biodegrade
-    event: !type:ChangelingSpeedUpActionEvent
+    event: !type:ActionChangelingBiodegradeEvent
     useDelay: 30
 
 - type: entity
@@ -209,7 +209,7 @@
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: augmented_eyesight
-    event: !type:ChangelingSpeedUpActionEvent
+    event: !type:PassiveChangelingAugmentedEyesightEvent
     useDelay: 30
 
 - type: entity
@@ -222,7 +222,7 @@
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: defibrilator
-    event: !type:ChangelingSpeedUpActionEvent
+    event: !type:PassiveChangelingDefibrillatorGraspEvent
     useDelay: 30
 
 #Changeling offensive abilities
@@ -237,7 +237,7 @@
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: sting_extract
-    event: !type:ChangelingAbsorbDnaActionEvent
+    event: !type:ActionChangelingDNAStingEvent
     useDelay: 0
     whitelist:
       components:
@@ -253,7 +253,7 @@
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: sting_transform
-    event: !type:ChangelingAbsorbDnaActionEvent
+    event: !type:ActionChangelingTransformationStingEvent
     useDelay: 0
     whitelist:
       components:
@@ -269,7 +269,7 @@
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: sting_mute
-    event: !type:ChangelingAbsorbDnaActionEvent
+    event: !type:ActionChangelingMuteStingEvent
     useDelay: 0
     whitelist:
       components:
@@ -285,7 +285,7 @@
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: sting_blind
-    event: !type:ChangelingAbsorbDnaActionEvent
+    event: !type:ActionChangelingBlindStingEvent
     useDelay: 0
     whitelist:
       components:
@@ -301,7 +301,7 @@
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: sting_lsd
-    event: !type:ChangelingAbsorbDnaActionEvent
+    event: !type:ActionChangelingHallutinationStingEvent
     useDelay: 0
     whitelist:
       components:
@@ -317,7 +317,7 @@
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: sting_cryo
-    event: !type:ChangelingAbsorbDnaActionEvent
+    event: !type:ActionChangelingCryogenicStingEvent
     useDelay: 0
     whitelist:
       components:
@@ -333,7 +333,7 @@
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: sting_armblade
-    event: !type:ChangelingAbsorbDnaActionEvent
+    event: !type:ActionChangelingFalseArmbladeStingEvent
     useDelay: 0
     whitelist:
       components:
@@ -349,7 +349,7 @@
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: armblade
-    event: !type:ChangelingSpeedUpActionEvent
+    event: !type:ActionChangelingArmBladeEvent
     useDelay: 30
 
 - type: entity
@@ -362,7 +362,7 @@
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: resonant_shriek
-    event: !type:ChangelingSpeedUpActionEvent
+    event: !type:ActionChangelingResonantShriekEvent
     useDelay: 30
 
 - type: entity
@@ -375,5 +375,5 @@
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: dissonant_shriek
-    event: !type:ChangelingSpeedUpActionEvent
+    event: !type:ActionChangelingDissonantShriekEvent
     useDelay: 30
