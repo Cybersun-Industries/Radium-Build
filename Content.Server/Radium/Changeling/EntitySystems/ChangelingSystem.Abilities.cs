@@ -52,6 +52,187 @@ public sealed partial class ChangelingSystem
         SubscribeLocalEvent<ChangelingComponent, MobStateChangedEvent>(OnMobStateChanged);
 
         SubscribeLocalEvent<ConfirmTransformation>(OnTransformationConfirmed);
+
+        SubscribeLocalEvent<ChangelingComponent, ActionChangelingAdrenalineSacsEvent>(OnAdrenalineSacsEventAction);
+        SubscribeLocalEvent<ChangelingComponent, ActionChangelingStrainedMusclesEvent>(OnStrainedMusclesEventAction);
+        SubscribeLocalEvent<ChangelingComponent, ActionChangelingAnatomicPanaceaEvent>(OnAnatomicPanaceaEventAction);
+        SubscribeLocalEvent<ChangelingComponent, ActionChangelingChitinousArmorEvent>(OnChitinousArmorEventAction);
+        SubscribeLocalEvent<ChangelingComponent, ActionChangelingVoidAdaptationEvent>(OnVoidAdaptationEventAction);
+        SubscribeLocalEvent<ChangelingComponent, ActionChangelingOrganicShieldEvent>(OnOrganicShieldEventAction);
+        SubscribeLocalEvent<ChangelingComponent, ActionChangelingMimicVoiceEvent>(OnMimicVoiceEventAction);
+        SubscribeLocalEvent<ChangelingComponent, ActionChangelingLesserFormEvent>(OnLesserFormEventAction); //TODO
+        SubscribeLocalEvent<ChangelingComponent, ActionChangelingFleshmendEvent>(OnFleshmendEventAction);
+        SubscribeLocalEvent<ChangelingComponent, ActionChangelingChameleonSkinEvent>(OnChameleonSkinEventAction);
+        SubscribeLocalEvent<ChangelingComponent, ActionChangelingBiodegradeEvent>(OnStrainedBiodegradeEventAction);
+        SubscribeLocalEvent<ChangelingComponent, PassiveChangelingAugmentedEyesightEvent>(OnAugmentedEyesightEventAction);
+        SubscribeLocalEvent<ChangelingComponent, PassiveChangelingDefibrillatorGraspEvent>(OnDefibrillatorGraspEventAction);
+        SubscribeLocalEvent<ChangelingComponent, ActionChangelingDnaStingEvent>(OnDnaStingEventAction);
+        SubscribeLocalEvent<ChangelingComponent, ActionChangelingTransformationStingEvent>(OnTransformationStingEventAction);
+        SubscribeLocalEvent<ChangelingComponent, ActionChangelingMuteStingEvent>(OnMuteStingEventAction);
+        SubscribeLocalEvent<ChangelingComponent, ActionChangelingBlindStingEvent>(OnBlindStingEventAction);
+        SubscribeLocalEvent<ChangelingComponent, ActionChangelingHallutinationStingEvent>(OnHallutinationStingEventAction);
+        SubscribeLocalEvent<ChangelingComponent, ActionChangelingCryogenicStingEvent>(OnCryogenicStingEventAction);
+        SubscribeLocalEvent<ChangelingComponent, ActionChangelingFalseArmbladeStingEvent>(OnFalseArmbladeStingEventAction);
+        SubscribeLocalEvent<ChangelingComponent, ActionChangelingArmBladeEvent>(OnArmBladeEventAction);
+        SubscribeLocalEvent<ChangelingComponent, ActionChangelingResonantShriekEvent>(OnResonantShriekEventAction);
+        SubscribeLocalEvent<ChangelingComponent, ActionChangelingDissonantShriekEvent>(OnDissonantShriekEventAction);
+    }
+
+    private void OnDissonantShriekEventAction(EntityUid uid,
+        ChangelingComponent component,
+        ActionChangelingDissonantShriekEvent args)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OnResonantShriekEventAction(EntityUid uid,
+        ChangelingComponent component,
+        ActionChangelingResonantShriekEvent args)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OnArmBladeEventAction(EntityUid uid, ChangelingComponent component, ActionChangelingArmBladeEvent args)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OnFalseArmbladeStingEventAction(EntityUid uid,
+        ChangelingComponent component,
+        ActionChangelingFalseArmbladeStingEvent args)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OnCryogenicStingEventAction(EntityUid uid,
+        ChangelingComponent component,
+        ActionChangelingCryogenicStingEvent args)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OnHallutinationStingEventAction(EntityUid uid,
+        ChangelingComponent component,
+        ActionChangelingHallutinationStingEvent args)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OnBlindStingEventAction(EntityUid uid,
+        ChangelingComponent component,
+        ActionChangelingBlindStingEvent args)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OnMuteStingEventAction(EntityUid uid,
+        ChangelingComponent component,
+        ActionChangelingMuteStingEvent args)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OnTransformationStingEventAction(EntityUid uid,
+        ChangelingComponent component,
+        ActionChangelingTransformationStingEvent args)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OnDnaStingEventAction(EntityUid uid, ChangelingComponent component, ActionChangelingDnaStingEvent args)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OnDefibrillatorGraspEventAction(EntityUid uid,
+        ChangelingComponent component,
+        PassiveChangelingDefibrillatorGraspEvent args)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OnAugmentedEyesightEventAction(EntityUid uid,
+        ChangelingComponent component,
+        PassiveChangelingAugmentedEyesightEvent args)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OnStrainedBiodegradeEventAction(EntityUid uid,
+        ChangelingComponent component,
+        ActionChangelingBiodegradeEvent args)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OnChameleonSkinEventAction(EntityUid uid,
+        ChangelingComponent component,
+        ActionChangelingChameleonSkinEvent args)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OnFleshmendEventAction(EntityUid uid,
+        ChangelingComponent component,
+        ActionChangelingFleshmendEvent args)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OnLesserFormEventAction(EntityUid uid,
+        ChangelingComponent component,
+        ActionChangelingLesserFormEvent args)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OnMimicVoiceEventAction(EntityUid uid,
+        ChangelingComponent component,
+        ActionChangelingMimicVoiceEvent args)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OnOrganicShieldEventAction(EntityUid uid,
+        ChangelingComponent component,
+        ActionChangelingOrganicShieldEvent args)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OnVoidAdaptationEventAction(EntityUid uid,
+        ChangelingComponent component,
+        ActionChangelingVoidAdaptationEvent args)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OnChitinousArmorEventAction(EntityUid uid,
+        ChangelingComponent component,
+        ActionChangelingChitinousArmorEvent args)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OnAnatomicPanaceaEventAction(EntityUid uid,
+        ChangelingComponent component,
+        ActionChangelingAnatomicPanaceaEvent args)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OnStrainedMusclesEventAction(EntityUid uid,
+        ChangelingComponent component,
+        ActionChangelingStrainedMusclesEvent args)
+    {
+        throw new NotImplementedException();
+    }
+
+    private void OnAdrenalineSacsEventAction(EntityUid uid,
+        ChangelingComponent component,
+        ActionChangelingAdrenalineSacsEvent args)
+    {
+        throw new NotImplementedException();
     }
 
     private static void OnMobStateChanged(EntityUid uid, ChangelingComponent component, MobStateChangedEvent args)
