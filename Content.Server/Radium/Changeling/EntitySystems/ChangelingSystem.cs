@@ -1,13 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Numerics;
 using Content.Server.Actions;
-using Content.Server.Backmen.Cloning;
-using Content.Server.Backmen.EvilTwin;
-using Content.Server.Backmen.Fugitive;
-using Content.Server.Backmen.Loadout;
-using Content.Server.DetailExaminable;
-using Content.Server.Forensics;
 using Content.Server.GameTicking;
 using Content.Server.Ghost.Roles.Events;
 using Content.Server.Humanoid;
@@ -18,19 +11,17 @@ using Content.Server.Shuttles.Components;
 using Content.Server.Spawners.Components;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
-using Content.Server.Store.Components;
 using Content.Server.Store.Systems;
+using Content.Server.Zombies;
+using Content.Shared.Actions;
 using Content.Shared.Alert;
-using Content.Shared.CCVar;
 using Content.Shared.CombatMode.Pacification;
+using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
-using Content.Shared.FixedPoint;
-using Content.Shared.Humanoid;
-using Content.Shared.Humanoid.Prototypes;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
+using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
-using Content.Shared.NukeOps;
 using Content.Shared.Players;
 using Content.Shared.Popups;
 using Content.Shared.Preferences;
@@ -82,6 +73,18 @@ public sealed partial class ChangelingSystem : EntitySystem
     [ValidatePrototypeId<EntityPrototype>]
     private const string TransformId = "ActionChangelingTransform";
 
+    private readonly EntProtoId ArmbladePrototype = "ArmBladeChangeling";
+    private readonly EntProtoId FakeArmbladePrototype = "FakeArmBladeChangeling";
+
+    private readonly EntProtoId ShieldPrototype = "ChangelingShield";
+    private readonly EntProtoId BoneShardPrototype = "ThrowingStarChangeling";
+
+    private readonly EntProtoId ArmorPrototype = "ChangelingClothingOuterArmor";
+    private readonly EntProtoId ArmorHelmetPrototype = "ChangelingClothingHeadHelmet";
+
+    private readonly EntProtoId SpacesuitPrototype = "ChangelingClothingOuterHardsuit";
+    private readonly EntProtoId SpacesuitHelmetPrototype = "ChangelingClothingHeadHelmetHardsuit";
+
     [Dependency] private readonly IRobustRandom _random = default!;
     [Dependency] private readonly ActionsSystem _action = default!;
     [Dependency] private readonly AlertsSystem _alerts = default!;
@@ -104,6 +107,8 @@ public sealed partial class ChangelingSystem : EntitySystem
     [Dependency] private readonly IServerConsoleHost _console = default!;
     [Dependency] private readonly UserInterfaceSystem _userInterface = default!;
     [Dependency] private readonly ActorSystem _actors = default!;
+    [Dependency] private readonly StaminaSystem _stamina = default!;
+    [Dependency] private readonly IGameTiming _timing = default!;
 
     [ValidatePrototypeId<EntityPrototype>]
     private const string SpawnPointPrototype = "SpawnPointChangeling";
@@ -120,7 +125,6 @@ public sealed partial class ChangelingSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ChangelingComponent, ComponentStartup>(OnStartup);
         SubscribeLocalEvent<ChangelingSpawnerComponent, PlayerAttachedEvent>(OnPlayerAttached);
         SubscribeLocalEvent<ChangelingComponent, MindAddedMessage>(OnMindAdded);
         SubscribeLocalEvent<ChangelingComponent, MindRemovedMessage>(OnMindRemoved);
@@ -128,6 +132,7 @@ public sealed partial class ChangelingSystem : EntitySystem
         SubscribeLocalEvent<ChangelingComponent, StatusEffectAddedEvent>(OnStatusAdded);
         SubscribeLocalEvent<ChangelingComponent, StatusEffectEndedEvent>(OnStatusEnded);
         SubscribeLocalEvent<SpawnChangelingEvent>(OnSpawn);
+        SubscribeLocalEvent<ChangelingComponent, MobStateChangedEvent>(OnMobStateChange);
         SubscribeLocalEvent<ChangelingSpawnerComponent, GhostRoleSpawnerUsedEvent>(OnGhostRoleSpawnerUsed);
 
         InitializeAbilities();
@@ -150,8 +155,10 @@ public sealed partial class ChangelingSystem : EntitySystem
 
         _action.AddAction(uid, ref component.AbsorbDnaAction, AbsorbDnaId);
         _action.AddAction(uid, ref component.StasisAction, StasisId);
-        _action.AddAction(uid, ref component.TransformAction ,TransformId);
-        _action.AddAction(uid, ref component.ShopAction , ChangelingShopId);
+        _action.AddAction(uid, ref component.TransformAction, TransformId);
+        _action.AddAction(uid, ref component.ShopAction, ChangelingShopId);
+
+        EnsureComp<ZombieImmuneComponent>(uid);
 
         InitShop(uid);
 
@@ -165,7 +172,6 @@ public sealed partial class ChangelingSystem : EntitySystem
         _mindSystem.TryAddObjective(mindId, mind, EscapeObjective);
 
 
-
         component.Mind = mind;
         mind.PreventGhosting = true;
 
@@ -176,6 +182,11 @@ public sealed partial class ChangelingSystem : EntitySystem
         _tagSystem.AddTag(uid, "CannotSuicide");
     }
 
+    private void OnMobStateChange(EntityUid uid, ChangelingComponent comp, ref MobStateChangedEvent args)
+    {
+        if (args.NewMobState == MobState.Dead)
+            RemoveAllChangelingEquipment(uid, comp);
+    }
     private void OnPlayerAttached(Entity<ChangelingSpawnerComponent> uid, ref PlayerAttachedEvent args)
     {
         QueueLocalEvent(new SpawnChangelingEvent(uid, args.Player));
@@ -381,17 +392,6 @@ public sealed partial class ChangelingSystem : EntitySystem
         return (stealerUid, pref);
     }
 
-    private void OnStartup(EntityUid uid, ChangelingComponent component, ComponentStartup args)
-    {
-        //update the icon
-        ChangeEssenceAmount(uid, 0, component);
-
-        //default the visuals
-        _appearance.SetData(uid, ChangelingVisuals.Idle, false);
-        _appearance.SetData(uid, ChangelingVisuals.Harvesting, false);
-        _appearance.SetData(uid, ChangelingVisuals.Slowed, false);
-    }
-
     private void OnStatusAdded(EntityUid uid, ChangelingComponent component, StatusEffectAddedEvent args)
     {
         if (args.Key == "Stun")
@@ -404,39 +404,56 @@ public sealed partial class ChangelingSystem : EntitySystem
             _appearance.SetData(uid, ChangelingVisuals.Slowed, false);
     }
 
-    public bool ChangeEssenceAmount(EntityUid uid,
-        FixedPoint2 amount,
-        ChangelingComponent? component = null,
-        bool regenCap = false)
+    private void UpdateChemicals(EntityUid uid, ChangelingComponent comp, float? amount = null)
     {
-        if (!Resolve(uid, ref component))
-            return false;
+        var chemicals = comp.Chemicals;
 
-        component.Resource += amount;
+        chemicals += amount ?? 1 /*regen*/;
 
-        if (regenCap)
-            FixedPoint2.Min(component.Resource, component.ResourceRegenCap);
+        comp.Chemicals = Math.Clamp(chemicals, 0, comp.MaxChemicals);
 
-        if (TryComp<StoreComponent>(uid, out var store))
-            _store.UpdateUserInterface(uid, uid, store);
+        Dirty(uid, comp);
 
-        _alerts.ShowAlert(uid,
-            "Resource",
-            (short) Math.Clamp(Math.Round(component.Resource.Float() / 10f), 0, 16));
-        return true;
+        _alerts.ShowAlert(uid, "Chemicals");
     }
 
-    private bool TryUseAbility(EntityUid uid, ChangelingComponent component, FixedPoint2 abilityCost, Vector2 debuffs)
+    public void RemoveAllChangelingEquipment(EntityUid target, ChangelingComponent comp)
     {
-        if (component.Resource <= abilityCost)
+        foreach (var equipment in comp.ChangelingEquipment)
         {
-            _popup.PopupEntity(Loc.GetString("revenant-not-enough-essence"), uid, uid);
+            EntityManager.DeleteEntity(equipment.Value);
+        }
+
+        PlayMeatySound(target, comp);
+    }
+
+    public bool TryUseAbility(EntityUid uid, BaseActionEvent action, ChangelingComponent? comp = null)
+    {
+        if (action.Handled)
+            return false;
+
+        if (!Resolve(uid, ref comp))
+            return false;
+
+        if (!TryComp<ChangelingActionComponent>(action.Action, out var lingAction))
+            return false;
+
+        if (!lingAction.UseWhileLesserForm && comp.IsInLesserForm)
+        {
+            _popup.PopupEntity(Loc.GetString("changeling-action-fail-lesserform"), uid, uid);
             return false;
         }
 
-        ChangeEssenceAmount(uid, abilityCost, component, false);
+        var price = lingAction.ChemicalCost;
+        if (comp.Chemicals < price)
+        {
+            _popup.PopupEntity(Loc.GetString("changeling-chemicals-deficit"), uid, uid);
+            return false;
+        }
 
-        _stun.TryStun(uid, TimeSpan.FromSeconds(debuffs.X), false);
+        UpdateChemicals(uid, comp, -price);
+
+        action.Handled = true;
 
         return true;
     }
@@ -452,19 +469,19 @@ public sealed partial class ChangelingSystem : EntitySystem
     {
         base.Update(frameTime);
 
-        var query = EntityQueryEnumerator<ChangelingComponent>();
-        while (query.MoveNext(out var uid, out var rev))
+        if (!_timing.IsFirstTimePredicted)
+            return;
+
+        foreach (var comp in EntityManager.EntityQuery<ChangelingComponent>())
         {
-            rev.Accumulator += frameTime;
+            var uid = comp.Owner;
 
-            if (rev.Accumulator <= 1)
+            if (_timing.CurTime < comp.RegenTime)
                 continue;
-            rev.Accumulator -= 1;
 
-            if (rev.Resource < rev.ResourceRegenCap)
-            {
-                ChangeEssenceAmount(uid, rev.ResourcePerSecond, rev, regenCap: true);
-            }
+            comp.RegenTime = _timing.CurTime + TimeSpan.FromSeconds(comp.RegenCooldown);
+
+            Cycle(uid, comp);
         }
     }
 

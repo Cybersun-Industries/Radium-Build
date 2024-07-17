@@ -5,6 +5,7 @@ using Content.Shared.Humanoid;
 using Content.Shared.Mind;
 using Content.Shared.Preferences;
 using Content.Shared.Store;
+using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
 using Robust.Shared.Network;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
@@ -16,114 +17,63 @@ public sealed partial class ChangelingComponent : Component
 {
     #region Base Stats
 
+    [DataField("soundMeatPool")]
+    public List<SoundSpecifier?> SoundPool = new()
+    {
+        new SoundPathSpecifier("/Audio/Effects/gib1.ogg"),
+        new SoundPathSpecifier("/Audio/Effects/gib2.ogg"),
+        new SoundPathSpecifier("/Audio/Effects/gib3.ogg"),
+    };
+
+    [DataField("soundShriek")]
+    public SoundSpecifier ShriekSound =
+        new SoundPathSpecifier("/Audio/Goobstation/Changeling/Effects/changeling_shriek.ogg");
+
+    [DataField("shriekPower")]
+    public float ShriekPower = 2.5f;
+
+    public Dictionary<ChangelingEquipment, EntityUid?> ChangelingEquipment= new ();
+    public EntityUid? ArmbladeEntity;
+    public EntityUid? ShieldEntity;
+    public EntityUid? ArmorEntity, ArmorHelmetEntity;
+    public EntityUid? SpacesuitEntity, SpacesuitHelmetEntity;
+
+    public bool StrainedMusclesActive = false;
+
+    public bool IsInLesserForm = false;
+
     /// <summary>
-    /// The total amount of Essence the changeling has.
+    ///     Current amount of chemicals changeling currently has.
     /// </summary>
-    [ViewVariables(VVAccess.ReadWrite)]
-    public FixedPoint2 Resource = 10;
+    [DataField, AutoNetworkedField]
+    public float Chemicals = 100f;
+
+    /// <summary>
+    ///     Maximum amount of chemicals changeling can have.
+    /// </summary>
+    [DataField, AutoNetworkedField]
+    public float MaxChemicals = 100f;
+
+    /// <summary>
+    ///     Cooldown between chem regen events.
+    /// </summary>
+    public TimeSpan RegenTime = TimeSpan.Zero;
+    public float RegenCooldown = 1f;
 
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField]
     public FixedPoint2 Evolution = 0;
 
+    [DataField] public bool IsInStasis;
+
     [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<CurrencyPrototype>))]
     public string EvolutionCurrencyPrototype = "ChangelingEvolution";
 
-    /// <summary>
-    /// The entity's current max amount of essence. Can be increased
-    /// through harvesting player souls.
-    /// </summary>
-    [ViewVariables(VVAccess.ReadWrite), DataField("maxResource")]
-    public FixedPoint2 ResourceRegenCap = 30;
-
-    /// <summary>
-    /// The amount of essence passively generated per second.
-    /// </summary>
-    [ViewVariables(VVAccess.ReadWrite), DataField("resoucePerSecond")]
-    public FixedPoint2 ResourcePerSecond = 0.1f;
 
     [ViewVariables]
     public float Accumulator = 0;
 
     #endregion
-
-    #region Absorb DNA Ability
-
-    // Here's the gist of the harvest ability:
-    // Step 1: The revenant clicks on an entity to "search" for it's soul, which creates a doafter.
-    // Step 2: After the doafter is completed, the soul is "found" and can be harvested.
-    // Step 3: Clicking the entity again begins to harvest the soul, which causes the revenant to become vulnerable
-    // Step 4: The second doafter for the harvest completes, killing the target and granting the revenant essence.
-
-    /// <summary>
-    /// The status effects applied after the ability
-    /// the first float corresponds to amount of time the entity is stunned.
-    /// the second corresponds to the amount of time the entity is made solid.
-    /// </summary>
-    [DataField("harvestDebuffs")]
-    public Vector2 HarvestDebuffs = new(15, 0);
-
-    /// <summary>
-    /// The amount that is given to the changeling each time it's max essence is upgraded.
-    /// </summary>
-    [ViewVariables(VVAccess.ReadWrite), DataField("maxEssenceUpgradeAmount")]
-    public float MaxEssenceUpgradeAmount = 5;
-
-    #endregion
-
-    #region Regenerative Statis Ability
-
-    /// <summary>
-    /// The amount of essence that is needed to use the ability.
-    /// </summary>
-    [ViewVariables(VVAccess.ReadWrite), DataField("stasisCost")]
-    public FixedPoint2 StasisCost = -15;
-
-    /// <summary>
-    /// The status effects applied after the ability
-    /// the first float corresponds to amount of time the entity is stunned.
-    /// the second corresponds to the amount of time the entity is made solid.
-    /// </summary>
-    [DataField("stasisDebuffs")]
-    public Vector2 StasisDebuffs = new(1, 0);
-
-    [DataField("stasisDuration")]
-    public FixedPoint2 StatisDuration = 120; //seconds
-
-    #endregion
-
-    #region Transform Ability
-
-    /// <summary>
-    /// The amount of essence that is needed to use the ability.
-    /// </summary>
-    [ViewVariables(VVAccess.ReadWrite), DataField("transformCost")]
-    public FixedPoint2 TransformCost = -5;
-
-    /// <summary>
-    /// The status effects applied after the ability
-    /// the first float corresponds to amount of time the entity is stunned.
-    /// the second corresponds to the amount of time the entity is made solid.
-    /// </summary>
-    [DataField("transformDebuffs")]
-    public Vector2 TransformDebuffs = new(1, 0);
-
-    #endregion
-
-    #region Visualizer
-
-    [DataField("state")]
-    public string State = "idle";
-
-    [DataField("stunnedState")]
-    public string StunnedState = "stunned";
-
-    [DataField("harvestingState")]
-    public string HarvestingState = "harvesting";
-
-    #endregion
-
-    #region TransformPool
 
     [DataField, AutoNetworkedField]
     public Dictionary<int, string> ClientIdentitiesList = [];
@@ -139,8 +89,6 @@ public sealed partial class ChangelingComponent : Component
 
     [DataField] public EntityUid[] ActiveActions = [];
 
-    #endregion
-
     [DataField] public EntityUid? AbsorbDnaAction;
 
     [DataField] public EntityUid? StasisAction;
@@ -149,7 +97,15 @@ public sealed partial class ChangelingComponent : Component
 
     [DataField] public EntityUid? ShopAction;
 
-    [DataField] public bool IsInStasis;
-
     [DataField] public MindComponent? Mind;
+}
+
+public enum ChangelingEquipment
+{
+    Shield,
+    Armblade,
+    Armor,
+    ArmorHelmet,
+    Spacesuit,
+    SpacesuitHelmet
 }
