@@ -18,3 +18,5 @@ reagent-name-coldfrostoil = ледяное масло
 reagent-desc-coldfrostoil = Это масло уменьшает температуру тела.
 reagent-name-strangereagent = странный реагент
 reagent-desc-strangereagent = Чудодейственный препарат, который способен создавать чудеса.
+reagent-name-slugcat = cлизь слизнекотика
+reagent-desc-slugcat = Биологическая жидкость существа с далекой планеты.

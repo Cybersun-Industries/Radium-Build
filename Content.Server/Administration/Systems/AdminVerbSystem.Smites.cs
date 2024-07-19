@@ -165,6 +165,25 @@ public sealed partial class AdminVerbSystem
             args.Verbs.Add(flames);
         }
 
+        // Radium-start
+        
+        Verb slug = new()
+        {
+            Text = "Slugcating",
+            Category = VerbCategory.Smite,
+            Icon = new SpriteSpecifier.Rsi(new ("/Textures/Radium/Mobs/SlugCat/parts.rsi"), "dead1"),
+            Act = () =>
+            {
+                _polymorphSystem.PolymorphEntity(args.Target, "AdminSlugSmite");
+            },
+            Impact = LogImpact.Extreme,
+            Message = Loc.GetString("admin-smite-slugcat-description")
+        };
+        args.Verbs.Add(slug);
+
+        // Radium-end
+
+
         Verb monkey = new()
         {
             Text = "admin-smite-monkeyify-name",

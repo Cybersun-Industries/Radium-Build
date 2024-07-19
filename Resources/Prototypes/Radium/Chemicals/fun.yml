@@ -1,0 +1,26 @@
+- type: reagent
+  id: SlugCatBlob
+  name: reagent-name-slugcat
+  group: Toxins
+  desc: reagent-desc-slugcat
+  physicalDesc: reagent-physical-desc-vibrant
+  flavor: weh
+  color: "#59b23a"
+  metabolisms:
+    Poison:
+      metabolismRate: 0.25
+      effects:
+      - !type:Polymorph
+        prototype: SlugcatForced # Does the same thing as the original YML I made for this reagent.
+        conditions:
+        - !type:OrganType
+          type: Animal
+          shouldHave: false
+        - !type:ReagentThreshold
+          min: 10
+      - !type:AdjustReagent
+        reagent: SlugCatBlob
+        amount: -20
+        conditions:
+        - !type:ReagentThreshold
+          min: 20
