@@ -1,13 +1,11 @@
-using System.Numerics;
-using Content.Shared.Actions;
+using System.Collections.Frozen;
 using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
 using Content.Shared.Mind;
-using Content.Shared.Preferences;
 using Content.Shared.Store;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
-using Robust.Shared.Network;
+using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
 namespace Content.Shared.Radium.Changeling.Components;
@@ -32,32 +30,18 @@ public sealed partial class ChangelingComponent : Component
     [DataField("shriekPower")]
     public float ShriekPower = 2.5f;
 
-    public Dictionary<ChangelingEquipment, EntityUid?> ChangelingEquipment= new ();
-    public EntityUid? ArmbladeEntity;
-    public EntityUid? ShieldEntity;
-    public EntityUid? ArmorEntity, ArmorHelmetEntity;
-    public EntityUid? SpacesuitEntity, SpacesuitHelmetEntity;
-
     public bool StrainedMusclesActive = false;
 
     public bool IsInLesserForm = false;
 
-    /// <summary>
-    ///     Current amount of chemicals changeling currently has.
-    /// </summary>
     [DataField, AutoNetworkedField]
     public float Chemicals = 100f;
 
-    /// <summary>
-    ///     Maximum amount of chemicals changeling can have.
-    /// </summary>
     [DataField, AutoNetworkedField]
     public float MaxChemicals = 100f;
 
-    /// <summary>
-    ///     Cooldown between chem regen events.
-    /// </summary>
     public TimeSpan RegenTime = TimeSpan.Zero;
+
     public float RegenCooldown = 1f;
 
     [ViewVariables(VVAccess.ReadWrite)]
@@ -85,17 +69,34 @@ public sealed partial class ChangelingComponent : Component
 
     [DataField] public MetaDataComponent? Metadata;
 
-    [DataField] public ActionsComponent? Actions;
-
     [DataField] public EntityUid[] ActiveActions = [];
 
-    [DataField] public EntityUid? AbsorbDnaAction;
+    [DataField] [ValidatePrototypeId<EntityPrototype>]
+    public Dictionary<string, EntityUid> BaseActions = new()
+    {
+        { "ActionChangelingShop", EntityUid.Invalid },
+        { "ActionChangelingAbsorbDNA", EntityUid.Invalid },
+        { "ActionChangelingStasis", EntityUid.Invalid },
+        { "ActionChangelingTransform", EntityUid.Invalid },
+    };
 
-    [DataField] public EntityUid? StasisAction;
+    public Dictionary<ChangelingEquipment, (EntityUid, ProtoId<EntityPrototype>)> ChangelingEquipment = new()
+    {
+        { Components.ChangelingEquipment.Armblade, (EntityUid.Invalid, "ChangelingArmBlade") },
+        { Components.ChangelingEquipment.Armor, (EntityUid.Invalid, "ChangelingClothingOuterArmor") },
+        { Components.ChangelingEquipment.SpacesuitHelmet, (EntityUid.Invalid, "ChangelingClothingHeadHelmetHardsuit") },
+        { Components.ChangelingEquipment.Spacesuit, (EntityUid.Invalid, "ChangelingClothingOuterHardsuit") },
+        { Components.ChangelingEquipment.Shield, (EntityUid.Invalid, "ChangelingShield") },
+        { Components.ChangelingEquipment.ArmorHelmet, (EntityUid.Invalid, "ChangelingClothingHeadHelmet") },
+        { Components.ChangelingEquipment.FakeArmbladePrototype, (EntityUid.Invalid, "FakeArmbladePrototype") },
+    };
 
-    [DataField] public EntityUid? TransformAction;
-
-    [DataField] public EntityUid? ShopAction;
+    [DataField] public FrozenSet<ProtoId<StoreCategoryPrototype>> StoreCategories =
+        new HashSet<ProtoId<StoreCategoryPrototype>>
+        {
+            "ChangelingDefensive",
+            "ChangelingOffensive",
+        }.ToFrozenSet();
 
     [DataField] public MindComponent? Mind;
 }
@@ -107,5 +108,6 @@ public enum ChangelingEquipment
     Armor,
     ArmorHelmet,
     Spacesuit,
-    SpacesuitHelmet
+    SpacesuitHelmet,
+    FakeArmbladePrototype,
 }
