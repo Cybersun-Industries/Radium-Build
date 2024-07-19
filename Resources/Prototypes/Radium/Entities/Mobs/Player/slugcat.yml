@@ -1,7 +1,7 @@
 - type: entity
-  name: Slugcat
   parent: SimpleMobBase
   id: MobSlugCat
+  name: Slugcat
   description: Милый слизнекот
   components:
   - type: Sprite
