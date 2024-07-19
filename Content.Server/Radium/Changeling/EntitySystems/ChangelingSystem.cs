@@ -147,8 +147,16 @@ public sealed partial class ChangelingSystem : EntitySystem
 
     private void OnMobStateChange(EntityUid uid, ChangelingComponent comp, ref MobStateChangedEvent args)
     {
-        if (args.NewMobState == MobState.Dead)
-            RemoveAllChangelingEquipment(uid, comp);
+        switch (args.NewMobState)
+        {
+            case MobState.Critical or MobState.Alive:
+                comp.IsInStasis = false;
+                break;
+
+            case MobState.Dead:
+                RemoveAllChangelingEquipment(uid, comp);
+                break;
+        }
     }
 
     private void OnPlayerAttached(Entity<ChangelingSpawnerComponent> uid, ref PlayerAttachedEvent args)
@@ -299,7 +307,7 @@ public sealed partial class ChangelingSystem : EntitySystem
             EntityManager.DeleteEntity(equipment.Value.Item1);
         }
 
-        PlayMeatySound(target, comp);
+        PlayMeatySound(target);
     }
 
     public bool TryUseAbility(EntityUid uid, BaseActionEvent action, ChangelingComponent? comp = null)

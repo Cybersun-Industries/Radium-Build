@@ -959,4 +959,44 @@
         type: Add
         time: 5
         refresh: false
+# Changeling start
+- type: reagent
+  id: ChangelingAdrenaline
+  name: reagent-name-changeling-adrenaline
+  group: Narcotics
+  desc: reagent-desc-changeling-adrenaline
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: adrenaline
+  color: "#64d2cb"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:HealthChange
+        damage:
+          groups:
+            Toxin: 2
+      - !type:GenericStatusEffect
+        key: Stun
+        time: 1
+        type: Remove
+      - !type:GenericStatusEffect
+        key: KnockedDown
+        time: 1
+        type: Remove
 
+- type: reagent
+  id: ChangelingStimulator
+  name: reagent-name-changeling-stimulator
+  group: Narcotics
+  desc: reagent-desc-changeling-stimulator
+  physicalDesc: reagent-physical-desc-strong-smelling
+  flavor: stimulator
+  color: "#64d2cb"
+  metabolisms:
+    Medicine:
+      effects:
+      - !type:MovespeedModifier
+        walkSpeedModifier: 1.5
+        sprintSpeedModifier: 1.5
+
+# Changeling end

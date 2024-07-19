@@ -7,16 +7,21 @@
   noSpawn: true
   components:
   - type: InstantAction
+    itemIconStyle: NoItem
     icon: Interface/Actions/shop.png
     event: !type:ChangelingShopActionEvent
+  - type: ChangelingAction
+    chemicalCost: 0
+    useInLesserForm: true
 
 - type: entity
   id: ActionChangelingStasis
   name: Stasis
-  description: Costs 15 Essence.
+  description: Toggle the stasis.
   noSpawn: true
   components:
   - type: InstantAction
+    itemIconStyle: NoItem
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: fake_death
@@ -24,6 +29,9 @@
     useDelay: 120
     checkCanInteract: false
     checkConsciousness: false
+  - type: ChangelingAction
+    chemicalCost: 15
+    useInLesserForm: true
 
 - type: entity
   id: ActionChangelingTransform
@@ -32,6 +40,7 @@
   noSpawn: true
   components:
   - type: InstantAction
+    itemIconStyle: NoItem
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: transform
@@ -45,14 +54,21 @@
   noSpawn: true
   components:
   - type: EntityTargetAction
+    itemIconStyle: NoItem
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: absorb_dna
     event: !type:ChangelingAbsorbDnaActionEvent
-    useDelay: 0
+    useDelay: 30
+    canTargetSelf: false
+    interactOnMiss: false
     whitelist:
       components:
       - MobState
+      - Body
+  - type: ChangelingAction
+    chemicalCost: 0
+    useInLesserForm: true
 
 #Changeling defensive abilities
 
@@ -63,11 +79,15 @@
   noSpawn: true
   components:
   - type: InstantAction
+    itemIconStyle: NoItem
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: adrenaline
     event: !type:ActionChangelingAdrenalineSacsEvent
     useDelay: 30
+  - type: ChangelingAction
+    chemicalCost: 25
+    useInLesserForm: true
 
 - type: entity
   id: ActionChangelingStrainedMuscles
@@ -76,11 +96,15 @@
   noSpawn: true
   components:
   - type: InstantAction
+    itemIconStyle: NoItem
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: strained_muscles
     event: !type:ActionChangelingStrainedMusclesEvent
     useDelay: 30
+  - type: ChangelingAction
+    chemicalCost: 0
+    useInLesserForm: true
 
 - type: entity
   id: ActionChangelingAnatomicPanacea
@@ -89,11 +113,14 @@
   noSpawn: true
   components:
   - type: InstantAction
+    itemIconStyle: NoItem
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: panacea
     event: !type:ActionChangelingAnatomicPanaceaEvent
     useDelay: 30
+  - type: ChangelingAction
+    chemicalCost: 20
 
 - type: entity
   id: ActionChangelingChitinousArmor
@@ -102,11 +129,14 @@
   noSpawn: true
   components:
   - type: InstantAction
+    itemIconStyle: NoItem
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: chitinous_armor
     event: !type:ActionChangelingChitinousArmorEvent
     useDelay: 30
+  - type: ChangelingAction
+    chemicalCost: 30
 
 - type: entity
   id: ActionChangelingVoidAdaptation
@@ -115,11 +145,14 @@
   noSpawn: true
   components:
   - type: InstantAction
+    itemIconStyle: NoItem
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: organic_suit
     event: !type:ActionChangelingVoidAdaptationEvent
     useDelay: 30
+  - type: ChangelingAction
+    chemicalCost: 20
 
 - type: entity
   id: ActionChangelingOrganicShield
@@ -128,11 +161,14 @@
   noSpawn: true
   components:
   - type: InstantAction
+    itemIconStyle: NoItem
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: organic_shield
     event: !type:ActionChangelingOrganicShieldEvent
     useDelay: 30
+  - type: ChangelingAction
+    chemicalCost: 20
 
 - type: entity
   id: ActionChangelingMimicVoice
@@ -141,11 +177,14 @@
   noSpawn: true
   components:
   - type: InstantAction
+    itemIconStyle: NoItem
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: mimic_voice
     event: !type:ActionChangelingMimicVoiceEvent
     useDelay: 30
+  - type: ChangelingAction
+    chemicalCost: 20
 
 - type: entity
   id: ActionChangelingLesserForm
@@ -154,11 +193,15 @@
   noSpawn: true
   components:
   - type: InstantAction
+    itemIconStyle: NoItem
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: lesser_form
     event: !type:ActionChangelingLesserFormEvent
     useDelay: 30
+  - type: ChangelingAction
+    chemicalCost: 5
+    useInLesserForm: true
 
 - type: entity
   id: ActionChangelingFleshmend
@@ -167,11 +210,14 @@
   noSpawn: true
   components:
   - type: InstantAction
+    itemIconStyle: NoItem
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: fleshmend
     event: !type:ActionChangelingFleshmendEvent
     useDelay: 30
+  - type: ChangelingAction
+    chemicalCost: 25
 
 - type: entity
   id: ActionChangelingChameleonSkin
@@ -180,11 +226,14 @@
   noSpawn: true
   components:
   - type: InstantAction
+    itemIconStyle: NoItem
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: chameleon_skin
     event: !type:ActionChangelingChameleonSkinEvent
     useDelay: 30
+  - type: ChangelingAction
+    chemicalCost: 10
 
 - type: entity
   id: ActionChangelingBiodegrade
@@ -193,11 +242,15 @@
   noSpawn: true
   components:
   - type: InstantAction
+    itemIconStyle: NoItem
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: biodegrade
     event: !type:ActionChangelingBiodegradeEvent
-    useDelay: 30
+    useDelay: 60
+  - type: ChangelingAction
+    chemicalCost: 30
+    useInLesserForm: true
 
 - type: entity
   id: PassiveChangelingAugmentedEyesight #TODO PASSIVE!
@@ -206,11 +259,14 @@
   noSpawn: true
   components:
   - type: InstantAction
+    itemIconStyle: NoItem
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: augmented_eyesight
     event: !type:PassiveChangelingAugmentedEyesightEvent
     useDelay: 30
+  - type: ChangelingAction
+    chemicalCost: 0
 
 - type: entity
   id: PassiveChangelingDefibrillatorGrasp #TODO PASSIVE!
@@ -219,11 +275,15 @@
   noSpawn: true
   components:
   - type: InstantAction
+    itemIconStyle: NoItem
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: defibrilator
     event: !type:PassiveChangelingDefibrillatorGraspEvent
     useDelay: 30
+  - type: ChangelingAction
+    chemicalCost: 0
+    useInLesserForm: true
 
 #Changeling offensive abilities
 
@@ -234,14 +294,18 @@
   noSpawn: true
   components:
   - type: EntityTargetAction
+    itemIconStyle: NoItem
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: sting_extract
-    event: !type:ActionChangelingDNAStingEvent
+    event: !type:ActionChangelingDnaStingEvent
     useDelay: 0
     whitelist:
       components:
       - MobState
+  - type: ChangelingAction
+  chemicalCost: 25
+  useInLesserForm: true
 
 - type: entity
   id: ActionChangelingTransformationSting
@@ -250,6 +314,7 @@
   noSpawn: true
   components:
   - type: EntityTargetAction
+    itemIconStyle: NoItem
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: sting_transform
@@ -258,6 +323,8 @@
     whitelist:
       components:
       - MobState
+  - type: ChangelingAction
+    chemicalCost: 50
 
 - type: entity
   id: ActionChangelingMuteSting
@@ -266,6 +333,7 @@
   noSpawn: true
   components:
   - type: EntityTargetAction
+    itemIconStyle: NoItem
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: sting_mute
@@ -274,6 +342,8 @@
     whitelist:
       components:
       - MobState
+  - type: ChangelingAction
+    chemicalCost: 20
 
 - type: entity
   id: ActionChangelingBlindSting
@@ -282,6 +352,7 @@
   noSpawn: true
   components:
   - type: EntityTargetAction
+    itemIconStyle: NoItem
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: sting_blind
@@ -290,6 +361,9 @@
     whitelist:
       components:
       - MobState
+  - type: ChangelingAction
+    chemicalCost: 25
+    useInLesserForm: true
 
 - type: entity
   id: ActionChangelingHallutinationSting
@@ -298,6 +372,7 @@
   noSpawn: true
   components:
   - type: EntityTargetAction
+    itemIconStyle: NoItem
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: sting_lsd
@@ -306,6 +381,8 @@
     whitelist:
       components:
       - MobState
+  - type: ChangelingAction
+    chemicalCost: 10
 
 - type: entity
   id: ActionChangelingCryogenicSting
@@ -314,6 +391,7 @@
   noSpawn: true
   components:
   - type: EntityTargetAction
+    itemIconStyle: NoItem
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: sting_cryo
@@ -322,6 +400,8 @@
     whitelist:
       components:
       - MobState
+  - type: ChangelingAction
+    chemicalCost: 15
 
 - type: entity
   id: ActionChangelingFalseArmbladeSting
@@ -330,6 +410,7 @@
   noSpawn: true
   components:
   - type: EntityTargetAction
+    itemIconStyle: NoItem
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: sting_armblade
@@ -338,6 +419,8 @@
     whitelist:
       components:
       - MobState
+  - type: ChangelingAction
+    chemicalCost: 20
 
 - type: entity
   id: ActionChangelingArmBlade
@@ -346,11 +429,14 @@
   noSpawn: true
   components:
   - type: InstantAction
+    itemIconStyle: NoItem
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: armblade
     event: !type:ActionChangelingArmBladeEvent
     useDelay: 30
+  - type: ChangelingAction
+    chemicalCost: 20
 
 - type: entity
   id: ActionChangelingResonantShriek
@@ -359,11 +445,15 @@
   noSpawn: true
   components:
   - type: InstantAction
+    itemIconStyle: NoItem
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: resonant_shriek
     event: !type:ActionChangelingResonantShriekEvent
     useDelay: 30
+  - type: ChangelingAction
+    chemicalCost: 20
+    useInLesserForm: true
 
 - type: entity
   id: ActionChangelingDissonantShriek
@@ -372,8 +462,12 @@
   noSpawn: true
   components:
   - type: InstantAction
+    itemIconStyle: NoItem
     icon:
       sprite: Radium/Interface/Actions/changeling.rsi
       state: dissonant_shriek
     event: !type:ActionChangelingDissonantShriekEvent
     useDelay: 30
+  - type: ChangelingAction
+    chemicalCost: 20
+    useInLesserForm: true

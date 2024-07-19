@@ -82,7 +82,6 @@ public sealed partial class ChangelingSystem
 
         SubscribeLocalEvent<ChangelingComponent, ChangelingStasisActionEvent>(OnStasisAction);
         SubscribeLocalEvent<ChangelingComponent, ChangelingTransformActionEvent>(OnTransformAction);
-        SubscribeLocalEvent<ChangelingComponent, MobStateChangedEvent>(OnMobStateChanged);
 
         SubscribeLocalEvent<ConfirmTransformation>(OnTransformationConfirmed);
 
@@ -177,21 +176,13 @@ public sealed partial class ChangelingSystem
 
 
     public bool TrySting(EntityUid uid,
-        ChangelingComponent comp,
         EntityTargetActionEvent action,
         bool overrideMessage = false)
     {
         var target = action.Target;
-        if (HasComp<ChangelingComponent>(target))
-        {
-            var selfMessage = Loc.GetString("changeling-sting-fail-self",
-                ("target", Identity.Entity(target, EntityManager)));
-            var targetMessage = Loc.GetString("changeling-sting-fail-ling");
 
-            _popup.PopupEntity(selfMessage, uid, uid);
-            _popup.PopupEntity(targetMessage, target, target);
+        if (HasComp<ChangelingComponent>(target))
             return false;
-        }
 
         if (!overrideMessage)
         {
@@ -221,7 +212,7 @@ public sealed partial class ChangelingSystem
         List<(string, FixedPoint2)> reagents)
     {
         var target = action.Target;
-        return TrySting(uid, comp, action) && TryInjectReagents(target, reagents);
+        return TrySting(uid, action) && TryInjectReagents(target, reagents);
     }
 
     public bool TryToggleItem(EntityUid uid,
@@ -311,14 +302,17 @@ public sealed partial class ChangelingSystem
             uid,
             uid);
 
-        PlayMeatySound(uid, component);
+        PlayMeatySound(uid);
     }
 
     private void OnFalseArmbladeStingEventAction(EntityUid uid,
         ChangelingComponent component,
         ActionChangelingFalseArmbladeStingEvent args)
     {
-        if (!TrySting(uid, component, args))
+        if(!TryUseAbility(uid, args))
+            return;
+
+        if (!TrySting(uid, args))
             return;
 
         var target = args.Target;
@@ -333,14 +327,17 @@ public sealed partial class ChangelingSystem
             return;
         }
 
-        PlayMeatySound(target, component);
+        PlayMeatySound(target);
     }
 
     private void OnCryogenicStingEventAction(EntityUid uid,
         ChangelingComponent component,
         ActionChangelingCryogenicStingEvent args)
     {
-        var reagents = new List<(string, FixedPoint2)>()
+        if(!TryUseAbility(uid, args))
+            return;
+
+        var reagents = new List<(string, FixedPoint2)>
         {
             ("Fresium", 20f),
             ("ChloralHydrate", 10f)
@@ -353,17 +350,29 @@ public sealed partial class ChangelingSystem
         ChangelingComponent component,
         ActionChangelingHallutinationStingEvent args)
     {
-        throw new NotImplementedException();
+        if(!TryUseAbility(uid, args))
+            return;
+
+        var reagents = new List<(string, FixedPoint2)>
+        {
+            ("SpaceDrugs", 60f),
+        };
+
+        TryReagentSting(uid, component, args, reagents);
     }
 
     private void OnBlindStingEventAction(EntityUid uid,
         ChangelingComponent component,
         ActionChangelingBlindStingEvent args)
     {
-        if (!TrySting(uid, component, args))
+        if(!TryUseAbility(uid, args))
+            return;
+
+        if (!TrySting(uid, args))
             return;
 
         var target = args.Target;
+
         if (!TryComp<BlindableComponent>(target, out var blindable) || blindable.IsBlind)
             return;
 
@@ -380,9 +389,12 @@ public sealed partial class ChangelingSystem
         ChangelingComponent component,
         ActionChangelingMuteStingEvent args)
     {
+        if(!TryUseAbility(uid, args))
+            return;
+
         var reagents = new List<(string, FixedPoint2)>
         {
-            ("MuteToxin", 15f)
+            ("MuteToxin", 15f),
         };
 
         TryReagentSting(uid, component, args, reagents);
@@ -392,15 +404,21 @@ public sealed partial class ChangelingSystem
         ChangelingComponent component,
         ActionChangelingTransformationStingEvent args)
     {
+        if(!TryUseAbility(uid, args))
+            return;
+
         throw new NotImplementedException();
     }
 
     private void OnDnaStingEventAction(EntityUid uid, ChangelingComponent component, ActionChangelingDnaStingEvent args)
     {
+        if(!TryUseAbility(uid, args))
+            return;
+
         throw new NotImplementedException();
     }
 
-    private void OnDefibrillatorGraspEventAction(EntityUid uid,
+    private void OnDefibrillatorGraspEventAction(EntityUid uid, //TODO!
         ChangelingComponent component,
         PassiveChangelingDefibrillatorGraspEvent args)
     {
@@ -420,10 +438,10 @@ public sealed partial class ChangelingSystem
             return;
         }
 
-        PlayMeatySound(uid, component);
+        PlayMeatySound(uid);
         EnsureComp<FlashImmunityComponent>(uid);
         _popup.PopupEntity(Loc.GetString("changeling-passive-activate"), uid, uid);
-        PlayMeatySound(uid, component);
+        PlayMeatySound(uid);
     }
 
     private void OnBiodegradeEventAction(EntityUid uid,
@@ -496,13 +514,17 @@ public sealed partial class ChangelingSystem
             _popup.PopupEntity(Loc.GetString("changeling-fleshmend"), uid, uid);
         else
             return;
-        PlayMeatySound(uid, component);
+
+        PlayMeatySound(uid);
     }
 
     private void OnLesserFormEventAction(EntityUid uid,
         ChangelingComponent component,
         ActionChangelingLesserFormEvent args)
     {
+        if(!TryUseAbility(uid, args))
+            return;
+
         throw new NotImplementedException();
     }
 
@@ -510,6 +532,9 @@ public sealed partial class ChangelingSystem
         ChangelingComponent component,
         ActionChangelingMimicVoiceEvent args)
     {
+        if(!TryUseAbility(uid, args))
+            return;
+
         throw new NotImplementedException();
     }
 
@@ -529,7 +554,7 @@ public sealed partial class ChangelingSystem
             uid,
             uid);
 
-        PlayMeatySound(uid, component);
+        PlayMeatySound(uid);
     }
 
     private void OnVoidAdaptationEventAction(EntityUid uid,
@@ -575,7 +600,7 @@ public sealed partial class ChangelingSystem
             uid,
             uid);
 
-        PlayMeatySound(uid, component);
+        PlayMeatySound(uid);
     }
 
     private void OnAnatomicPanaceaEventAction(EntityUid uid,
@@ -589,13 +614,13 @@ public sealed partial class ChangelingSystem
         {
             ("Diphenhydramine", 5f),
             ("Arithrazine", 10f),
-            ("Ethylredoxrazine", 5f)
+            ("Ethylredoxrazine", 5f),
         };
         if (TryInjectReagents(uid, reagents))
             _popup.PopupEntity(Loc.GetString("changeling-panacea"), uid, uid);
         else
             return;
-        PlayMeatySound(uid, component);
+        PlayMeatySound(uid);
     }
 
     private void OnToggleStrainedMuscles(EntityUid uid,
@@ -626,22 +651,27 @@ public sealed partial class ChangelingSystem
             component.StrainedMusclesActive = false;
         }
 
-        PlayMeatySound(uid, component);
+        PlayMeatySound(uid);
     }
 
     private void OnAdrenalineSacsEventAction(EntityUid uid,
         ChangelingComponent component,
         ActionChangelingAdrenalineSacsEvent args)
     {
-        throw new NotImplementedException();
-    }
+        if(!TryUseAbility(uid, args))
+            return;
 
-    private static void OnMobStateChanged(EntityUid uid, ChangelingComponent component, MobStateChangedEvent args)
-    {
-        if (args.NewMobState is MobState.Critical or MobState.Alive)
+        var reagents = new List<(string, FixedPoint2)>()
         {
-            component.IsInStasis = false;
-        }
+            ("ChangelingAdrenaline", 6.5f),
+            ("ChangelingStimulator", 4.5f),
+        };
+        if (TryInjectReagents(uid, reagents))
+            _popup.PopupEntity(Loc.GetString("changeling-adrenaline"), uid, uid);
+        else
+            return;
+
+        PlayMeatySound(uid);
     }
 
     private void OnAbsorbDNAActions(EntityUid uid, ChangelingComponent component, ChangelingAbsorbDnaActionEvent args)
