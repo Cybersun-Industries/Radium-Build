@@ -146,6 +146,7 @@
     fireStackAlternateState: 3
   - type: Dna
     dna: "ABRAXAS"
+  - type: IgnoreSpiderWebArachneClassic
   - type: InteractionPopup
     successChance: 1
     interactSuccessString: hugging-success-generic
