@@ -15,6 +15,7 @@ using Content.Server.Speech.EntitySystems;
 using Content.Server.Stack;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Part;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
 using Content.Shared.Eye.Blinding.Systems;
@@ -49,7 +50,7 @@ public sealed partial class SurgerySystem : EntitySystem
     [Dependency] private readonly MovementSpeedModifierSystem _movement = default!;
     [Dependency] private readonly ServerDamagePartsSystem _damageParts = default!;
     [Dependency] private readonly DrunkSystem _drunkSystem = default!;
-    [Dependency] private readonly SolutionContainerSystem _solutionContainerSystem = default!;
+    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
     [Dependency] private readonly StutteringSystem _stutteringSystem = default!;
     [Dependency] private readonly PuddleSystem _puddleSystem = default!;
     [Dependency] private readonly ForensicsSystem _forensicsSystem = default!;
@@ -358,6 +359,7 @@ public sealed partial class SurgerySystem : EntitySystem
         }
 
         var list = _bodySystem.GetBodyChildren(uid).ToList();
+
         var partComponentRaw =
             list.FirstOrNull(p =>
                 p.Component.PartType == Enum.Parse<BodyPartType>(part.ToString()) &&
@@ -406,6 +408,30 @@ public sealed partial class SurgerySystem : EntitySystem
         _xformSystem.AttachToGridOrMap(hand.Id);
         _xformSystem.AttachToGridOrMap(arm.Id);
         return true;
+    }
+
+    public bool TryRemoveHands(EntityUid uid)
+    {
+        var list = _bodySystem.GetBodyChildren(uid).ToList();
+
+        var arms = list.Where(p =>
+            p.Component.PartType == Enum.Parse<BodyPartType>(SurgeryPartEnum.Arm.ToString()));
+
+        var hands = list.Where(p =>
+            p.Component.PartType == Enum.Parse<BodyPartType>("Hand"));
+
+        foreach (var hand in hands)
+        {
+            _xformSystem.AttachToGridOrMap(hand.Id);
+        }
+
+        foreach (var arm in arms)
+        {
+            _xformSystem.AttachToGridOrMap(arm.Id);
+        }
+
+        return true;
+
     }
 
     public bool HealAllWounds(EntityUid uid)

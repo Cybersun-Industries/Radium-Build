@@ -22,11 +22,11 @@
       unique: true
       difficulty: 1
       icon:
-        sprite: Structures/Specific/carp_rift.rsi
-        state: icon_blue
+        sprite: Mobs/Species/Human/organs.rsi
+        state: brain
     - type: NumberObjective
-      min: 3
-      max: 6
+      min: 6
+      max: 9
       title: objective-condition-genes-title
       description: objective-condition-genes-description
     - type: GenesCondition

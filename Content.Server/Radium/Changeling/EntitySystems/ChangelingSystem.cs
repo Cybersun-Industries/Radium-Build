@@ -1,10 +1,13 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Text;
 using Content.Server.Actions;
+using Content.Server.Antag;
 using Content.Server.GameTicking;
 using Content.Server.Ghost.Roles.Events;
 using Content.Server.Humanoid;
 using Content.Server.Mind;
+using Content.Server.Objectives;
 using Content.Server.Roles;
 using Content.Server.Shuttles.Components;
 using Content.Server.Spawners.Components;
@@ -21,6 +24,8 @@ using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.NPC.Systems;
+using Content.Shared.Objectives.Systems;
 using Content.Shared.Players;
 using Content.Shared.Popups;
 using Content.Shared.Preferences;
@@ -70,6 +75,9 @@ public sealed partial class ChangelingSystem : EntitySystem
     [Dependency] private readonly ActorSystem _actors = default!;
     [Dependency] private readonly StaminaSystem _stamina = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
+    [Dependency] private readonly SharedObjectivesSystem _objectives = default!;
+    [Dependency] private readonly AntagSelectionSystem _antag = default!;
+    [Dependency] private readonly NpcFactionSystem _npcFaction = default!;
 
     [ValidatePrototypeId<EntityPrototype>]
     private const string SpawnPointPrototype = "SpawnPointChangeling";
@@ -110,9 +118,8 @@ public sealed partial class ChangelingSystem : EntitySystem
     private void OnMindAdded(EntityUid uid, ChangelingComponent component, MindAddedMessage args)
     {
         if (!_mindSystem.TryGetMind(uid, out var mindId, out var mind))
-        {
             return;
-        }
+
 
         foreach (var prototype in component.BaseActions)
         {
@@ -125,12 +132,24 @@ public sealed partial class ChangelingSystem : EntitySystem
 
         InitShop(uid);
 
+        var metaData = Comp<MetaDataComponent>(uid);
+
         if (_roles.MindHasRole<ChangelingRoleComponent>(mindId))
             return;
 
-        _roles.MindAddRole(mindId,
-            new ChangelingRoleComponent
-                { PrototypeId = ChangelingRole });
+        var briefing = Loc.GetString("changeling-role-greeting", ("name", metaData?.EntityName ?? "Unknown"));
+        var briefingShort = Loc.GetString("changeling-role-greeting-short", ("name", metaData?.EntityName ?? "Unknown"));
+
+        _antag.SendBriefing(uid, briefing, Color.Yellow, component.BriefingSound);
+
+        _npcFaction.RemoveFaction(uid, component.NanotrasenFactionId, false);
+        _npcFaction.AddFaction(uid, component.ChangelingFactionId);
+
+        //_roles.MindAddRole(mindId,
+        //   new ChangelingRoleComponent
+        //      { PrototypeId = ChangelingRole });
+        _roles.MindAddRole(mindId, new RoleBriefingComponent { Briefing = briefingShort });
+
         _mindSystem.TryAddObjective(mindId, mind, GenesObjective);
         _mindSystem.TryAddObjective(mindId, mind, EscapeObjective);
 
@@ -297,7 +316,7 @@ public sealed partial class ChangelingSystem : EntitySystem
 
         Dirty(uid, component);
 
-        _alerts.ShowAlert(uid, "Chemicals");
+        //_alerts.ShowAlert(uid, "Resource", 2); //Chemicals
     }
 
     public void RemoveAllChangelingEquipment(EntityUid target, ChangelingComponent comp)

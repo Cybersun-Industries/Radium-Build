@@ -2,5 +2,6 @@
   name: Генокрад
   id: MobChangelingSpawner
   parent: SimpleMobBase
+  nospawn: true
   components:
   - type: ChangelingSpawner

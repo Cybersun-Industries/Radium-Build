@@ -1,5 +1,6 @@
 using Content.Shared.Actions;
 using Content.Shared.DoAfter;
+using JetBrains.Annotations;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.Radium.Changeling;
@@ -48,9 +49,11 @@ public sealed partial class ActionChangelingChameleonSkinEvent : InstantActionEv
 
 public sealed partial class ActionChangelingBiodegradeEvent : InstantActionEvent;
 
-public sealed partial class PassiveChangelingAugmentedEyesightEvent : InstantActionEvent; //TODO: Toggleable action
+[Serializable, NetSerializable]
+public sealed partial class PassiveChangelingAugmentedEyesightEvent : SimpleDoAfterEvent;
 
-public sealed partial class PassiveChangelingDefibrillatorGraspEvent : InstantActionEvent; //TODO: Toggleable action
+[Serializable, NetSerializable]
+public sealed partial class PassiveChangelingDefibrillatorGraspEvent : SimpleDoAfterEvent;
 
 public sealed partial class ActionChangelingDnaStingEvent : EntityTargetActionEvent;
 

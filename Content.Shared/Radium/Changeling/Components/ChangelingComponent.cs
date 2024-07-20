@@ -2,6 +2,8 @@ using System.Collections.Frozen;
 using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
 using Content.Shared.Mind;
+using Content.Shared.NPC.Prototypes;
+using Content.Shared.Roles;
 using Content.Shared.Store;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
@@ -25,7 +27,7 @@ public sealed partial class ChangelingComponent : Component
 
     [DataField("soundShriek")]
     public SoundSpecifier ShriekSound =
-        new SoundPathSpecifier("/Audio/Goobstation/Changeling/Effects/changeling_shriek.ogg");
+        new SoundPathSpecifier("/Audio/Radium/Changeling/Effects/changeling_shriek.ogg");
 
     [DataField("shriekPower")]
     public float ShriekPower = 2.5f;
@@ -53,9 +55,14 @@ public sealed partial class ChangelingComponent : Component
     [DataField(customTypeSerializer: typeof(PrototypeIdSerializer<CurrencyPrototype>))]
     public string EvolutionCurrencyPrototype = "ChangelingEvolution";
 
+    [DataField]
+    public SoundSpecifier BriefingSound = new SoundPathSpecifier("/Audio/Radium/Ambience/Antag/changeling_start.ogg");
 
-    [ViewVariables]
-    public float Accumulator = 0;
+    [DataField]
+    public ProtoId<NpcFactionPrototype> ChangelingFactionId = "Changeling";
+
+    [DataField]
+    public ProtoId<NpcFactionPrototype> NanotrasenFactionId = "NanoTrasen";
 
     #endregion
 

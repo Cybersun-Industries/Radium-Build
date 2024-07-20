@@ -70,13 +70,13 @@
 #    - id: MobTysonReal
 #      prob: 0.04
 
-#- type: entity
-#  id: ChangelingSpawn
-#  parent: BaseGameRule
-#  noSpawn: true
-#  components:
-#  - type: StationEvent
-#    weight: 10
-#    earliestStart: 15
-#    minimumPlayers: 5
-#  - type: ChangelingRule
+- type: entity
+  id: ChangelingSpawn
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+  - type: StationEvent
+    weight: 10
+    earliestStart: 25
+    minimumPlayers: 15
+  - type: ChangelingRule

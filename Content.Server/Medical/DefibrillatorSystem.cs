@@ -6,6 +6,7 @@ using Content.Server.EUI;
 using Content.Server.Ghost;
 using Content.Server.Popups;
 using Content.Server.PowerCell;
+using Content.Server.Radium.Medical.Surgery.Systems;
 using Content.Server.Traits.Assorted;
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
@@ -18,6 +19,7 @@ using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.PowerCell;
+using Content.Shared.Radium.Changeling.Components;
 using Content.Shared.Timing;
 using Content.Shared.Toggleable;
 using Robust.Shared.Audio.Systems;
@@ -46,6 +48,7 @@ public sealed class DefibrillatorSystem : EntitySystem
     [Dependency] private readonly SharedAudioSystem _audio = default!;
     [Dependency] private readonly UseDelaySystem _useDelay = default!;
     [Dependency] private readonly SharedMindSystem _mind = default!;
+    [Dependency] private readonly SurgerySystem _surgerySystem = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -222,6 +225,14 @@ public sealed class DefibrillatorSystem : EntitySystem
         }
         else
         {
+            // start-radium: changeling
+            if (HasComp<ChangelingGraspPassiveComponent>(target))
+            {
+                _surgerySystem.TryRemoveHands(user);
+                return;
+            }
+            // end-radium: changeling
+
             if (_mobState.IsDead(target, mob))
                 _damageable.TryChangeDamage(target, component.ZapHeal, true, origin: uid);
 

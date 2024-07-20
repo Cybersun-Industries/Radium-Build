@@ -14,5 +14,4 @@
     sprite: Markers/jobs.rsi
     layers:
       - state: green
-      - sprite: Mobs/Animals/regalrat.rsi
-        state: icon
+      - state: passenger

@@ -83,6 +83,7 @@
   parent: MobHuman
   id: MobChangeling
   name: Человек молодого возраста #SSSHITCODE!
+  noSpawn: true
   components:
     - type: Changeling
       evolution: 5

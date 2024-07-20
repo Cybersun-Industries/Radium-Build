@@ -252,39 +252,6 @@
     chemicalCost: 30
     useInLesserForm: true
 
-- type: entity
-  id: PassiveChangelingAugmentedEyesight #TODO PASSIVE!
-  name: Augmented Eyesight
-  description: The changeling evolves additional features in their eyes, giving them a toggleable night-vision and xray-vision mode. The changeling will become more vulnerable to flash-based devices while this ability is active. While it's inactive, it will instead protect you from flashes and bright lights, such as welders. This cannot be detected by normal means.
-  noSpawn: true
-  components:
-  - type: InstantAction
-    itemIconStyle: NoItem
-    icon:
-      sprite: Radium/Interface/Actions/changeling.rsi
-      state: augmented_eyesight
-    event: !type:PassiveChangelingAugmentedEyesightEvent
-    useDelay: 30
-  - type: ChangelingAction
-    chemicalCost: 0
-
-- type: entity
-  id: PassiveChangelingDefibrillatorGrasp #TODO PASSIVE!
-  name: Defibrillator Grasp
-  description: Free to evolve. We prepare ourselves while in stasis. If one of our enemies attempts to defibrillate us, we will snatch their arms off and instantly finalize our stasis. This ability is passive, and will trigger when a defibrillator paddle is applied to our chest while we are dead or in stasis. Will also stun cyborgs momentarily.
-  noSpawn: true
-  components:
-  - type: InstantAction
-    itemIconStyle: NoItem
-    icon:
-      sprite: Radium/Interface/Actions/changeling.rsi
-      state: defibrilator
-    event: !type:PassiveChangelingDefibrillatorGraspEvent
-    useDelay: 30
-  - type: ChangelingAction
-    chemicalCost: 0
-    useInLesserForm: true
-
 #Changeling offensive abilities
 
 - type: entity
