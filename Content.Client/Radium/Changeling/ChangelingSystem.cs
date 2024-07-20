@@ -1,4 +1,5 @@
 ﻿using Content.Client.Alerts;
+using Content.Client.UserInterface.Systems.Alerts.Controls;
 using Content.Shared.Radium.Changeling.Components;
 
 namespace Content.Client.Radium.Changeling;
@@ -19,6 +20,6 @@ public sealed class ClientChangelingSystem: EntitySystem
 
         var sprite = args.SpriteViewEnt.Comp;
         var chemicals = Math.Floor(Math.Clamp(ent.Comp.Chemicals, 0, 999));
-        sprite.LayerSetState(0, $"{Math.Floor(chemicals / 6)}");
+        sprite.LayerSetState(AlertVisualLayers.Base, $"{Math.Floor(chemicals / 6)}");
     }
 }
