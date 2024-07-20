@@ -13,7 +13,7 @@ public sealed class ClientChangelingSystem: EntitySystem
         SubscribeLocalEvent<ChangelingComponent, UpdateAlertSpriteEvent>(OnUpdateAlert);
     }
 
-    private void OnUpdateAlert(Entity<ChangelingComponent> ent, ref UpdateAlertSpriteEvent args)
+    private static void OnUpdateAlert(Entity<ChangelingComponent> ent, ref UpdateAlertSpriteEvent args)
     {
         if (args.Alert.ID != ent.Comp.ChemicalsAlert)
             return;

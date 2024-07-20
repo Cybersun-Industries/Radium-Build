@@ -12,6 +12,7 @@ using Content.Shared.Popups;
 using Content.Shared.Radium.Changeling.Components;
 using Microsoft.CodeAnalysis;
 using Robust.Shared.Audio;
+using Robust.Shared.GameObjects.Components.Localization;
 using Robust.Shared.Player;
 using Solution = Content.Shared.Chemistry.Components.Solution;
 
@@ -19,6 +20,8 @@ namespace Content.Server.Radium.Changeling.EntitySystems;
 
 public sealed partial class ChangelingSystem
 {
+    [Dependency] private readonly GrammarSystem _grammarSystem = default!;
+
     public void PlayMeatySound(EntityUid uid, ChangelingComponent? component = null)
     {
         if (!Resolve(uid, ref component))
@@ -194,11 +197,13 @@ public sealed partial class ChangelingSystem
             !TryComp<MetaDataComponent>(target, out var metaData))
             return false;
         MetaDataComponent? lockedMeta = null;
+        HumanoidAppearanceComponent? lockedHumanoidAppearience = null;
         //_serializationManager.CopyTo(humanoidAppearance, ref component.SourceHumanoid);
         _serializationManager.CopyTo(metaData, ref lockedMeta);
+        _serializationManager.CopyTo(humanoidAppearance, ref lockedHumanoidAppearience);
 
         component.ServerIdentitiesList.Add(component.ServerIdentitiesList.Count,
-            (lockedMeta, humanoidAppearance)!);
+            (lockedMeta, lockedHumanoidAppearience)!);
 
         component.ClientIdentitiesList.Add(component.ServerIdentitiesList.Count - 1,
             lockedMeta!.EntityName); //Idk how to do better. Was messing with component but no luck there..
@@ -236,18 +241,7 @@ public sealed partial class ChangelingSystem
             _console.ExecuteCommand($"scale {uid} 0,8");
         }
 
-        targetHumanoid.Species = sourceHumanoid.Species;
-        targetHumanoid.SkinColor = sourceHumanoid.SkinColor;
-        targetHumanoid.EyeColor = sourceHumanoid.EyeColor;
-        targetHumanoid.Age = sourceHumanoid.Age;
-        targetHumanoid.MarkingSet = new MarkingSet(sourceHumanoid.MarkingSet);
-        targetHumanoid.CustomBaseLayers =
-            new Dictionary<HumanoidVisualLayers, CustomBaseLayerInfo>(sourceHumanoid.CustomBaseLayers);
-
-        _humanoid.SetSex(uid, sourceHumanoid.Sex, false, targetHumanoid);
-        _humanoid.SetTTSVoice(uid, sourceHumanoid.Voice, targetHumanoid);
-
-        targetHumanoid.Gender = sourceHumanoid.Gender;
+        CloneAppearance(uid, sourceHumanoid);
 
         Dirty(uid, targetHumanoid);
 
@@ -273,5 +267,32 @@ public sealed partial class ChangelingSystem
             PopupType.LargeCaution);
 
         return false;
+    }
+
+
+    private bool CloneAppearance(
+        EntityUid uid,
+        HumanoidAppearanceComponent sourceHumanoid,
+        HumanoidAppearanceComponent? targetHumanoid = null)
+    {
+        if (!Resolve(uid, ref targetHumanoid))
+            return false;
+
+        targetHumanoid.Species = sourceHumanoid.Species;
+        targetHumanoid.SkinColor = sourceHumanoid.SkinColor;
+        targetHumanoid.EyeColor = sourceHumanoid.EyeColor;
+        targetHumanoid.Age = sourceHumanoid.Age;
+
+        targetHumanoid.CustomBaseLayers =
+            new Dictionary<HumanoidVisualLayers, CustomBaseLayerInfo>(sourceHumanoid.CustomBaseLayers);
+        targetHumanoid.MarkingSet = new MarkingSet(sourceHumanoid.MarkingSet);
+        targetHumanoid.Gender = sourceHumanoid.Gender;
+
+        _humanoid.SetTTSVoice(uid, sourceHumanoid.Voice, targetHumanoid);
+        _humanoid.SetSex(uid, sourceHumanoid.Sex, false, targetHumanoid);
+
+        Dirty(uid, targetHumanoid);
+
+        return true;
     }
 }
