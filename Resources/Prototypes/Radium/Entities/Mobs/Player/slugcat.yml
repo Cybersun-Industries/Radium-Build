@@ -35,7 +35,7 @@
   - type: Strippable
   - type: UserInterface
     interfaces:
-      enum.StrippingUiKey.Key
+      enum.StrippingUiKey.Key:
         type: StrippableBoundUserInterface
   - type: DamageStateVisuals
     states:
