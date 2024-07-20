@@ -119,7 +119,7 @@
   - type: ClothingRequiredStepTriggerImmune
     slots: WITHOUT_POCKET
   - type: Bloodstream
-    bloodReagent: DemonsBlood
+    bloodReagent: Blood
   - type: BloodSucker
     webRequired: true
   - type: Arachne
@@ -148,10 +148,6 @@
     fireStackAlternateState: 3
   - type: Dna
     dna: "ABRAXAS"
-  - type: Spider
-    webPrototype: SpiderWebArache
-    webAction: SpiderWebArachneClassicAction
-  - type: IgnoreSpiderWebArachneClassic
   - type: InteractionPopup
     successChance: 1
     interactSuccessString: hugging-success-generic
