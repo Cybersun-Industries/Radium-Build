@@ -1,13 +1,19 @@
-﻿using System.Numerics;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Numerics;
+using Content.Server.Radium.Changeling.Components;
 using Content.Shared.Actions;
-using Content.Shared.Chemistry.Components;
 using Content.Shared.Damage.Components;
 using Content.Shared.FixedPoint;
 using Content.Shared.Gravity;
+using Content.Shared.Humanoid;
+using Content.Shared.Humanoid.Markings;
 using Content.Shared.IdentityManagement;
+using Content.Shared.Popups;
 using Content.Shared.Radium.Changeling.Components;
+using Microsoft.CodeAnalysis;
 using Robust.Shared.Audio;
 using Robust.Shared.Player;
+using Solution = Content.Shared.Chemistry.Components.Solution;
 
 namespace Content.Server.Radium.Changeling.EntitySystems;
 
@@ -92,6 +98,23 @@ public sealed partial class ChangelingSystem
         return true;
     }
 
+    public bool TrySting(EntityUid uid,
+        EntityUid target,
+        bool overrideMessage = false)
+    {
+        if (HasComp<ChangelingComponent>(target))
+            return false;
+
+        if (!overrideMessage)
+        {
+            _popup.PopupEntity(Loc.GetString("changeling-sting", ("target", Identity.Entity(target, EntityManager))),
+                uid,
+                uid);
+        }
+
+        return true;
+    }
+
     public bool TryInjectReagents(EntityUid uid, List<(string, FixedPoint2)> reagents)
     {
         var solution = new Solution();
@@ -149,5 +172,106 @@ public sealed partial class ChangelingSystem
 
         component.ChangelingEquipment[outEquipment] = (item, outItem.Item2);
         return true;
+    }
+
+    public bool CopyDna(EntityUid uid,
+        EntityUid target,
+        [NotNullWhen(true)] out HumanoidAppearanceComponent? humanoidAppearance,
+        ChangelingComponent? component = null)
+    {
+        humanoidAppearance = null;
+
+        if (!Resolve(uid, ref component))
+        {
+            return false;
+        }
+
+        _store.TryAddCurrency(new Dictionary<string, FixedPoint2>
+                { { component.EvolutionCurrencyPrototype, 1 } },
+            uid);
+
+        if (!TryComp(target, out humanoidAppearance) ||
+            !TryComp<MetaDataComponent>(target, out var metaData))
+            return false;
+        MetaDataComponent? lockedMeta = null;
+        //_serializationManager.CopyTo(humanoidAppearance, ref component.SourceHumanoid);
+        _serializationManager.CopyTo(metaData, ref lockedMeta);
+
+        component.ServerIdentitiesList.Add(component.ServerIdentitiesList.Count,
+            (lockedMeta, humanoidAppearance)!);
+
+        component.ClientIdentitiesList.Add(component.ServerIdentitiesList.Count - 1,
+            lockedMeta!.EntityName); //Idk how to do better. Was messing with component but no luck there..
+
+        Dirty(uid, component);
+
+        _userInterface.SetUiState(uid, ChangelingDnaStorageUiKey.Transform, new ChangelingStorageUiState());
+        _userInterface.SetUiState(uid, ChangelingDnaStorageUiKey.Sting, new ChangelingStorageUiState());
+
+        humanoidAppearance.SkinColor = Color.Gray;
+
+        if (_mindSystem.TryGetObjectiveComp<GenesConditionComponent>(uid, out var obj))
+            obj.GenesExtracted++;
+
+        return true;
+    }
+
+    public bool TransformEntity(EntityUid uid,
+        (MetaDataComponent, HumanoidAppearanceComponent) sourceHumanoidPair,
+        HumanoidAppearanceComponent? targetHumanoid = null)
+    {
+        if (!Resolve(uid, ref targetHumanoid))
+            return false;
+
+        var (metadata, sourceHumanoid) = sourceHumanoidPair;
+
+        _metaSystem.SetEntityName(uid, metadata.EntityName);
+
+        if (targetHumanoid.Species.Id == "Felinid" && sourceHumanoid.Species.Id != "Felinid")
+        {
+            _console.ExecuteCommand($"scale {uid} 1,2");
+        }
+        else if (targetHumanoid.Species.Id != "Felinid" && sourceHumanoid.Species.Id == "Felinid")
+        {
+            _console.ExecuteCommand($"scale {uid} 0,8");
+        }
+
+        targetHumanoid.Species = sourceHumanoid.Species;
+        targetHumanoid.SkinColor = sourceHumanoid.SkinColor;
+        targetHumanoid.EyeColor = sourceHumanoid.EyeColor;
+        targetHumanoid.Age = sourceHumanoid.Age;
+        targetHumanoid.MarkingSet = new MarkingSet(sourceHumanoid.MarkingSet);
+        targetHumanoid.CustomBaseLayers =
+            new Dictionary<HumanoidVisualLayers, CustomBaseLayerInfo>(sourceHumanoid.CustomBaseLayers);
+
+        _humanoid.SetSex(uid, sourceHumanoid.Sex, false, targetHumanoid);
+        _humanoid.SetTTSVoice(uid, sourceHumanoid.Voice, targetHumanoid);
+
+        targetHumanoid.Gender = sourceHumanoid.Gender;
+
+        Dirty(uid, targetHumanoid);
+
+        _flash.Flash(target: uid,
+            flashDuration: 12000f,
+            user: uid,
+            used: null,
+            slowTo: 0.8F,
+            displayPopup: false,
+            forced: true);
+
+        return true;
+    }
+
+    public bool UseAbility(EntityUid uid, BaseActionEvent args)
+    {
+        if (TryUseAbility(uid, args))
+            return true;
+
+        _popup.PopupEntity(
+            Robust.Shared.Localization.Loc.GetString("changeling-ability-failed", ("target", uid)),
+            uid,
+            PopupType.LargeCaution);
+
+        return false;
     }
 }

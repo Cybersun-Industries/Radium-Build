@@ -46,6 +46,8 @@
       state: transform
     event: !type:ChangelingTransformActionEvent
     useDelay: 30
+  - type: ChangelingAction
+    chemicalCost: 0
 
 - type: entity
   id: ActionChangelingAbsorbDNA
@@ -266,13 +268,13 @@
       sprite: Radium/Interface/Actions/changeling.rsi
       state: sting_extract
     event: !type:ActionChangelingDnaStingEvent
-    useDelay: 0
+    useDelay: 60
     whitelist:
       components:
       - MobState
   - type: ChangelingAction
-  chemicalCost: 25
-  useInLesserForm: true
+    chemicalCost: 25
+    useInLesserForm: true
 
 - type: entity
   id: ActionChangelingTransformationSting

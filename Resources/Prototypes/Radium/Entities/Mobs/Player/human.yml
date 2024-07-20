@@ -89,8 +89,10 @@
       evolution: 5
     - type: UserInterface
       interfaces:
-        enum.ChangelingStorageUiKey.Key:
-          type: ChangelingStorageBoundUserInterface
+        enum.ChangelingDnaStorageUiKey.Transform:
+          type: ChangelingDnaStorageBoundUserInterfaceTransform
+        enum.ChangelingDnaStorageUiKey.Sting:
+          type: ChangelingDnaStorageBoundUserInterfaceSting
         enum.StoreUiKey.Key:
           type: StoreBoundUserInterface
     - type: Store

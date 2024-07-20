@@ -3,7 +3,6 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
 using Content.Shared.Mind;
 using Content.Shared.NPC.Prototypes;
-using Content.Shared.Roles;
 using Content.Shared.Store;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
@@ -18,6 +17,9 @@ public sealed partial class ChangelingComponent : Component
     #region Base Stats
 
     [DataField("soundMeatPool")]
+
+    // Sandbox violation on CollectionExpression
+    // ReSharper disable once UseCollectionExpression
     public List<SoundSpecifier?> SoundPool = new()
     {
         new SoundPathSpecifier("/Audio/Effects/gib1.ogg"),
@@ -29,7 +31,7 @@ public sealed partial class ChangelingComponent : Component
     public SoundSpecifier ShriekSound =
         new SoundPathSpecifier("/Audio/Radium/Changeling/Effects/changeling_shriek.ogg");
 
-    [DataField("shriekPower")]
+    [DataField]
     public float ShriekPower = 2.5f;
 
     public bool StrainedMusclesActive = false;
@@ -37,14 +39,20 @@ public sealed partial class ChangelingComponent : Component
     public bool IsInLesserForm = false;
 
     [DataField, AutoNetworkedField]
-    public float Chemicals = 100f;
+    public float Chemicals = 10f;
 
     [DataField, AutoNetworkedField]
     public float MaxChemicals = 100f;
 
+    [DataField]
+    public string ChemicalsAlert = "Chemicals";
+
     public TimeSpan RegenTime = TimeSpan.Zero;
 
     public float RegenCooldown = 1f;
+
+    [DataField]
+    public float RegenChemicalsAmount = 0.5f;
 
     [ViewVariables(VVAccess.ReadWrite)]
     [DataField]
@@ -72,10 +80,6 @@ public sealed partial class ChangelingComponent : Component
     [DataField(serverOnly: true)]
     public Dictionary<int, (MetaDataComponent, HumanoidAppearanceComponent)> ServerIdentitiesList = [];
 
-    [DataField] public HumanoidAppearanceComponent? SourceHumanoid;
-
-    [DataField] public MetaDataComponent? Metadata;
-
     [DataField] public EntityUid[] ActiveActions = [];
 
     [DataField] [ValidatePrototypeId<EntityPrototype>]
@@ -95,7 +99,7 @@ public sealed partial class ChangelingComponent : Component
         { Components.ChangelingEquipment.Spacesuit, (EntityUid.Invalid, "ChangelingClothingOuterHardsuit") },
         { Components.ChangelingEquipment.Shield, (EntityUid.Invalid, "ChangelingShield") },
         { Components.ChangelingEquipment.ArmorHelmet, (EntityUid.Invalid, "ChangelingClothingHeadHelmet") },
-        { Components.ChangelingEquipment.FakeArmbladePrototype, (EntityUid.Invalid, "FakeArmbladePrototype") },
+        { Components.ChangelingEquipment.FakeArmblade, (EntityUid.Invalid, "FakeArmBladeChangeling") },
     };
 
     [DataField] public FrozenSet<ProtoId<StoreCategoryPrototype>> StoreCategories =
@@ -116,5 +120,5 @@ public enum ChangelingEquipment
     ArmorHelmet,
     Spacesuit,
     SpacesuitHelmet,
-    FakeArmbladePrototype,
+    FakeArmblade,
 }

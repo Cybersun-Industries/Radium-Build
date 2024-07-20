@@ -1,13 +1,11 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Text;
 using Content.Server.Actions;
 using Content.Server.Antag;
 using Content.Server.GameTicking;
 using Content.Server.Ghost.Roles.Events;
 using Content.Server.Humanoid;
 using Content.Server.Mind;
-using Content.Server.Objectives;
 using Content.Server.Roles;
 using Content.Server.Shuttles.Components;
 using Content.Server.Spawners.Components;
@@ -25,7 +23,6 @@ using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.NPC.Systems;
-using Content.Shared.Objectives.Systems;
 using Content.Shared.Players;
 using Content.Shared.Popups;
 using Content.Shared.Preferences;
@@ -75,14 +72,11 @@ public sealed partial class ChangelingSystem : EntitySystem
     [Dependency] private readonly ActorSystem _actors = default!;
     [Dependency] private readonly StaminaSystem _stamina = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
-    [Dependency] private readonly SharedObjectivesSystem _objectives = default!;
     [Dependency] private readonly AntagSelectionSystem _antag = default!;
     [Dependency] private readonly NpcFactionSystem _npcFaction = default!;
 
     [ValidatePrototypeId<EntityPrototype>]
     private const string SpawnPointPrototype = "SpawnPointChangeling";
-
-    [ValidatePrototypeId<AntagPrototype>] private const string ChangelingRole = "Changeling";
 
     [ValidatePrototypeId<EntityPrototype>] private const string GenesObjective = "GenesObjectiveChangeling";
 
@@ -137,8 +131,8 @@ public sealed partial class ChangelingSystem : EntitySystem
         if (_roles.MindHasRole<ChangelingRoleComponent>(mindId))
             return;
 
-        var briefing = Loc.GetString("changeling-role-greeting", ("name", metaData?.EntityName ?? "Unknown"));
-        var briefingShort = Loc.GetString("changeling-role-greeting-short", ("name", metaData?.EntityName ?? "Unknown"));
+        var briefing = Loc.GetString("changeling-role-greeting", ("name", metaData.EntityName));
+        var briefingShort = Loc.GetString("changeling-role-greeting-short", ("name", metaData.EntityName));
 
         _antag.SendBriefing(uid, briefing, Color.Yellow, component.BriefingSound);
 
@@ -308,15 +302,15 @@ public sealed partial class ChangelingSystem : EntitySystem
         if (!Resolve(uid, ref component))
             return;
 
-        var chemicals = component.Chemicals;
+        ref var chemicals = ref component.Chemicals;
 
-        chemicals += amount ?? 1 /*regen*/;
+        chemicals += amount ?? component.RegenChemicalsAmount /*regen*/;
 
         component.Chemicals = Math.Clamp(chemicals, 0, component.MaxChemicals);
 
         Dirty(uid, component);
 
-        //_alerts.ShowAlert(uid, "Resource", 2); //Chemicals
+        _alerts.ShowAlert(uid, component.ChemicalsAlert);
     }
 
     public void RemoveAllChangelingEquipment(EntityUid target, ChangelingComponent comp)

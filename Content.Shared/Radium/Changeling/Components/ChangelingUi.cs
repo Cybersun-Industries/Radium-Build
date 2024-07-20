@@ -3,9 +3,10 @@
 namespace Content.Shared.Radium.Changeling.Components;
 
 [NetSerializable, Serializable]
-public enum ChangelingStorageUiKey : byte
+public enum ChangelingDnaStorageUiKey : byte
 {
-    Key
+    Transform,
+    Sting,
 }
 
 [Serializable, NetSerializable]

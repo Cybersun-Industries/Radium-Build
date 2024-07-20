@@ -20,7 +20,6 @@ using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
-using Content.Shared.Humanoid.Markings;
 using Content.Shared.Inventory;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
@@ -31,7 +30,6 @@ using Content.Shared.Popups;
 using Content.Shared.Radium.Changeling;
 using Content.Shared.Radium.Changeling.Components;
 using Content.Shared.Radium.Changeling.Events;
-using Content.Shared.Revenant;
 using Content.Shared.StatusEffect;
 using Content.Shared.Stealth.Components;
 using Robust.Shared.Audio.Systems;
@@ -68,13 +66,14 @@ public sealed partial class ChangelingSystem
 
     private void InitializeAbilities()
     {
-        SubscribeLocalEvent<ChangelingComponent, ChangelingAbsorbDnaActionEvent>(OnAbsorbDNAActions);
+        SubscribeLocalEvent<ChangelingComponent, ChangelingAbsorbDnaActionEvent>(OnAbsorbDNAAction);
         SubscribeLocalEvent<ChangelingComponent, HarvestEvent>(OnHarvest);
 
         SubscribeLocalEvent<ChangelingComponent, ChangelingStasisActionEvent>(OnStasisAction);
         SubscribeLocalEvent<ChangelingComponent, ChangelingTransformActionEvent>(OnTransformAction);
 
         SubscribeLocalEvent<ConfirmTransformation>(OnTransformationConfirmed);
+        SubscribeLocalEvent<ConfirmTransformSting>(OnTransformationStingConfirmed);
 
         SubscribeLocalEvent<ChangelingComponent, ActionChangelingAdrenalineSacsEvent>(OnAdrenalineSacsEventAction);
         SubscribeLocalEvent<ChangelingComponent, ActionChangelingStrainedMusclesEvent>(OnToggleStrainedMuscles);
@@ -110,7 +109,7 @@ public sealed partial class ChangelingSystem
         ChangelingComponent component,
         ActionChangelingDissonantShriekEvent args)
     {
-        if (!TryUseAbility(uid, args))
+        if (!UseAbility(uid, args))
             return;
 
         DoScreech(uid, component);
@@ -124,7 +123,7 @@ public sealed partial class ChangelingSystem
         ChangelingComponent component,
         ActionChangelingResonantShriekEvent args)
     {
-        if (!TryUseAbility(uid, args))
+        if (!UseAbility(uid, args))
             return;
 
         DoScreech(uid, component);
@@ -143,7 +142,7 @@ public sealed partial class ChangelingSystem
 
     private void OnArmBladeEventAction(EntityUid uid, ChangelingComponent component, ActionChangelingArmBladeEvent args)
     {
-        if (!TryUseAbility(uid, args))
+        if (!UseAbility(uid, args))
             return;
 
         if (!TryToggleItem(uid, ChangelingEquipment.Armblade))
@@ -162,7 +161,7 @@ public sealed partial class ChangelingSystem
         ChangelingComponent component,
         ActionChangelingFalseArmbladeStingEvent args)
     {
-        if(!TryUseAbility(uid, args))
+        if (!UseAbility(uid, args))
             return;
 
         if (!TrySting(uid, args))
@@ -170,7 +169,7 @@ public sealed partial class ChangelingSystem
 
         var target = args.Target;
         var fakeArmblade = EntityManager.SpawnEntity(
-            component.ChangelingEquipment[ChangelingEquipment.FakeArmbladePrototype].Item2,
+            component.ChangelingEquipment[ChangelingEquipment.FakeArmblade].Item2,
             Transform(target).Coordinates);
         if (!_handsSystem.TryPickupAnyHand(target, fakeArmblade))
         {
@@ -187,7 +186,7 @@ public sealed partial class ChangelingSystem
         ChangelingComponent component,
         ActionChangelingCryogenicStingEvent args)
     {
-        if(!TryUseAbility(uid, args))
+        if (!UseAbility(uid, args))
             return;
 
         var reagents = new List<(string, FixedPoint2)>
@@ -203,7 +202,7 @@ public sealed partial class ChangelingSystem
         ChangelingComponent component,
         ActionChangelingHallutinationStingEvent args)
     {
-        if(!TryUseAbility(uid, args))
+        if (!UseAbility(uid, args))
             return;
 
         var reagents = new List<(string, FixedPoint2)>
@@ -218,7 +217,7 @@ public sealed partial class ChangelingSystem
         ChangelingComponent component,
         ActionChangelingBlindStingEvent args)
     {
-        if(!TryUseAbility(uid, args))
+        if (!UseAbility(uid, args))
             return;
 
         if (!TrySting(uid, args))
@@ -242,7 +241,7 @@ public sealed partial class ChangelingSystem
         ChangelingComponent component,
         ActionChangelingMuteStingEvent args)
     {
-        if(!TryUseAbility(uid, args))
+        if (!UseAbility(uid, args))
             return;
 
         var reagents = new List<(string, FixedPoint2)>
@@ -257,18 +256,55 @@ public sealed partial class ChangelingSystem
         ChangelingComponent component,
         ActionChangelingTransformationStingEvent args)
     {
-        if(!TryUseAbility(uid, args))
+        if (!UseAbility(uid, args))
             return;
 
-        throw new NotImplementedException();
+        if (!TryComp<ChangelingComponent>(uid, out _))
+            return;
+
+        _userInterface.OpenUi(uid, ChangelingDnaStorageUiKey.Sting, uid);
+    }
+
+    private void OnTransformationStingConfirmed(ConfirmTransformSting args)
+    {
+        var uid = GetEntity(args.Uid);
+
+        if (!TryComp<ChangelingComponent>(uid, out var component))
+            return;
+
+
+        if (!TrySting(uid, GetEntity(args.Uid)))
+            return;
+
+        var ev = new AfterFlashedEvent(uid, uid, null);
+
+        RaiseLocalEvent(uid, ref ev);
+
+        TransformEntity(uid, component.ServerIdentitiesList[args.ServerIdentityIndex]);
     }
 
     private void OnDnaStingEventAction(EntityUid uid, ChangelingComponent component, ActionChangelingDnaStingEvent args)
     {
-        if(!TryUseAbility(uid, args))
+        if (!TryUseAbility(uid, args) || !TrySting(uid, args.Target))
             return;
 
-        throw new NotImplementedException();
+        EnsureComp<ResourceComponent>(args.Target, out var resource);
+
+        if (resource.Harvested)
+        {
+            _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("changeling-dna-harvested"),
+                uid,
+                PopupType.SmallCaution);
+            return;
+        }
+
+        CopyDna(uid, args.Target, out _);
+
+        _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("changeling-dna-sting-done"),
+            uid,
+            PopupType.SmallCaution);
+
+        resource.Harvested = true;
     }
 
     private void OnDefibrillatorGraspEventAction(EntityUid uid,
@@ -295,7 +331,7 @@ public sealed partial class ChangelingSystem
         ChangelingComponent component,
         ActionChangelingBiodegradeEvent args)
     {
-        if (!TryUseAbility(uid, args))
+        if (!UseAbility(uid, args))
             return;
 
         if (TryComp<CuffableComponent>(uid, out var cuffs) && cuffs.Container.ContainedEntities.Count > 0)
@@ -329,7 +365,7 @@ public sealed partial class ChangelingSystem
         ChangelingComponent component,
         ActionChangelingChameleonSkinEvent args)
     {
-        if (!TryUseAbility(uid, args))
+        if (!UseAbility(uid, args))
             return;
 
         if (HasComp<StealthComponent>(uid) && HasComp<StealthOnMoveComponent>(uid))
@@ -348,7 +384,7 @@ public sealed partial class ChangelingSystem
         ChangelingComponent component,
         ActionChangelingFleshmendEvent args)
     {
-        if (!TryUseAbility(uid, args))
+        if (!UseAbility(uid, args))
             return;
 
         var reagents = new List<(string, FixedPoint2)>()
@@ -369,7 +405,7 @@ public sealed partial class ChangelingSystem
         ChangelingComponent component,
         ActionChangelingLesserFormEvent args)
     {
-        if(!TryUseAbility(uid, args))
+        if (!UseAbility(uid, args))
             return;
 
         throw new NotImplementedException();
@@ -379,7 +415,7 @@ public sealed partial class ChangelingSystem
         ChangelingComponent component,
         ActionChangelingMimicVoiceEvent args)
     {
-        if(!TryUseAbility(uid, args))
+        if (!UseAbility(uid, args))
             return;
 
         throw new NotImplementedException();
@@ -389,7 +425,7 @@ public sealed partial class ChangelingSystem
         ChangelingComponent component,
         ActionChangelingOrganicShieldEvent args)
     {
-        if (!TryUseAbility(uid, args))
+        if (!UseAbility(uid, args))
             return;
 
         if (!TryToggleItem(uid, ChangelingEquipment.Shield))
@@ -408,7 +444,7 @@ public sealed partial class ChangelingSystem
         ChangelingComponent component,
         ActionChangelingVoidAdaptationEvent args)
     {
-        if (!TryUseAbility(uid, args))
+        if (!UseAbility(uid, args))
             return;
 
         if (!TryToggleItem(uid, ChangelingEquipment.Spacesuit, "outerClothing")
@@ -431,7 +467,7 @@ public sealed partial class ChangelingSystem
         ChangelingComponent component,
         ActionChangelingChitinousArmorEvent args)
     {
-        if (!TryUseAbility(uid, args))
+        if (!UseAbility(uid, args))
             return;
 
         if (!TryToggleItem(uid, ChangelingEquipment.Armor, "outerClothing")
@@ -454,7 +490,7 @@ public sealed partial class ChangelingSystem
         ChangelingComponent component,
         ActionChangelingAnatomicPanaceaEvent args)
     {
-        if (!TryUseAbility(uid, args))
+        if (!UseAbility(uid, args))
             return;
 
         var reagents = new List<(string, FixedPoint2)>()
@@ -474,7 +510,7 @@ public sealed partial class ChangelingSystem
         ChangelingComponent component,
         ActionChangelingStrainedMusclesEvent args)
     {
-        if (!TryUseAbility(uid, args))
+        if (!UseAbility(uid, args))
             return;
 
         ToggleStrainedMuscles(uid);
@@ -505,7 +541,7 @@ public sealed partial class ChangelingSystem
         ChangelingComponent component,
         ActionChangelingAdrenalineSacsEvent args)
     {
-        if(!TryUseAbility(uid, args))
+        if (!UseAbility(uid, args))
             return;
 
         var reagents = new List<(string, FixedPoint2)>()
@@ -521,27 +557,22 @@ public sealed partial class ChangelingSystem
         PlayMeatySound(uid);
     }
 
-    private void OnAbsorbDNAActions(EntityUid uid, ChangelingComponent component, ChangelingAbsorbDnaActionEvent args)
+    private void OnAbsorbDNAAction(EntityUid uid, ChangelingComponent component, ChangelingAbsorbDnaActionEvent args)
     {
-        if (args.Target == args.Performer)
-            return;
-
         var target = args.Target;
 
-        if (!HasComp<MobStateComponent>(target) || !HasComp<HumanoidAppearanceComponent>(target) ||
-            HasComp<ChangelingComponent>(target))
+        if (!TrySting(uid, target))
             return;
 
         args.Handled = true;
 
         TryUseAbility(uid, args);
 
-        EnsureComp<ResourceComponent>(uid, out var resource);
+        EnsureComp<ResourceComponent>(target, out var resource);
 
         if (resource.Harvested)
         {
             _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("changeling-dna-harvested"),
-                target,
                 uid,
                 PopupType.SmallCaution);
             return;
@@ -554,7 +585,7 @@ public sealed partial class ChangelingSystem
 
         if (cuffableComponent.CanStillInteract)
         {
-            _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("changeling-too-powerful"), target, uid);
+            _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("changeling-too-powerful"), uid);
             return;
         }
 
@@ -609,28 +640,16 @@ public sealed partial class ChangelingSystem
 
     private void OnHarvest(EntityUid uid, ChangelingComponent component, HarvestEvent args)
     {
-        if (args.Cancelled)
-        {
-            _appearance.SetData(uid, ChangelingVisuals.Harvesting, false);
-            return;
-        }
-
         if (args.Handled || args.Args.Target == null)
             return;
 
         var target = args.Args.Target.Value;
-
-        _appearance.SetData(uid, RevenantVisuals.Harvesting, false);
 
         EnsureComp<ResourceComponent>(args.Args.Target.Value, out var resource);
 
         resource.Harvested = true;
 
         UpdateChemicals(uid, 30);
-
-        _store.TryAddCurrency(new Dictionary<string, FixedPoint2>
-                { { component.EvolutionCurrencyPrototype, 1 } },
-            uid);
 
         var damage = new DamageSpecifier();
 
@@ -642,35 +661,18 @@ public sealed partial class ChangelingSystem
         if (!HasComp<MobStateComponent>(target))
             return;
 
-        if (TryComp<HumanoidAppearanceComponent>(args.Args.Target.Value, out var humanoidAppearance) &&
-            TryComp<MetaDataComponent>(args.Args.Target.Value, out var metaData))
-        {
-            _serializationManager.CopyTo(humanoidAppearance, ref component.SourceHumanoid);
-            _serializationManager.CopyTo(metaData, ref component.Metadata);
-
-            component.ServerIdentitiesList.Add(component.ServerIdentitiesList.Count,
-                (component.Metadata, humanoidAppearance)!);
-            component.ClientIdentitiesList.Add(component.ServerIdentitiesList.Count - 1,
-                component.Metadata!.EntityName); //Idk how to do better. Was messing with component but no luck there..
-
-            Dirty(uid, component);
-            _userInterface.SetUiState(uid, ChangelingStorageUiKey.Key, new ChangelingStorageUiState());
-            humanoidAppearance.SkinColor = Color.Gray;
-
-            Dirty(args.Args.Target.Value, humanoidAppearance);
-
-            _metaSystem.SetEntityName(target, Loc.GetString("changeling-absorbed-corpse-name"));
-            _metaSystem.SetEntityDescription(target, Loc.GetString("changeling-absorbed-corpse-description"));
-        }
-
         if (TryComp<DetailExaminableComponent>(args.Args.Target.Value, out var detail))
         {
             detail.Content = Loc.GetString("changeling-absorbed-corpse-detailed-description");
         }
 
+        if (!CopyDna(uid, target, out var humanoidAppearance))
+            return;
 
-        if (_mindSystem.TryGetObjectiveComp<GenesConditionComponent>(uid, out var obj))
-            obj.GenesExtracted++;
+        Dirty(target, humanoidAppearance);
+
+        _metaSystem.SetEntityName(target, Loc.GetString("changeling-absorbed-corpse-name"));
+        _metaSystem.SetEntityDescription(target, Loc.GetString("changeling-absorbed-corpse-description"));
 
         args.Handled = true;
     }
@@ -680,7 +682,7 @@ public sealed partial class ChangelingSystem
         if (args.Handled)
             return;
 
-        if (!TryUseAbility(uid, args))
+        if (!UseAbility(uid, args))
             return;
 
         args.Handled = true;
@@ -708,68 +710,22 @@ public sealed partial class ChangelingSystem
 
     private void OnTransformAction(EntityUid uid, ChangelingComponent component, ChangelingTransformActionEvent args)
     {
+        if (!UseAbility(uid, args))
+            return;
+
         if (!TryComp<ChangelingComponent>(uid, out _))
             return;
 
-        if (!TryUseAbility(uid, args))
-        {
-            _popup.PopupEntity(
-                Robust.Shared.Localization.Loc.GetString("changeling-ability-failed", ("target", uid)),
-                uid,
-                PopupType.LargeCaution);
-            return;
-        }
-
-        _userInterface.OpenUi(uid, ChangelingStorageUiKey.Key, uid);
+        _userInterface.OpenUi(uid, ChangelingDnaStorageUiKey.Transform, uid);
     }
 
     private void OnTransformationConfirmed(ConfirmTransformation args)
     {
         var uid = GetEntity(args.Uid);
+
         if (!TryComp<ChangelingComponent>(uid, out var component))
             return;
 
-        var ev = new AfterFlashedEvent(uid, uid, null);
-        RaiseLocalEvent(uid, ref ev);
-
-        if (!TryComp<HumanoidAppearanceComponent>(uid, out var targetHumanoid))
-        {
-            return;
-        }
-
-        if (component.SourceHumanoid == null)
-            return;
-
-        _metaSystem.SetEntityName(uid, component.Metadata!.EntityName);
-        if (targetHumanoid.Species.Id == "Felinid" && component.SourceHumanoid.Species.Id != "Felinid")
-        {
-            _console.ExecuteCommand($"scale {uid} 1,2");
-        }
-        else if (targetHumanoid.Species.Id != "Felinid" && component.SourceHumanoid.Species.Id == "Felinid")
-        {
-            _console.ExecuteCommand($"scale {uid} 0,8");
-        }
-
-        targetHumanoid.Species = component.SourceHumanoid.Species;
-        targetHumanoid.SkinColor = component.SourceHumanoid.SkinColor;
-        targetHumanoid.EyeColor = component.SourceHumanoid.EyeColor;
-        targetHumanoid.Age = component.SourceHumanoid.Age;
-        _humanoid.SetSex(uid, component.SourceHumanoid.Sex, false, targetHumanoid);
-        targetHumanoid.CustomBaseLayers =
-            new Dictionary<HumanoidVisualLayers, CustomBaseLayerInfo>(component.SourceHumanoid.CustomBaseLayers);
-        targetHumanoid.MarkingSet = new MarkingSet(component.SourceHumanoid.MarkingSet);
-        _humanoid.SetTTSVoice(uid, component.SourceHumanoid.Voice, targetHumanoid);
-
-        targetHumanoid.Gender = component.SourceHumanoid.Gender;
-
-        Dirty(uid, targetHumanoid);
-
-        _flash.Flash(target: uid,
-            flashDuration: 12000f,
-            user: uid,
-            used: null,
-            slowTo: 0.8F,
-            displayPopup: false,
-            forced: true);
+        TransformEntity(uid, component.ServerIdentitiesList[args.ServerIdentityIndex]);
     }
 }

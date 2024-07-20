@@ -1,37 +1,24 @@
-﻿using Content.Shared.Radium.Changeling;
+﻿using Content.Client.Alerts;
 using Content.Shared.Radium.Changeling.Components;
-using Robust.Client.GameObjects;
 
 namespace Content.Client.Radium.Changeling;
 
-public sealed class Changeling: EntitySystem
+public sealed class ClientChangelingSystem: EntitySystem
 {
-    [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ChangelingComponent, AppearanceChangeEvent>(OnAppearanceChange);
+        SubscribeLocalEvent<ChangelingComponent, UpdateAlertSpriteEvent>(OnUpdateAlert);
     }
 
-    private void OnAppearanceChange(EntityUid uid, ChangelingComponent component, ref AppearanceChangeEvent args)
+    private void OnUpdateAlert(Entity<ChangelingComponent> ent, ref UpdateAlertSpriteEvent args)
     {
-        if (args.Sprite == null)
+        if (args.Alert.ID != ent.Comp.ChemicalsAlert)
             return;
-        /*
-        if (_appearance.TryGetData<bool>(uid, ChangelingVisuals.Harvesting, out var harvesting, args.Component) && harvesting)
-        {
-            args.Sprite.LayerSetState(0, component.HarvestingState);
-        }
-        else if (_appearance.TryGetData<bool>(uid, ChangelingVisuals.Slowed, out var stunned, args.Component) && stunned)
-        {
-            args.Sprite.LayerSetState(0, component.StunnedState);
-        }
-        else if (_appearance.TryGetData<bool>(uid, ChangelingVisuals.Idle, out var idle, args.Component))
-        {
-            args.Sprite.LayerSetState(0, component.State);
-        }
-        */
+
+        var sprite = args.SpriteViewEnt.Comp;
+        var chemicals = Math.Floor(Math.Clamp(ent.Comp.Chemicals, 0, 999));
+        sprite.LayerSetState(0, $"{Math.Floor(chemicals / 6)}");
     }
 }
