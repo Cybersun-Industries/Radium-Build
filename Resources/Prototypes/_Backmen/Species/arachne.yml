@@ -9,10 +9,10 @@
   skinColoration: HumanToned
   sexes:
     - Female
-  minAge: 60
-  youngAge: 150
-  oldAge: 400
-  maxAge: 666
+  minAge: 20
+  youngAge: 60
+  oldAge: 120
+  maxAge: 200
 
 - type: markingPoints
   id: MobArachneClassicMarkingLimits
@@ -27,7 +27,7 @@
       points: 1
       required: false
     Arms:
-      points: 2
+      points: 4
       required: false
 
 
