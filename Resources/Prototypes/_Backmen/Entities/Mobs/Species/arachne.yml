@@ -100,8 +100,6 @@
     prototype: ArachneClassic
     requiredLegs: 8
   - type: Damageable
-    damageContainer: HalfSpirit
-    damageModifierSet: HalfSpirit
   - type: Speech
     speechSounds: Alto
   - type: DamageOnHighSpeedImpact
