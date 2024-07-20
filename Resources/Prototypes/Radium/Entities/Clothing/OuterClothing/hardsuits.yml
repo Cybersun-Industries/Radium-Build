@@ -1,0 +1,32 @@
+# Took from Goob Station (https://github.com/Goob-Station/Goob-Station/blob/dd4a7d37ab35ba8c2bbd6dfa72332916ad8805ab/Resources/Prototypes/Goobstation/Changeling/Entities/Clothing/OuterClothing/hardsuits.yml)
+
+- type: entity
+  parent: ClothingOuterBaseLarge
+  id: ChangelingClothingOuterHardsuit
+  name: organic space suit
+  description: A spaceworthy biomass of pressure and temperature resistant tissue.
+  suffix: Unremoveable
+  components:
+  - type: Sprite
+    sprite: Radium/Changeling/ling_spacesuit.rsi
+  - type: Clothing
+    sprite: Radium/Changeling/ling_spacesuit.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.225
+    lowPressureMultiplier: 1000
+  - type: TemperatureProtection
+    coefficient: 0.01
+  - type: ExplosionResistance
+    damageCoefficient: 0.2
+  - type: Armor
+    modifiers:
+      coefficients:
+        Blunt: 0.95
+        Slash: 0.95
+        Piercing: 1
+        Heat: 0.5
+  - type: ClothingSpeedModifier
+    walkModifier: 0.9
+    sprintModifier: 0.9
+  - type: HeldSpeedModifier
+  - type: Unremoveable

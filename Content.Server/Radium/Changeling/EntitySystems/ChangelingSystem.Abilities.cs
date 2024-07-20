@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using Content.Server.Construction.Completions;
 using Content.Server.Cuffs;
 using Content.Server.DetailExaminable;
 using Content.Server.Emp;
@@ -8,6 +9,8 @@ using Content.Server.Fluids.EntitySystems;
 using Content.Server.Hands.Systems;
 using Content.Server.Light.Components;
 using Content.Server.Light.EntitySystems;
+using Content.Server.Polymorph.Components;
+using Content.Server.Polymorph.Systems;
 using Content.Server.Radium.Changeling.Components;
 using Content.Server.Radium.Medical.Surgery.Systems;
 using Content.Shared.Camera;
@@ -32,7 +35,9 @@ using Content.Shared.Radium.Changeling.Components;
 using Content.Shared.Radium.Changeling.Events;
 using Content.Shared.StatusEffect;
 using Content.Shared.Stealth.Components;
+using Robust.Server.Containers;
 using Robust.Shared.Audio.Systems;
+using Robust.Shared.Containers;
 using Robust.Shared.Serialization.Manager;
 using HarvestEvent = Content.Shared.Radium.Changeling.HarvestEvent;
 
@@ -63,6 +68,8 @@ public sealed partial class ChangelingSystem
     [Dependency] private readonly CuffableSystem _cuffable = default!;
     [Dependency] private readonly PuddleSystem _puddle = default!;
     [Dependency] private readonly PullingSystem _pullingSystem = default!;
+    [Dependency] private readonly ContainerSystem _container = default!;
+    [Dependency] private readonly PolymorphSystem _polymorph = default!;
 
     private void InitializeAbilities()
     {
@@ -71,6 +78,7 @@ public sealed partial class ChangelingSystem
 
         SubscribeLocalEvent<ChangelingComponent, ChangelingStasisActionEvent>(OnStasisAction);
         SubscribeLocalEvent<ChangelingComponent, ChangelingTransformActionEvent>(OnTransformAction);
+        SubscribeLocalEvent<ChangelingComponent, ActionChangelingRegenerateEvent>(OnRegenerateAction);
 
         SubscribeLocalEvent<ConfirmTransformation>(OnTransformationConfirmed);
         SubscribeLocalEvent<ConfirmTransformSting>(OnTransformationStingConfirmed);
@@ -81,8 +89,7 @@ public sealed partial class ChangelingSystem
         SubscribeLocalEvent<ChangelingComponent, ActionChangelingChitinousArmorEvent>(OnChitinousArmorEventAction);
         SubscribeLocalEvent<ChangelingComponent, ActionChangelingVoidAdaptationEvent>(OnVoidAdaptationEventAction);
         SubscribeLocalEvent<ChangelingComponent, ActionChangelingOrganicShieldEvent>(OnOrganicShieldEventAction);
-        SubscribeLocalEvent<ChangelingComponent, ActionChangelingMimicVoiceEvent>(OnMimicVoiceEventAction);
-        SubscribeLocalEvent<ChangelingComponent, ActionChangelingLesserFormEvent>(OnLesserFormEventAction);
+        SubscribeLocalEvent<ChangelingComponent, PassiveChangelingSpawnLesserFormActionEvent>(OnLesserFormEventAction);
         SubscribeLocalEvent<ChangelingComponent, ActionChangelingFleshmendEvent>(OnFleshmendEventAction);
         SubscribeLocalEvent<ChangelingComponent, ActionChangelingChameleonSkinEvent>(OnChameleonSkinEventAction);
         SubscribeLocalEvent<ChangelingComponent, ActionChangelingBiodegradeEvent>(OnBiodegradeEventAction);
@@ -103,6 +110,13 @@ public sealed partial class ChangelingSystem
         SubscribeLocalEvent<ChangelingComponent, ActionChangelingArmBladeEvent>(OnArmBladeEventAction);
         SubscribeLocalEvent<ChangelingComponent, ActionChangelingResonantShriekEvent>(OnResonantShriekEventAction);
         SubscribeLocalEvent<ChangelingComponent, ActionChangelingDissonantShriekEvent>(OnDissonantShriekEventAction);
+    }
+
+    private void OnRegenerateAction(Entity<ChangelingComponent> ent, ref ActionChangelingRegenerateEvent args)
+    {
+        if (!TryUseAbility(ent, args))
+            return;
+        _surgerySystem.HealAllWounds(ent);
     }
 
     private void OnDissonantShriekEventAction(EntityUid uid,
@@ -342,8 +356,15 @@ public sealed partial class ChangelingSystem
             QueueDel(cuff);
         }
 
+        while (_container.IsEntityInContainer(uid))
+        {
+            _container.TryGetContainingContainer((uid, null, null), out var container);
+            _container.TryRemoveFromContainer(uid, true);
+            Del(container?.Owner);
+        }
+
         var solution = new Solution();
-        solution.AddReagent("PolytrinicAcid", 10f);
+        solution.AddReagent("PolytrinicAcid", 20f);
 
         if (_pullingSystem.IsPulled(uid))
         {
@@ -403,22 +424,9 @@ public sealed partial class ChangelingSystem
 
     private void OnLesserFormEventAction(EntityUid uid,
         ChangelingComponent component,
-        ActionChangelingLesserFormEvent args)
+        PassiveChangelingSpawnLesserFormActionEvent args)
     {
-        if (!UseAbility(uid, args))
-            return;
-
-        throw new NotImplementedException();
-    }
-
-    private void OnMimicVoiceEventAction(EntityUid uid,
-        ChangelingComponent component,
-        ActionChangelingMimicVoiceEvent args)
-    {
-        if (!UseAbility(uid, args))
-            return;
-
-        throw new NotImplementedException();
+        _polymorph.CreatePolymorphAction(component.ChangelingLesserFormPolymorphPrototype, (uid, EnsureComp<PolymorphableComponent>(uid)));
     }
 
     private void OnOrganicShieldEventAction(EntityUid uid,

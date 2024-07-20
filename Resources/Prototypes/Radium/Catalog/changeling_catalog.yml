@@ -66,32 +66,6 @@
     stock: 1
 
 - type: listing
-  id: ChangelingMimicVoice
-  name: ent-ActionChangelingMimicVoice
-  description: ent-ActionChangelingMimicVoice.desc
-  productAction: ActionChangelingMimicVoice
-  cost:
-    ChangelingEvolution: 1
-  categories:
-  - ChangelingDefensive
-  conditions:
-  - !type:ListingLimitedStockCondition
-    stock: 1
-
-- type: listing
-  id: ChangelingLesserForm
-  name: ent-ActionChangelingLesserForm
-  description: ent-ActionChangelingLesserForm.desc
-  productAction: ActionChangelingLesserForm
-  cost:
-    ChangelingEvolution: 1
-  categories:
-  - ChangelingDefensive
-  conditions:
-  - !type:ListingLimitedStockCondition
-    stock: 1
-
-- type: listing
   id: ChangelingFleshmend
   name: ent-ActionChangelingFleshmend
   description: ent-ActionChangelingFleshmend.desc
@@ -160,6 +134,20 @@
   - !type:ListingLimitedStockCondition
     stock: 1
 
+- type: listing
+  id: ChangelingLesserForm
+  name: ent-ActionChangelingLesserForm
+  description: ent-ActionChangelingLesserForm.desc
+  raiseProductEventOnUser: true
+  icon: Radium/Interface/Actions/changeling.rsi/lesser_form.png
+  productEvent: !type:PassiveChangelingSpawnLesserFormActionEvent
+  cost:
+    ChangelingEvolution: 1
+  categories:
+  - ChangelingDefensive
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
 # Radium-shitcode-end
 
 #Changeling offensive listings

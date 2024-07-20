@@ -27,6 +27,8 @@ public sealed partial class ChangelingStasisActionEvent : InstantActionEvent;
 
 public sealed partial class ChangelingTransformActionEvent : InstantActionEvent;
 
+public sealed partial class ActionChangelingRegenerateEvent : InstantActionEvent;
+
 public sealed partial class ActionChangelingAdrenalineSacsEvent : InstantActionEvent;
 
 public sealed partial class ActionChangelingStrainedMusclesEvent : InstantActionEvent;
@@ -39,15 +41,14 @@ public sealed partial class ActionChangelingVoidAdaptationEvent : InstantActionE
 
 public sealed partial class ActionChangelingOrganicShieldEvent : InstantActionEvent;
 
-public sealed partial class ActionChangelingMimicVoiceEvent : InstantActionEvent;
-
-public sealed partial class ActionChangelingLesserFormEvent : InstantActionEvent;
-
 public sealed partial class ActionChangelingFleshmendEvent : InstantActionEvent;
 
 public sealed partial class ActionChangelingChameleonSkinEvent : InstantActionEvent;
 
 public sealed partial class ActionChangelingBiodegradeEvent : InstantActionEvent;
+
+[Serializable, NetSerializable]
+public sealed partial class PassiveChangelingSpawnLesserFormActionEvent : SimpleDoAfterEvent;
 
 [Serializable, NetSerializable]
 public sealed partial class PassiveChangelingAugmentedEyesightEvent : SimpleDoAfterEvent;

@@ -9,6 +9,7 @@ using Content.Server.Drunk;
 using Content.Server.Fluids.EntitySystems;
 using Content.Server.Forensics;
 using Content.Server.GameTicking;
+using Content.Server.Hands.Systems;
 using Content.Server.Popups;
 using Content.Server.Radium.Medical.Surgery.Components;
 using Content.Server.Speech.EntitySystems;
@@ -29,7 +30,9 @@ using Content.Shared.Radium.Medical.Surgery.Prototypes;
 using Content.Shared.Radium.Medical.Surgery.Systems;
 using Content.Shared.Stacks;
 using Content.Shared.Weapons.Melee;
+using Robust.Server.Console;
 using Robust.Server.Player;
+using Robust.Shared.Console;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -59,6 +62,8 @@ public sealed partial class SurgerySystem : EntitySystem
     [Dependency] private readonly BuckleSystem _buckleSystem = default!;
     [Dependency] private readonly BloodstreamSystem _bloodstreamSystem = default!;
     [Dependency] private readonly StackSystem _stackSystem = default!;
+    [Dependency] private readonly HandsSystem _handsSystem = default!;
+    [Dependency] private readonly IServerConsoleHost _consoleHost = default!;
 
     public override void Initialize()
     {
@@ -443,9 +448,26 @@ public sealed partial class SurgerySystem : EntitySystem
             Dirty(part.Id, part.Component);
         }
 
+        var arms = list.Count(x => x.Component.PartType == BodyPartType.Arm);
+        var legs = list.Count(x => x.Component.PartType == BodyPartType.Leg);
+
+        if (arms < 2)
+        {
+            _consoleHost.ExecuteCommand($"addhand {uid}"); //Awful code and may cause some issues when doing surgery.
+        }
+
+        if (legs < 2)
+        {
+            _bodySystem.TryGetParentBodyPart(uid, out var body, out _);
+            var leg = Spawn("LeftLegHuman");
+            if (body != null)
+                _bodySystem.AttachPartToRoot(body.Value, leg);
+        }
+
         RaiseNetworkEvent(new SyncPartsEvent(_entityManager.GetNetEntity(uid)));
         return true;
     }
+
 
     private void OnSurgeryDoAfter(EntityUid uid, SurgeryInProgressComponent component, SurgeryDoAfterEvent args)
     {

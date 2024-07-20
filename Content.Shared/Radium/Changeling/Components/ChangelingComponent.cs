@@ -3,6 +3,7 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Humanoid;
 using Content.Shared.Mind;
 using Content.Shared.NPC.Prototypes;
+using Content.Shared.Polymorph;
 using Content.Shared.Store;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
@@ -89,6 +90,7 @@ public sealed partial class ChangelingComponent : Component
         { "ActionChangelingAbsorbDNA", EntityUid.Invalid },
         { "ActionChangelingStasis", EntityUid.Invalid },
         { "ActionChangelingTransform", EntityUid.Invalid },
+        { "ActionChangelingRegenerate", EntityUid.Invalid },
     };
 
     public Dictionary<ChangelingEquipment, (EntityUid, ProtoId<EntityPrototype>)> ChangelingEquipment = new()
@@ -109,7 +111,11 @@ public sealed partial class ChangelingComponent : Component
             "ChangelingOffensive",
         }.ToFrozenSet();
 
-    [DataField] public MindComponent? Mind;
+    [DataField]
+    public MindComponent? Mind;
+
+    [DataField]
+    public ProtoId<PolymorphPrototype> ChangelingLesserFormPolymorphPrototype = "ChangelingMonkey";
 }
 
 public enum ChangelingEquipment

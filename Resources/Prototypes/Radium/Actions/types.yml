@@ -72,6 +72,22 @@
     chemicalCost: 0
     useInLesserForm: true
 
+- type: entity
+  id: ActionChangelingRegenerate
+  name: Transform
+  description: Heal all wounds.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: regenerate
+    event: !type:ActionChangelingRegenerateEvent
+    useDelay: 30
+  - type: ChangelingAction
+    chemicalCost: 10
+
 #Changeling defensive abilities
 
 - type: entity
@@ -171,39 +187,6 @@
     useDelay: 30
   - type: ChangelingAction
     chemicalCost: 20
-
-- type: entity
-  id: ActionChangelingMimicVoice
-  name: Mimic Voice
-  description: Allows the changeling to form their voice of a name they enter. This doesn't have to be anyone that exists on the station, it can be a made up name. Maintaining this façade slows chemical generation by 50%.
-  noSpawn: true
-  components:
-  - type: InstantAction
-    itemIconStyle: NoItem
-    icon:
-      sprite: Radium/Interface/Actions/changeling.rsi
-      state: mimic_voice
-    event: !type:ActionChangelingMimicVoiceEvent
-    useDelay: 30
-  - type: ChangelingAction
-    chemicalCost: 20
-
-- type: entity
-  id: ActionChangelingLesserForm
-  name: Lesser Form
-  description: The changeling transforms into a monkey after a brief period of time. Causes all equipment to be dropped on the floor. It can then return to human form by using Human Form.
-  noSpawn: true
-  components:
-  - type: InstantAction
-    itemIconStyle: NoItem
-    icon:
-      sprite: Radium/Interface/Actions/changeling.rsi
-      state: lesser_form
-    event: !type:ActionChangelingLesserFormEvent
-    useDelay: 30
-  - type: ChangelingAction
-    chemicalCost: 5
-    useInLesserForm: true
 
 - type: entity
   id: ActionChangelingFleshmend
