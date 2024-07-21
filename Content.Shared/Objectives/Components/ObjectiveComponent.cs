@@ -22,11 +22,8 @@ public sealed partial class ObjectiveComponent : Component
     /// <summary>
     /// Organisation that issued this objective, used for grouping and as a header above common objectives.
     /// </summary>
-    [DataField("issuer", required: true)]
-    public LocId Issuer { get; set; }
-
-    [ViewVariables(VVAccess.ReadOnly)]
-    public string LocIssuer => Loc.GetString(Issuer);
+    [DataField(required: true)]
+    public string Issuer = string.Empty;
 
     /// <summary>
     /// Unique objectives can only have 1 per prototype id.
@@ -41,9 +38,6 @@ public sealed partial class ObjectiveComponent : Component
     /// </summary>
     [DataField]
     public SpriteSpecifier? Icon;
-
-    [DataField("hideFromTotal")]
-    public bool HideFromTotal = false;
 }
 
 /// <summary>

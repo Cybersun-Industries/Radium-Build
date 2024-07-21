@@ -567,26 +567,20 @@ public sealed class FleshCultRuleSystem : GameRuleSystem<FleshCultRuleComponent>
                     ("name", name));
             }
 
-            foreach (var objectiveGroup in objectives.Select(x=>(Entity<ObjectiveComponent>)(x, Comp<ObjectiveComponent>(x)))
-                         .GroupBy(o => o.Comp.LocIssuer))
+            foreach (var objectiveGroup in objectives.GroupBy(o => Comp<ObjectiveComponent>(o).Issuer))
             {
-                var hasTitle = false;
+                if (objectiveGroup.Key == "SpaceBank")
+                {
+                    continue;
+                }
+
+                result += "\n" + Loc.GetString($"preset-flesh-cult-objective-issuer-{objectiveGroup.Key}");
 
                 foreach (var objective in objectiveGroup)
                 {
-                    if(objective.Comp.HideFromTotal)
-                        continue;
-
                     var info = _objectivesSystem.GetInfo(objective, mindId);
                     if (info == null)
                         continue;
-
-                    if (!hasTitle)
-                    {
-                        result += "\n" + Loc.GetString($"preset-flesh-cult-objective-issuer-{objectiveGroup.Key}");
-                        hasTitle = true;
-                    }
-
 
                     var objectiveTitle = info.Value.Title;
                     var progress = info.Value.Progress;

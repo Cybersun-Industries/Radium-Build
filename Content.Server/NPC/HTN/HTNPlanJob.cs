@@ -160,9 +160,9 @@ public sealed class HTNPlanJob : Job<HTNPlan>
     {
         var compound = _protoManager.Index<HTNCompoundPrototype>(compoundId.Task);
 
-        for (; mtrIndex < compound.Branches.Count; mtrIndex++)
+        for (var i = mtrIndex; i < compound.Branches.Count; i++)
         {
-            var branch = compound.Branches[mtrIndex];
+            var branch = compound.Branches[i];
             var isValid = true;
 
             foreach (var con in branch.Preconditions)

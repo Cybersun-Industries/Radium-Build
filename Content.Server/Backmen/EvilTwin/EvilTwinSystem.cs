@@ -384,7 +384,7 @@ public sealed class EvilTwinSystem : EntitySystem
         {
             var name = mind.CharacterName;
             var username = mind.Session?.Name;
-            var objectives = mind.Objectives.ToArray();
+            var objectives = mind.AllObjectives.ToArray();
             if (objectives.Length == 0)
             {
                 if (username != null)
@@ -427,14 +427,15 @@ public sealed class EvilTwinSystem : EntitySystem
                 result.Append("\n" + Loc.GetString("evil-twin-was-an-evil-twin-with-objectives-named", ("name", name)));
             }
 
-            foreach (var objectiveGroup in objectives.Select(x=>(Entity<ObjectiveComponent>)(x, Comp<ObjectiveComponent>(x)))
-                         .GroupBy(o => o.Comp.LocIssuer))
+            foreach (var objectiveGroup in objectives.GroupBy(o => Comp<ObjectiveComponent>(o).Issuer))
             {
+                if (objectiveGroup.Key == "SpaceBank")
+                {
+                    continue;
+                }
+
                 foreach (var objective in objectiveGroup)
                 {
-                    if(objective.Comp.HideFromTotal)
-                        continue;
-
                     var info = _objectivesSystem.GetInfo(objective, mindId);
                     if (info == null)
                         continue;

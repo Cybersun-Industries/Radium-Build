@@ -49,7 +49,7 @@
   id: BaseBloodsuckerObjective
   components:
   - type: Objective
-    issuer: objective-issuer-vamp
+    issuer: Коалиция вампиров
     unique: true
     difficulty: 1
     icon:

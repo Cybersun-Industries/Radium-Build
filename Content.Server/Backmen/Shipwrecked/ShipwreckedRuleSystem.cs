@@ -535,7 +535,7 @@ public sealed class ShipwreckedRuleSystem : GameRuleSystem<ShipwreckedRuleCompon
                 point,
                 _random.Next());
 
-            component.Structures.AddRange(dungeon);
+            component.Structures.Add(dungeon);
         }
     }
 

@@ -391,6 +391,7 @@
   - type: HideLayerClothing
     slots:
     - Hair
+    - Snout
     - HeadTop
     - HeadSide
 
@@ -494,6 +495,8 @@
   - type: Appearance
   - type: AddAccentClothing
     accent: RussianAccent
+  - type: RussianAccent
+  - type: AccentWearerNameClothing
   - type: Foldable
     canFoldInsideContainer: true
   - type: FoldableClothing
@@ -839,12 +842,13 @@
         offset: "0, 0.12"
     sprite: Clothing/Head/Hats/magician.rsi
   - type: Item
-    size: Small
+    size: Normal
     sprite: Clothing/Head/Hats/magician.rsi
     storedRotation: 0
   - type: Storage
+    maxItemSize: Normal
     grid:
-    - 0,0,0,0
+    - 0,0,6,3
   - type: UserInterface
     interfaces:
         enum.StorageUiKey.Key:

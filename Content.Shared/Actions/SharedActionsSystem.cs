@@ -428,7 +428,7 @@ public abstract class SharedActionsSystem : EntitySystem
                 }
 
                 var entityCoordinatesTarget = GetCoordinates(netCoordinatesTarget);
-                _rotateToFaceSystem.TryFaceCoordinates(user, _transformSystem.ToMapCoordinates(entityCoordinatesTarget).Position);
+                _rotateToFaceSystem.TryFaceCoordinates(user, entityCoordinatesTarget.ToMapPos(EntityManager, _transformSystem));
 
                 if (!ValidateWorldTarget(user, entityCoordinatesTarget, (actionEnt, worldAction)))
                     return;
@@ -534,7 +534,7 @@ public abstract class SharedActionsSystem : EntitySystem
             if (action.Range <= 0)
                 return true;
 
-            return _transformSystem.InRange(coords, Transform(user).Coordinates, action.Range);
+            return coords.InRange(EntityManager, _transformSystem, Transform(user).Coordinates, action.Range);
         }
 
         return _interactionSystem.InRangeUnobstructed(user, coords, range: action.Range);

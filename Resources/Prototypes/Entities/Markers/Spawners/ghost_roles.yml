@@ -151,9 +151,10 @@
       state: alive
 
 - type: entity
-  noSpawn: true
-  parent: BaseAntagSpawner
   id: SpawnPointGhostSpaceNinja
+  name: ghost role spawn point
+  suffix: space ninja
+  parent: MarkerBase
   components:
   - type: GhostRole
     name: ghost-role-information-space-ninja-name
@@ -161,6 +162,8 @@
     rules: ghost-role-information-antagonist-rules
     raffle:
       settings: default
+  - type: GhostRoleMobSpawner
+    prototype: MobHumanSpaceNinja
   - type: Sprite
     sprite: Markers/jobs.rsi
     layers:

@@ -11,7 +11,7 @@ using Content.Server.Players; // backmen: whitelist
 
 namespace Content.Server.Whitelist;
 
-[AdminCommand(AdminFlags.WhiteList)]
+[AdminCommand(AdminFlags.Permissions)]
 public sealed class AddWhitelistCommand : LocalizedCommands
 {
     public override string Command => "whitelistadd";
@@ -62,7 +62,7 @@ public sealed class AddWhitelistCommand : LocalizedCommands
     }
 }
 
-[AdminCommand(AdminFlags.WhiteList)]
+[AdminCommand(AdminFlags.Permissions)]
 public sealed class RemoveWhitelistCommand : LocalizedCommands
 {
     public override string Command => "whitelistremove";
@@ -113,7 +113,7 @@ public sealed class RemoveWhitelistCommand : LocalizedCommands
     }
 }
 
-[AdminCommand(AdminFlags.Host)]
+[AdminCommand(AdminFlags.Permissions)]
 public sealed class KickNonWhitelistedCommand : LocalizedCommands
 {
     public override string Command => "kicknonwhitelisted";

@@ -12,7 +12,7 @@ using Content.Shared.Hands;
 using Content.Shared.Hands.Components;
 using Content.Shared.Interaction;
 using Content.Shared.Inventory;
-using Content.Shared.Inventory.VirtualItem;
+using Content.Shared.Item;
 using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.Physics;
 using Content.Shared.Popups;
@@ -27,6 +27,7 @@ using Robust.Shared.Physics.Systems;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Timing;
+using Robust.Shared.Toolshed.Syntax;
 using ItemToggleMeleeWeaponComponent = Content.Shared.Item.ItemToggle.Components.ItemToggleMeleeWeaponComponent;
 
 namespace Content.Shared.Weapons.Melee;
@@ -275,8 +276,7 @@ public abstract class SharedMeleeWeaponSystem : EntitySystem
                 return true;
             }
 
-            if (!HasComp<VirtualItemComponent>(held))
-                return false;
+            return false;
         }
 
         // Use hands clothing if applicable.

@@ -117,9 +117,6 @@
       drawdepth: Mobs
       sprite: Backmen/Mobs/Aliens/blob.rsi
       state: blobpod
-    - type: GuideHelp 
-      guides:
-      - Blob
 
 
 - type: entity
@@ -212,9 +209,6 @@
       isToggle: true
       color: "#808080"
       playSoundOn: false
-    - type: GuideHelp 
-      guides:
-      - Blob
 
 - type: entity
   id: BaseBlob
@@ -262,9 +256,6 @@
           layer:
             - BlobTileLayer
           density: 1000
-    - type: GuideHelp 
-      guides:
-      - Blob
 
 - type: entity
   parent: BaseBlob
@@ -566,13 +557,13 @@
       thresholds:
         - trigger:
             !type:DamageTrigger
-            damage: 125
+            damage: 100
           behaviors:
             - !type:DoActsBehavior
               acts: [ "Destruction" ]
     - type: Reflect
-      reflectProb: 0.6
-      spread: 20
+      reflectProb: 0.9
+      spread: 10
       reflects:
         - Energy
     - type: Airtight
