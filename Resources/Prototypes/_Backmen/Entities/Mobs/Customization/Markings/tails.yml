@@ -39,7 +39,7 @@
   id: TailFennec
   bodyPart: Tail
   markingCategory: Tail
-  speciesRestriction: [Felinid]
+  speciesRestriction: [Felinid, Human]
   sprites:
     - sprite: Backmen/Mobs/Customization/tails32x32.rsi
       state: fennec
@@ -59,7 +59,7 @@
   id: TailFluffy
   bodyPart: Tail
   markingCategory: Tail
-  speciesRestriction: [Felinid]
+  speciesRestriction: [Felinid, Human]
   sprites:
     - sprite: Backmen/Mobs/Customization/tails32x32.rsi
       state: fluffy
@@ -68,7 +68,7 @@
   id: TailFox
   bodyPart: Tail
   markingCategory: Tail
-  speciesRestriction: [Felinid]
+  speciesRestriction: [Felinid, Human]
   sprites:
     - sprite: Backmen/Mobs/Customization/tails32x32.rsi
       state: fox_primary
@@ -92,7 +92,7 @@
   id: TailKitsune
   bodyPart: Tail
   markingCategory: Tail
-  speciesRestriction: [Felinid]
+  speciesRestriction: [Felinid, Human]
   sprites:
     - sprite: Backmen/Mobs/Customization/tails32x32.rsi
       state: kitsune_primary
@@ -112,7 +112,7 @@
   id: TailShark
   bodyPart: Tail
   markingCategory: Tail
-  speciesRestriction: [Reptilian]
+  speciesRestriction: [Reptilian, Human]
   sprites:
     - sprite: Backmen/Mobs/Customization/tails32x32.rsi
       state: shark_fin
@@ -132,7 +132,7 @@
   id: TailSuccubus
   bodyPart: Tail
   markingCategory: Tail
-  speciesRestriction: [Moth, Felinid]
+  speciesRestriction: [Moth, Felinid, Human]
   sprites:
     - sprite: Backmen/Mobs/Customization/tails32x32.rsi
       state: succubus
@@ -141,7 +141,7 @@
   id: TailTentacle
   bodyPart: Tail
   markingCategory: Tail
-  speciesRestriction: [nHuman, Oni]
+  speciesRestriction: [Oni]
   sprites:
     - sprite: Backmen/Mobs/Customization/tails32x32.rsi
       state: tentacle
