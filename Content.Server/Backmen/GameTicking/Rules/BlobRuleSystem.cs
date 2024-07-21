@@ -1,7 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Content.Server.AlertLevel;
-using Content.Server.Backmen.Blob.Components;
 using Content.Server.Backmen.Blob.Rule;
 using Content.Server.Backmen.GameTicking.Rules.Components;
 using Content.Server.Chat.Managers;
@@ -112,13 +111,11 @@ public sealed class BlobRuleSystem : GameRuleSystem<BlobRuleComponent>
     private const string StationGamma = "gamma";
     private const string StationSigma = "sigma";
 
-    private void CheckChangeStage(Entity<BlobCoreComponent> blobCore, Entity<StationBlobConfigComponent?> stationUid, BlobRuleComponent blobRuleComp)
+    private void CheckChangeStage(Entity<BlobCoreComponent> blobCore, EntityUid stationUid, BlobRuleComponent blobRuleComp)
     {
-        Resolve(stationUid, ref stationUid.Comp, false);
-
         switch (blobRuleComp.Stage)
         {
-            case BlobStage.Default when blobCore.Comp.BlobTiles.Count >= (stationUid.Comp?.StageBegin ?? 30):
+            case BlobStage.Default when blobCore.Comp.BlobTiles.Count > 30:
                 blobRuleComp.Stage = BlobStage.Begin;
 
                 _chatSystem.DispatchGlobalAnnouncement(Loc.GetString("blob-alert-detect"),
@@ -132,7 +129,7 @@ public sealed class BlobRuleSystem : GameRuleSystem<BlobRuleComponent>
                     Level = blobRuleComp.Stage
                 }, broadcast: true);
                 return;
-            case BlobStage.Begin when blobCore.Comp.BlobTiles.Count >= (stationUid.Comp?.StageCritical ?? 400):
+            case BlobStage.Begin when blobCore.Comp.BlobTiles.Count >= 500:
             {
                 blobRuleComp.Stage = BlobStage.Critical;
                 _chatSystem.DispatchGlobalAnnouncement(Loc.GetString("blob-alert-critical"),
@@ -152,7 +149,7 @@ public sealed class BlobRuleSystem : GameRuleSystem<BlobRuleComponent>
                 }, broadcast: true);
                 return;
             }
-            case BlobStage.Critical when blobCore.Comp.BlobTiles.Count >= (stationUid.Comp?.StageTheEnd ?? StationBlobConfigComponent.DefaultStageEnd):
+            case BlobStage.Critical when blobCore.Comp.BlobTiles.Count >= 900:
             {
                 blobRuleComp.Stage = BlobStage.TheEnd;
                 blobCore.Comp.Points = 99999;
@@ -184,7 +181,7 @@ public sealed class BlobRuleSystem : GameRuleSystem<BlobRuleComponent>
             _mindSystem.TryGetSession(mindId, out var session);
             var username = session?.Name;
 
-            var objectives = mind.Objectives.ToArray();
+            var objectives = mind.AllObjectives.ToArray();
             if (objectives.Length == 0)
             {
                 if (username != null)
@@ -219,11 +216,10 @@ public sealed class BlobRuleSystem : GameRuleSystem<BlobRuleComponent>
             else if (name != null)
                 result += "\n" + Loc.GetString("blob-was-a-blob-with-objectives-named", ("name", name));
 
-            foreach (var objectiveGroup in objectives.GroupBy(o => Comp<ObjectiveComponent>(o).LocIssuer))
+            foreach (var objectiveGroup in objectives.GroupBy(o => Comp<ObjectiveComponent>(o).Issuer))
             {
                 foreach (var objective in objectiveGroup)
                 {
-
                     var info = _objectivesSystem.GetInfo(objective, mindId, mind);
                     if (info == null)
                         continue;

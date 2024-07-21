@@ -31,5 +31,3 @@ issuer-Waffle-Corporation = [color=Brown]Waffle Corporation[/color]
       При вашем раскрытии, мы используем все возможные силы да бы вытащить вас, не брезгуйте замарать руки.
       Убивайте остальных агентов синдиката. Кроме агентов MI13.
 objective-issuer-Waffle-Corporation = [color=Brown]Waffle Corporation[/color]
-
-objective-issuer-vamp = objective-issuer-vamp

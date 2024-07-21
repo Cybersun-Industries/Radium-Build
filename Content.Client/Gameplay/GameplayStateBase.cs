@@ -104,8 +104,7 @@ namespace Content.Client.Gameplay
 
         public IEnumerable<EntityUid> GetClickableEntities(EntityCoordinates coordinates)
         {
-            var transformSystem = _entitySystemManager.GetEntitySystem<SharedTransformSystem>();
-            return GetClickableEntities(transformSystem.ToMapCoordinates(coordinates));
+            return GetClickableEntities(coordinates.ToMap(_entityManager, _entitySystemManager.GetEntitySystem<SharedTransformSystem>()));
         }
 
         public IEnumerable<EntityUid> GetClickableEntities(MapCoordinates coordinates)

@@ -1,12 +1,11 @@
 using Content.Shared.Backmen.Psionics.Glimmer;
 using Content.Shared.Chemistry.Reagent;
-using Content.Shared.EntityEffects;
 using Robust.Shared.Prototypes;
 
 namespace Content.Server.Backmen.Chemistry.ReactionEffects;
 
 [DataDefinition]
-public sealed partial class ChangeGlimmerReactionEffect : EntityEffect
+public sealed partial class ChangeGlimmerReactionEffect : ReagentEffect
 {
     protected override string? ReagentEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
         => Loc.GetString("reagent-effect-guidebook-change-glimmer-reaction-effect", ("chance", Probability),
@@ -18,7 +17,7 @@ public sealed partial class ChangeGlimmerReactionEffect : EntityEffect
     [DataField("count")]
     public int Count = 1;
 
-    public override void Effect(EntityEffectBaseArgs args)
+    public override void Effect(ReagentEffectArgs args)
     {
         var glimmersys = args.EntityManager.EntitySysManager.GetEntitySystem<GlimmerSystem>();
 

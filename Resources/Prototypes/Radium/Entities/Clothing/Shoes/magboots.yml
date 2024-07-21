@@ -10,9 +10,11 @@
   - type: Clothing
     sprite: Radium/Clothing/Shoes/Boots/magboots-deathsquad.rsi
   - type: Magboots
+    toggleAction: ActionToggleMagbootsDeathSquad
   - type: ClothingSpeedModifier
     walkModifier: 1.3
     sprintModifier: 1.3
+    enabled: false
   - type: NoSlip
   - type: GasTank
     outputPressure: 42.6
@@ -35,3 +37,12 @@
     toParent: true
   - type: StaticPrice
     price: 5000
+
+- type: entity
+  id: ActionToggleMagbootsDeathSquad
+  parent: ActionBaseToggleMagboots
+  noSpawn: true
+  components:
+  - type: InstantAction
+    icon: { sprite: Radium/Clothing/Shoes/Boots/magboots-deathsquad.rsi, state: icon }
+    iconOn: Radium/Clothing/Shoes/Boots/magboots-deathsquad.rsi/icon-on.png

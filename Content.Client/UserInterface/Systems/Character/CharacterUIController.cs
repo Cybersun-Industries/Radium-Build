@@ -1,13 +1,12 @@
 using System.Linq;
 using Content.Client.CharacterInfo;
 using Content.Client.Gameplay;
-using Content.Client.Stylesheets;
+using Content.Client.Message; // backmen: locale
 using Content.Client.UserInterface.Controls;
 using Content.Client.UserInterface.Systems.Character.Controls;
 using Content.Client.UserInterface.Systems.Character.Windows;
 using Content.Client.UserInterface.Systems.Objectives.Controls;
 using Content.Shared.Input;
-using Content.Shared.Objectives.Systems;
 using JetBrains.Annotations;
 using Robust.Client.GameObjects;
 using Robust.Client.Player;
@@ -130,17 +129,11 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
                     Modulate = Color.Gray
                 };
 
-
-                var objectiveText = new FormattedMessage();
-                objectiveText.TryAddMarkup(Loc.GetString($"objective-issuer-{groupId}"), out _); // backmen: locale
-
-                var objectiveLabel = new RichTextLabel
+                objectiveControl.AddChild(new Label
                 {
-                    StyleClasses = {StyleNano.StyleClassTooltipActionTitle}
-                };
-                objectiveLabel.SetMessage(objectiveText);
-
-                objectiveControl.AddChild(objectiveLabel);
+                    Text = groupId,
+                    Modulate = Color.LightSkyBlue
+                });
 
                 foreach (var condition in conditions)
                 {
@@ -180,17 +173,15 @@ public sealed class CharacterUIController : UIController, IOnStateEntered<Gamepl
                 Modulate = Color.Gray
             };
 
-
-            var objectiveText = new FormattedMessage();
-            objectiveText.TryAddMarkup(Loc.GetString($"issuer-{groupId}"), out _); // backmen: locale
-
-            var objectiveLabel = new RichTextLabel
+            // start-backmen: locale
+            var objectiveControlLabel = new RichTextLabel
             {
-                StyleClasses = {StyleNano.StyleClassTooltipActionTitle}
+                Modulate = Color.LightSkyBlue
             };
-            objectiveLabel.SetMessage(objectiveText);
+            objectiveControlLabel.SetMarkup(Loc.GetString($"issuer-{groupId}"));
 
-            objectiveControl.AddChild(objectiveLabel);
+            objectiveControl.AddChild(objectiveControlLabel);
+            // end-backmen: locale
 
             foreach (var condition in conditions)
             {

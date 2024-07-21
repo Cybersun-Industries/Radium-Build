@@ -27,12 +27,9 @@
     eyes: ClothingEyesGlassesSecurity
     id: DetectivePDA
     ears: ClothingHeadsetSecurity
-    belt: ClothingBeltHolster
+    belt: ClothingBeltHolsterFilled
   storage:
     back:
     - Flash
     - ForensicPad
     - ForensicScanner
-    belt:
-    - SpeedLoaderMagnum
-

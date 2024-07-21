@@ -4,10 +4,12 @@ using Content.Server.Actions;
 using Content.Server.AlertLevel;
 using Content.Server.Backmen.Blob.Components;
 using Content.Server.Backmen.GameTicking.Rules.Components;
-using Content.Server.Backmen.Objectives;
+using Content.Server.Chat.Managers;
 using Content.Server.Explosion.Components;
 using Content.Server.Explosion.EntitySystems;
 using Content.Server.GameTicking;
+using Content.Server.Mind;
+using Content.Server.Objectives.Conditions;
 using Content.Server.RoundEnd;
 using Content.Server.Station.Systems;
 using Content.Shared.Alert;
@@ -59,8 +61,6 @@ public sealed class BlobCoreSystem : SharedBlobCoreSystem
 
         SubscribeLocalEvent<BlobCaptureConditionComponent, ObjectiveGetProgressEvent>(OnBlobCaptureProgress);
         SubscribeLocalEvent<BlobCaptureConditionComponent, ObjectiveAfterAssignEvent>(OnBlobCaptureInfo);
-        SubscribeLocalEvent<BlobCaptureConditionComponent, ObjectiveAssignedEvent>(OnBlobCaptureInfoAdd);
-
 
         _tile = GetEntityQuery<BlobTileComponent>();
         _factory = GetEntityQuery<BlobFactoryComponent>();
@@ -75,31 +75,6 @@ public sealed class BlobCoreSystem : SharedBlobCoreSystem
     }
 
     #region Objective
-
-    private void OnBlobCaptureInfoAdd(Entity<BlobCaptureConditionComponent> ent, ref ObjectiveAssignedEvent args)
-    {
-        if (args.Mind?.OwnedEntity == null)
-        {
-            args.Cancelled = true;
-            return;
-        }
-        if (!TryComp<BlobObserverComponent>(args.Mind.OwnedEntity, out var blobObserverComponent)
-            || !TryComp<BlobCoreComponent>(blobObserverComponent.Core, out var blobCoreComponent))
-        {
-            args.Cancelled = true;
-            return;
-        }
-
-        var station = _stationSystem.GetOwningStation(blobObserverComponent.Core);
-        if (station == null)
-        {
-            args.Cancelled = true;
-            return;
-        }
-
-        ent.Comp.Target = CompOrNull<StationBlobConfigComponent>(station)?.StageTheEnd ?? StationBlobConfigComponent.DefaultStageEnd;
-    }
-
     private void OnBlobCaptureInfo(EntityUid uid, BlobCaptureConditionComponent component, ref ObjectiveAfterAssignEvent args)
     {
         _metaDataSystem.SetEntityName(uid,Loc.GetString("objective-condition-blob-capture-title"));
@@ -127,7 +102,6 @@ public sealed class BlobCoreSystem : SharedBlobCoreSystem
             args.Progress = 0;
             return;
         }
-
         args.Progress = (float) blobCoreComponent.BlobTiles.Count / (float) component.Target;
     }
     #endregion

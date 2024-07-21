@@ -55,12 +55,14 @@
           - ThiefRole
     - label: backman-hidden-desc-spacecash-research
       jobRequired:
+        - ResearchAssistant
         - ResearchDirector
         - Scientist
         - Borg
         - Detective
         - Warden
         - SecurityOfficer
+        - SecurityCadet
         - Brigmedic
         - HeadOfSecurity
 

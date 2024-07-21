@@ -47,6 +47,7 @@ namespace Content.Server.Ghost.Roles
         [Dependency] private readonly TransformSystem _transform = default!;
         [Dependency] private readonly SharedMindSystem _mindSystem = default!;
         [Dependency] private readonly Backmen.RoleWhitelist.WhitelistSystem _roleWhitelist = default!; // backmen: whitelist
+        [Dependency] private readonly Backmen.Ghost.Roles.GhostRoleRollerSystem _roleRoller = default!; // backmen: ghost roller
         [Dependency] private readonly SharedRoleSystem _roleSystem = default!;
         [Dependency] private readonly IGameTiming _timing = default!;
         [Dependency] private readonly PopupSystem _popupSystem = default!;
@@ -310,6 +311,7 @@ namespace Content.Server.Ghost.Roles
                 return;
 
             _ghostRoles[role.Comp.Identifier = GetNextRoleIdentifier()] = role;
+            _roleRoller.RegisterGhostRole(role); // backmen: ghost roller
             UpdateAllEui();
         }
 
@@ -320,6 +322,7 @@ namespace Content.Server.Ghost.Roles
                 return;
 
             _ghostRoles.Remove(comp.Identifier);
+            _roleRoller.UnregisterGhostRole(role); // backmen: ghost roller
             if (TryComp(role.Owner, out GhostRoleRaffleComponent? raffle))
             {
                 // if a raffle is still running, get rid of it
@@ -479,6 +482,11 @@ namespace Content.Server.Ghost.Roles
             // end-backmen: whitelist
 
             var ev = new TakeGhostRoleEvent(player);
+            // start-backmen: ghost roller
+            _roleRoller.Takeover(role, ref ev);
+            if(ev.TookRole)
+                return false;
+            // end-backmen: ghost roller
             RaiseLocalEvent(role, ref ev);
 
             if (!ev.TookRole)

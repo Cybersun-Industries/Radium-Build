@@ -66,13 +66,12 @@ public sealed class SpecForceTest
 
         logger.Level = specForceSystem.Log.Level = LogLevel.Verbose;
 
-        // Try to spawn every SpecForceTeam
-        foreach (var teamProto in protoManager.EnumeratePrototypes<SpecForceTeamPrototype>())
+        foreach (var online in Onlines)
         {
-            var o = teamProto.SpecForceSpawn.Count == 0 ? new[] { 1 } : Onlines;
-            foreach (var online in o)
+            // Try to spawn every SpecForceTeam
+            foreach (var teamProto in protoManager.EnumeratePrototypes<SpecForceTeamPrototype>())
             {
-                var optId = teamProto.SpecForceSpawn.Count == 0 ? 0 : specForceSystem.GetOptIdCount(teamProto, online);
+                var optId = specForceSystem.GetOptIdCount(teamProto, online);
                 var total = teamProto.GuaranteedSpawn.Count + optId;
 
                 total -= teamProto.GuaranteedSpawn.Count(spawnEntry => spawnEntry.SpawnProbability < 1); //GuaranteedSpawn opt-in??????? WTF?
@@ -84,7 +83,7 @@ public sealed class SpecForceTest
                     logger.Info($"Calling {teamProto.ID} SpecForce team!");
                     // Call every specForce and force spawn every extra specforce from the SpecForceSpawn prototype.
                     // This way it is spawning EVERY available ghost role, so we can also check them.
-                    if (!specForceSystem.CallOps(teamProto, "Test", optId == 0 ? null : optId))
+                    if (!specForceSystem.CallOps(teamProto, "Test", optId))
                         Assert.Fail($"CallOps method failed while trying to spawn {teamProto.ID} SpecForce.");
                 });
 

@@ -1,5 +1,6 @@
 using Content.Shared.Research.Components;
 using JetBrains.Annotations;
+using Robust.Client.GameObjects;
 
 namespace Content.Client.Research.UI;
 

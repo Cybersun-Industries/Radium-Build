@@ -5,5 +5,4 @@
   noSpawn: true
   components:
   - type: Item
-    size: Ginormous # no storage insertion visuals
   - type: VirtualItem

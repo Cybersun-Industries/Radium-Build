@@ -628,8 +628,6 @@
 - type: randomHumanoidSettings
   id: LostCargoTechnician
   parent: EventHumanoid
-  speciesBlacklist:
-  - Vox
   components:
     - type: GhostRole
       name: ghost-role-information-lost-cargo-technical-name
@@ -681,8 +679,6 @@
   id: ClownTroupe
   parent: EventHumanoid
   randomizeName: false
-  speciesBlacklist:
-  - Vox
   components:
     - type: GhostRole
       name: ghost-role-information-clown-troupe-name
@@ -733,8 +729,6 @@
 - type: randomHumanoidSettings
   id: TravelingChef
   parent: EventHumanoid
-  speciesBlacklist:
-  - Vox
   components:
     - type: GhostRole
       name: ghost-role-information-traveling-chef-name
@@ -795,8 +789,6 @@
 - type: randomHumanoidSettings
   id: DisasterVictimHead
   parent: EventHumanoidMindShielded
-  speciesBlacklist:
-  - Vox
   components:
     - type: GhostRole
       name: ghost-role-information-disaster-victim-name
@@ -855,8 +847,6 @@
 - type: randomHumanoidSettings
   id: SyndieDisasterVictim
   parent: EventHumanoid
-  speciesBlacklist:
-  - Vox
   components:
     - type: NpcFactionMember
       factions:
