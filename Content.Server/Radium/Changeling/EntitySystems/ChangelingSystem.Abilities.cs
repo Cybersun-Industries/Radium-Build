@@ -22,7 +22,6 @@ using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.FixedPoint;
 using Content.Shared.Inventory;
-using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Movement.Pulling.Components;
 using Content.Shared.Movement.Pulling.Systems;
@@ -564,7 +563,7 @@ public sealed partial class ChangelingSystem
     {
         var target = args.Target;
 
-        if (!TrySting(uid, target))
+        if (!TrySting(uid, target, true))
             return;
 
         args.Handled = true;
@@ -634,9 +633,9 @@ public sealed partial class ChangelingSystem
         if (!_doAfter.TryStartDoAfter(doAfter))
             return;
 
-        _appearance.SetData(uid, ChangelingVisuals.Harvesting, true);
-
-        _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("changeling-absorb-start", ("target", target)),
+        _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("changeling-absorb-start",
+                ("target", TryComp<MetaDataComponent>(target, out var metaTarget) ? metaTarget.EntityName : "Unknown"),
+                ("user", TryComp<MetaDataComponent>(uid, out var metaUser) ? metaUser.EntityName : "Unknown")),
             target,
             PopupType.LargeCaution);
     }

@@ -207,12 +207,13 @@ public sealed partial class ChangelingSystem : EntitySystem
 
                 _mindSystem.TryAddObjective(mindId.Value, mind, GenesObjective);
                 _mindSystem.TryAddObjective(mindId.Value, mind, EscapeObjective);
-                if (!_prototype.TryIndex<WeightedRandomPrototype>("TraitorObjectiveGroupSteal", out var groups))
+
+                if (!_prototype.TryIndex<WeightedRandomPrototype>("TraitorObjectiveGroupSteal", out var prototype))
                     return;
 
                 for (var i = 0; i < 2; i++)
                 {
-                    _mindSystem.TryAddObjective(mindId.Value, mind, groups.Pick(_random));
+                    _mindSystem.TryAddObjective(mindId.Value, mind, prototype.Pick(_random));
                 }
             }
         }
