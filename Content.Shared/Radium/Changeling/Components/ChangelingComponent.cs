@@ -125,6 +125,9 @@ public sealed partial class ChangelingComponent : Component
 
     [DataField]
     public int TotalAbsorbedEntities;
+
+    [DataField]
+    public EntityUid TransformationStingTarget;
 }
 
 public enum ChangelingEquipment

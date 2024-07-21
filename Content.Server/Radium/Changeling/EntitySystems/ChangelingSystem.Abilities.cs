@@ -267,11 +267,10 @@ public sealed partial class ChangelingSystem
         ChangelingComponent component,
         ActionChangelingTransformationStingEvent args)
     {
-        if (!TryUseAbility(uid, args))
-            return;
-
         if (!TryComp<ChangelingComponent>(uid, out _))
             return;
+
+        component.TransformationStingTarget = args.Target;
 
         _userInterface.OpenUi(uid, ChangelingDnaStorageUiKey.Sting, uid);
     }
@@ -283,15 +282,18 @@ public sealed partial class ChangelingSystem
         if (!TryComp<ChangelingComponent>(uid, out var component))
             return;
 
+        if (component.Chemicals < 20f)
+        {
+            _popup.PopupEntity(Loc.GetString("changeling-chemicals-deficit"), uid, uid);
+            return;
+        }
 
-        if (!TrySting(uid, GetEntity(args.Uid)))
+        UpdateChemicals(uid, -20f);
+
+        if (!TrySting(uid, component.TransformationStingTarget))
             return;
 
-        var ev = new AfterFlashedEvent(uid, uid, null);
-
-        RaiseLocalEvent(uid, ref ev);
-
-        TransformEntity(uid, component.ServerIdentitiesList[args.ServerIdentityIndex]);
+        TransformEntity(component.TransformationStingTarget, component.ServerIdentitiesList[args.ServerIdentityIndex]);
     }
 
     private void OnDnaStingEventAction(EntityUid uid, ChangelingComponent component, ActionChangelingDnaStingEvent args)

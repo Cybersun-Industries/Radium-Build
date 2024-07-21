@@ -6,7 +6,7 @@ changeling-condition-genes-description = Используйте своё жал�
 changeling-defibrillator-grasp-used = Генокрад оживает и отрывает руки {CAPITALIZE(THE($target))}!
 
 changeling-transform-window-title = Хранилище ДНК
-changeling-absorbed-corpse-description = [color=red] Личность невозможно определить. Кожа имеет пепельно-серый цвет. [/color]
+changeling-absorbed-corpse-description = Личность невозможно определить. Кожа имеет пепельно-серый цвет.
 changeling-absorbed-corpse-detailed-description = Похоже, что сущность имеет обширные ожоги внутренних органов. Вы явно не хотите занть, что с ним случилось.
 changeling-absorbed-corpse-name = Неопознанное тело
 
