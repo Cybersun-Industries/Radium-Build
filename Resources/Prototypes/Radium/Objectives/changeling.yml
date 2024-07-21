@@ -4,7 +4,7 @@
   id: BaseChangelingObjective
   components:
     - type: Objective
-      issuer: Генокрад
+      issuer: changeling
       difficulty: 1
     - type: RoleRequirement
       roles:

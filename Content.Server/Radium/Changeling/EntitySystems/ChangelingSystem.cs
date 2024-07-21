@@ -6,8 +6,8 @@ using Content.Server.GameTicking;
 using Content.Server.Ghost.Roles.Events;
 using Content.Server.Humanoid;
 using Content.Server.Mind;
+using Content.Server.Radium.Changeling.Components;
 using Content.Server.Roles;
-using Content.Server.Shuttles.Components;
 using Content.Server.Spawners.Components;
 using Content.Server.Station.Components;
 using Content.Server.Station.Systems;
@@ -18,6 +18,7 @@ using Content.Shared.Alert;
 using Content.Shared.CombatMode.Pacification;
 using Content.Shared.Damage.Systems;
 using Content.Shared.DoAfter;
+using Content.Shared.FixedPoint;
 using Content.Shared.Mind;
 using Content.Shared.Mind.Components;
 using Content.Shared.Mobs;
@@ -29,8 +30,9 @@ using Content.Shared.Preferences;
 using Content.Shared.Preferences.Loadouts;
 using Content.Shared.Radium.Changeling;
 using Content.Shared.Radium.Changeling.Components;
+using Content.Shared.Random;
+using Content.Shared.Random.Helpers;
 using Content.Shared.Roles;
-using Content.Shared.Roles.Jobs;
 using Content.Shared.StatusEffect;
 using Content.Shared.Store.Components;
 using Content.Shared.Stunnable;
@@ -89,9 +91,8 @@ public sealed partial class ChangelingSystem : EntitySystem
         base.Initialize();
 
         SubscribeLocalEvent<ChangelingSpawnerComponent, PlayerAttachedEvent>(OnPlayerAttached);
-        SubscribeLocalEvent<ChangelingComponent, MindAddedMessage>(OnMindAdded);
-        SubscribeLocalEvent<ChangelingComponent, MindRemovedMessage>(OnMindRemoved);
         SubscribeLocalEvent<ChangelingComponent, ChangelingShopActionEvent>(OnShop);
+        SubscribeLocalEvent<ChangelingComponent, MapInitEvent>(OnMapInit);
         SubscribeLocalEvent<ChangelingComponent, StatusEffectAddedEvent>(OnStatusAdded);
         SubscribeLocalEvent<ChangelingComponent, StatusEffectEndedEvent>(OnStatusEnded);
         SubscribeLocalEvent<SpawnChangelingEvent>(OnSpawn);
@@ -101,61 +102,27 @@ public sealed partial class ChangelingSystem : EntitySystem
         InitializeAbilities();
     }
 
-    private void OnMindRemoved(Entity<ChangelingComponent> entity, ref MindRemovedMessage args)
+    private void OnMapInit(Entity<ChangelingComponent> ent, ref MapInitEvent args)
     {
-        foreach (var (_, value) in entity.Comp.BaseActions)
-        {
-            _action.RemoveAction(entity, value);
-        }
-    }
-
-    private void OnMindAdded(EntityUid uid, ChangelingComponent component, MindAddedMessage args)
-    {
-        if (!_mindSystem.TryGetMind(uid, out var mindId, out var mind))
-            return;
-
+        var component = ent.Comp;
 
         foreach (var prototype in component.BaseActions)
         {
             EntityUid? actionUid = EntityUid.Invalid;
-            _action.AddAction(uid, ref actionUid, prototype.Key);
+            _action.AddAction(ent, ref actionUid, prototype.Key);
             component.BaseActions[prototype.Key] = actionUid!.Value;
         }
 
-        EnsureComp<ZombieImmuneComponent>(uid);
+        EnsureComp<ZombieImmuneComponent>(ent);
 
-        InitShop(uid);
+        InitShop(ent);
 
-        var metaData = Comp<MetaDataComponent>(uid);
+        _npcFaction.RemoveFaction(ent.Owner, component.NanotrasenFactionId, false);
+        _npcFaction.AddFaction(ent.Owner, component.ChangelingFactionId);
 
-        if (_roles.MindHasRole<ChangelingRoleComponent>(mindId))
-            return;
+        RemComp<PacifiedComponent>(ent);
 
-        var briefing = Loc.GetString("changeling-role-greeting", ("name", metaData.EntityName));
-        var briefingShort = Loc.GetString("changeling-role-greeting-short", ("name", metaData.EntityName));
-
-        _antag.SendBriefing(uid, briefing, Color.Yellow, component.BriefingSound);
-
-        _npcFaction.RemoveFaction(uid, component.NanotrasenFactionId, false);
-        _npcFaction.AddFaction(uid, component.ChangelingFactionId);
-
-        //_roles.MindAddRole(mindId,
-        //   new ChangelingRoleComponent
-        //      { PrototypeId = ChangelingRole });
-        _roles.MindAddRole(mindId, new RoleBriefingComponent { Briefing = briefingShort });
-
-        _mindSystem.TryAddObjective(mindId, mind, GenesObjective);
-        _mindSystem.TryAddObjective(mindId, mind, EscapeObjective);
-
-
-        component.Mind = mind;
-        mind.PreventGhosting = true;
-
-        RemComp<PacifiedComponent>(uid);
-
-        EnsureComp<PendingClockInComponent>(uid);
-
-        _tagSystem.AddTag(uid, "CannotSuicide");
+        _tagSystem.AddTag(ent, "CannotSuicide");
     }
 
     private void OnMobStateChange(EntityUid uid, ChangelingComponent comp, ref MobStateChangedEvent args)
@@ -186,6 +153,12 @@ public sealed partial class ChangelingSystem : EntitySystem
         var playerData = ev.Session.ContentData();
         if (playerData != null && _mindSystem.TryGetMind(playerData.UserId, out var mindId, out var mind))
         {
+            if (!TryComp<ChangelingComponent>(changelingMob, out var component))
+                return;
+
+            var briefing = Loc.GetString("changeling-role-greeting");
+            _antag.SendBriefing(mind.Session!.AttachedEntity!.Value, briefing, Color.Yellow, component.BriefingSound);
+
             _mindSystem.TransferTo(mindId.Value, null, true, false, mind);
             RemComp<MindContainerComponent>(changelingMob);
             Timer.Spawn(0,
@@ -210,9 +183,36 @@ public sealed partial class ChangelingSystem : EntitySystem
                     );
                 }
 
-                if (!_roles.MindHasRole<JobComponent>(mindId.Value))
+                var changelingRule = EntityQuery<ChangelingRuleComponent>().FirstOrDefault();
+                changelingRule?.Changelings.Add((mindId.Value, mind));
+
+                component.Mind = mind;
+                mind.PreventGhosting = true;
+
+                var metaData = Comp<MetaDataComponent>(uid);
+
+                var briefingShort = Loc.GetString("changeling-role-greeting-short", ("name", metaData.EntityName));
+
+                if (!_roles.MindHasRole<ChangelingRoleComponent>(mindId.Value))
                 {
-                    _roles.MindAddRole(mindId.Value, new JobComponent { Prototype = "Passenger" });
+                    _roles.MindAddRole(mindId.Value,
+                        new ChangelingRoleComponent
+                            { PrototypeId = component.ChangelingRole });
+                    _roles.MindAddRole(mindId.Value,
+                        new RoleBriefingComponent
+                        {
+                            Briefing = briefingShort,
+                        });
+                }
+
+                _mindSystem.TryAddObjective(mindId.Value, mind, GenesObjective);
+                _mindSystem.TryAddObjective(mindId.Value, mind, EscapeObjective);
+                if (!_prototype.TryIndex<WeightedRandomPrototype>("TraitorObjectiveGroupSteal", out var groups))
+                    return;
+
+                for (var i = 0; i < 2; i++)
+                {
+                    _mindSystem.TryAddObjective(mindId.Value, mind, groups.Pick(_random));
                 }
             }
         }
@@ -231,6 +231,9 @@ public sealed partial class ChangelingSystem : EntitySystem
 
         store.RefundAllowed = false;
         store.CurrencyWhitelist.Add(component.EvolutionCurrencyPrototype);
+        _store.TryAddCurrency(new Dictionary<string, FixedPoint2>
+                { { component.EvolutionCurrencyPrototype, component.Evolution } },
+            stealerUid);
     }
 
     private (EntityUid stealerUid, HumanoidCharacterProfile pref) SpawnChangeling(EntityCoordinates coords)

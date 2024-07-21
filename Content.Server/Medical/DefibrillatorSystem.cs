@@ -6,6 +6,7 @@ using Content.Server.EUI;
 using Content.Server.Ghost;
 using Content.Server.Popups;
 using Content.Server.PowerCell;
+using Content.Server.Radium.Changeling.EntitySystems;
 using Content.Server.Radium.Medical.Surgery.Systems;
 using Content.Server.Traits.Assorted;
 using Content.Shared.Damage;
@@ -18,6 +19,7 @@ using Content.Shared.Mind;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Mobs.Systems;
+using Content.Shared.Popups;
 using Content.Shared.PowerCell;
 using Content.Shared.Radium.Changeling.Components;
 using Content.Shared.Timing;
@@ -49,6 +51,8 @@ public sealed class DefibrillatorSystem : EntitySystem
     [Dependency] private readonly UseDelaySystem _useDelay = default!;
     [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly SurgerySystem _surgerySystem = default!;
+    [Dependency] private readonly ChangelingSystem _changelingSystem = default!;
+    [Dependency] private readonly MetaDataSystem _metaDataSystem = default!;
 
     /// <inheritdoc/>
     public override void Initialize()
@@ -141,7 +145,10 @@ public sealed class DefibrillatorSystem : EntitySystem
         return true;
     }
 
-    public bool CanZap(EntityUid uid, EntityUid target, EntityUid? user = null, DefibrillatorComponent? component = null)
+    public bool CanZap(EntityUid uid,
+        EntityUid target,
+        EntityUid? user = null,
+        DefibrillatorComponent? component = null)
     {
         if (!Resolve(uid, ref component))
             return false;
@@ -180,17 +187,27 @@ public sealed class DefibrillatorSystem : EntitySystem
             return false;
 
         _audio.PlayPvs(component.ChargeSound, uid);
-        return _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager, user, component.DoAfterDuration, new DefibrillatorZapDoAfterEvent(),
-            uid, target, uid)
-            {
-                BlockDuplicate = true,
-                BreakOnHandChange = true,
-                NeedHand = true,
-                BreakOnMove = !component.AllowDoAfterMovement
-            });
+        return _doAfter.TryStartDoAfter(new DoAfterArgs(EntityManager,
+            user,
+            component.DoAfterDuration,
+            new DefibrillatorZapDoAfterEvent(),
+            uid,
+            target,
+            uid)
+        {
+            BlockDuplicate = true,
+            BreakOnHandChange = true,
+            NeedHand = true,
+            BreakOnMove = !component.AllowDoAfterMovement
+        });
     }
 
-    public void Zap(EntityUid uid, EntityUid target, EntityUid user, DefibrillatorComponent? component = null, MobStateComponent? mob = null, MobThresholdsComponent? thresholds = null)
+    public void Zap(EntityUid uid,
+        EntityUid target,
+        EntityUid user,
+        DefibrillatorComponent? component = null,
+        MobStateComponent? mob = null,
+        MobThresholdsComponent? thresholds = null)
     {
         if (!Resolve(uid, ref component) || !Resolve(target, ref mob, ref thresholds, false))
             return;
@@ -206,7 +223,12 @@ public sealed class DefibrillatorSystem : EntitySystem
             return;
 
         _audio.PlayPvs(component.ZapSound, uid);
-        _electrocution.TryDoElectrocution(target, null, component.ZapDamage, component.WritheDuration, true, ignoreInsulation: true);
+        _electrocution.TryDoElectrocution(target,
+            null,
+            component.ZapDamage,
+            component.WritheDuration,
+            true,
+            ignoreInsulation: true);
         component.NextZapTime = _timing.CurTime + component.ZapDelay;
         _appearance.SetData(uid, DefibrillatorVisuals.Ready, false);
 
@@ -215,13 +237,17 @@ public sealed class DefibrillatorSystem : EntitySystem
         var dead = true;
         if (_rotting.IsRotten(target))
         {
-            _chatManager.TrySendInGameICMessage(uid, Loc.GetString("defibrillator-rotten"),
-                InGameICChatType.Speak, true);
+            _chatManager.TrySendInGameICMessage(uid,
+                Loc.GetString("defibrillator-rotten"),
+                InGameICChatType.Speak,
+                true);
         }
         else if (HasComp<UnrevivableComponent>(target))
         {
-            _chatManager.TrySendInGameICMessage(uid, Loc.GetString("defibrillator-unrevivable"),
-                InGameICChatType.Speak, true);
+            _chatManager.TrySendInGameICMessage(uid,
+                Loc.GetString("defibrillator-unrevivable"),
+                InGameICChatType.Speak,
+                true);
         }
         else
         {
@@ -229,6 +255,12 @@ public sealed class DefibrillatorSystem : EntitySystem
             if (HasComp<ChangelingGraspPassiveComponent>(target))
             {
                 _surgerySystem.TryRemoveHands(user);
+                _popup.PopupEntity(Loc.GetString("changeling-defibrillator-grasp-used",
+                        ("target", TryComp<MetaDataComponent>(user, out var meta) ? meta.EntityName : "")),
+                    uid,
+                    PopupType
+                        .LargeCaution);
+                _changelingSystem.TryToggleStasis(target);
                 return;
             }
             // end-radium: changeling
@@ -263,8 +295,10 @@ public sealed class DefibrillatorSystem : EntitySystem
             }
             else
             {
-                _chatManager.TrySendInGameICMessage(uid, Loc.GetString("defibrillator-no-mind"),
-                    InGameICChatType.Speak, true);
+                _chatManager.TrySendInGameICMessage(uid,
+                    Loc.GetString("defibrillator-no-mind"),
+                    InGameICChatType.Speak,
+                    true);
             }
         }
 

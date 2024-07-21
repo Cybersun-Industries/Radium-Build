@@ -62,7 +62,6 @@ public sealed partial class SurgerySystem : EntitySystem
     [Dependency] private readonly BuckleSystem _buckleSystem = default!;
     [Dependency] private readonly BloodstreamSystem _bloodstreamSystem = default!;
     [Dependency] private readonly StackSystem _stackSystem = default!;
-    [Dependency] private readonly HandsSystem _handsSystem = default!;
     [Dependency] private readonly IServerConsoleHost _consoleHost = default!;
 
     public override void Initialize()
@@ -72,14 +71,8 @@ public sealed partial class SurgerySystem : EntitySystem
         SubscribeLocalEvent<SurgeryInProgressComponent, InteractUsingEvent>(OnSurgeryInteract);
         SubscribeLocalEvent<SurgeryInProgressComponent, SurgeryDoAfterEvent>(OnSurgeryDoAfter);
         SubscribeLocalEvent<MeleeWeaponComponent, DamageChangedEvent>(OnMeleeEvent);
-        //SubscribeLocalEvent<PlayerAttachedEvent>(OnPlayerSpawnComplete);
         InitializePostActions();
     }
-
-    //private void OnPlayerSpawnComplete(PlayerAttachedEvent ev)
-    //{
-    //RaiseNetworkEvent(new SyncPartsEvent(GetNetEntity(ev.Entity)), ev.Entity);
-    //}
 
 
     public override void Update(float frameTime)

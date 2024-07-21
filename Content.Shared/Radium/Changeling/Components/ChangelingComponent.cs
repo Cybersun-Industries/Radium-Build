@@ -116,6 +116,15 @@ public sealed partial class ChangelingComponent : Component
 
     [DataField]
     public ProtoId<PolymorphPrototype> ChangelingLesserFormPolymorphPrototype = "ChangelingMonkey";
+
+    [DataField]
+    public string ChangelingRole = "ChangelingRole";
+
+    [DataField]
+    public int TotalExtractedDna;
+
+    [DataField]
+    public int TotalAbsorbedEntities;
 }
 
 public enum ChangelingEquipment

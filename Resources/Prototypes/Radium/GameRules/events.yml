@@ -77,6 +77,5 @@
   components:
   - type: StationEvent
     weight: 10
-    earliestStart: 25
-    minimumPlayers: 15
+    minimumPlayers: 20
   - type: ChangelingRule

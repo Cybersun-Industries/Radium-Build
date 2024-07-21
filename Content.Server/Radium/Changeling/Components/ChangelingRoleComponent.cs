@@ -1,9 +1,9 @@
 ﻿using Content.Shared.Mind;
 using Content.Shared.Roles;
 
-namespace Content.Server.Radium.Changeling;
+namespace Content.Server.Radium.Changeling.Components;
 
-[RegisterComponent]
+[RegisterComponent, ExclusiveAntagonist]
 public sealed partial class ChangelingRoleComponent : AntagonistRoleComponent
 {
     public EntityUid? Target { get; set; }

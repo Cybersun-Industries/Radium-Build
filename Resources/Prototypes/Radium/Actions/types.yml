@@ -74,7 +74,7 @@
 
 - type: entity
   id: ActionChangelingRegenerate
-  name: Transform
+  name: Regenerate
   description: Heal all wounds.
   noSpawn: true
   components:
@@ -119,7 +119,7 @@
       sprite: Radium/Interface/Actions/changeling.rsi
       state: strained_muscles
     event: !type:ActionChangelingStrainedMusclesEvent
-    useDelay: 30
+    useDelay: 0
   - type: ChangelingAction
     chemicalCost: 0
     useInLesserForm: true

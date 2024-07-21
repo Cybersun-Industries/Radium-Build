@@ -2,17 +2,18 @@
 using System.Numerics;
 using Content.Server.Radium.Changeling.Components;
 using Content.Shared.Actions;
+using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.FixedPoint;
 using Content.Shared.Gravity;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.IdentityManagement;
+using Content.Shared.Mobs;
+using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
 using Content.Shared.Radium.Changeling.Components;
-using Microsoft.CodeAnalysis;
 using Robust.Shared.Audio;
-using Robust.Shared.GameObjects.Components.Localization;
 using Robust.Shared.Player;
 using Solution = Content.Shared.Chemistry.Components.Solution;
 
@@ -20,8 +21,6 @@ namespace Content.Server.Radium.Changeling.EntitySystems;
 
 public sealed partial class ChangelingSystem
 {
-    [Dependency] private readonly GrammarSystem _grammarSystem = default!;
-
     public void PlayMeatySound(EntityUid uid, ChangelingComponent? component = null)
     {
         if (!Resolve(uid, ref component))
@@ -76,9 +75,10 @@ public sealed partial class ChangelingSystem
 
         _stamina.TakeStaminaDamage(uid, 7.5f, visual: false);
 
-        if (_stamina.GetStaminaDamage(uid) >= stamina.CritThreshold
-            || !HasComp<GravityComponent>(uid))
+        if (_stamina.GetStaminaDamage(uid) >= stamina.CritThreshold)
+        {
             ToggleStrainedMuscles(uid);
+        }
     }
 
 
@@ -180,6 +180,7 @@ public sealed partial class ChangelingSystem
     public bool CopyDna(EntityUid uid,
         EntityUid target,
         [NotNullWhen(true)] out HumanoidAppearanceComponent? humanoidAppearance,
+        bool isAbsorbed = false,
         ChangelingComponent? component = null)
     {
         humanoidAppearance = null;
@@ -189,21 +190,17 @@ public sealed partial class ChangelingSystem
             return false;
         }
 
-        _store.TryAddCurrency(new Dictionary<string, FixedPoint2>
-                { { component.EvolutionCurrencyPrototype, 1 } },
-            uid);
-
         if (!TryComp(target, out humanoidAppearance) ||
             !TryComp<MetaDataComponent>(target, out var metaData))
             return false;
         MetaDataComponent? lockedMeta = null;
-        HumanoidAppearanceComponent? lockedHumanoidAppearience = null;
-        //_serializationManager.CopyTo(humanoidAppearance, ref component.SourceHumanoid);
+        HumanoidAppearanceComponent? lockedHumanoidAppearance = null;
+
         _serializationManager.CopyTo(metaData, ref lockedMeta);
-        _serializationManager.CopyTo(humanoidAppearance, ref lockedHumanoidAppearience);
+        _serializationManager.CopyTo(humanoidAppearance, ref lockedHumanoidAppearance);
 
         component.ServerIdentitiesList.Add(component.ServerIdentitiesList.Count,
-            (lockedMeta, lockedHumanoidAppearience)!);
+            (lockedMeta, lockedHumanoidAppearance)!);
 
         component.ClientIdentitiesList.Add(component.ServerIdentitiesList.Count - 1,
             lockedMeta!.EntityName); //Idk how to do better. Was messing with component but no luck there..
@@ -218,12 +215,24 @@ public sealed partial class ChangelingSystem
         if (_mindSystem.TryGetObjectiveComp<GenesConditionComponent>(uid, out var obj))
             obj.GenesExtracted++;
 
+        component.TotalExtractedDna += 1;
+
+        if (!isAbsorbed)
+            return true;
+
+        _store.TryAddCurrency(new Dictionary<string, FixedPoint2>
+                { { component.EvolutionCurrencyPrototype, 1 } },
+            uid);
+
+        component.TotalAbsorbedEntities += 1;
+
         return true;
     }
 
     public bool TransformEntity(EntityUid uid,
         (MetaDataComponent, HumanoidAppearanceComponent) sourceHumanoidPair,
-        HumanoidAppearanceComponent? targetHumanoid = null)
+        HumanoidAppearanceComponent? targetHumanoid = null
+    )
     {
         if (!Resolve(uid, ref targetHumanoid))
             return false;
@@ -256,27 +265,13 @@ public sealed partial class ChangelingSystem
         return true;
     }
 
-    public bool UseAbility(EntityUid uid, BaseActionEvent args)
-    {
-        if (TryUseAbility(uid, args))
-            return true;
 
-        _popup.PopupEntity(
-            Robust.Shared.Localization.Loc.GetString("changeling-ability-failed", ("target", uid)),
-            uid,
-            PopupType.LargeCaution);
-
-        return false;
-    }
-
-
-    private bool CloneAppearance(
-        EntityUid uid,
+    private void CloneAppearance(EntityUid uid,
         HumanoidAppearanceComponent sourceHumanoid,
         HumanoidAppearanceComponent? targetHumanoid = null)
     {
         if (!Resolve(uid, ref targetHumanoid))
-            return false;
+            return;
 
         targetHumanoid.Species = sourceHumanoid.Species;
         targetHumanoid.SkinColor = sourceHumanoid.SkinColor;
@@ -292,7 +287,33 @@ public sealed partial class ChangelingSystem
         _humanoid.SetSex(uid, sourceHumanoid.Sex, false, targetHumanoid);
 
         Dirty(uid, targetHumanoid);
+    }
 
+    public bool TryToggleStasis(EntityUid uid, ChangelingComponent? component = null)
+    {
+        if (!Resolve(uid, ref component))
+            return false;
+
+        if (!TryComp<MobStateComponent>(uid, out var state))
+            return false;
+
+        if (!TryComp<DamageableComponent>(uid, out var damageComponent))
+        {
+            return false;
+        }
+
+        if (state.CurrentState == MobState.Dead && component.IsInStasis)
+        {
+            _heal.SetAllDamage(uid, damageComponent, 0.1);
+            _heal.TryChangeDamage(uid, new DamageSpecifier());
+            _mobState.ChangeMobState(uid, MobState.Alive, state);
+            component.IsInStasis = false;
+            _surgerySystem.HealAllWounds(uid);
+            return false;
+        }
+
+        _mobState.ChangeMobState(uid, MobState.Dead, state);
+        component.IsInStasis = true;
         return true;
     }
 }
