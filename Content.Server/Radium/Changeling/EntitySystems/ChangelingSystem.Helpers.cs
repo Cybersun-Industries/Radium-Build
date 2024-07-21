@@ -23,6 +23,7 @@ namespace Content.Server.Radium.Changeling.EntitySystems;
 public sealed partial class ChangelingSystem
 {
     [Dependency] private RejuvenateSystem _rejuvenateSystem = default!;
+
     public void PlayMeatySound(EntityUid uid, ChangelingComponent? component = null)
     {
         if (!Resolve(uid, ref component))
@@ -162,13 +163,18 @@ public sealed partial class ChangelingSystem
         }
 
         var item = EntityManager.SpawnEntity(outItem.Item2, Transform(uid).Coordinates);
-        if (clothingSlot != null && !_inventorySystem.TryEquip(uid, item, clothingSlot, force: true))
+        if (clothingSlot != null)
         {
-            EntityManager.DeleteEntity(item);
-            return false;
+            _inventorySystem.TryUnequip(uid, clothingSlot, true, true);
+
+            if (!_inventorySystem.TryEquip(uid, item, clothingSlot, force: true))
+            {
+                EntityManager.DeleteEntity(item);
+                return false;
+            }
         }
 
-        if (!_handsSystem.TryForcePickupAnyHand(uid, item))
+        if (!_handsSystem.TryForcePickupAnyHand(uid, item, false))
         {
             _popup.PopupEntity(Loc.GetString("changeling-fail-hands"), uid, uid);
             EntityManager.DeleteEntity(item);

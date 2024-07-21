@@ -11,4 +11,5 @@ objective-condition-genes-title = Соберите несколько генет
 objective-condition-genes-description = Вам нужно извлечь { $count } ДНК. Используйте способность поглощения или жало извлечения, чтобы выполнить задачу.
 issuer-changeling = Генокрад
 changeling = Генокрад
-issuer-syndicate = Синдикат
+issuer-objective-issuer-syndicate = Синдикат
+syndicate = Синдикат
