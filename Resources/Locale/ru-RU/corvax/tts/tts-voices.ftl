@@ -1,4 +1,3 @@
-tts-voice-name-aidar = Аидар
 tts-voice-name-baya = Байя
 tts-voice-name-kseniya = Ксения
 tts-voice-name-xenia = Кзениа
@@ -432,7 +431,6 @@ tts-voice-name-miller = Миллер (Metro)
 tts-voice-name-krest = Крест (Metro)
 tts-voice-name-tribal1 = Племенной 1 (Metro)
 tts-voice-name-abathur = Абатур (Heroes of the Storm)
-tts-voice-name-erik = Эрик (Heroes of the Storm)
 tts-voice-name-varian = Вариан (Heroes of the Storm)
 tts-voice-name-anduin = Андуин (Heroes of the Storm)
 tts-voice-name-deckard = Декард Каин (Heroes of the Storm)

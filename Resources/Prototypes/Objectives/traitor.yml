@@ -5,10 +5,6 @@
   components:
   - type: Objective
     issuer: objective-issuer-syndicate
-  - type: RoleRequirement
-    roles:
-      components:
-      - TraitorRole
 
 - type: entity
   abstract: true
