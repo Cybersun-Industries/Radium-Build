@@ -1,0 +1,425 @@
+#Changeling basic abilities
+
+- type: entity
+  id: ActionChangelingShop
+  name: Shop
+  description: Opens the ability shop.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    icon: Interface/Actions/shop.png
+    event: !type:ChangelingShopActionEvent
+  - type: ChangelingAction
+    chemicalCost: 0
+    useInLesserForm: true
+
+- type: entity
+  id: ActionChangelingStasis
+  name: Stasis
+  description: Toggle the stasis.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: fake_death
+    event: !type:ChangelingStasisActionEvent
+    useDelay: 120
+    checkCanInteract: false
+    checkConsciousness: false
+  - type: ChangelingAction
+    chemicalCost: 15
+    useInLesserForm: true
+
+- type: entity
+  id: ActionChangelingTransform
+  name: Transform
+  description: Costs 5 Essence.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: transform
+    event: !type:ChangelingTransformActionEvent
+    useDelay: 30
+  - type: ChangelingAction
+    chemicalCost: 0
+
+- type: entity
+  id: ActionChangelingAbsorbDNA
+  name: Absorb DNA
+  description: You can absorb DNA of any humanoid creature to gain evolution points and transform your appearance.
+  noSpawn: true
+  components:
+  - type: EntityTargetAction
+    itemIconStyle: NoItem
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: absorb_dna
+    event: !type:ChangelingAbsorbDnaActionEvent
+    useDelay: 30
+    canTargetSelf: false
+    interactOnMiss: false
+    whitelist:
+      components:
+      - MobState
+      - Body
+  - type: ChangelingAction
+    chemicalCost: 0
+    useInLesserForm: true
+
+- type: entity
+  id: ActionChangelingRegenerate
+  name: Regenerate
+  description: Heal all wounds.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: regenerate
+    event: !type:ActionChangelingRegenerateEvent
+    useDelay: 30
+  - type: ChangelingAction
+    chemicalCost: 10
+
+#Changeling defensive abilities
+
+- type: entity
+  id: ActionChangelingAdrenalineSacs
+  name: Adrenaline Sacs
+  description: Allows to the changeling to make use of additional adrenaline to almost instantly recover from knockdown, unconsciousness and having no stamina. Injects 4u Changeling Adrenaline, which gives about 20 seconds of slight reduction of further stuns. High chemical cost.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: adrenaline
+    event: !type:ActionChangelingAdrenalineSacsEvent
+    useDelay: 30
+  - type: ChangelingAction
+    chemicalCost: 25
+    useInLesserForm: true
+
+- type: entity
+  id: ActionChangelingStrainedMuscles
+  name: Strained Muscles
+  description: The changeling reduces lactic acid buildup in their leg muscles, allowing them to move at extremely fast speeds. While active, the changeling will take steadily incrementing stamina damage and eventually pass out, if he doesn't take a rest. Doesn't work in monkey form.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: strained_muscles
+    event: !type:ActionChangelingStrainedMusclesEvent
+    useDelay: 0
+  - type: ChangelingAction
+    chemicalCost: 0
+    useInLesserForm: true
+
+- type: entity
+  id: ActionChangelingAnatomicPanacea
+  name: Anatomic Panacea
+  description: 	Cures the changeling of many ailments including brain traumas, mutations, diseases, radiation, and toxins. Generally covers the things that Fleshmend doesn't; it can be used to purge the poison that the chemist just shot you up with, or to get rid of that debilitating mutation from an absorbed identity. Can also remove alien larvae and zombie infection. Usable while unconscious. Do not use if you are a slimeperson.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: panacea
+    event: !type:ActionChangelingAnatomicPanaceaEvent
+    useDelay: 30
+  - type: ChangelingAction
+    chemicalCost: 20
+
+- type: entity
+  id: ActionChangelingChitinousArmor
+  name: Chitinous Armor
+  description: Inflates the changeling's body into an all-consuming chitinous mass of armor. Provides extensive protection against physical damage, but less against other types. Its mass slows the changeling's movement, and maintaining its shape slows chemical generation by 25%.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: chitinous_armor
+    event: !type:ActionChangelingChitinousArmorEvent
+    useDelay: 30
+  - type: ChangelingAction
+    chemicalCost: 30
+
+- type: entity
+  id: ActionChangelingVoidAdaptation
+  name: Void Adaptation
+  description: Grants the Changeling a passive ability that allows it to resist cold, low pressure, snowstorms, and a need for oxygen. While in use, slows chemical regeneration by 25%.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: organic_suit
+    event: !type:ActionChangelingVoidAdaptationEvent
+    useDelay: 30
+  - type: ChangelingAction
+    chemicalCost: 20
+
+- type: entity
+  id: ActionChangelingOrganicShield
+  name: Organic Shield
+  description: Reforms one of the changeling's arms into a large, fleshy shield. Has a chance to block or mitigate a number of attacks, the amount increasing by 3 with each genome absorbed.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: organic_shield
+    event: !type:ActionChangelingOrganicShieldEvent
+    useDelay: 30
+  - type: ChangelingAction
+    chemicalCost: 20
+
+- type: entity
+  id: ActionChangelingFleshmend
+  name: Fleshmend
+  description: The changeling will rapidly heal brute and oxygen damage, as well as burn at a slower rate over 10 seconds. Repeated use while the effect is added will restart the regeneration timer, but the user will still heal at the same rate. Usable while unconscious.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: fleshmend
+    event: !type:ActionChangelingFleshmendEvent
+    useDelay: 30
+  - type: ChangelingAction
+    chemicalCost: 25
+
+- type: entity
+  id: ActionChangelingChameleonSkin
+  name: Chameleon Skin
+  description: Our skin pigmentation rapidly changes to suit our current environment. Allows us to become invisible after a few seconds of standing still. Can be toggled on and off.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: chameleon_skin
+    event: !type:ActionChangelingChameleonSkinEvent
+    useDelay: 30
+  - type: ChangelingAction
+    chemicalCost: 10
+
+- type: entity
+  id: ActionChangelingBiodegrade
+  name: Biodegrade
+  description: Dissolves restraints or other objects preventing free movement. This is obvious to nearby people, and can destroy standard restraints and closets. When the cuffs are melted completely a pile of green goo will appear below you.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: biodegrade
+    event: !type:ActionChangelingBiodegradeEvent
+    useDelay: 60
+  - type: ChangelingAction
+    chemicalCost: 30
+    useInLesserForm: true
+
+#Changeling offensive abilities
+
+- type: entity
+  id: ActionChangelingDNASting
+  name: Extract DNA Sting
+  description: Free to evolve. The changeling can sting a target to extract their genetic information. They can then use the DNA like they just absorbed it. Helps the changeling reach their genome objective.
+  noSpawn: true
+  components:
+  - type: EntityTargetAction
+    itemIconStyle: NoItem
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: sting_extract
+    event: !type:ActionChangelingDnaStingEvent
+    useDelay: 60
+    whitelist:
+      components:
+      - MobState
+  - type: ChangelingAction
+    chemicalCost: 25
+    useInLesserForm: true
+
+- type: entity
+  id: ActionChangelingTransformationSting
+  name: Transformation Sting
+  description: The changeling injects a retrovirus that forces their human victim to transform into another.
+  noSpawn: true
+  components:
+  - type: EntityTargetAction
+    itemIconStyle: NoItem
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: sting_transform
+    event: !type:ActionChangelingTransformationStingEvent
+    useDelay: 0
+    whitelist:
+      components:
+      - MobState
+  - type: ChangelingAction
+    chemicalCost: 50
+
+- type: entity
+  id: ActionChangelingMuteSting
+  name: Mute Sting
+  description: The changeling silently stings a human, completely silencing them for about thirty seconds.
+  noSpawn: true
+  components:
+  - type: EntityTargetAction
+    itemIconStyle: NoItem
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: sting_mute
+    event: !type:ActionChangelingMuteStingEvent
+    useDelay: 0
+    whitelist:
+      components:
+      - MobState
+  - type: ChangelingAction
+    chemicalCost: 20
+
+- type: entity
+  id: ActionChangelingBlindSting
+  name: Blind Sting
+  description: The changeling silently stings a human, completely blinding them for a short time and and leaves them with blurred vision for a long time.
+  noSpawn: true
+  components:
+  - type: EntityTargetAction
+    itemIconStyle: NoItem
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: sting_blind
+    event: !type:ActionChangelingBlindStingEvent
+    useDelay: 0
+    whitelist:
+      components:
+      - MobState
+  - type: ChangelingAction
+    chemicalCost: 25
+    useInLesserForm: true
+
+- type: entity
+  id: ActionChangelingHallutinationSting
+  name: Hallucination Sting
+  description: The changeling injects large doses of hallucinogenic chemicals into their victim. Effect occurs after 30 to 60 seconds. The victim does not notice they've been stung until they start tripping.
+  noSpawn: true
+  components:
+  - type: EntityTargetAction
+    itemIconStyle: NoItem
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: sting_lsd
+    event: !type:ActionChangelingHallutinationStingEvent
+    useDelay: 0
+    whitelist:
+      components:
+      - MobState
+  - type: ChangelingAction
+    chemicalCost: 10
+
+- type: entity
+  id: ActionChangelingCryogenicSting
+  name: Cryogenic Sting
+  description: The changeling injects the target with a blend of chemicals that begins to turn their blood to ice. The victim will walk slower and take some damage over the full duration. Victims wearing armor or insulated material will take more damage, since they are insulated from the ambient warmth. Can be countered with space heaters, coffee, and other warming objects and foods.
+  noSpawn: true
+  components:
+  - type: EntityTargetAction
+    itemIconStyle: NoItem
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: sting_cryo
+    event: !type:ActionChangelingCryogenicStingEvent
+    useDelay: 0
+    whitelist:
+      components:
+      - MobState
+  - type: ChangelingAction
+    chemicalCost: 15
+
+- type: entity
+  id: ActionChangelingFalseArmbladeSting
+  name: False Armblade Sting
+  description: The changeling silently injects a retrovirus that mutates their victim's arm into an armblade. The victim will form an armblade much like a changeling would, except the armblade is dull and useless. The transformation occurs immediately after the sting, and will last for about a minute.
+  noSpawn: true
+  components:
+  - type: EntityTargetAction
+    itemIconStyle: NoItem
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: sting_armblade
+    event: !type:ActionChangelingFalseArmbladeStingEvent
+    useDelay: 0
+    whitelist:
+      components:
+      - MobState
+  - type: ChangelingAction
+    chemicalCost: 20
+
+- type: entity
+  id: ActionChangelingArmBlade
+  name: Arm Blade
+  description: Reforms one of the changeling's arms into a grotesque blade made out of bone and flesh. The arm blade does 25 damage per hit and can be retracted by using the ability again; however, it is visible on your body and a dead giveaway to onlookers and silicons that you are a changeling.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: armblade
+    event: !type:ActionChangelingArmBladeEvent
+    useDelay: 30
+  - type: ChangelingAction
+    chemicalCost: 20
+
+- type: entity
+  id: ActionChangelingResonantShriek
+  name: Resonant Shriek
+  description: The changeling emits a tone beyond the range of human hearing, causing deafness and disorientation in an area around itself and bursting lights in the area, while overloading cyborg sensors. Good for escaping groups or preventing people from fleeing from you.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: resonant_shriek
+    event: !type:ActionChangelingResonantShriekEvent
+    useDelay: 30
+  - type: ChangelingAction
+    chemicalCost: 20
+    useInLesserForm: true
+
+- type: entity
+  id: ActionChangelingDissonantShriek
+  name: Dissonant Shriek
+  description: The changeling emits an EMP, which disables technology in the surrounding area, including radio headsets. Good for escaping borgs and preventing people from shouting over the radio.
+  noSpawn: true
+  components:
+  - type: InstantAction
+    itemIconStyle: NoItem
+    icon:
+      sprite: Radium/Interface/Actions/changeling.rsi
+      state: dissonant_shriek
+    event: !type:ActionChangelingDissonantShriekEvent
+    useDelay: 30
+  - type: ChangelingAction
+    chemicalCost: 20
+    useInLesserForm: true

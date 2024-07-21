@@ -19,14 +19,9 @@ public sealed class BeginSurgeryEvent : EntityEventArgs
 }
 
 [Serializable, NetSerializable]
-public sealed class SyncPartsEvent : EntityEventArgs
+public sealed class SyncPartsEvent(NetEntity uid) : EntityEventArgs
 {
-    public NetEntity Uid;
-
-    public SyncPartsEvent(NetEntity uid)
-    {
-        Uid = uid;
-    }
+    public NetEntity Uid = uid;
 }
 
 [Serializable, NetSerializable]

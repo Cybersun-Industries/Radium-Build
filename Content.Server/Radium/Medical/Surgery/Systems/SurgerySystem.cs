@@ -9,12 +9,14 @@ using Content.Server.Drunk;
 using Content.Server.Fluids.EntitySystems;
 using Content.Server.Forensics;
 using Content.Server.GameTicking;
+using Content.Server.Hands.Systems;
 using Content.Server.Popups;
 using Content.Server.Radium.Medical.Surgery.Components;
 using Content.Server.Speech.EntitySystems;
 using Content.Server.Stack;
 using Content.Shared.Body.Components;
 using Content.Shared.Body.Part;
+using Content.Shared.Chemistry.EntitySystems;
 using Content.Shared.Damage;
 using Content.Shared.DoAfter;
 using Content.Shared.Eye.Blinding.Systems;
@@ -28,7 +30,9 @@ using Content.Shared.Radium.Medical.Surgery.Prototypes;
 using Content.Shared.Radium.Medical.Surgery.Systems;
 using Content.Shared.Stacks;
 using Content.Shared.Weapons.Melee;
+using Robust.Server.Console;
 using Robust.Server.Player;
+using Robust.Shared.Console;
 using Robust.Shared.Player;
 using Robust.Shared.Prototypes;
 using Robust.Shared.Random;
@@ -49,7 +53,7 @@ public sealed partial class SurgerySystem : EntitySystem
     [Dependency] private readonly MovementSpeedModifierSystem _movement = default!;
     [Dependency] private readonly ServerDamagePartsSystem _damageParts = default!;
     [Dependency] private readonly DrunkSystem _drunkSystem = default!;
-    [Dependency] private readonly SolutionContainerSystem _solutionContainerSystem = default!;
+    [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
     [Dependency] private readonly StutteringSystem _stutteringSystem = default!;
     [Dependency] private readonly PuddleSystem _puddleSystem = default!;
     [Dependency] private readonly ForensicsSystem _forensicsSystem = default!;
@@ -58,6 +62,7 @@ public sealed partial class SurgerySystem : EntitySystem
     [Dependency] private readonly BuckleSystem _buckleSystem = default!;
     [Dependency] private readonly BloodstreamSystem _bloodstreamSystem = default!;
     [Dependency] private readonly StackSystem _stackSystem = default!;
+    [Dependency] private readonly IServerConsoleHost _consoleHost = default!;
 
     public override void Initialize()
     {
@@ -66,14 +71,8 @@ public sealed partial class SurgerySystem : EntitySystem
         SubscribeLocalEvent<SurgeryInProgressComponent, InteractUsingEvent>(OnSurgeryInteract);
         SubscribeLocalEvent<SurgeryInProgressComponent, SurgeryDoAfterEvent>(OnSurgeryDoAfter);
         SubscribeLocalEvent<MeleeWeaponComponent, DamageChangedEvent>(OnMeleeEvent);
-        //SubscribeLocalEvent<PlayerAttachedEvent>(OnPlayerSpawnComplete);
         InitializePostActions();
     }
-
-    //private void OnPlayerSpawnComplete(PlayerAttachedEvent ev)
-    //{
-    //RaiseNetworkEvent(new SyncPartsEvent(GetNetEntity(ev.Entity)), ev.Entity);
-    //}
 
 
     public override void Update(float frameTime)
@@ -348,16 +347,17 @@ public sealed partial class SurgerySystem : EntitySystem
     }
     */
 
-    private void TryApplySurgeryDamage(EntityUid uid, WoundTypeEnum woundType)
+    public bool TryApplySurgeryDamage(EntityUid uid, WoundTypeEnum woundType)
     {
         var part = RandomizePart(uid, woundType);
         var symmetry = RandomizeSymmetry(part);
         if (part == SurgeryPartEnum.None)
         {
-            return;
+            return false;
         }
 
         var list = _bodySystem.GetBodyChildren(uid).ToList();
+
         var partComponentRaw =
             list.FirstOrNull(p =>
                 p.Component.PartType == Enum.Parse<BodyPartType>(part.ToString()) &&
@@ -365,12 +365,12 @@ public sealed partial class SurgerySystem : EntitySystem
 
         if (partComponentRaw == null)
         {
-            return;
+            return false;
         }
 
         var partComponentId = partComponentRaw.Value.Id;
         if (!TryComp<BodyPartComponent>(partComponentId, out var partComponent))
-            return;
+            return false;
         TryComp<MetaDataComponent>(partComponentId, out var metadata);
         switch (woundType)
         {
@@ -384,13 +384,13 @@ public sealed partial class SurgerySystem : EntitySystem
                 partComponent.Wounds.Add(new PartWound(WoundTypeEnum.Heat));
                 break;
             default:
-                return;
+                return false;
         }
 
         Dirty(partComponentId, partComponent, metadata);
 
         if (part is not (SurgeryPartEnum.Arm or SurgeryPartEnum.Leg) || partComponent.Wounds.Count < 7)
-            return;
+            return false;
 
         var additionalPart = part switch
         {
@@ -405,7 +405,62 @@ public sealed partial class SurgerySystem : EntitySystem
             p.Component.Symmetry == symmetry);
         _xformSystem.AttachToGridOrMap(hand.Id);
         _xformSystem.AttachToGridOrMap(arm.Id);
+        return true;
     }
+
+    public bool TryRemoveHands(EntityUid uid)
+    {
+        var list = _bodySystem.GetBodyChildren(uid).ToList();
+
+        var arms = list.Where(p =>
+            p.Component.PartType == Enum.Parse<BodyPartType>(SurgeryPartEnum.Arm.ToString()));
+
+        var hands = list.Where(p =>
+            p.Component.PartType == Enum.Parse<BodyPartType>("Hand"));
+
+        foreach (var hand in hands)
+        {
+            _xformSystem.AttachToGridOrMap(hand.Id);
+        }
+
+        foreach (var arm in arms)
+        {
+            _xformSystem.AttachToGridOrMap(arm.Id);
+        }
+
+        return true;
+
+    }
+
+    public bool HealAllWounds(EntityUid uid)
+    {
+        var list = _bodySystem.GetBodyChildren(uid).ToList();
+        foreach (var part in list)
+        {
+            part.Component.Wounds.Clear();
+            Dirty(part.Id, part.Component);
+        }
+
+        var arms = list.Count(x => x.Component.PartType == BodyPartType.Arm);
+        var legs = list.Count(x => x.Component.PartType == BodyPartType.Leg);
+
+        if (arms < 2)
+        {
+            _consoleHost.ExecuteCommand($"addhand {uid}"); //Awful code and may cause some issues when doing surgery.
+        }
+
+        if (legs < 2)
+        {
+            _bodySystem.TryGetParentBodyPart(uid, out var body, out _);
+            var leg = Spawn("LeftLegHuman");
+            if (body != null)
+                _bodySystem.AttachPartToRoot(body.Value, leg);
+        }
+
+        RaiseNetworkEvent(new SyncPartsEvent(_entityManager.GetNetEntity(uid)));
+        return true;
+    }
+
 
     private void OnSurgeryDoAfter(EntityUid uid, SurgeryInProgressComponent component, SurgeryDoAfterEvent args)
     {

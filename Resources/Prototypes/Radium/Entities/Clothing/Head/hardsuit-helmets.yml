@@ -1,0 +1,17 @@
+# Took from Goob Station! (https://github.com/Goob-Station/Goob-Station/blob/master/Resources/Prototypes/Goobstation/Changeling/Entities/Clothing/Head/helmets.yml)
+- type: entity
+  parent: ClothingHeadHardsuitBase
+  id: ChangelingClothingHeadHelmetHardsuit
+  name: organic space helmet
+  description: A spaceworthy biomass of pressure and temperature resistant tissue.
+  suffix: Unremoveable
+  components:
+  - type: Item
+  - type: Sprite
+    sprite: Radium/Changeling/ling_spacesuit_helmet.rsi
+  - type: Clothing
+    sprite: Radium/Changeling/ling_spacesuit_helmet.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.225
+    lowPressureMultiplier: 1000
+  - type: Unremoveable

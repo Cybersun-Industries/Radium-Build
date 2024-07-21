@@ -76,3 +76,28 @@
   - type: NpcFactionMember
     factions:
     - NanoTrasen
+
+#Changeling
+
+- type: entity
+  parent: MobHuman
+  id: MobChangeling
+  name: Человек молодого возраста #SSSHITCODE!
+  noSpawn: true
+  components:
+    - type: Changeling
+      evolution: 5
+    - type: UserInterface
+      interfaces:
+        enum.ChangelingDnaStorageUiKey.Transform:
+          type: ChangelingDnaStorageBoundUserInterfaceTransform
+        enum.ChangelingDnaStorageUiKey.Sting:
+          type: ChangelingDnaStorageBoundUserInterfaceSting
+        enum.StoreUiKey.Key:
+          type: StoreBoundUserInterface
+    - type: Store
+      categories:
+        - ChangelingDefensive
+        - ChangelingOffensive
+      currencyWhitelist:
+        - ChangelingEvolution

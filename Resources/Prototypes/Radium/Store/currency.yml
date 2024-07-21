@@ -1,0 +1,12 @@
+﻿- type: currency
+  id: StolenResource #TODO REFACTOR
+  displayName: store-StolenResource-display-spacecash
+  canWithdraw: false
+  currencySymbol: store-currency-StolenResource-currency-symbol
+
+- type: currency
+  id: ChangelingEvolution
+  displayName: store-currency-changeling-evolution-currency
+  canWithdraw: false
+#  currencySymbol: store-currency-changeling-evolution-currency-symbol
+

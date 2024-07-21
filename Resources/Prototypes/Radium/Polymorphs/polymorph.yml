@@ -21,3 +21,12 @@
     revertOnCrit: true
     revertOnDeath: true
     duration: 35
+
+- type: polymorph
+  id: ChangelingMonkey
+  configuration:
+    entity: MobMonkey
+    inventory: Drop
+    revertOnCrit: true
+    revertOnDeath: true
+    cooldown: 60

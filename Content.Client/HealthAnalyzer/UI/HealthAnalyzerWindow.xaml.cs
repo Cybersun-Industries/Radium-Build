@@ -30,6 +30,7 @@ namespace Content.Client.HealthAnalyzer.UI
         private readonly IEntityManager _entityManager;
         private readonly SpriteSystem _spriteSystem;
         private readonly IPrototypeManager _prototypes;
+
         private readonly IResourceCache _cache;
         //private const int AnalyzerHeight = 430;
         //private const int AnalyzerWidth = 600;
@@ -54,13 +55,16 @@ namespace Content.Client.HealthAnalyzer.UI
             if (target == null
                 || !_entityManager.TryGetComponent<DamageableComponent>(target, out var damageable))
             {
+                var spacer = new Control();
+                spacer.MinHeight = 20;
+                AddChild(spacer);
                 NoPatientDataText.Visible = true;
                 return;
             }
 
             NoPatientDataText.Visible = false;
 
-            string entityName = Loc.GetString("health-analyzer-window-entity-unknown-text");
+            var entityName = Loc.GetString("health-analyzer-window-entity-unknown-text");
             if (_entityManager.HasComponent<MetaDataComponent>(target.Value))
             {
                 entityName = Identity.Name(target.Value, _entityManager);
@@ -308,7 +312,8 @@ namespace Content.Client.HealthAnalyzer.UI
         }
 
         private void DrawDiagnosticGroups(
-            Dictionary<string, FixedPoint2> groups, IReadOnlyDictionary<string, FixedPoint2> damageDict)
+            Dictionary<string, FixedPoint2> groups,
+            IReadOnlyDictionary<string, FixedPoint2> damageDict)
         {
             HashSet<string> shownTypes = new();
             var index = 0;

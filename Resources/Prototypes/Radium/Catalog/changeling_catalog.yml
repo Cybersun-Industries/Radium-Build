@@ -1,0 +1,270 @@
+#Changeling defensive listings
+
+- type: listing
+  id: ChangelingStrainedMuscules
+  name: ent-ActionChangelingStrainedMuscles
+  description: ent-ActionChangelingStrainedMuscles.desc
+  productAction: ActionChangelingStrainedMuscles
+  cost:
+    ChangelingEvolution: 1
+  categories:
+  - ChangelingDefensive
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChangelingAnatomicPanacea
+  name: ent-ActionChangelingAnatomicPanacea #Anatomic Panacea
+  description: ent-ActionChangelingAnatomicPanacea.desc #Cures the changeling of many ailments including brain traumas, mutations, diseases, radiation, and toxins. Generally covers the things that Fleshmend doesn't; it can be used to purge the poison that the chemist just shot you up with, or to get rid of that debilitating mutation from an absorbed identity. Can also remove alien larvae and zombie infection. Usable while unconscious. Do not use if you are a slimeperson.
+  productAction: ActionChangelingAnatomicPanacea
+  cost:
+    ChangelingEvolution: 1
+  categories:
+  - ChangelingDefensive
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChangelingChitinousArmor
+  name: ent-ActionChangelingChitinousArmor
+  description: ent-ActionChangelingChitinousArmor.desc
+  productAction: ActionChangelingChitinousArmor
+  cost:
+    ChangelingEvolution: 1
+  categories:
+  - ChangelingDefensive
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChangelingVoidAdaptation
+  name: ent-ActionChangelingVoidAdaptation
+  description: ent-ActionChangelingVoidAdaptation.desc
+  productAction: ActionChangelingVoidAdaptation
+  cost:
+    ChangelingEvolution: 2
+  categories:
+  - ChangelingDefensive
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChangelingOrganicShield
+  name: ent-ActionChangelingOrganicShield
+  description: ent-ActionChangelingOrganicShield.desc
+  productAction: ActionChangelingOrganicShield
+  cost:
+    ChangelingEvolution: 1
+  categories:
+  - ChangelingDefensive
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChangelingFleshmend
+  name: ent-ActionChangelingFleshmend
+  description: ent-ActionChangelingFleshmend.desc
+  productAction: ActionChangelingFleshmend
+  cost:
+    ChangelingEvolution: 2
+  categories:
+  - ChangelingDefensive
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChangelingChameleonSkin
+  name: ent-ActionChangelingChameleonSkin
+  description: ent-ActionChangelingChameleonSkin.desc
+  productAction: ActionChangelingChameleonSkin
+  cost:
+    ChangelingEvolution: 2
+  categories:
+  - ChangelingDefensive
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChangelingBiodegrade
+  name: ent-ActionChangelingBiodegrade
+  description: ent-ActionChangelingBiodegrade.desc
+  productAction: ActionChangelingBiodegrade
+  cost:
+    ChangelingEvolution: 2
+  categories:
+  - ChangelingDefensive
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+# Radium-shitcode-start
+
+- type: listing
+  id: ChangelingAugmentedEyesight
+  name: ent-PassiveChangelingAugmentedEyesight
+  description: ent-PassiveChangelingAugmentedEyesight.desc
+  raiseProductEventOnUser: true
+  icon: Radium/Interface/Actions/changeling.rsi/augmented_eyesight.png # There is some wierd serialization error when using rsi, so forced to do that..
+  productEvent: !type:PassiveChangelingAugmentedEyesightEvent
+  cost:
+    ChangelingEvolution: 2
+  categories:
+  - ChangelingDefensive
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChangelingDefibrillatorGrasp
+  name: ent-PassiveChangelingDefibrillatorGrasp
+  description: ent-PassiveChangelingDefibrillatorGrasp.desc
+  raiseProductEventOnUser: true
+  icon: Radium/Interface/Actions/changeling.rsi/defibrilator.png
+  productEvent: !type:PassiveChangelingDefibrillatorGraspEvent
+  categories:
+  - ChangelingDefensive
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChangelingLesserForm
+  name: ent-ActionChangelingLesserForm
+  description: ent-ActionChangelingLesserForm.desc
+  raiseProductEventOnUser: true
+  icon: Radium/Interface/Actions/changeling.rsi/lesser_form.png
+  productEvent: !type:PassiveChangelingSpawnLesserFormActionEvent
+  cost:
+    ChangelingEvolution: 1
+  categories:
+  - ChangelingDefensive
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+# Radium-shitcode-end
+
+#Changeling offensive listings
+
+- type: listing
+  id: ChangelingTransformationSting
+  name: ent-ActionChangelingTransformationSting
+  description: ent-ActionChangelingTransformationSting.desc
+  productAction: ActionChangelingTransformationSting
+  cost:
+    ChangelingEvolution: 2
+  categories:
+  - ChangelingOffensive
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChangelingMuteSting
+  name: ent-ActionChangelingMuteSting
+  description: ent-ActionChangelingMuteSting.desc
+  productAction: ActionChangelingMuteSting
+  cost:
+    ChangelingEvolution: 2
+  categories:
+  - ChangelingOffensive
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChangelingBlindSting
+  name: ent-ActionChangelingBlindSting
+  description: ent-ActionChangelingBlindSting.desc
+  productAction: ActionChangelingBlindSting
+  cost:
+    ChangelingEvolution: 1
+  categories:
+  - ChangelingOffensive
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChangelingHallutinationSting
+  name: ent-ActionChangelingHallutinationSting
+  description: ent-ActionChangelingHallutinationSting.desc
+  productAction: ActionChangelingHallutinationSting
+  cost:
+    ChangelingEvolution: 1
+  categories:
+  - ChangelingOffensive
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChangelingCryogenicSting
+  name: ent-ActionChangelingCryogenicSting
+  description: ent-ActionChangelingCryogenicSting.desc
+  productAction: ActionChangelingCryogenicSting
+  cost:
+    ChangelingEvolution: 2
+  categories:
+  - ChangelingOffensive
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChangelingDNASting
+  name: ent-ActionChangelingDNASting
+  description: ent-ActionChangelingDNASting.desc
+  productAction: ActionChangelingDNASting
+#  cost:
+#    ChangelingEvolution: 0
+  categories:
+  - ChangelingOffensive
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChangelingFalseArmbladeSting
+  name: ent-ActionChangelingFalseArmbladeSting
+  description: ent-ActionChangelingFalseArmbladeSting.desc
+  productAction: ActionChangelingFalseArmbladeSting
+  cost:
+    ChangelingEvolution: 1
+  categories:
+  - ChangelingOffensive
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChangelingResonantShriek
+  name: ent-ActionChangelingResonantShriek
+  description: ent-ActionChangelingResonantShriek.desc
+  productAction: ActionChangelingResonantShriek
+  cost:
+    ChangelingEvolution: 1
+  categories:
+  - ChangelingOffensive
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
+  id: ChangelingDissonantShriek
+  name: ent-ActionChangelingDissonantShriek
+  description: ent-ActionChangelingDissonantShriek.desc
+  productAction: ActionChangelingDissonantShriek
+  cost:
+    ChangelingEvolution: 1
+  categories:
+  - ChangelingOffensive
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1

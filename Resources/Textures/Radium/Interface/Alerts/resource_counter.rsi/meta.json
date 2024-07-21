@@ -1,0 +1,62 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Created by EmoGarbage404, essence0 and essence16 updated by discord:kuro_0001 (388673708753027083)",
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "resource0"
+    },
+    {
+      "name": "resource1"
+    },
+    {
+      "name": "resource2"
+    },
+    {
+      "name": "resource3"
+    },
+    {
+      "name": "resource4"
+    },
+    {
+      "name": "resource5"
+    },
+    {
+      "name": "resource6"
+    },
+    {
+      "name": "resource7"
+    },
+    {
+      "name": "resource8"
+    },
+    {
+      "name": "resource9"
+    },
+    {
+      "name": "resource10"
+    },
+    {
+      "name": "resource11"
+    },
+    {
+      "name": "resource12"
+    },
+    {
+      "name": "resource13"
+    },
+    {
+      "name": "resource14"
+    },
+    {
+      "name": "resource15"
+    },
+    {
+      "name": "resource16"
+    }
+  ]
+}

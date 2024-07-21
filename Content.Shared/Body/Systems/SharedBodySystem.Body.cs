@@ -9,6 +9,7 @@ using Content.Shared.Gibbing.Components;
 using Content.Shared.Gibbing.Events;
 using Content.Shared.Gibbing.Systems;
 using Content.Shared.Inventory;
+using Content.Shared.Radium.Medical.Surgery.Events;
 using Robust.Shared.Audio;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
@@ -103,6 +104,7 @@ public partial class SharedBodySystem
         // Obviously can't run in Init to avoid double-spawns on save / load.
         var prototype = Prototypes.Index(ent.Comp.Prototype.Value);
         MapInitBody(ent, prototype);
+        RaiseNetworkEvent(new SyncPartsEvent(GetNetEntity(ent)), ent);
     }
 
     private void MapInitBody(EntityUid bodyEntity, BodyPrototype prototype)

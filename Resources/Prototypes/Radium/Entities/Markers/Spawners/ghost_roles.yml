@@ -1,0 +1,17 @@
+- type: entity
+  id: SpawnPointChangeling
+  name: Changeling ghost spawn point
+  suffix: changeling
+  parent: MarkerBase
+  components:
+  - type: GhostRole
+    name: ghost-role-information-changeling-name
+    description: ghost-role-information-changeling-description
+    rules: ghost-role-information-changeling-rules
+  - type: GhostRoleMobSpawner
+    prototype: MobChangelingSpawner
+  - type: Sprite
+    sprite: Markers/jobs.rsi
+    layers:
+      - state: green
+      - state: passenger
