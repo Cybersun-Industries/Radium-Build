@@ -3,16 +3,13 @@ using System.Numerics;
 using Content.Server.Administration.Systems;
 using Content.Server.Radium.Changeling.Components;
 using Content.Shared.Actions;
-using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.FixedPoint;
-using Content.Shared.Gravity;
 using Content.Shared.Humanoid;
 using Content.Shared.Humanoid.Markings;
 using Content.Shared.IdentityManagement;
 using Content.Shared.Mobs;
 using Content.Shared.Mobs.Components;
-using Content.Shared.Popups;
 using Content.Shared.Radium.Changeling.Components;
 using Robust.Shared.Audio;
 using Robust.Shared.Player;
@@ -23,6 +20,7 @@ namespace Content.Server.Radium.Changeling.EntitySystems;
 public sealed partial class ChangelingSystem
 {
     [Dependency] private RejuvenateSystem _rejuvenateSystem = default!;
+
     public void PlayMeatySound(EntityUid uid, ChangelingComponent? component = null)
     {
         if (!Resolve(uid, ref component))
@@ -162,13 +160,18 @@ public sealed partial class ChangelingSystem
         }
 
         var item = EntityManager.SpawnEntity(outItem.Item2, Transform(uid).Coordinates);
-        if (clothingSlot != null && !_inventorySystem.TryEquip(uid, item, clothingSlot, force: true))
+        if (clothingSlot != null)
         {
-            EntityManager.DeleteEntity(item);
-            return false;
+            _inventorySystem.TryUnequip(uid, clothingSlot, true, true);
+
+            if (!_inventorySystem.TryEquip(uid, item, clothingSlot, force: true))
+            {
+                EntityManager.DeleteEntity(item);
+                return false;
+            }
         }
 
-        if (!_handsSystem.TryForcePickupAnyHand(uid, item))
+        if (!_handsSystem.TryForcePickupAnyHand(uid, item, false))
         {
             _popup.PopupEntity(Loc.GetString("changeling-fail-hands"), uid, uid);
             EntityManager.DeleteEntity(item);
