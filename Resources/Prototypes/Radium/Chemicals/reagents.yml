@@ -966,7 +966,7 @@
   group: Narcotics
   desc: reagent-desc-changeling-adrenaline
   physicalDesc: reagent-physical-desc-strong-smelling
-  flavor: adrenaline
+  flavor: meaty
   color: "#64d2cb"
   metabolisms:
     Medicine:
@@ -990,7 +990,7 @@
   group: Narcotics
   desc: reagent-desc-changeling-stimulator
   physicalDesc: reagent-physical-desc-strong-smelling
-  flavor: stimulator
+  flavor: meaty
   color: "#64d2cb"
   metabolisms:
     Medicine:
