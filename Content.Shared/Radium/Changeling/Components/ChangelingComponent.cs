@@ -95,7 +95,7 @@ public sealed partial class ChangelingComponent : Component
 
     public Dictionary<ChangelingEquipment, (EntityUid, ProtoId<EntityPrototype>)> ChangelingEquipment = new()
     {
-        { Components.ChangelingEquipment.Armblade, (EntityUid.Invalid, "ChangelingArmBlade") },
+        { Components.ChangelingEquipment.Armblade, (EntityUid.Invalid, "ArmBladeChangeling") },
         { Components.ChangelingEquipment.Armor, (EntityUid.Invalid, "ChangelingClothingOuterArmor") },
         { Components.ChangelingEquipment.SpacesuitHelmet, (EntityUid.Invalid, "ChangelingClothingHeadHelmetHardsuit") },
         { Components.ChangelingEquipment.Spacesuit, (EntityUid.Invalid, "ChangelingClothingOuterHardsuit") },

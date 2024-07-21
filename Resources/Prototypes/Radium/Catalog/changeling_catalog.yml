@@ -166,6 +166,19 @@
     stock: 1
 
 - type: listing
+  id: ChangelingArmblade
+  name: ent-ActionChangelingArmBlade
+  description: ent-ActionChangelingArmBlade.desc
+  productAction: ActionChangelingArmBlade
+  cost:
+    ChangelingEvolution: 1
+  categories:
+  - ChangelingOffensive
+  conditions:
+  - !type:ListingLimitedStockCondition
+    stock: 1
+
+- type: listing
   id: ChangelingMuteSting
   name: ent-ActionChangelingMuteSting
   description: ent-ActionChangelingMuteSting.desc
