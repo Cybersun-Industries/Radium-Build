@@ -28,6 +28,7 @@ using Content.Shared.Radium.Medical.Surgery.Components;
 using Content.Shared.Radium.Medical.Surgery.Events;
 using Content.Shared.Radium.Medical.Surgery.Prototypes;
 using Content.Shared.Radium.Medical.Surgery.Systems;
+using Content.Shared.Rejuvenate;
 using Content.Shared.Stacks;
 using Content.Shared.Weapons.Melee;
 using Robust.Server.Console;
@@ -71,7 +72,13 @@ public sealed partial class SurgerySystem : EntitySystem
         SubscribeLocalEvent<SurgeryInProgressComponent, InteractUsingEvent>(OnSurgeryInteract);
         SubscribeLocalEvent<SurgeryInProgressComponent, SurgeryDoAfterEvent>(OnSurgeryDoAfter);
         SubscribeLocalEvent<MeleeWeaponComponent, DamageChangedEvent>(OnMeleeEvent);
+        SubscribeLocalEvent<BodyComponent, RejuvenateEvent>(OnRejuvenate);
         InitializePostActions();
+    }
+
+    private void OnRejuvenate(EntityUid uid, BodyComponent _, RejuvenateEvent ev)
+    {
+        HealAllWounds(uid);
     }
 
 

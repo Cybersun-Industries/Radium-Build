@@ -21,6 +21,7 @@ using Content.Shared.DoAfter;
 using Content.Shared.Eye.Blinding.Components;
 using Content.Shared.Eye.Blinding.Systems;
 using Content.Shared.FixedPoint;
+using Content.Shared.Humanoid;
 using Content.Shared.Inventory;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Movement.Pulling.Components;
@@ -298,6 +299,12 @@ public sealed partial class ChangelingSystem
         if (!TryUseAbility(uid, args) || !TrySting(uid, args.Target, true))
             return;
 
+        if (!HasComp<HumanoidAppearanceComponent>(args.Target))
+        {
+            _popup.PopupEntity(Loc.GetString("changeling-sting-fail-simplemob"), uid, uid);
+            return;
+        }
+
         EnsureComp<ChangelingDnaComponent>(args.Target, out var dna);
 
         if (dna.IsExtracted)
@@ -312,7 +319,8 @@ public sealed partial class ChangelingSystem
 
         _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("changeling-absorb-end-self"),
             uid,
-            PopupType.SmallCaution);
+            uid,
+            PopupType.Medium);
 
         dna.IsExtracted = true;
     }
@@ -566,9 +574,11 @@ public sealed partial class ChangelingSystem
         if (!TrySting(uid, target, true))
             return;
 
-        args.Handled = true;
-
-        TryUseAbility(uid, args);
+        if (!HasComp<HumanoidAppearanceComponent>(args.Target))
+        {
+            _popup.PopupEntity(Loc.GetString("changeling-sting-fail-simplemob"), uid, uid);
+            return;
+        }
 
         EnsureComp<ChangelingDnaComponent>(target, out var dna);
 
@@ -582,6 +592,7 @@ public sealed partial class ChangelingSystem
 
         if (!TryComp<CuffableComponent>(target, out var cuffableComponent))
         {
+
             return;
         }
 
@@ -590,6 +601,10 @@ public sealed partial class ChangelingSystem
             _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("changeling-absorb-fail-incapacitated"), uid);
             return;
         }
+
+        args.Handled = true;
+
+        TryUseAbility(uid, args);
 
         BeginHarvestDoAfter(uid, target);
     }
@@ -706,9 +721,18 @@ public sealed partial class ChangelingSystem
     private void OnTransformationConfirmed(ConfirmTransformation args)
     {
         var uid = GetEntity(args.Uid);
-
         if (!TryComp<ChangelingComponent>(uid, out var component))
             return;
+
+        if (component.Chemicals < 20f)
+        {
+            _popup.PopupEntity(Loc.GetString("changeling-chemicals-deficit"), uid, uid);
+            return;
+        }
+
+        UpdateChemicals(uid, -20f);
+
+
 
         TransformEntity(uid, component.ServerIdentitiesList[args.ServerIdentityIndex]);
     }

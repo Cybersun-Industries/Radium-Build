@@ -5,7 +5,8 @@ using JetBrains.Annotations;
 namespace Content.Client.Radium.Changeling.UI;
 
 [UsedImplicitly]
-public sealed class ChangelingDnaStorageBoundUserInterfaceTransform(EntityUid owner, Enum uiKey) : BoundUserInterface(owner, uiKey)
+public sealed class ChangelingDnaStorageBoundUserInterfaceTransform(EntityUid owner, Enum uiKey)
+    : BoundUserInterface(owner, uiKey)
 {
     [ViewVariables]
     private ChangelingStorage? _storageMenu;
@@ -32,7 +33,7 @@ public sealed class ChangelingDnaStorageBoundUserInterfaceTransform(EntityUid ow
         var ev = new ConfirmTransformation
         {
             Uid = uid,
-            ServerIdentityIndex = index
+            ServerIdentityIndex = index,
         };
         SendMessage(ev);
         Dispose();
@@ -79,7 +80,7 @@ public sealed class ChangelingDnaStorageBoundUserInterfaceSting(EntityUid owner,
         var ev = new ConfirmTransformSting
         {
             Uid = uid,
-            ServerIdentityIndex = index
+            ServerIdentityIndex = index,
         };
 
         SendMessage(ev);
