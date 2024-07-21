@@ -95,6 +95,8 @@
           type: ChangelingDnaStorageBoundUserInterfaceSting
         enum.StoreUiKey.Key:
           type: StoreBoundUserInterface
+        enum.StrippingUiKey.Key:
+          type: StrippableBoundUserInterface
     - type: Store
       categories:
         - ChangelingDefensive

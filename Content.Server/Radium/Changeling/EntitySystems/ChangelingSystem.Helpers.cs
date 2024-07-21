@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using System.Numerics;
+using Content.Server.Administration.Systems;
 using Content.Server.Radium.Changeling.Components;
 using Content.Shared.Actions;
 using Content.Shared.Damage;
@@ -21,6 +22,7 @@ namespace Content.Server.Radium.Changeling.EntitySystems;
 
 public sealed partial class ChangelingSystem
 {
+    [Dependency] private RejuvenateSystem _rejuvenateSystem = default!;
     public void PlayMeatySound(EntityUid uid, ChangelingComponent? component = null)
     {
         if (!Resolve(uid, ref component))
@@ -193,11 +195,17 @@ public sealed partial class ChangelingSystem
         if (!TryComp(target, out humanoidAppearance) ||
             !TryComp<MetaDataComponent>(target, out var metaData))
             return false;
+
         MetaDataComponent? lockedMeta = null;
         HumanoidAppearanceComponent? lockedHumanoidAppearance = null;
 
         _serializationManager.CopyTo(metaData, ref lockedMeta);
         _serializationManager.CopyTo(humanoidAppearance, ref lockedHumanoidAppearance);
+        if (component.ServerIdentitiesList.Count >= 7)
+        {
+            component.ServerIdentitiesList.Remove(0);
+            component.ClientIdentitiesList.Remove(0);
+        }
 
         component.ServerIdentitiesList.Add(component.ServerIdentitiesList.Count,
             (lockedMeta, lockedHumanoidAppearance)!);
@@ -297,19 +305,14 @@ public sealed partial class ChangelingSystem
         if (!TryComp<MobStateComponent>(uid, out var state))
             return false;
 
-        if (!TryComp<DamageableComponent>(uid, out var damageComponent))
-        {
-            return false;
-        }
 
         if (state.CurrentState == MobState.Dead && component.IsInStasis)
         {
-            _heal.SetAllDamage(uid, damageComponent, 0.1);
-            _heal.TryChangeDamage(uid, new DamageSpecifier());
-            _mobState.ChangeMobState(uid, MobState.Alive, state);
+            _rejuvenateSystem.PerformRejuvenate(uid);
+
             component.IsInStasis = false;
-            _surgerySystem.HealAllWounds(uid);
-            return false;
+
+            return true;
         }
 
         _mobState.ChangeMobState(uid, MobState.Dead, state);

@@ -36,7 +36,7 @@
 - type: entity
   id: ActionChangelingTransform
   name: Transform
-  description: Costs 5 Essence.
+  description: Costs 20 Essence.
   noSpawn: true
   components:
   - type: InstantAction
@@ -45,7 +45,7 @@
       sprite: Radium/Interface/Actions/changeling.rsi
       state: transform
     event: !type:ChangelingTransformActionEvent
-    useDelay: 30
+    useDelay: 0
   - type: ChangelingAction
     chemicalCost: 0
 
@@ -152,7 +152,7 @@
       sprite: Radium/Interface/Actions/changeling.rsi
       state: chitinous_armor
     event: !type:ActionChangelingChitinousArmorEvent
-    useDelay: 30
+    useDelay: 0
   - type: ChangelingAction
     chemicalCost: 30
 
@@ -168,7 +168,7 @@
       sprite: Radium/Interface/Actions/changeling.rsi
       state: organic_suit
     event: !type:ActionChangelingVoidAdaptationEvent
-    useDelay: 30
+    useDelay: 0
   - type: ChangelingAction
     chemicalCost: 20
 
@@ -184,7 +184,7 @@
       sprite: Radium/Interface/Actions/changeling.rsi
       state: organic_shield
     event: !type:ActionChangelingOrganicShieldEvent
-    useDelay: 30
+    useDelay: 0
   - type: ChangelingAction
     chemicalCost: 20
 
@@ -216,7 +216,7 @@
       sprite: Radium/Interface/Actions/changeling.rsi
       state: chameleon_skin
     event: !type:ActionChangelingChameleonSkinEvent
-    useDelay: 30
+    useDelay: 0
   - type: ChangelingAction
     chemicalCost: 10
 
@@ -225,6 +225,7 @@
   name: Biodegrade
   description: Dissolves restraints or other objects preventing free movement. This is obvious to nearby people, and can destroy standard restraints and closets. When the cuffs are melted completely a pile of green goo will appear below you.
   noSpawn: true
+  checkCanInteract: false
   components:
   - type: InstantAction
     itemIconStyle: NoItem
@@ -386,7 +387,7 @@
       sprite: Radium/Interface/Actions/changeling.rsi
       state: armblade
     event: !type:ActionChangelingArmBladeEvent
-    useDelay: 30
+    useDelay: 0
   - type: ChangelingAction
     chemicalCost: 20
 

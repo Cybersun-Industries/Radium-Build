@@ -303,6 +303,11 @@ public sealed partial class ChangelingSystem : EntitySystem
 
     private void UpdateChemicals(EntityUid uid, float? amount = null, ChangelingComponent? component = null)
     {
+        if (!HasComp<ChangelingComponent>(uid)) //Ghosted or etc
+        {
+            return;
+        }
+
         if (!Resolve(uid, ref component))
             return;
 

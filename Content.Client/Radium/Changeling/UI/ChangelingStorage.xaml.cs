@@ -55,7 +55,7 @@ public sealed partial class ChangelingStorage : FancyWindow
 
     private void OnItemSelected(ItemList.ItemListSelectedEventArgs args)
     {
-        if (!_identitiesOrder.TryGetValue(args.ItemIndex, out var identity))
+        if (_identitiesOrder.TryGetValue(args.ItemIndex, out var identity))
             _selectedIdentityServerIndex = identity.Key;
         ConfirmTransformation.Disabled = false;
     }
@@ -75,5 +75,7 @@ public sealed partial class ChangelingStorage : FancyWindow
             _identitiesOrder.Add(index, identity);
             index++;
         }
+
+        Title = $"{Loc.GetString("changeling-transform-window-title")} ({IdentitiesList.Count}/7)";
     }
 }
