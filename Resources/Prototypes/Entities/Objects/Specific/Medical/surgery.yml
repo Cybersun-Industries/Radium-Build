@@ -222,11 +222,13 @@
     soundHit:
       path: /Audio/Weapons/bladeslice.ogg
   - type: Tool
+    speedModifier: 0.5
     qualities:
       - Sawing
   - type: SurgeryTool
     action: enum.SurgeryTypeEnum.Cut
     modifier: 1.8
+
 - type: entity
   name: circular saw
   id: SawElectric
@@ -244,8 +246,7 @@
     soundHit:
       path: /Audio/Items/drill_hit.ogg
   - type: Tool
-    qualities:
-      - Sawing
+    speedModifier: 1.5
   - type: SurgeryTool
     action: enum.SurgeryTypeEnum.Cut
     modifier: 1.5
@@ -264,8 +265,6 @@
     attackRate: 1.5
   - type: Tool
     speedModifier: 2.0
-    qualities:
-      - Sawing
   - type: SurgeryTool
     action: enum.SurgeryTypeEnum.Cut
     modifier: 2.2

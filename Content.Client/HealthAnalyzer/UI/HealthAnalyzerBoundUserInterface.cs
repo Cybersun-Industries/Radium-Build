@@ -3,6 +3,7 @@ using Content.Shared.MedicalScanner;
 using JetBrains.Annotations;
 using Robust.Client.GameObjects;
 using Content.Shared.Radium.Medical.Surgery.Systems;
+using Robust.Client.UserInterface;
 
 namespace Content.Client.HealthAnalyzer.UI
 {
@@ -22,12 +23,9 @@ namespace Content.Client.HealthAnalyzer.UI
         protected override void Open()
         {
             base.Open();
-            _window = new HealthAnalyzerWindow
-            {
-                Title = EntMan.GetComponent<MetaDataComponent>(Owner).EntityName,
-            };
-            _window.OnClose += Close;
-            _window.OpenCentered();
+            _window = this.CreateWindow<HealthAnalyzerWindow>();
+
+            _window.Title = EntMan.GetComponent<MetaDataComponent>(Owner).EntityName;
         }
 
         protected override void ReceiveMessage(BoundUserInterfaceMessage message)
@@ -46,18 +44,6 @@ namespace Content.Client.HealthAnalyzer.UI
             }
 
             _window.Populate(cast);
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            base.Dispose(disposing);
-            if (!disposing)
-                return;
-
-            if (_window != null)
-                _window.OnClose -= Close;
-
-            _window?.Dispose();
         }
     }
 }
