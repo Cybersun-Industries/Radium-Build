@@ -118,11 +118,8 @@ public sealed partial class ChangelingSystem : EntitySystem
         InitShop(ent);
 
         _npcFaction.RemoveFaction(ent.Owner, component.NanotrasenFactionId, false);
-        _npcFaction.AddFaction(ent.Owner, component.ChangelingFactionId);
 
         RemComp<PacifiedComponent>(ent);
-
-        _tagSystem.AddTag(ent, "CannotSuicide");
     }
 
     private void OnMobStateChange(EntityUid uid, ChangelingComponent comp, ref MobStateChangedEvent args)

@@ -1,4 +1,5 @@
 using Content.Server.Atmos.Rotting;
+using Content.Server.Body.Systems;
 using Content.Server.Chat.Systems;
 using Content.Server.DoAfter;
 using Content.Server.Electrocution;
@@ -23,6 +24,7 @@ using Content.Shared.Mobs.Systems;
 using Content.Shared.Popups;
 using Content.Shared.PowerCell;
 using Content.Shared.Radium.Changeling.Components;
+using Content.Shared.Radium.Medical.Surgery.Events;
 using Content.Shared.Timing;
 using Content.Shared.Toggleable;
 using Robust.Shared.Audio.Systems;
@@ -50,12 +52,10 @@ public sealed class DefibrillatorSystem : EntitySystem
     [Dependency] private readonly PowerCellSystem _powerCell = default!;
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
     [Dependency] private readonly SharedAudioSystem _audio = default!;
-    [Dependency] private readonly UseDelaySystem _useDelay = default!;
     [Dependency] private readonly SharedMindSystem _mind = default!;
     [Dependency] private readonly SurgerySystem _surgerySystem = default!;
     [Dependency] private readonly ChangelingSystem _changelingSystem = default!;
-    [Dependency] private readonly MetaDataSystem _metaDataSystem = default!;
-
+    [Dependency] private readonly BloodstreamSystem _bloodstreamSystem = default!;
     /// <inheritdoc/>
     public override void Initialize()
     {
@@ -192,12 +192,14 @@ public sealed class DefibrillatorSystem : EntitySystem
             if (HasComp<ChangelingGraspPassiveComponent>(target))
             {
                 _surgerySystem.TryRemoveHands(user);
-                _popup.PopupEntity(Loc.GetString("changeling-defibrillator-grasp-used",
-                        ("target", TryComp<MetaDataComponent>(user, out var meta) ? meta.EntityName : "")),
+                _popup.PopupEntity(Loc.GetString("changeling-defibrillator-grasp-used"),
                     uid,
                     PopupType
                         .LargeCaution);
                 _changelingSystem.TryToggleStasis(target);
+                _bloodstreamSystem.TryModifyBleedAmount(target, 35f);
+                var surgeryEv = new SyncPartsEvent(GetNetEntity(target));
+                RaiseLocalEvent(surgeryEv);
                 return;
             }
             // end-radium: changeling

@@ -3,7 +3,7 @@
 changeling-user-interface-title = Окно эволюции
 changeling-user-interface-cost = { $price } ресурсов
 changeling-condition-genes-description = Используйте своё жало, чтобы извелечь гены нескольких человек.
-changeling-defibrillator-grasp-used = Генокрад оживает и отрывает руки {CAPITALIZE(THE($target))}!
+changeling-defibrillator-grasp-used = Генокрад оживает и отрывает руки ближайшему человеку!
 
 changeling-transform-window-title = Хранилище ДНК
 changeling-absorbed-corpse-description = Личность невозможно определить. Кожа имеет пепельно-серый цвет.
@@ -12,12 +12,10 @@ changeling-absorbed-corpse-name = Неопознанное тело
 
 changeling-action-fail-lesserform = Невозможно использовать в форме обезьяны!
 
-changeling-absorb-start = {CAPITALIZE(THE($user))} начал поглощать {CAPITALIZE(THE($target))}!
+changeling-absorb-start = Генокрад начал поглощать тело!
 changeling-absorb-fail-incapacitated =  Цель должна быть оглушена или связана!
 changeling-absorb-fail-absorbed = Вы уже поглотили это.
 changeling-absorb-end-self = Ещё одна цель поглощена. Вы эволюционируете.
-
-changeling-sting-fail-self = Вы попытались проколоть {CAPITALIZE(THE($target))}, но безуспешно!
 
 changeling-sting = Вы незаметно жалите {CAPITALIZE(THE($target))}
 changeling-sting-fail-simplemob = Вы не можете ужалить примитивное существо!
