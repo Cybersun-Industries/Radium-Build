@@ -685,6 +685,8 @@ public sealed partial class ChangelingSystem
         if (!CopyDna(uid, target, out var humanoidAppearance, true))
             return;
 
+        humanoidAppearance.SkinColor = Color.Gray;
+
         Dirty(target, humanoidAppearance);
 
         _metaSystem.SetEntityName(target, Loc.GetString("changeling-absorbed-corpse-name"));

@@ -221,8 +221,6 @@ public sealed partial class ChangelingSystem
         _userInterface.SetUiState(uid, ChangelingDnaStorageUiKey.Transform, new ChangelingStorageUiState());
         _userInterface.SetUiState(uid, ChangelingDnaStorageUiKey.Sting, new ChangelingStorageUiState());
 
-        humanoidAppearance.SkinColor = Color.Gray;
-
         if (_mindSystem.TryGetObjectiveComp<GenesConditionComponent>(uid, out var obj))
             obj.GenesExtracted++;
 
