@@ -225,7 +225,6 @@
   name: Biodegrade
   description: Dissolves restraints or other objects preventing free movement. This is obvious to nearby people, and can destroy standard restraints and closets. When the cuffs are melted completely a pile of green goo will appear below you.
   noSpawn: true
-  checkCanInteract: false
   components:
   - type: InstantAction
     itemIconStyle: NoItem
@@ -234,6 +233,7 @@
       state: biodegrade
     event: !type:ActionChangelingBiodegradeEvent
     useDelay: 60
+    checkCanInteract: false
   - type: ChangelingAction
     chemicalCost: 30
     useInLesserForm: true

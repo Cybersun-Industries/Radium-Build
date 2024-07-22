@@ -4,6 +4,7 @@ using Content.Shared.Humanoid;
 using Content.Shared.Mind;
 using Content.Shared.NPC.Prototypes;
 using Content.Shared.Polymorph;
+using Content.Shared.StatusIcon;
 using Content.Shared.Store;
 using Robust.Shared.Audio;
 using Robust.Shared.GameStates;
@@ -27,6 +28,9 @@ public sealed partial class ChangelingComponent : Component
         new SoundPathSpecifier("/Audio/Effects/gib2.ogg"),
         new SoundPathSpecifier("/Audio/Effects/gib3.ogg"),
     };
+
+    [DataField]
+    public ProtoId<StatusIconPrototype> StatusIcon= "HivemindFaction";
 
     [DataField("soundShriek")]
     public SoundSpecifier ShriekSound =
@@ -66,9 +70,6 @@ public sealed partial class ChangelingComponent : Component
 
     [DataField]
     public SoundSpecifier BriefingSound = new SoundPathSpecifier("/Audio/Radium/Ambience/Antag/changeling_start.ogg");
-
-    [DataField]
-    public ProtoId<NpcFactionPrototype> ChangelingFactionId = "Changeling";
 
     [DataField]
     public ProtoId<NpcFactionPrototype> NanotrasenFactionId = "NanoTrasen";

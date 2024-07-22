@@ -12,6 +12,7 @@
   - type: InstantAction
     event: !type:PolymorphActionEvent
     itemIconStyle: NoItem
+    checkCanInteract: false
 
 - type: entity
   id: ActionPolymorphWizardSpider

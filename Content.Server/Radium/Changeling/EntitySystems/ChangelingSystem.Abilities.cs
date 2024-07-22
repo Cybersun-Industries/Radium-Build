@@ -45,7 +45,6 @@ namespace Content.Server.Radium.Changeling.EntitySystems;
 public sealed partial class ChangelingSystem
 {
     [Dependency] private readonly SharedAppearanceSystem _appearance = default!;
-    [Dependency] private readonly DamageableSystem _heal = default!;
     [Dependency] private readonly FlashSystem _flash = default!;
     [Dependency] private readonly DamageableSystem _damageSystem = default!;
     [Dependency] private readonly SurgerySystem _surgerySystem = default!;
@@ -650,9 +649,7 @@ public sealed partial class ChangelingSystem
         if (!_doAfter.TryStartDoAfter(doAfter))
             return;
 
-        _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("changeling-absorb-start",
-                ("target", TryComp<MetaDataComponent>(target, out var metaTarget) ? metaTarget.EntityName : "Unknown"),
-                ("user", TryComp<MetaDataComponent>(uid, out var metaUser) ? metaUser.EntityName : "Unknown")),
+        _popup.PopupEntity(Robust.Shared.Localization.Loc.GetString("changeling-absorb-start"),
             target,
             PopupType.LargeCaution);
     }
