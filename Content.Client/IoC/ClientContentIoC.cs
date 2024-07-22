@@ -61,5 +61,7 @@ namespace Content.Client.IoC
             collection.Register<DebugMonitorManager>();
             collection.Register<ClientDamagePartsSystem, ClientDamagePartsSystem>();
         }
+
+
     }
 }
