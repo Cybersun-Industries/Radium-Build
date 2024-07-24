@@ -99,3 +99,45 @@
   name: Bolgarich - Running Out
   path:
     path: /Audio/StationEvents/running_out.ogg
+
+- type: jukebox
+  id: absynth
+  name: Radium - Absynth
+  path:
+    path: /Audio/Radium/Lobby/Absynth.ogg
+
+- type: jukebox
+  id: breathofanything
+  name: Radium - Breath of Anything
+  path:
+    path: /Audio/Radium/Lobby/BreathofAnything.ogg
+
+- type: jukebox
+  id: cloakanddagger
+  name: Radium - Cloakand Dagger
+  path:
+    path: /Audio/Radium/Lobby/CloakandDagger.ogg
+
+- type: jukebox
+  id: doubleface
+  name: Radium - Double Face
+  path:
+    path: /Audio/Radium/Lobby/DoubleFace.ogg
+
+- type: jukebox
+  id: downbeatbeatdown
+  name: Radium - Down beat beat down
+  path:
+    path: /Audio/Radium/Lobby/DownbeatBeatdown.ogg
+
+- type: jukebox
+  id: dreamavenue
+  name: Radium - Dream Avenue
+  path:
+    path: /Audio/Radium/Lobby/DreamAvenue.ogg
+
+- type: jukebox
+  id: dystopia
+  name: Radium - Dystopia
+  path:
+    path: /Audio/Radium/Lobby/Dystopia.ogg
