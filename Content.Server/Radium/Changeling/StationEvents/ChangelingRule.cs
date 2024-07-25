@@ -36,53 +36,60 @@ public sealed class ChangelingRule : StationEventSystem<Components.ChangelingRul
         GameRuleComponent gameRule,
         ref RoundEndTextAppendEvent ev)
     {
-            var mostAbsorbedName = string.Empty;
-            var mostStolenName = string.Empty;
-            var mostAbsorbed = 0f;
-            var mostStolen = 0f;
+        var mostAbsorbedName = string.Empty;
+        var mostStolenName = string.Empty;
+        var mostAbsorbed = 0f;
+        var mostStolen = 0f;
 
-            ev.AddLine(Loc.GetString("changeling-prepend-title"));
-            foreach (var ling in EntityQuery<ChangelingComponent>())
+        ev.AddLine(Loc.GetString("changeling-prepend-title"));
+        foreach (var ling in EntityQuery<ChangelingComponent>())
+        {
+            var mind = ling.Mind;
+
+            if (mind == null)
+                continue;
+
+            var mindEntity = GetEntity(mind.OriginalOwnedEntity);
+
+            if (!mindEntity.HasValue)
+                continue;
+
+            var hasMind = _mindSystem.TryGetMind(mindEntity.Value, out var mindId, out _);
             {
-                var mind = ling.Mind;
-
-                if (mind == null)
-                    continue;
-
-                var mindEntity = GetEntity(mind.OriginalOwnedEntity);
-
-                if (!mindEntity.HasValue)
-                    continue;
-
-                var hasMind = _mindSystem.TryGetMind(mindEntity.Value, out var mindId, out _);
+                if (ling.TotalAbsorbedEntities > mostAbsorbed)
                 {
-                    if (ling.TotalAbsorbedEntities > mostAbsorbed)
-                    {
-                        mostAbsorbed = ling.TotalAbsorbedEntities;
-                        if (hasMind)
-                            mostAbsorbedName = _objectivesSystem.GetTitle((mindId, mind), string.Empty);
-                    }
-
-                    if (!(ling.TotalExtractedDna > mostStolen))
-                        continue;
-
-                    mostStolen = ling.TotalExtractedDna;
-
+                    mostAbsorbed = ling.TotalAbsorbedEntities;
                     if (hasMind)
-                        mostStolenName = _objectivesSystem.GetTitle((mindId, mind), string.Empty);
+                        mostAbsorbedName = _objectivesSystem.GetTitle((mindId, mind), string.Empty);
                 }
-            }
 
-            var sb = new StringBuilder();
+                if (!(ling.TotalExtractedDna > mostStolen))
+                    continue;
+
+                mostStolen = ling.TotalExtractedDna;
+
+                if (hasMind)
+                    mostStolenName = _objectivesSystem.GetTitle((mindId, mind), string.Empty);
+            }
+        }
+
+        var sb = new StringBuilder();
+        if (mostAbsorbed != 0)
+        {
             sb.AppendLine(Loc.GetString(
                 $"roundend-prepend-changeling-absorbed{(!string.IsNullOrWhiteSpace(mostAbsorbedName) ? "-named" : "")}",
                 ("name", mostAbsorbedName),
                 ("number", mostAbsorbed)));
+        }
+
+        if (mostStolen != 0)
+        {
             sb.AppendLine(Loc.GetString(
                 $"roundend-prepend-changeling-stolen{(!string.IsNullOrWhiteSpace(mostStolenName) ? "-named" : "")}",
                 ("name", mostStolenName),
                 ("number", mostStolen)));
+        }
 
-            ev.AddLine(sb.ToString());
+        ev.AddLine(sb.ToString());
     }
-    }
+}
