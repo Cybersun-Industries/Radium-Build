@@ -263,8 +263,8 @@
     - Science
   - type: AccessReader
     access: [["Medical"], ["Command"], ["Research"]]
-  - type: TTS # Corvax-TTS
-    voice: Borgs
+#  - type: TTS # Corvax-TTS
+#    voice: Borgs
   - type: Inventory
     templateId: borgDutch
   - type: SolutionScanner
