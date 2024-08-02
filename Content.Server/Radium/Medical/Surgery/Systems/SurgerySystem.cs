@@ -617,6 +617,10 @@ public sealed partial class SurgerySystem : EntitySystem
             ))
         {
             time = 15f;
+            if (args.User == args.Target)
+            {
+                time = 20f;
+            }
             goto G;
         }
 
@@ -628,7 +632,12 @@ public sealed partial class SurgerySystem : EntitySystem
             return;
         }
 
-        time = 10 / tool.Modifier;
+        time = 10f / tool.Modifier;
+        if (args.User == args.Target)
+        {
+            time = 15f / tool.Modifier;
+        }
+
         G:
         var chance = 0;
         if (time > 20)
