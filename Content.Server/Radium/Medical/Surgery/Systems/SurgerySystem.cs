@@ -619,7 +619,7 @@ public sealed partial class SurgerySystem : EntitySystem
             time = 15f;
             if (args.User == args.Target)
             {
-                time = 20f;
+                time = 30f;
             }
             goto G;
         }
