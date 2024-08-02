@@ -1,7 +1,7 @@
 ﻿using Content.Client.Radium.Medical.Surgery.UI.Widgets.Systems;
 using Content.Shared.MedicalScanner;
 using JetBrains.Annotations;
-using Robust.Client.GameObjects;
+using Robust.Client.UserInterface;
 using Content.Shared.Radium.Medical.Surgery.Systems;
 using Robust.Client.UserInterface;
 
