@@ -80,12 +80,12 @@ public sealed class FollowDistanceSystem : EntitySystem
 
     private void OnCameraFollowInit(EntityUid uid, CameraFollowComponent component, ComponentInit args) // Stalker-Changes-Start
     {
-        _actionsSystem.AddAction(uid, ref component.ActionEntity, component.Action);
+        //_actionsSystem.AddAction(uid, ref component.ActionEntity, component.Action); Radium: remove that shit.
     }
 
     private void OnCameraFollowRemove(EntityUid uid, CameraFollowComponent component, ComponentRemove args)
     {
-        _actionsSystem.RemoveAction(uid, component.ActionEntity);
+        //_actionsSystem.RemoveAction(uid, component.ActionEntity); Radium: remove that shit.
     } // Stalker-Changes-End
 
     private void OnPickedUp(EntityUid uid, FollowDistanceComponent followDistance, HandSelectedEvent args)

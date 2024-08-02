@@ -623,15 +623,6 @@
     state: ramen
 
 - type: entity
-  categories: [ HideSpawnMenu ]
-  parent: FoodPacketTrash
-  id: FoodPacketCupRamenTrash
-  name: empty cup ramen
-  components:
-  - type: Sprite
-    state: ramen
-
-- type: entity
   noSpawn: true
   parent: FoodPacketTrash
   id: FoodPacketChowMeinTrash
