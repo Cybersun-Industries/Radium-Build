@@ -2,7 +2,7 @@ store-points-bloodEssence-name = Кровавая эссенция
 
 store-tier-update-to-1-name = Инициация.
 store-tier-update-to-2-name = Эволюция.
-store-tier-update-to-3-name = Пробужден.ие
+store-tier-update-to-3-name = Пробуждение.
 store-tier-update-to-n-desc = Взовите к силе крови, поглотите эссенцию жизни. Станьте могущественее.
 
 
