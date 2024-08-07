@@ -236,7 +236,7 @@
   id: offworld
   name: OffWorld
   path:
-    path: /Audio/Radium/Lobby/OffWorld.ogg
+    path: /Audio/Radium/Lobby/Offworld.ogg
 
 - type: jukebox
   id: osmosis
