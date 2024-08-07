@@ -4,6 +4,7 @@
     - survival
   name: survival-title
   showInVote: false # secret
+  minPlayers: 20
   description: survival-description
   rules:
     - RampingStationEventScheduler

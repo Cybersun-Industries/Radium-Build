@@ -7,22 +7,22 @@
         - to: strawhat
           steps:
             - tag: Wheat
-              name: ent-WheatBushel
+              name: wheat bushel
               icon:
                 sprite: Objects/Specific/Hydroponics/wheat.rsi
                 state: produce
             - tag: Wheat
-              name: ent-WheatBushel
+              name: wheat bushel
               icon:
                 sprite: Objects/Specific/Hydroponics/wheat.rsi
                 state: produce
             - tag: Wheat
-              name: ent-WheatBushel
+              name: wheat bushel
               icon:
                 sprite: Objects/Specific/Hydroponics/wheat.rsi
                 state: produce
             - tag: Wheat
-              name: ent-WheatBushel
+              name: wheat bushel
               icon:
                 sprite: Objects/Specific/Hydroponics/wheat.rsi
                 state: produce

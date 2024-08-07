@@ -1,7 +1,6 @@
 using Content.Client.Administration.Managers;
 using Content.Client.Changelog;
 using Content.Client.Chat.Managers;
-using Content.Client.DebugMon;
 using Content.Client.Corvax;
 using Content.Client.DebugMon;
 using Content.Client.Corvax.TTS;
