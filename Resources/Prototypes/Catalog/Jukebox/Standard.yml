@@ -59,30 +59,6 @@
     path: /Audio/Lobby/title2.ogg
 
 - type: jukebox
-  id: andromeda
-  name: Radium - Andromeda
-  path:
-    path: /Audio/Radium/Lobby/Andromeda.ogg
-
-- type: jukebox
-  id: apex
-  name: Radium - Apex
-  path:
-    path: /Audio/Radium/Lobby/Apex.ogg
-
-- type: jukebox
-  id: quasar
-  name: Radium - Quasar
-  path:
-    path: /Audio/Radium/Lobby/Quasar.ogg
-
-- type: jukebox
-  id: maxwell
-  name: Maxwell
-  path:
-    path: /Audio/Radium/Maxwell/maxwell.ogg
-
-- type: jukebox
   id: deadline
   name: Bolgarich - Deadline
   path:
@@ -99,45 +75,3 @@
   name: Bolgarich - Running Out
   path:
     path: /Audio/StationEvents/running_out.ogg
-
-- type: jukebox
-  id: absynth
-  name: Radium - Absynth
-  path:
-    path: /Audio/Radium/Lobby/Absynth.ogg
-
-- type: jukebox
-  id: breathofanything
-  name: Radium - Breath of Anything
-  path:
-    path: /Audio/Radium/Lobby/BreathofAnything.ogg
-
-- type: jukebox
-  id: cloakanddagger
-  name: Radium - Cloakand Dagger
-  path:
-    path: /Audio/Radium/Lobby/CloakandDagger.ogg
-
-- type: jukebox
-  id: doubleface
-  name: Radium - Double Face
-  path:
-    path: /Audio/Radium/Lobby/DoubleFace.ogg
-
-- type: jukebox
-  id: downbeatbeatdown
-  name: Radium - Down beat beat down
-  path:
-    path: /Audio/Radium/Lobby/DownbeatBeatdown.ogg
-
-- type: jukebox
-  id: dreamavenue
-  name: Radium - Dream Avenue
-  path:
-    path: /Audio/Radium/Lobby/DreamAvenue.ogg
-
-- type: jukebox
-  id: dystopia
-  name: Radium - Dystopia
-  path:
-    path: /Audio/Radium/Lobby/Dystopia.ogg

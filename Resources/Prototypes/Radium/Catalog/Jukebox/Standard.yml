@@ -1,0 +1,137 @@
+﻿- type: jukebox
+  id: absynth
+  name: Radium - Absynth
+  path:
+    path: /Audio/Radium/Lobby/Absynth.ogg
+
+- type: jukebox
+  id: breathofanything
+  name: Radium - Breath of Anything
+  path:
+    path: /Audio/Radium/Lobby/BreathofAnything.ogg
+
+- type: jukebox
+  id: cloakanddagger
+  name: Radium - Cloakand Dagger
+  path:
+    path: /Audio/Radium/Lobby/CloakandDagger.ogg
+
+- type: jukebox
+  id: doubleface
+  name: Radium - Double Face
+  path:
+    path: /Audio/Radium/Lobby/DoubleFace.ogg
+
+- type: jukebox
+  id: downbeatbeatdown
+  name: Radium - Down beat beat down
+  path:
+    path: /Audio/Radium/Lobby/DownbeatBeatdown.ogg
+
+- type: jukebox
+  id: dreamavenue
+  name: Radium - Dream Avenue
+  path:
+    path: /Audio/Radium/Lobby/DreamAvenue.ogg
+
+- type: jukebox
+  id: dystopia
+  name: Radium - Dystopia
+  path:
+    path: /Audio/Radium/Lobby/Dystopia.ogg
+
+- type: jukebox
+  id: andromeda
+  name: Radium - Andromeda
+  path:
+    path: /Audio/Radium/Lobby/Andromeda.ogg
+
+- type: jukebox
+  id: apex
+  name: Radium - Apex
+  path:
+    path: /Audio/Radium/Lobby/Apex.ogg
+
+- type: jukebox
+  id: quasar
+  name: Radium - Quasar
+  path:
+    path: /Audio/Radium/Lobby/Quasar.ogg
+
+- type: jukebox
+  id: maxwell
+  name: Maxwell
+  path:
+    path: /Audio/Radium/Maxwell/maxwell.ogg
+
+- type: jukebox
+  id: echoes
+  name: Radium - Echoes
+  path:
+    path: /Audio/Radium/Lobby/Echoes.ogg
+
+- type: jukebox
+  id: fadedsecrets
+  name: Radium - FadedSecrets
+  path:
+    path: /Audio/Radium/Lobby/FadedSecrets.ogg
+
+- type: jukebox
+  id: fallenforthat
+  name: Radium - Fallen For That
+  path:
+    path: /Audio/Radium/Lobby/FallenforThat-Instrumental.ogg
+
+- type: jukebox
+  id: firststop
+  name: Radium - First Stop
+  path:
+    path: /Audio/Radium/Lobby/FirstStop.ogg
+
+- type: jukebox
+  id: fluxed
+  name: Radium - Fluxed
+  path:
+    path: /Audio/Radium/Lobby/Fluxed.ogg
+
+- type: jukebox
+  id: getback
+  name: Radium - Get Back
+  path:
+    path: /Audio/Radium/Lobby/GetBack.ogg
+
+- type: jukebox
+  id: getback
+  name: Radium - Get Back
+  path:
+    path: /Audio/Radium/Lobby/GetBack.ogg
+
+- type: jukebox
+  id: hope
+  name: Radium - Hope
+  path:
+    path: /Audio/Radium/Lobby/Hope-80'sRetroChillwaveBeatMix.ogg
+
+- type: jukebox
+  id: industry
+  name: Radium - Industry
+  path:
+    path: /Audio/Radium/Lobby/Industry.ogg
+
+- type: jukebox
+  id: itstillhurts
+  name: Radium - It Still Hurts
+  path:
+    path: /Audio/Radium/Lobby/ItStillHurts(IJustDon'tKnowWhy).ogg
+
+- type: jukebox
+  id: lastcall
+  name: Radium - Last Call
+  path:
+    path: /Audio/Radium/Lobby/LastCall.ogg
+
+- type: jukebox
+  id: laststretch
+  name: Radium - Last Stretch
+  path:
+    path: /Audio/Radium/Lobby/LastStretch.ogg
