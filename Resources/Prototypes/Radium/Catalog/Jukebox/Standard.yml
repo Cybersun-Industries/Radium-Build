@@ -135,3 +135,213 @@
   name: Radium - Last Stretch
   path:
     path: /Audio/Radium/Lobby/LastStretch.ogg
+
+- type: jukebox
+  id: laterwave
+  name: Radium - Later Wave
+  path:
+    path: /Audio/Radium/Lobby/LaterWave.ogg
+
+- type: jukebox
+  id: libertycity
+  name: Radium - Last Stretch
+  path:
+    path: /Audio/Radium/Lobby/LibertyCity-Remastered.ogg
+
+- type: jukebox
+  id: lisa
+  name: Radium - Lisa
+  path:
+    path: /Audio/Radium/Lobby/Lisa.ogg
+
+- type: jukebox
+  id: lust
+  name: Radium - Lust
+  path:
+    path: /Audio/Radium/Lobby/Lust.ogg
+
+- type: jukebox
+  id: magicfly
+  name: Radium - Magic Fly
+  path:
+    path: /Audio/Radium/Lobby/MagicFly.ogg
+
+- type: jukebox
+  id: memorybank
+  name: Radium - Memory Bank
+  path:
+    path: /Audio/Radium/Lobby/MemoryBank.ogg
+
+- type: jukebox
+  id: midnighttheory
+  name: Radium - Mid Night Theory
+  path:
+    path: /Audio/Radium/Lobby/MidnightTheory.ogg
+
+- type: jukebox
+  id: mittsiesbraincell
+  name: Radium - Mittsies BrainCell
+  path:
+    path: /Audio/Radium/Lobby/Mittsies-Braincell.ogg
+
+- type: jukebox
+  id: mittsiesfloodlights
+  name: Radium - Mittsies FloodLights
+  path:
+    path: /Audio/Radium/Lobby/Mittsies-Floodlights.ogg
+
+- type: jukebox
+  id: mittsiespainkiller
+  name: Radium - Mittsies PainKiller
+  path:
+    path: /Audio/Radium/Lobby/Mittsies-Painkiller.ogg
+
+- type: jukebox
+  id: mittsiesphantom
+  name: Radium - Mittsies Phantom
+  path:
+    path: /Audio/Radium/Lobby/Mittsies-Phantom.ogg
+
+- type: jukebox
+  id: mixereffect
+  name: Radium - Mixer Effect
+  path:
+    path: /Audio/Radium/Lobby/MixerEffect.ogg
+
+- type: jukebox
+  id: movingon
+  name: Radium - Moving On
+  path:
+    path: /Audio/Radium/Lobby/MovingOn.ogg
+
+- type: jukebox
+  id: newarcade
+  name: Radium - New Arcade
+  path:
+    path: /Audio/Radium/Lobby/NewArcade.ogg
+
+- type: jukebox
+  id: nextleft
+  name: Radium - Next Left
+  path:
+    path: /Audio/Radium/Lobby/NextLeft.ogg
+
+- type: jukebox
+  id: nextstopmars
+  name: Radium - Next Stop Mars
+  path:
+    path: /Audio/Radium/Lobby/NextStopMars.ogg
+
+- type: jukebox
+  id: nightrider
+  name: Radium - Night Rider
+  path:
+    path: /Audio/Radium/Lobby/Nightrider.ogg
+
+- type: jukebox
+  id: offworld
+  name: Radium - OffWorld
+  path:
+    path: /Audio/Radium/Lobby/OffWorld.ogg
+
+- type: jukebox
+  id: osmosis
+  name: Radium - Osmosis
+  path:
+    path: /Audio/Radium/Lobby/Osmosis.ogg
+
+- type: jukebox
+  id: production08
+  name: Radium - Production 08
+  path:
+    path: /Audio/Radium/Lobby/Production-08.ogg
+
+- type: jukebox
+  id: reversethegeometry
+  name: Radium - Reverse the Geometry
+  path:
+    path: /Audio/Radium/Lobby/ReversetheGeometry.ogg
+
+- type: jukebox
+  id: ronindesync
+  name: Radium - RoninDesync
+  path:
+    path: /Audio/Radium/Lobby/RoninDesync.ogg
+
+- type: jukebox
+  id: severance
+  name: Radium - Severance
+  path:
+    path: /Audio/Radium/Lobby/Severance.ogg
+
+- type: jukebox
+  id: shadowboxing
+  name: Radium - Shadow Boxing
+  path:
+    path: /Audio/Radium/Lobby/Shadowboxing.ogg
+
+- type: jukebox
+  id: shitsuboshita
+  name: Radium - ShitSuboShita
+  path:
+    path: /Audio/Radium/Lobby/ShitsuboShita.ogg
+
+- type: jukebox
+  id: sights
+  name: Radium - Sights
+  path:
+    path: /Audio/Radium/Lobby/Sights.ogg
+
+- type: jukebox
+  id: speeding
+  name: Radium - Speeding
+  path:
+    path: /Audio/Radium/Lobby/Speeding.ogg
+
+- type: jukebox
+  id: stargate
+  name: Radium - Stargate
+  path:
+    path: /Audio/Radium/Lobby/Stargate.ogg
+
+- type: jukebox
+  id: summershift
+  name: Radium - SummerShift
+  path:
+    path: /Audio/Radium/Lobby/SummerShift.ogg
+
+- type: jukebox
+  id: theend
+  name: Radium - The End
+  path:
+    path: /Audio/Radium/Lobby/TheEnd.ogg
+
+- type: jukebox
+  id: theshapereturns
+  name: Radium - The Shape Returns
+  path:
+    path: /Audio/Radium/Lobby/TheShapeReturns.ogg
+
+- type: jukebox
+  id: theshiftingtide
+  name: Radium - The Shifting Tide
+  path:
+    path: /Audio/Radium/Lobby/TheShiftingTide.ogg
+
+- type: jukebox
+  id: ti84
+  name: Radium - TI-84
+  path:
+    path: /Audio/Radium/Lobby/TI-84.ogg
+
+- type: jukebox
+  id: vampirevigilante
+  name: Radium - Vampire Vigilante
+  path:
+    path: /Audio/Radium/Lobby/VampireVigilante.ogg
+
+- type: jukebox
+  id: zetareticuli
+  name: Radium - Zeta Reticuli
+  path:
+    path: /Audio/Radium/Lobby/ZetaReticuli.ogg
