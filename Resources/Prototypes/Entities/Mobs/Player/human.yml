@@ -4,7 +4,7 @@
   parent: BaseMobHuman
   id: MobHuman
   components:
-    - type: PotentialPsionic
+  - type: PotentialPsionic
 
 #Syndie
 - type: entity
@@ -13,18 +13,18 @@
   name: syndicate agent
   suffix: Human, Base
   components:
-    - type: RandomHumanoidAppearance
-      randomizeName: false
-      hair: HairBald
-    - type: Loadout
-      prototypes: [SyndicateOperativeGearExtremelyBasic]
-    - type: RandomMetadata
-      nameSegments: # Corvax-MRP
-      - names_first_male
-      - names_last_male
-    - type: NpcFactionMember
-      factions:
-      - Syndicate
+  - type: RandomHumanoidAppearance
+    randomizeName: false
+    hair: HairBald
+  - type: Loadout
+    prototypes: [SyndicateOperativeGearExtremelyBasic]
+  - type: RandomMetadata
+    nameSegments: # Corvax-MRP
+    - names_first_male
+    - names_last_male
+  - type: NpcFactionMember
+    factions:
+    - Syndicate
 
 - type: entity
   parent: MobHumanSyndicateAgentBase
@@ -32,19 +32,47 @@
   name: syndicate agent
   suffix: Human, Traitor
   components:
-    # make the player a traitor once its taken
-    - type: AutoTraitor
-      giveUplink: false
-      giveObjectives: false
+  # make the player a traitor once its taken
+  - type: AutoTraitor
+    giveUplink: false
+    giveObjectives: false
+
+- type: entity
+  parent: MobHumanSyndicateAgent
+  id: MobHumanSyndicateAgentMedic
+  name: syndicate medic
+  components:
+  - type: Loadout
+    prototypes: [SyndicateReinforcementMedic]
+
+- type: entity
+  parent: MobHumanSyndicateAgent
+  id: MobHumanSyndicateAgentSpy
+  name: syndicate spy
+  components:
+  - type: Loadout
+    prototypes: [SyndicateReinforcementSpy]
+
+- type: entity
+  parent: MobHumanSyndicateAgent
+  id: MobHumanSyndicateAgentThief
+  name: syndicate thief
+  components:
+  - type: Loadout
+    prototypes: [SyndicateReinforcementThief]
 
 - type: entity
   parent: MobHumanSyndicateAgentBase
   id: MobHumanSyndicateAgentNukeops # Reinforcement exclusive to nukeops uplink
   suffix: Human, NukeOps
   components:
-    - type: Loadout
-      prototypes: [SyndicateOperativeGearReinforcementNukeOps]
-    - type: NukeOperative
+  - type: NukeOperative
+  - type: RandomMetadata
+    nameSegments:
+    - nukeops-role-operator
+    - SyndicateNamesNormal
+  - type: Loadout
+    prototypes: [SyndicateOperativeGearFullNoUplink]
 
 #Flesh Cultist
 - type: entity
@@ -52,56 +80,56 @@
   id: MobHumanFleshCultist
   name: Flesh Cultist
   components:
-    - type: FleshCultist
-      startingEvolutionPoint: 300
-    - type: NpcFactionMember
-      factions:
-        - Flesh
-    - type: UserInterface
-      interfaces:
-        enum.StoreUiKey.Key:
-          type: StoreBoundUserInterface
-    - type: Store
-      categories:
-        - FleshCultistAbilities
-      currencyWhitelist:
-        - StolenMutationPoint
-    - type: IntrinsicRadioReceiver
-    - type: IntrinsicRadioTransmitter
-      channels:
-        - Flesh
-    - type: ActiveRadio
-      channels:
-        - Flesh
-    - type: Psionic
-      channel: Flesh
-      channelColor: "#cf1b48"
+  - type: FleshCultist
+    startingEvolutionPoint: 300
+  - type: NpcFactionMember
+    factions:
+    - Flesh
+  - type: UserInterface
+    interfaces:
+      enum.StoreUiKey.Key:
+        type: StoreBoundUserInterface
+  - type: Store
+    categories:
+    - FleshCultistAbilities
+    currencyWhitelist:
+    - StolenMutationPoint
+  - type: IntrinsicRadioReceiver
+  - type: IntrinsicRadioTransmitter
+    channels:
+    - Flesh
+  - type: ActiveRadio
+    channels:
+    - Flesh
+  - type: Psionic
+    channel: Flesh
+    channelColor: "#cf1b48"
 
 # Nuclear Operative
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   name: Nuclear Operative
   parent: MobHuman
   id: MobHumanNukeOp
   components:
-    - type: NukeOperative
-    - type: RandomHumanoidAppearance
+  - type: NukeOperative
+  - type: RandomHumanoidAppearance
 
 - type: entity
-  noSpawn: true
+  categories: [ HideSpawnMenu ]
   parent: MobHuman
   id: MobHumanLoneNuclearOperative
   name: Lone Operative
   components:
-    - type: RandomHumanoidAppearance
-      randomizeName: false
-    - type: NukeOperative
-    - type: Loadout
-      prototypes: [SyndicateLoneOperativeGearFull]
-    - type: RandomMetadata
-      nameSegments:
-      - SyndicateNamesPrefix
-      - SyndicateNamesNormal
-    - type: NpcFactionMember
-      factions:
-      - Syndicate
+  - type: RandomHumanoidAppearance
+    randomizeName: false
+  - type: NukeOperative
+  - type: Loadout
+    prototypes: [SyndicateLoneOperativeGearFull]
+  - type: RandomMetadata
+    nameSegments:
+    - SyndicateNamesPrefix
+    - SyndicateNamesNormal
+  - type: NpcFactionMember
+    factions:
+    - Syndicate

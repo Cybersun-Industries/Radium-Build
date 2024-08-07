@@ -46,7 +46,7 @@ public sealed class DrapesSystem : EntitySystem
 
     private bool ApplyDrapes(EntityUid uid, InteractEvent args, DrapesComponent component)
     {
-        if (args.Target == null || args.Target == args.User)
+        if (args.Target == null)
         {
             return false;
         }
