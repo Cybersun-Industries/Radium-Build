@@ -368,7 +368,7 @@
 
 - type: entity
   name: energy shield
-  parent: BaseItem
+  parent: [BaseItem, BaseSyndicateContraband]
   id: EnergyShield
   description: Exotic energy shield, when folded, can even fit in your pocket.
   components:
@@ -586,3 +586,5 @@
                   max: 2
     - type: StaticPrice
       price: 250
+
+

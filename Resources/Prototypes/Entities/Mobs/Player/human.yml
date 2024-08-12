@@ -18,10 +18,9 @@
     hair: HairBald
   - type: Loadout
     prototypes: [SyndicateOperativeGearExtremelyBasic]
-  - type: RandomMetadata
-    nameSegments: # Corvax-MRP
-    - names_first_male
-    - names_last_male
+  roleLoadout: [ RoleSurvivalSyndicate ]- type: RandomMetadata
+    nameSegments: [names_first_male, names_last_male]# Corvax-MRP
+
   - type: NpcFactionMember
     factions:
     - Syndicate
@@ -44,6 +43,7 @@
   components:
   - type: Loadout
     prototypes: [SyndicateReinforcementMedic]
+    roleLoadout: [ RoleSurvivalSyndicate ]
 
 - type: entity
   parent: MobHumanSyndicateAgent
@@ -52,6 +52,7 @@
   components:
   - type: Loadout
     prototypes: [SyndicateReinforcementSpy]
+    roleLoadout: [ RoleSurvivalSyndicate ]
 
 - type: entity
   parent: MobHumanSyndicateAgent
@@ -60,6 +61,7 @@
   components:
   - type: Loadout
     prototypes: [SyndicateReinforcementThief]
+    roleLoadout: [ RoleSurvivalSyndicate ]
 
 - type: entity
   parent: MobHumanSyndicateAgentBase
@@ -126,7 +128,7 @@
   - type: NukeOperative
   - type: Loadout
     prototypes: [SyndicateLoneOperativeGearFull]
-  - type: RandomMetadata
+  roleLoadout: [ RoleSurvivalSyndicate ]- type: RandomMetadata
     nameSegments:
     - SyndicateNamesPrefix
     - SyndicateNamesNormal

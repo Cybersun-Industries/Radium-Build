@@ -41,6 +41,8 @@
     solution: beaker
   - type: SolutionTransfer
     canChangeTransferAmount: true
+  - type: SolutionItemStatus
+    solution: beaker
   - type: UserInterface
     interfaces:
       enum.TransferAmountUiKey.Key:
@@ -90,6 +92,7 @@
         Blunt: 5
   - type: StaticPrice
     price: 30
+  - type: DnaSubstanceTrace
 
 - type: entity
   parent: BaseItem
@@ -134,6 +137,8 @@
     solution: beaker
   - type: SolutionTransfer
     canChangeTransferAmount: true
+  - type: SolutionItemStatus
+    solution: beaker
   - type: UserInterface
     interfaces:
       enum.TransferAmountUiKey.Key:
@@ -149,6 +154,7 @@
     damageModifierSet: Glass
   - type: StaticPrice
     price: 30
+  - type: DnaSubstanceTrace
 
 - type: entity
   name: beaker
@@ -299,6 +305,7 @@
     inHandsFillBaseName: -fill-
   - type: StaticPrice
     price: 40
+  - type: DnaSubstanceTrace
   - type: Tag
     tags:
     - Dropper
