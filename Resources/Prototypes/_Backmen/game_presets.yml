@@ -190,24 +190,6 @@
     - Nukeops
     - BasicRoundstartVariation
 
-
-- type: gamePreset
-  id: Changeling
-  alias:
-  - ling
-  - lings
-  - changeling
-  name: changeling-gamemode-title
-  description: changeling-gamemode-description
-  showInVote: false
-  rules:
-  - WageScheduler #backmen: currency
-  - Changeling
-  - SubGamemodesRule
-  - BasicStationEventScheduler
-  - GameRuleMeteorScheduler
-  - BasicRoundstartVariation
-
 - type: gamePreset
   id: Traitorling
   alias:

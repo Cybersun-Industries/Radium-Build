@@ -181,14 +181,4 @@ public sealed class LoadoutSystem : EntitySystem
 
         return HumanoidCharacterProfile.Random();
     }
-
-    public HumanoidCharacterProfile GetProfile(EntityUid? uid)
-    {
-        if (TryComp(uid, out HumanoidAppearanceComponent? appearance))
-        {
-            return HumanoidCharacterProfile.DefaultWithSpecies(appearance.Species);
-        }
-
-        return HumanoidCharacterProfile.Random();
-    }
 }
