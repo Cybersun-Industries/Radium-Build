@@ -5,8 +5,6 @@
   id: MobFelinidBase
   abstract: true
   components:
-  - type: Sprite
-    scale: 0.8, 0.8
   - type: HumanoidAppearance
     species: Felinid
   - type: Fixtures
@@ -34,14 +32,11 @@
     attackRate: 1
     damage:
       types:
-        Blunt: 1
-        Slash: 5
+        Blunt: 3
+        Slash: 2
   - type: DiseaseCarrier
     naturalImmunities:
     - OwOnavirus
-  - type: Thieving
-    stealthy: true
-    stripTimeReduction: 1
   - type: Speech
     speechSounds: Alto
     allowedEmotes: ['Hiss', 'Mews', 'Meows', 'Purrs']
@@ -52,7 +47,7 @@
     soundHit:
       path: /Audio/Effects/hit_kick.ogg
   - type: Stamina
-    critThreshold: 85
+    critThreshold: 75
   - type: PseudoItem
   - type: Vocal
     sounds:
@@ -66,7 +61,7 @@
         Asphyxiation: 1.5
     damageRecovery:
       types:
-        Asphyxiation: -1.5
+        Asphyxiation: -1
   - type: NpcFactionMember
     factions:
       - NanoTrasen
