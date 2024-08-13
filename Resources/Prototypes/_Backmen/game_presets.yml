@@ -200,7 +200,6 @@
   showInVote: false
   rules:
   - WageScheduler #backmen: currency
-  - Changeling
   - Traitor
   - SubGamemodesRule
   - BasicStationEventScheduler
