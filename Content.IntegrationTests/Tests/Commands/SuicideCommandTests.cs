@@ -32,7 +32,7 @@ public sealed class SuicideCommandTests
   - type: MeleeWeapon
     damage:
       types:
-        Slash: 6
+        Slash: 5
   - type: Execution
 
 - type: entity
@@ -43,8 +43,8 @@ public sealed class SuicideCommandTests
   - type: MeleeWeapon
     damage:
       types:
-        Slash: 6
-        Blunt: 6
+        Slash: 5
+        Blunt: 5
   - type: Execution
 
 - type: entity
