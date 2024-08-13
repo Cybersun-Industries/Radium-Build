@@ -35,7 +35,7 @@ public sealed class SharedSuicideSystem : EntitySystem
         // Split the total amount of damage needed to kill the target by every damage type in the DamageSpecifier
         foreach (var (key, value) in appliedDamageSpecifier.DamageDict)
         {
-            appliedDamageSpecifier.DamageDict[key] = Math.Ceiling((double) ((value + 1) * lethalAmountOfDamage / totalDamage));
+            appliedDamageSpecifier.DamageDict[key] = Math.Ceiling((double) (value * lethalAmountOfDamage / totalDamage));
         }
 
         _damageableSystem.TryChangeDamage(target, appliedDamageSpecifier, true, origin: target);
