@@ -341,15 +341,6 @@
         drama2: null
         drama3: null
 
-- type: entity
-  parent: BaseSign
-  id: SignKitchen
-  name: kitchen sign
-  description: The heart of the home. And disease.
-  components:
-  - type: Sprite
-    state: kitchen
-
 #- type: entity
 #  parent: BaseSign
 #  id: SignTheater

@@ -80,7 +80,8 @@ public sealed class FollowDistanceSystem : EntitySystem
 
     private void OnCameraFollowInit(EntityUid uid, CameraFollowComponent component, MapInitEvent args) // Stalker-Changes-Start
     {
-        _actionsSystem.AddAction(uid, ref component.ActionEntity, component.Action);
+        //WTF IS THAT?
+        //_actionsSystem.AddAction(uid, ref component.ActionEntity, component.Action);
     }
 
     private void OnCameraFollowRemove(EntityUid uid, CameraFollowComponent component, ComponentRemove args)

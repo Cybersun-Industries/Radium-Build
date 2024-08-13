@@ -1,4 +1,4 @@
-﻿#- type: statusIcon
+﻿#- type: StatusIcon
 #  parent: JobIcon
 #  id: JobIconPrisoner
 #  icon:

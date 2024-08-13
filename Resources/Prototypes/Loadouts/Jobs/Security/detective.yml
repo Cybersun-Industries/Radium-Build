@@ -38,10 +38,6 @@
 
 - type: loadout
   id: JumpsuitDecSerii
-  equipment: JumpsuitDecSerii
-
-- type: loadout
-  id: JumpsuitDecSerii
   equipment:
     jumpsuit: ClothingUniformJumpsuitDecSerii
 

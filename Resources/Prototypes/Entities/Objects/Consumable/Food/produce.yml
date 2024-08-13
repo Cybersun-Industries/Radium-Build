@@ -1042,42 +1042,6 @@
           state: produce
 
 - type: entity
-  name: golden apple
-  parent: FoodProduceBase
-  id: FoodGoldenApple
-  description: It should be shaped like a cube, shouldn't it?
-  components:
-  - type: FlavorProfile
-    flavors:
-      - apple
-      - metallic
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 30
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 10
-        - ReagentId: Vitamin
-          Quantity: 4
-        - ReagentId: DoctorsDelight
-          Quantity: 13
-  - type: Sprite
-    sprite: Objects/Specific/Hydroponics/golden_apple.rsi
-  - type: Produce
-    seedId: goldenApple
-  - type: Extractable
-    juiceSolution:
-      reagents:
-      - ReagentId: JuiceApple
-        Quantity: 10
-      - ReagentId: Gold
-        Quantity: 10
-  - type: Tag
-    tags:
-    - Fruit
-
-- type: entity
   name: cocoa pod
   parent: FoodProduceBase
   id: FoodCocoaPod
@@ -1818,71 +1782,6 @@
           state: produce
 
 - type: entity
-  name: glasstle
-  parent: FoodProduceBase
-  id: FoodGlasstle
-  description: A fragile crystal plant with lot of spiky thorns. 
-  components:
-  - type: Item
-    size: Small
-    sprite: Objects/Specific/Hydroponics/glasstle.rsi
-    heldPrefix: produce  
-  - type: FlavorProfile
-    flavors:
-      - sharp
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        maxVol: 15
-        reagents:
-        - ReagentId: Razorium
-          Quantity: 15
-  - type: Sprite
-    sprite: Objects/Specific/Hydroponics/glasstle.rsi
-  - type: Produce
-    seedId: glasstle
-  - type: Extractable
-    grindableSolutionName: food
-  - type: Damageable 
-    damageContainer: Inorganic
-  - type: ToolRefinable
-    refineResult:
-    - id: SheetGlass1
-  - type: Destructible
-    thresholds:
-    - trigger:
-        !type:DamageTrigger
-        damage: 10
-      behaviors:
-      - !type:PlaySoundBehavior
-        sound:
-          collection: GlassBreak
-          params:
-            volume: -4
-      - !type:SpawnEntitiesBehavior
-        spawn:
-          ShardGlass:
-            min: 1
-            max: 1
-      - !type:DoActsBehavior
-        acts: [ "Destruction" ]
-  - type: DamageOnHit 
-    damage:
-      types:
-        Blunt: 10
-  - type: MeleeWeapon
-    wideAnimationRotation: 60
-    damage:
-      types:
-        Slash: 15
-    soundHit:
-        path: /Audio/Weapons/bladeslice.ogg
-  - type: Tag
-    tags:
-    - Galaxythistle
-
-
-- type: entity
   name: fly amanita
   parent: FoodProduceBase
   id: FoodFlyAmanita
@@ -1917,7 +1816,7 @@
 
 - type: entity
   name: gatfruit
-  parent: FoodProduceBase
+  parent: [ FoodProduceBase, BaseSyndicateContraband ]
   id: FoodGatfruit
   description: A delicious, gun-shaped fruit with a thick wooden stem.
   components:
@@ -1943,7 +1842,14 @@
   - type: Tag
     tags:
     - Fruit # It's in the name
-# Corvax-HiddenDesc-Start
+  - type: FoodSequenceElement
+    entries:
+      burger:
+        name: food-sequence-burger-content-gatfruit
+        sprite:
+          sprite: Objects/Specific/Hydroponics/gatfruit.rsi
+          state: produce
+  # Corvax-HiddenDesc-Start
   - type: HiddenDescription
     entries:
     - label: corvax-hidden-desc-Gatfruit-syndicate
@@ -1955,14 +1861,7 @@
       jobRequired:
         - Botanist
         - Borg
-# Corvax-HiddenDesc-End
-  - type: FoodSequenceElement
-    entries:
-      burger:
-        name: food-sequence-burger-content-gatfruit
-        sprite:
-          sprite: Objects/Specific/Hydroponics/gatfruit.rsi
-          state: produce
+  # Corvax-HiddenDesc-End
 
 - type: entity
   name: rice bushel
