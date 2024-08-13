@@ -232,7 +232,8 @@
     - type: Clothing
       sprite: Backmen/Clothing/OuterClothing/Armor/armor_sec_med.rsi
 
-- type: entity # backmen
+# backmen
+- type: entity
   parent: ClothingOuterArmorBasic
   id: ClothingOuterArmorSWAT
   name: бронежилет SWAT
@@ -251,4 +252,3 @@
         Heat: 0.9
   - type: ExplosionResistance
     damageCoefficient: 0.80
-   

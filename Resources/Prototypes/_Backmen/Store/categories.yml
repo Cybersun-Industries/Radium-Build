@@ -45,7 +45,7 @@
 - type: storeCategory
   id: VendingLootboxInventory
   name: store-category-lootbox
-  
+
 - type: storeCategory
   id: VendingLootboxInventoryEmag
   name: store-category-emag
@@ -81,7 +81,7 @@
 - type: storeCategory
   id: BoxingDrobeInventory
   name: store-category-vendingmachineboxingdrobe
-  
+
 - type: storeCategory
   id: BoxingDrobeInventoryEmag
   name: store-category-emag
@@ -133,3 +133,5 @@
   id: WizardPointless
   name: store-category-pointless
   priority: 8
+
+
