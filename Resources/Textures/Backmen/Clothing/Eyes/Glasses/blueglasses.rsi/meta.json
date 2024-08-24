@@ -1,11 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-<<<<<<<< HEAD:Resources/Textures/Clothing/Uniforms/Jumpskirt/elegantdress.rsi/meta.json
-  "copyright": "Add new dress by DreamlyJack",
-========
   "copyright": "Sprited by discord:@mishutka09",
->>>>>>>> rxup/master:Resources/Textures/Backmen/Clothing/Eyes/Glasses/blueglasses.rsi/meta.json
   "size": {
     "x": 32,
     "y": 32
@@ -15,7 +11,6 @@
       "name": "icon"
     },
     {
-<<<<<<<< HEAD:Resources/Textures/Clothing/Uniforms/Jumpskirt/elegantdress.rsi/meta.json
       "name": "icon-color"
     },
     {
@@ -24,13 +19,11 @@
     },
     {
       "name": "color-equipped-INNERCLOTHING",
-========
       "name": "equipped-EYES",
       "directions": 4
     },
     {
       "name": "equipped-EYES-hamster",
->>>>>>>> rxup/master:Resources/Textures/Backmen/Clothing/Eyes/Glasses/blueglasses.rsi/meta.json
       "directions": 4
     },
     {
