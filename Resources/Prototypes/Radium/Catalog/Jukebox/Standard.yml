@@ -339,21 +339,3 @@
   name: Zeta Reticuli
   path:
     path: /Audio/Radium/Lobby/ZetaReticuli.ogg
-
-- type: jukebox
-  id: scpslnuke
-  name: SCP:SL Nuke
-  path:
-    path: /Audio/Radium/Sponsor/scp_sl_nuke.ogg
-
-- type: jukebox
-  id: scp5000
-  name: SCP 5000
-  path:
-    path: /Audio/Radium/Sponsor/scp_5000.ogg
-
-- type: jukebox
-  id: drgrun
-  name: Run - Deep Rock Galactic
-  path:
-    path: /Audio/Radium/Sponsor/drg_run.ogg
