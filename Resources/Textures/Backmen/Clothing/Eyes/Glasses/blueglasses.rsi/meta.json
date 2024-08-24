@@ -11,14 +11,6 @@
       "name": "icon"
     },
     {
-      "name": "icon-color"
-    },
-    {
-      "name": "equipped-INNERCLOTHING",
-      "directions": 4
-    },
-    {
-      "name": "color-equipped-INNERCLOTHING",
       "name": "equipped-EYES",
       "directions": 4
     },
