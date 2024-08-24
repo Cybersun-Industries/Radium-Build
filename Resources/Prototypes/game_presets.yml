@@ -105,7 +105,6 @@
   - SpaceTrafficControlFriendlyEventScheduler
   - BasicRoundstartVariation
   - WageScheduler #backmen: currency
-  - GameRuleMeteorScheduler
 
 - type: gamePreset
   id: Secret
