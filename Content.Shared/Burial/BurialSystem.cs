@@ -165,9 +165,6 @@ public sealed class BurialSystem : EntitySystem
         if (!_actionBlocker.CanMove(args.Entity))
             return;
 
-        if (!_actionBlocker.CanMove(args.Entity))
-            return;
-
         var doAfterEventArgs = new DoAfterArgs(EntityManager, args.Entity, component.DigDelay / component.DigOutByHandModifier, new GraveDiggingDoAfterEvent(), uid, target: uid)
         {
             NeedHand = false,

@@ -225,8 +225,8 @@
     - FootstepSound
     - CanPilot
   - type: Emoting
-#  - type: TTS # Corvax-TTS
-#    voice: Borgs
+  - type: TTS # Corvax-TTS
+    voice: Borgs
   - type: GuideHelp
     guides:
     - Cyborgs
@@ -246,6 +246,7 @@
     deviceNetId: Wireless
     receiveFrequencyId: CyborgControl
     transmitFrequencyId: RoboticsConsole
+    savableAddress: false
   - type: OnUseTimerTrigger
     delay: 10
     examinable: false

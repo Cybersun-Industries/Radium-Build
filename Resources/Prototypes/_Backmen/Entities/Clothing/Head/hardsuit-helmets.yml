@@ -233,6 +233,17 @@
         Slash: 0.8
         Piercing: 0.8
 
+- type: entity
+  parent: ClothingHeadHelmetHardsuitERTOperativeAlpha1
+  id: ClothingHeadHelmetHardsuitBlueShield
+  name: шлем скафандра Синего Щита
+  description: Модифицированный шлем скафандра разведчиков ОПЗ, специализирован для ведения разведки на дальних расстояниях, оснащен устройством ночного видиния.
+  components:
+  - type: Sprite
+    sprite: Backmen/Clothing/Head/Hardsuits/bluehardhelmet.rsi
+  - type: Clothing
+    sprite: Backmen/Clothing/Head/Hardsuits/bluehardhelmet.rsi
+
 #Chrono
 - type: entity
   parent: ClothingHeadHardsuitWithLightBase
@@ -249,4 +260,22 @@
   - type: PressureProtection
     highPressureMultiplier: 0.08
     lowPressureMultiplier: 1000
+
+# Changeling
+- type: entity
+  parent: ClothingHeadHardsuitBase
+  id: ChangelingClothingHeadHelmetHardsuit
+  name: organic space helmet
+  description: A spaceworthy biomass of pressure and temperature resistant tissue.
+  suffix: Unremoveable
+  components:
+  - type: Item
+  - type: Sprite
+    sprite: Backmen/Changeling/ling_spacesuit_helmet.rsi
+  - type: Clothing
+    sprite: Backmen/Changeling/ling_spacesuit_helmet.rsi
+  - type: PressureProtection
+    highPressureMultiplier: 0.225
+    lowPressureMultiplier: 1000
+  - type: Unremoveable
 

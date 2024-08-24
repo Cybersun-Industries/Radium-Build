@@ -951,11 +951,6 @@ namespace Content.Shared.Interaction
                 LogImpact.Low,
                 $"{ToPrettyString(user):user} interacted with {ToPrettyString(target):target} using {ToPrettyString(used):used}");
 
-            _adminLogger.Add(
-                LogType.InteractUsing,
-                LogImpact.Low,
-                $"{ToPrettyString(user):user} interacted with {ToPrettyString(target):target} using {ToPrettyString(used):used}");
-
             if (RangedInteractDoBefore(user, used, target, clickLocation, true))
                 return true;
 

@@ -142,8 +142,8 @@
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
-#  - type: TTS # Corvax-TTS
-#    voice: Npc3
+  - type: TTS # Corvax-TTS
+    voice: Npc3
 
 - type: entity
   name: blue slime

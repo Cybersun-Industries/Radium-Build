@@ -1,7 +1,11 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
+<<<<<<<< HEAD:Resources/Textures/Backmen/Clothing/Belt/webbingtgmcwhite.rsi/meta.json
+  "copyright": "fizzoghoster",
+========
   "copyright": "made by fizzoghoster",
+>>>>>>>> rxup/master:Resources/Textures/Backmen/Clothing/OuterClothing/Misc/posledov.rsi/meta.json
   "size": {
     "x": 32,
     "y": 32
@@ -11,7 +15,7 @@
       "name": "icon"
     },
     {
-      "name": "equipped-OUTERCLOTHING",
+      "name": "equipped-BELT",
       "directions": 4
     },
     {

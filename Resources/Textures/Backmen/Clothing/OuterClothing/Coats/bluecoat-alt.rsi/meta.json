@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+<<<<<<<< HEAD:Resources/Textures/Backmen/Clothing/OuterClothing/Misc/posledov.rsi/meta.json
+  "copyright": "made by fizzoghoster",
+========
+  "copyright": "made by no_mad.",
+>>>>>>>> rxup/master:Resources/Textures/Backmen/Clothing/OuterClothing/Coats/bluecoat-alt.rsi/meta.json
+  "size": {
+    "x": 32,
+    "y": 32
+  },
+  "states": [
+    {
+      "name": "icon"
+    },
+    {
+      "name": "equipped-OUTERCLOTHING",
+      "directions": 4
+    },
+    {
+      "name": "inhand-left",
+      "directions": 4
+    },
+    {
+      "name": "inhand-right",
+      "directions": 4
+    }
+  ]
+}
