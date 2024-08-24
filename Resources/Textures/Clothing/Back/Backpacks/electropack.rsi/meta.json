@@ -1,11 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-<<<<<<<< HEAD:Resources/Textures/Clothing/Head/Helmets/syndie-raid.rsi/meta.json
-  "copyright": "Made by alzore_(Discord) for SS14 using the colors of the blood-red hardsuit",
-========
   "copyright": "Taken from tgstation at commit https://github.com/tgstation/tgstation/commit/2d26ce62c273d025bed77a0e6c4bdc770b789bb0",
->>>>>>>> rxup/master:Resources/Textures/Clothing/Back/Backpacks/electropack.rsi/meta.json
   "size": {
     "x": 32,
     "y": 32
@@ -22,15 +18,11 @@
       ]
     },
     {
-<<<<<<<< HEAD:Resources/Textures/Clothing/Head/Helmets/syndie-raid.rsi/meta.json
       "name": "equipped-HELMET",
       "directions": 4
     },
     {
-      "name": "equipped-HELMET-vox",
-========
       "name": "equipped-BACKPACK",
->>>>>>>> rxup/master:Resources/Textures/Clothing/Back/Backpacks/electropack.rsi/meta.json
       "directions": 4
     },
     {
