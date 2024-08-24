@@ -212,6 +212,10 @@
             "directions": 4
         },
         {
+            "name": "direction_atmos",
+            "directions": 4
+        },
+        {
             "name": "dock"
         },
         {
