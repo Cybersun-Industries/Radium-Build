@@ -1,5 +1,4 @@
-﻿changeling-chemicals-deficit = Недостаточно ресурсов!
-#UI
+﻿#UI
 changeling-user-interface-title = Окно эволюции
 changeling-user-interface-cost = { $price } ресурсов
 changeling-condition-genes-description = Используйте своё жало, чтобы извелечь гены нескольких человек.

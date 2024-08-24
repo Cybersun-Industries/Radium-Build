@@ -97,7 +97,7 @@ public sealed class HealthAnalyzerSystem : EntitySystem
             BreakOnMove = true,
         });
 
-        if (args.Target == args.User || doAfterCancelled)
+        if (args.Target == args.User || doAfterCancelled || uid.Comp.Silent)
             return;
 
         var msg = Loc.GetString("health-analyzer-popup-scan-target", ("user", Identity.Entity(args.User, EntityManager)));
