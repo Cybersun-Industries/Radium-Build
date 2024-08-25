@@ -339,3 +339,21 @@
   name: Zeta Reticuli
   path:
     path: /Audio/Radium/Lobby/ZetaReticuli.ogg
+
+- type: jukebox
+  id: scp5000
+  name: SCP 5000 Theme
+  path:
+    path: /Audio/Radium/Sponsor/scp_5000.ogg
+
+- type: jukebox
+  id: scpnuke
+  name: SCP The final flash of existence
+  path:
+    path: /Audio/Radium/Sponsor/scp_nuke.ogg
+
+- type: jukebox
+  id: drgrun
+  name: DRG Run
+  path:
+    path: /Audio/Radium/Sponsor/drg_run.ogg
