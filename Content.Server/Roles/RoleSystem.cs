@@ -3,6 +3,7 @@ using Content.Server.Backmen.Blob.Roles;
 using Content.Server.Backmen.EvilTwin;
 using Content.Server.Backmen.Flesh;
 using Content.Server.Backmen.Fugitive;
+using Content.Server.Backmen.Vampiric.Role;
 using Content.Server.Radium.Changeling.Components;
 //end-backmen: antag
 using Content.Shared.Roles;
@@ -30,7 +31,7 @@ public sealed class RoleSystem : SharedRoleSystem
         SubscribeAntagEvents<EvilTwinRoleComponent>();
         SubscribeAntagEvents<FugitiveRoleComponent>();
         SubscribeAntagEvents<FleshCultistRoleComponent>();
-        SubscribeAntagEvents<Backmen.Vampiric.Role.VampireRoleComponent>();
+        SubscribeAntagEvents<VampireRoleComponent>();
         //end-backmen: antag
 
         //start-radium

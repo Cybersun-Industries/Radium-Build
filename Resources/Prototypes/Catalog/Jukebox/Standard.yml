@@ -59,30 +59,6 @@
     path: /Audio/Lobby/title2.ogg
 
 - type: jukebox
-  id: andromeda
-  name: Radium - Andromeda
-  path:
-    path: /Audio/Radium/Lobby/Andromeda.ogg
-
-- type: jukebox
-  id: apex
-  name: Radium - Apex
-  path:
-    path: /Audio/Radium/Lobby/Apex.ogg
-
-- type: jukebox
-  id: quasar
-  name: Radium - Quasar
-  path:
-    path: /Audio/Radium/Lobby/Quasar.ogg
-
-- type: jukebox
-  id: maxwell
-  name: Maxwell
-  path:
-    path: /Audio/Radium/Maxwell/maxwell.ogg
-
-- type: jukebox
   id: deadline
   name: Bolgarich - Deadline
   path:

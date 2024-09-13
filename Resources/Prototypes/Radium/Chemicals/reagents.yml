@@ -604,64 +604,6 @@
             Poison: 2
 
 - type: reagent
-  id: Haloperidol
-  name: reagent-name-haloperidol
-  group: Medicine
-  desc: reagent-desc-haloperidol
-  physicalDesc: reagent-physical-desc-strong-smelling
-  flavor: medicine
-  color: "#ded0ee"
-  metabolisms:
-    Poison:
-      effects:
-      - !type:GenericStatusEffect
-        conditions:
-        - !type:ReagentThreshold
-          reagent: Haloperidol
-          min: 15
-        key: ForcedSleep
-        component: ForcedSleeping
-        refresh: false
-        type: Add
-      - !type:HealthChange
-        conditions:
-        - !type:ReagentThreshold
-          reagent: Haloperidol
-          min: 15
-        damage:
-          groups:
-            Genetic: 1
-        probability: 0.33
-      - !type:AdjustReagent
-        reagent: Desoxyephedrine
-        amount: -5.0
-      - !type:AdjustReagent
-        reagent: SpaceDrugs
-        amount: -5.0
-      - !type:AdjustReagent
-        reagent: Stimulants
-        amount: -5.0
-      - !type:AdjustReagent
-        reagent: Ephedrine
-        amount: -5.0
-      - !type:AdjustReagent
-        reagent: Epinephrine
-        amount: -5.0
-      - !type:AdjustReagent
-        reagent: THC
-        amount: -5.0
-      - !type:GenericStatusEffect
-        key: Jitter
-        time: 5
-        type: Remove
-      - !type:GenericStatusEffect
-        key: SeeingRainbows
-        component: SeeingRainbows
-        type: Remove
-        time: 5
-        refresh: false
-
-- type: reagent
   id: Insulin
   name: reagent-name-insulin
   group: Medicine
@@ -777,29 +719,6 @@
         conditions:
         - !type:ReagentThreshold
           min: 25
-
-- type: reagent
-  id: PotassiumIodide
-  name: reagent-name-potassiumiodide
-  group: Medicine
-  desc: reagent-desc-potassiumiodide
-  physicalDesc: reagent-physical-desc-strong-smelling
-  flavor: medicine
-  color: "#a2d0ba"
-  metabolisms:
-    Medicine:
-      effects:
-      - !type:HealthChange
-        damage:
-          types:
-            Radiation: -2
-      - !type:HealthChange
-        conditions:
-          - !type:ReagentThreshold
-            min: 25
-        damage:
-          groups:
-           Toxin: 4
 
 - type: reagent
   id: StrangeReagent

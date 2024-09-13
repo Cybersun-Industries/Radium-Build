@@ -132,8 +132,7 @@ public sealed class DefibrillatorSystem : EntitySystem
             target,
             uid)
         {
-            BlockDuplicate = true,
-            BreakOnHandChange = true,
+
             NeedHand = true,
             BreakOnMove = !component.AllowDoAfterMovement
         });

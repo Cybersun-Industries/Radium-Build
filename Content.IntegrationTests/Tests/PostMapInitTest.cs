@@ -16,6 +16,7 @@ using Robust.Shared.GameObjects;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
 using Robust.Shared.Prototypes;
+using Content.Shared.Station.Components;
 using Robust.Shared.Utility;
 using YamlDotNet.RepresentationModel;
 
@@ -63,18 +64,13 @@ namespace Content.IntegrationTests.Tests
             "Fland",
             "Meta",
             "Packed",
-            "Cluster",
             "Omega",
             "Bagel",
-            "Origin",
             "CentComm",
             "Box",
-            "Europa",
-            "Saltern",
             "Core",
             "Marathon",
             "MeteorArena",
-            "Atlas",
             //start-backmen
             "CentCommv2",
             "CentCommv3",
@@ -91,9 +87,11 @@ namespace Content.IntegrationTests.Tests
             "BargeVsShip",
             "no_madDelta",
             //end-backmen
+            "Saltern",
             "Reach",
             "Train",
-            "Oasis"
+            "Oasis",
+            "Cog"
         };
 
         /// <summary>

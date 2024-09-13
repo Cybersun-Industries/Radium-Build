@@ -1,4 +1,5 @@
 using Content.Server.Body.Components;
+using Content.Server.Chemistry.Containers.EntitySystems;
 using Content.Server.Medical.Components;
 using Content.Server.PowerCell;
 using Content.Server.Radium.Medical.Surgery.Components;
@@ -13,9 +14,9 @@ using Content.Shared.Item.ItemToggle;
 using Content.Shared.Item.ItemToggle.Components;
 using Content.Shared.MedicalScanner;
 using Content.Shared.Mobs.Components;
+using Content.Shared.Popups;
 using Content.Shared.Radium.Medical.Surgery.Components;
 using Content.Shared.Radium.Medical.Surgery.Prototypes;
-using Content.Shared.Popups;
 using Content.Shared.PowerCell;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
@@ -35,8 +36,8 @@ public sealed class HealthAnalyzerSystem : EntitySystem
     [Dependency] private readonly SharedSolutionContainerSystem _solutionContainerSystem = default!;
     [Dependency] private readonly UserInterfaceSystem _uiSystem = default!;
     [Dependency] private readonly TransformSystem _transformSystem = default!;
-    [Dependency] private readonly IPrototypeManager _prototype = default!;
     [Dependency] private readonly SharedPopupSystem _popupSystem = default!;
+    [Dependency] private readonly IPrototypeManager _prototype = default!;
 
     public override void Initialize()
     {
@@ -90,11 +91,14 @@ public sealed class HealthAnalyzerSystem : EntitySystem
 
         _audio.PlayPvs(uid.Comp.ScanningBeginSound, uid);
 
-        _doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, args.User, uid.Comp.ScanDelay, new HealthAnalyzerDoAfterEvent(), uid, target: args.Target, used: uid)
+        var doAfterCancelled = !_doAfterSystem.TryStartDoAfter(new DoAfterArgs(EntityManager, args.User, uid.Comp.ScanDelay, new HealthAnalyzerDoAfterEvent(), uid, target: args.Target, used: uid)
         {
             NeedHand = true,
-            BreakOnMove = true
+            BreakOnMove = true,
         });
+
+        if (args.Target == args.User || doAfterCancelled || uid.Comp.Silent)
+            return;
 
         var msg = Loc.GetString("health-analyzer-popup-scan-target", ("user", Identity.Entity(args.User, EntityManager)));
         _popupSystem.PopupEntity(msg, args.Target.Value, args.Target.Value, PopupType.Medium);

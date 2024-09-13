@@ -1,0 +1,359 @@
+﻿- type: jukebox
+  id: absynth
+  name: Absynth
+  path:
+    path: /Audio/Radium/Lobby/Absynth.ogg
+
+- type: jukebox
+  id: breathofanything
+  name: Breath of Anything
+  path:
+    path: /Audio/Radium/Lobby/BreathofAnything.ogg
+
+- type: jukebox
+  id: cloakanddagger
+  name: Cloakand Dagger
+  path:
+    path: /Audio/Radium/Lobby/CloakandDagger.ogg
+
+- type: jukebox
+  id: doubleface
+  name: Double Face
+  path:
+    path: /Audio/Radium/Lobby/DoubleFace.ogg
+
+- type: jukebox
+  id: downbeatbeatdown
+  name: Down beat beat down
+  path:
+    path: /Audio/Radium/Lobby/DownbeatBeatdown.ogg
+
+- type: jukebox
+  id: dreamavenue
+  name: Dream Avenue
+  path:
+    path: /Audio/Radium/Lobby/DreamAvenue.ogg
+
+- type: jukebox
+  id: dystopia
+  name: Dystopia
+  path:
+    path: /Audio/Radium/Lobby/Dystopia.ogg
+
+- type: jukebox
+  id: andromeda
+  name: Andromeda
+  path:
+    path: /Audio/Radium/Lobby/Andromeda.ogg
+
+- type: jukebox
+  id: apex
+  name: Apex
+  path:
+    path: /Audio/Radium/Lobby/Apex.ogg
+
+- type: jukebox
+  id: quasar
+  name: Quasar
+  path:
+    path: /Audio/Radium/Lobby/Quasar.ogg
+
+- type: jukebox
+  id: maxwell
+  name: Maxwell
+  path:
+    path: /Audio/Radium/Maxwell/maxwell.ogg
+
+- type: jukebox
+  id: echoes
+  name: Echoes
+  path:
+    path: /Audio/Radium/Lobby/Echoes.ogg
+
+- type: jukebox
+  id: fadedsecrets
+  name: FadedSecrets
+  path:
+    path: /Audio/Radium/Lobby/FadedSecrets.ogg
+
+- type: jukebox
+  id: fallenforthat
+  name: Fallen For That
+  path:
+    path: /Audio/Radium/Lobby/FallenforThat-Instrumental.ogg
+
+- type: jukebox
+  id: firststop
+  name: First Stop
+  path:
+    path: /Audio/Radium/Lobby/FirstStop.ogg
+
+- type: jukebox
+  id: fluxed
+  name: Fluxed
+  path:
+    path: /Audio/Radium/Lobby/Fluxed.ogg
+
+- type: jukebox
+  id: getback
+  name: Get Back
+  path:
+    path: /Audio/Radium/Lobby/GetBack.ogg
+
+- type: jukebox
+  id: hope
+  name: Hope
+  path:
+    path: /Audio/Radium/Lobby/Hope-80'sRetroChillwaveBeatMix.ogg
+
+- type: jukebox
+  id: industry
+  name: Industry
+  path:
+    path: /Audio/Radium/Lobby/Industry.ogg
+
+- type: jukebox
+  id: itstillhurts
+  name: It Still Hurts
+  path:
+    path: /Audio/Radium/Lobby/ItStillHurts(IJustDon'tKnowWhy).ogg
+
+- type: jukebox
+  id: lastcall
+  name: Last Call
+  path:
+    path: /Audio/Radium/Lobby/LastCall.ogg
+
+- type: jukebox
+  id: laststretch
+  name: Last Stretch
+  path:
+    path: /Audio/Radium/Lobby/LastStretch.ogg
+
+- type: jukebox
+  id: laterwave
+  name: Radium - Later Wave
+  path:
+    path: /Audio/Radium/Lobby/LaterWave.ogg
+
+- type: jukebox
+  id: libertycity
+  name: Last Stretch
+  path:
+    path: /Audio/Radium/Lobby/LibertyCity-Remastered.ogg
+
+- type: jukebox
+  id: lisa
+  name: Lisa
+  path:
+    path: /Audio/Radium/Lobby/Lisa.ogg
+
+- type: jukebox
+  id: lust
+  name: Lust
+  path:
+    path: /Audio/Radium/Lobby/Lust.ogg
+
+- type: jukebox
+  id: magicfly
+  name: Magic Fly
+  path:
+    path: /Audio/Radium/Lobby/MagicFly.ogg
+
+- type: jukebox
+  id: memorybank
+  name: Memory Bank
+  path:
+    path: /Audio/Radium/Lobby/MemoryBank.ogg
+
+- type: jukebox
+  id: midnighttheory
+  name: Mid Night Theory
+  path:
+    path: /Audio/Radium/Lobby/MidnightTheory.ogg
+
+- type: jukebox
+  id: mittsiesbraincell
+  name: Mittsies BrainCell
+  path:
+    path: /Audio/Radium/Lobby/Mittsies-Braincell.ogg
+
+- type: jukebox
+  id: mittsiesfloodlights
+  name: Mittsies FloodLights
+  path:
+    path: /Audio/Radium/Lobby/Mittsies-Floodlights.ogg
+
+- type: jukebox
+  id: mittsiespainkiller
+  name: Mittsies PainKiller
+  path:
+    path: /Audio/Radium/Lobby/Mittsies-Painkiller.ogg
+
+- type: jukebox
+  id: mittsiesphantom
+  name: Mittsies Phantom
+  path:
+    path: /Audio/Radium/Lobby/Mittsies-Phantom.ogg
+
+- type: jukebox
+  id: mixereffect
+  name: Mixer Effect
+  path:
+    path: /Audio/Radium/Lobby/MixerEffect.ogg
+
+- type: jukebox
+  id: movingon
+  name: Moving On
+  path:
+    path: /Audio/Radium/Lobby/MovingOn.ogg
+
+- type: jukebox
+  id: newarcade
+  name: New Arcade
+  path:
+    path: /Audio/Radium/Lobby/NewArcade.ogg
+
+- type: jukebox
+  id: nextleft
+  name: Next Left
+  path:
+    path: /Audio/Radium/Lobby/NextLeft.ogg
+
+- type: jukebox
+  id: nextstopmars
+  name: Next Stop Mars
+  path:
+    path: /Audio/Radium/Lobby/NextStopMars.ogg
+
+- type: jukebox
+  id: nightrider
+  name: Night Rider
+  path:
+    path: /Audio/Radium/Lobby/Nightrider.ogg
+
+- type: jukebox
+  id: offworld
+  name: OffWorld
+  path:
+    path: /Audio/Radium/Lobby/Offworld.ogg
+
+- type: jukebox
+  id: osmosis
+  name: Osmosis
+  path:
+    path: /Audio/Radium/Lobby/Osmosis.ogg
+
+- type: jukebox
+  id: production08
+  name: Production 08
+  path:
+    path: /Audio/Radium/Lobby/Production-08.ogg
+
+- type: jukebox
+  id: reversethegeometry
+  name: Reverse the Geometry
+  path:
+    path: /Audio/Radium/Lobby/ReversetheGeometry.ogg
+
+- type: jukebox
+  id: ronindesync
+  name: RoninDesync
+  path:
+    path: /Audio/Radium/Lobby/RoninDesync.ogg
+
+- type: jukebox
+  id: severance
+  name: Severance
+  path:
+    path: /Audio/Radium/Lobby/Severance.ogg
+
+- type: jukebox
+  id: shadowboxing
+  name: Shadow Boxing
+  path:
+    path: /Audio/Radium/Lobby/Shadowboxing.ogg
+
+- type: jukebox
+  id: shitsuboshita
+  name: ShitSuboShita
+  path:
+    path: /Audio/Radium/Lobby/ShitsuboShita.ogg
+
+- type: jukebox
+  id: sights
+  name: Sights
+  path:
+    path: /Audio/Radium/Lobby/Sights.ogg
+
+- type: jukebox
+  id: speeding
+  name: Speeding
+  path:
+    path: /Audio/Radium/Lobby/Speeding.ogg
+
+- type: jukebox
+  id: stargate
+  name: Stargate
+  path:
+    path: /Audio/Radium/Lobby/Stargate.ogg
+
+- type: jukebox
+  id: summershift
+  name: SummerShift
+  path:
+    path: /Audio/Radium/Lobby/SummerShift.ogg
+
+- type: jukebox
+  id: theend
+  name: The End
+  path:
+    path: /Audio/Radium/Lobby/TheEnd.ogg
+
+- type: jukebox
+  id: theshapereturns
+  name: The Shape Returns
+  path:
+    path: /Audio/Radium/Lobby/TheShapeReturns.ogg
+
+- type: jukebox
+  id: theshiftingtide
+  name: The Shifting Tide
+  path:
+    path: /Audio/Radium/Lobby/TheShiftingTide.ogg
+
+- type: jukebox
+  id: ti84
+  name: TI-84
+  path:
+    path: /Audio/Radium/Lobby/TI-84.ogg
+
+- type: jukebox
+  id: vampirevigilante
+  name: Vampire Vigilante
+  path:
+    path: /Audio/Radium/Lobby/VampireVigilante.ogg
+
+- type: jukebox
+  id: zetareticuli
+  name: Zeta Reticuli
+  path:
+    path: /Audio/Radium/Lobby/ZetaReticuli.ogg
+
+- type: jukebox
+  id: scp5000
+  name: SCP 5000 Theme
+  path:
+    path: /Audio/Radium/Sponsor/scp_5000.ogg
+
+- type: jukebox
+  id: scpnuke
+  name: SCP The final flash of existence
+  path:
+    path: /Audio/Radium/Sponsor/scp_nuke.ogg
+
+- type: jukebox
+  id: drgrun
+  name: DRG Run
+  path:
+    path: /Audio/Radium/Sponsor/drg_run.ogg

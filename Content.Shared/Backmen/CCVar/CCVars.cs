@@ -25,6 +25,9 @@ public sealed class CCVars
     public static readonly CVarDef<string>
         GptApiToken = CVarDef.Create("gpt.token", "", CVar.SERVERONLY | CVar.CONFIDENTIAL);
 
+    public static readonly CVarDef<string>
+        GptApiGigaToken = CVarDef.Create("gpt.giga_token", "", CVar.SERVERONLY | CVar.CONFIDENTIAL);
+
     /*
      * Queue
      */
@@ -122,11 +125,6 @@ public sealed class CCVars
     public static readonly CVarDef<int> ShipwreckedMaxPlayers =
         CVarDef.Create("shipwrecked.max_players", 15);
 
-    /// <summary>
-    /// Damage
-    /// </summary>
-    public static readonly CVarDef<float> DamageVariance =
-        CVarDef.Create("damage.variance", 0.15f, CVar.SERVER | CVar.REPLICATED);
     /*
  * FleshCult
  */

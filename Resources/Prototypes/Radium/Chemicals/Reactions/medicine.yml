@@ -79,31 +79,6 @@
   products:
     Perfluorodecalin: 4
 
-- type: reaction
-  id: PotassiumIodide
-  reactants:
-    Potassium:
-      amount: 1
-    Iodine:
-      amount: 1
-    Hyronalin:
-      amount: 1
-  products:
-    PotassiumIodide: 3
-
-- type: reaction
-  id: Haloperidol
-  reactants:
-    PotassiumIodide:
-      amount: 1
-    Aluminium:
-      amount: 1
-    Chlorine:
-      amount: 1
-    Oil:
-      amount: 1
-  products:
-    Haloperidol: 4
 
 - type: reaction
   id: PenteticAcid

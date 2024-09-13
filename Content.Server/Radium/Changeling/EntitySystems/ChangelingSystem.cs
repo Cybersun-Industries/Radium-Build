@@ -271,15 +271,19 @@ public sealed partial class ChangelingSystem : EntitySystem
                     continue;
                 }
 
-                if (!_prototype.TryIndex(loadoutProto.Equipment, out var startingGear))
+                foreach (var equipment in loadoutProto.Equipment)
                 {
-                    Log.Error(
-                        $"Unable to find starting gear {loadoutProto.Equipment} for loadout {loadoutProto}");
-                    continue;
+                    if (!_prototype.TryIndex(equipment.Value, out var startingGear))
+                    {
+                        Log.Error(
+                            $"Unable to find starting gear {loadoutProto.Equipment} for loadout {loadoutProto}");
+                        continue;
+                    }
+
+                    // Handle any extra data here.
+                    _stationSpawning.EquipStartingGear(changelingUid, startingGear.ID, raiseEvent: false);
                 }
 
-                // Handle any extra data here.
-                _stationSpawning.EquipStartingGear(changelingUid, startingGear, raiseEvent: false);
             }
         }
 

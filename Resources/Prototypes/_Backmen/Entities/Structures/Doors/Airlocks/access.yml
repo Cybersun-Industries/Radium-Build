@@ -16,7 +16,7 @@
     - type: Occluder
       enabled: false
     - type: Sprite
-      sprite: Structures/Doors/Airlocks/Glass/glass.rsi
+      sprite: Structures/Doors/Airlocks/Glass/centcomm.rsi
     - type: AnimationPlayer
 
 - type: entity
@@ -36,7 +36,7 @@
     - type: Occluder
       enabled: false
     - type: Sprite
-      sprite: Structures/Doors/Airlocks/Glass/glass.rsi
+      sprite: Structures/Doors/Airlocks/Glass/centcomm.rsi
     - type: AnimationPlayer
 
 - type: entity
@@ -56,7 +56,7 @@
     - type: Occluder
       enabled: false
     - type: Sprite
-      sprite: Structures/Doors/Airlocks/Glass/glass.rsi
+      sprite: Structures/Doors/Airlocks/Glass/centcomm.rsi
     - type: AnimationPlayer
 
 - type: entity
@@ -76,7 +76,7 @@
     - type: Occluder
       enabled: false
     - type: Sprite
-      sprite: Structures/Doors/Airlocks/Glass/glass.rsi
+      sprite: Structures/Doors/Airlocks/Glass/centcomm.rsi
     - type: AnimationPlayer
 
 #Airlocks CC
@@ -121,6 +121,34 @@
     - type: ContainerFill
       containers:
         board: [ DoorElectronicsCentCom ]
+
+- type: entity
+  parent: AirlockBlueShield
+  id: AirlockBlueShieldLocked
+  suffix: Blue Shield, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsCCOfficer ]
+
+- type: entity
+  parent: AirlockBlueShieldGlass
+  id: AirlockBlueShieldGlassLocked
+  suffix: Blue Shield, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsCCOfficer ]
+
+#Windoor CC
+- type: entity
+  parent: WindoorSecureArmoryLocked
+  id: WindoorCCOfficerLocked
+  suffix: CentCom Officer, Locked
+  components:
+  - type: ContainerFill
+    containers:
+      board: [ DoorElectronicsCCOfficer ]
 
 #Hatches
 - type: entity

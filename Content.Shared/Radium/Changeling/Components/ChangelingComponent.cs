@@ -30,7 +30,7 @@ public sealed partial class ChangelingComponent : Component
     };
 
     [DataField]
-    public ProtoId<StatusIconPrototype> StatusIcon= "HivemindFaction";
+    public ProtoId<JobIconPrototype> StatusIcon= "HivemindFaction";
 
     [DataField("soundShriek")]
     public SoundSpecifier ShriekSound =

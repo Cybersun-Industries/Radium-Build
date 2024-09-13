@@ -1022,7 +1022,7 @@ public abstract partial class InteractionTest
         if (TryGetControlFromChildren(predicate, parent, out var control, recursive))
             return control;
 
-        Assert.Warn($"Failed to find a {nameof(TControl)} that satisfies the predicate in {parent.Name}");
+        Assert.Fail($"Failed to find a {nameof(TControl)} that satisfies the predicate in {parent.Name}");
         return default!;
     }
 
@@ -1207,11 +1207,12 @@ public abstract partial class InteractionTest
         BoundKeyFunction key,
         BoundKeyState state,
         NetCoordinates? coordinates = null,
-        NetEntity? cursorEntity = null)
+        NetEntity? cursorEntity = null,
+        ScreenCoordinates? screenCoordinates = null)
     {
         var coords = coordinates ?? TargetCoords;
         var target = cursorEntity ?? Target ?? default;
-        ScreenCoordinates screen = default;
+        var screen = screenCoordinates ?? default;
 
         var funcId = InputManager.NetworkBindMap.KeyFunctionID(key);
         var message = new ClientFullInputCmdMessage(CTiming.CurTick, CTiming.TickFraction, funcId)

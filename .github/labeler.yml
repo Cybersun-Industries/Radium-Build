@@ -7,18 +7,16 @@
   - any-glob-to-any-file:
     - 'Resources/Maps/**/*.yml'
     - 'Resources/Prototypes/Maps/**/*.yml'
-    - 'Resources/Prototypes/Corvax/Maps/**/*.yml'
 
 "Changes: UI":
 - changed-files:
   - any-glob-to-any-file: '**/*.xaml*'
 
-"Changes: Localization":
+"Changes: Shaders":
 - changed-files:
-  - any-glob-to-any-file: 'Resources/Locale/**/*.ftl'
+  - any-glob-to-any-file: '**/*.swsl'
 
 "No C#":
 - changed-files:
   # Equiv to any-glob-to-all as long as this has one matcher. If ALL changed files are not C# files, then apply label.
   - all-globs-to-all-files: "!**/*.cs"
-

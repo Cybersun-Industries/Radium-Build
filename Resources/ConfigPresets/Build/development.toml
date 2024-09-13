@@ -6,6 +6,10 @@ map = "Dev"
 hostname = "☄️ [RU][LRP][TTS] Radium - Помощь Новичкам! ☄️ "
 role_timers = false
 
+[ghost]
+role_time = 0.5
+quick_lottery = true
+
 [gateway]
 generator_enabled = false
 
