@@ -73,8 +73,8 @@ ui-options-hud-theme-clockwork = Механизм
 ui-options-hud-theme-retro = Ретро
 ui-options-hud-theme-minimalist = Минимализм
 ui-options-hud-theme-ashen = Пепел
-ui-options-hud-layout-default = Default
-ui-options-hud-layout-separated = Separated
+ui-options-hud-layout-default = Стандартный
+ui-options-hud-layout-separated = Разделённый
 ui-options-vp-stretch = Растянуть изображение для соответствия окну игры
 ui-options-vp-scale = Фиксированный масштаб окна игры:
 ui-options-vp-scale-value = x{ $scale }
@@ -94,7 +94,6 @@ ui-options-parallax-low-quality = Низкокачественный парал�
 ui-options-fps-counter = Показать счётчик FPS
 ui-options-vp-width = Ширина окна игры:
 ui-options-hud-layout = Тип HUD:
-
 ## Controls menu
 
 ui-options-binds-reset-all = Сбросить ВСЕ привязки
@@ -150,9 +149,9 @@ ui-options-function-try-pull-object = Тянуть объект
 ui-options-function-move-pulled-object = Тянуть объект в сторону
 ui-options-function-release-pulled-object = Перестать тянуть объект
 ui-options-function-point = Указать на что-либо
-ui-options-function-rotate-object-clockwise = Rotate clockwise
-ui-options-function-rotate-object-counterclockwise = Rotate counterclockwise
-ui-options-function-flip-object = Flip
+ui-options-function-rotate-object-clockwise = Повернуть по часовой стрелке
+ui-options-function-rotate-object-counterclockwise = Повернуть против часовой стрелки
+ui-options-function-flip-object = Перевернуть
 ui-options-function-focus-chat-input-window = Писать в чат
 ui-options-function-focus-local-chat-window = Писать в чат (IC)
 ui-options-function-focus-emote = Писать в чат (Emote)

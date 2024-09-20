@@ -1,8 +1,8 @@
-﻿- type: guideEntry
+﻿- type: guideEntry # Default for forks and stuff. Should not be listed anywhere if the server is using a custom ruleset.
   id: DefaultRuleset
-  name: guide-entry-rules-core-only
+  name: guide-entry-rules
   ruleEntry: true
-  text: "/ServerInfo/Guidebook/ServerRules/WizDenCoreOnlyRules.xml"
+  text: "/ServerInfo/Guidebook/ServerRules/DefaultRules.xml"
 
 - type: guideEntry
   id: CoreRuleset
@@ -385,19 +385,19 @@
   priority: 10
   text: "/ServerInfo/Guidebook/ServerRules/SiliconRules/RuleS10OrderConflicts.xml"
 
-#- type: guideEntry
-#  id: SpaceLaw
-#  name: guide-entry-rules-space-law
-#  priority: 1
-#  text: "/ServerInfo/Guidebook/ServerRules/SpaceLaw/SpaceLaw.xml"
-#  children:
-#  - SpaceLawCrimeList
-#
-#- type: guideEntry
-#  id: SpaceLawCrimeList
-#  name: guide-entry-rules-sl-crime-list
-#  priority: 5
-#  text: "/ServerInfo/Guidebook/ServerRules/SpaceLaw/SLCrimeList.xml"
+- type: guideEntry
+  id: SpaceLaw
+  name: guide-entry-rules-space-law
+  priority: 1
+  text: "/ServerInfo/Guidebook/ServerRules/SpaceLaw/SpaceLaw.xml"
+  children:
+  - SpaceLawCrimeList
+
+- type: guideEntry
+  id: SpaceLawCrimeList
+  name: guide-entry-rules-sl-crime-list
+  priority: 5
+  text: "/ServerInfo/Guidebook/ServerRules/SpaceLaw/SLCrimeList.xml"
 
 - type: guideEntry
   id: BanTypes

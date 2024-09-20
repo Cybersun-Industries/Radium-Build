@@ -32,6 +32,9 @@ public abstract partial class SharedToolSystem : EntitySystem
     [Dependency] private   readonly TileSystem _tiles = default!;
     [Dependency] private   readonly TurfSystem _turfs = default!;
 
+    public const string CutQuality = "Cutting";
+    public const string PulseQuality = "Pulsing";
+
     public override void Initialize()
     {
         InitializeMultipleTool();

@@ -13,7 +13,7 @@
         name: ent-HappyHonkMime
       - tag: MimeBelt
         icon:
-            sprite: Clothing/Belt/suspenders.rsi
+            sprite: Clothing/Belt/suspenders_red.rsi
             state: icon
         name: ent-ClothingBeltSuspenders
         doAfter: 2

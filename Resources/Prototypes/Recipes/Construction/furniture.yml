@@ -595,7 +595,6 @@
   conditions:
     - !type:TileNotBlocked
 
-#bathroom
 - type: construction
   name: ent-ToiletEmpty
   id: ToiletEmpty
