@@ -116,6 +116,20 @@
     <GuideEntityEmbed Entity="ParticlesProjectile" Caption=""/>
   </Box>
 
+  [color=red]Do not[/color] turn the PA on unless all the other subsystems are working properly and there is enough power to start the engine.
+
+## Финальный запуск
+
+  Currently, the output power does not affect the ball lightning, beyond giving the ball lightning extra orbs around it.
+
+  The PA will now draw power from the power net and start firing particles at the generators.
+
+  <Box>
+    <GuideEntityEmbed Entity="ParticlesProjectile" Caption=""/>
+    <GuideEntityEmbed Entity="ParticlesProjectile"/>
+    <GuideEntityEmbed Entity="ParticlesProjectile" Caption=""/>
+  </Box>
+
   A singularity or ball lightning will soon appear at the position of the Gravitational singularity generator.
   <Box>
     <GuideEntityEmbed Entity="Singularity"/>

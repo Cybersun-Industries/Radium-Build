@@ -161,35 +161,6 @@
       PotencyDivisor: 20
 
 - type: seed
-  id: holymelon
-  name: seeds-holymelon-name
-  noun: seeds-noun-seeds
-  displayName: seeds-holymelon-display-name
-  plantRsi: Radium/Objects/Specific/Hydroponics/holymelon.rsi
-  packetPrototype: HolymelonSeeds
-  productPrototypes:
-    - FoodHolymelon
-  lifespan: 55
-  maturation: 12
-  production: 3
-  potency: 1
-  yield: 1
-  idealLight: 8
-  chemicals:
-    Nutriment:
-      Min: 1
-      Max: 10
-      PotencyDivisor: 30
-    Vitamin:
-      Min: 1
-      Max: 4
-      PotencyDivisor: 20
-    Holywater:
-      Min: 1
-      Max: 20
-      PotencyDivisor: 50
-
-- type: seed
   id: replicapod
   name: seeds-replicapod-name
   noun: seeds-noun-seeds

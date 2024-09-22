@@ -86,6 +86,29 @@
       gender: female
 
 - type: entity
+  name: real mouse
+  parent: MobCorgiIan
+  id: MobCorgiMouse
+  description: It's 100% a real hungry mouse.
+  components:
+  - type: Sprite
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: real_mouse
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: real_mouse
+      Critical:
+        Base: real_mouse_dead
+      Dead:
+        Base: real_mouse_dead
+  - type: Grammar
+    attributes:
+      proper: true
+      gender: female
+
+- type: entity
   name: Puppy Ian
   parent: MobCorgiPuppy
   id: MobCorgiIanPup
@@ -111,7 +134,7 @@
   components:
   - type: NpcFactionMember
     factions:
-      - PetsNT
+    - PetsNT
   - type: HTN
     rootTask:
       task: SimpleHostileCompound
@@ -134,7 +157,7 @@
   components:
   - type: NpcFactionMember
     factions:
-      - PetsNT
+    - PetsNT
   - type: Grammar
     attributes:
       proper: true
@@ -585,6 +608,10 @@
     - Hamster
     - VimPilot
     - ChefPilot
+  - type: FlavorProfile
+    flavors:
+    - meaty
+    - sadness
 
 - type: entity
   name: Shiva
@@ -601,7 +628,7 @@
       path: /Audio/Animals/snake_hiss.ogg
   - type: NpcFactionMember
     factions:
-      - PetsNT
+    - PetsNT
   - type: Sprite
     drawdepth: Mobs
     layers:
@@ -740,6 +767,7 @@
         Caustic: 1
   - type: MultiHandedItem
   - type: Item
+    sprite: Mobs/Pets/smile.rsi
     size: Huge
   - type: SentienceTarget
     flavorKind: station-event-random-sentience-flavor-slime
@@ -783,6 +811,7 @@
     - CannotSuicide
     - DoorBumpOpener
     - VimPilot
+    - AnomalyHost
   - type: Loadout
     prototypes: [ MobMonkeyGear ]
   - type: Grammar
@@ -796,15 +825,15 @@
   id: MobCrabAtmos
   description: The noble and stalwart defender of Atmosia. Viva!
   components:
-#  - type: GhostRole
-#    prob: 1
-#    makeSentient: true
-#    allowSpeech: true
-#    allowMovement: true
-#    name: ghost-role-information-tropico-name
-#    description: ghost-role-information-tropico-description
-#    rules: ghost-role-information-nonantagonist-rules
-#  - type: GhostTakeoverAvailable
+  #  - type: GhostRole
+  #    prob: 1
+  #    makeSentient: true
+  #    allowSpeech: true
+  #    allowMovement: true
+  #    name: ghost-role-information-tropico-name
+  #    description: ghost-role-information-tropico-description
+  #    rules: ghost-role-information-nonantagonist-rules
+  #  - type: GhostTakeoverAvailable
   - type: Tag
     tags:
     - VimPilot
@@ -813,7 +842,7 @@
     attributes:
       proper: true
       gender: male
-#  - type: AlwaysRevolutionaryConvertible
+  #  - type: AlwaysRevolutionaryConvertible
   - type: StealTarget
     stealGroup: AnimalTropico
 
@@ -838,7 +867,7 @@
       Dead:
   - type: NpcFactionMember
     factions:
-      - PetsNT
+    - PetsNT
   - type: HTN
     rootTask:
       task: SimpleHostileCompound

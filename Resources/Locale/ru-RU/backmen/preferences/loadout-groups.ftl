@@ -11,8 +11,8 @@ loadout-group-brigmedic-mask = Маска бригмедика
 
 # Misc
 loadout-group-medals = Медали
-loadout-group-werx = Нижняя, верх
-loadout-group-niz = Нижняя, низ
+loadout-group-werx = Нижняя, вверх
+loadout-group-niz = Нижняя,низ
 loadout-group-socks = Нижняя, ноги
 
 # CentCom

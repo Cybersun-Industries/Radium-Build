@@ -76651,7 +76651,7 @@ entities:
     - type: Transform
       pos: -46.598465,-10.565041
       parent: 2
-- proto: ClothingBeltSuspenders
+- proto: ClothingBeltSuspendersRed
   entities:
   - uid: 9166
     components:

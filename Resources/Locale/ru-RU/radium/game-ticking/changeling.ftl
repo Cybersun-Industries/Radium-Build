@@ -1,5 +1,5 @@
 changeling-prepend-title = [color=red]На станции присутствовал генокрад![/color]
-roundend-prepend-changeling-absorbed-named = [color=white]{$name}[/color] в сумме поглотил [color=red]{$number}[/color] сущностей.
+roundend-prepend-changeling-absorbed-named = [color=white]{$name}[/color] в общей сложности поглотил [color=red]{$number}[/color] сущностей.
 roundend-prepend-changeling-stolen-named = [color=white]{$name}[/color] в сумме извлёк [color=orange]{$number}[/color] образцов ДНК.
 roundend-prepend-changeling-absorbed = Неизвестный в сумме поглотил [color=red]{$number}[/color] сущностей.
 roundend-prepend-changeling-stolen = Неизвестный в сумме извлёк [color=orange]{$number}[/color] образцов ДНК.
