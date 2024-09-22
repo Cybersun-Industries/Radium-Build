@@ -41,7 +41,8 @@
   priority: 5
   showTo:
     components:
-    - SVSTeamMember
+    - TdmMember
+    - StationAiVision
   icon:
     sprite: /Textures/Backmen/Interface/Misc/svs_icon.rsi
     state: team_0
@@ -51,7 +52,8 @@
   priority: 5
   showTo:
     components:
-    - SVSTeamMember
+    - TdmMember
+    - StationAiVision
   icon:
     sprite: /Textures/Backmen/Interface/Misc/svs_icon.rsi
     state: team_a
@@ -61,7 +63,22 @@
   priority: 5
   showTo:
     components:
-    - SVSTeamMember
+    - TdmMember
+    - StationAiVision
   icon:
     sprite: /Textures/Backmen/Interface/Misc/svs_icon.rsi
     state: team_b
+
+- type: factionIcon
+  id: HivemindFaction
+  priority: 11
+  showTo:
+    components:
+    - ShowAntagIcons
+    - Hivemind
+  icon:
+    sprite: /Textures/Interface/Misc/job_icons.rsi
+    state: Changeling
+
+
+

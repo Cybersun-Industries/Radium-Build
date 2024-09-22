@@ -4,7 +4,6 @@
     - survival
   name: survival-title
   showInVote: false # secret
-  minPlayers: 20
   description: survival-description
   rules:
     - MeteorSwarmScheduler
@@ -61,7 +60,7 @@
   - badidea
   - punishment
   name: aller-at-once-title
-  description: all-at-once-description
+  description: aller-at-once-description
   showInVote: false #Please god dont do this
   rules:
     - WageScheduler #backmen: currency

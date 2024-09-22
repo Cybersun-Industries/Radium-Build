@@ -3,6 +3,7 @@
   parent:
   - BaseMob
   - MobDamageable
+  - MobPolymorphable
   - MobCombat
   - StripableInventoryBase
   id: BaseMobSpecies
@@ -141,6 +142,7 @@
     - Flashed
     - RadiationProtection
     - Drowsiness
+    - Adrenaline
   - type: Body
     prototype: Human
     requiredLegs: 2
@@ -217,14 +219,13 @@
     price: 1500 # Kidnapping a living person and selling them for cred is a good move.
     deathPenalty: 0.01 # However they really ought to be living and intact, otherwise they're worth 100x less.
   - type: PotentialPsionic
+  - type: LayingDown # backmen: LayingDown
   - type: Tag
     tags:
     - CanPilot
     - FootstepSound
     - DoorBumpOpener
-  - type: CameraFollow # Backmen-Changes-End
-    backStrength: 50
-    defaultBackStrength: 20
+    - AnomalyHost
 
 - type: entity
   save: false
@@ -237,6 +238,7 @@
   id: BaseMobSpeciesOrganic
   abstract: true
   components:
+#  - type: Absorbable # Changeling
   - type: DiseaseCarrier # backmen
   - type: Barotrauma
     damage:
@@ -354,6 +356,7 @@
   - type: Body
     prototype: Human
     requiredLegs: 2
+#  - type: Absorbable # Changeling
   - type: UserInterface
     interfaces:
       enum.HumanoidMarkingModifierKey.Key: # sure, this can go here too

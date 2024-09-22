@@ -174,6 +174,7 @@ public sealed partial class ChangelingSystem : EntitySystem
                         session,
                         "Passenger",
                         false,
+                        true,
                         0,
                         station.Value,
                         pref)

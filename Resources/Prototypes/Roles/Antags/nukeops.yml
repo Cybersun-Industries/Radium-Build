@@ -6,7 +6,7 @@
   objective: roles-antag-nuclear-operative-objective
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 36000 # 10h # Radium-RoleTime
+    time: 54000 # 15h # Corvax-RoleTime
   - !type:DepartmentTimeRequirement
     department: Security
     time: 18000 # 5h # Corvax-RoleTime
@@ -23,10 +23,10 @@
     time: 54000 # 15h # Corvax-RoleTime
   - !type:RoleTimeRequirement
     role: JobChemist
-    time: 18000 # 5h # Corvax-RoleTime
+    time: 36000 # 10h # Corvax-RoleTime
   - !type:DepartmentTimeRequirement
     department: Security
-    time: 18000 # 5h # Radium-RoleTime
+    time: 36000 # 10h # Corvax-RoleTime
   guides: [ NuclearOperatives ]
 
 - type: antag
@@ -37,10 +37,10 @@
   objective: roles-antag-nuclear-operative-commander-objective
   requirements:
   - !type:OverallPlaytimeRequirement
-    time: 72000 # 20h # Corvax-RoleTime
+    time: 108000 # 30h # Corvax-RoleTime
   - !type:DepartmentTimeRequirement
     department: Security
-    time: 36000 # 10h # Corvax-RoleTime
+    time: 54000 # 15h # Corvax-RoleTime
   # should be changed to nukie playtime when thats tracked (wyci)
   guides: [ NuclearOperatives ]
 
@@ -56,7 +56,6 @@
     outerClothing: ClothingOuterHardsuitSyndie
     shoes: ClothingShoesBootsCombatFilled
     id: SyndiPDA
-    pocket1: DoubleEmergencyOxygenTankFilled
     pocket2: PlushieCarp
     belt: ClothingBeltMilitaryWebbing
   storage:
@@ -80,7 +79,7 @@
     neck: SyndicateWhistle
     outerClothing: ClothingOuterHardsuitSyndieCommander
   inhand:
-    - NukeOpsDeclarationOfWar
+  - NukeOpsDeclarationOfWar
 
 #Nuclear Operative Medic Gear
 - type: startingGear

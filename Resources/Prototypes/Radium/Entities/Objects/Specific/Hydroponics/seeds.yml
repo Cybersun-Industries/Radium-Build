@@ -60,16 +60,6 @@
 
 - type: entity
   parent: SeedBase
-  name: пакет семян (святой арбуз)
-  id: HolymelonSeeds
-  components:
-    - type: Seed
-      seedId: holymelon
-    - type: Sprite
-      sprite: Radium/Objects/Specific/Hydroponics/holymelon.rsi
-
-- type: entity
-  parent: SeedBase
   name: пакет семян (реплика-под)
   id: ReplicapodSeeds
   components:

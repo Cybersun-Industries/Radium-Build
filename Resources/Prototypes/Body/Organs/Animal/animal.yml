@@ -18,10 +18,10 @@
           Quantity: 5
   - type: FlavorProfile
     flavors:
-      - chicken # everything kinda tastes like chicken
+    - chicken # everything kinda tastes like chicken
   - type: Tag
     tags:
-      - Meat
+    - Meat
 
 - type: entity
   id: BaseAnimalOrgan
