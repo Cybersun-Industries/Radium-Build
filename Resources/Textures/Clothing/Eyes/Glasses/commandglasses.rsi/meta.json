@@ -1,11 +1,7 @@
 {
   "version": 1,
   "license": "CC-BY-SA-3.0",
-<<<<<<<< HEAD:Resources/Textures/Clothing/Eyes/Glasses/blueglasses.rsi/meta.json
-  "copyright": "Sprited by discord:@mishutka09",
-========
   "copyright": "Taken from tgstation at commit https://github.com/tgstation/tgstation/commit/5a73e8f825ff279e82949b9329783a9e3070e2da, edited by Ghagliiarghii",
->>>>>>>> rxup/master:Resources/Textures/Clothing/Eyes/Glasses/commandglasses.rsi/meta.json
   "size": {
     "x": 32,
     "y": 32

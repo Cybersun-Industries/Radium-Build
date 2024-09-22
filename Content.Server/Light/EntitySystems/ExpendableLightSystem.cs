@@ -12,6 +12,7 @@ using JetBrains.Annotations;
 using Robust.Server.GameObjects;
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Utility;
+using IgnitionEvent = Content.Shared.IgnitionSource.IgnitionEvent;
 
 namespace Content.Server.Light.EntitySystems
 {

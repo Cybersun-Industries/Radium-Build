@@ -199,11 +199,3 @@
   - CombineForce
   - AiEnemy
 
-- type: npcFaction
-  id: Changeling
-  hostile:
-  - NanoTrasen
-  - Syndicate
-  - Zombie
-  - Revolutionary
-

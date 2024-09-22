@@ -59,7 +59,7 @@ namespace Content.Client.Launcher
 
         protected override void Startup()
         {
-            _control = new LauncherConnectingGui(this, _random, _prototypeManager, _cfg, _clipboard);
+            _control = new LauncherConnectingGui(this, _random, _prototypeManager, _cfg);
 
             _userInterfaceManager.StateRoot.AddChild(_control);
 

@@ -383,8 +383,6 @@
   id: Chicken
 
 # Allowed to control someone wearing a Chef's hat if inside their hat.
-- type: Tag
-  id: ChefPilot
 
 - type: Tag
   id: Cheese
@@ -1178,7 +1176,7 @@
 - type: Tag
   id: SecureWindoor
 
-- type: Tag  
+- type: Tag
   id: SecurityHelmet
 
 - type: Tag

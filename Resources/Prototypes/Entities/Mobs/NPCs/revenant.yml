@@ -21,8 +21,8 @@
     - Corporeal
   - type: Damageable
     damageContainer: Biological
-  - type: TTS # Corvax-TTS
-    voice: Kelthuzad
+#  - type: TTS # Corvax-TTS
+#    voice: Kelthuzad
   - type: NoSlip
   - type: Eye
     drawFov: false

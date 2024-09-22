@@ -22,5 +22,5 @@
     metabolizerTypes: [ Moth ]
     removeEmpty: true
     groups:
-      - id: Food
-      - id: Drink
+    - id: Food
+    - id: Drink
